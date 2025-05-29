@@ -1,0 +1,31 @@
+/* AAI Brand Colors - Extracted from mockup */
+:root {
+    --authority-navy: #1e3a5f;
+    --charcoal-grey: #2c3e50;
+    --clean-white: #ffffff;
+    --safety-orange: #ff6b35;
+    --electric-blue: #3498db;
+    --success-green: #27ae60;
+    --light-grey: #ecf0f1;
+    --medium-grey: #95a5a6;
+    --dark-grey: #34495e;
+    
+    /* Additional brand shades */
+    --navy-hover: #15304e;
+    --orange-hover: #e55a2b;
+    --blue-hover: #2980b9;
+    --green-hover: #229954;
+}
+
+/* Brand color utility classes */
+.text-authority-navy { color: var(--authority-navy); }
+.text-safety-orange { color: var(--safety-orange); }
+.text-electric-blue { color: var(--electric-blue); }
+.text-success-green { color: var(--success-green); }
+.text-medium-grey { color: var(--medium-grey); }
+
+.bg-authority-navy { background-color: var(--authority-navy); }
+.bg-safety-orange { background-color: var(--safety-orange); }
+.bg-electric-blue { background-color: var(--electric-blue); }
+.bg-success-green { background-color: var(--success-green); }
+.bg-light-grey { background-color: var(--light-grey); }

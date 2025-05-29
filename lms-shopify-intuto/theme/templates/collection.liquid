@@ -1,0 +1,538 @@
+{% comment %}
+COPILOT CONTEXT:
+- Collection template for course catalog browsing
+- Professional education platform design with filtering
+- Authority aesthetic matching AAI brand requirements
+{% endcomment %}
+
+<div class="aai-collection-page">
+  <div class="aai-container">
+    <!-- Collection Header -->
+    <div class="aai-collection-header">
+      <h1>{{ collection.title | default: 'All Courses' }}</h1>
+      {% if collection.description != blank %}
+        <p class="aai-collection-description">{{ collection.description }}</p>
+      {% endif %}
+      
+      <div class="aai-collection-meta">
+        <span class="aai-course-count">{{ collection.products_count }} courses available</span>
+      </div>
+    </div>
+
+    <!-- Collection Content -->
+    <div class="aai-collection-layout">
+      <!-- Sidebar Filters -->
+      <div class="aai-collection-sidebar">
+        <!-- Course Level Filter -->
+        <div class="aai-filter-section">
+          <h3>Course Level</h3>
+          <div class="aai-filter-options">
+            <label class="aai-filter-option">
+              <input type="checkbox" name="level" value="beginner">
+              <span>Beginner</span>
+            </label>
+            <label class="aai-filter-option">
+              <input type="checkbox" name="level" value="intermediate">
+              <span>Intermediate</span>
+            </label>
+            <label class="aai-filter-option">
+              <input type="checkbox" name="level" value="advanced">
+              <span>Advanced</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Duration Filter -->
+        <div class="aai-filter-section">
+          <h3>Duration</h3>
+          <div class="aai-filter-options">
+            <label class="aai-filter-option">
+              <input type="checkbox" name="duration" value="short">
+              <span>Under 3 hours</span>
+            </label>
+            <label class="aai-filter-option">
+              <input type="checkbox" name="duration" value="medium">
+              <span>3-8 hours</span>
+            </label>
+            <label class="aai-filter-option">
+              <input type="checkbox" name="duration" value="long">
+              <span>8+ hours</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Price Range -->
+        <div class="aai-filter-section">
+          <h3>Price Range</h3>
+          <div class="aai-filter-options">
+            <label class="aai-filter-option">
+              <input type="checkbox" name="price" value="under-200">
+              <span>Under $200</span>
+            </label>
+            <label class="aai-filter-option">
+              <input type="checkbox" name="price" value="200-500">
+              <span>$200 - $500</span>
+            </label>
+            <label class="aai-filter-option">
+              <input type="checkbox" name="price" value="over-500">
+              <span>Over $500</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Clear Filters -->
+        <button class="aai-btn aai-btn-secondary aai-btn-full" onclick="clearFilters()">
+          Clear All Filters
+        </button>
+      </div>
+
+      <!-- Main Content -->
+      <div class="aai-collection-main">
+        <!-- Sort Options -->
+        <div class="aai-collection-controls">
+          <div class="aai-sort-options">
+            <label for="sort-select">Sort by:</label>
+            <select id="sort-select" class="aai-sort-select">
+              <option value="title-ascending">Title A-Z</option>
+              <option value="title-descending">Title Z-A</option>
+              <option value="price-ascending">Price Low to High</option>
+              <option value="price-descending">Price High to Low</option>
+              <option value="created-descending">Newest First</option>
+            </select>
+          </div>
+          
+          <div class="aai-view-options">
+            <button class="aai-view-btn aai-view-grid active" data-view="grid">
+              <span>Grid</span>
+            </button>
+            <button class="aai-view-btn aai-view-list" data-view="list">
+              <span>List</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="aai-products-grid" id="course-grid">
+          {% for product in collection.products %}
+            <div class="aai-course-card-wrapper" 
+                 data-level="{{ product.metafields.aai.level | default: 'intermediate' | downcase }}"
+                 data-duration="{{ product.metafields.aai.duration_category | default: 'medium' }}"
+                 data-price="{{ product.price }}">
+              {% render 'course-card-professional', 
+                product: product,
+                show_enrollment: true
+              %}
+            </div>
+          {% else %}
+            <div class="aai-no-products">
+              <h3>No courses found</h3>
+              <p>Try adjusting your filters or browse all courses.</p>
+              <a href="/collections/all" class="aai-btn aai-btn-primary">View All Courses</a>
+            </div>
+          {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if paginate.pages > 1 %}
+          <div class="aai-pagination">
+            {% if paginate.previous %}
+              <a href="{{ paginate.previous.url }}" class="aai-pagination-btn aai-pagination-prev">
+                ← Previous
+              </a>
+            {% endif %}
+
+            {% for part in paginate.parts %}
+              {% if part.is_link %}
+                <a href="{{ part.url }}" class="aai-pagination-btn">{{ part.title }}</a>
+              {% else %}
+                {% if part.title == paginate.current_page %}
+                  <span class="aai-pagination-btn aai-pagination-current">{{ part.title }}</span>
+                {% else %}
+                  <span class="aai-pagination-ellipsis">{{ part.title }}</span>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            {% if paginate.next %}
+              <a href="{{ paginate.next.url }}" class="aai-pagination-btn aai-pagination-next">
+                Next →
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Collection page functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    initCollectionPage();
+  });
+
+  function initCollectionPage() {
+    // Filter functionality
+    const filterInputs = document.querySelectorAll('.aai-filter-option input');
+    filterInputs.forEach(input => {
+      input.addEventListener('change', applyFilters);
+    });
+
+    // Sort functionality
+    const sortSelect = document.getElementById('sort-select');
+    sortSelect.addEventListener('change', applySorting);
+
+    // View toggle
+    const viewBtns = document.querySelectorAll('.aai-view-btn');
+    viewBtns.forEach(btn => {
+      btn.addEventListener('click', toggleView);
+    });
+  }
+
+  function applyFilters() {
+    const cards = document.querySelectorAll('.aai-course-card-wrapper');
+    const activeFilters = getActiveFilters();
+    
+    cards.forEach(card => {
+      const shouldShow = matchesFilters(card, activeFilters);
+      card.style.display = shouldShow ? 'block' : 'none';
+    });
+  }
+
+  function getActiveFilters() {
+    const filters = {
+      level: [],
+      duration: [],
+      price: []
+    };
+
+    document.querySelectorAll('.aai-filter-option input:checked').forEach(input => {
+      const category = input.name;
+      const value = input.value;
+      if (filters[category]) {
+        filters[category].push(value);
+      }
+    });
+
+    return filters;
+  }
+
+  function matchesFilters(card, filters) {
+    // Level filter
+    if (filters.level.length > 0) {
+      const cardLevel = card.dataset.level;
+      if (!filters.level.includes(cardLevel)) {
+        return false;
+      }
+    }
+
+    // Duration filter
+    if (filters.duration.length > 0) {
+      const cardDuration = card.dataset.duration;
+      if (!filters.duration.includes(cardDuration)) {
+        return false;
+      }
+    }
+
+    // Price filter
+    if (filters.price.length > 0) {
+      const cardPrice = parseInt(card.dataset.price);
+      let priceMatches = false;
+      
+      filters.price.forEach(priceRange => {
+        if (priceRange === 'under-200' && cardPrice < 20000) priceMatches = true;
+        if (priceRange === '200-500' && cardPrice >= 20000 && cardPrice <= 50000) priceMatches = true;
+        if (priceRange === 'over-500' && cardPrice > 50000) priceMatches = true;
+      });
+      
+      if (!priceMatches) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function clearFilters() {
+    document.querySelectorAll('.aai-filter-option input').forEach(input => {
+      input.checked = false;
+    });
+    applyFilters();
+  }
+
+  function applySorting() {
+    const sortValue = document.getElementById('sort-select').value;
+    const grid = document.getElementById('course-grid');
+    const cards = Array.from(grid.querySelectorAll('.aai-course-card-wrapper'));
+    
+    cards.sort((a, b) => {
+      switch(sortValue) {
+        case 'title-ascending':
+          return a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent);
+        case 'title-descending':
+          return b.querySelector('h3').textContent.localeCompare(a.querySelector('h3').textContent);
+        case 'price-ascending':
+          return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+        case 'price-descending':
+          return parseInt(b.dataset.price) - parseInt(a.dataset.price);
+        default:
+          return 0;
+      }
+    });
+    
+    cards.forEach(card => grid.appendChild(card));
+  }
+
+  function toggleView(e) {
+    const viewType = e.target.closest('.aai-view-btn').dataset.view;
+    const grid = document.getElementById('course-grid');
+    
+    // Update button states
+    document.querySelectorAll('.aai-view-btn').forEach(btn => btn.classList.remove('active'));
+    e.target.closest('.aai-view-btn').classList.add('active');
+    
+    // Update grid class
+    grid.className = viewType === 'list' ? 'aai-products-list' : 'aai-products-grid';
+  }
+</script>
+
+<style>
+  /* Collection Page Styles */
+  .aai-collection-page {
+    padding: 40px 0 80px;
+    min-height: 100vh;
+  }
+
+  .aai-collection-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .aai-collection-header h1 {
+    font-size: 2.5rem;
+    color: var(--authority-navy);
+    margin-bottom: 15px;
+  }
+
+  .aai-collection-description {
+    font-size: 1.125rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .aai-course-count {
+    font-size: 0.9rem;
+    color: var(--electric-blue);
+    font-weight: 600;
+  }
+
+  .aai-collection-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+  }
+
+  /* Sidebar Styles */
+  .aai-collection-sidebar {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    height: fit-content;
+  }
+
+  .aai-filter-section {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .aai-filter-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 25px;
+  }
+
+  .aai-filter-section h3 {
+    font-size: 1rem;
+    color: var(--authority-navy);
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .aai-filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .aai-filter-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #495057;
+    cursor: pointer;
+  }
+
+  .aai-filter-option input {
+    margin: 0;
+  }
+
+  /* Main Content Styles */
+  .aai-collection-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .aai-sort-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .aai-sort-options label {
+    font-weight: 500;
+    color: var(--authority-navy);
+  }
+
+  .aai-sort-select {
+    padding: 8px 12px;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+
+  .aai-view-options {
+    display: flex;
+    gap: 5px;
+  }
+
+  .aai-view-btn {
+    padding: 8px 16px;
+    border: 1px solid #e9ecef;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+
+  .aai-view-btn.active {
+    background: var(--electric-blue);
+    color: white;
+    border-color: var(--electric-blue);
+  }
+
+  /* Products Grid */
+  .aai-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+  }
+
+  .aai-products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .aai-products-list .aai-course-card-wrapper {
+    max-width: none;
+  }
+
+  .aai-no-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .aai-no-products h3 {
+    font-size: 1.5rem;
+    color: var(--authority-navy);
+    margin-bottom: 15px;
+  }
+
+  .aai-no-products p {
+    color: #6c757d;
+    margin-bottom: 25px;
+  }
+
+  /* Pagination */
+  .aai-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+  }
+
+  .aai-pagination-btn {
+    padding: 10px 16px;
+    border: 1px solid #e9ecef;
+    background: white;
+    color: var(--authority-navy);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .aai-pagination-btn:hover {
+    background: var(--electric-blue);
+    color: white;
+    border-color: var(--electric-blue);
+  }
+
+  .aai-pagination-current {
+    background: var(--authority-navy);
+    color: white;
+    border-color: var(--authority-navy);
+  }
+
+  .aai-pagination-ellipsis {
+    padding: 10px 16px;
+    color: #6c757d;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 968px) {
+    .aai-collection-layout {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .aai-collection-sidebar {
+      order: 2;
+    }
+    
+    .aai-collection-main {
+      order: 1;
+    }
+    
+    .aai-collection-controls {
+      flex-direction: column;
+      gap: 15px;
+      align-items: stretch;
+    }
+    
+    .aai-products-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .aai-collection-header h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

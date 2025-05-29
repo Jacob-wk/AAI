@@ -1,0 +1,376 @@
+{% comment %}
+COPILOT CONTEXT:
+- Professional user dashboard exactly matching aai-lms-mockup.html design
+- Integrates with Shopify customer data and order history
+- Shows enrolled courses, progress, certifications, and achievements
+- Professional development focus with industry authority aesthetic
+- Color scheme: Authority Navy (#1e3a5f), Safety Orange (#ff6b35), Electric Blue (#3498db)
+{% endcomment %}
+
+{% assign customer = customer %}
+{% assign course_orders = customer.orders | where: 'tag', 'course' %}
+{% assign completed_courses = customer.metafields.aai.completed_courses | default: 0 %}
+{% assign total_ceu_credits = customer.metafields.aai.total_ceu_credits | default: 0 %}
+{% assign active_certifications = customer.metafields.aai.active_certifications | default: 0 %}
+
+<section class="aai-dashboard" id="user-dashboard" {% unless section.settings.show_by_default %}style="display: none;"{% endunless %}>
+  <div class="aai-container">
+    <div class="aai-dashboard-header">
+      <div class="aai-dashboard-welcome">
+        <div>
+          <h2>Welcome back, {{ customer.first_name | default: 'Professional' }} {{ customer.last_name }}</h2>
+          <p style="color: var(--medium-grey);">{{ customer.metafields.aai.job_title | default: 'Safety Professional' }} {{ customer.metafields.aai.company | prepend: 'at ' }}</p>
+        </div>
+        <div class="aai-dashboard-stats">
+          <div class="aai-stat-item">
+            <div class="aai-stat-number">{{ completed_courses }}</div>
+            <div class="aai-stat-label">Courses Completed</div>
+          </div>
+          <div class="aai-stat-item">
+            <div class="aai-stat-number">{{ total_ceu_credits }}</div>
+            <div class="aai-stat-label">CEU Credits Earned</div>
+          </div>
+          <div class="aai-stat-item">
+            <div class="aai-stat-number">{{ active_certifications }}</div>
+            <div class="aai-stat-label">Active Certifications</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="aai-dashboard-content">
+      <div class="aai-my-courses">
+        <h3>{{ section.settings.my_courses_title | default: 'My Courses' }}</h3>
+        
+        {% if course_orders.size > 0 %}
+          {% for order in course_orders limit: 10 %}
+            {% for line_item in order.line_items %}
+              {% assign product = line_item.product %}
+              {% assign progress = customer.metafields.aai.course_progress[product.id] | default: 0 %}
+              {% assign completion_date = customer.metafields.aai.completion_dates[product.id] %}
+              {% assign start_date = order.created_at %}
+              
+              <div class="aai-enrolled-course">
+                <div class="aai-enrolled-course-header">
+                  <div>
+                    <h4>{{ product.title }}</h4>
+                    <p style="color: var(--medium-grey); font-size: 0.875rem;">
+                      {% if completion_date %}
+                        Completed: {{ completion_date | date: '%B %d, %Y' }}
+                      {% else %}
+                        Started: {{ start_date | date: '%B %d, %Y' }}
+                      {% endif %}
+                    </p>
+                  </div>
+                  {% if completion_date %}
+                    <span class="aai-completion-badge">✓ Completed</span>
+                  {% else %}
+                    <span class="aai-ceu-credits">{{ product.metafields.aai.ceu_credits | default: '4' }} CEU Credits</span>
+                  {% endif %}
+                </div>
+                
+                <div class="aai-progress-bar">
+                  <div class="aai-progress-fill" style="width: {{ progress }}%; {% if completion_date %}background: var(--success-green);{% endif %}"></div>
+                </div>
+                
+                <p style="font-size: 0.875rem; margin-bottom: 15px; {% if completion_date %}color: var(--success-green);{% else %}color: var(--medium-grey);{% endif %}">
+                  {% if completion_date %}
+                    Course completed! Certificate earned.
+                  {% else %}
+                    {{ progress }}% Complete - {% assign remaining = 100 | minus: progress %}{{ remaining }}% remaining
+                  {% endif %}
+                </p>
+                
+                <div class="aai-course-actions">
+                  {% if completion_date %}
+                    <a href="{{ product.metafields.aai.certificate_url | default: '#' }}" class="aai-btn-certificate">Download Certificate</a>
+                    <a href="{{ product.metafields.aai.intuto_url | default: '#' }}" class="aai-btn-continue">Review Materials</a>
+                  {% else %}
+                    <a href="{{ product.metafields.aai.intuto_url | default: '#' }}" class="aai-btn-continue">Continue Learning</a>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          {% endfor %}
+        {% else %}
+          <!-- Demo courses for display when no orders exist -->
+          {% render 'enrolled-course-demo' %}
+        {% endif %}
+      </div>
+
+      <div class="aai-sidebar">
+        <div class="aai-achievements">
+          <h3>{{ section.settings.achievements_title | default: 'Recent Achievements' }}</h3>
+          {% render 'achievement-badges', customer: customer %}
+        </div>
+
+        <div class="aai-achievements">
+          <h3>{{ section.settings.recommended_title | default: 'Recommended Next' }}</h3>
+          <div style="padding: 10px 0;">
+            {% assign recommended_product = collections[section.settings.recommended_collection].products.first %}
+            {% if recommended_product %}
+              <h4 style="font-size: 0.95rem; margin-bottom: 8px;">{{ recommended_product.title }}</h4>
+              <p style="font-size: 0.8rem; color: var(--medium-grey); margin-bottom: 12px;">{{ recommended_product.metafields.aai.recommendation_reason | default: 'Continue your professional development' }}</p>
+              <a href="{{ recommended_product.url }}" class="aai-btn-continue" style="display: block; text-align: center;">Learn More</a>
+            {% else %}
+              <h4 style="font-size: 0.95rem; margin-bottom: 8px;">Electrical Systems Safety</h4>
+              <p style="font-size: 0.8rem; color: var(--medium-grey); margin-bottom: 12px;">Build on your inspector certification</p>
+              <a href="{{ section.settings.fallback_course_url | default: '/collections/courses' }}" class="aai-btn-continue" style="display: block; text-align: center;">Learn More</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Professional Dashboard Styles - Exact match to mockup */
+  .aai-dashboard {
+    padding: 60px 0;
+    background: var(--light-grey);
+    min-height: 600px;
+  }
+
+  .aai-dashboard-header {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .aai-dashboard-welcome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .aai-dashboard-welcome h2 {
+    font-size: 1.75rem;
+    color: var(--authority-navy);
+    margin-bottom: 5px;
+  }
+
+  .aai-dashboard-stats {
+    display: flex;
+    gap: 40px;
+  }
+
+  .aai-stat-item {
+    text-align: center;
+  }
+
+  .aai-stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--electric-blue);
+  }
+
+  .aai-stat-label {
+    font-size: 0.875rem;
+    color: var(--medium-grey);
+  }
+
+  .aai-dashboard-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 30px;
+  }
+
+  .aai-my-courses {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .aai-my-courses h3 {
+    font-size: 1.25rem;
+    color: var(--authority-navy);
+    margin-bottom: 25px;
+  }
+
+  .aai-enrolled-course {
+    border: 1px solid var(--light-grey);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+  }
+
+  .aai-enrolled-course:hover {
+    border-color: var(--electric-blue);
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.1);
+  }
+
+  .aai-enrolled-course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+  }
+
+  .aai-enrolled-course h4 {
+    font-size: 1.1rem;
+    color: var(--authority-navy);
+    margin-bottom: 5px;
+  }
+
+  .aai-completion-badge {
+    background: var(--success-green);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .aai-progress-bar {
+    background: var(--light-grey);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .aai-progress-fill {
+    background: var(--electric-blue);
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  .aai-course-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .aai-btn-continue {
+    background: var(--electric-blue);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .aai-btn-continue:hover {
+    background: #2980b9;
+    color: white;
+    text-decoration: none;
+  }
+
+  .aai-btn-certificate {
+    background: var(--success-green);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .aai-btn-certificate:hover {
+    background: #229954;
+    color: white;
+    text-decoration: none;
+  }
+
+  .aai-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .aai-achievements {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .aai-achievements h3 {
+    font-size: 1.1rem;
+    color: var(--authority-navy);
+    margin-bottom: 20px;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .aai-dashboard-welcome {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+    
+    .aai-dashboard-stats {
+      gap: 20px;
+    }
+    
+    .aai-dashboard-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .aai-enrolled-course-header {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .aai-course-actions {
+      flex-direction: column;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "User Dashboard",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_by_default",
+      "label": "Show by default",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "my_courses_title",
+      "label": "My Courses Title",
+      "default": "My Courses"
+    },
+    {
+      "type": "text",
+      "id": "achievements_title",
+      "label": "Achievements Title",
+      "default": "Recent Achievements"
+    },
+    {
+      "type": "text",
+      "id": "recommended_title",
+      "label": "Recommended Title",
+      "default": "Recommended Next"
+    },
+    {
+      "type": "collection",
+      "id": "recommended_collection",
+      "label": "Recommended Courses Collection"
+    },
+    {
+      "type": "url",
+      "id": "fallback_course_url",
+      "label": "Fallback Course URL",
+      "default": "/collections/courses"
+    }
+  ],
+  "presets": [
+    {
+      "name": "User Dashboard"
+    }
+  ]
+}
+{% endschema %}

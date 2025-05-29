@@ -1,0 +1,98 @@
+{% comment %}
+COPILOT CONTEXT:
+- Achievement badges component for dashboard sidebar matching aai-lms-mockup.html design
+- Shows recent achievements and certifications
+- Integrates with customer metafields or shows demo data
+- Professional development focus with industry authority aesthetic
+- Color scheme: Authority Navy (#1e3a5f), Safety Orange (#ff6b35), Electric Blue (#3498db)
+{% endcomment %}
+
+{% assign customer = customer %}
+{% assign achievements = customer.metafields.aai.achievements %}
+
+{% if achievements and achievements.size > 0 %}
+  {% for achievement in achievements limit: 3 %}
+    <div class="aai-achievement-item">
+      <div class="aai-achievement-icon">{{ achievement.icon | default: '🏆' }}</div>
+      <div class="aai-achievement-details">
+        <h4>{{ achievement.title }}</h4>
+        <p>{{ achievement.description }}</p>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <!-- Demo achievements matching mockup -->
+  <div class="aai-achievement-item">
+    <div class="aai-achievement-icon">🏆</div>
+    <div class="aai-achievement-details">
+      <h4>Safety Excellence</h4>
+      <p>Completed 10 courses</p>
+    </div>
+  </div>
+  <div class="aai-achievement-item">
+    <div class="aai-achievement-icon">🎓</div>
+    <div class="aai-achievement-details">
+      <h4>Certified Inspector</h4>
+      <p>Ride Inspection Level 2</p>
+    </div>
+  </div>
+  <div class="aai-achievement-item">
+    <div class="aai-achievement-icon">⭐</div>
+    <div class="aai-achievement-details">
+      <h4>Top Performer</h4>
+      <p>98% average score</p>
+    </div>
+  </div>
+{% endif %}
+
+<style>
+  /* Achievement Items - Exact match to mockup */
+  .aai-achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  .aai-achievement-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .aai-achievement-details h4 {
+    font-size: 0.9rem;
+    color: var(--charcoal-grey);
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+
+  .aai-achievement-details p {
+    font-size: 0.75rem;
+    color: var(--medium-grey);
+    margin: 0;
+  }
+
+  /* Different gradient styles for different achievement types */
+  .aai-achievement-item:nth-child(1) .aai-achievement-icon {
+    background: linear-gradient(135deg, var(--safety-orange) 0%, #e74c3c 100%);
+  }
+
+  .aai-achievement-item:nth-child(2) .aai-achievement-icon {
+    background: linear-gradient(135deg, var(--electric-blue) 0%, #2980b9 100%);
+  }
+
+  .aai-achievement-item:nth-child(3) .aai-achievement-icon {
+    background: linear-gradient(135deg, var(--success-green) 0%, #27ae60 100%);
+  }
+
+  .aai-achievement-item:nth-child(4) .aai-achievement-icon {
+    background: linear-gradient(135deg, var(--authority-navy) 0%, #34495e 100%);
+  }
+</style>

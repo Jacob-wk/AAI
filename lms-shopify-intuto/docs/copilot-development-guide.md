@@ -78,6 +78,13 @@ aai-lms-shopify/ (✅ Already Created)
 - Webhook-based token assignment
 - Customer account integration
 
+### Live Implementation Example
+**The Association Academy:** https://theassociation.academy/collections/acme-association-of-comedy-music-entertainment
+- Working Intuto + Shopify integration for professional associations
+- Professional course catalog UI/UX patterns
+- Industry-appropriate pricing and presentation
+- Association authority branding examples
+
 ## Code Style
 - Professional variable naming
 - Comprehensive error handling

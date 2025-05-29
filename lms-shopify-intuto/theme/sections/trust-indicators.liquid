@@ -1,0 +1,319 @@
+{% comment %}
+COPILOT CONTEXT:
+- Trust indicators section showing AAI credibility and industry authority
+- Statistics showcasing training success and industry partnerships
+- Professional aesthetic matching AAI brand standards
+- Color scheme: Authority Navy (#1e3a5f), Safety Orange (#ff6b35), Electric Blue (#3498db)
+{% endcomment %}
+
+<section class="aai-trust-indicators">
+  <div class="aai-container">
+    <div class="aai-trust-grid">
+      <div class="aai-trust-stat">
+        <div class="aai-stat-number">{{ section.settings.stat_1_number | default: '15,000+' }}</div>
+        <div class="aai-stat-label">{{ section.settings.stat_1_label | default: 'Industry Professionals Trained' }}</div>
+      </div>
+      
+      <div class="aai-trust-stat">
+        <div class="aai-stat-number">{{ section.settings.stat_2_number | default: '500+' }}</div>
+        <div class="aai-stat-label">{{ section.settings.stat_2_label | default: 'Partner Organizations' }}</div>
+      </div>
+      
+      <div class="aai-trust-stat">
+        <div class="aai-stat-number">{{ section.settings.stat_3_number | default: '98%' }}</div>
+        <div class="aai-stat-label">{{ section.settings.stat_3_label | default: 'Course Completion Rate' }}</div>
+      </div>
+      
+      <div class="aai-trust-stat">
+        <div class="aai-stat-number">{{ section.settings.stat_4_number | default: '25+' }}</div>
+        <div class="aai-stat-label">{{ section.settings.stat_4_label | default: 'Years of Excellence' }}</div>
+      </div>
+    </div>
+    
+    {% if section.settings.show_accreditations %}
+    <div class="aai-accreditations-bar">
+      <div class="aai-accreditation-logos">
+        {% if section.settings.accreditation_1_logo %}
+          <img src="{{ section.settings.accreditation_1_logo | img_url: 'medium' }}" alt="{{ section.settings.accreditation_1_name | default: 'IAAPA' }}" class="aai-accreditation-logo">
+        {% endif %}
+        {% if section.settings.accreditation_2_logo %}
+          <img src="{{ section.settings.accreditation_2_logo | img_url: 'medium' }}" alt="{{ section.settings.accreditation_2_name | default: 'ASTM F24' }}" class="aai-accreditation-logo">
+        {% endif %}
+        {% if section.settings.accreditation_3_logo %}
+          <img src="{{ section.settings.accreditation_3_logo | img_url: 'medium' }}" alt="{{ section.settings.accreditation_3_name | default: 'NAARSO' }}" class="aai-accreditation-logo">
+        {% endif %}
+        {% if section.settings.accreditation_4_logo %}
+          <img src="{{ section.settings.accreditation_4_logo | img_url: 'medium' }}" alt="{{ section.settings.accreditation_4_name | default: 'AIMS' }}" class="aai-accreditation-logo">
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  /* Trust Indicators - Professional Design */
+  .aai-trust-indicators {
+    background: linear-gradient(135deg, var(--authority-navy) 0%, #152a42 100%);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .aai-trust-indicators::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+  }
+
+  .aai-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .aai-trust-stat {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .aai-trust-stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--safety-orange), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .aai-trust-stat:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 107, 53, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .aai-trust-stat:hover::before {
+    left: 100%;
+  }
+
+  .aai-stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, white, var(--electric-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+
+  .aai-stat-label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .aai-accreditations-bar {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 2;
+  }
+
+  .aai-accreditation-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .aai-accreditation-logo {
+    height: 60px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+
+  .aai-accreditation-logo:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .aai-trust-indicators {
+      padding: 60px 0;
+    }
+    
+    .aai-trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    
+    .aai-trust-stat {
+      padding: 20px 15px;
+    }
+    
+    .aai-stat-number {
+      font-size: 2.5rem;
+    }
+    
+    .aai-stat-label {
+      font-size: 0.9rem;
+    }
+    
+    .aai-accreditation-logos {
+      gap: 20px;
+    }
+    
+    .aai-accreditation-logo {
+      height: 40px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .aai-trust-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Trust Indicators",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Statistics"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Statistic 1 Number",
+      "default": "15,000+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Statistic 1 Label",
+      "default": "Industry Professionals Trained"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Statistic 2 Number",
+      "default": "500+"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Statistic 2 Label",
+      "default": "Partner Organizations"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_number",
+      "label": "Statistic 3 Number",
+      "default": "98%"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Statistic 3 Label",
+      "default": "Course Completion Rate"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_number",
+      "label": "Statistic 4 Number",
+      "default": "25+"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_label",
+      "label": "Statistic 4 Label",
+      "default": "Years of Excellence"
+    },
+    {
+      "type": "header",
+      "content": "Accreditations"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_accreditations",
+      "label": "Show Accreditation Logos",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "accreditation_1_logo",
+      "label": "Accreditation 1 Logo"
+    },
+    {
+      "type": "text",
+      "id": "accreditation_1_name",
+      "label": "Accreditation 1 Name",
+      "default": "IAAPA"
+    },
+    {
+      "type": "image_picker",
+      "id": "accreditation_2_logo",
+      "label": "Accreditation 2 Logo"
+    },
+    {
+      "type": "text",
+      "id": "accreditation_2_name",
+      "label": "Accreditation 2 Name",
+      "default": "ASTM F24"
+    },
+    {
+      "type": "image_picker",
+      "id": "accreditation_3_logo",
+      "label": "Accreditation 3 Logo"
+    },
+    {
+      "type": "text",
+      "id": "accreditation_3_name",
+      "label": "Accreditation 3 Name",
+      "default": "NAARSO"
+    },
+    {
+      "type": "image_picker",
+      "id": "accreditation_4_logo",
+      "label": "Accreditation 4 Logo"
+    },
+    {
+      "type": "text",
+      "id": "accreditation_4_name",
+      "label": "Accreditation 4 Name",
+      "default": "AIMS"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Indicators"
+    }
+  ]
+}
+{% endschema %}

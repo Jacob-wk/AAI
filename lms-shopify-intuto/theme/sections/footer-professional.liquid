@@ -1,0 +1,437 @@
+{% comment %}
+COPILOT CONTEXT:
+- Professional footer exactly matching aai-lms-mockup.html design
+- AAI brand messaging with industry credibility and accreditations
+- Professional development focus with industry authority aesthetic
+- Color scheme: Authority Navy (#1e3a5f), Safety Orange (#ff6b35), Electric Blue (#3498db)
+- Configurable through section settings for Shopify admin
+{% endcomment %}
+
+<footer class="aai-footer">
+  <div class="aai-container">
+    <div class="aai-footer-content">
+      <div class="aai-footer-brand">
+        <h3>{{ section.settings.brand_title | default: 'AAI Institute' }}</h3>
+        <p>{{ section.settings.brand_description | default: 'Leading the industry in professional safety education since 2010. We\'re committed to keeping the amusement industry safe while respecting the joy it brings to millions.' }}</p>
+        <div class="aai-accreditations">
+          {% if section.settings.show_accreditations %}
+            <span class="aai-accreditation-badge">{{ section.settings.accreditation_1 | default: 'IAAPA Member' }}</span>
+            <span class="aai-accreditation-badge">{{ section.settings.accreditation_2 | default: 'ASTM F24' }}</span>
+            <span class="aai-accreditation-badge">{{ section.settings.accreditation_3 | default: 'NAARSO' }}</span>
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="aai-footer-section">
+        <h4>{{ section.settings.programs_title | default: 'Programs' }}</h4>
+        <ul>
+          {% for block in section.blocks %}
+            {% if block.type == 'programs_link' %}
+              <li><a href="{{ block.settings.url }}">{{ block.settings.text }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% unless section.blocks contains 'programs_link' %}
+            <li><a href="{{ section.settings.safety_cert_url | default: '/collections/safety-certifications' }}">Safety Certifications</a></li>
+            <li><a href="{{ section.settings.operations_url | default: '/collections/operations-training' }}">Operations Training</a></li>
+            <li><a href="{{ section.settings.compliance_url | default: '/collections/compliance-courses' }}">Compliance Courses</a></li>
+            <li><a href="{{ section.settings.custom_training_url | default: '/pages/custom-training' }}">Custom Training</a></li>
+          {% endunless %}
+        </ul>
+      </div>
+      
+      <div class="aai-footer-section">
+        <h4>{{ section.settings.resources_title | default: 'Resources' }}</h4>
+        <ul>
+          {% for block in section.blocks %}
+            {% if block.type == 'resources_link' %}
+              <li><a href="{{ block.settings.url }}">{{ block.settings.text }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% unless section.blocks contains 'resources_link' %}
+            <li><a href="{{ section.settings.standards_url | default: '/pages/industry-standards' }}">Industry Standards</a></li>
+            <li><a href="{{ section.settings.library_url | default: '/pages/safety-library' }}">Safety Library</a></li>
+            <li><a href="{{ section.settings.webinars_url | default: '/pages/webinars' }}">Webinars</a></li>
+            <li><a href="{{ section.settings.blog_url | default: '/blogs/news' }}">Blog</a></li>
+          {% endunless %}
+        </ul>
+      </div>
+      
+      <div class="aai-footer-section">
+        <h4>{{ section.settings.support_title | default: 'Support' }}</h4>
+        <ul>
+          {% for block in section.blocks %}
+            {% if block.type == 'support_link' %}
+              <li><a href="{{ block.settings.url }}">{{ block.settings.text }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% unless section.blocks contains 'support_link' %}
+            <li><a href="{{ section.settings.help_url | default: '/pages/help-center' }}">Help Center</a></li>
+            <li><a href="{{ section.settings.contact_url | default: '/pages/contact' }}">Contact Us</a></li>
+            <li><a href="{{ section.settings.corporate_url | default: '/pages/corporate-training' }}">Corporate Training</a></li>
+            <li><a href="{{ section.settings.partnerships_url | default: '/pages/partnerships' }}">Partnerships</a></li>
+          {% endunless %}
+        </ul>
+      </div>
+    </div>
+    
+    <div class="aai-footer-bottom">
+      <p>{{ section.settings.copyright_text | default: '&copy; 2025 AAI Amusement Adventure Institute. All rights reserved.' }} | 
+         <a href="{{ section.settings.privacy_url | default: '/policies/privacy-policy' }}">Privacy Policy</a> | 
+         <a href="{{ section.settings.terms_url | default: '/policies/terms-of-service' }}">Terms of Service</a></p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Professional Footer Styles - Exact match to mockup */
+  .aai-footer {
+    background: var(--authority-navy);
+    color: white;
+    padding: 60px 0 30px;
+    margin-top: 80px;
+  }
+
+  .aai-footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .aai-footer-brand h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: white;
+  }
+
+  .aai-footer-brand p {
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .aai-footer-section h4 {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 600;
+  }
+
+  .aai-footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .aai-footer-section ul li {
+    margin-bottom: 12px;
+  }
+
+  .aai-footer-section a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+  }
+
+  .aai-footer-section a:hover {
+    color: white;
+  }
+
+  .aai-footer-bottom {
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.875rem;
+  }
+
+  .aai-footer-bottom a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .aai-footer-bottom a:hover {
+    color: rgba(255,255,255,0.8);
+  }
+
+  .aai-accreditations {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .aai-accreditation-badge {
+    background: rgba(255,255,255,0.1);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    transition: background 0.3s ease;
+  }
+
+  .aai-accreditation-badge:hover {
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .aai-footer {
+      padding: 40px 0 20px;
+      margin-top: 60px;
+    }
+    
+    .aai-footer-content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      text-align: center;
+    }
+    
+    .aai-accreditations {
+      justify-content: center;
+    }
+    
+    .aai-footer-bottom {
+      padding-top: 20px;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .aai-footer-content {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    
+    .aai-footer-brand {
+      grid-column: 1 / -1;
+      text-align: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Professional Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_title",
+      "label": "Brand Title",
+      "default": "AAI Institute"
+    },
+    {
+      "type": "textarea",
+      "id": "brand_description",
+      "label": "Brand Description",
+      "default": "Leading the industry in professional safety education since 2010. We're committed to keeping the amusement industry safe while respecting the joy it brings to millions."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_accreditations",
+      "label": "Show Accreditations",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "accreditation_1",
+      "label": "Accreditation 1",
+      "default": "IAAPA Member"
+    },
+    {
+      "type": "text",
+      "id": "accreditation_2",
+      "label": "Accreditation 2",
+      "default": "ASTM F24"
+    },
+    {
+      "type": "text",
+      "id": "accreditation_3",
+      "label": "Accreditation 3",
+      "default": "NAARSO"
+    },
+    {
+      "type": "header",
+      "content": "Programs Section"
+    },
+    {
+      "type": "text",
+      "id": "programs_title",
+      "label": "Programs Title",
+      "default": "Programs"
+    },
+    {
+      "type": "url",
+      "id": "safety_cert_url",
+      "label": "Safety Certifications URL",
+      "default": "/collections/safety-certifications"
+    },
+    {
+      "type": "url",
+      "id": "operations_url",
+      "label": "Operations Training URL",
+      "default": "/collections/operations-training"
+    },
+    {
+      "type": "url",
+      "id": "compliance_url",
+      "label": "Compliance Courses URL",
+      "default": "/collections/compliance-courses"
+    },
+    {
+      "type": "url",
+      "id": "custom_training_url",
+      "label": "Custom Training URL",
+      "default": "/pages/custom-training"
+    },
+    {
+      "type": "header",
+      "content": "Resources Section"
+    },
+    {
+      "type": "text",
+      "id": "resources_title",
+      "label": "Resources Title",
+      "default": "Resources"
+    },
+    {
+      "type": "url",
+      "id": "standards_url",
+      "label": "Industry Standards URL",
+      "default": "/pages/industry-standards"
+    },
+    {
+      "type": "url",
+      "id": "library_url",
+      "label": "Safety Library URL",
+      "default": "/pages/safety-library"
+    },
+    {
+      "type": "url",
+      "id": "webinars_url",
+      "label": "Webinars URL",
+      "default": "/pages/webinars"
+    },
+    {
+      "type": "url",
+      "id": "blog_url",
+      "label": "Blog URL",
+      "default": "/blogs/news"
+    },
+    {
+      "type": "header",
+      "content": "Support Section"
+    },
+    {
+      "type": "text",
+      "id": "support_title",
+      "label": "Support Title",
+      "default": "Support"
+    },
+    {
+      "type": "url",
+      "id": "help_url",
+      "label": "Help Center URL",
+      "default": "/pages/help-center"
+    },
+    {
+      "type": "url",
+      "id": "contact_url",
+      "label": "Contact URL",
+      "default": "/pages/contact"
+    },
+    {
+      "type": "url",
+      "id": "corporate_url",
+      "label": "Corporate Training URL",
+      "default": "/pages/corporate-training"
+    },
+    {
+      "type": "url",
+      "id": "partnerships_url",
+      "label": "Partnerships URL",
+      "default": "/pages/partnerships"
+    },
+    {
+      "type": "header",
+      "content": "Footer Bottom"
+    },
+    {
+      "type": "html",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "&copy; 2025 AAI Amusement Adventure Institute. All rights reserved."
+    },
+    {
+      "type": "url",
+      "id": "privacy_url",
+      "label": "Privacy Policy URL",
+      "default": "/policies/privacy-policy"
+    },
+    {
+      "type": "url",
+      "id": "terms_url",
+      "label": "Terms of Service URL",
+      "default": "/policies/terms-of-service"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "programs_link",
+      "name": "Programs Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    },
+    {
+      "type": "resources_link",
+      "name": "Resources Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    },
+    {
+      "type": "support_link",
+      "name": "Support Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Professional Footer"
+    }
+  ]
+}
+{% endschema %}

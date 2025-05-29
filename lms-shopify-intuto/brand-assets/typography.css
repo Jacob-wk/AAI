@@ -1,0 +1,111 @@
+/* AAI Typography - Professional authority styling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --font-primary: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --font-size-base: 1rem;
+    --line-height-base: 1.6;
+    
+    /* Typography scale */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+    
+    /* Font weights */
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--charcoal-grey);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-semibold);
+    line-height: 1.2;
+    color: var(--authority-navy);
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: var(--text-4xl); font-weight: var(--font-bold); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+
+/* Professional text styles */
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: var(--font-bold);
+    line-height: 1.2;
+    color: white;
+}
+
+.hero-subtitle {
+    font-size: var(--text-xl);
+    color: rgba(255,255,255,0.9);
+    font-weight: var(--font-normal);
+}
+
+.section-title {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-semibold);
+    color: var(--authority-navy);
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: var(--text-lg);
+    color: var(--medium-grey);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Professional credential text */
+.credential-text {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Course content typography */
+.course-title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    color: var(--authority-navy);
+}
+
+.course-meta {
+    font-size: var(--text-sm);
+    color: var(--medium-grey);
+}
+
+.price-text {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--authority-navy);
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: var(--text-2xl);
+    }
+}

@@ -1,0 +1,788 @@
+{% comment %}
+COPILOT CONTEXT:
+- Professional course access page for enrolled AAI students
+- Dashboard for accessing purchased courses via FetchApp delivery
+- Progress tracking and certificate management
+- Professional development record keeping
+- Color scheme: Authority Navy (#1e3a5f), Safety Orange (#ff6b35), Electric Blue (#3498db)
+- Integration with FetchApp automated delivery system
+{% endcomment %}
+
+<div class="aai-course-access">
+  <section class="aai-access-header">
+    <div class="aai-container">
+      <div class="aai-header-content">
+        <h1>Your Professional Development Dashboard</h1>
+        <p>Access your AAI safety education courses and track your professional development progress.</p>
+      </div>
+      <div class="aai-student-info">
+        <div class="aai-student-welcome">
+          <span class="aai-welcome-text">Welcome back, {{ customer.first_name }}!</span>
+          <span class="aai-student-id">Student ID: AAI-{{ customer.id }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aai-course-dashboard">
+    <div class="aai-container">
+      <div class="aai-dashboard-grid">
+        <div class="aai-main-content">
+          <!-- Course Access Instructions -->
+          <div class="aai-access-instructions">
+            <h2>How to Access Your Courses</h2>
+            <div class="aai-instruction-steps">
+              <div class="aai-step">
+                <div class="aai-step-number">1</div>
+                <div class="aai-step-content">
+                  <h3>Check Your Email</h3>
+                  <p>Course access links are delivered automatically via FetchApp after purchase. Check your email for delivery notifications.</p>
+                </div>
+              </div>
+              <div class="aai-step">
+                <div class="aai-step-number">2</div>
+                <div class="aai-step-content">
+                  <h3>Click Course Link</h3>
+                  <p>Each course includes a unique Intuto access token that provides secure, single-use entry to your training materials.</p>
+                </div>
+              </div>
+              <div class="aai-step">
+                <div class="aai-step-number">3</div>
+                <div class="aai-step-content">
+                  <h3>Complete & Earn Certificate</h3>
+                  <p>Progress through your course modules and earn your professional safety education certificate upon completion.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enrolled Courses Section -->
+          <div class="aai-enrolled-courses">
+            <h2>Your Enrolled Courses</h2>
+            
+            <!-- Check for enrolled courses in customer metafields -->
+            {% assign has_courses = false %}
+            {% for metafield in customer.metafields.aai %}
+              {% if metafield.key contains 'course_completion_' or metafield.key contains 'intuto_token_' %}
+                {% assign has_courses = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+
+            {% if has_courses %}
+              <div class="aai-course-grid" id="aai-enrolled-courses">
+                <!-- Enrolled courses will be dynamically populated by JavaScript -->
+                {% for metafield in customer.metafields.aai %}
+                  {% if metafield.key contains 'course_completion_' %}
+                    {% assign course_data = metafield.value | parse_json %}
+                    <div class="aai-course-item completed">
+                      <div class="aai-course-header">
+                        <h3>{{ course_data.course_title }}</h3>
+                        <span class="aai-course-status completed">Completed</span>
+                      </div>
+                      <div class="aai-course-details">
+                        <div class="aai-completion-info">
+                          <strong>Completed:</strong> {{ course_data.completion_date | date: "%B %d, %Y" }}
+                        </div>
+                        {% if course_data.score %}
+                          <div class="aai-score-info">
+                            <strong>Score:</strong> {{ course_data.score }}%
+                          </div>
+                        {% endif %}
+                        {% if course_data.certificate_eligible %}
+                          <div class="aai-certificate-info">
+                            <strong>Certificate:</strong> Available for download
+                          </div>
+                        {% endif %}
+                      </div>
+                      <div class="aai-course-actions">
+                        {% if course_data.certificate_eligible %}
+                          <button class="aai-btn aai-btn-primary aai-download-cert" data-course="{{ course_data.course_title }}">
+                            Download Certificate
+                          </button>
+                        {% endif %}
+                        <button class="aai-btn aai-btn-secondary aai-review-course">
+                          Review Course
+                        </button>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% else %}
+              <div class="aai-no-courses">
+                <div class="aai-no-courses-icon">
+                  <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                  </svg>
+                </div>
+                <h3>No Courses Enrolled Yet</h3>
+                <p>Start your professional development journey with our industry-leading safety education courses.</p>
+                <a href="/collections/all" class="aai-btn aai-btn-primary">Browse Courses</a>
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Recent Orders -->
+          <div class="aai-recent-orders">
+            <h2>Recent Course Orders</h2>
+            <div class="aai-orders-list">
+              {% for order in customer.orders limit: 5 %}
+                {% assign has_course_items = false %}
+                {% for line_item in order.line_items %}
+                  {% if line_item.product.product_type == 'Course' %}
+                    {% assign has_course_items = true %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+                
+                {% if has_course_items %}
+                  <div class="aai-order-item">
+                    <div class="aai-order-header">
+                      <h4>Order #{{ order.order_number }}</h4>
+                      <span class="aai-order-date">{{ order.created_at | date: "%B %d, %Y" }}</span>
+                    </div>
+                    <div class="aai-order-courses">
+                      {% for line_item in order.line_items %}
+                        {% if line_item.product.product_type == 'Course' %}
+                          <div class="aai-order-course">
+                            <span class="aai-course-name">{{ line_item.title }}</span>
+                            <span class="aai-course-price">${{ line_item.price }}</span>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    <div class="aai-order-status">
+                      <span class="aai-status-badge {{ order.fulfillment_status | default: 'pending' }}">
+                        {% if order.fulfillment_status == 'fulfilled' %}
+                          Courses Delivered
+                        {% else %}
+                          Processing Delivery
+                        {% endif %}
+                      </span>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="aai-dashboard-sidebar">
+          <!-- Progress Summary -->
+          <div class="aai-progress-summary">
+            <h3>Your Progress</h3>
+            <div class="aai-progress-stats">
+              <div class="aai-stat">
+                <span class="aai-stat-number" id="aai-completed-count">0</span>
+                <span class="aai-stat-label">Courses Completed</span>
+              </div>
+              <div class="aai-stat">
+                <span class="aai-stat-number" id="aai-certificate-count">0</span>
+                <span class="aai-stat-label">Certificates Earned</span>
+              </div>
+              <div class="aai-stat">
+                <span class="aai-stat-number" id="aai-hours-count">0</span>
+                <span class="aai-stat-label">CEU Hours</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Help & Support -->
+          <div class="aai-support-card">
+            <h3>Need Help?</h3>
+            <p>Our professional development support team is here to assist with your training experience.</p>
+            <div class="aai-support-options">
+              <a href="mailto:support@aaiinstitute.com" class="aai-support-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                Email Support
+              </a>
+              <a href="/pages/help" class="aai-support-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+                Help Center
+              </a>
+            </div>
+          </div>
+
+          <!-- Course Recommendations -->
+          <div class="aai-recommendations">
+            <h3>Recommended Courses</h3>
+            <div class="aai-recommendation-list">
+              <a href="/products/advanced-safety-management" class="aai-recommendation-item">
+                <h4>Advanced Safety Management</h4>
+                <p>Leadership-level safety protocols</p>
+                <span class="aai-rec-price">$399</span>
+              </a>
+              <a href="/products/emergency-response-procedures" class="aai-recommendation-item">
+                <h4>Emergency Response Procedures</h4>
+                <p>Critical incident management</p>
+                <span class="aai-rec-price">$199</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+// Course Access Dashboard JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize dashboard functionality
+  updateProgressStats();
+  initializeCourseActions();
+  checkForNewCourseDeliveries();
+  
+  // Update progress statistics
+  function updateProgressStats() {
+    const completedCourses = document.querySelectorAll('.aai-course-item.completed').length;
+    const certificates = document.querySelectorAll('.aai-certificate-info').length;
+    
+    document.getElementById('aai-completed-count').textContent = completedCourses;
+    document.getElementById('aai-certificate-count').textContent = certificates;
+    document.getElementById('aai-hours-count').textContent = (completedCourses * 8).toString(); // Estimate 8 hours per course
+  }
+  
+  // Initialize course action buttons
+  function initializeCourseActions() {
+    // Certificate download buttons
+    document.querySelectorAll('.aai-download-cert').forEach(button => {
+      button.addEventListener('click', function() {
+        const courseTitle = this.dataset.course;
+        downloadCertificate(courseTitle);
+      });
+    });
+    
+    // Review course buttons
+    document.querySelectorAll('.aai-review-course').forEach(button => {
+      button.addEventListener('click', function() {
+        // Implementation would depend on Intuto API for course review access
+        showMessage('Course review access coming soon!', 'info');
+      });
+    });
+  }
+  
+  // Check for new course deliveries from FetchApp
+  function checkForNewCourseDeliveries() {
+    // Listen for FetchApp delivery notifications
+    window.addEventListener('fetchapp_delivery_complete', function(event) {
+      const deliveryData = event.detail;
+      updateDashboardWithNewCourse(deliveryData);
+    });
+  }
+  
+  // Update dashboard when new course is delivered
+  function updateDashboardWithNewCourse(deliveryData) {
+    const courseGrid = document.getElementById('aai-enrolled-courses');
+    const newCourseHtml = createCourseItemHtml(deliveryData);
+    courseGrid.insertAdjacentHTML('afterbegin', newCourseHtml);
+    
+    showMessage('New course access delivered! Check your email for the access link.', 'success');
+    updateProgressStats();
+  }
+  
+  // Create HTML for new course item
+  function createCourseItemHtml(courseData) {
+    return `
+      <div class="aai-course-item active">
+        <div class="aai-course-header">
+          <h3>${courseData.course_title}</h3>
+          <span class="aai-course-status active">Active</span>
+        </div>
+        <div class="aai-course-details">
+          <div class="aai-delivery-info">
+            <strong>Delivered:</strong> ${new Date().toLocaleDateString()}
+          </div>
+          <div class="aai-access-info">
+            <strong>Access:</strong> Check email for course link
+          </div>
+        </div>
+        <div class="aai-course-actions">
+          <button class="aai-btn aai-btn-primary" onclick="window.open('${courseData.access_url}', '_blank')">
+            Access Course
+          </button>
+        </div>
+      </div>
+    `;
+  }
+  
+  // Download certificate function
+  function downloadCertificate(courseTitle) {
+    // Implementation would generate/download certificate
+    showMessage(`Certificate for "${courseTitle}" is being prepared for download.`, 'info');
+  }
+  
+  // Show user messages
+  function showMessage(message, type = 'info') {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `aai-message aai-message-${type}`;
+    messageDiv.textContent = message;
+    
+    document.body.appendChild(messageDiv);
+    
+    setTimeout(() => {
+      messageDiv.remove();
+    }, 5000);
+  }
+});
+</script>
+
+<style>
+  /* Professional Course Access Dashboard Styles */
+  .aai-course-access {
+    background: #f8f9fa;
+    min-height: 100vh;
+  }
+
+  .aai-access-header {
+    background: var(--authority-navy);
+    color: white;
+    padding: 60px 0 40px;
+  }
+
+  .aai-header-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+
+  .aai-header-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+  }
+
+  .aai-student-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .aai-student-welcome {
+    text-align: right;
+  }
+
+  .aai-welcome-text {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .aai-student-id {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .aai-course-dashboard {
+    padding: 60px 0;
+  }
+
+  .aai-dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 60px;
+  }
+
+  .aai-access-instructions {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .aai-access-instructions h2 {
+    color: var(--authority-navy);
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+  }
+
+  .aai-instruction-steps {
+    display: grid;
+    gap: 30px;
+  }
+
+  .aai-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .aai-step-number {
+    background: var(--safety-orange);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .aai-step-content h3 {
+    color: var(--authority-navy);
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+  }
+
+  .aai-step-content p {
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .aai-enrolled-courses {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .aai-enrolled-courses h2 {
+    color: var(--authority-navy);
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+  }
+
+  .aai-course-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .aai-course-item {
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+  }
+
+  .aai-course-item.completed {
+    border-color: #28a745;
+    background: #f8fff9;
+  }
+
+  .aai-course-item.active {
+    border-color: var(--electric-blue);
+    background: #f0f8ff;
+  }
+
+  .aai-course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .aai-course-header h3 {
+    color: var(--authority-navy);
+    font-size: 1.3rem;
+    margin: 0;
+  }
+
+  .aai-course-status {
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .aai-course-status.completed {
+    background: #28a745;
+    color: white;
+  }
+
+  .aai-course-status.active {
+    background: var(--electric-blue);
+    color: white;
+  }
+
+  .aai-course-details {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 0.95rem;
+  }
+
+  .aai-course-details > div {
+    margin-bottom: 8px;
+  }
+
+  .aai-course-actions {
+    display: flex;
+    gap: 15px;
+  }
+
+  .aai-no-courses {
+    text-align: center;
+    padding: 60px 40px;
+    color: #666;
+  }
+
+  .aai-no-courses-icon {
+    color: #ccc;
+    margin-bottom: 20px;
+  }
+
+  .aai-no-courses h3 {
+    color: var(--authority-navy);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+  }
+
+  .aai-no-courses p {
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  .aai-recent-orders {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .aai-recent-orders h2 {
+    color: var(--authority-navy);
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+  }
+
+  .aai-order-item {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+
+  .aai-order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .aai-order-header h4 {
+    color: var(--authority-navy);
+    margin: 0;
+  }
+
+  .aai-order-date {
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .aai-order-course {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f3f4;
+  }
+
+  .aai-order-course:last-child {
+    border-bottom: none;
+  }
+
+  .aai-course-price {
+    font-weight: 600;
+    color: var(--safety-orange);
+  }
+
+  .aai-status-badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .aai-status-badge.fulfilled {
+    background: #28a745;
+    color: white;
+  }
+
+  .aai-status-badge.pending {
+    background: #ffc107;
+    color: #000;
+  }
+
+  .aai-dashboard-sidebar > div {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .aai-progress-summary h3 {
+    color: var(--authority-navy);
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+  }
+
+  .aai-progress-stats {
+    display: grid;
+    gap: 20px;
+  }
+
+  .aai-stat {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .aai-stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--safety-orange);
+    margin-bottom: 5px;
+  }
+
+  .aai-stat-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .aai-support-card h3 {
+    color: var(--authority-navy);
+    margin-bottom: 15px;
+  }
+
+  .aai-support-card p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .aai-support-options {
+    display: grid;
+    gap: 10px;
+  }
+
+  .aai-support-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--authority-navy);
+    transition: background 0.3s ease;
+  }
+
+  .aai-support-link:hover {
+    background: #e9ecef;
+  }
+
+  .aai-recommendations h3 {
+    color: var(--authority-navy);
+    margin-bottom: 20px;
+  }
+
+  .aai-recommendation-item {
+    display: block;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.3s ease;
+  }
+
+  .aai-recommendation-item:hover {
+    border-color: var(--electric-blue);
+  }
+
+  .aai-recommendation-item h4 {
+    color: var(--authority-navy);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+  }
+
+  .aai-recommendation-item p {
+    color: #666;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+  }
+
+  .aai-rec-price {
+    color: var(--safety-orange);
+    font-weight: 600;
+  }
+
+  /* Message styles */
+  .aai-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+  }
+
+  .aai-message-success {
+    background: #28a745;
+  }
+
+  .aai-message-info {
+    background: var(--electric-blue);
+  }
+
+  .aai-message-warning {
+    background: #ffc107;
+    color: #000;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .aai-dashboard-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .aai-access-header {
+      padding: 40px 0 30px;
+    }
+    
+    .aai-header-content h1 {
+      font-size: 2rem;
+    }
+    
+    .aai-student-info {
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .aai-student-welcome {
+      text-align: center;
+    }
+  }
+</style>
