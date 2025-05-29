@@ -1,0 +1,250 @@
+/*
+ * AAI LMS Theme - Application CSS
+ * Main application styles for the AAI professional safety education platform
+ */
+
+/* Base theme styles - this file is loaded after base.css */
+
+/* Global theme variables */
+:root {
+  /* AAI Brand Colors */
+  --color-authority-navy: #1B365D;
+  --color-safety-orange: #FF6B35;
+  --color-electric-blue: #4A90E2;
+  --color-success-green: #27ae60;
+  --color-clean-white: #ffffff;
+  --color-light-grey: #ecf0f1;
+  --color-medium-grey: #95a5a6;
+  --color-dark-grey: #34495e;
+  --color-charcoal-grey: #2c3e50;
+  
+  /* Typography */
+  --font-family-primary: 'Inter', sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 4rem;
+  
+  /* Border radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Theme-specific overrides and enhancements */
+
+/* Professional button styles */
+.btn-primary {
+  background-color: var(--color-safety-orange);
+  border-color: var(--color-safety-orange);
+  color: var(--color-clean-white);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-md);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #e55529;
+  border-color: #e55529;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: var(--color-electric-blue);
+  border-color: var(--color-electric-blue);
+  color: var(--color-clean-white);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-md);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--color-authority-navy);
+  color: var(--color-authority-navy);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-md);
+}
+
+/* Professional card styles */
+.card {
+  background: var(--color-clean-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border: 1px solid #e0e6ed;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Navigation enhancements */
+.main-nav {
+  background-color: var(--color-authority-navy);
+  box-shadow: var(--shadow-md);
+}
+
+.main-nav a {
+  color: var(--color-clean-white);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: var(--color-safety-orange);
+}
+
+/* Footer styling */
+.main-footer {
+  background-color: var(--color-charcoal-grey);
+  color: var(--color-light-grey);
+}
+
+/* Professional spacing */
+.section-padding {
+  padding: var(--spacing-xl) 0;
+}
+
+.container-professional {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Responsive design enhancements */
+@media (max-width: 768px) {
+  :root {
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 2.5rem;
+  }
+  
+  .container-professional {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .section-padding {
+    padding: var(--spacing-lg) 0;
+  }
+}
+
+/* Loading states and animations */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Professional focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--color-electric-blue);
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-to-content-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-authority-navy);
+  color: var(--color-clean-white);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: var(--border-radius-sm);
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-to-content-link:focus {
+  top: 6px;
+}
+
+/* Professional typography enhancements */
+.text-authority {
+  color: var(--color-authority-navy);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-accent {
+  color: var(--color-safety-orange);
+}
+
+.text-professional {
+  line-height: 1.6;
+  color: var(--color-dark-grey);
+}
+
+/* Course-specific styles */
+.course-card {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.course-progress {
+  background-color: var(--color-light-grey);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.course-progress-bar {
+  background-color: var(--color-success-green);
+  height: 8px;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* Professional badge styles */
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+  font-size: 0.75em;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: var(--border-radius-sm);
+}
+
+.badge-primary {
+  background-color: var(--color-safety-orange);
+  color: var(--color-clean-white);
+}
+
+.badge-secondary {
+  background-color: var(--color-electric-blue);
+  color: var(--color-clean-white);
+}
+
+.badge-success {
+  background-color: var(--color-success-green);
+  color: var(--color-clean-white);
+}
