@@ -1,4 +1,4 @@
-import { clamp, preventDefault, isMobileBreakpoint } from './utilities.js';
+import { clamp, preventDefault, isMobileBreakpoint } from './utilities.js.js';
 
 const MIN_ZOOM = 1;
 const MAX_ZOOM = 5;

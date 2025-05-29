@@ -1,6 +1,6 @@
-import { Component } from '@theme/component';
-import { debounce, onDocumentReady } from '@theme/utilities';
-import { MegaMenuHoverEvent } from '@theme/events';
+import { Component } from './component.js';
+import { debounce, onDocumentReady } from './utilities.js';
+import { MegaMenuHoverEvent } from './events.js';
 
 const ACTIVATE_DELAY = 250;
 const DEACTIVATE_DELAY = 350;

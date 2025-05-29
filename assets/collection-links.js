@@ -1,8 +1,8 @@
-import { Component } from '@theme/component';
-import { closest, clamp, center, getVisibleElements } from '@theme/utilities';
-import { SlideshowSelectEvent } from '@theme/events';
-import { Scroller } from '@theme/scrolling';
-import { cycleFocus } from '@theme/focus';
+import { Component } from './component.js';
+import { closest, clamp, center, getVisibleElements } from './utilities.js';
+import { SlideshowSelectEvent } from './events.js';
+import { Scroller } from './scrolling.js';
+import { cycleFocus } from './focus.js';
 
 /**
  * Collection links component

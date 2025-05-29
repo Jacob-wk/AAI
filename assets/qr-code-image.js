@@ -1,4 +1,4 @@
-import { QRCode } from '@theme/qr-code-generator';
+import { QRCode } from './qr-code-generator.js';
 /**
  * A custom element that displays a QR code image.
  *

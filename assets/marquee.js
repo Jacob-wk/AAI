@@ -1,5 +1,5 @@
-import { Component } from '@theme/component';
-import { debounce } from '@theme/utilities';
+import { Component } from './component.js';
+import { debounce } from './utilities.js';
 
 const ANIMATION_OPTIONS = {
   duration: 500,

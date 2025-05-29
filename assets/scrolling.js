@@ -1,4 +1,4 @@
-import { debounce, throttle, prefersReducedMotion } from '@theme/utilities';
+import { debounce, throttle, prefersReducedMotion } from './utilities.js';
 
 /**
  * Timeout duration (in milliseconds) after which scroll is considered to have ended.

@@ -1,4 +1,4 @@
-import { onAnimationEnd } from '@theme/utilities';
+import { onAnimationEnd } from './utilities.js';
 
 // Create a new custom element for product links with images for transitions to PDP
 class ProductCardLink extends HTMLElement {

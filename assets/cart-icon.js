@@ -1,6 +1,6 @@
-import { Component } from '@theme/component';
-import { onAnimationEnd } from '@theme/utilities';
-import { ThemeEvents, CartUpdateEvent } from '@theme/events';
+import { Component } from './component.js';
+import { onAnimationEnd } from './utilities.js';
+import { ThemeEvents, CartUpdateEvent } from './events.js';
 
 /**
  * A custom element that displays a cart icon.

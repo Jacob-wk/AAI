@@ -1,10 +1,10 @@
-import { Component } from '@theme/component';
-import { debounce, onAnimationEnd, prefersReducedMotion } from '@theme/utilities';
-import { sectionRenderer } from '@theme/section-renderer';
-import { morph } from '@theme/morph';
-import { ThemeEvents } from '@theme/events';
-import { RecentlyViewed } from '@theme/recently-viewed-products';
-import { DialogCloseEvent, DialogComponent } from '@theme/dialog';
+import { Component } from './component.js';
+import { debounce, onAnimationEnd, prefersReducedMotion } from './utilities.js';
+import { sectionRenderer } from './section-renderer.js';
+import { morph } from './morph.js';
+import { ThemeEvents } from './events.js';
+import { RecentlyViewed } from './recently-viewed-products.js';
+import { DialogCloseEvent, DialogComponent } from './dialog.js';
 
 /**
  * A custom element that allows the user to search for resources available on the store.

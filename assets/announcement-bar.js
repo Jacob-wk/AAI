@@ -1,4 +1,4 @@
-import { Component } from '@theme/component';
+import { Component } from './component.js';
 
 /**
  * Announcement banner custom element that allows fading between content.

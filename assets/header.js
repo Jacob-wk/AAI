@@ -1,5 +1,5 @@
-import { Component } from '@theme/component';
-import { onDocumentReady, changeMetaThemeColor } from '@theme/utilities';
+import { Component } from './component.js';
+import { onDocumentReady, changeMetaThemeColor } from './utilities.js';
 
 /**
  * @typedef {Object} HeaderComponentRefs

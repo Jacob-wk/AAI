@@ -1,7 +1,7 @@
-import { sectionRenderer } from '@theme/section-renderer';
-import { Component } from '@theme/component';
-import { FilterUpdateEvent, ThemeEvents } from '@theme/events';
-import { debounce, formatMoney, startViewTransition } from '@theme/utilities';
+import { sectionRenderer } from './section-renderer.js';
+import { Component } from './component.js';
+import { FilterUpdateEvent, ThemeEvents } from './events.js';
+import { debounce, formatMoney, startViewTransition } from './utilities.js';
 
 /**
  * Search query parameter.

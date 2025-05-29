@@ -1,5 +1,5 @@
-import { Component } from '@theme/component';
-import { QuantitySelectorUpdateEvent } from '@theme/events';
+import { Component } from './component.js';
+import { QuantitySelectorUpdateEvent } from './events.js';
 
 /**
  * A custom element that allows the user to select a quantity.

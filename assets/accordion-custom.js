@@ -1,4 +1,4 @@
-import { mediaQueryLarge, isMobileBreakpoint } from '@theme/utilities';
+import { mediaQueryLarge, isMobileBreakpoint } from './utilities.js';
 
 // Accordion
 class AccordionCustom extends HTMLElement {

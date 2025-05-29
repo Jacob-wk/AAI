@@ -1,5 +1,5 @@
-import { morph } from '@theme/morph';
-import { startViewTransition } from '@theme/utilities';
+import { morph } from './morph.js';
+import { startViewTransition } from './utilities.js';
 
 /**
  * A class to re-render sections using the Section Rendering API

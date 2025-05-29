@@ -1,6 +1,6 @@
-import { Component } from '@theme/component';
-import { morph } from '@theme/morph';
-import { ThemeEvents, VariantUpdateEvent } from '@theme/events';
+import { Component } from './component.js';
+import { morph } from './morph.js';
+import { ThemeEvents, VariantUpdateEvent } from './events.js';
 
 class LocalPickup extends Component {
   /** @type {AbortController | undefined} */

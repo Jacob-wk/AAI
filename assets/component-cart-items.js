@@ -1,14 +1,14 @@
-import { Component } from '@theme/component';
-import { fetchConfig, debounce, onAnimationEnd, prefersReducedMotion, resetShimmer } from '@theme/utilities';
-import { morphSection, sectionRenderer } from '@theme/section-renderer';
+import { Component } from './component.js';
+import { fetchConfig, debounce, onAnimationEnd, prefersReducedMotion, resetShimmer } from './utilities.js';
+import { morphSection, sectionRenderer } from './section-renderer.js';
 import {
   ThemeEvents,
   CartUpdateEvent,
   QuantitySelectorUpdateEvent,
   CartAddEvent,
   DiscountUpdateEvent,
-} from '@theme/events';
-import { cartPerformance } from '@theme/performance';
+} from './events.js';
+import { cartPerformance } from './performance.js';
 
 /** @typedef {import('./utilities').TextComponent} TextComponent */
 

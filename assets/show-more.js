@@ -1,5 +1,5 @@
-import { Component } from '@theme/component';
-import { isMobileBreakpoint } from '@theme/utilities';
+import { Component } from './component.js';
+import { isMobileBreakpoint } from './utilities.js';
 
 /**
  * @typedef {Object} ShowMoreRefs

@@ -1,8 +1,8 @@
-import { morph } from '@theme/morph';
-import { Component } from '@theme/component';
-import { CartUpdateEvent, ThemeEvents } from '@theme/events';
-import { DialogComponent, DialogCloseEvent } from '@theme/dialog';
-import { mediaQueryLarge, isMobileBreakpoint } from '@theme/utilities';
+import { morph } from './morph.js';
+import { Component } from './component.js';
+import { CartUpdateEvent, ThemeEvents } from './events.js';
+import { DialogComponent, DialogCloseEvent } from './dialog.js';
+import { mediaQueryLarge, isMobileBreakpoint } from './utilities.js';
 
 export class QuickAddComponent extends Component {
   /** @type {AbortController | null} */

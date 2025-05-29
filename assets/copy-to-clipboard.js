@@ -1,4 +1,4 @@
-import { Component } from '@theme/component';
+import { Component } from './component.js';
 
 /**
  * Handles copying text to clipboard, from an event like a click.

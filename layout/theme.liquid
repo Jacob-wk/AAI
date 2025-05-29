@@ -41,14 +41,11 @@ COPILOT CONTEXT:
 
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
     
-    <!-- AAI Brand Assets -->
-    {{ 'brand-colors.css' | asset_url | stylesheet_tag }}
-    {{ 'brand-typography.css' | asset_url | stylesheet_tag }}
-    {{ 'brand-components.css' | asset_url | stylesheet_tag }}
+    <!-- AAI Application Styles -->
+    {{ 'application.css' | asset_url | stylesheet_tag }}
     
-    <!-- AAI Core Functionality -->
-    {{ 'aai-core.css' | asset_url | stylesheet_tag }}
-    {{ 'aai-core.js' | asset_url | script_tag }}
+    <!-- AAI Application Scripts -->
+    {{ 'application.js' | asset_url | script_tag }}
     
     {{ content_for_header }}
 

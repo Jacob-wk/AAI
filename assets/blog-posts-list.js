@@ -1,4 +1,4 @@
-import PaginatedList from '@theme/paginated-list';
+import PaginatedList from './paginated-list.js.js';
 
 /**
  * A custom element that renders a paginated blog posts list

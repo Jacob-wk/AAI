@@ -1,5 +1,5 @@
-import { Component } from '@theme/component';
-import { isClickedOutside, normalizeString, onAnimationEnd } from '@theme/utilities';
+import { Component } from './component.js';
+import { isClickedOutside, normalizeString, onAnimationEnd } from './utilities.js';
 
 /**
  * A custom element that displays a localization form.

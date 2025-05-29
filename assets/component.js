@@ -1,4 +1,4 @@
-import { requestIdleCallback } from '@theme/utilities';
+import { requestIdleCallback } from './utilities.js.js';
 
 /**
  * @typedef {Record<string, Element | Element[] | undefined>} Refs
