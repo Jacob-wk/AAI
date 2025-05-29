@@ -38,7 +38,8 @@ class AAITheme {
     if (skipLink) {
       skipLink.addEventListener('click', (e) => {
         e.preventDefault();
-        const target = document.querySelector(skipLink.getAttribute('href'));
+        const href = skipLink.getAttribute('href');
+        const target = /** @type {HTMLElement|null} */ (href ? document.querySelector(href) : null);
         if (target) {
           target.focus();
           target.scrollIntoView();
@@ -54,9 +55,14 @@ class AAITheme {
   }
 
   // Utility function for debouncing
+  /**
+   * @param {Function} func
+   * @param {number} wait
+   */
   debounce(func, wait) {
+    /** @type {number|undefined} */
     let timeout;
-    return function executedFunction(...args) {
+    return function executedFunction(/** @type {...any} */ ...args) {
       const later = () => {
         clearTimeout(timeout);
         func(...args);
@@ -69,7 +75,7 @@ class AAITheme {
 
 // Initialize theme on load
 if (typeof window !== 'undefined') {
-  window.AAITheme = new AAITheme();
+  /** @type {any} */ (window).AAITheme = new AAITheme();
 }
 
 // Export for module systems

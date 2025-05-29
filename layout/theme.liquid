@@ -39,14 +39,6 @@ COPILOT CONTEXT:
 
     {% render 'meta-tags' %}
 
-    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-    
-    <!-- AAI Application Styles -->
-    {{ 'application.css' | asset_url | stylesheet_tag }}
-    
-    <!-- AAI Application Scripts -->
-    {{ 'application.js' | asset_url | script_tag }}
-    
     {{ content_for_header }}
 
     {%- liquid
@@ -106,6 +98,7 @@ COPILOT CONTEXT:
     {%- endunless -%}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'application.css' | asset_url | stylesheet_tag }}
 
     {%- if settings.predictive_search_enabled -%}
       <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -172,7 +165,10 @@ COPILOT CONTEXT:
     </script>
 
     {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'predictive-search.js' | asset_url }}" type="module" defer="defer"></script>
     {%- endif -%}
+
+    <script src="{{ 'global.js' | asset_url }}" type="module" defer="defer"></script>
+    <script src="{{ 'application.js' | asset_url }}" type="module" defer="defer"></script>
   </body>
 </html>

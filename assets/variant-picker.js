@@ -5,7 +5,7 @@ import { morph } from './morph.js';
 /**
  * A custom element that manages a variant picker.
  *
- * @template {import('@theme/component').Refs} [Refs = {}]
+ * @template {import('./component').Refs} [Refs = {}]
  *
  * @extends Component<Refs>
  */

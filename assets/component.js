@@ -1,4 +1,4 @@
-import { requestIdleCallback } from './utilities.js.js';
+import { requestIdleCallback } from './utilities.js';
 
 /**
  * @typedef {Record<string, Element | Element[] | undefined>} Refs

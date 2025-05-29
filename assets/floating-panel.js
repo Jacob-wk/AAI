@@ -1,4 +1,4 @@
-import { debounce, requestIdleCallback, viewTransition } from './utilities.js.js';
+import { debounce, requestIdleCallback, viewTransition } from './utilities.js';
 
 const OFFSET = 40;
 

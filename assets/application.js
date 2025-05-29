@@ -43,8 +43,8 @@ function initializeMobileNav() {
   if (mobileToggle && mobileNav) {
     mobileToggle.addEventListener('click', function() {
       const isOpen = mobileNav.getAttribute('aria-expanded') === 'true';
-      mobileNav.setAttribute('aria-expanded', !isOpen);
-      mobileToggle.setAttribute('aria-expanded', !isOpen);
+      mobileNav.setAttribute('aria-expanded', String(!isOpen));
+      mobileToggle.setAttribute('aria-expanded', String(!isOpen));
       
       // Toggle body scroll
       document.body.style.overflow = isOpen ? '' : 'hidden';
@@ -61,7 +61,7 @@ function initializeResponsiveImages() {
     const imageObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const img = entry.target;
+          const img = /** @type {HTMLImageElement} */ (entry.target);
           if (img.dataset.src) {
             img.src = img.dataset.src;
             img.removeAttribute('data-src');
@@ -86,7 +86,7 @@ function initializeFormEnhancements() {
   
   forms.forEach(form => {
     form.addEventListener('submit', function() {
-      const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+      const submitBtn = /** @type {HTMLButtonElement|HTMLInputElement|null} */ (form.querySelector('button[type="submit"], input[type="submit"]'));
       if (submitBtn) {
         submitBtn.classList.add('loading');
         submitBtn.disabled = true;
@@ -105,21 +105,22 @@ function initializeCustomSelects() {
   const customSelects = document.querySelectorAll('[data-custom-select]');
   
   customSelects.forEach(select => {
-    const button = select.querySelector('[data-select-button]');
-    const options = select.querySelector('[data-select-options]');
-    const hiddenInput = select.querySelector('input[type="hidden"]');
+    const button = /** @type {HTMLElement|null} */ (select.querySelector('[data-select-button]'));
+    const options = /** @type {HTMLElement|null} */ (select.querySelector('[data-select-options]'));
+    const hiddenInput = /** @type {HTMLInputElement|null} */ (select.querySelector('input[type="hidden"]'));
     
     if (button && options && hiddenInput) {
       button.addEventListener('click', () => {
         const isOpen = options.style.display === 'block';
         options.style.display = isOpen ? 'none' : 'block';
-        button.setAttribute('aria-expanded', !isOpen);
+        button.setAttribute('aria-expanded', String(!isOpen));
       });
       
       options.addEventListener('click', (e) => {
-        if (e.target.dataset.value) {
-          hiddenInput.value = e.target.dataset.value;
-          button.textContent = e.target.textContent;
+        const target = /** @type {HTMLElement} */ (e.target);
+        if (target.dataset.value) {
+          hiddenInput.value = target.dataset.value;
+          button.textContent = target.textContent;
           options.style.display = 'none';
           button.setAttribute('aria-expanded', 'false');
         }
@@ -148,7 +149,7 @@ function initializeScrollBehaviors() {
   
   // Header scroll behavior
   let lastScrollTop = 0;
-  const header = document.querySelector('.site-header');
+  const header = /** @type {HTMLElement|null} */ (document.querySelector('.site-header'));
   
   if (header) {
     window.addEventListener('scroll', () => {
@@ -200,8 +201,9 @@ function initializeCourseCards() {
     // Add click tracking
     card.addEventListener('click', function(e) {
       // Only track if not clicking on buttons
-      if (!e.target.closest('button, a')) {
-        const courseId = this.dataset.courseId;
+      const target = /** @type {HTMLElement|null} */ (e.target);
+      if (target && !target.closest('button, a')) {
+        const courseId = /** @type {HTMLElement} */ (this).dataset.courseId;
         if (courseId) {
           console.log('Course card clicked:', courseId);
           // Track interaction for analytics
@@ -225,7 +227,7 @@ function initializeProgressBars() {
   const progressObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const progressBar = entry.target;
+        const progressBar = /** @type {HTMLElement} */ (entry.target);
         const targetWidth = progressBar.dataset.progress || '0';
         
         // Animate progress bar
@@ -271,10 +273,16 @@ function initializeProfessionalAnimations() {
  * Utility functions
  */
 
-// Debounce function for performance
+/**
+ * Debounce function for performance
+ * @param {Function} func - The function to debounce
+ * @param {number} wait - The wait time in milliseconds
+ * @returns {Function} The debounced function
+ */
 function debounce(func, wait) {
+  /** @type {number|undefined} */
   let timeout;
-  return function executedFunction(...args) {
+  return function executedFunction(/** @type {...any} */ ...args) {
     const later = () => {
       clearTimeout(timeout);
       func(...args);
@@ -284,8 +292,14 @@ function debounce(func, wait) {
   };
 }
 
-// Throttle function for scroll events
+/**
+ * Throttle function for scroll events
+ * @param {Function} func - The function to throttle
+ * @param {number} limit - The throttle limit in milliseconds
+ * @returns {Function} The throttled function
+ */
 function throttle(func, limit) {
+  /** @type {boolean|undefined} */
   let inThrottle;
   return function() {
     const args = arguments;
