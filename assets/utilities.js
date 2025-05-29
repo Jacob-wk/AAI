@@ -568,7 +568,7 @@ class Scheduler {
 
 export const scheduler = new Scheduler();
 
-Theme.utilities = {
-  ...Theme.utilities,
-  scheduler: scheduler,
-};
+// Add scheduler to global Theme object if it exists
+if (typeof window !== 'undefined' && window.Theme && window.Theme.utilities) {
+  window.Theme.utilities.scheduler = scheduler;
+}

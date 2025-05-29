@@ -42,6 +42,7 @@ declare global {
 
   interface Window {
     Shopify: Shopify;
+    Theme: Theme;
   }
 
   declare const Shopify: Shopify;
