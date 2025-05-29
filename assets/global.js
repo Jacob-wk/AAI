@@ -2,22 +2,6 @@
 // This file provides core functionality and utilities used across the theme
 
 /**
- * Global Theme object for compatibility with theme components
- */
-window.Theme = window.Theme || {
-  routes: {
-    root: '/',
-    cart_update_url: '/cart/update.js',
-    search_url: '/search',
-    predictive_search_url: '/search/suggest.json'
-  },
-  translations: {
-    added: 'Added to cart'
-  },
-  utilities: {}
-};
-
-/**
  * Global theme utilities and initialization
  */
 class AAITheme {
