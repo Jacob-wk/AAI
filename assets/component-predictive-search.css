@@ -1,0 +1,112 @@
+/*
+ * Predictive Search Component Styles
+ * Styles for the predictive search functionality in the AAI LMS theme
+ */
+
+.predictive-search {
+  position: relative;
+  background: var(--color-background, #ffffff);
+  border: 1px solid var(--color-border, #e1e3e5);
+  border-radius: var(--border-radius, 8px);
+  box-shadow: var(--shadow-medium, 0 4px 16px rgba(0,0,0,0.12));
+  z-index: 1000;
+}
+
+.predictive-search__results {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.predictive-search__item {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border, #e1e3e5);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.predictive-search__item:hover,
+.predictive-search__item:focus {
+  background-color: var(--color-background-secondary, #f8f9fa);
+}
+
+.predictive-search__item:last-child {
+  border-bottom: none;
+}
+
+.predictive-search__item-title {
+  font-weight: 600;
+  color: var(--color-foreground, #1B365D);
+  margin-bottom: 4px;
+}
+
+.predictive-search__item-description {
+  font-size: 0.875rem;
+  color: var(--color-foreground-secondary, #6b7280);
+  line-height: 1.4;
+}
+
+.predictive-search__loading {
+  padding: 20px;
+  text-align: center;
+  color: var(--color-foreground-secondary, #6b7280);
+}
+
+.predictive-search__no-results {
+  padding: 20px;
+  text-align: center;
+  color: var(--color-foreground-secondary, #6b7280);
+  font-style: italic;
+}
+
+/* AAI LMS specific styling */
+.predictive-search__course-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.predictive-search__course-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  object-fit: cover;
+  background-color: var(--color-background-secondary, #f8f9fa);
+}
+
+.predictive-search__course-info {
+  flex: 1;
+}
+
+.predictive-search__course-title {
+  font-weight: 600;
+  color: var(--authority-navy, #1B365D);
+  margin-bottom: 2px;
+}
+
+.predictive-search__course-category {
+  font-size: 0.75rem;
+  color: var(--safety-orange, #FF6B35);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .predictive-search {
+    border-radius: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .predictive-search__item {
+    padding: 16px;
+  }
+  
+  .predictive-search__course-image {
+    width: 40px;
+    height: 40px;
+  }
+}
