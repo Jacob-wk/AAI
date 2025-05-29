@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "checkJs": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "allowJs": true,
+    "lib": ["ES2020", "DOM"],
+    "baseUrl": "./",
+    "paths": {
+      "@theme/*": ["./assets/*"]
+    }
+  },
+  "include": [
+    "assets/**/*.js",
+    "assets/**/*.d.ts",
+    "sections/**/*.liquid",
+    "templates/**/*.liquid",
+    "layout/**/*.liquid"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
