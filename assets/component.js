@@ -1,4 +1,5 @@
 import { requestIdleCallback } from './utilities.js';
+import { DeclarativeShadowElement } from './critical.js';
 
 /**
  * @typedef {Record<string, Element | Element[] | undefined>} Refs
