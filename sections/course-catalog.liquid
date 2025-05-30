@@ -1,0 +1,261 @@
+{% comment %}
+COPILOT CONTEXT:
+- This component must exactly match course card styling from aai-lms-mockup.html
+- Professional development focus (not casual e-commerce)
+- Industry authority aesthetic (safety credentials prominent)
+- All interactions should reflect professional education context
+- Color scheme: Authority Navy (#1e3a5f), Safety Orange (#ff6b35), Electric Blue (#3498db)
+{% endcomment %}
+
+<section class="aai-section aai-home-section" id="courses-section">
+  <div class="aai-container">
+    <div class="aai-section-header">
+      <h2>{{ section.settings.section_title | default: 'Professional Development Courses' }}</h2>
+      <p class="aai-section-subtitle">{{ section.settings.section_subtitle | default: 'Industry-leading safety education designed by experts, for experts. Advance your career with our comprehensive certification programs.' }}</p>
+    </div>
+
+    <!-- Professional Course Categories -->
+    <div class="aai-course-categories">
+      <button class="aai-category-tab active" data-category="all">All Courses</button>
+      <button class="aai-category-tab" data-category="safety">Safety Regulations</button>
+      <button class="aai-category-tab" data-category="operations">Operations</button>
+      <button class="aai-category-tab" data-category="water">Water Parks</button>
+      <button class="aai-category-tab" data-category="compliance">Compliance</button>
+    </div>
+
+    <!-- Professional Course Grid -->
+    <div class="aai-grid aai-grid-auto" id="aai-course-grid">
+      {%- for product in collections[section.settings.collection].products limit: section.settings.products_to_show -%}
+        {% render 'course-card-professional', product: product %}
+      {%- else -%}
+        <!-- Demo courses for mockup replication -->
+        {% render 'course-card-demo' %}
+      {%- endfor -%}
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="{{ section.settings.view_all_url | default: '/collections/courses' }}" class="aai-btn aai-btn-primary">
+        {{ section.settings.view_all_text | default: 'View All Courses' }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Professional Course Categories */
+  .aai-course-categories {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .aai-category-tab {
+    padding: 10px 24px;
+    border: 2px solid var(--light-grey);
+    background: white;
+    color: var(--charcoal-grey);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .aai-category-tab:hover {
+    border-color: var(--electric-blue);
+    color: var(--electric-blue);
+  }
+
+  .aai-category-tab.active {
+    background: var(--authority-navy);
+    color: white;
+    border-color: var(--authority-navy);
+  }
+
+  /* Professional course grid animations */
+  .aai-course-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUpDelayed 0.6s ease forwards;
+  }
+
+  .aai-course-card:nth-child(1) { animation-delay: 0.1s; }
+  .aai-course-card:nth-child(2) { animation-delay: 0.2s; }
+  .aai-course-card:nth-child(3) { animation-delay: 0.3s; }
+  .aai-course-card:nth-child(4) { animation-delay: 0.4s; }
+  .aai-course-card:nth-child(5) { animation-delay: 0.5s; }
+  .aai-course-card:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes fadeInUpDelayed {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Professional mobile responsiveness */
+  @media (max-width: 768px) {
+    .aai-course-categories {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .aai-category-tab {
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      min-width: 150px;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .aai-section-header h2 {
+      font-size: 1.75rem;
+    }
+    
+    .aai-section-subtitle {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Professional course filtering
+    const categoryTabs = document.querySelectorAll('.aai-category-tab');
+    const courseCards = document.querySelectorAll('.aai-course-card');
+
+    categoryTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        // Professional loading state
+        const grid = document.getElementById('aai-course-grid');
+        grid.style.opacity = '0.5';
+        grid.style.pointerEvents = 'none';
+
+        // Remove active state from all tabs
+        categoryTabs.forEach(t => t.classList.remove('active'));
+        
+        // Add active state to clicked tab
+        this.classList.add('active');
+
+        // Filter courses based on category
+        const category = this.dataset.category;
+        
+        setTimeout(() => {
+          courseCards.forEach((card, index) => {
+            if (category === 'all' || card.dataset.category === category) {
+              card.style.display = 'block';
+              // Professional staggered animation
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              }, index * 100);
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          // Restore grid interactivity
+          setTimeout(() => {
+            grid.style.opacity = '1';
+            grid.style.pointerEvents = 'auto';
+          }, 300);
+        }, 200);
+      });
+    });
+
+    // Professional scroll-triggered animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, observerOptions);
+
+    // Observe course cards for professional entrance effects
+    courseCards.forEach(card => {
+      observer.observe(card);
+    });
+
+    // Professional analytics for course interest
+    courseCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        const courseTitle = this.querySelector('h3')?.textContent;
+        // Track professional course engagement
+        console.log('Course interest:', courseTitle);
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "AAI Course Catalog",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Professional Development Courses"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "Industry-leading safety education designed by experts, for experts. Advance your career with our comprehensive certification programs."
+    },
+    {
+      "type": "header",
+      "content": "Course Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Course Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 3,
+      "max": 12,
+      "step": 3,
+      "unit": "courses",
+      "label": "Number of courses to show",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "View All Button"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Button Text",
+      "default": "View All Courses"
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "View All Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Course Catalog"
+    }
+  ]
+}
+{% endschema %}

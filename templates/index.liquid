@@ -1,0 +1,340 @@
+{% comment %}
+COPILOT CONTEXT:
+- Main homepage template showcasing AAI LMS professional design
+- Matches aai-lms-mockup.html exactly with authority aesthetic
+- Professional safety education platform (not casual e-commerce)
+- Color scheme: Authority Navy (#1e3a5f), Safety Orange (#ff6b35), Electric Blue (#3498db)
+{% endcomment %}
+
+{%- assign hero_section = section.settings -%}
+
+<div class="aai-homepage">
+  <!-- Hero Section with Authority Aesthetic -->
+  {% section 'hero-authority' %}
+  
+  <!-- Course Catalog Section -->
+  {% section 'course-catalog' %}
+  
+  <!-- User Dashboard Section (for logged-in users) -->
+  {% if customer %}
+    {% section 'user-dashboard' %}
+  {% else %}
+    <!-- Guest Demo Section -->
+    <section class="aai-demo-section">
+      <div class="aai-container">
+        <div class="aai-demo-content">
+          <h2>Experience Our Learning Platform</h2>
+          <p>See how industry professionals advance their careers with AAI's comprehensive safety education programs.</p>
+          
+          <div class="aai-demo-grid">
+            <!-- Demo Course Card -->
+            <div class="aai-course-card aai-demo-card">
+              {% render 'course-card-demo', 
+                title: 'Ride Safety Inspector Certification', 
+                duration: '6 hours',
+                level: 'Intermediate',
+                price: 299,
+                image: 'demo-course-inspector.jpg',
+                product_id: 'demo-1'
+              %}
+            </div>
+            
+            <!-- Demo Progress Tracker -->
+            <div class="aai-demo-progress">
+              <h3>Track Your Progress</h3>
+              {% render 'enrolled-course-demo' %}
+              {% render 'achievement-badges' %}
+            </div>
+          </div>
+          
+          <div class="aai-demo-cta">
+            <a href="/account/register" class="aai-btn aai-btn-primary">Start Learning Today</a>
+            <a href="/pages/about" class="aai-btn aai-btn-secondary">Learn More About AAI</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+  
+  <!-- Industry Authority Section -->
+  <section class="aai-authority-section">
+    <div class="aai-container">
+      <div class="aai-authority-content">
+        <div class="aai-authority-text">
+          <h2>Industry-Leading Safety Education</h2>
+          <p>Trusted by over 500+ amusement industry professionals, AAI has been setting the standard for safety education since 2010. Our comprehensive programs are developed by industry experts and recognized by leading organizations.</p>
+          
+          <div class="aai-stats-grid">
+            <div class="aai-stat">
+              <span class="aai-stat-number">500+</span>
+              <span class="aai-stat-label">Certified Professionals</span>
+            </div>
+            <div class="aai-stat">
+              <span class="aai-stat-number">15+</span>
+              <span class="aai-stat-label">Years Experience</span>
+            </div>
+            <div class="aai-stat">
+              <span class="aai-stat-number">98%</span>
+              <span class="aai-stat-label">Pass Rate</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="aai-authority-credentials">
+          <h3>Industry Accreditations</h3>
+          <div class="aai-credentials-grid">
+            <div class="aai-credential">
+              <img src="{{ 'credential-iaapa.svg' | asset_url }}" alt="IAAPA Member" loading="lazy">
+              <span>IAAPA Member</span>
+            </div>
+            <div class="aai-credential">
+              <img src="{{ 'credential-astm.svg' | asset_url }}" alt="ASTM F24 Committee" loading="lazy">
+              <span>ASTM F24</span>
+            </div>
+            <div class="aai-credential">
+              <img src="{{ 'credential-naarso.svg' | asset_url }}" alt="NAARSO Certified" loading="lazy">
+              <span>NAARSO</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  <!-- Call to Action Section -->
+  <section class="aai-cta-section">
+    <div class="aai-container">
+      <div class="aai-cta-content">
+        <h2>Ready to Advance Your Career?</h2>
+        <p>Join the industry's most respected safety education platform and take your professional development to the next level.</p>
+        
+        <div class="aai-cta-buttons">
+          {% unless customer %}
+            <a href="/account/register" class="aai-btn aai-btn-primary aai-btn-large">Get Started Today</a>
+            <a href="/collections/all" class="aai-btn aai-btn-secondary aai-btn-large">Browse Courses</a>
+          {% else %}
+            <a href="/collections/all" class="aai-btn aai-btn-primary aai-btn-large">Explore Courses</a>
+            <a href="/account" class="aai-btn aai-btn-secondary aai-btn-large">My Dashboard</a>
+          {% endunless %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  /* Homepage Specific Styles */
+  .aai-homepage {
+    min-height: 100vh;
+  }
+
+  .aai-demo-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .aai-demo-content {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .aai-demo-content h2 {
+    font-size: 2.5rem;
+    color: var(--authority-navy);
+    margin-bottom: 20px;
+  }
+
+  .aai-demo-content p {
+    font-size: 1.125rem;
+    color: #6c757d;
+    margin-bottom: 50px;
+    line-height: 1.6;
+  }
+
+  .aai-demo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+    align-items: start;
+  }
+
+  .aai-demo-progress {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .aai-demo-progress h3 {
+    font-size: 1.5rem;
+    color: var(--authority-navy);
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  .aai-demo-cta {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .aai-authority-section {
+    padding: 80px 0;
+    background: var(--authority-navy);
+    color: white;
+  }
+
+  .aai-authority-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .aai-authority-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: white;
+  }
+
+  .aai-authority-text p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .aai-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .aai-stat {
+    text-align: center;
+  }
+
+  .aai-stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--safety-orange);
+    margin-bottom: 8px;
+  }
+
+  .aai-stat-label {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .aai-authority-credentials h3 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: white;
+    text-align: center;
+  }
+
+  .aai-credentials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .aai-credential {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+
+  .aai-credential:hover {
+    background: rgba(255,255,255,0.15);
+  }
+
+  .aai-credential img {
+    width: 40px;
+    height: 40px;
+    opacity: 0.9;
+  }
+
+  .aai-credential span {
+    font-weight: 600;
+    color: white;
+  }
+
+  .aai-cta-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--electric-blue) 0%, #2980b9 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .aai-cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  .aai-cta-content p {
+    font-size: 1.125rem;
+    margin-bottom: 40px;
+    color: rgba(255,255,255,0.9);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .aai-cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .aai-btn-large {
+    padding: 18px 36px;
+    font-size: 1.125rem;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .aai-demo-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .aai-authority-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+    
+    .aai-stats-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .aai-demo-content h2,
+    .aai-authority-text h2,
+    .aai-cta-content h2 {
+      font-size: 2rem;
+    }
+    
+    .aai-cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .aai-btn-large {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>
