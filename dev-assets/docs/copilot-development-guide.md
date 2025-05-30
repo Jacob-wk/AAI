@@ -3,50 +3,51 @@
 ## Project Context for Copilot
 
 **Project:** AAI Amusement Adventure Institute - Professional Safety Education Platform  
-**Tech Stack:** Shopify Horizon Theme + Intuto LMS + Stripe + Multi Token Integration  
+**Tech Stack:** Shopify Horizon Theme + Intuto LMS (External) + Fly App Connector
 **Design Reference:** `aai-lms-mockup.html` - use as exact visual template  
 **Brand Position:** "Where Safety Meets Adventure" - Professional authority in amusement industry safety  
 
-## Copilot Optimization Strategy
+## CRITICAL ARCHITECTURE NOTE
+**Intuto handles ALL LMS functionality externally.** Shopify is only for:
+1. Professional course catalog display
+2. Standard e-commerce checkout
+3. Post-purchase redirection to Intuto
+4. Professional branding and credibility
 
-### 1. Repository Structure (Already Set Up)
+**Integration:** Fly app connector handles Shopify ↔ Intuto communication after purchase.
 
-**✅ READY TO GO:** Repository and Codespace already configured with proper structure
+## Shopify Theme Scope (SIMPLIFIED)
+
+### What Shopify Handles:
+- ✅ Professional course catalog (like The Association Academy)
+- ✅ Standard Shopify product pages and checkout
+- ✅ Professional branding and authority messaging
+- ✅ Customer account with purchased course links
+- ✅ Post-purchase email with Intuto access link
+
+### What Intuto Handles (External):
+- ❌ Course content delivery
+- ❌ Progress tracking
+- ❌ Certificates and badges
+- ❌ Video streaming
+- ❌ Assignments and quizzes
+
+### Repository Structure (Simplified)
 
 ```
-aai-lms-shopify/ (✅ Already Created)
-├── COPILOT_CONTEXT.md          # Create this file for Copilot reference
-├── design-reference/
-│   └── aai-lms-mockup.html     # Add mockup for visual reference
-├── brand-assets/
-│   ├── colors.css              # Extract from mockup
-│   ├── typography.css          # Extract from mockup
-│   └── components.css          # Reusable component styles
-├── theme/ (✅ Horizon files imported)
-│   ├── assets/
-│   │   ├── aai-core.js         # Custom functionality
-│   │   ├── token-integration.js # Intuto token handling
-│   │   └── stripe-checkout.js  # Payment processing
-│   ├── sections/ (✅ Horizon sections ready)
-│   │   ├── header-professional.liquid
-│   │   ├── hero-authority.liquid
-│   │   ├── course-catalog.liquid
-│   │   └── user-dashboard.liquid
-│   ├── snippets/ (✅ Horizon snippets ready)
-│   │   ├── course-card.liquid
-│   │   ├── progress-tracker.liquid
-│   │   └── credential-badge.liquid
-│   └── templates/ (✅ Horizon templates ready)
-│       ├── index.liquid
-│       ├── page.course-access.liquid
-│       └── customers/account.liquid
-└── integration/
-    ├── webhooks/
-    │   ├── order-processing.js
-    │   └── token-assignment.js
-    └── api/
-        ├── intuto-connector.js
-        └── stripe-handler.js
+aai-shopify-theme/ (Standard Shopify Theme)
+├── assets/          # Standard Shopify theme assets
+├── sections/        # Professional course catalog sections
+│   ├── aai-header.liquid      # Professional credentials bar
+│   ├── aai-hero.liquid        # Authority messaging
+│   └── course-catalog.liquid  # Professional course display
+├── snippets/        # Course display components
+│   └── course-card-professional.liquid
+├── templates/       # Standard Shopify templates
+│   ├── collection.liquid  # Course catalog page
+│   ├── product.liquid     # Individual course page
+│   └── customers/account.liquid  # Show purchased courses
+└── config/          # Theme settings for professional messaging
 ```
 
 ### 2. Copilot Context Instructions
@@ -61,7 +62,7 @@ aai-lms-shopify/ (✅ Already Created)
 
 ## Project Overview
 - Professional safety education for amusement industry
-- Shopify store + Intuto LMS integration via Multi Tokens
+- Shopify store + Intuto LMS integration via Fetch app
 - Target: Industry professionals seeking certifications/CEU credits
 - Brand: Authoritative but accessible, industry-savvy
 
@@ -108,7 +109,7 @@ aai-lms-shopify/ (✅ Already Created)
 ```liquid
 {% comment %}
 COPILOT CONTEXT:
-- This component must exactly match styling from aai-lms-mockup.html
+- This component must match styling from aai-lms-mockup.html
 - Professional development focus (not casual e-commerce)
 - Industry authority aesthetic (safety credentials prominent)
 - All interactions should reflect professional education context
@@ -187,20 +188,6 @@ INTERACTIONS: Professional enrollment flow
 </div>
 ```
 
-#### JavaScript Standards
-```javascript
-/**
- * COPILOT: Token Assignment Handler
- * PURPOSE: Assign Intuto Multi Token URLs when Shopify orders complete
- * REQUIREMENTS: Professional error handling, audit logging, email notifications
- * INTEGRATION: Shopify webhooks → Intuto Multi Token system
- */
-
-class TokenAssignmentHandler {
-  // Copilot: Generate professional error handling
-  // Copilot: Include comprehensive logging
-  // Copilot: Email professional course access instructions
-}
 ```
 
 ### 6. Copilot Testing Prompts

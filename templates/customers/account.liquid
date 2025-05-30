@@ -1,0 +1,555 @@
+{% comment %}
+  Customer Account - My Courses
+  Shows purchased courses with embedded Intuto access
+  URL: /account (when courses are available)
+{% endcomment %}
+
+<div class="customer-account">
+  {% render 'aai-header' %}
+  
+  <div class="account-container">
+    <div class="container">
+      <div class="account-header">
+        <h1>Welcome back, {{ customer.first_name }}!</h1>
+        <p class="account-subtitle">Manage your professional development courses and track your progress.</p>
+      </div>
+
+      <div class="account-content">
+        <nav class="account-nav">
+          <ul class="nav-list">
+            <li class="nav-item nav-item--active">
+              <a href="/account" class="nav-link">My Courses</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ routes.account_url }}" class="nav-link">Account Details</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ routes.account_addresses_url }}" class="nav-link">Addresses</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ routes.account_logout_url }}" class="nav-link">Sign Out</a>
+            </li>
+          </ul>
+        </nav>
+
+        <main class="account-main">
+          {% comment %} Get customer's purchased courses from orders {% endcomment %}
+          {% assign purchased_courses = '' %}
+          {% for order in customer.orders %}
+            {% if order.financial_status == 'paid' %}
+              {% for line_item in order.line_items %}
+                {% if line_item.product.product_type == 'Course' %}
+                  {% assign course_info = line_item.product.id | append: ',' | append: line_item.product.handle | append: ',' | append: line_item.product.title | append: ',' | append: order.created_at | append: ';' %}
+                  {% assign purchased_courses = purchased_courses | append: course_info %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+
+          {% if purchased_courses != blank %}
+            <div class="courses-grid">
+              {% assign courses_array = purchased_courses | split: ';' %}
+              {% for course_data in courses_array %}
+                {% unless course_data == blank %}
+                  {% assign course_parts = course_data | split: ',' %}
+                  {% assign course_id = course_parts[0] %}
+                  {% assign course_handle = course_parts[1] %}
+                  {% assign course_title = course_parts[2] %}
+                  {% assign purchase_date = course_parts[3] %}
+                  
+                  {% comment %} Get the actual product for full details {% endcomment %}
+                  {% assign course_product = all_products[course_handle] %}
+                  
+                  <div class="course-card-purchased">
+                    <div class="course-image">
+                      {% if course_product.featured_image %}
+                        <img src="{{ course_product.featured_image | img_url: '300x200' }}" 
+                             alt="{{ course_product.title }}"
+                             loading="lazy">
+                      {% else %}
+                        <div class="course-placeholder">
+                          {% render 'icon-search' %}
+                        </div>
+                      {% endif %}
+                      
+                      {% comment %} Progress overlay {% endcomment %}
+                      {% assign progress = customer.metafields.course_progress[course_handle] | default: 0 %}
+                      {% if progress > 0 %}
+                        <div class="progress-overlay">
+                          <div class="progress-circle">
+                            <span class="progress-percent">{{ progress }}%</span>
+                          </div>
+                        </div>
+                      {% endif %}
+                    </div>
+                    
+                    <div class="course-content">
+                      <h3 class="course-title">{{ course_product.title | default: course_title }}</h3>
+                      
+                      <div class="course-meta">
+                        {% if course_product.metafields.course.ceu_credits %}
+                          <span class="meta-item">
+                            <strong>{{ course_product.metafields.course.ceu_credits }}</strong> CEU Credits
+                          </span>
+                        {% endif %}
+                        
+                        {% if course_product.metafields.course.duration %}
+                          <span class="meta-item">
+                            <strong>{{ course_product.metafields.course.duration }}</strong> Duration
+                          </span>
+                        {% endif %}
+                      </div>
+                      
+                      <p class="purchase-date">Purchased: {{ purchase_date | date: "%B %d, %Y" }}</p>
+                      
+                      <div class="course-actions">
+                        {% if progress >= 100 %}
+                          <a href="/pages/course-access-{{ course_handle }}" class="btn btn--secondary">
+                            Review Course
+                          </a>
+                          <span class="completion-badge">✓ Completed</span>
+                        {% elsif progress > 0 %}
+                          <a href="/pages/course-access-{{ course_handle }}" class="btn btn--primary">
+                            Continue Learning
+                          </a>
+                          <div class="progress-bar-small">
+                            <div class="progress-fill-small" style="width: {{ progress }}%"></div>
+                          </div>
+                        {% else %}
+                          <a href="/pages/course-access-{{ course_handle }}" class="btn btn--primary">
+                            Start Course
+                          </a>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% endunless %}
+              {% endfor %}
+            </div>
+            
+            {% comment %} Learning Progress Summary {% endcomment %}
+            <div class="progress-summary">
+              <h2>Your Learning Progress</h2>
+              <div class="summary-grid">
+                <div class="summary-card">
+                  <div class="summary-number">{{ courses_array.size | minus: 1 }}</div>
+                  <div class="summary-label">Courses Purchased</div>
+                </div>
+                
+                {% assign completed_count = 0 %}
+                {% assign in_progress_count = 0 %}
+                {% for course_data in courses_array %}
+                  {% unless course_data == blank %}
+                    {% assign course_parts = course_data | split: ',' %}
+                    {% assign course_handle = course_parts[1] %}
+                    {% assign progress = customer.metafields.course_progress[course_handle] | default: 0 %}
+                    {% if progress >= 100 %}
+                      {% assign completed_count = completed_count | plus: 1 %}
+                    {% elsif progress > 0 %}
+                      {% assign in_progress_count = in_progress_count | plus: 1 %}
+                    {% endif %}
+                  {% endunless %}
+                {% endfor %}
+                
+                <div class="summary-card">
+                  <div class="summary-number">{{ completed_count }}</div>
+                  <div class="summary-label">Completed</div>
+                </div>
+                
+                <div class="summary-card">
+                  <div class="summary-number">{{ in_progress_count }}</div>
+                  <div class="summary-label">In Progress</div>
+                </div>
+                
+                {% comment %} Calculate total CEU credits earned {% endcomment %}
+                {% assign total_ceu = 0 %}
+                {% for course_data in courses_array %}
+                  {% unless course_data == blank %}
+                    {% assign course_parts = course_data | split: ',' %}
+                    {% assign course_handle = course_parts[1] %}
+                    {% assign progress = customer.metafields.course_progress[course_handle] | default: 0 %}
+                    {% if progress >= 100 %}
+                      {% assign course_product = all_products[course_handle] %}
+                      {% if course_product.metafields.course.ceu_credits %}
+                        {% assign ceu_value = course_product.metafields.course.ceu_credits | plus: 0 %}
+                        {% assign total_ceu = total_ceu | plus: ceu_value %}
+                      {% endif %}
+                    {% endif %}
+                  {% endunless %}
+                {% endfor %}
+                
+                <div class="summary-card">
+                  <div class="summary-number">{{ total_ceu }}</div>
+                  <div class="summary-label">CEU Credits Earned</div>
+                </div>
+              </div>
+            </div>
+            
+          {% else %}
+            {% comment %} No courses purchased yet {% endcomment %}
+            <div class="empty-state">
+              <div class="empty-state__content">
+                <div class="empty-state__icon">
+                  {% render 'icon-search' %}
+                </div>
+                <h2>Start Your Professional Development Journey</h2>
+                <p>You haven't purchased any courses yet. Explore our comprehensive safety education programs designed for amusement industry professionals.</p>
+                <a href="/collections/courses" class="btn btn--primary">Browse Courses</a>
+              </div>
+            </div>
+          {% endif %}
+        </main>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.customer-account {
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.account-container {
+  padding: 2rem 0 4rem;
+}
+
+.account-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.account-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.account-subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.account-content {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.account-nav {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.nav-item:last-child {
+  border-bottom: none;
+}
+
+.nav-link {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: #374151;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  background: #f9fafb;
+  color: #005a9f;
+}
+
+.nav-item--active .nav-link {
+  background: #eff6ff;
+  color: #005a9f;
+  border-right: 3px solid #005a9f;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.course-card-purchased {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.course-card-purchased:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+.course-image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.course-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.course-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #005a9f, #0ea5e9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-placeholder svg {
+  width: 48px;
+  height: 48px;
+  color: white;
+}
+
+.progress-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-circle {
+  color: white;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.course-content {
+  padding: 1.5rem;
+}
+
+.course-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+}
+
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.meta-item {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.meta-item strong {
+  color: #005a9f;
+}
+
+.purchase-date {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin: 0 0 1.5rem 0;
+}
+
+.course-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.btn--primary {
+  background: #005a9f;
+  color: white;
+}
+
+.btn--primary:hover {
+  background: #004080;
+  transform: translateY(-1px);
+}
+
+.btn--secondary {
+  background: white;
+  color: #005a9f;
+  border: 1px solid #005a9f;
+}
+
+.btn--secondary:hover {
+  background: #f8fafc;
+}
+
+.completion-badge {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.progress-bar-small {
+  background: #f3f4f6;
+  border-radius: 4px;
+  height: 4px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.progress-fill-small {
+  background: linear-gradient(90deg, #005a9f, #0ea5e9);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.progress-summary {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-summary h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 1.5rem 0;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.summary-card {
+  text-align: center;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.summary-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #005a9f;
+  margin-bottom: 0.5rem;
+}
+
+.summary-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.empty-state__content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.empty-state__icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #005a9f, #0ea5e9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state__icon svg {
+  width: 40px;
+  height: 40px;
+  color: white;
+}
+
+.empty-state h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.empty-state p {
+  color: #6b7280;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .account-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .course-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .completion-badge {
+    text-align: center;
+  }
+  
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .account-header h1 {
+    font-size: 2rem;
+  }
+}
+</style>

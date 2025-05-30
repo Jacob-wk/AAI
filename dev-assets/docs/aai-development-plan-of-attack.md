@@ -25,41 +25,6 @@ shopify theme dev --store=aai-amusement-adventure-institute
 # All file structure and theme files ready to go
 ```
 
-**VS Code Extensions to Install:**
-- Shopify Liquid
-- GitHub Copilot
-- Liquid Languages Support
-- Thunder Client (API testing)
-- GitLens, Prettier, ESLint
-
-### Day 2: Intuto Setup & Course Planning
-**Priority: HIGH - Required for Token Integration**
-
-**Actions:**
-- [ ] Email support@intuto.com to enable full Tokens feature
-- [ ] Define your course catalog (what specific courses will you offer?)
-- [ ] Set up course categories in Intuto
-- [ ] Generate first test batch of Multi Tokens (10-20 tokens per course)
-
----
-
-## Phase 2: Core Shopify Development (Days 3-8)
-
-### Brand Implementation - "Serious Fun" Authority
-**Reference Design:** Use `aai-lms-mockup.html` as the exact design template
-
-**Proven Color System:**
-- **Authority Navy:** `#1e3a5f` - Primary brand, headers, navigation
-- **Safety Orange:** `#ff6b35` - CTAs, alerts, important highlights  
-- **Electric Blue:** `#3498db` - Interactive elements, progress bars
-- **Success Green:** `#27ae60` - Completed courses, achievements
-- **Clean layouts with professional hierarchy and subtle fun touches**
-
-**Typography Hierarchy (from mockup):**
-- **H1:** 2.5rem, weight 700, Authority Navy
-- **H2:** 2rem, weight 600, Authority Navy
-- **Body:** Inter font stack for maximum readability
-- **Professional tone throughout with industry credibility**
 
 ### Essential Pages Development
 **Use `aai-lms-mockup.html` as exact template - proven design that works**

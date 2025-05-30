@@ -1,0 +1,821 @@
+{% comment %}
+  Course Product Template with Embedded Intuto Preview
+  Enhanced product page for professional education courses
+{% endcomment %}
+
+<div class="course-product-page">
+  {% render 'aai-header' %}
+  
+  <div class="product-container">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Product navigation">
+        <a href="{{ routes.root_url }}" class="breadcrumb__link">Home</a>
+        <span class="breadcrumb__separator">›</span>
+        <a href="{{ collections.courses.url }}" class="breadcrumb__link">Courses</a>
+        <span class="breadcrumb__separator">›</span>
+        <span class="breadcrumb__current">{{ product.title }}</span>
+      </nav>
+
+      <div class="product-grid">
+        <div class="product-media">
+          <div class="product-image-main">
+            {% if product.featured_media %}
+              <img src="{{ product.featured_media | img_url: '600x400' }}" 
+                   alt="{{ product.featured_media.alt | default: product.title }}"
+                   class="product-image">
+            {% else %}
+              <div class="product-placeholder">
+                <div class="placeholder-content">
+                  {% render 'icon-search' %}
+                  <span>Course Preview</span>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          
+          {% comment %} Course Preview Video/Demo if available {% endcomment %}
+          {% if product.metafields.course.preview_video %}
+            <div class="course-preview">
+              <h3>Course Preview</h3>
+              <div class="video-wrapper">
+                <iframe 
+                  src="{{ product.metafields.course.preview_video }}"
+                  frameborder="0"
+                  allowfullscreen
+                  class="preview-video"
+                  title="Course Preview - {{ product.title }}">
+                </iframe>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="product-info">
+          <div class="product-header">
+            <h1 class="product-title">{{ product.title }}</h1>
+            
+            <div class="course-badges">
+              {% if product.metafields.course.ceu_credits %}
+                <span class="badge badge--ceu">{{ product.metafields.course.ceu_credits }} CEU Credits</span>
+              {% endif %}
+              
+              {% if product.metafields.course.certification %}
+                <span class="badge badge--cert">{{ product.metafields.course.certification }}</span>
+              {% endif %}
+              
+              {% if product.metafields.course.level %}
+                <span class="badge badge--level">{{ product.metafields.course.level }}</span>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="product-price">
+            <span class="price-current">{{ product.price | money }}</span>
+            {% if product.compare_at_price > product.price %}
+              <span class="price-compare">{{ product.compare_at_price | money }}</span>
+              <span class="price-save">Save {{ product.compare_at_price | minus: product.price | money }}</span>
+            {% endif %}
+          </div>
+
+          <div class="course-details">
+            {% if product.metafields.course.duration %}
+              <div class="detail-item">
+                <span class="detail-label">Duration:</span>
+                <span class="detail-value">{{ product.metafields.course.duration }}</span>
+              </div>
+            {% endif %}
+            
+            {% if product.metafields.course.format %}
+              <div class="detail-item">
+                <span class="detail-label">Format:</span>
+                <span class="detail-value">{{ product.metafields.course.format }}</span>
+              </div>
+            {% endif %}
+            
+            {% if product.metafields.course.instructor %}
+              <div class="detail-item">
+                <span class="detail-label">Instructor:</span>
+                <span class="detail-value">{{ product.metafields.course.instructor }}</span>
+              </div>
+            {% endif %}
+          </div>
+
+          {% comment %} Prerequisites if any {% endcomment %}
+          {% if product.metafields.course.prerequisites %}
+            <div class="prerequisites">
+              <h3>Prerequisites</h3>
+              <p>{{ product.metafields.course.prerequisites }}</p>
+            </div>
+          {% endif %}
+
+          {% comment %} Product Form {% endcomment %}
+          <div class="product-form-container">
+            <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="product-form">
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              
+              {% unless product.has_only_default_variant %}
+                <div class="variant-picker">
+                  {% for option in product.options_with_values %}
+                    <div class="option-group">
+                      <label class="option-label">{{ option.name }}</label>
+                      <div class="option-values">
+                        {% for value in option.values %}
+                          <input type="radio" 
+                                 name="options[{{ option.name }}]" 
+                                 value="{{ value }}" 
+                                 id="option-{{ option.position }}-{{ forloop.index0 }}"
+                                 {% if option.selected_value == value %}checked{% endif %}>
+                          <label for="option-{{ option.position }}-{{ forloop.index0 }}" class="option-value">
+                            {{ value }}
+                          </label>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endunless %}
+              
+              <div class="quantity-selector">
+                <label for="quantity" class="quantity-label">Quantity</label>
+                <div class="quantity-input">
+                  <button type="button" class="quantity-btn quantity-minus">-</button>
+                  <input type="number" 
+                         name="quantity" 
+                         id="quantity" 
+                         min="1" 
+                         value="1" 
+                         class="quantity-field">
+                  <button type="button" class="quantity-btn quantity-plus">+</button>
+                </div>
+              </div>
+
+              <button type="submit" 
+                      class="btn btn--primary btn--full-width add-to-cart-btn"
+                      {% unless product.available %}disabled{% endunless %}>
+                {% if product.available %}
+                  Enroll Now - {{ product.price | money }}
+                {% else %}
+                  Sold Out
+                {% endif %}
+              </button>
+            </form>
+          </div>
+
+          {% comment %} What's Included section {% endcomment %}
+          <div class="whats-included">
+            <h3>What's Included</h3>
+            <ul class="included-list">
+              <li>✓ Lifetime access to course materials</li>
+              <li>✓ Professional certificate upon completion</li>
+              {% if product.metafields.course.ceu_credits %}
+                <li>✓ {{ product.metafields.course.ceu_credits }} Continuing Education Units (CEUs)</li>
+              {% endif %}
+              <li>✓ Mobile and desktop access</li>
+              <li>✓ Progress tracking and bookmarks</li>
+              <li>✓ Expert instructor support</li>
+              {% if product.metafields.course.downloadable_resources %}
+                <li>✓ Downloadable course resources</li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Course Description and Curriculum {% endcomment %}
+      <div class="course-description">
+        <div class="description-tabs">
+          <nav class="tab-nav">
+            <button class="tab-btn tab-btn--active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="curriculum">Curriculum</button>
+            <button class="tab-btn" data-tab="instructor">Instructor</button>
+            <button class="tab-btn" data-tab="reviews">Reviews</button>
+          </nav>
+
+          <div class="tab-content">
+            <div class="tab-panel tab-panel--active" id="overview">
+              <div class="description-content">
+                {{ product.description }}
+                
+                {% if product.metafields.course.learning_objectives %}
+                  <h3>Learning Objectives</h3>
+                  <div class="learning-objectives">
+                    {{ product.metafields.course.learning_objectives }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="tab-panel" id="curriculum">
+              {% if product.metafields.course.curriculum %}
+                <div class="curriculum-content">
+                  {{ product.metafields.course.curriculum }}
+                </div>
+              {% else %}
+                <div class="curriculum-placeholder">
+                  <p>Comprehensive curriculum covering all essential topics for professional safety education in the amusement industry.</p>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="tab-panel" id="instructor">
+              <div class="instructor-info">
+                {% if product.metafields.course.instructor_bio %}
+                  {{ product.metafields.course.instructor_bio }}
+                {% else %}
+                  <p>Taught by industry experts with years of practical experience in amusement park safety and operations.</p>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="tab-panel" id="reviews">
+              <div id="shopify-product-reviews" data-id="{{ product.id }}">
+                {% comment %} Product reviews will be loaded here {% endcomment %}
+                <p>Reviews will be displayed here.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Related Courses {% endcomment %}
+      {% if collections.courses.products.size > 1 %}
+        <div class="related-courses">
+          <h2>Related Courses</h2>
+          <div class="related-grid">
+            {% for related_product in collections.courses.products limit: 4 %}
+              {% unless related_product.id == product.id %}
+                {% render 'course-card-professional', product: related_product %}
+              {% endunless %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+.course-product-page {
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.product-container {
+  padding: 2rem 0 4rem;
+}
+
+.breadcrumb {
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+}
+
+.breadcrumb__link {
+  color: #005a9f;
+  text-decoration: none;
+}
+
+.breadcrumb__link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb__separator {
+  margin: 0 0.5rem;
+  color: #6b7280;
+}
+
+.breadcrumb__current {
+  color: #374151;
+  font-weight: 500;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.product-media {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.product-image-main {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.product-placeholder {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(135deg, #005a9f, #0ea5e9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-content {
+  text-align: center;
+  color: white;
+}
+
+.placeholder-content svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+}
+
+.placeholder-content span {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.course-preview {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.course-preview h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.preview-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.product-info {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+.product-header {
+  margin-bottom: 1.5rem;
+}
+
+.product-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+.course-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge--ceu {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge--cert {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.badge--level {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.product-price {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.price-current {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #005a9f;
+}
+
+.price-compare {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.price-save {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.course-details {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #374151;
+}
+
+.detail-value {
+  color: #005a9f;
+  font-weight: 600;
+}
+
+.prerequisites {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+}
+
+.prerequisites h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #92400e;
+}
+
+.prerequisites p {
+  margin: 0;
+  color: #78350f;
+  font-size: 0.875rem;
+}
+
+.product-form-container {
+  margin-bottom: 2rem;
+}
+
+.variant-picker {
+  margin-bottom: 1rem;
+}
+
+.option-group {
+  margin-bottom: 1rem;
+}
+
+.option-label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.option-values {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.option-values input[type="radio"] {
+  display: none;
+}
+
+.option-value {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.875rem;
+}
+
+.option-values input[type="radio"]:checked + .option-value {
+  background: #005a9f;
+  color: white;
+  border-color: #005a9f;
+}
+
+.option-value:hover {
+  border-color: #005a9f;
+}
+
+.quantity-selector {
+  margin-bottom: 1.5rem;
+}
+
+.quantity-label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.quantity-input {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.quantity-btn {
+  width: 40px;
+  height: 40px;
+  background: #f9fafb;
+  border: none;
+  cursor: pointer;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  transition: background-color 0.2s;
+}
+
+.quantity-btn:hover {
+  background: #f3f4f6;
+}
+
+.quantity-field {
+  width: 60px;
+  height: 40px;
+  border: none;
+  text-align: center;
+  font-weight: 600;
+  color: #374151;
+}
+
+.quantity-field:focus {
+  outline: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn--primary {
+  background: #005a9f;
+  color: white;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: #004080;
+  transform: translateY(-1px);
+}
+
+.btn--primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.btn--full-width {
+  width: 100%;
+  text-align: center;
+}
+
+.whats-included {
+  padding: 1.5rem;
+  background: #f0f9ff;
+  border-radius: 8px;
+}
+
+.whats-included h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.included-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.included-list li {
+  margin-bottom: 0.5rem;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.course-description {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.description-tabs {
+  /* Tab styling will be added */
+}
+
+.tab-nav {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-btn:hover {
+  color: #005a9f;
+}
+
+.tab-btn--active {
+  color: #005a9f;
+  border-bottom-color: #005a9f;
+}
+
+.tab-content {
+  padding: 2rem;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel--active {
+  display: block;
+}
+
+.description-content,
+.curriculum-content,
+.instructor-info {
+  line-height: 1.6;
+  color: #374151;
+}
+
+.description-content h3,
+.curriculum-content h3 {
+  margin: 2rem 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.learning-objectives {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.related-courses {
+  margin-top: 4rem;
+}
+
+.related-courses h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .product-title {
+    font-size: 1.5rem;
+  }
+  
+  .price-current {
+    font-size: 1.5rem;
+  }
+  
+  .tab-nav {
+    flex-wrap: wrap;
+  }
+  
+  .tab-btn {
+    flex: 1 1 50%;
+    min-width: 50%;
+  }
+  
+  .tab-content {
+    padding: 1rem;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Tab functionality
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const targetTab = this.dataset.tab;
+      
+      // Remove active classes
+      tabBtns.forEach(b => b.classList.remove('tab-btn--active'));
+      tabPanels.forEach(p => p.classList.remove('tab-panel--active'));
+      
+      // Add active classes
+      this.classList.add('tab-btn--active');
+      document.getElementById(targetTab).classList.add('tab-panel--active');
+    });
+  });
+  
+  // Quantity selector
+  const quantityField = document.getElementById('quantity');
+  const quantityMinus = document.querySelector('.quantity-minus');
+  const quantityPlus = document.querySelector('.quantity-plus');
+  
+  if (quantityMinus && quantityPlus && quantityField) {
+    quantityMinus.addEventListener('click', function() {
+      const current = parseInt(quantityField.value);
+      if (current > 1) {
+        quantityField.value = current - 1;
+      }
+    });
+    
+    quantityPlus.addEventListener('click', function() {
+      const current = parseInt(quantityField.value);
+      quantityField.value = current + 1;
+    });
+  }
+  
+  // Variant selection
+  const variantRadios = document.querySelectorAll('input[name^="options"]');
+  variantRadios.forEach(radio => {
+    radio.addEventListener('change', function() {
+      // Handle variant selection logic here
+      console.log('Variant selected:', this.value);
+    });
+  });
+});
+</script>

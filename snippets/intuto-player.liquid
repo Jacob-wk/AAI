@@ -1,0 +1,429 @@
+{% comment %}
+  Intuto Integration Snippet
+  Handles embedded Intuto course player with authentication
+  
+  Parameters:
+  - course_id: The Intuto course ID
+  - embed_url: The base Intuto embed URL
+  - customer: Current customer object
+  - course_title: Course title for accessibility
+{% endcomment %}
+
+{% assign intuto_course_id = course_id | default: product.metafields.intuto.course_id %}
+{% assign intuto_embed_url = embed_url | default: product.metafields.intuto.embed_url %}
+{% assign intuto_customer = customer %}
+{% assign intuto_title = course_title | default: product.title | default: 'Course Content' %}
+
+{% if intuto_course_id and intuto_embed_url %}
+  <div class="intuto-integration" data-course-id="{{ intuto_course_id }}">
+    {% if intuto_customer and intuto_customer.metafields.intuto.access_token %}
+      {% comment %} Customer has access - show embedded player {% endcomment %}
+      <div class="intuto-player-container">
+        <div class="intuto-loading" id="intuto-loading-{{ intuto_course_id }}">
+          <div class="loading-spinner"></div>
+          <p>Loading course content...</p>
+        </div>
+        
+        <iframe 
+          id="intuto-iframe-{{ intuto_course_id }}"
+          src="{{ intuto_embed_url }}?token={{ intuto_customer.metafields.intuto.access_token }}&course_id={{ intuto_course_id }}&customer_id={{ intuto_customer.id }}"
+          frameborder="0"
+          allowfullscreen
+          allow="autoplay; encrypted-media; fullscreen"
+          class="intuto-iframe"
+          title="{{ intuto_title }} - Course Player"
+          data-course-id="{{ intuto_course_id }}"
+          onload="handleIntutoLoad('{{ intuto_course_id }}')">
+        </iframe>
+        
+        {% comment %} Fallback message for iframe loading issues {% endcomment %}
+        <div class="intuto-fallback" id="intuto-fallback-{{ intuto_course_id }}" style="display: none;">
+          <div class="fallback-content">
+            <h3>Unable to Load Course</h3>
+            <p>If the course doesn't load, please try refreshing the page or contact support.</p>
+            <button onclick="reloadIntutoFrame('{{ intuto_course_id }}')" class="btn btn--secondary">
+              Reload Course
+            </button>
+            <a href="/pages/contact" class="btn btn--primary">Contact Support</a>
+          </div>
+        </div>
+      </div>
+      
+      {% comment %} Course progress tracking {% endcomment %}
+      <div class="intuto-progress-sync" data-course-id="{{ intuto_course_id }}" style="display: none;">
+        <input type="hidden" id="progress-{{ intuto_course_id }}" value="{{ intuto_customer.metafields.course_progress[intuto_course_id] | default: 0 }}">
+        <input type="hidden" id="completion-{{ intuto_course_id }}" value="{{ intuto_customer.metafields.course_completion[intuto_course_id] | default: 'false' }}">
+      </div>
+      
+    {% elsif intuto_customer %}
+      {% comment %} Customer logged in but no access {% endcomment %}
+      <div class="intuto-no-access">
+        <div class="no-access-content">
+          <div class="no-access-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 12h8"/>
+              <path d="M12 8v8"/>
+            </svg>
+          </div>
+          <h3>Course Access Required</h3>
+          <p>You need to purchase this course to access the content.</p>
+          {% if product %}
+            <a href="#purchase" class="btn btn--primary" onclick="scrollToPurchase()">
+              Purchase Course - {{ product.price | money }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      
+    {% else %}
+      {% comment %} Not logged in {% endcomment %}
+      <div class="intuto-login-required">
+        <div class="login-content">
+          <div class="login-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+              <polyline points="10,17 15,12 10,7"/>
+              <line x1="15" y1="12" x2="3" y2="12"/>
+            </svg>
+          </div>
+          <h3>Sign In Required</h3>
+          <p>Please sign in to access your course content.</p>
+          <a href="{{ routes.account_login_url }}" class="btn btn--primary">Sign In</a>
+          <p class="signup-text">
+            Don't have an account? 
+            <a href="{{ routes.account_register_url }}">Create one here</a>
+          </p>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+{% else %}
+  {% comment %} No Intuto configuration found {% endcomment %}
+  <div class="intuto-error">
+    <div class="error-content">
+      <h3>Course Configuration Error</h3>
+      <p>This course is not properly configured for delivery. Please contact support for assistance.</p>
+      <a href="/pages/contact" class="btn btn--secondary">Contact Support</a>
+    </div>
+  </div>
+{% endif %}
+
+<style>
+.intuto-integration {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.intuto-player-container {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+}
+
+.intuto-iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  display: block;
+}
+
+.intuto-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  z-index: 10;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #005a9f;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.intuto-loading p {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.intuto-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  z-index: 20;
+}
+
+.fallback-content {
+  text-align: center;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+.fallback-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.fallback-content p {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.fallback-content .btn {
+  margin: 0 0.5rem;
+}
+
+.intuto-no-access,
+.intuto-login-required,
+.intuto-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 2rem;
+}
+
+.no-access-content,
+.login-content,
+.error-content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.no-access-icon,
+.login-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #005a9f, #0ea5e9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.no-access-content h3,
+.login-content h3,
+.error-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.no-access-content p,
+.login-content p,
+.error-content p {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.signup-text {
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.signup-text a {
+  color: #005a9f;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.btn--primary {
+  background: #005a9f;
+  color: white;
+}
+
+.btn--primary:hover {
+  background: #004080;
+  transform: translateY(-1px);
+}
+
+.btn--secondary {
+  background: white;
+  color: #005a9f;
+  border: 1px solid #005a9f;
+}
+
+.btn--secondary:hover {
+  background: #f8fafc;
+}
+
+@media (max-width: 768px) {
+  .intuto-iframe {
+    height: 400px;
+  }
+  
+  .intuto-player-container {
+    min-height: 400px;
+  }
+  
+  .fallback-content .btn {
+    display: block;
+    margin: 0.5rem 0;
+    width: 100%;
+  }
+}
+</style>
+
+<script>
+// Global functions for Intuto integration
+window.intutoFunctions = window.intutoFunctions || {};
+
+// Handle iframe load event
+function handleIntutoLoad(courseId) {
+  const loading = document.getElementById(`intuto-loading-${courseId}`);
+  if (loading) {
+    loading.style.display = 'none';
+  }
+  
+  // Start progress sync if available
+  if (window.intutoFunctions.startProgressSync) {
+    window.intutoFunctions.startProgressSync(courseId);
+  }
+}
+
+// Reload iframe if loading fails
+function reloadIntutoFrame(courseId) {
+  const iframe = document.getElementById(`intuto-iframe-${courseId}`);
+  const fallback = document.getElementById(`intuto-fallback-${courseId}`);
+  const loading = document.getElementById(`intuto-loading-${courseId}`);
+  
+  if (iframe && fallback && loading) {
+    fallback.style.display = 'none';
+    loading.style.display = 'flex';
+    iframe.src = iframe.src; // Reload iframe
+  }
+}
+
+// Scroll to purchase section
+function scrollToPurchase() {
+  const purchaseSection = document.querySelector('.product-form-container, #purchase');
+  if (purchaseSection) {
+    purchaseSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// Progress tracking functions
+window.intutoFunctions.startProgressSync = function(courseId) {
+  // Set up postMessage listener for progress updates from Intuto iframe
+  window.addEventListener('message', function(event) {
+    // Verify origin matches Intuto domain
+    if (event.origin.includes('intuto') || event.origin.includes('aai-lms')) {
+      const data = event.data;
+      
+      if (data.type === 'progress_update' && data.courseId === courseId) {
+        window.intutoFunctions.updateProgress(courseId, data.progress, data.completed);
+      }
+    }
+  });
+  
+  // Periodic sync every 30 seconds
+  setInterval(() => {
+    window.intutoFunctions.syncProgress(courseId);
+  }, 30000);
+};
+
+window.intutoFunctions.updateProgress = function(courseId, progress, completed) {
+  const progressInput = document.getElementById(`progress-${courseId}`);
+  const completionInput = document.getElementById(`completion-${courseId}`);
+  
+  if (progressInput) progressInput.value = progress;
+  if (completionInput) completionInput.value = completed;
+  
+  // Send to Shopify via AJAX to update customer metafields
+  fetch('/apps/intuto/sync-progress', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    },
+    body: JSON.stringify({
+      course_id: courseId,
+      progress: progress,
+      completed: completed
+    })
+  }).catch(error => {
+    console.log('Progress sync error:', error);
+  });
+};
+
+window.intutoFunctions.syncProgress = function(courseId) {
+  const iframe = document.getElementById(`intuto-iframe-${courseId}`);
+  if (iframe && iframe.contentWindow) {
+    // Request progress update from iframe
+    iframe.contentWindow.postMessage({
+      type: 'request_progress',
+      courseId: courseId
+    }, '*');
+  }
+};
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Set fallback timeout for each iframe
+  const iframes = document.querySelectorAll('.intuto-iframe');
+  iframes.forEach(iframe => {
+    const courseId = iframe.dataset.courseId;
+    
+    setTimeout(() => {
+      const loading = document.getElementById(`intuto-loading-${courseId}`);
+      const fallback = document.getElementById(`intuto-fallback-${courseId}`);
+      
+      if (loading && loading.style.display !== 'none') {
+        loading.style.display = 'none';
+        if (fallback) {
+          fallback.style.display = 'flex';
+        }
+      }
+    }, 15000); // 15 second timeout
+  });
+});
+</script>

@@ -1,13 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
-{
+
   "type": "header",
   "name": "Header",
   "sections": {
@@ -15,7 +6,7 @@
       "type": "aai-header",
       "settings": {
         "show_credentials_bar": true,
-        "credentials_text": "Professional Safety Education Since 2010",
+        "credentials_text": "Professional Safety Education Since 2025",
         "show_iaapa_badge": true,
         "show_astm_badge": true,
         "show_naarso_badge": true,

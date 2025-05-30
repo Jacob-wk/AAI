@@ -1,0 +1,347 @@
+{% comment %}
+COPILOT CONTEXT:
+- Professional course card for AAI LMS platform
+- Must maintain professional authority aesthetic
+- Industry credibility focus (safety education courses)
+- Brand colors: Authority Navy (#1e3a5f), Safety Orange (#ff6b35), Electric Blue (#3498db)
+- Display CEU credits, prerequisites, and professional pricing
+{% endcomment %}
+
+<div class="course-card professional-course" data-product-id="{{ product.id }}">
+  <div class="course-image">
+    {% if product.featured_image %}
+      <img 
+        src="{{ product.featured_image | image_url: width: 400 }}" 
+        alt="{{ product.title }}"
+        loading="lazy"
+        class="course-thumbnail"
+      >
+    {% else %}
+      <div class="course-placeholder-image">
+        <svg class="course-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+        </svg>
+      </div>
+    {% endif %}
+
+    {% comment %} Course Level Badge {% endcomment %}
+    {% assign course_level = product.metafields.course.level.value | default: 'Intermediate' %}
+    <div class="course-level-badge course-level-{{ course_level | downcase }}">
+      {{ course_level }}
+    </div>
+  </div>
+
+  <div class="course-content">
+    <div class="course-header">
+      <h3 class="course-title">
+        <a href="{{ product.url }}">{{ product.title }}</a>
+      </h3>
+      
+      {% comment %} CEU Credits - Prominent for professionals {% endcomment %}
+      {% assign ceu_credits = product.metafields.course.ceu_credits.value %}
+      {% if ceu_credits %}
+        <div class="course-ceu">
+          <span class="ceu-label">CEU Credits:</span>
+          <span class="ceu-value">{{ ceu_credits }}</span>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="course-meta">
+      {% comment %} Duration {% endcomment %}
+      {% assign duration = product.metafields.course.duration.value %}
+      {% if duration %}
+        <div class="course-duration">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15,1H9V3H15M11,14H13V8H11M19.03,7.39L20.45,5.97C20,5.46 19.55,5 19.04,4.56L17.62,6C16.07,4.74 14.12,4 12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22C17,22 21,17.97 21,13C21,10.88 20.26,8.93 19.03,7.39Z"/>
+          </svg>
+          {{ duration }}
+        </div>
+      {% endif %}
+
+      {% comment %} Prerequisites {% endcomment %}
+      {% assign prerequisites = product.metafields.course.prerequisites.value %}
+      {% if prerequisites %}
+        <div class="course-prerequisites">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+          </svg>
+          Prerequisites Required
+        </div>
+      {% endif %}
+
+      {% comment %} Standards Covered {% endcomment %}
+      {% assign standards = product.metafields.course.standards_covered.value %}
+      {% if standards %}
+        <div class="course-standards">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+          </svg>
+          {{ standards }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% comment %} Course Description {% endcomment %}
+    {% if product.description != blank %}
+      <div class="course-description">
+        {{ product.description | truncate: 120 }}
+      </div>
+    {% endif %}
+
+    <div class="course-footer">
+      {% comment %} Professional Pricing {% endcomment %}
+      <div class="course-pricing">
+        {% if product.compare_at_price > product.price %}
+          <span class="course-price-compare">${{ product.compare_at_price | money_without_currency }}</span>
+        {% endif %}
+        <span class="course-price">${{ product.price | money_without_currency }}</span>
+      </div>
+
+      {% comment %} Enrollment CTA {% endcomment %}
+      <div class="course-actions">
+        {% if product.available %}
+          <form action="/cart/add" method="post" enctype="multipart/form-data" class="course-add-form">
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <button type="submit" class="btn-enroll" name="add">
+              Enroll Now
+            </button>
+          </form>
+        {% else %}
+          <button class="btn-waitlist" disabled>
+            Join Waitlist
+          </button>
+        {% endif %}
+        <a href="{{ product.url }}" class="btn-details">
+          View Details
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.course-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.15);
+}
+
+.course-image {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  background: linear-gradient(135deg, #1e3a5f 0%, #3498db 100%);
+}
+
+.course-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.course-placeholder-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-icon {
+  width: 48px;
+  height: 48px;
+  color: white;
+}
+
+.course-level-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.course-level-beginner {
+  background: #10b981;
+  color: white;
+}
+
+.course-level-intermediate {
+  background: #f59e0b;
+  color: white;
+}
+
+.course-level-advanced {
+  background: #ef4444;
+  color: white;
+}
+
+.course-content {
+  padding: 20px;
+}
+
+.course-header {
+  margin-bottom: 16px;
+}
+
+.course-title {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.course-title a {
+  color: #1e3a5f;
+  text-decoration: none;
+}
+
+.course-title a:hover {
+  color: #3498db;
+}
+
+.course-ceu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #ff6b35;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.course-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.course-meta > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.meta-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.course-description {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4b5563;
+  margin-bottom: 20px;
+}
+
+.course-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.course-pricing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.course-price-compare {
+  font-size: 14px;
+  color: #9ca3af;
+  text-decoration: line-through;
+  margin-bottom: 2px;
+}
+
+.course-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e3a5f;
+}
+
+.course-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 120px;
+}
+
+.btn-enroll,
+.btn-waitlist {
+  background: #ff6b35;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  text-align: center;
+}
+
+.btn-enroll:hover {
+  background: #e55a2b;
+}
+
+.btn-waitlist {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.btn-details {
+  background: transparent;
+  color: #3498db;
+  border: 1px solid #3498db;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn-details:hover {
+  background: #3498db;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .course-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .course-actions {
+    width: 100%;
+  }
+}
+</style>
