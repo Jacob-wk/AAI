@@ -76,6 +76,30 @@
         "padding-block-end": 0
       }
     },
+    "contact_options": {
+      "type": "section",
+      "blocks": {
+        "contact_info": {
+          "type": "text",
+          "settings": {
+            "text": "<div class='contact-grid'><div class='contact-method'><h3>General Inquiries</h3><p>Email: <a href='mailto:info@aai-lms.com'>info@aai-lms.com</a></p><p>Phone: 1-800-AAI-SAFE</p><p>Hours: Monday-Friday, 8 AM - 6 PM EST</p></div><div class='contact-method'><h3>Technical Support</h3><p>Email: <a href='mailto:support@aai-lms.com'>support@aai-lms.com</a></p><p>Phone: 1-800-AAI-TECH</p><p>24/7 Emergency Support Available</p></div><div class='contact-method'><h3>Corporate Training</h3><p>Email: <a href='mailto:corporate@aai-lms.com'>corporate@aai-lms.com</a></p><p>Phone: 1-800-AAI-CORP</p><p>Custom solutions for enterprise clients</p></div></div>",
+            "type_preset": "body",
+            "alignment": "center",
+            "padding-block-start": 40,
+            "padding-block-end": 40
+          }
+        }
+      },
+      "block_order": [
+        "contact_info"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
     "form": {
       "type": "section",
       "blocks": {

@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "hero": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Professional Certifications</h1><p class='lead'>Industry-recognized credentials that advance your career</p>",
+            "type_preset": "h1",
+            "alignment": "center",
+            "color": "#1e3a5f",
+            "padding-block-start": 40,
+            "padding-block-end": 20
+          }
+        },
+        "overview": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our certification programs are designed to meet the highest industry standards and are recognized by leading amusement operators, manufacturers, and regulatory bodies worldwide.</p>",
+            "max_width": "narrow",
+            "alignment": "center",
+            "padding-block-start": 20,
+            "padding-block-end": 40
+          }
+        },
+        "certifications": {
+          "type": "text",
+          "settings": {
+            "text": "<div class='certification-grid'><div class='cert-card'><h3>Certified Ride Inspector (CRI)</h3><p class='duration'>120 hours | 6 months access</p><p class='ceu'>CEU Credits: 12</p><p>Comprehensive ride inspection certification covering mechanical, electrical, and structural systems.</p><ul><li>Visual inspection techniques</li><li>Non-destructive testing methods</li><li>Documentation and reporting</li><li>Regulatory compliance</li></ul><p class='price'>$2,495</p></div><div class='cert-card'><h3>Safety Management Professional (SMP)</h3><p class='duration'>80 hours | 4 months access</p><p class='ceu'>CEU Credits: 8</p><p>Advanced safety management and risk assessment certification for supervisory roles.</p><ul><li>Safety program development</li><li>Incident investigation</li><li>Training program design</li><li>Emergency response planning</li></ul><p class='price'>$1,895</p></div><div class='cert-card'><h3>Maintenance Excellence Certificate (MEC)</h3><p class='duration'>100 hours | 5 months access</p><p class='ceu'>CEU Credits: 10</p><p>Specialized maintenance certification focusing on preventive and predictive maintenance strategies.</p><ul><li>Maintenance planning and scheduling</li><li>Predictive analytics</li><li>Parts management</li><li>Technical documentation</li></ul><p class='price'>$2,195</p></div></div>",
+            "type_preset": "body",
+            "alignment": "center",
+            "padding-block-start": 40,
+            "padding-block-end": 60
+          }
+        }
+      },
+      "block_order": [
+        "hero",
+        "overview",
+        "certifications"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

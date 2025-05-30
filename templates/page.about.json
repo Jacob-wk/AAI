@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "hero": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>About Amusement Academy International</h1><p class='lead'>Leading the industry in professional safety education since 2025</p>",
+            "type_preset": "h1",
+            "font": "var(--font-primary--family)",
+            "alignment": "center",
+            "color": "#1e3a5f",
+            "padding-block-start": 40,
+            "padding-block-end": 20
+          }
+        },
+        "mission": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Our Mission</h2><p>To advance safety standards in the amusement industry through comprehensive education, professional development, and industry-leading certification programs. We bridge the gap between regulatory requirements and practical implementation.</p>",
+            "type_preset": "h2",
+            "max_width": "narrow",
+            "alignment": "center",
+            "padding-block-start": 40,
+            "padding-block-end": 40
+          }
+        },
+        "credentials": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Industry Recognition</h2><div class='credentials-grid'><div class='credential'><strong>IAAPA Member</strong><p>International Association of Amusement Parks and Attractions</p></div><div class='credential'><strong>ASTM F24 Committee</strong><p>Amusement Rides and Devices Standards</p></div><div class='credential'><strong>NAARSO Certified</strong><p>North American Amusement Ride Safety Officials</p></div></div>",
+            "type_preset": "h2",
+            "alignment": "center",
+            "padding-block-start": 40,
+            "padding-block-end": 40
+          }
+        },
+        "expertise": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Our Expertise</h2><p>With decades of combined experience in amusement safety, our team brings unparalleled expertise to every course, certification, and consultation. We work directly with manufacturers, operators, and regulatory bodies to ensure our curriculum reflects current industry standards and emerging best practices.</p><ul><li>Ride safety inspection and maintenance</li><li>Regulatory compliance and documentation</li><li>Risk assessment and management</li><li>Emergency response procedures</li><li>Staff training and development</li></ul>",
+            "type_preset": "h2",
+            "max_width": "narrow",
+            "alignment": "left",
+            "padding-block-start": 40,
+            "padding-block-end": 60
+          }
+        }
+      },
+      "block_order": [
+        "hero",
+        "mission", 
+        "credentials",
+        "expertise"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

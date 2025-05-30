@@ -1,0 +1,67 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "course_header": {
+          "type": "text",
+          "settings": {
+            "text": "<div class='course-access-header'><h1>{{ page.title | default: 'Course Access' }}</h1><p class='course-subtitle'>Continue your professional development journey</p></div>",
+            "type_preset": "h1",
+            "alignment": "center",
+            "color": "#1e3a5f",
+            "padding-block-start": 40,
+            "padding-block-end": 20
+          }
+        },
+        "intuto_player": {
+          "type": "text",
+          "settings": {
+            "text": "<div class='intuto-player-container'><div id='intuto-course-player'><p>Loading course content...</p></div></div>",
+            "type_preset": "body",
+            "alignment": "center",
+            "padding-block-start": 20,
+            "padding-block-end": 40
+          }
+        },
+        "course_navigation": {
+          "type": "text",
+          "settings": {
+            "text": "<div class='course-navigation'><div class='nav-item'><a href='/account' class='btn btn-outline'>← Back to Dashboard</a></div><div class='nav-item'><a href='/collections/courses' class='btn btn-outline'>Browse More Courses</a></div></div>",
+            "type_preset": "body",
+            "alignment": "center",
+            "padding-block-start": 20,
+            "padding-block-end": 40
+          }
+        },
+        "support_info": {
+          "type": "text",
+          "settings": {
+            "text": "<div class='course-support'><h3>Need Help?</h3><p>If you experience any technical issues with the course player, please contact our support team.</p><a href='/pages/help-center' class='btn btn-primary'>Get Support</a></div>",
+            "type_preset": "h3",
+            "alignment": "center",
+            "background": true,
+            "background_color": "#f8f9fa",
+            "padding-block-start": 40,
+            "padding-block-end": 40
+          }
+        }
+      },
+      "block_order": [
+        "course_header",
+        "intuto_player",
+        "course_navigation",
+        "support_info"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "title": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Privacy Policy</h1><p class='effective-date'>Effective Date: May 30, 2025</p>",
+            "type_preset": "h1",
+            "alignment": "center",
+            "color": "#1e3a5f",
+            "padding-block-start": 40,
+            "padding-block-end": 20
+          }
+        },
+        "introduction": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Amusement Academy International (\"AAI,\" \"we,\" \"us,\" or \"our\") is committed to protecting your privacy and personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our learning management system and related services.</p>",
+            "max_width": "narrow",
+            "alignment": "left",
+            "padding-block-start": 20,
+            "padding-block-end": 30
+          }
+        },
+        "data_collection": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Information We Collect</h2><h3>Personal Information</h3><ul><li>Name, email address, and contact information</li><li>Professional credentials and certifications</li><li>Educational and employment history</li><li>Payment and billing information</li></ul><h3>Educational Data</h3><ul><li>Course enrollment and completion records</li><li>Assessment scores and progress tracking</li><li>Learning preferences and engagement metrics</li><li>Certificate and credential information</li></ul><h3>Technical Information</h3><ul><li>Device information and browser type</li><li>IP address and location data</li><li>Usage patterns and platform interactions</li><li>Cookies and similar tracking technologies</li></ul>",
+            "type_preset": "body",
+            "max_width": "narrow",
+            "alignment": "left",
+            "padding-block-start": 30,
+            "padding-block-end": 30
+          }
+        },
+        "data_use": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>How We Use Your Information</h2><ul><li><strong>Educational Services:</strong> Deliver courses, track progress, issue certificates</li><li><strong>Account Management:</strong> Maintain your profile and subscription</li><li><strong>Communication:</strong> Send course updates, newsletters, and support</li><li><strong>Improvement:</strong> Enhance our platform and educational content</li><li><strong>Compliance:</strong> Meet legal and regulatory requirements</li><li><strong>Marketing:</strong> Promote relevant courses and services (with consent)</li></ul>",
+            "type_preset": "body",
+            "max_width": "narrow",
+            "alignment": "left",
+            "padding-block-start": 30,
+            "padding-block-end": 30
+          }
+        },
+        "data_rights": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Your Rights</h2><p>Under GDPR, CCPA, and other applicable privacy laws, you have the right to:</p><ul><li><strong>Access:</strong> Request copies of your personal data</li><li><strong>Rectification:</strong> Correct inaccurate or incomplete information</li><li><strong>Erasure:</strong> Request deletion of your personal data</li><li><strong>Portability:</strong> Receive your data in a machine-readable format</li><li><strong>Objection:</strong> Object to processing for marketing purposes</li><li><strong>Restriction:</strong> Limit how we process your information</li></ul><p>To exercise these rights, contact us at <a href='mailto:privacy@aai-lms.com'>privacy@aai-lms.com</a></p>",
+            "type_preset": "body",
+            "max_width": "narrow",
+            "alignment": "left",
+            "padding-block-start": 30,
+            "padding-block-end": 30
+          }
+        },
+        "contact_info": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Contact Information</h2><p>If you have questions about this Privacy Policy or our data practices, please contact:</p><p><strong>Privacy Officer</strong><br>Amusement Academy International<br>Email: <a href='mailto:privacy@aai-lms.com'>privacy@aai-lms.com</a><br>Phone: 1-800-AAI-SAFE</p><p><em>This policy was last updated on May 30, 2025.</em></p>",
+            "type_preset": "body",
+            "max_width": "narrow",
+            "alignment": "left",
+            "background": true,
+            "background_color": "#f8f9fa",
+            "padding-block-start": 30,
+            "padding-block-end": 40
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "introduction",
+        "data_collection",
+        "data_use",
+        "data_rights",
+        "contact_info"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 20,
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

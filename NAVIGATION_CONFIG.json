@@ -1,0 +1,125 @@
+{
+  "main-menu": {
+    "name": "Main Menu",
+    "links": [
+      {
+        "title": "Home",
+        "url": "/",
+        "type": "frontpage"
+      },
+      {
+        "title": "Courses",
+        "url": "/collections/courses",
+        "type": "collection",
+        "children": [
+          {
+            "title": "Course Catalog",
+            "url": "/collections/courses",
+            "type": "collection"
+          },
+          {
+            "title": "Certifications",
+            "url": "/pages/certifications",
+            "type": "page"
+          },
+          {
+            "title": "Corporate Training",
+            "url": "/pages/corporate-training",
+            "type": "page"
+          }
+        ]
+      },
+      {
+        "title": "Training Resources",
+        "url": "#",
+        "type": "header",
+        "children": [
+          {
+            "title": "Webinars",
+            "url": "/pages/webinars",
+            "type": "page"
+          },
+          {
+            "title": "Safety Library",
+            "url": "/pages/safety-library",
+            "type": "page"
+          },
+          {
+            "title": "Industry Standards",
+            "url": "/pages/industry-standards",
+            "type": "page"
+          }
+        ]
+      },
+      {
+        "title": "About",
+        "url": "#",
+        "type": "header",
+        "children": [
+          {
+            "title": "About AAI",
+            "url": "/pages/about",
+            "type": "page"
+          },
+          {
+            "title": "Our Instructors",
+            "url": "/pages/instructors",
+            "type": "page"
+          },
+          {
+            "title": "Partnerships",
+            "url": "/pages/partnerships",
+            "type": "page"
+          }
+        ]
+      },
+      {
+        "title": "Support",
+        "url": "#",
+        "type": "header",
+        "children": [
+          {
+            "title": "Help Center",
+            "url": "/pages/help-center",
+            "type": "page"
+          },
+          {
+            "title": "Platform Demo",
+            "url": "/pages/demo",
+            "type": "page"
+          },
+          {
+            "title": "Contact Us",
+            "url": "/pages/contact",
+            "type": "page"
+          }
+        ]
+      }
+    ]
+  },
+  "footer-menu": {
+    "name": "Footer Menu",
+    "links": [
+      {
+        "title": "Privacy Policy",
+        "url": "/pages/privacy-policy",
+        "type": "page"
+      },
+      {
+        "title": "Terms of Service",
+        "url": "/pages/terms-of-service",
+        "type": "page"
+      },
+      {
+        "title": "Help Center",
+        "url": "/pages/help-center",
+        "type": "page"
+      },
+      {
+        "title": "Contact Us",
+        "url": "/pages/contact",
+        "type": "page"
+      }
+    ]
+  }
+}
