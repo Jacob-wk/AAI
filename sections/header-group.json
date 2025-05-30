@@ -1,4 +1,13 @@
-
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
   "type": "header",
   "name": "Header",
   "sections": {
@@ -6,7 +15,7 @@
       "type": "aai-header",
       "settings": {
         "show_credentials_bar": true,
-        "credentials_text": "Professional Safety Education Since 2025",
+        "credentials_text": "Professional Safety Education Since 2010",
         "show_iaapa_badge": true,
         "show_astm_badge": true,
         "show_naarso_badge": true,
@@ -14,9 +23,36 @@
         "show_search": true,
         "show_cart": true
       }
+    },
+    "aai_hero_6j8Jgi": {
+      "type": "aai-hero",
+      "name": "AAI Hero",
+      "settings": {
+        "title": "Where Safety Meets Adventure",
+        "subtitle": "Professional safety education for the amusement industry. Advance your career while keeping guests safe.",
+        "show_features": true,
+        "feature_1": "IAAPA Accredited",
+        "feature_2": "Industry Experts",
+        "feature_3": "CEU Credits",
+        "primary_button_text": "Explore Courses",
+        "primary_button_url": "",
+        "secondary_button_text": "Try Free Demo",
+        "secondary_button_url": "",
+        "visual_text": "Safety First, Adventure Always",
+        "show_trust_indicators": true,
+        "stat_1_number": "10,000+",
+        "stat_1_label": "Professionals Trained",
+        "stat_2_number": "500+",
+        "stat_2_label": "Partner Organizations",
+        "stat_3_number": "25+",
+        "stat_3_label": "Years Experience",
+        "stat_4_number": "100%",
+        "stat_4_label": "Safety Focused"
+      }
     }
   },
   "order": [
-    "header_section"
+    "header_section",
+    "aai_hero_6j8Jgi"
   ]
 }
