@@ -63,9 +63,11 @@ COPILOT CONTEXT:
         <div class="aai-course-enrollment-card">
           {% if product.featured_image %}
             <div class="aai-course-image">
-              <img src="{{ product.featured_image | img_url: '400x300' }}" 
+              <img src="{{ product.featured_image | image_url: width: 400, height: 300 }}" 
                    alt="{{ product.title }}" 
-                   loading="lazy">
+                   loading="lazy"
+                   width="400" 
+                   height="300">
             </div>
           {% endif %}
 
@@ -174,9 +176,11 @@ COPILOT CONTEXT:
                   <div class="aai-related-course">
                     <a href="{{ related_product.url }}">
                       {% if related_product.featured_image %}
-                        <img src="{{ related_product.featured_image | img_url: '200x150' }}" 
+                        <img src="{{ related_product.featured_image | image_url: width: 200, height: 150 }}" 
                              alt="{{ related_product.title }}" 
-                             loading="lazy">
+                             loading="lazy"
+                             width="200"
+                             height="150">
                       {% endif %}
                       <h4>{{ related_product.title }}</h4>
                       <span class="aai-related-price">${{ related_product.price | money_without_currency }}</span>

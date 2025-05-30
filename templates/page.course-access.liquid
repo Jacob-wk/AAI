@@ -74,7 +74,7 @@ COPILOT CONTEXT:
                 <!-- Enrolled courses will be dynamically populated by JavaScript -->
                 {% for metafield in customer.metafields.aai %}
                   {% if metafield.key contains 'course_completion_' %}
-                    {% assign course_data = metafield.value | parse_json %}
+                    {% assign course_data = metafield.value %}
                     <div class="aai-course-item completed">
                       <div class="aai-course-header">
                         <h3>{{ course_data.course_title }}</h3>
