@@ -107,6 +107,8 @@ COPILOT CONTEXT:
     <!-- Load critical JavaScript early since other modules depend on it -->
     <script src="{{ 'critical.js' | asset_url }}" type="module" defer="defer"></script>
 
+    {%- render 'scripts' -%}
+
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
       if (Shopify.designMode) {
