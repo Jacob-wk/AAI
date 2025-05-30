@@ -1,5 +1,5 @@
-import { DialogComponent } from './dialog.js';
-import { CartAddEvent } from './events.js';
+import { DialogComponent } from '@theme/dialog';
+import { CartAddEvent } from '@theme/events';
 
 /**
  * A custom element that manages a cart drawer.

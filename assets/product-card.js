@@ -1,8 +1,8 @@
-import VariantPicker from './variant-picker.js';
-import { Component } from './component.js';
-import { debounce, isDesktopBreakpoint, mediaQueryLarge } from './utilities.js';
-import { ThemeEvents, VariantSelectedEvent, VariantUpdateEvent, SlideshowSelectEvent } from './events.js';
-import { morph } from './morph.js';
+import VariantPicker from '@theme/variant-picker';
+import { Component } from '@theme/component';
+import { debounce, isDesktopBreakpoint, mediaQueryLarge } from '@theme/utilities';
+import { ThemeEvents, VariantSelectedEvent, VariantUpdateEvent, SlideshowSelectEvent } from '@theme/events';
+import { morph } from '@theme/morph';
 
 /**
  * A custom element that displays a product card.

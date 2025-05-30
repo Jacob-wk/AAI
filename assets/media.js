@@ -1,6 +1,6 @@
-import { Component } from './component.js';
-import { ThemeEvents, MediaStartedPlayingEvent } from './events.js';
-import { DialogCloseEvent } from './dialog.js';
+import { Component } from '@theme/component';
+import { ThemeEvents, MediaStartedPlayingEvent } from '@theme/events';
+import { DialogCloseEvent } from '@theme/dialog';
 
 /**
  * A deferred media element

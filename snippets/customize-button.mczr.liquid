@@ -1,0 +1,279 @@
+{% if product.metafields.mczr.isCustomizable %} {% render 'mczr' %}
+
+<script>
+  document.body.insertAdjacentHTML('beforeend', `
+    <div id="modal-product-mczr-dark-overlay"></div>
+    <div id="product-mczr-modal-container">
+      <button id="product-mczr-modal-exit">
+        <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <title>close</title>
+          <path d="M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z"/>
+        </svg>
+      </button>
+      
+      <div id="product-mczr-modal">
+        <div id="mczrLoader"></div>
+      </div>
+    </div>
+  `)
+
+  function getLastAncestorWithoutTag(element, tag) {
+    if (!element.innerHTML.includes(tag) && element.parentElement?.innerHTML.includes(tag)) {
+      return element
+    } else if (!!element.parentElement) {
+      return getLastAncestorWithoutTag(element.parentElement, tag)
+    }
+
+    return undefined
+  }
+
+  const defaultCustomizeButtonAttribute = 'data-mczr="customize_button"'
+  const alternativeCustomizeButtonClassName = 'data-mczr-customize-button'
+  const quantityAttribute = 'data-mczr="quantity_input"'
+  const buyItNowAttribute = 'data-mczr="buy_it_now"'
+  const mczrHiddenAttribute = 'data-mczr="hidden"'
+  const addToCartButtonClassesToRemove = [/ajax/i]
+
+  const defaultAddToCartButton = document.querySelector(`[${defaultCustomizeButtonAttribute}]`)
+  const alternateAddToCartButton = document.getElementsByClassName(alternativeCustomizeButtonClassName)[0]
+  const foundAddToCartButton = defaultAddToCartButton?.closest('button') || defaultAddToCartButton || alternateAddToCartButton?.closest('button') || alternateAddToCartButton
+
+  if (!!foundAddToCartButton) {
+    // Disable the "Variant Option Product Options" app. 
+    // Prevent loading if this script run first, otherwise remove the form
+    if(window.bcpo && !window.bcpo.disabled) {
+      window.bcpo.disabled = true
+      document.getElementById('bcpo')?.remove()
+    }
+
+    // Remove Quantity Input
+    const quantityInput = document.querySelector(`input[${quantityAttribute}]`)
+    if (quantityInput) {
+      const ancestor = getLastAncestorWithoutTag(quantityInput, !!defaultAddToCartButton ? defaultCustomizeButtonAttribute : alternativeCustomizeButtonClassName)
+      ancestor?.remove()
+    }
+
+    // Remove Checkout Button
+    const buyItNowButton = document.querySelector(`div[${buyItNowAttribute}]`)
+    buyItNowButton?.remove()
+
+    // Insert Customize Button
+    const cleanedClassName = (foundAddToCartButton.className || '').split(' ').filter(className => {
+      return !addToCartButtonClassesToRemove.find(classToRemove => className.match(classToRemove))
+    }).join(' ')
+
+    foundAddToCartButton.insertAdjacentHTML(
+      'afterend',
+      `<button type="button" id="product-mczr-modal-button" class="${cleanedClassName} mczr-customize-button">Customize</button>`
+    )
+
+    // Remove Add to Cart Button
+    foundAddToCartButton.remove()
+
+    // Remove the variants buttons or dropdown
+    document.querySelectorAll('variant-selects').forEach(node => node.remove())
+    document.querySelectorAll('variant-radios').forEach(node => node.remove())
+
+    const variantSelectors = ['.type_variant_picker', '.product-form__input', '.ProductForm__Variants', '.product__selectors', '.product__block__variants', 'body *:not(script)']
+    
+    let wasFound = false
+    let i = 0
+
+    while (!wasFound && i < variantSelectors.length) {
+      document.querySelectorAll(variantSelectors[i]).forEach(node => {
+        if (node.innerText?.trim().match(/mczr_price_[^\s]+$/i)) {
+          node.style.display = 'none'
+          wasFound = true
+        }
+      })
+      i++
+    }
+
+    // Remove all mczr-hidden
+    document.querySelectorAll(`[${mczrHiddenAttribute}]`).forEach(node => {
+      node.remove()
+    })
+  }
+</script>
+
+<style>
+  @keyframes animateopacity {
+    from {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  }
+  
+  #modal-product-mczr-dark-overlay {
+    animation-duration: 0.5s;
+    animation-name: animateopacity;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999999999998;
+  }
+
+  #product-mczr-modal-container {
+    visibility: hidden;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 999999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #product-mczr-modal {
+    height: 80vh;
+    width: 90%;
+    background: white;
+  }
+
+  @media (max-width: 1200px) {
+    #product-mczr-modal {
+      width: 85%;
+    }
+  }
+
+  #product-mczr-modal-exit {
+    background: none;
+    border: none;
+    display: flex;
+    border-radius: 4px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    z-index: 1;
+    padding: 12px;
+    cursor: pointer;
+    fill: white;
+  }
+
+  #product-mczr-modal-exit:hover {
+    background: rgb(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 770px) {
+    #product-mczr-modal {
+      width: 100%;
+      height: calc(100% - 56px);
+      padding: 0;
+      margin-top: 56px;
+    }
+
+    #mczrLoader {
+      width: 100%;
+      height: 100%;
+    }
+
+    #mczrProductIframe {
+      min-height: 100%;
+      max-height: 100%;
+    }
+
+    #product-mczr-modal-exit > svg {
+      width: 16px !important;
+      height: 16px !important;
+    }
+
+    .disable-scroll {
+      position: fixed;
+    }
+  }
+
+  @media (max-width: 376px) {
+    #product-mczr-modal {
+      height: calc(100% - 32px);
+      margin-top: 32px;
+    }
+      
+    #product-mczr-modal-exit {
+      top: 0px;
+      right: 0px;
+      padding: 10px;
+    }
+
+    #product-mczr-modal-exit > svg {
+      width: 12px !important;
+      height: 12px !important;
+    }
+  }
+
+  .hide-modal-content {
+    display: none;
+  }
+
+  #product-mczr-modal-button {
+    margin-bottom: 16px;
+  }
+
+  .disable-scroll {
+    overflow: hidden !important;
+  }
+
+  [data-mczr="quantity_input"],
+  [data-mczr="buy_it_now"],
+  [data-mczr="hidden"] {
+    display: none;
+  }
+</style>
+
+<script>
+  const showOverlay = () => (document.querySelector('#modal-product-mczr-dark-overlay').style.display = 'block')
+  const showModal = () => (document.querySelector('#product-mczr-modal-container').style.visibility = 'visible')
+  const hideOverlay = () => (document.querySelector('#modal-product-mczr-dark-overlay').style.display = 'none')
+  const hideModal = () => (document.querySelector('#product-mczr-modal-container').style.visibility = 'hidden')
+  const preventScroll = () => document.body.classList.add('disable-scroll')
+  const allowScroll = () => document.body.classList.remove('disable-scroll')
+
+  // Open the Modal Window
+  document.querySelector('#product-mczr-modal-button').onclick = function (event) {
+    event.preventDefault()
+    showOverlay()
+    showModal()
+    preventScroll()
+  }
+
+  // Close the Modal Window by clicking the X
+  document.getElementById('product-mczr-modal-exit').onclick = function (event) {
+    event.preventDefault()
+    hideOverlay()
+    hideModal()
+    allowScroll()
+  }
+
+  // Close the Modal Window by clicking outside the box
+  window.onclick = function (event) {
+    if (event.target === document.querySelector('#product-mczr-modal-container')) {
+      event.preventDefault()
+      hideOverlay()
+      hideModal()
+      allowScroll()
+    }
+  }
+
+  try {
+    const url = new URL(window.location.href)
+    const designId = url.searchParams.get('designId')
+
+    if(designId) {
+      showOverlay()
+      showModal()
+      preventScroll()
+    }
+  } 
+  catch(error) {
+    console.error(error)
+  }
+</script>
+{% endif %}

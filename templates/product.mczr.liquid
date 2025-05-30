@@ -1,0 +1,16 @@
+<script>
+var onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+  window.navigator.userAgent
+);
+if (onMobile) {
+  const searchParams = window.location.search?.replace('?', '')?.split('&') || [];
+  if (!searchParams.includes('view=mczrmobile')) searchParams.push('view=mczrmobile');
+  window.location = `${window.location.pathname}?${searchParams.join('&')}`;
+}
+</script>
+{% include 'mczr' %}
+{% comment %}
+  You can add or include some content in this page.
+{% endcomment %}
+<div id="mczrLoader" style="text-align: center;">
+</div>

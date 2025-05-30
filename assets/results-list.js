@@ -1,5 +1,5 @@
-import { mediaQueryLarge, requestIdleCallback, startViewTransition } from './utilities.js';
-import PaginatedList from './paginated-list.js';
+import { mediaQueryLarge, requestIdleCallback, startViewTransition } from '@theme/utilities';
+import PaginatedList from '@theme/paginated-list';
 
 /**
  * A custom element that renders a pagniated results list

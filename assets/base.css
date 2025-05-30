@@ -1,45 +1,73 @@
-
-/* AAI LMS Custom Variables */
-:root {
-  /* AAI Brand Colors */
-  --authority-navy: #1B365D;
-  --charcoal-grey: #2c3e50;
-  --clean-white: #ffffff;
-  --safety-orange: #FF6B35;
-  --electric-blue: #4A90E2;
-  --success-green: #27ae60;
-  --light-grey: #ecf0f1;
-  --medium-grey: #95a5a6;
-  --dark-grey: #34495e;
-  
-  /* Professional spacing and sizing */
-  --section-padding: 80px;
-  --container-max-width: 1200px;
-  --border-radius: 8px;
-  --shadow-light: 0 2px 8px rgba(0,0,0,0.08);
-  --shadow-medium: 0 4px 16px rgba(0,0,0,0.12);
-
-  /* Original Horizon variables */
-  --hover-lift-amount: 4px;
-  --hover-scale-amount: 1.03;
-  --hover-subtle-zoom-amount: 1.015;
-  --hover-shadow-color: var(--color-shadow);
-  --hover-transition-duration: 0.25s;
-  --hover-transition-timing: ease-out;
-}
-
 /* Reset styles inspired by https://www.joshwcomeau.com/css/custom-css-reset/ */
 * {
   box-sizing: border-box;
 }
 
 body {
+  font-family: var(--font-family-primary);
   color: var(--color-foreground);
   background: var(--color-background);
   display: flex;
   flex-direction: column;
   margin: 0;
   min-height: 100svh;
+  line-height: 1.6;
+}
+
+:root {
+  /* AAI Brand Colors */
+  --authority-navy: #1e3a5f;
+  --charcoal-grey: #2c3e50;
+  --clean-white: #ffffff;
+  --safety-orange: #ff6b35;
+  --electric-blue: #3498db;
+  --success-green: #27ae60;
+  --light-grey: #ecf0f1;
+  --medium-grey: #95a5a6;
+  --dark-grey: #34495e;
+  
+  /* Theme compatibility mappings */
+  --color-primary: var(--authority-navy);
+  --color-secondary: var(--safety-orange);
+  --color-accent: var(--electric-blue);
+  --color-success: var(--success-green);
+  --color-foreground: var(--charcoal-grey);
+  --color-background: var(--clean-white);
+  
+  /* AAI Typography */
+  --font-family-primary: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* AAI Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 4rem;
+  
+  /* AAI Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-round: 50%;
+  
+  /* AAI Shadows */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.16);
+  
+  /* Original hover variables */
+  --hover-lift-amount: 4px;
+  --hover-scale-amount: 1.03;
+  --hover-subtle-zoom-amount: 1.015;
+  --hover-shadow-color: var(--color-shadow);
+  --hover-transition-duration: 0.25s;
+  --hover-transition-timing: ease-out;
 }
 
 html {
@@ -3913,7 +3941,7 @@ text-component {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-    text-overflow: ellipsis;
+  text-overflow: ellipsis;
   -webkit-line-clamp: 3;
   line-clamp: 3;
 }
@@ -3924,7 +3952,7 @@ text-component {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-        text-overflow: ellipsis;
+    text-overflow: ellipsis;
     -webkit-line-clamp: 3;
     line-clamp: 3;
   }
@@ -3957,4 +3985,86 @@ text-component {
   z-index: auto;
   transform: none;
   box-shadow: none;
+}
+
+/* ============================================
+   AAI LMS Theme Customizations
+   ============================================ */
+
+/* AAI Container */
+.aai-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* AAI Buttons */
+.aai-btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: var(--border-radius-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  font-family: var(--font-family-primary);
+}
+
+.aai-btn-primary {
+  background-color: var(--safety-orange);
+  color: var(--clean-white);
+}
+
+.aai-btn-primary:hover {
+  background-color: #e55a2b;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.aai-btn-secondary {
+  background-color: transparent;
+  color: var(--authority-navy);
+  border: 2px solid var(--authority-navy);
+  padding: 10px 30px;
+}
+
+.aai-btn-secondary:hover {
+  background-color: var(--authority-navy);
+  color: var(--clean-white);
+}
+
+/* AAI Header Top Bar */
+.aai-header-top {
+  background-color: var(--authority-navy);
+  color: var(--clean-white);
+  padding: 8px 0;
+  font-size: 0.875rem;
+}
+
+.aai-header-top .aai-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aai-credentials-info {
+  font-size: 0.875rem;
+}
+
+.aai-credentials {
+  display: flex;
+  gap: 20px;
+}
+
+.aai-credential-badge {
+  background: linear-gradient(135deg, var(--success-green), #2ecc71);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }

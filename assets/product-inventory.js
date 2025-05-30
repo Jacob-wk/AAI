@@ -1,5 +1,5 @@
-import { ThemeEvents, VariantUpdateEvent } from './events.js';
-import { morph } from './morph.js';
+import { ThemeEvents, VariantUpdateEvent } from '@theme/events';
+import { morph } from '@theme/morph';
 
 class ProductInventory extends HTMLElement {
   connectedCallback() {

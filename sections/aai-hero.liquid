@@ -1,0 +1,422 @@
+{% comment %}
+  AAI Hero Section
+  - Features AAI branding and LMS-specific content
+  - Trust indicators and course grid preview
+{% endcomment %}
+
+<section class="aai-hero">
+  <div class="aai-container">
+    <div class="aai-hero-content">
+      <div class="aai-hero-text">
+        <h1 class="aai-hero-title">
+          {{ section.settings.title | default: "Where Safety Meets Adventure" }}
+        </h1>
+        <p class="aai-hero-subtitle">
+          {{ section.settings.subtitle | default: "Professional safety education for the amusement industry. Advance your career while keeping guests safe." }}
+        </p>
+        
+        {% if section.settings.show_features %}
+          <div class="aai-hero-features">
+            <div class="aai-hero-feature">
+              <div class="aai-check-icon">✓</div>
+              <span>{{ section.settings.feature_1 | default: "IAAPA Accredited" }}</span>
+            </div>
+            <div class="aai-hero-feature">
+              <div class="aai-check-icon">✓</div>
+              <span>{{ section.settings.feature_2 | default: "Industry Experts" }}</span>
+            </div>
+            <div class="aai-hero-feature">
+              <div class="aai-check-icon">✓</div>
+              <span>{{ section.settings.feature_3 | default: "CEU Credits" }}</span>
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="aai-hero-actions">
+          {% if section.settings.primary_button_text != blank %}
+            <a href="{{ section.settings.primary_button_url | default: '#courses' }}" class="aai-btn-primary">
+              {{ section.settings.primary_button_text }}
+            </a>
+          {% endif %}
+          {% if section.settings.secondary_button_text != blank %}
+            <a href="{{ section.settings.secondary_button_url | default: '#demo' }}" class="aai-btn-secondary">
+              {{ section.settings.secondary_button_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="aai-hero-visual">
+        {% if section.settings.hero_image != blank %}
+          <img
+            src="{{ section.settings.hero_image | image_url: width: 600 }}"
+            alt="{{ section.settings.hero_image.alt | default: 'AAI Safety Education' }}"
+            width="600"
+            height="{{ 600 | divided_by: section.settings.hero_image.aspect_ratio | round }}"
+            loading="eager"
+          >
+        {% else %}
+          <div class="aai-hero-placeholder">
+            <div class="aai-hero-icon">🎢</div>
+            <p>{{ section.settings.visual_text | default: "Safety First, Adventure Always" }}</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if section.settings.show_trust_indicators %}
+  <section class="aai-trust-indicators">
+    <div class="aai-container">
+      <div class="aai-trust-grid">
+        <div class="aai-trust-item">
+          <div class="aai-trust-number">{{ section.settings.stat_1_number | default: "10,000+" }}</div>
+          <div class="aai-trust-label">{{ section.settings.stat_1_label | default: "Professionals Trained" }}</div>
+        </div>
+        <div class="aai-trust-item">
+          <div class="aai-trust-number">{{ section.settings.stat_2_number | default: "500+" }}</div>
+          <div class="aai-trust-label">{{ section.settings.stat_2_label | default: "Partner Organizations" }}</div>
+        </div>
+        <div class="aai-trust-item">
+          <div class="aai-trust-number">{{ section.settings.stat_3_number | default: "25+" }}</div>
+          <div class="aai-trust-label">{{ section.settings.stat_3_label | default: "Years Experience" }}</div>
+        </div>
+        <div class="aai-trust-item">
+          <div class="aai-trust-number">{{ section.settings.stat_4_number | default: "100%" }}</div>
+          <div class="aai-trust-label">{{ section.settings.stat_4_label | default: "Safety Focused" }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+<style>
+  .aai-hero {
+    background: linear-gradient(135deg, var(--authority-navy) 0%, #2c4a70 100%);
+    color: var(--clean-white);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .aai-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .aai-hero-content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .aai-hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: var(--clean-white);
+  }
+
+  .aai-hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+  }
+
+  .aai-hero-features {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .aai-hero-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .aai-check-icon {
+    width: 20px;
+    height: 20px;
+    background-color: var(--success-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .aai-hero-actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .aai-hero-visual {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+  }
+
+  .aai-hero-visual img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .aai-hero-placeholder {
+    text-align: center;
+  }
+
+  .aai-hero-icon {
+    font-size: 8rem;
+    margin-bottom: 20px;
+  }
+
+  .aai-hero-placeholder p {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.1rem;
+  }
+
+  /* Trust Indicators */
+  .aai-trust-indicators {
+    background-color: var(--light-grey);
+    padding: 60px 0;
+  }
+
+  .aai-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    text-align: center;
+  }
+
+  .aai-trust-item {
+    padding: 20px;
+  }
+
+  .aai-trust-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--authority-navy);
+    margin-bottom: 10px;
+  }
+
+  .aai-trust-label {
+    font-size: 1rem;
+    color: var(--charcoal-grey);
+    font-weight: 500;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .aai-hero {
+      padding: 60px 0;
+    }
+
+    .aai-hero-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .aai-hero-title {
+      font-size: 2rem;
+    }
+
+    .aai-hero-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .aai-hero-features {
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .aai-hero-actions {
+      justify-content: center;
+    }
+
+    .aai-trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .aai-trust-number {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "AAI Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Where Safety Meets Adventure"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Professional safety education for the amusement industry. Advance your career while keeping guests safe."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_features",
+      "label": "Show feature list",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "feature_1",
+      "label": "Feature 1",
+      "default": "IAAPA Accredited"
+    },
+    {
+      "type": "text",
+      "id": "feature_2",
+      "label": "Feature 2",
+      "default": "Industry Experts"
+    },
+    {
+      "type": "text",
+      "id": "feature_3",
+      "label": "Feature 3",
+      "default": "CEU Credits"
+    },
+    {
+      "type": "header",
+      "content": "Hero Actions"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Primary button text",
+      "default": "Explore Courses"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_url",
+      "label": "Primary button URL"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Secondary button text",
+      "default": "Try Free Demo"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_url",
+      "label": "Secondary button URL"
+    },
+    {
+      "type": "header",
+      "content": "Hero Visual"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "visual_text",
+      "label": "Placeholder text",
+      "default": "Safety First, Adventure Always"
+    },
+    {
+      "type": "header",
+      "content": "Trust Indicators"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_indicators",
+      "label": "Show trust indicators",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Statistic 1 number",
+      "default": "10,000+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Statistic 1 label",
+      "default": "Professionals Trained"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Statistic 2 number",
+      "default": "500+"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Statistic 2 label",
+      "default": "Partner Organizations"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_number",
+      "label": "Statistic 3 number",
+      "default": "25+"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Statistic 3 label",
+      "default": "Years Experience"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_number",
+      "label": "Statistic 4 number",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_label",
+      "label": "Statistic 4 label",
+      "default": "Safety Focused"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Hero"
+    }
+  ]
+}
+{% endschema %}

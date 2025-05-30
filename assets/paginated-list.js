@@ -1,6 +1,6 @@
-import { Component } from './component.js';
-import { sectionRenderer } from './section-renderer.js';
-import { requestIdleCallback, viewTransition } from './utilities.js';
+import { Component } from '@theme/component';
+import { sectionRenderer } from '@theme/section-renderer';
+import { requestIdleCallback, viewTransition } from '@theme/utilities';
 
 /**
  * A custom element that renders a paginated list of items.

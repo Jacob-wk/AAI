@@ -1,0 +1,21 @@
+{% if template contains 'product'%}
+      <script id="mczr" type="application/json">
+      {
+          "settings"    : {{ shop.metafields.mczr.settings }},
+          "domain"  : {{shop.permanent_domain | json }},
+          "template"    : {{ template | json }}
+
+          {% if product.metafields.mczr.isCustomizable %}
+               ,"product"    : {{ product | json }},
+                "metafields" : {
+                    "isCustomizable": {{ product.metafields.mczr.isCustomizable }},
+                    "startingPointId": "{{ product.metafields.mczr.startingPointId }}"
+                },
+                "priceAdjustment" : {
+                    "value": "{{ localization.market.metafields.mczr.adjustment_value.value }}",
+                    "type": "{{ localization.market.metafields.mczr.adjustment_type.value }}"
+                }
+          {% endif %}
+      }
+      </script>
+{% endif %}

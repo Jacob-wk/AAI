@@ -1,4 +1,4 @@
-import { prefersReducedMotion } from './utilities.js';
+import { prefersReducedMotion } from '@theme/utilities';
 
 /**
  * A custom element that automatically sizes text to fit its container width.

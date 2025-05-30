@@ -1,4 +1,4 @@
-import { Component } from './component.js';
+import { Component } from '@theme/component';
 
 /**
  * @typedef {Object} Options

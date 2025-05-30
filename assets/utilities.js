@@ -568,25 +568,7 @@ class Scheduler {
 
 export const scheduler = new Scheduler();
 
-// Define global Theme object if it doesn't exist
-if (typeof window !== 'undefined') {
-  /** @type {any} */
-  const globalWindow = window;
-  
-  globalWindow.Theme = globalWindow.Theme || {
-    routes: {
-      root: '/',
-      cart_update_url: '/cart/update.js',
-      search_url: '/search',
-      predictive_search_url: '/search/suggest.json'
-    },
-    translations: {
-      added: 'Added to cart'
-    },
-    utilities: {}
-  };
-  
-  // Add scheduler to Theme utilities
-  globalWindow.Theme.utilities = globalWindow.Theme.utilities || {};
-  globalWindow.Theme.utilities.scheduler = scheduler;
-}
+Theme.utilities = {
+  ...Theme.utilities,
+  scheduler: scheduler,
+};

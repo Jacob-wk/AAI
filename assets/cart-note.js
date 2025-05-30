@@ -1,6 +1,6 @@
-import { Component } from './component.js';
-import { debounce, fetchConfig } from './utilities.js';
-import { cartPerformance } from './performance.js';
+import { Component } from '@theme/component';
+import { debounce, fetchConfig } from '@theme/utilities';
+import { cartPerformance } from '@theme/performance';
 
 /**
  * A custom element that displays a cart note.

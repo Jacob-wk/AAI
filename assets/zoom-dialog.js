@@ -1,4 +1,4 @@
-import { Component } from './component.js';
+import { Component } from '@theme/component';
 import {
   supportsViewTransitions,
   startViewTransition,
@@ -6,10 +6,10 @@ import {
   prefersReducedMotion,
   debounce,
   preloadImage,
-} from './utilities.js';
-import { scrollIntoView } from './scrolling.js';
-import { ZoomMediaSelectedEvent } from './events.js';
-import { DialogCloseEvent } from './dialog.js';
+} from '@theme/utilities';
+import { scrollIntoView } from '@theme/scrolling';
+import { ZoomMediaSelectedEvent } from '@theme/events';
+import { DialogCloseEvent } from '@theme/dialog';
 /**
  * A custom element that renders a zoom dialog.
  *

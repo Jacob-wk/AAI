@@ -105,7 +105,7 @@
   "
 >
   <div class="section-resource-list__header">
-    {%- render '_product-list-content' -%}
+    {%- content_for 'block', type: '_product-list-content', id: 'static-header' -%}
   </div>
 
   {% capture list_items %}
@@ -119,7 +119,7 @@
       <div
         class="resource-list__item"
       >
-        {% render 'product-card', product: product %}
+        {% content_for 'block', type: 'product-card', id: 'static-product-card', closest.product: product %}
       </div>
 
       {% unless forloop.last %}

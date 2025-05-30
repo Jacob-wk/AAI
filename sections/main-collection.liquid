@@ -108,7 +108,9 @@
   <div
     class="collection-wrapper grid gap-style"
   >
-    {% render 'filters',
+    {% content_for 'block',
+      type: 'filters',
+      id: 'filters',
       results: collection,
       results_size: collection.products_count
     %}
@@ -124,7 +126,7 @@
               data-view-transition-id="{{ product.id }}"
               ref="cards[]"
             >
-              {% render 'product-card', product: product %}
+              {% content_for 'block', type: 'product-card', id: 'product-card', closest.product: product %}
             </li>
           {% endfor %}
         {% endcapture %}
@@ -142,7 +144,7 @@
             ref="cards[]"
           >
             {% # theme-check-disable %}
-            {% render 'product-card', product: product %}
+            {% content_for 'block', type: 'product-card', id: 'product-card', closest.product: product %}
             {% # theme-check-enable %}
           </li>
         {% endfor %}

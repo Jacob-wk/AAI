@@ -1,5 +1,5 @@
-import { Component } from './component.js';
-import { debounce, isClickedOutside, onAnimationEnd } from './utilities.js';
+import { Component } from '@theme/component';
+import { debounce, isClickedOutside, onAnimationEnd } from '@theme/utilities';
 
 /**
  * A custom element that manages a dialog.

@@ -1,4 +1,4 @@
-import { preloadImage } from './utilities.js';
+import { preloadImage } from '@theme/utilities';
 
 /** @type {Record<string, number>} */
 const cache = {};

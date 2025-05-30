@@ -1,6 +1,6 @@
-import { Component } from './component.js';
-import { trapFocus, removeTrapFocus } from './focus.js';
-import { onAnimationEnd } from './utilities.js';
+import { Component } from '@theme/component';
+import { trapFocus, removeTrapFocus } from '@theme/focus';
+import { onAnimationEnd } from '@theme/utilities';
 
 /**
  * A custom element that manages the main menu drawer.

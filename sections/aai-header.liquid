@@ -1,0 +1,356 @@
+{% comment %}
+  AAI Custom Header Section
+  - Credentials top bar
+  - Professional navigation
+  - Account integration
+{% endcomment %}
+
+<header class="aai-header">
+  <!-- Credentials Top Bar -->
+  {% if section.settings.show_credentials_bar %}
+    <div class="aai-header-top">
+      <div class="aai-container">
+        <div class="aai-credentials-info">
+          <span>{{ section.settings.credentials_text | default: "Professional Safety Education Since 2010" }}</span>
+        </div>
+        <div class="aai-credentials">
+          {% if section.settings.show_iaapa_badge %}
+            <span class="aai-credential-badge">IAAPA Member</span>
+          {% endif %}
+          {% if section.settings.show_astm_badge %}
+            <span class="aai-credential-badge">ASTM F24</span>
+          {% endif %}
+          {% if section.settings.show_naarso_badge %}
+            <span class="aai-credential-badge">NAARSO</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- Main Navigation -->
+  <nav class="aai-main-nav">
+    <div class="aai-container">
+      <div class="aai-nav-wrapper">
+        <!-- Logo -->
+        <div class="aai-logo">
+          {% if settings.logo != blank %}
+            <a href="{{ routes.root_url }}" class="aai-logo-link">
+              <img
+                src="{{ settings.logo | image_url: width: 200 }}"
+                alt="{{ shop.name }}"
+                width="200"
+                height="{{ 200 | divided_by: settings.logo.aspect_ratio | round }}"
+                loading="eager"
+              >
+            </a>
+          {% else %}
+            <a href="{{ routes.root_url }}" class="aai-logo-text">
+              {{ shop.name }}
+            </a>
+          {% endif %}
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="aai-navigation">
+          {% if section.settings.menu != blank %}
+            <ul class="aai-nav-links">
+              {% for link in section.settings.menu.links %}
+                <li class="aai-nav-item">
+                  <a href="{{ link.url }}" class="aai-nav-link">
+                    {{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+        <!-- Account & Actions -->
+        <div class="aai-nav-actions">
+          {% if section.settings.show_search %}
+            <button class="aai-search-toggle" aria-label="Search">
+              {% render 'icon-search' %}
+            </button>
+          {% endif %}
+
+          {% if shop.customer_accounts_enabled %}
+            <a href="{{ routes.account_url }}" class="aai-account-link">
+              {% if customer %}
+                My Account
+              {% else %}
+                Login
+              {% endif %}
+            </a>
+          {% endif %}
+
+          {% if section.settings.show_cart %}
+            <a href="{{ routes.cart_url }}" class="aai-cart-link">
+              {% render 'icon-cart' %}
+              <span class="aai-cart-count">{{ cart.item_count }}</span>
+            </a>
+          {% endif %}
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="aai-mobile-menu-toggle desktop:hidden" aria-label="Menu">
+          {% render 'icon-menu' %}
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="aai-mobile-menu desktop:hidden">
+    <div class="aai-mobile-menu-content">
+      {% if section.settings.menu != blank %}
+        <ul class="aai-mobile-nav-links">
+          {% for link in section.settings.menu.links %}
+            <li class="aai-mobile-nav-item">
+              <a href="{{ link.url }}" class="aai-mobile-nav-link">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+<style>
+  .aai-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .aai-main-nav {
+    background-color: var(--clean-white);
+    padding: var(--spacing-sm) 0;
+  }
+
+  .aai-nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+
+  .aai-logo-link {
+    display: block;
+  }
+
+  .aai-logo-text {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--authority-navy);
+    text-decoration: none;
+  }
+
+  .aai-navigation {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .aai-nav-links {
+    display: flex;
+    gap: var(--spacing-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .aai-nav-link {
+    color: var(--charcoal-grey);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    transition: color 0.3s ease;
+  }
+
+  .aai-nav-link:hover {
+    color: var(--electric-blue);
+  }
+
+  .aai-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .aai-account-link {
+    background-color: var(--safety-orange);
+    color: var(--clean-white);
+    padding: 10px 20px;
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    transition: background-color 0.3s ease;
+  }
+
+  .aai-account-link:hover {
+    background-color: #e55a2b;
+  }
+
+  .aai-search-toggle,
+  .aai-mobile-menu-toggle {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--charcoal-grey);
+  }
+
+  .aai-cart-link {
+    position: relative;
+    color: var(--charcoal-grey);
+    text-decoration: none;
+    padding: 8px;
+  }
+
+  .aai-cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--safety-orange);
+    color: var(--clean-white);
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: var(--border-radius-round);
+    min-width: 18px;
+    text-align: center;
+  }
+
+  .aai-mobile-menu {
+    display: none;
+    background-color: var(--clean-white);
+    border-top: 1px solid var(--light-grey);
+  }
+
+  .aai-mobile-menu-content {
+    padding: var(--spacing-sm);
+  }
+
+  .aai-mobile-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .aai-mobile-nav-link {
+    display: block;
+    padding: var(--spacing-sm);
+    color: var(--charcoal-grey);
+    text-decoration: none;
+    border-bottom: 1px solid var(--light-grey);
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 768px) {
+    .aai-navigation {
+      display: none;
+    }
+
+    .aai-nav-actions .aai-search-toggle {
+      display: none;
+    }
+
+    .aai-mobile-menu.active {
+      display: block;
+    }
+
+    .aai-header-top .aai-container {
+      flex-direction: column;
+      gap: var(--spacing-xs);
+      text-align: center;
+    }
+
+    .aai-credentials {
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.querySelector('.aai-mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.aai-mobile-menu');
+
+    if (mobileMenuToggle && mobileMenu) {
+      mobileMenuToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('active');
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "AAI Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Credentials Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_credentials_bar",
+      "label": "Show credentials bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "credentials_text",
+      "label": "Credentials text",
+      "default": "Professional Safety Education Since 2010"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_iaapa_badge",
+      "label": "Show IAAPA badge",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_astm_badge",
+      "label": "Show ASTM F24 badge",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_naarso_badge",
+      "label": "Show NAARSO badge",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Header"
+    }
+  ]
+}
+{% endschema %}

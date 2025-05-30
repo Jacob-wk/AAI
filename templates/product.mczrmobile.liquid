@@ -1,0 +1,54 @@
+{% include 'mczr' %}
+<div id="mczrLoader" style="width:100%;height:100%;position:fixed;top:0;left:0;z-index: 2147483647;">
+</div>
+<style>
+  html {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    position: relative;
+    top: 0;
+    padding: 0;
+    line-height: 0;
+    overflow: hidden;
+    max-height: 100%;
+    height: 100% !important;
+  }
+  div#page {
+    max-height: 100%;
+    z-index: 999998 !important;
+  }
+  body:not(.template-index) main.main-content {
+    max-height: 100%;
+    margin: 0;
+  }
+  #PageContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    min-height: 100%;
+    max-height: 100%;
+    width: 100%;
+    z-index: 2147483647;
+    overflow: hidden;
+  }
+  #MainContent{
+    padding-top: 0;
+  }
+  #mczrLoader{
+    text-align:center;
+  }
+  #mczrProductIframe{
+    min-height: 100%;
+    max-height: 100%;
+  }
+  div#shopify-section-footer{
+    display: none;
+  }
+</style>

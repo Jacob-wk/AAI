@@ -1,4 +1,4 @@
-import { Component } from './component.js';
+import { Component } from '@theme/component';
 
 /**
  * A custom element that renders a video background.

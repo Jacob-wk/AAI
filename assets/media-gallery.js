@@ -1,5 +1,5 @@
-import { Component } from './component.js';
-import { ThemeEvents, VariantUpdateEvent, ZoomMediaSelectedEvent } from './events.js';
+import { Component } from '@theme/component';
+import { ThemeEvents, VariantUpdateEvent, ZoomMediaSelectedEvent } from '@theme/events';
 
 /**
  * A custom element that renders a media gallery.

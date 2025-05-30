@@ -1,4 +1,4 @@
-import { ThemeEvents, VariantUpdateEvent } from './events.js';
+import { ThemeEvents, VariantUpdateEvent } from '@theme/events';
 
 /**
  * A custom element that displays a product price.

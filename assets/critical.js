@@ -3,7 +3,7 @@
  * If the component is mounted after the browser finishes the initial render,
  * the shadow root needs to be manually hydrated.
  */
-export class DeclarativeShadowElement extends HTMLElement {
+class DeclarativeShadowElement extends HTMLElement {
   connectedCallback() {
     if (!this.shadowRoot) {
       const template = this.querySelector(':scope > template[shadowrootmode="open"]');

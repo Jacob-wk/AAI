@@ -1,11 +1,11 @@
-import { Component } from './component.js';
-import { VariantSelectedEvent, VariantUpdateEvent } from './events.js';
-import { morph } from './morph.js';
+import { Component } from '@theme/component';
+import { VariantSelectedEvent, VariantUpdateEvent } from '@theme/events';
+import { morph } from '@theme/morph';
 
 /**
  * A custom element that manages a variant picker.
  *
- * @template {import('./component').Refs} [Refs = {}]
+ * @template {import('@theme/component').Refs} [Refs = {}]
  *
  * @extends Component<Refs>
  */
