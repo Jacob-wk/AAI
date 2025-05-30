@@ -45,9 +45,11 @@ COPILOT CONTEXT:
       <ul class="aai-nav-links">
         <li><a href="{{ routes.root_url }}">Home</a></li>
         <li><a href="{{ section.settings.courses_url | default: '/collections/courses' }}">Courses</a></li>
-        <li><a href="{{ section.settings.about_url | default: '/pages/about' }}">About</a></li>
-        <li><a href="{{ section.settings.demo_url | default: '/pages/demo' }}">Free Demo</a></li>
         <li><a href="{{ section.settings.certifications_url | default: '/pages/certifications' }}">Certifications</a></li>
+        <li><a href="{{ section.settings.instructors_url | default: '/pages/instructors' }}">Instructors</a></li>
+        <li><a href="{{ section.settings.about_url | default: '/pages/about' }}">About</a></li>
+        <li><a href="{{ section.settings.contact_url | default: '/pages/contact' }}">Contact</a></li>
+        <li><a href="{{ section.settings.demo_url | default: '/pages/demo' }}">Free Demo</a></li>
       </ul>
 
       <!-- Professional Account Access -->
@@ -74,9 +76,11 @@ COPILOT CONTEXT:
   <nav class="aai-mobile-nav">
     <a href="{{ routes.root_url }}">Home</a>
     <a href="{{ section.settings.courses_url | default: '/collections/courses' }}">Courses</a>
-    <a href="{{ section.settings.about_url | default: '/pages/about' }}">About</a>
-    <a href="{{ section.settings.demo_url | default: '/pages/demo' }}">Free Demo</a>
     <a href="{{ section.settings.certifications_url | default: '/pages/certifications' }}">Certifications</a>
+    <a href="{{ section.settings.instructors_url | default: '/pages/instructors' }}">Instructors</a>
+    <a href="{{ section.settings.about_url | default: '/pages/about' }}">About</a>
+    <a href="{{ section.settings.contact_url | default: '/pages/contact' }}">Contact</a>
+    <a href="{{ section.settings.demo_url | default: '/pages/demo' }}">Free Demo</a>
     
     <div class="aai-mobile-account">
       {%- if customer -%}
