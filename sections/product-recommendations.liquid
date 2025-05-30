@@ -150,7 +150,7 @@
       {% capture list_items %}
         {% for product in products limit: section.settings.max_products %}
           <div class="resource-list__item">
-            {% content_for 'block', type: 'product-card', id: 'static-product-card', closest.product: product %}
+            {% render 'product-card', product: product %}
           </div>
           {% unless forloop.last %}
             <!--@list/split-->

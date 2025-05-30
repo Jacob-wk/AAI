@@ -227,19 +227,15 @@
         class="product-information__media"
         data-testid="product-information-media"
       >
-        {%- content_for 'block',
-          type: '_product-media-gallery',
-          id: 'media-gallery',
-          closest.product: section.settings.product
+        {%- render '_product-media-gallery',
+          product: section.settings.product
         -%}
       </div>
     {% endcapture %}
 
     {% capture details %}
-      {% content_for 'block',
-        type: '_product-details',
-        id: 'product-details',
-        closest.product: section.settings.product
+      {% render '_product-details',
+        product: section.settings.product
       %}
     {% endcapture %}
 

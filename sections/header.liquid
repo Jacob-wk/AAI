@@ -44,19 +44,19 @@
   endif
 
   capture logo
-    content_for 'block', type: '_header-logo', id: 'header-logo'
+    render '_header-logo'
   endcapture
 
   capture menu
-    content_for 'block', type: '_header-menu', id: 'header-menu'
+    render '_header-menu'
   endcapture
 
   capture mobile_menu
-    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'mobile'
+    render '_header-menu', variant: 'mobile'
   endcapture
 
   capture navigation_bar
-    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'navigation_bar', transparent: transparent
+    render '_header-menu', variant: 'navigation_bar', transparent: transparent
   endcapture
 
   capture actions
