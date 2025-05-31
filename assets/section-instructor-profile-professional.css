@@ -1,0 +1,337 @@
+/* Instructor Profile Professional Section Styles */
+
+.instructor-profile-professional {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.instructor-profile__header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.instructor-profile__heading {
+  color: var(--aai-navy);
+  margin-bottom: 20px;
+}
+
+.instructor-profile__description {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--color-foreground-75);
+}
+
+.instructor-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(30, 58, 95, 0.1);
+  padding: 40px;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.instructor-card__image {
+  text-align: center;
+}
+
+.instructor-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--aai-orange);
+  margin-bottom: 20px;
+}
+
+.instructor-photo-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--aai-navy) 0%, #2c4a6b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0 auto 20px;
+}
+
+.instructor-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(255, 107, 53, 0.1);
+  padding: 10px 15px;
+  border-radius: 25px;
+  margin-top: 15px;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  color: #ddd;
+  font-size: 1.6rem;
+}
+
+.star--filled {
+  color: var(--aai-orange);
+}
+
+.rating-value {
+  font-weight: 600;
+  color: var(--aai-navy);
+}
+
+.instructor-name {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--aai-navy);
+  margin: 0 0 10px 0;
+}
+
+.instructor-title {
+  font-size: 1.8rem;
+  color: var(--aai-orange);
+  font-weight: 600;
+  margin: 0 0 20px 0;
+}
+
+.instructor-bio {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--color-foreground-75);
+  margin-bottom: 20px;
+}
+
+.instructor-experience {
+  font-size: 1.4rem;
+  color: var(--aai-blue);
+  margin-bottom: 30px;
+}
+
+.instructor-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.instructor-stat {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: rgba(52, 152, 219, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.stat-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: var(--aai-blue);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-number {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--aai-navy);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 1.2rem;
+  color: var(--color-foreground-75);
+  margin-top: 4px;
+}
+
+.instructor-credentials {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 16px rgba(30, 58, 95, 0.1);
+}
+
+.credentials-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--aai-navy);
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.credentials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.credential-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(52, 152, 219, 0.05) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(30, 58, 95, 0.1);
+}
+
+.credential-icon {
+  flex-shrink: 0;
+  color: var(--aai-navy);
+}
+
+.credential-name {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--aai-navy);
+  margin: 0 0 5px 0;
+}
+
+.credential-issuer {
+  font-size: 1.4rem;
+  color: var(--color-foreground-75);
+  margin: 0 0 5px 0;
+}
+
+.credential-year {
+  font-size: 1.2rem;
+  color: var(--aai-orange);
+  font-weight: 500;
+}
+
+.instructor-expertise {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 16px rgba(30, 58, 95, 0.1);
+}
+
+.expertise-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--aai-navy);
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.expertise-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.expertise-tag {
+  background: linear-gradient(135deg, var(--aai-navy) 0%, #2c4a6b 100%);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.expertise-tag:hover {
+  transform: translateY(-2px);
+}
+
+.instructor-testimonials {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 16px rgba(30, 58, 95, 0.1);
+}
+
+.testimonials-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--aai-navy);
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.testimonial-item {
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(30, 58, 95, 0.1);
+}
+
+.testimonial-rating {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 15px;
+}
+
+.testimonial-text {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: var(--color-foreground);
+  margin: 0 0 20px 0;
+  font-style: italic;
+}
+
+.testimonial-author strong {
+  display: block;
+  font-size: 1.4rem;
+  color: var(--aai-navy);
+  margin-bottom: 5px;
+}
+
+.testimonial-author span {
+  font-size: 1.2rem;
+  color: var(--color-foreground-75);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .instructor-card {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .instructor-photo,
+  .instructor-photo-placeholder {
+    width: 150px;
+    height: 150px;
+  }
+
+  .instructor-stats {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .credentials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .expertise-tags {
+    justify-content: flex-start;
+  }
+}

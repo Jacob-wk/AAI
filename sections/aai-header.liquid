@@ -5,11 +5,13 @@
   - Account integration
 {% endcomment %}
 
+{{ 'section-aai-header.css' | asset_url | stylesheet_tag }}
+
 <header class="aai-header">
   <!-- Credentials Top Bar -->
   {% if section.settings.show_credentials_bar %}
     <div class="aai-header-top">
-      <div class="aai-container">
+      <div class="page-width">
         <div class="aai-credentials-info">
           <span>{{ section.settings.credentials_text | default: "Professional Safety Education Since 2025" }}</span>
         </div>

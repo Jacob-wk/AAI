@@ -1,0 +1,293 @@
+/* AAI Header Section Styles */
+
+/* Header Container */
+.aai-header {
+  position: relative;
+  z-index: 1000;
+  background: var(--clean-white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Credentials Top Bar */
+.aai-header-top {
+  background: var(--authority-navy);
+  color: var(--clean-white);
+  padding: 8px 0;
+  font-size: 0.875rem;
+}
+
+.aai-header-top .page-width {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aai-credentials {
+  display: flex;
+  gap: 20px;
+}
+
+.aai-credential-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Main Navigation */
+.aai-main-nav {
+  background: var(--clean-white);
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.aai-nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  min-height: 70px;
+}
+
+/* Logo Styles */
+.aai-logo {
+  flex-shrink: 0;
+}
+
+.aai-logo-link {
+  display: block;
+  line-height: 0;
+}
+
+.aai-logo img {
+  max-height: 50px;
+  width: auto;
+  height: auto;
+}
+
+.aai-logo-text {
+  color: var(--authority-navy);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Navigation Links */
+.aai-navigation {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.aai-nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+.aai-nav-item {
+  position: relative;
+}
+
+.aai-nav-link {
+  color: var(--charcoal-grey);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 0;
+  transition: color 0.3s ease;
+}
+
+.aai-nav-link:hover {
+  color: var(--authority-navy);
+}
+
+/* Navigation Actions */
+.aai-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.aai-search-toggle,
+.aai-account-link,
+.aai-cart-link {
+  color: var(--charcoal-grey);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.aai-search-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.aai-search-toggle:hover,
+.aai-account-link:hover,
+.aai-cart-link:hover {
+  color: var(--authority-navy);
+}
+
+.aai-cart-link {
+  position: relative;
+}
+
+.aai-cart-count {
+  background: var(--authority-navy);
+  color: var(--clean-white);
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+}
+
+/* Mobile Menu Toggle */
+.aai-mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--charcoal-grey);
+}
+
+/* Mobile Menu */
+.aai-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--clean-white);
+  z-index: 9999;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.aai-mobile-menu.active {
+  display: block;
+}
+
+.aai-mobile-menu-content {
+  padding-top: 60px;
+}
+
+.aai-mobile-nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.aai-mobile-nav-item {
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.aai-mobile-nav-link {
+  display: block;
+  padding: 15px 0;
+  color: var(--charcoal-grey);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.aai-mobile-nav-link:hover {
+  color: var(--authority-navy);
+}
+
+/* Icons */
+.aai-header svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .aai-nav-links {
+    gap: 20px;
+  }
+  
+  .aai-nav-actions {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aai-header-top {
+    padding: 6px 0;
+    font-size: 0.75rem;
+  }
+  
+  .aai-credentials {
+    gap: 10px;
+  }
+  
+  .aai-credential-badge {
+    padding: 3px 6px;
+    font-size: 0.7rem;
+  }
+  
+  .aai-nav-wrapper {
+    padding: 10px 0;
+    min-height: 60px;
+  }
+  
+  .aai-logo img {
+    max-height: 40px;
+  }
+  
+  .aai-navigation {
+    display: none;
+  }
+  
+  .aai-mobile-menu-toggle {
+    display: block;
+  }
+  
+  .aai-nav-actions {
+    gap: 10px;
+  }
+  
+  .aai-search-toggle,
+  .aai-cart-link {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aai-header-top .aai-container {
+    padding: 0 15px;
+  }
+  
+  .aai-main-nav .aai-container {
+    padding: 0 15px;
+  }
+  
+  .aai-credentials-info {
+    display: none;
+  }
+  
+  .aai-account-link {
+    display: none;
+  }
+}
+
+/* Desktop utility class for mobile menu toggle */
+@media (min-width: 769px) {
+  .desktop\:hidden {
+    display: none !important;
+  }
+}
