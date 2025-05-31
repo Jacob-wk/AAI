@@ -1,0 +1,42 @@
+{
+  "current": "aai-professional",
+  "presets": {
+    "aai-professional": {
+      "color_scheme_1": "#ffffff",
+      "color_scheme_2": "#f8f9fa",
+      "color_scheme_3": "#1e3a5f",
+      "color_scheme_4": "#ff6b35",
+      "color_scheme_5": "#3498db",
+      "color_scheme_6": "#2c3e50",
+      "color_scheme_7": "#e74c3c",
+      "color_scheme_8": "#27ae60",
+      
+      "typography_heading_font": "Source Sans Pro",
+      "typography_body_font": "Source Sans Pro",
+      "typography_accent_font": "Source Sans Pro",
+      
+      "site_logo": "",
+      "site_tagline": "Professional Safety Education Since 2025",
+      "company_name": "American Amusement Industries",
+      "company_address": "",
+      "company_phone": "",
+      "company_email": "info@aai-education.com",
+      
+      "enable_sticky_header": true,
+      "cart_type": "drawer",
+      "enable_product_zoom": true,
+      "enable_infinite_scroll": false,
+      "show_breadcrumbs": true,
+      
+      "footer_text": "&copy; 2025 American Amusement Industries. All rights reserved.",
+      "footer_show_social": true,
+      "footer_show_newsletter": true,
+      
+      "page_width": "1200",
+      "card_style": "standard",
+      "card_hover_effect": "lift",
+      "button_style": "fill",
+      "input_style": "standard"
+    }
+  }
+}

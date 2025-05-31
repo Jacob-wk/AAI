@@ -117,18 +117,12 @@
 
     <main class="gift-card__main">
       <div class="gift-card__image-wrapper">
-        {%- if settings.logo != blank -%}
-          {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-          {{
-            settings.logo
-            | image_url: width: 324
-            | image_tag: class: 'gift-card__image gift-card__image-border', alt: logo_alt
-          }}
-        {%- else %}
-          <img
-            class="gift-card__image"
-            src="{{ 'gift-card/card.svg' | shopify_asset_url }}"
-            alt=""
+        <img
+          src="{{ 'AAI-Full-Color-Logo.jpg' | asset_url }}"
+          class="gift-card__image gift-card__image-border"
+          alt="Amusement Advantage International"
+          width="324"
+          height="auto"
             height="200"
             width="334"
             loading="eager"

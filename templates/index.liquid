@@ -48,7 +48,7 @@ COPILOT CONTEXT:
           </div>
           
           <div class="aai-demo-cta">
-            <a href="/account/register" class="aai-btn aai-btn-primary">Start Learning Today</a>
+            <a href="{{ routes.account_register_url }}" class="aai-btn aai-btn-primary">Start Learning Today</a>
             <a href="/pages/about" class="aai-btn aai-btn-secondary">Learn More About AAI</a>
           </div>
         </div>
@@ -109,11 +109,11 @@ COPILOT CONTEXT:
         
         <div class="aai-cta-buttons">
           {% unless customer %}
-            <a href="/account/register" class="aai-btn aai-btn-primary aai-btn-large">Get Started Today</a>
-            <a href="/collections/all" class="aai-btn aai-btn-secondary aai-btn-large">Browse Courses</a>
+            <a href="{{ routes.account_register_url }}" class="aai-btn aai-btn-primary aai-btn-large">Get Started Today</a>
+            <a href="{{ routes.collections_url }}" class="aai-btn aai-btn-secondary aai-btn-large">Browse Courses</a>
           {% else %}
-            <a href="/collections/all" class="aai-btn aai-btn-primary aai-btn-large">Explore Courses</a>
-            <a href="/account" class="aai-btn aai-btn-secondary aai-btn-large">My Dashboard</a>
+            <a href="{{ routes.collections_url }}" class="aai-btn aai-btn-primary aai-btn-large">Explore Courses</a>
+            <a href="{{ routes.account_url }}" class="aai-btn aai-btn-secondary aai-btn-large">My Dashboard</a>
           {% endunless %}
         </div>
       </div>

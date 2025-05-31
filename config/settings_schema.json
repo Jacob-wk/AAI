@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Horizon",
-    "theme_version": "1.0.1",
-    "theme_author": "Shopify",
-    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
-    "theme_support_url": "https://support.shopify.com/"
+    "theme_name": "AAI Theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Amusement Academy International",
+    "theme_documentation_url": "https://aai-lms.com/help",
+    "theme_support_url": "https://aai-lms.com/support"
   },
   {
     "name": "t:names.logo_and_favicon",
