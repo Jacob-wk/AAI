@@ -11,11 +11,12 @@
   "type": "header",
   "name": "Header",
   "sections": {
-    "header_section": {
+    "aai_header_RMcfYV": {
       "type": "aai-header",
+      "name": "AAI Header",
       "settings": {
         "show_credentials_bar": true,
-        "credentials_text": "Professional Safety Education Since 2010",
+        "credentials_text": "Professional Safety Education Since 2025",
         "show_iaapa_badge": true,
         "show_astm_badge": true,
         "show_naarso_badge": true,
@@ -24,7 +25,7 @@
         "show_cart": true
       }
     },
-    "aai_hero_6j8Jgi": {
+    "aai_hero_MEzgF3": {
       "type": "aai-hero",
       "name": "AAI Hero",
       "settings": {
@@ -52,7 +53,7 @@
     }
   },
   "order": [
-    "header_section",
-    "aai_hero_6j8Jgi"
+    "aai_header_RMcfYV",
+    "aai_hero_MEzgF3"
   ]
 }
