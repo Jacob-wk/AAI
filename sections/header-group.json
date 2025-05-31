@@ -11,7 +11,7 @@
   "type": "header",
   "name": "Header",
   "sections": {
-    "aai_header_gP9EMD": {
+    "aai_header_U3kpQm": {
       "type": "aai-header",
       "name": "AAI Header",
       "settings": {
@@ -25,7 +25,7 @@
         "show_cart": true
       }
     },
-    "aai_hero_9WAUn3": {
+    "aai_hero_8X4Epq": {
       "type": "aai-hero",
       "name": "AAI Hero",
       "settings": {
@@ -53,7 +53,7 @@
     }
   },
   "order": [
-    "aai_header_gP9EMD",
-    "aai_hero_9WAUn3"
+    "aai_header_U3kpQm",
+    "aai_hero_8X4Epq"
   ]
 }
