@@ -59,8 +59,34 @@
     color: var(--authority-navy);
     cursor: pointer;
     position: absolute;
-    right: 20px;
+    right: 80px;
     top: 50%;
     transform: translateY(-50%);
+  }
+  
+  .aai-credentials {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+  
+  .aai-contact-info {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .aai-logo {
+    font-size: 1.2rem;
+  }
+  
+  .aai-account-link {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+  }
+  
+  .aai-credential-badge {
+    padding: 2px 8px;
+    font-size: 0.625rem;
   }
 }
