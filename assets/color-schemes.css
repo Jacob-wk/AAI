@@ -1,0 +1,295 @@
+/* AAI Color Schemes and Blue Background Improvements */
+/* Ensures proper contrast and clean styling across all blue backgrounds */
+
+/* Global Blue Background Selectors */
+.aai-blue-background,
+.aai-hero-section,
+.aai-navy-section,
+.color-scheme-blue,
+.color-scheme-navy,
+[data-color-scheme="blue"],
+[data-color-scheme="navy"],
+.aai-hero-library,
+.aai-contribute,
+.aai-featured-primary,
+.aai-hero-about,
+.aai-hero-instructors,
+.aai-hero-corporate,
+.aai-hero-help,
+.aai-hero-course-access,
+section[style*="background: linear-gradient"][style*="--authority-navy"],
+section[style*="background-color: var(--authority-navy)"],
+section[style*="background-color: var(--electric-blue)"],
+div[style*="background: linear-gradient"][style*="--authority-navy"],
+div[style*="background-color: var(--authority-navy)"],
+div[style*="background-color: var(--electric-blue)"] {
+  --text-color: white;
+  --text-color-secondary: rgba(255, 255, 255, 0.9);
+  --text-color-muted: rgba(255, 255, 255, 0.8);
+  --link-color: rgba(255, 255, 255, 0.95);
+  --link-hover-color: white;
+  --border-color: rgba(255, 255, 255, 0.2);
+  
+  color: var(--text-color) !important;
+}
+
+/* Text Elements on Blue Backgrounds */
+.aai-blue-background *,
+.aai-hero-section *,
+.aai-navy-section *,
+.color-scheme-blue *,
+.color-scheme-navy *,
+[data-color-scheme="blue"] *,
+[data-color-scheme="navy"] *,
+.aai-hero-library *,
+.aai-contribute *,
+.aai-featured-primary *,
+.aai-hero-about *,
+.aai-hero-instructors *,
+.aai-hero-corporate *,
+.aai-hero-help *,
+.aai-hero-course-access *,
+section[style*="background: linear-gradient"][style*="--authority-navy"] *,
+section[style*="background-color: var(--authority-navy)"] *,
+section[style*="background-color: var(--electric-blue)"] *,
+div[style*="background: linear-gradient"][style*="--authority-navy"] *,
+div[style*="background-color: var(--authority-navy)"] *,
+div[style*="background-color: var(--electric-blue)"] * {
+  color: inherit !important;
+}
+
+/* Headings on Blue Backgrounds */
+.aai-blue-background h1,
+.aai-blue-background h2,
+.aai-blue-background h3,
+.aai-blue-background h4,
+.aai-blue-background h5,
+.aai-blue-background h6,
+.aai-hero-section h1,
+.aai-hero-section h2,
+.aai-hero-section h3,
+.aai-hero-section h4,
+.aai-hero-section h5,
+.aai-hero-section h6,
+.color-scheme-blue h1,
+.color-scheme-blue h2,
+.color-scheme-blue h3,
+.color-scheme-blue h4,
+.color-scheme-blue h5,
+.color-scheme-blue h6,
+.aai-hero-library h1,
+.aai-hero-library h2,
+.aai-hero-library h3,
+.aai-contribute h1,
+.aai-contribute h2,
+.aai-contribute h3,
+.aai-featured-primary h1,
+.aai-featured-primary h2,
+.aai-featured-primary h3 {
+  color: white !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Paragraphs and Body Text on Blue Backgrounds */
+.aai-blue-background p,
+.aai-blue-background span,
+.aai-blue-background div,
+.aai-blue-background li,
+.aai-hero-section p,
+.aai-hero-section span,
+.aai-hero-section div,
+.aai-hero-section li,
+.color-scheme-blue p,
+.color-scheme-blue span,
+.color-scheme-blue div,
+.color-scheme-blue li,
+.aai-hero-library p,
+.aai-hero-library span,
+.aai-contribute p,
+.aai-contribute span,
+.aai-featured-primary p,
+.aai-featured-primary span {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Links on Blue Backgrounds */
+.aai-blue-background a,
+.aai-hero-section a,
+.color-scheme-blue a,
+.aai-hero-library a,
+.aai-contribute a,
+.aai-featured-primary a {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+}
+
+.aai-blue-background a:hover,
+.aai-hero-section a:hover,
+.color-scheme-blue a:hover,
+.aai-hero-library a:hover,
+.aai-contribute a:hover,
+.aai-featured-primary a:hover {
+  color: white !important;
+  text-decoration-color: white;
+}
+
+/* Buttons on Blue Backgrounds */
+.aai-blue-background .aai-btn,
+.aai-hero-section .aai-btn,
+.color-scheme-blue .aai-btn,
+.aai-hero-library .aai-btn,
+.aai-contribute .aai-btn,
+.aai-featured-primary .aai-btn {
+  background: var(--safety-orange);
+  color: white;
+  border: 2px solid var(--safety-orange);
+}
+
+.aai-blue-background .aai-btn:hover,
+.aai-hero-section .aai-btn:hover,
+.color-scheme-blue .aai-btn:hover,
+.aai-hero-library .aai-btn:hover,
+.aai-contribute .aai-btn:hover,
+.aai-featured-primary .aai-btn:hover {
+  background: white;
+  color: var(--authority-navy);
+  border-color: white;
+}
+
+.aai-blue-background .aai-btn--secondary,
+.aai-hero-section .aai-btn--secondary,
+.color-scheme-blue .aai-btn--secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.aai-blue-background .aai-btn--secondary:hover,
+.aai-hero-section .aai-btn--secondary:hover,
+.color-scheme-blue .aai-btn--secondary:hover {
+  background: white;
+  color: var(--authority-navy);
+  border-color: white;
+}
+
+/* Form Elements on Blue Backgrounds */
+.aai-blue-background input,
+.aai-blue-background textarea,
+.aai-blue-background select,
+.aai-hero-section input,
+.aai-hero-section textarea,
+.aai-hero-section select,
+.color-scheme-blue input,
+.color-scheme-blue textarea,
+.color-scheme-blue select {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--authority-navy);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.aai-blue-background input::placeholder,
+.aai-blue-background textarea::placeholder,
+.aai-hero-section input::placeholder,
+.aai-hero-section textarea::placeholder,
+.color-scheme-blue input::placeholder,
+.color-scheme-blue textarea::placeholder {
+  color: rgba(30, 58, 95, 0.6);
+}
+
+/* Icons and SVGs on Blue Backgrounds */
+.aai-blue-background svg,
+.aai-hero-section svg,
+.color-scheme-blue svg,
+.aai-hero-library svg,
+.aai-contribute svg,
+.aai-featured-primary svg {
+  fill: currentColor;
+}
+
+/* Borders and Dividers on Blue Backgrounds */
+.aai-blue-background hr,
+.aai-hero-section hr,
+.color-scheme-blue hr {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.aai-blue-background .aai-divider,
+.aai-hero-section .aai-divider,
+.color-scheme-blue .aai-divider {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Special Cases for Orange Elements on Blue */
+.aai-blue-background .aai-stat-number,
+.aai-hero-section .aai-stat-number,
+.color-scheme-blue .aai-stat-number {
+  color: var(--safety-orange) !important;
+}
+
+.aai-blue-background .aai-badge,
+.aai-hero-section .aai-badge,
+.color-scheme-blue .aai-badge {
+  background: var(--safety-orange);
+  color: white;
+}
+
+/* Ensure proper contrast for accessibility */
+.aai-blue-background,
+.aai-hero-section,
+.color-scheme-blue {
+  /* Ensure minimum contrast ratio of 4.5:1 */
+  --minimum-contrast: 4.5;
+}
+
+/* Override any conflicting styles */
+.aai-blue-background .text-dark,
+.aai-hero-section .text-dark,
+.color-scheme-blue .text-dark {
+  color: white !important;
+}
+
+.aai-blue-background .text-muted,
+.aai-hero-section .text-muted,
+.color-scheme-blue .text-muted {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Clean styling improvements */
+.aai-clean-section {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-lg) 0;
+}
+
+.aai-clean-card {
+  background: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.aai-clean-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Text selection improvements */
+.aai-blue-background ::selection,
+.aai-hero-section ::selection,
+.color-scheme-blue ::selection {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.aai-blue-background ::-moz-selection,
+.aai-hero-section ::-moz-selection,
+.color-scheme-blue ::-moz-selection {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+}

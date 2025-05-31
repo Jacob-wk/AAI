@@ -4,53 +4,14 @@
   lang="{{ request.locale.iso_code }}"
 >
   <head>
-    <style>
-      /* Critical container styles loaded immediately */
-      .aai-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-        width: 100%;
-      }
-      .aai-container-wide {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-        width: 100%;
-      }
-      .aai-container-narrow {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-        width: 100%;
-      }
-      .aai-container-full {
-        width: 100%;
-        padding: 0 1.5rem;
-      }
-      @media screen and (max-width: 768px) {
-        .aai-container,
-        .aai-container-wide,
-        .aai-container-narrow,
-        .aai-container-full {
-          padding: 0 1rem;
-        }
-      }
-      @media screen and (max-width: 480px) {
-        .aai-container,
-        .aai-container-wide,
-        .aai-container-narrow,
-        .aai-container-full {
-          padding: 0 0.5rem;
-        }
-      }
-    </style>
     {{ 'variables.css' | asset_url | stylesheet_tag }}
     {{ 'reset.css' | asset_url | stylesheet_tag }}
     {{ 'containers.css' | asset_url | stylesheet_tag }}
     {{ 'utilities.css' | asset_url | stylesheet_tag }}
     {{ 'buttons.css' | asset_url | stylesheet_tag }}
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'color-schemes.css' | asset_url | stylesheet_tag }}
+    {{ 'spacing-reset.css' | asset_url | stylesheet_tag }}
     
     {%- comment -%} Conditional CSS loading for specific templates {%- endcomment -%}
     {% if template == 'index' %}
@@ -111,7 +72,6 @@
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
-    {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
     <div id="header-group">
       {% sections 'header-group' %}
     </div>

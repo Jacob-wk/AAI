@@ -125,26 +125,208 @@ pre code {
   padding: 0;
 }
 
-/* Responsive typography */
-@media screen and (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-  
-  h2 {
-    font-size: 1.75rem;
-  }
-  
-  h3 {
-    font-size: 1.375rem;
-  }
-  
-  h4 {
-    font-size: 1.125rem;
-  }
+/* AAI Blue Background Color Schemes */
+.aai-blue-bg,
+.color-scheme-blue,
+[style*="background: linear-gradient"][style*="--authority-navy"],
+[style*="background-color: var(--authority-navy)"],
+[style*="background-color: var(--electric-blue)"],
+.aai-hero-library,
+.aai-contribute,
+.aai-featured-primary {
+  color: white !important;
 }
 
-/* Print styles */
+.aai-blue-bg *,
+.color-scheme-blue *,
+[style*="background: linear-gradient"][style*="--authority-navy"] *,
+[style*="background-color: var(--authority-navy)"] *,
+[style*="background-color: var(--electric-blue)"] *,
+.aai-hero-library *,
+.aai-contribute *,
+.aai-featured-primary * {
+  color: white !important;
+}
+
+.aai-blue-bg h1,
+.aai-blue-bg h2,
+.aai-blue-bg h3,
+.aai-blue-bg h4,
+.aai-blue-bg h5,
+.aai-blue-bg h6,
+.color-scheme-blue h1,
+.color-scheme-blue h2,
+.color-scheme-blue h3,
+.color-scheme-blue h4,
+.color-scheme-blue h5,
+.color-scheme-blue h6 {
+  color: white !important;
+}
+
+.aai-blue-bg p,
+.aai-blue-bg span,
+.aai-blue-bg div,
+.color-scheme-blue p,
+.color-scheme-blue span,
+.color-scheme-blue div {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.aai-blue-bg a,
+.color-scheme-blue a {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-decoration: underline;
+}
+
+.aai-blue-bg a:hover,
+.color-scheme-blue a:hover {
+  color: white !important;
+  text-decoration: none;
+}
+
+/* Clean and Polished General Improvements */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Remove unwanted outlines and focus rings */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+/* Clean button resets */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Improved link styling */
+a {
+  transition: all 0.2s ease;
+}
+
+/* Clean list styling */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Image optimization */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+  text-rendering: optimizeLegibility;
+}
+
+/* Clean form styling */
+input, textarea, select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-clip: padding-box;
+}
+
+input[type="search"] {
+  appearance: searchfield;
+  -webkit-appearance: searchfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+/* Remove iOS input shadows */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+/* Clean scrollbars for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-grey);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--medium-grey);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-grey);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--color-primary);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Clean table styling */
+table {
+  border-spacing: 0;
+}
+
+/* Remove button styling for clean appearance */
+.btn-clean,
+.clean-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Accessibility improvements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Print media query improvements */
 @media print {
   * {
     background: transparent !important;
