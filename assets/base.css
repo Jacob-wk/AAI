@@ -4068,3 +4068,168 @@ text-component {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+/* AAI Header Navigation */
+.aai-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.aai-main-nav {
+  background-color: var(--clean-white);
+  padding: var(--spacing-sm) 0;
+}
+
+.aai-nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.aai-logo-link {
+  display: block;
+}
+
+.aai-logo-text {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--authority-navy);
+  text-decoration: none;
+}
+
+.aai-navigation {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.aai-nav-links {
+  display: flex;
+  gap: var(--spacing-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.aai-nav-link {
+  color: var(--charcoal-grey);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.3s ease;
+}
+
+.aai-nav-link:hover {
+  color: var(--electric-blue);
+}
+
+.aai-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.aai-account-link {
+  background-color: var(--safety-orange);
+  color: var(--clean-white);
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  transition: background-color 0.3s ease;
+}
+
+.aai-account-link:hover {
+  background-color: #e55a2b;
+}
+
+.aai-search-toggle,
+.aai-mobile-menu-toggle {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--charcoal-grey);
+}
+
+.aai-cart-link {
+  position: relative;
+  color: var(--charcoal-grey);
+  text-decoration: none;
+  padding: 8px;
+}
+
+.aai-cart-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--safety-orange);
+  color: var(--clean-white);
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  min-width: 18px;
+  text-align: center;
+}
+
+.aai-mobile-menu {
+  display: none;
+  background-color: var(--clean-white);
+  border-top: 1px solid var(--light-grey);
+}
+
+.aai-mobile-menu-content {
+  padding: var(--spacing-sm);
+}
+
+.aai-mobile-nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.aai-mobile-nav-link {
+  display: block;
+  padding: var(--spacing-sm);
+  color: var(--charcoal-grey);
+  text-decoration: none;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .aai-navigation {
+    display: none;
+  }
+
+  .aai-nav-actions .aai-search-toggle {
+    display: none;
+  }
+
+  .aai-mobile-menu.active {
+    display: block;
+  }
+
+  .aai-header-top .aai-container {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    text-align: center;
+  }
+
+  .aai-credentials {
+    justify-content: center;
+  }
+}
+
+/* AAI Button Size Variants */
+.aai-btn-large {
+  padding: 16px 40px;
+  font-size: 1.125rem;
+}
+
+.aai-btn-small {
+  padding: 8px 24px;
+  font-size: 0.875rem;
+}

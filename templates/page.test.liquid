@@ -1,0 +1,88 @@
+{% comment %}
+  Test Page Template - AAI Theme Verification
+  Use this to verify the theme is working correctly
+{% endcomment %}
+
+<div class="test-page">
+  <section class="test-hero">
+    <div class="container">
+      <h1>AAI Theme Test Page</h1>
+      <p>If you can see this page without duplicate headers, the theme is working correctly!</p>
+      
+      <div class="test-checklist">
+        <h2>Theme Setup Checklist:</h2>
+        <ul>
+          <li>✅ Single header (not duplicated)</li>
+          <li>✅ AAI branding and colors</li>
+          <li>✅ Professional navigation</li>
+          <li>✅ Clean page layout</li>
+        </ul>
+      </div>
+      
+      <div class="test-navigation">
+        <h2>Navigation Test:</h2>
+        <p>Try these links to verify page routing:</p>
+        <div class="test-links">
+          <a href="/pages/about" class="aai-btn aai-btn-primary">About Page</a>
+          <a href="/pages/instructors" class="aai-btn aai-btn-secondary">Instructors</a>
+          <a href="/pages/demo" class="aai-btn aai-btn-primary">Demo</a>
+          <a href="/collections/courses" class="aai-btn aai-btn-secondary">Courses</a>
+        </div>
+      </div>
+      
+      <div class="test-info">
+        <h2>Theme Information:</h2>
+        <ul>
+          <li><strong>Theme:</strong> AAI Professional Safety Education</li>
+          <li><strong>Template:</strong> {{ template }}</li>
+          <li><strong>Page Handle:</strong> {{ page.handle }}</li>
+          <li><strong>Shop:</strong> {{ shop.name }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+.test-page {
+  padding: var(--spacing-xl) 0;
+}
+
+.test-hero {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.test-checklist,
+.test-navigation,
+.test-info {
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-lg);
+  background: var(--light-grey);
+  border-radius: 8px;
+  text-align: left;
+}
+
+.test-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--spacing-md);
+}
+
+.test-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.test-info li {
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid var(--medium-grey);
+}
+
+.test-info li:last-child {
+  border-bottom: none;
+}
+</style>

@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true
+    },
+    "test_content": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<!-- Test page content is handled by page.test.liquid template -->"
+      }
+    }
+  },
+  "order": ["test_content"]
+}
