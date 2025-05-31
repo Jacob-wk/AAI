@@ -11,6 +11,36 @@
   "type": "header",
   "name": "Header",
   "sections": {
+    "header_announcements_EWfAmH": {
+      "type": "header-announcements",
+      "blocks": {
+        "announcement_J4Ran4": {
+          "type": "_announcement",
+          "settings": {
+            "text": "Shop our latest arrivals!",
+            "link": "",
+            "font": "var(--font-heading--family)",
+            "font_size": "1rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "announcement_J4Ran4"
+      ],
+      "name": "t:names.announcement_bar",
+      "settings": {
+        "speed": 5,
+        "section_width": "page-width",
+        "color_scheme": "",
+        "divider_width": 0,
+        "padding-block-start": 15,
+        "padding-block-end": 15
+      }
+    },
     "aai_header_U3kpQm": {
       "type": "aai-header",
       "name": "AAI Header",
@@ -25,7 +55,7 @@
         "show_cart": true
       }
     },
-    "aai_hero_8X4Epq": {
+    "aai_hero_rz3xpi": {
       "type": "aai-hero",
       "name": "AAI Hero",
       "settings": {
@@ -53,7 +83,8 @@
     }
   },
   "order": [
+    "header_announcements_EWfAmH",
     "aai_header_U3kpQm",
-    "aai_hero_8X4Epq"
+    "aai_hero_rz3xpi"
   ]
 }
