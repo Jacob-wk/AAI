@@ -1,28 +1,26 @@
-/* AAI Spacing System Reset and Consolidation */
+/* AAI Spacing System Consolidation */
 
 /* 
-   This file consolidates and fixes the overlapping spacing systems 
-   that were causing extensive padding issues throughout the theme.
+   This file consolidates the spacing system definitions to ensure consistency
+   across the theme. Individual components should use these variables rather
+   than hardcoded values.
    
-   PROBLEM: Multiple conflicting spacing definitions:
-   - Legacy base-backup.css: --spacing-* with large values
-   - Modern theme variables: --padding-*, --margin-*, --gap-* with smaller values
-   - Multiple utility class systems overlapping
-   
-   SOLUTION: Unify spacing scale and reset problematic styles
+   APPROACH: Define consistent spacing variables and let components reference them
+   rather than using !important overrides everywhere.
 */
 
-/* ===== RESET LEGACY SPACING VARIABLES ===== */
+/* ===== UNIFIED SPACING SYSTEM ===== */
 :root {
-  /* Override legacy spacing variables to match modern system */
-  --spacing-xs: var(--padding-xs, 0.5rem);
-  --spacing-sm: var(--padding-sm, 0.7rem);
-  --spacing-md: var(--padding-md, 0.8rem);
-  --spacing-lg: var(--padding-lg, 1rem);
-  --spacing-xl: var(--padding-xl, 1.25rem);
-  --spacing-xxl: var(--padding-2xl, 1.5rem);
+  /* Consistent spacing scale - updated to reasonable values */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.7rem;
+  --spacing-md: 0.8rem;
+  --spacing-lg: 1rem;
+  --spacing-xl: 1.25rem;
+  --spacing-xxl: 1.5rem;
+  --spacing-xxxl: 1.75rem;
   
-  /* Ensure consistent scale across all spacing types */
+  /* Margin scale */
   --margin-xs: 0.5rem;
   --margin-sm: 0.7rem;
   --margin-md: 0.8rem;
@@ -32,6 +30,7 @@
   --margin-3xl: 1.75rem;
   --margin-4xl: 2rem;
   
+  /* Padding scale */
   --padding-xs: 0.5rem;
   --padding-sm: 0.7rem;
   --padding-md: 0.8rem;
@@ -41,6 +40,7 @@
   --padding-3xl: 1.75rem;
   --padding-4xl: 2rem;
   
+  /* Gap scale for flexbox/grid */
   --gap-xs: 0.5rem;
   --gap-sm: 0.7rem;
   --gap-md: 0.9rem;
@@ -50,38 +50,17 @@
   --gap-3xl: 3rem;
 }
 
-/* ===== RESET EXCESSIVE SECTION PADDING ===== */
-/* Many sections have accumulated excessive padding from multiple systems */
-
-/* Reset section-level padding accumulation */
-.section,
-.shopify-section {
-  /* Remove default margins that accumulate */
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-/* Normalize section content wrapper padding */
-.section-content-wrapper {
-  /* Prevent padding accumulation from multiple sources */
-  padding-top: min(var(--padding-block-start, 0px), var(--padding-lg));
-  padding-bottom: min(var(--padding-block-end, 0px), var(--padding-lg));
-  padding-left: min(var(--padding-inline-start, 0px), var(--padding-md));
-  padding-right: min(var(--padding-inline-end, 0px), var(--padding-md));
-}
-
 /* ===== CONTAINER SYSTEM STANDARDIZATION ===== */
-/* Multiple container systems were creating padding conflicts */
+/* Provide consistent spacing for container classes */
 
-/* Unify all container classes to use consistent spacing */
 .aai-container,
 .aai-container-wide,
 .aai-container-narrow,
 .aai-container-full,
 .container,
 .page-width {
-  padding-left: var(--padding-md) !important;
-  padding-right: var(--padding-md) !important;
+  padding-left: var(--padding-md);
+  padding-right: var(--padding-md);
 }
 
 @media screen and (max-width: 768px) {
@@ -91,8 +70,8 @@
   .aai-container-full,
   .container,
   .page-width {
-    padding-left: var(--padding-sm) !important;
-    padding-right: var(--padding-sm) !important;
+    padding-left: var(--padding-sm);
+    padding-right: var(--padding-sm);
   }
 }
 
@@ -103,169 +82,78 @@
   .aai-container-full,
   .container,
   .page-width {
-    padding-left: var(--padding-xs) !important;
-    padding-right: var(--padding-xs) !important;
+    padding-left: var(--padding-xs);
+    padding-right: var(--padding-xs);
   }
 }
 
-/* ===== UTILITY CLASS CONFLICTS RESOLUTION ===== */
-/* Reset utility classes that may have conflicting values */
+/* ===== UTILITY CLASSES ===== */
+/* Consistent spacing utility classes using the unified scale */
 
-/* Standardize padding utilities */
-.p-sm, .py-sm { padding: var(--padding-sm) !important; }
-.p-md, .py-md { padding: var(--padding-md) !important; }
-.p-lg, .py-lg { padding: var(--padding-lg) !important; }
-.p-xl, .py-xl { padding: var(--padding-xl) !important; }
+/* Padding utilities */
+.p-sm { padding: var(--padding-sm); }
+.p-md { padding: var(--padding-md); }
+.p-lg { padding: var(--padding-lg); }
+.p-xl { padding: var(--padding-xl); }
 
-.px-sm { padding-left: var(--padding-sm) !important; padding-right: var(--padding-sm) !important; }
-.px-md { padding-left: var(--padding-md) !important; padding-right: var(--padding-md) !important; }
-.px-lg { padding-left: var(--padding-lg) !important; padding-right: var(--padding-lg) !important; }
-.px-xl { padding-left: var(--padding-xl) !important; padding-right: var(--padding-xl) !important; }
+.px-sm { padding-left: var(--padding-sm); padding-right: var(--padding-sm); }
+.px-md { padding-left: var(--padding-md); padding-right: var(--padding-md); }
+.px-lg { padding-left: var(--padding-lg); padding-right: var(--padding-lg); }
+.px-xl { padding-left: var(--padding-xl); padding-right: var(--padding-xl); }
 
-.py-sm { padding-top: var(--padding-sm) !important; padding-bottom: var(--padding-sm) !important; }
-.py-md { padding-top: var(--padding-md) !important; padding-bottom: var(--padding-md) !important; }
-.py-lg { padding-top: var(--padding-lg) !important; padding-bottom: var(--padding-lg) !important; }
-.py-xl { padding-top: var(--padding-xl) !important; padding-bottom: var(--padding-xl) !important; }
+.py-sm { padding-top: var(--padding-sm); padding-bottom: var(--padding-sm); }
+.py-md { padding-top: var(--padding-md); padding-bottom: var(--padding-md); }
+.py-lg { padding-top: var(--padding-lg); padding-bottom: var(--padding-lg); }
+.py-xl { padding-top: var(--padding-xl); padding-bottom: var(--padding-xl); }
 
-/* Standardize margin utilities */
-.m-sm { margin: var(--margin-sm) !important; }
-.m-md { margin: var(--margin-md) !important; }
-.m-lg { margin: var(--margin-lg) !important; }
-.m-xl { margin: var(--margin-xl) !important; }
+/* Margin utilities */
+.m-sm { margin: var(--margin-sm); }
+.m-md { margin: var(--margin-md); }
+.m-lg { margin: var(--margin-lg); }
+.m-xl { margin: var(--margin-xl); }
 
-.mt-sm { margin-top: var(--margin-sm) !important; }
-.mt-md { margin-top: var(--margin-md) !important; }
-.mt-lg { margin-top: var(--margin-lg) !important; }
-.mt-xl { margin-top: var(--margin-xl) !important; }
+.mt-sm { margin-top: var(--margin-sm); }
+.mt-md { margin-top: var(--margin-md); }
+.mt-lg { margin-top: var(--margin-lg); }
+.mt-xl { margin-top: var(--margin-xl); }
 
-.mb-sm { margin-bottom: var(--margin-sm) !important; }
-.mb-md { margin-bottom: var(--margin-md) !important; }
-.mb-lg { margin-bottom: var(--margin-lg) !important; }
-.mb-xl { margin-bottom: var(--margin-xl) !important; }
+.mb-sm { margin-bottom: var(--margin-sm); }
+.mb-md { margin-bottom: var(--margin-md); }
+.mb-lg { margin-bottom: var(--margin-lg); }
+.mb-xl { margin-bottom: var(--margin-xl); }
 
-/* ===== SPECIFIC SECTION FIXES ===== */
-/* Target specific sections with known excessive padding */
-
-/* Footer spacing normalization */
-.aai-footer,
-[class*="footer"] {
-  margin-top: var(--margin-2xl) !important;
-  padding-top: var(--padding-2xl) !important;
-  padding-bottom: var(--padding-lg) !important;
-}
-
-/* Header spacing normalization */
-.aai-header,
-.header,
-[class*="header"] {
-  padding-top: var(--padding-sm) !important;
-  padding-bottom: var(--padding-sm) !important;
-}
-
-/* Page main content areas */
-.main-content,
-.page-content,
-[role="main"] {
-  padding-top: var(--padding-lg) !important;
-  padding-bottom: var(--padding-lg) !important;
-}
-
-/* Section spacing between elements */
-.shopify-section + .shopify-section {
-  margin-top: var(--margin-lg) !important;
-}
-
-/* ===== GRID AND FLEXBOX IMPROVEMENTS ===== */
-/* Fix gap values that were using conflicting spacing variables */
-
-.layout-panel-flex,
-.flex {
-  gap: var(--gap-md) !important;
-}
-
-.grid,
-[class*="grid"] {
-  gap: var(--gap-md) !important;
-}
+/* Gap utilities for flexbox/grid */
+.gap-sm { gap: var(--gap-sm); }
+.gap-md { gap: var(--gap-md); }
+.gap-lg { gap: var(--gap-lg); }
+.gap-xl { gap: var(--gap-xl); }
 
 /* ===== RESPONSIVE SPACING ADJUSTMENTS ===== */
-/* Ensure spacing scales appropriately on mobile */
+/* Ensure spacing scales appropriately on mobile devices */
 
 @media screen and (max-width: 768px) {
-  /* Reduce all section padding on mobile */
-  .section-content-wrapper {
-    padding-top: var(--padding-sm) !important;
-    padding-bottom: var(--padding-sm) !important;
-  }
-  
   /* Reduce gaps on mobile */
-  .layout-panel-flex,
-  .flex,
-  .grid,
-  [class*="grid"] {
-    gap: var(--gap-sm) !important;
-  }
-  
-  /* Reduce footer spacing on mobile */
-  .aai-footer,
-  [class*="footer"] {
-    margin-top: var(--margin-lg) !important;
-    padding-top: var(--padding-lg) !important;
-  }
+  .gap-md { gap: var(--gap-sm); }
+  .gap-lg { gap: var(--gap-md); }
+  .gap-xl { gap: var(--gap-lg); }
 }
 
 @media screen and (max-width: 480px) {
   /* Further reduce spacing on very small screens */
-  .section-content-wrapper {
-    padding-top: var(--padding-xs) !important;
-    padding-bottom: var(--padding-xs) !important;
-  }
-  
-  .layout-panel-flex,
-  .flex,
-  .grid,
-  [class*="grid"] {
-    gap: var(--gap-xs) !important;
-  }
+  .gap-sm { gap: var(--gap-xs); }
+  .gap-md { gap: var(--gap-xs); }
+  .gap-lg { gap: var(--gap-sm); }
 }
 
-/* ===== IMPORTANT OVERRIDES FOR KNOWN PROBLEM AREAS ===== */
-/* These target specific selectors that were causing the most issues */
-
-/* Reset any extremely large padding values */
-[style*="padding: 3rem"],
-[style*="padding: 4rem"],
-[style*="padding: 5rem"],
-[style*="padding-top: 3rem"],
-[style*="padding-top: 4rem"],
-[style*="padding-top: 5rem"],
-[style*="padding-bottom: 3rem"],
-[style*="padding-bottom: 4rem"],
-[style*="padding-bottom: 5rem"] {
-  padding: var(--padding-lg) !important;
-}
-
-/* Fix sections with accumulated margin/padding */
-.section[style*="margin"],
-.shopify-section[style*="margin"] {
-  margin-top: var(--margin-md) !important;
-  margin-bottom: var(--margin-md) !important;
-}
-
-/* ===== DEBUG HELPER (Remove in production) ===== */
-/* Uncomment to visualize spacing issues during development */
-/*
-.section,
-.shopify-section {
-  outline: 1px dashed red;
-}
-
-.section-content-wrapper {
-  outline: 1px dashed blue;
-}
-
-.aai-container,
-.container {
-  outline: 1px dashed green;
-}
+/* ===== BEST PRACTICE SPACING GUIDELINES ===== */
+/* 
+   Components should use these variables instead of hardcoded values.
+   This creates a consistent design system and makes future adjustments easier.
+   
+   Examples:
+   - Use: padding: var(--padding-lg) 0;
+   - Instead of: padding: 1rem 0;
+   
+   - Use: margin-bottom: var(--margin-md);
+   - Instead of: margin-bottom: 0.8rem;
 */

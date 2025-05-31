@@ -350,3 +350,22 @@ table {
     display: block !important;
   }
 }
+
+/* ===== PAGE LAYOUT COMPONENTS ===== */
+
+.page-content {
+  padding: var(--spacing-lg) 0;
+}
+
+.page-section {
+  padding: var(--spacing-xl) 0;
+}
+
+/* Section spacing utilities */
+.section-padding {
+  padding: var(--spacing-xl) 0;
+}
+
+.section-padding-small {
+  padding: var(--spacing-lg) 0;
+}
