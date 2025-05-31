@@ -2758,10 +2758,12 @@ fly-to-cart {
 @keyframes slideOutBottom {
   from {
     transform: translateY(0);
+    opacity: 1;
   }
 
   to {
     transform: translateY(100%);
+    opacity: 0;
   }
 }
 
@@ -4233,3 +4235,194 @@ text-component {
   padding: 8px 24px;
   font-size: 0.875rem;
 }
+
+/* AAI Container Classes */
+.container,
+.aai-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+@media screen and (max-width: 768px) {
+  .container,
+  .aai-container {
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+/* Page content wrapper to ensure proper spacing */
+.page-content {
+  padding: var(--spacing-lg) 0;
+}
+
+.page-section {
+  padding: var(--spacing-xl) 0;
+}
+
+/* Section spacing utilities */
+.section-padding {
+  padding: var(--spacing-xl) 0;
+}
+
+.section-padding-small {
+  padding: var(--spacing-lg) 0;
+}
+
+.section-padding-large {
+  padding: var(--spacing-xxl) 0;
+}
+
+/* Content width constraints */
+.content-width-normal {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content-width-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content-width-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Text content constraints */
+.text-content {
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+/* Layout utilities */
+.full-width {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Spacing utilities */
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.py-sm { padding: var(--spacing-sm) 0; }
+.py-md { padding: var(--spacing-md) 0; }
+.py-lg { padding: var(--spacing-lg) 0; }
+.py-xl { padding: var(--spacing-xl) 0; }
+
+.px-sm { padding: 0 var(--spacing-sm); }
+.px-md { padding: 0 var(--spacing-md); }
+.px-lg { padding: 0 var(--spacing-lg); }
+.px-xl { padding: 0 var(--spacing-xl); }
+
+/* Responsive hiding */
+@media screen and (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* AAI Brand Colors */
+
+/* Layout utilities */
+.full-width {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Spacing utilities */
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.py-sm { padding: var(--spacing-sm) 0; }
+.py-md { padding: var(--spacing-md) 0; }
+.py-lg { padding: var(--spacing-lg) 0; }
+.py-xl { padding: var(--spacing-xl) 0; }
+
+.px-sm { padding: 0 var(--spacing-sm); }
+.px-md { padding: 0 var(--spacing-md); }
+.px-lg { padding: 0 var(--spacing-lg); }
+.px-xl { padding: 0 var(--spacing-xl); }
+

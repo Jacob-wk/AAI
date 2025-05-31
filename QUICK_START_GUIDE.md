@@ -61,6 +61,8 @@ Go to **Online Store > Pages** and create these pages **exactly**:
 
 ### Template Issues Resolved:
 - ✅ Removed duplicate headers from page templates
+- ✅ **Fixed hero content bleeding into all pages**
+- ✅ **Moved hero section from header-group to homepage only**
 - ✅ Templates now use theme's layout system correctly
 - ✅ No more style stacking or overlapping content
 - ✅ Single, consistent header across all pages
@@ -69,6 +71,8 @@ Go to **Online Store > Pages** and create these pages **exactly**:
 - `/templates/page.about.liquid` - Removed duplicate header
 - `/templates/page.course-access.liquid` - Removed duplicate header  
 - `/templates/page.test.liquid` - Created for testing
+- `/sections/header-group.json` - **Removed hero section that was appearing on all pages**
+- `/templates/index.json` - **Fixed homepage hero section configuration**
 - `SHOPIFY_ADMIN_SETUP.md` - Complete setup guide
 
 ## 📋 Verification Checklist
