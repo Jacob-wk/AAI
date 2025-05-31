@@ -863,7 +863,7 @@ a {
   text-underline-offset: 0.125em;
   transition:
     text-decoration-color var(--animation-speed) var(--animation-easing),
-    color var(--animation-speed) var(--animation-easing);
+    color var(--animation-speed) var(--animation-easing;
 }
 
 :is(h1, h2, h3, h4, h5, h6, p) > a:hover {
@@ -3711,7 +3711,226 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
   }
 }
 
-/* Base styles */
+/* Customer Account Styles */
+.customer-account {
+  min-height: 70vh;
+  padding: 2rem 0;
+}
+
+.account-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.account-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.account-header h1 {
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 0.5rem;
+}
+
+.account-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.account-content {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.account-nav {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  margin-bottom: 0.5rem;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all var(--animation-speed) var(--animation-easing);
+}
+
+.nav-link:hover,
+.nav-item--active .nav-link {
+  background: var(--authority-navy);
+  color: white;
+}
+
+.account-main {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.course-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform var(--animation-speed) var(--animation-easing),
+              box-shadow var(--animation-speed) var(--animation-easing);
+}
+
+.course-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.course-header {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--authority-navy) 0%, #2c4a70 100%);
+  color: white;
+}
+
+.course-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.course-meta {
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+.course-body {
+  padding: 1.5rem;
+}
+
+.course-description {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.course-progress {
+  margin-bottom: 1.5rem;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--safety-orange) 0%, #ff8a65 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.course-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.no-courses {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--text-secondary);
+}
+
+.no-courses h3 {
+  color: var(--authority-navy);
+  margin-bottom: 1rem;
+}
+
+.no-courses p {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .account-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .account-nav {
+    order: 2;
+  }
+  
+  .account-main {
+    order: 1;
+  }
+  
+  .nav-list {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  
+  .nav-item {
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+  
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .course-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .account-header h1 {
+    font-size: 2rem;
+  }
+  
+  .account-container {
+    padding: 0 0.75rem;
+  }
+  
+  .account-main {
+    padding: 1.5rem;
+  }
+}
+
+* Base styles */
 .group-block,
 .group-block-content {
   position: relative;
@@ -4012,6 +4231,23 @@ text-component {
   border: none;
   transition: all 0.3s ease;
   font-family: var(--font-family-primary);
+}
+
+/* AAI Button Base Styles */
+.aai-btn,
+.aai-btn-primary,
+.aai-btn-secondary {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  line-height: 1.4;
 }
 
 .aai-btn-primary {

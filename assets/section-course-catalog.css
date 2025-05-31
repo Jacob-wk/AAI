@@ -1,0 +1,78 @@
+/* Course Catalog Section Styles */
+.aai-course-categories {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.aai-category-tab {
+  padding: 10px 24px;
+  border: 2px solid var(--light-grey);
+  background: white;
+  color: var(--charcoal-grey);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.aai-category-tab:hover {
+  border-color: var(--electric-blue);
+  color: var(--electric-blue);
+}
+
+.aai-category-tab.active {
+  background: var(--authority-navy);
+  color: white;
+  border-color: var(--authority-navy);
+}
+
+/* Professional course grid animations */
+.aai-course-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUpDelayed 0.6s ease forwards;
+}
+
+.aai-course-card:nth-child(1) { animation-delay: 0.1s; }
+.aai-course-card:nth-child(2) { animation-delay: 0.2s; }
+.aai-course-card:nth-child(3) { animation-delay: 0.3s; }
+.aai-course-card:nth-child(4) { animation-delay: 0.4s; }
+.aai-course-card:nth-child(5) { animation-delay: 0.5s; }
+.aai-course-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUpDelayed {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Professional mobile responsiveness */
+@media (max-width: 768px) {
+  .aai-course-categories {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .aai-category-tab {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    min-width: 150px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .aai-section-header h2 {
+    font-size: 1.75rem;
+  }
+  
+  .aai-section-subtitle {
+    font-size: 1rem;
+  }
+}

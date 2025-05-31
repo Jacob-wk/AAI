@@ -1,0 +1,28 @@
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "aai_footer": {
+      "type": "aai-footer",
+      "settings": {
+        "footer_description": "Professional safety education for the amusement industry since 2025. Advance your career while keeping guests safe.",
+        "phone": "(555) 123-4567",
+        "email": "info@aai.edu",
+        "support_hours": "Mon-Fri 8AM-6PM EST",
+        "menu_1_title": "Courses",
+        "menu_2_title": "Company", 
+        "menu_3_title": "Resources",
+        "menu_4_title": "Support",
+        "show_iaapa_badge": true,
+        "show_iso_badge": true,
+        "show_ceu_badge": true,
+        "social_linkedin": "https://linkedin.com/company/aai-institute",
+        "social_twitter": "https://twitter.com/aai_institute",
+        "social_youtube": "https://youtube.com/aai-institute"
+      }
+    }
+  },
+  "order": [
+    "aai_footer"
+  ]
+}

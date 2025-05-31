@@ -1,0 +1,176 @@
+/* AAI Hero Section Styles */
+.aai-hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #005a9f 50%, #0ea5e9 100%);
+  color: var(--clean-white);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.aai-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.aai-hero-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.aai-hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: var(--clean-white);
+}
+
+.aai-hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5;
+}
+
+.aai-hero-features {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.aai-hero-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aai-check-icon {
+  width: 20px;
+  height: 20px;
+  background-color: var(--success-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.aai-hero-actions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.aai-hero-visual {
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.aai-hero-visual img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.aai-hero-placeholder {
+  text-align: center;
+}
+
+.aai-hero-icon {
+  font-size: 8rem;
+  margin-bottom: 20px;
+}
+
+.aai-hero-placeholder p {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.1rem;
+}
+
+/* Trust Indicators */
+.aai-trust-indicators {
+  background-color: var(--light-grey);
+  padding: 60px 0;
+}
+
+.aai-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  text-align: center;
+}
+
+.aai-trust-item {
+  padding: 20px;
+}
+
+.aai-trust-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--authority-navy);
+  margin-bottom: 10px;
+}
+
+.aai-trust-label {
+  font-size: 1rem;
+  color: var(--charcoal-grey);
+  font-weight: 500;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .aai-hero {
+    padding: 60px 0;
+  }
+
+  .aai-hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .aai-hero-title {
+    font-size: 2rem;
+  }
+
+  .aai-hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .aai-hero-features {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .aai-hero-actions {
+    justify-content: center;
+  }
+
+  .aai-trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .aai-trust-number {
+    font-size: 2rem;
+  }
+}

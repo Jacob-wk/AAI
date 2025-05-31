@@ -1,0 +1,227 @@
+{% comment %}
+  AAI Professional Footer
+  - Comprehensive footer with links, contact info, and compliance
+  - Customizable through theme settings
+{% endcomment %}
+
+{{ 'section-aai-footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="aai-footer">
+  <div class="aai-container">
+    <div class="aai-footer-main">
+      <div class="aai-footer-column aai-footer-about">
+        <div class="aai-footer-logo">
+          {% if settings.logo != blank %}
+            <img src="{{ settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" width="200">
+          {% else %}
+            <h3>{{ shop.name }}</h3>
+          {% endif %}
+        </div>
+        <p class="aai-footer-description">
+          {{ section.settings.footer_description | default: "Professional safety education for the amusement industry since 2025. Advance your career while keeping guests safe." }}
+        </p>
+        <div class="aai-footer-contact">
+          {% if section.settings.phone != blank %}
+            <div class="aai-contact-item">
+              <span class="aai-contact-icon">📞</span>
+              <a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a>
+            </div>
+          {% endif %}
+          {% if section.settings.email != blank %}
+            <div class="aai-contact-item">
+              <span class="aai-contact-icon">✉️</span>
+              <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="aai-footer-column">
+        <h4>{{ section.settings.menu_1_title | default: "Courses" }}</h4>
+        <ul class="aai-footer-links">
+          <li><a href="/collections/courses">All Courses</a></li>
+          <li><a href="/pages/certifications">Certifications</a></li>
+          <li><a href="/pages/corporate-training">Corporate Training</a></li>
+          <li><a href="/pages/webinars">Webinars</a></li>
+        </ul>
+      </div>
+
+      <div class="aai-footer-column">
+        <h4>{{ section.settings.menu_2_title | default: "Company" }}</h4>
+        <ul class="aai-footer-links">
+          <li><a href="/pages/about">About AAI</a></li>
+          <li><a href="/pages/instructors">Our Faculty</a></li>
+          <li><a href="/pages/partnerships">Partnerships</a></li>
+          <li><a href="/pages/contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="aai-footer-column">
+        <h4>{{ section.settings.menu_3_title | default: "Resources" }}</h4>
+        <ul class="aai-footer-links">
+          <li><a href="/pages/safety-library">Safety Library</a></li>
+          <li><a href="/pages/industry-standards">Industry Standards</a></li>
+          <li><a href="/pages/help-center">Help Center</a></li>
+          <li><a href="/pages/demo">Platform Demo</a></li>
+        </ul>
+      </div>
+
+      <div class="aai-footer-column">
+        <h4>{{ section.settings.menu_4_title | default: "Support" }}</h4>
+        <ul class="aai-footer-links">
+          <li><a href="/account/login">Student Login</a></li>
+          <li><a href="/account/register">Create Account</a></li>
+          <li><a href="/pages/help-center">Help Center</a></li>
+          {% if section.settings.support_hours != blank %}
+            <li class="support-hours">{{ section.settings.support_hours }}</li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="aai-footer-certifications">
+      <div class="aai-cert-badges">
+        {% if section.settings.show_iaapa_badge %}
+          <div class="aai-cert-badge">
+            <span>IAAPA Accredited</span>
+          </div>
+        {% endif %}
+        {% if section.settings.show_iso_badge %}
+          <div class="aai-cert-badge">
+            <span>ISO 9001 Certified</span>
+          </div>
+        {% endif %}
+        {% if section.settings.show_ceu_badge %}
+          <div class="aai-cert-badge">
+            <span>CEU Provider</span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="aai-footer-bottom">
+      <div class="aai-footer-legal">
+        <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+        <div class="aai-legal-links">
+          <a href="/pages/privacy-policy">Privacy Policy</a>
+          <a href="/pages/terms-of-service">Terms of Service</a>
+        </div>
+      </div>
+      <div class="aai-footer-social">
+        {% if section.settings.social_linkedin != blank %}
+          <a href="{{ section.settings.social_linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+        {% endif %}
+        {% if section.settings.social_twitter != blank %}
+          <a href="{{ section.settings.social_twitter }}" target="_blank" rel="noopener">Twitter</a>
+        {% endif %}
+        {% if section.settings.social_youtube != blank %}
+          <a href="{{ section.settings.social_youtube }}" target="_blank" rel="noopener">YouTube</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "AAI Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer_description",
+      "label": "Footer Description",
+      "default": "Professional safety education for the amusement industry since 2025. Advance your career while keeping guests safe."
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone Number"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email Address"
+    },
+    {
+      "type": "text",
+      "id": "support_hours",
+      "label": "Support Hours",
+      "default": "Mon-Fri 8AM-6PM EST"
+    },
+    {
+      "type": "header",
+      "content": "Menu Titles"
+    },
+    {
+      "type": "text",
+      "id": "menu_1_title",
+      "label": "Menu 1 Title",
+      "default": "Courses"
+    },
+    {
+      "type": "text",
+      "id": "menu_2_title",
+      "label": "Menu 2 Title", 
+      "default": "Company"
+    },
+    {
+      "type": "text",
+      "id": "menu_3_title",
+      "label": "Menu 3 Title",
+      "default": "Resources"
+    },
+    {
+      "type": "text",
+      "id": "menu_4_title",
+      "label": "Menu 4 Title",
+      "default": "Support"
+    },
+    {
+      "type": "header",
+      "content": "Certifications"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_iaapa_badge",
+      "label": "Show IAAPA Badge",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_iso_badge",
+      "label": "Show ISO Badge",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_ceu_badge",
+      "label": "Show CEU Badge",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Social Media"
+    },
+    {
+      "type": "url",
+      "id": "social_linkedin",
+      "label": "LinkedIn URL"
+    },
+    {
+      "type": "url",
+      "id": "social_twitter",
+      "label": "Twitter URL"
+    },
+    {
+      "type": "url",
+      "id": "social_youtube",
+      "label": "YouTube URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Footer"
+    }
+  ]
+}
+{% endschema %}

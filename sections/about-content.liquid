@@ -1,0 +1,133 @@
+{% comment %}
+  About Content Section - Customizable content blocks
+{% endcomment %}
+
+{{ 'section-about-content.css' | asset_url | stylesheet_tag }}
+
+<section class="about-content page-section {{ section.settings.background_style }}">
+  <div class="container">
+    <div class="content-grid" data-layout="{{ section.settings.layout_style }}">
+      <div class="content-text">
+        {% if section.settings.section_title != blank %}
+          <h2>{{ section.settings.section_title }}</h2>
+        {% endif %}
+        
+        {% if section.settings.section_content != blank %}
+          <div class="content-body">
+            {{ section.settings.section_content }}
+          </div>
+        {% endif %}
+        
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_url }}" class="aai-btn-primary">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+      
+      {% if section.settings.show_image and section.settings.content_image != blank %}
+        <div class="content-image">
+          <img src="{{ section.settings.content_image | image_url: width: 500 }}" 
+               alt="{{ section.settings.content_image.alt | default: section.settings.section_title }}"
+               loading="lazy">
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title"
+    },
+    {
+      "type": "richtext",
+      "id": "section_content",
+      "label": "Section Content"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background Style",
+      "options": [
+        {
+          "value": "section-alt-1",
+          "label": "White Background"
+        },
+        {
+          "value": "section-alt-2", 
+          "label": "Light Grey Background"
+        },
+        {
+          "value": "section-alt-navy-1",
+          "label": "Navy Background"
+        }
+      ],
+      "default": "section-alt-1"
+    },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Layout Style",
+      "options": [
+        {
+          "value": "1fr 1fr",
+          "label": "Two Columns Equal"
+        },
+        {
+          "value": "2fr 1fr",
+          "label": "Text Large, Image Small"
+        },
+        {
+          "value": "1fr 2fr",
+          "label": "Text Small, Image Large"
+        },
+        {
+          "value": "1fr",
+          "label": "Single Column"
+        }
+      ],
+      "default": "2fr 1fr"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show Image",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "content_image",
+      "label": "Content Image"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Content"
+    }
+  ]
+}
+{% endschema %}

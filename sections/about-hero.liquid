@@ -1,0 +1,156 @@
+{% comment %}
+  About Hero Section - Customizable through theme editor
+{% endcomment %}
+
+{{ 'section-about-hero.css' | asset_url | stylesheet_tag }}
+
+<div class="about-hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">{{ section.settings.hero_title | default: "Where Safety Meets Adventure" }}</h1>
+        <p class="hero-subtitle">
+          {{ section.settings.hero_subtitle | default: "Leading the amusement industry in professional safety education since 2025. AAI provides comprehensive training programs that ensure both thrilling experiences and uncompromising safety standards." }}
+        </p>
+        
+        {% if section.settings.show_stats %}
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">{{ section.settings.stat_1_number | default: "500+" }}</div>
+              <div class="stat-label">{{ section.settings.stat_1_label | default: "Professionals Certified" }}</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">{{ section.settings.stat_2_number | default: "50+" }}</div>
+              <div class="stat-label">{{ section.settings.stat_2_label | default: "Courses Available" }}</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">{{ section.settings.stat_3_number | default: "25+" }}</div>
+              <div class="stat-label">{{ section.settings.stat_3_label | default: "Industry Partners" }}</div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      
+      <div class="hero-image">
+        {% if section.settings.hero_image != blank %}
+          <img src="{{ section.settings.hero_image | image_url: width: 400 }}" 
+               alt="{{ section.settings.hero_image.alt | default: 'AAI - Amusement Adventure Institute' }}"
+               class="hero-logo">
+        {% else %}
+          <img src="{{ 'AAI-Full-Color-Logo.jpg' | asset_url }}" 
+               alt="AAI - Amusement Adventure Institute"
+               class="hero-logo">
+        {% endif %}
+        
+        {% if section.settings.show_credentials %}
+          <div class="credentials-overlay">
+            <div class="credential-badge">
+              <span class="badge-text">{{ section.settings.credential_1 | default: "IAAPA Certified" }}</span>
+            </div>
+            <div class="credential-badge">
+              <span class="badge-text">{{ section.settings.credential_2 | default: "ASTM F24 Compliant" }}</span>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Where Safety Meets Adventure"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Leading the amusement industry in professional safety education since 2025. AAI provides comprehensive training programs that ensure both thrilling experiences and uncompromising safety standards."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "header",
+      "content": "Statistics"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show Statistics",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Statistic 1 Number",
+      "default": "500+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Statistic 1 Label",
+      "default": "Professionals Certified"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Statistic 2 Number",
+      "default": "50+"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Statistic 2 Label",
+      "default": "Courses Available"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_number",
+      "label": "Statistic 3 Number",
+      "default": "25+"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Statistic 3 Label",
+      "default": "Industry Partners"
+    },
+    {
+      "type": "header",
+      "content": "Credentials"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_credentials",
+      "label": "Show Credential Badges",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "credential_1",
+      "label": "Credential 1",
+      "default": "IAAPA Certified"
+    },
+    {
+      "type": "text",
+      "id": "credential_2",
+      "label": "Credential 2",
+      "default": "ASTM F24 Compliant"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Hero"
+    }
+  ]
+}
+{% endschema %}
