@@ -1,0 +1,65 @@
+:root {
+  /* AAI Brand Colors */
+  --authority-navy: #1e3a5f;
+  --charcoal-grey: #2c3e50;
+  --clean-white: #ffffff;
+  --safety-orange: #ff6b35;
+  --electric-blue: #3498db;
+  --success-green: #27ae60;
+  --light-grey: #ecf0f1;
+  --medium-grey: #95a5a6;
+  --dark-grey: #34495e;
+  
+  /* Theme compatibility mappings */
+  --color-primary: var(--authority-navy);
+  --color-secondary: var(--safety-orange);
+  --color-accent: var(--electric-blue);
+  --color-success: var(--success-green);
+  --color-foreground: var(--charcoal-grey);
+  --color-background: var(--clean-white);
+  
+  /* AAI Typography */
+  --font-family-primary: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* AAI Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 4rem;
+  
+  /* AAI Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-round: 50%;
+  
+  /* AAI Shadows */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.16);
+  
+  /* Animation variables */
+  --hover-lift-amount: 4px;
+  --hover-scale-amount: 1.03;
+  --hover-subtle-zoom-amount: 1.015;
+  --hover-shadow-color: var(--color-shadow);
+  --hover-transition-duration: 0.25s;
+  --hover-transition-timing: ease-out;
+  
+  /* Animation durations */
+  --animation-duration-fast: 0.15s;
+  --animation-duration-normal: 0.3s;
+  --animation-duration-slow: 0.6s;
+  
+  /* Easing functions */
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}

@@ -4,6 +4,11 @@
   lang="{{ request.locale.iso_code }}"
 >
   <head>
+    {{ 'variables.css' | asset_url | stylesheet_tag }}
+    {{ 'reset.css' | asset_url | stylesheet_tag }}
+    {{ 'containers.css' | asset_url | stylesheet_tag }}
+    {{ 'utilities.css' | asset_url | stylesheet_tag }}
+    {{ 'buttons.css' | asset_url | stylesheet_tag }}
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
     {%- if settings.favicon != blank -%}
@@ -58,6 +63,7 @@
 
     {% # theme-check-disable ParserBlockingScript %}
     <script src="{{ 'critical.js' | asset_url }}"></script>
+    <script src="{{ 'animations.js' | asset_url }}"></script>
     {% # theme-check-enable ParserBlockingScript %}
 
     {% if settings.quick_add or settings.mobile_quick_add %}

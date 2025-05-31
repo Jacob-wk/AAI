@@ -1,0 +1,120 @@
+/* AAI Container System */
+.aai-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+}
+
+.aai-container-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+}
+
+.aai-container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+}
+
+.aai-container-full {
+  width: 100%;
+  padding: 0 var(--spacing-md);
+}
+
+/* Responsive padding adjustments */
+@media screen and (max-width: 768px) {
+  .aai-container,
+  .aai-container-wide,
+  .aai-container-narrow,
+  .aai-container-full {
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .aai-container,
+  .aai-container-wide,
+  .aai-container-narrow,
+  .aai-container-full {
+    padding: 0 var(--spacing-xs);
+  }
+}
+
+/* Content width constraints */
+.content-width-normal {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content-width-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content-width-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Text content constraints */
+.text-content {
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+/* Section spacing and backgrounds */
+.section-padding {
+  padding: var(--spacing-xl) 0;
+}
+
+.section-padding-small {
+  padding: var(--spacing-lg) 0;
+}
+
+.section-padding-large {
+  padding: var(--spacing-xxl) 0;
+}
+
+/* Section background system */
+.section-alt-1 {
+  background-color: var(--light-grey);
+}
+
+.section-alt-2 {
+  background-color: var(--clean-white);
+}
+
+.section-alt-3 {
+  background-color: #f8f9fa;
+}
+
+.section-alt-4 {
+  background-color: #f1f3f5;
+}
+
+.section-alt-5 {
+  background-color: #e9ecef;
+}
+
+.section-alt-6 {
+  background-color: #f7f8fa;
+}
+
+.section-alt-navy-1 {
+  background-color: var(--authority-navy);
+  color: var(--clean-white);
+}
+
+.section-alt-navy-2 {
+  background: linear-gradient(135deg, var(--authority-navy) 0%, #2a4a6b 100%);
+  color: var(--clean-white);
+}
+
+.section-alt-navy-3 {
+  background: linear-gradient(135deg, #1a2f4a 0%, var(--authority-navy) 100%);
+  color: var(--clean-white);
+}

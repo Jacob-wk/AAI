@@ -1,5 +1,12 @@
 /* AAI Base Styles - Modular CSS Architecture */
 
+/* Import core styles */
+@import url('variables.css');
+@import url('reset.css');
+@import url('containers.css');
+@import url('utilities.css');
+@import url('buttons.css');
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-primary);
