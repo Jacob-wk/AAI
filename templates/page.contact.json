@@ -1,34 +1,138 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "hero_title": "Contact AAI",
+        "hero_subtitle": "Get in touch with our safety education experts. We're here to help you advance your career and enhance your organization's safety culture.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-left-image-right",
+        "show_image": true,
+        "show_features": true,
+        "primary_button_text": "Send Message",
+        "primary_button_url": "#contact-form",
+        "secondary_button_text": "Call Us Now",
+        "secondary_button_url": "tel:+1-555-AAI-SAFE"
+      },
       "blocks": {
-        "title": {
-          "type": "text",
-          "name": "t:names.title",
+        "feature1": {
+          "type": "feature",
           "settings": {
-            "text": "<h2>{{ closest.page.title }}</h2>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h1",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "feature_icon": "📞",
+            "feature_title": "Expert Support",
+            "feature_description": "Direct access to our training specialists"
+          }
         },
+        "feature2": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "⚡",
+            "feature_title": "Quick Response",
+            "feature_description": "We respond within 24 hours"
+          }
+        },
+        "feature3": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "🎯",
+            "feature_title": "Tailored Solutions",
+            "feature_description": "Customized recommendations for your needs"
+          }
+        }
+      },
+      "block_order": ["feature1", "feature2", "feature3"]
+    },
+    "contact_info": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Get in Touch",
+        "section_subtitle": "Multiple ways to connect with our team",
+        "layout_style": "three-column",
+        "background_style": "bg-light",
+        "show_main_content": false
+      },
+      "blocks": {
+        "phone": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Phone Support",
+            "block_content": "<p><strong>Main Office:</strong><br>1-555-AAI-SAFE<br>(1-555-224-7233)</p><p><strong>Hours:</strong><br>Monday - Friday: 8:00 AM - 6:00 PM EST<br>Saturday: 9:00 AM - 2:00 PM EST</p>"
+          }
+        },
+        "email": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Email Contact",
+            "block_content": "<p><strong>General Inquiries:</strong><br>info@aailearning.com</p><p><strong>Training Support:</strong><br>training@aailearning.com</p><p><strong>Corporate Sales:</strong><br>corporate@aailearning.com</p>"
+          }
+        },
+        "address": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Mailing Address",
+            "block_content": "<p><strong>AAI Learning Center</strong><br>123 Safety Boulevard<br>Suite 456<br>Orlando, FL 32819</p><p><strong>Training Facility:</strong><br>Available for on-site corporate training and practical assessments</p>"
+          }
+        }
+      },
+      "block_order": ["phone", "email", "address"]
+    },
+    "contact_form": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Send Us a Message",
+        "section_subtitle": "Fill out the form below and we'll get back to you within 24 hours",
+        "layout_style": "two-column",
+        "show_main_content": true,
+        "content_title": "How Can We Help?",
+        "content_body": "<p>Whether you're interested in individual certification, corporate training, or have questions about our programs, we're here to help. Our expert team will provide personalized recommendations based on your specific needs and goals.</p>"
+      },
+      "blocks": {
+        "form": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Contact Form",
+            "block_content": "<form action=\"/contact\" method=\"post\" id=\"ContactForm\" accept-charset=\"UTF-8\" class=\"contact-form\"><div class=\"form-group\"><label for=\"ContactFormName\">Full Name *</label><input type=\"text\" id=\"ContactFormName\" name=\"contact[name]\" placeholder=\"Your full name\" required></div><div class=\"form-group\"><label for=\"ContactFormEmail\">Email Address *</label><input type=\"email\" id=\"ContactFormEmail\" name=\"contact[email]\" placeholder=\"your.email@company.com\" required></div><div class=\"form-group\"><label for=\"ContactFormPhone\">Phone Number</label><input type=\"tel\" id=\"ContactFormPhone\" name=\"contact[phone]\" placeholder=\"(555) 123-4567\"></div><div class=\"form-group\"><label for=\"ContactFormCompany\">Organization/Company</label><input type=\"text\" id=\"ContactFormCompany\" name=\"contact[company]\" placeholder=\"Your organization name\"></div><div class=\"form-group\"><label for=\"ContactFormSubject\">How can we help? *</label><select id=\"ContactFormSubject\" name=\"contact[subject]\" required><option value=\"\">Select an option</option><option value=\"Individual Certification\">Individual Certification</option><option value=\"Corporate Training\">Corporate Training</option><option value=\"Course Information\">Course Information</option><option value=\"Technical Support\">Technical Support</option><option value=\"Partnership Inquiry\">Partnership Inquiry</option><option value=\"Other\">Other</option></select></div><div class=\"form-group\"><label for=\"ContactFormMessage\">Message *</label><textarea id=\"ContactFormMessage\" name=\"contact[body]\" placeholder=\"Tell us about your training needs, questions, or how we can help...\" rows=\"5\" required></textarea></div><div class=\"form-group\"><button type=\"submit\" class=\"btn btn-primary\">Send Message</button></div></form>"
+          }
+        }
+      },
+      "block_order": ["form"]
+    },
+    "additional_support": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Additional Resources",
+        "section_subtitle": "Find answers and get support",
+        "layout_style": "three-column",
+        "background_style": "bg-light"
+      },
+      "blocks": {
+        "faq": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Frequently Asked Questions",
+            "block_content": "<p>Find answers to common questions about our training programs, certification requirements, and platform features.</p><p><a href=\"/pages/help-center\" class=\"btn btn-outline\">Visit Help Center</a></p>"
+          }
+        },
+        "demo": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Platform Demo",
+            "block_content": "<p>Experience our interactive learning platform with a guided demo showcasing our training modules and assessment tools.</p><p><a href=\"/pages/demo\" class=\"btn btn-outline\">Take Demo</a></p>"
+          }
+        },
+        "schedule": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Schedule Consultation",
+            "block_content": "<p>Book a personalized consultation with our training experts to discuss your specific needs and develop a custom solution.</p><p><a href=\"#contact-form\" class=\"btn btn-outline\">Book Now</a></p>"
+          }
+        }
+      },
+      "block_order": ["faq", "demo", "schedule"]
+    }
+  },
+  "order": ["hero", "contact_info", "contact_form", "additional_support"]
+}
         "content": {
           "type": "text",
           "name": "t:names.content",

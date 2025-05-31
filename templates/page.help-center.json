@@ -1,66 +1,104 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "title": "Help Center",
+        "subtitle": "Find answers and get support for your AAI learning experience",
+        "background_style": "bg-light",
+        "show_stats": false,
+        "show_features": false,
+        "show_cta": false
+      }
+    },
+    "help_search": {
+      "type": "aai-universal-content",
       "blocks": {
-        "hero": {
-          "type": "text",
+        "search_block": {
+          "type": "content_block",
           "settings": {
-            "text": "<h1>Help Center</h1><p class='lead'>Find answers and get support for your AAI learning experience</p>",
-            "type_preset": "h1",
-            "alignment": "center",
-            "color": "#1e3a5f",
-            "padding-block-start": 40,
-            "padding-block-end": 20
-          }
-        },
-        "search_help": {
-          "type": "text",
-          "settings": {
-            "text": "<div class='help-search'><input type='search' placeholder='Search help articles...' class='help-search-input'><button class='help-search-btn'>Search</button></div>",
-            "alignment": "center",
-            "padding-block-start": 20,
-            "padding-block-end": 40
-          }
-        },
-        "faq_categories": {
-          "type": "text",
-          "settings": {
-            "text": "<div class='help-categories'><div class='category'><h3>Getting Started</h3><ul><li><a href='#'>How to access my courses</a></li><li><a href='#'>Navigating the learning platform</a></li><li><a href='#'>System requirements</a></li><li><a href='#'>Creating your profile</a></li></ul></div><div class='category'><h3>Course Management</h3><ul><li><a href='#'>Enrolling in courses</a></li><li><a href='#'>Tracking progress</a></li><li><a href='#'>Downloading certificates</a></li><li><a href='#'>Course completion requirements</a></li></ul></div><div class='category'><h3>Technical Support</h3><ul><li><a href='#'>Video playback issues</a></li><li><a href='#'>Login problems</a></li><li><a href='#'>Browser compatibility</a></li><li><a href='#'>Mobile access</a></li></ul></div><div class='category'><h3>Billing & Accounts</h3><ul><li><a href='#'>Payment methods</a></li><li><a href='#'>Refund policy</a></li><li><a href='#'>Group enrollment</a></li><li><a href='#'>Corporate accounts</a></li></ul></div></div>",
-            "type_preset": "body",
-            "alignment": "center",
-            "padding-block-start": 40,
-            "padding-block-end": 40
-          }
-        },
-        "contact_support": {
-          "type": "text",
-          "settings": {
-            "text": "<div class='support-contact'><h3>Still Need Help?</h3><p>Our support team is here to assist you Monday through Friday, 8 AM to 6 PM EST.</p><div class='contact-options'><a href='/pages/contact' class='btn btn-primary'>Contact Support</a><a href='mailto:support@aai-lms.com' class='btn btn-outline'>Email Support</a></div></div>",
-            "type_preset": "h3",
-            "alignment": "center",
-            "background": true,
-            "background_color": "#f8f9fa",
-            "padding-block-start": 40,
-            "padding-block-end": 40
+            "title": "",
+            "content": "<div class='help-search'><input type='search' placeholder='Search help articles...' class='help-search-input'><button class='help-search-btn'>Search</button></div>",
+            "alignment": "center"
           }
         }
       },
       "block_order": [
-        "hero",
-        "search_help",
-        "faq_categories",
-        "contact_support"
+        "search_block"
       ],
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "padding-block-start": 40,
-        "padding-block-end": 80
+        "layout": "single-column",
+        "background_style": "bg-light"
+      }
+    },
+    "faq_categories": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "getting_started": {
+          "type": "content_block",
+          "settings": {
+            "title": "Getting Started",
+            "content": "<ul><li><a href='#'>How to access my courses</a></li><li><a href='#'>Navigating the learning platform</a></li><li><a href='#'>System requirements</a></li><li><a href='#'>Creating your profile</a></li></ul>"
+          }
+        },
+        "course_management": {
+          "type": "content_block",
+          "settings": {
+            "title": "Course Management",
+            "content": "<ul><li><a href='#'>Enrolling in courses</a></li><li><a href='#'>Tracking progress</a></li><li><a href='#'>Downloading certificates</a></li><li><a href='#'>Course completion requirements</a></li></ul>"
+          }
+        },
+        "technical_support": {
+          "type": "content_block",
+          "settings": {
+            "title": "Technical Support",
+            "content": "<ul><li><a href='#'>Video playback issues</a></li><li><a href='#'>Login problems</a></li><li><a href='#'>Browser compatibility</a></li><li><a href='#'>Mobile access</a></li></ul>"
+          }
+        },
+        "billing_accounts": {
+          "type": "content_block",
+          "settings": {
+            "title": "Billing & Accounts",
+            "content": "<ul><li><a href='#'>Payment methods</a></li><li><a href='#'>Refund policy</a></li><li><a href='#'>Group enrollment</a></li><li><a href='#'>Corporate accounts</a></li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "getting_started",
+        "course_management",
+        "technical_support",
+        "billing_accounts"
+      ],
+      "settings": {
+        "layout": "four-column",
+        "background_style": "bg-light"
+      }
+    },
+    "contact_support": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "support_info": {
+          "type": "content_block",
+          "settings": {
+            "title": "Still Need Help?",
+            "content": "<p>Our support team is here to assist you Monday through Friday, 8 AM to 6 PM EST.</p><div class='contact-options'><a href='/pages/contact' class='btn btn-primary'>Contact Support</a><a href='mailto:support@aai-lms.com' class='btn btn-outline'>Email Support</a></div>",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "support_info"
+      ],
+      "settings": {
+        "layout": "single-column",
+        "background_style": "bg-primary"
       }
     }
   },
   "order": [
-    "main"
+    "hero",
+    "help_search",
+    "faq_categories",
+    "contact_support"
   ]
 }

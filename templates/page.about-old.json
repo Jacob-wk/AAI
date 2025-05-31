@@ -103,7 +103,25 @@
         }
       },
       "block_order": ["expertise_list"]
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "hero",
+        "mission", 
+        "credentials",
+        "expertise"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
     }
   },
-  "order": ["hero", "mission", "credentials", "expertise"]
+  "order": [
+    "main"
+  ]
 }

@@ -1,0 +1,362 @@
+{% comment %}
+  AAI Demo Experience Section
+  Interactive demo showcasing the learning platform
+{% endcomment %}
+
+{{ 'section-aai-demo.css' | asset_url | stylesheet_tag }}
+{{ 'aai-demo-experience.js' | asset_url | script_tag }}
+
+<section class="aai-demo-experience {{ section.settings.section_style }}" id="demo-experience">
+  <div class="aai-container">
+    {% if section.settings.section_title != blank %}
+      <div class="section-header">
+        <h2 class="section-title">{{ section.settings.section_title }}</h2>
+        {% if section.settings.section_subtitle != blank %}
+          <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    <div class="demo-container">
+      <div class="demo-tabs">
+        {% for block in section.blocks %}
+          {% if block.type == 'demo_tab' %}
+            <button class="demo-tab" 
+                    data-demo-tab="{{ block.id }}"
+                    {{ block.shopify_attributes }}>
+              <div class="tab-icon">{{ block.settings.tab_icon }}</div>
+              <div class="tab-content">
+                <strong>{{ block.settings.tab_title }}</strong>
+                <span>{{ block.settings.tab_description }}</span>
+              </div>
+            </button>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <div class="demo-content">
+        {% for block in section.blocks %}
+          {% if block.type == 'demo_tab' %}
+            <div class="demo-panel" 
+                 id="panel-{{ block.id }}"
+                 data-demo-panel="{{ block.id }}"
+                 {{ block.shopify_attributes }}>
+              
+              <div class="demo-preview">
+                {% if block.settings.demo_image != blank %}
+                  <img src="{{ block.settings.demo_image | image_url: width: 800 }}" 
+                       alt="{{ block.settings.demo_image.alt | default: block.settings.tab_title }}"
+                       class="demo-screenshot">
+                {% endif %}
+                
+                {% if block.settings.demo_video_url != blank %}
+                  <div class="demo-video">
+                    <iframe src="{{ block.settings.demo_video_url }}" 
+                            frameborder="0" 
+                            allowfullscreen
+                            title="{{ block.settings.tab_title }} Demo"></iframe>
+                  </div>
+                {% endif %}
+                
+                {% if block.settings.show_interactive_demo %}
+                  <div class="interactive-demo">
+                    <div class="demo-interface">
+                      <div class="demo-toolbar">
+                        <span class="demo-progress">{{ block.settings.demo_progress | default: "Step 1 of 5" }}</span>
+                        <div class="demo-controls">
+                          <button class="demo-btn demo-prev">Previous</button>
+                          <button class="demo-btn demo-next">Next</button>
+                        </div>
+                      </div>
+                      
+                      <div class="demo-workspace">
+                        {{ block.settings.demo_content }}
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+              
+              <div class="demo-description">
+                <h3>{{ block.settings.panel_title | default: block.settings.tab_title }}</h3>
+                <p>{{ block.settings.panel_description }}</p>
+                
+                {% if block.settings.feature_list != blank %}
+                  <ul class="demo-features">
+                    {% assign features = block.settings.feature_list | split: '|' %}
+                    {% for feature in features %}
+                      <li>{{ feature | strip }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+                
+                {% if block.settings.cta_button_text != blank %}
+                  <a href="{{ block.settings.cta_button_url }}" 
+                     class="btn btn--{{ block.settings.cta_button_style }}">
+                    {{ block.settings.cta_button_text }}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    
+    {% if section.settings.show_bottom_cta %}
+      <div class="demo-bottom-cta">
+        <div class="cta-content">
+          {% if section.settings.cta_title != blank %}
+            <h3>{{ section.settings.cta_title }}</h3>
+          {% endif %}
+          {% if section.settings.cta_description != blank %}
+            <p>{{ section.settings.cta_description }}</p>
+          {% endif %}
+          <div class="cta-buttons">
+            {% if section.settings.primary_cta_text != blank %}
+              <a href="{{ section.settings.primary_cta_url }}" 
+                 class="btn btn--primary btn--large">
+                {{ section.settings.primary_cta_text }}
+              </a>
+            {% endif %}
+            {% if section.settings.secondary_cta_text != blank %}
+              <a href="{{ section.settings.secondary_cta_url }}" 
+                 class="btn btn--secondary btn--large">
+                {{ section.settings.secondary_cta_text }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AAI Demo Experience",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Experience AAI Learning Platform"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "Explore our interactive training modules and see how professionals advance their careers"
+    },
+    {
+      "type": "select",
+      "id": "section_style",
+      "label": "Section Style",
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "demo-dark", "label": "Dark Theme" },
+        { "value": "demo-minimal", "label": "Minimal Style" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Bottom Call to Action"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_cta",
+      "label": "Show Bottom CTA",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Ready to Get Started?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_description",
+      "label": "CTA Description",
+      "default": "Join thousands of professionals who have advanced their careers with AAI"
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_text",
+      "label": "Primary CTA Text",
+      "default": "Start Learning"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_url",
+      "label": "Primary CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "Secondary CTA Text",
+      "default": "Browse Courses"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_url",
+      "label": "Secondary CTA URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "demo_tab",
+      "name": "Demo Tab",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Tab Settings"
+        },
+        {
+          "type": "text",
+          "id": "tab_icon",
+          "label": "Tab Icon (emoji or text)",
+          "default": "🎓"
+        },
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "Interactive Learning"
+        },
+        {
+          "type": "text",
+          "id": "tab_description",
+          "label": "Tab Description",
+          "default": "Hands-on simulations"
+        },
+        {
+          "type": "header",
+          "content": "Panel Content"
+        },
+        {
+          "type": "text",
+          "id": "panel_title",
+          "label": "Panel Title"
+        },
+        {
+          "type": "textarea",
+          "id": "panel_description",
+          "label": "Panel Description"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_list",
+          "label": "Feature List (separate with |)",
+          "info": "Example: Feature 1|Feature 2|Feature 3"
+        },
+        {
+          "type": "header",
+          "content": "Media"
+        },
+        {
+          "type": "image_picker",
+          "id": "demo_image",
+          "label": "Demo Screenshot"
+        },
+        {
+          "type": "url",
+          "id": "demo_video_url",
+          "label": "Demo Video URL (YouTube/Vimeo embed)"
+        },
+        {
+          "type": "header",
+          "content": "Interactive Demo"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_interactive_demo",
+          "label": "Show Interactive Demo",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "demo_progress",
+          "label": "Demo Progress Text",
+          "default": "Step 1 of 5"
+        },
+        {
+          "type": "html",
+          "id": "demo_content",
+          "label": "Interactive Demo HTML"
+        },
+        {
+          "type": "header",
+          "content": "Call to Action"
+        },
+        {
+          "type": "text",
+          "id": "cta_button_text",
+          "label": "CTA Button Text"
+        },
+        {
+          "type": "url",
+          "id": "cta_button_url",
+          "label": "CTA Button URL"
+        },
+        {
+          "type": "select",
+          "id": "cta_button_style",
+          "label": "CTA Button Style",
+          "options": [
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" },
+            { "value": "outline", "label": "Outline" }
+          ],
+          "default": "primary"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Demo Experience",
+      "blocks": [
+        {
+          "type": "demo_tab",
+          "settings": {
+            "tab_icon": "🎓",
+            "tab_title": "Interactive Learning",
+            "tab_description": "Hands-on simulations and real-world scenarios",
+            "panel_title": "Immersive Learning Experience",
+            "panel_description": "Experience our cutting-edge simulation technology that puts you in real amusement park scenarios.",
+            "feature_list": "Real-world scenarios|Interactive simulations|Instant feedback|Progress tracking"
+          }
+        },
+        {
+          "type": "demo_tab",
+          "settings": {
+            "tab_icon": "📱",
+            "tab_title": "Mobile Learning",
+            "tab_description": "Learn anywhere, anytime on any device",
+            "panel_title": "Learn On The Go",
+            "panel_description": "Access your courses from any device with our mobile-optimized platform.",
+            "feature_list": "Mobile responsive|Offline access|Sync across devices|Touch-friendly interface"
+          }
+        },
+        {
+          "type": "demo_tab",
+          "settings": {
+            "tab_icon": "🏆",
+            "tab_title": "Certification",
+            "tab_description": "Industry-recognized credentials",
+            "panel_title": "Earn Professional Credentials",
+            "panel_description": "Complete courses and earn certifications recognized throughout the amusement industry.",
+            "feature_list": "IAAPA recognized|Digital certificates|Continuing education credits|Career advancement"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

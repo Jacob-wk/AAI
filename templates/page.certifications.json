@@ -1,54 +1,161 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "hero_title": "Professional Certifications",
+        "hero_subtitle": "Advance your career with industry-recognized credentials that demonstrate your expertise in amusement safety and operations management.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-left-image-right",
+        "show_image": true,
+        "show_stats": true,
+        "primary_button_text": "View All Certifications",
+        "primary_button_url": "#certification-programs",
+        "secondary_button_text": "Get Started",
+        "secondary_button_url": "/collections/courses"
+      },
       "blocks": {
-        "hero": {
-          "type": "text",
+        "stat1": {
+          "type": "statistic",
           "settings": {
-            "text": "<h1>Professional Certifications</h1><p class='lead'>Industry-recognized credentials that advance your career</p>",
-            "type_preset": "h1",
-            "alignment": "center",
-            "color": "#1e3a5f",
-            "padding-block-start": 40,
-            "padding-block-end": 20
+            "stat_number": "98%",
+            "stat_label": "Pass Rate"
           }
         },
-        "overview": {
-          "type": "text",
+        "stat2": {
+          "type": "statistic",
           "settings": {
-            "text": "<p>Our certification programs are designed to meet the highest industry standards and are recognized by leading amusement operators, manufacturers, and regulatory bodies worldwide.</p>",
-            "max_width": "narrow",
-            "alignment": "center",
-            "padding-block-start": 20,
-            "padding-block-end": 40
+            "stat_number": "8",
+            "stat_label": "Certification Programs"
           }
         },
-        "certifications": {
-          "type": "text",
+        "stat3": {
+          "type": "statistic",
           "settings": {
-            "text": "<div class='certification-grid'><div class='cert-card'><h3>Certified Ride Inspector (CRI)</h3><p class='duration'>120 hours | 6 months access</p><p class='ceu'>CEU Credits: 12</p><p>Comprehensive ride inspection certification covering mechanical, electrical, and structural systems.</p><ul><li>Visual inspection techniques</li><li>Non-destructive testing methods</li><li>Documentation and reporting</li><li>Regulatory compliance</li></ul><p class='price'>$2,495</p></div><div class='cert-card'><h3>Safety Management Professional (SMP)</h3><p class='duration'>80 hours | 4 months access</p><p class='ceu'>CEU Credits: 8</p><p>Advanced safety management and risk assessment certification for supervisory roles.</p><ul><li>Safety program development</li><li>Incident investigation</li><li>Training program design</li><li>Emergency response planning</li></ul><p class='price'>$1,895</p></div><div class='cert-card'><h3>Maintenance Excellence Certificate (MEC)</h3><p class='duration'>100 hours | 5 months access</p><p class='ceu'>CEU Credits: 10</p><p>Specialized maintenance certification focusing on preventive and predictive maintenance strategies.</p><ul><li>Maintenance planning and scheduling</li><li>Predictive analytics</li><li>Parts management</li><li>Technical documentation</li></ul><p class='price'>$2,195</p></div></div>",
-            "type_preset": "body",
-            "alignment": "center",
-            "padding-block-start": 40,
-            "padding-block-end": 60
+            "stat_number": "1,000+",
+            "stat_label": "Certified Professionals"
           }
         }
       },
-      "block_order": [
-        "hero",
-        "overview",
-        "certifications"
-      ],
+      "block_order": ["stat1", "stat2", "stat3"]
+    },
+    "certification_overview": {
+      "type": "aai-universal-content",
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "padding-block-start": 40,
-        "padding-block-end": 80
+        "section_title": "Industry-Recognized Excellence",
+        "section_subtitle": "AAI certifications are accepted by leading operators, manufacturers, and regulatory bodies worldwide",
+        "layout_style": "two-column",
+        "background_style": "bg-light",
+        "show_main_content": true,
+        "content_title": "Why Choose AAI Certification?",
+        "content_body": "<p>Our certification programs combine rigorous academic standards with practical, hands-on experience. Each program is designed by industry experts and regularly updated to reflect current best practices and regulatory requirements.</p>"
+      },
+      "blocks": {
+        "benefit1": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Career Advancement",
+            "list_items": "Higher earning potential\nPromotional opportunities\nIndustry recognition\nProfessional credibility"
+          }
+        },
+        "benefit2": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Industry Standards",
+            "list_items": "IAAPA endorsed programs\nASTM F24 compliant content\nNAARSO recognized training\nState regulatory acceptance"
+          }
+        }
+      },
+      "block_order": ["benefit1", "benefit2"]
+    },
+    "certification_programs": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Certification Programs",
+        "section_subtitle": "Choose from our comprehensive range of specialized certification tracks",
+        "layout_style": "single-column",
+        "show_main_content": true
+      },
+      "blocks": {
+        "cert1": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Certified Ride Inspector (CRI)",
+            "block_content": "<p><strong>Duration:</strong> 120 hours | <strong>Format:</strong> Online + Practical</p><p>Comprehensive training in ride inspection procedures, safety systems, and regulatory compliance. Covers mechanical, electrical, and structural inspection techniques.</p><p><strong>Prerequisites:</strong> High school diploma, basic mechanical knowledge</p><p><strong>Certification Validity:</strong> 3 years with continuing education requirements</p><p><strong>Investment:</strong> $2,495</p>"
+          }
+        },
+        "cert2": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Safety Management Professional (SMP)",
+            "block_content": "<p><strong>Duration:</strong> 80 hours | <strong>Format:</strong> Online + Case Studies</p><p>Advanced program covering safety management systems, risk assessment, incident investigation, and regulatory compliance strategies.</p><p><strong>Prerequisites:</strong> 2+ years industry experience or relevant degree</p><p><strong>Certification Validity:</strong> 3 years with annual updates</p><p><strong>Investment:</strong> $1,895</p>"
+          }
+        },
+        "cert3": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Maintenance Excellence Certificate (MEC)",
+            "block_content": "<p><strong>Duration:</strong> 100 hours | <strong>Format:</strong> Blended Learning</p><p>Specialized maintenance certification focusing on preventive and predictive maintenance strategies for optimal facility operations.</p><p><strong>Prerequisites:</strong> Maintenance experience or technical background</p><p><strong>Certification Validity:</strong> 5 years with professional development units</p><p><strong>Investment:</strong> $2,195</p>"
+          }
+        }
+      },
+      "block_order": ["cert1", "cert2", "cert3"]
+    },
+    "certification_process": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Certification Process",
+        "section_subtitle": "Simple steps to advance your professional credentials",
+        "layout_style": "four-column",
+        "background_style": "bg-light"
+      },
+      "blocks": {
+        "step1": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "1. Choose Your Program",
+            "block_content": "<p>Select the certification that aligns with your career goals and current experience level. Our advisors are available to help you make the right choice.</p>"
+          }
+        },
+        "step2": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "2. Complete Training",
+            "block_content": "<p>Engage with expert-led content through our interactive online platform, supplemented by hands-on practical sessions when required.</p>"
+          }
+        },
+        "step3": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "3. Pass Assessment",
+            "block_content": "<p>Demonstrate your knowledge through comprehensive examinations and practical evaluations designed to test real-world application.</p>"
+          }
+        },
+        "step4": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "4. Receive Certification",
+            "block_content": "<p>Upon successful completion, receive your official certification and join our network of certified safety professionals.</p>"
+          }
+        }
+      },
+      "block_order": ["step1", "step2", "step3", "step4"]
+    },
+    "call_to_action": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Ready to Advance Your Career?",
+        "section_subtitle": "Join thousands of professionals who have elevated their expertise with AAI certification",
+        "layout_style": "centered",
+        "background_style": "bg-primary",
+        "show_main_content": true,
+        "content_body": "<p>Take the next step in your professional development with industry-recognized certification that opens doors to new opportunities.</p>",
+        "primary_button_text": "Explore Certifications",
+        "primary_button_url": "/collections/courses",
+        "secondary_button_text": "Contact Advisor",
+        "secondary_button_url": "/pages/contact"
       }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["hero", "certification_overview", "certification_programs", "certification_process", "call_to_action"]
 }

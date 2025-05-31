@@ -1,0 +1,354 @@
+{% comment %}
+  AAI Instructor Showcase Section
+  Display instructor profiles and expertise
+{% endcomment %}
+
+{{ 'section-aai-instructors.css' | asset_url | stylesheet_tag }}
+
+<section class="aai-instructors {{ section.settings.section_style }}">
+  <div class="aai-container">
+    {% if section.settings.section_title != blank %}
+      <div class="section-header">
+        <h2 class="section-title">{{ section.settings.section_title }}</h2>
+        {% if section.settings.section_subtitle != blank %}
+          <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    <div class="instructors-grid" data-layout="{{ section.settings.grid_layout }}">
+      {% for block in section.blocks %}
+        {% if block.type == 'instructor' %}
+          <div class="instructor-card" {{ block.shopify_attributes }}>
+            <div class="instructor-image">
+              {% if block.settings.instructor_photo != blank %}
+                <img src="{{ block.settings.instructor_photo | image_url: width: 300 }}" 
+                     alt="{{ block.settings.instructor_name }}"
+                     loading="lazy">
+              {% else %}
+                <div class="instructor-placeholder">
+                  <span class="placeholder-initials">
+                    {{ block.settings.instructor_name | slice: 0, 2 | upcase }}
+                  </span>
+                </div>
+              {% endif %}
+              
+              {% if block.settings.show_credentials and block.settings.credentials != blank %}
+                <div class="instructor-credentials">
+                  {% assign credentials = block.settings.credentials | split: ',' %}
+                  {% for credential in credentials limit: 2 %}
+                    <span class="credential-badge">{{ credential | strip }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            
+            <div class="instructor-info">
+              <h3 class="instructor-name">{{ block.settings.instructor_name }}</h3>
+              
+              {% if block.settings.instructor_title != blank %}
+                <p class="instructor-title">{{ block.settings.instructor_title }}</p>
+              {% endif %}
+              
+              {% if block.settings.instructor_bio != blank %}
+                <div class="instructor-bio">{{ block.settings.instructor_bio }}</div>
+              {% endif %}
+              
+              {% if block.settings.specialties != blank %}
+                <div class="instructor-specialties">
+                  <h4>Specialties:</h4>
+                  <ul class="specialty-list">
+                    {% assign specialties = block.settings.specialties | split: '|' %}
+                    {% for specialty in specialties %}
+                      <li>{{ specialty | strip }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+              
+              {% if block.settings.experience_years != blank or block.settings.courses_taught != blank %}
+                <div class="instructor-stats">
+                  {% if block.settings.experience_years != blank %}
+                    <div class="stat-item">
+                      <span class="stat-number">{{ block.settings.experience_years }}+</span>
+                      <span class="stat-label">Years Experience</span>
+                    </div>
+                  {% endif %}
+                  {% if block.settings.courses_taught != blank %}
+                    <div class="stat-item">
+                      <span class="stat-number">{{ block.settings.courses_taught }}+</span>
+                      <span class="stat-label">Courses Taught</span>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              
+              {% if block.settings.show_social_links %}
+                <div class="instructor-social">
+                  {% if block.settings.linkedin_url != blank %}
+                    <a href="{{ block.settings.linkedin_url }}" 
+                       target="_blank" 
+                       rel="noopener"
+                       class="social-link linkedin">
+                      <span class="sr-only">LinkedIn</span>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
+                    </a>
+                  {% endif %}
+                  {% if block.settings.email != blank %}
+                    <a href="mailto:{{ block.settings.email }}" 
+                       class="social-link email">
+                      <span class="sr-only">Email</span>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.904.732-1.636 1.636-1.636h.91L12 10.898l9.454-7.077h.91C23.268 3.821 24 4.553 24 5.457z"/>
+                      </svg>
+                    </a>
+                  {% endif %}
+                </div>
+              {% endif %}
+              
+              {% if block.settings.view_profile_url != blank %}
+                <a href="{{ block.settings.view_profile_url }}" 
+                   class="btn btn--outline btn--small">
+                  View Full Profile
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    
+    {% if section.settings.show_join_team_cta %}
+      <div class="join-team-cta">
+        <div class="cta-content">
+          <h3>{{ section.settings.cta_title | default: "Join Our Expert Team" }}</h3>
+          <p>{{ section.settings.cta_description | default: "Share your expertise and help shape the future of amusement industry safety." }}</p>
+          <a href="{{ section.settings.cta_url }}" class="btn btn--primary">
+            {{ section.settings.cta_button_text | default: "Apply to Teach" }}
+          </a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AAI Instructor Showcase",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Meet Our Expert Instructors"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "Learn from industry leaders with decades of hands-on experience in amusement safety"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "select",
+      "id": "section_style",
+      "label": "Section Style",
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "instructors-alt", "label": "Alternative Style" },
+        { "value": "instructors-minimal", "label": "Minimal Style" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "grid_layout",
+      "label": "Grid Layout",
+      "options": [
+        { "value": "grid-2", "label": "2 Columns" },
+        { "value": "grid-3", "label": "3 Columns" },
+        { "value": "grid-4", "label": "4 Columns" },
+        { "value": "grid-auto", "label": "Auto Fit" }
+      ],
+      "default": "grid-3"
+    },
+    {
+      "type": "header",
+      "content": "Join Team CTA"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_join_team_cta",
+      "label": "Show Join Team CTA",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Join Our Expert Team"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_description",
+      "label": "CTA Description",
+      "default": "Share your expertise and help shape the future of amusement industry safety."
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "CTA Button Text",
+      "default": "Apply to Teach"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "instructor",
+      "name": "Instructor",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Instructor Information"
+        },
+        {
+          "type": "text",
+          "id": "instructor_name",
+          "label": "Instructor Name",
+          "default": "Dr. Sarah Johnson"
+        },
+        {
+          "type": "text",
+          "id": "instructor_title",
+          "label": "Title/Position",
+          "default": "Senior Safety Inspector & Educator"
+        },
+        {
+          "type": "image_picker",
+          "id": "instructor_photo",
+          "label": "Instructor Photo"
+        },
+        {
+          "type": "richtext",
+          "id": "instructor_bio",
+          "label": "Biography"
+        },
+        {
+          "type": "header",
+          "content": "Expertise & Experience"
+        },
+        {
+          "type": "textarea",
+          "id": "specialties",
+          "label": "Specialties (separate with |)",
+          "info": "Example: Ride Safety|Risk Assessment|Maintenance Protocols"
+        },
+        {
+          "type": "text",
+          "id": "experience_years",
+          "label": "Years of Experience"
+        },
+        {
+          "type": "text",
+          "id": "courses_taught",
+          "label": "Number of Courses Taught"
+        },
+        {
+          "type": "header",
+          "content": "Credentials"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_credentials",
+          "label": "Show Credential Badges",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "credentials",
+          "label": "Credentials (separate with commas)",
+          "info": "Example: IAAPA, ASTM F24, NAARSO"
+        },
+        {
+          "type": "header",
+          "content": "Contact & Links"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social_links",
+          "label": "Show Social Links",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "linkedin_url",
+          "label": "LinkedIn URL"
+        },
+        {
+          "type": "email",
+          "id": "email",
+          "label": "Email Address"
+        },
+        {
+          "type": "url",
+          "id": "view_profile_url",
+          "label": "Full Profile URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Instructor Showcase",
+      "blocks": [
+        {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Dr. Sarah Johnson",
+            "instructor_title": "Senior Safety Inspector & Lead Educator",
+            "specialties": "Ride Safety Inspection|Risk Assessment|Staff Training|Regulatory Compliance",
+            "experience_years": "15",
+            "courses_taught": "200",
+            "credentials": "IAAPA, ASTM F24, NAARSO"
+          }
+        },
+        {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Mike Rodriguez",
+            "instructor_title": "Operations & Maintenance Specialist",
+            "specialties": "Mechanical Systems|Preventive Maintenance|Emergency Procedures|Quality Control",
+            "experience_years": "20",
+            "courses_taught": "150",
+            "credentials": "IAAPA, ASTM F24"
+          }
+        },
+        {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Lisa Chen",
+            "instructor_title": "Safety Technology & Innovation Expert",
+            "specialties": "Safety Technology|Digital Systems|Automation|Innovation Management",
+            "experience_years": "12",
+            "courses_taught": "100",
+            "credentials": "IAAPA, IEEE"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

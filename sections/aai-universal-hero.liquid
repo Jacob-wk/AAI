@@ -1,0 +1,316 @@
+{% comment %}
+  Universal Hero Section - Flexible hero for any AAI page
+  Customizable through theme editor with multiple layout options
+{% endcomment %}
+
+{{ 'section-aai-hero.css' | asset_url | stylesheet_tag }}
+
+<div class="aai-hero {{ section.settings.hero_style }}">
+  <div class="aai-container">
+    <div class="hero-content" data-layout="{{ section.settings.layout_style }}">
+      <div class="hero-text">
+        {% if section.settings.hero_title != blank %}
+          <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
+        {% endif %}
+        
+        {% if section.settings.hero_subtitle != blank %}
+          <p class="hero-subtitle">{{ section.settings.hero_subtitle }}</p>
+        {% endif %}
+        
+        {% if section.settings.show_features %}
+          <div class="hero-features">
+            {% for block in section.blocks %}
+              {% if block.type == 'feature' %}
+                <div class="hero-feature" {{ block.shopify_attributes }}>
+                  {% if block.settings.feature_icon != blank %}
+                    <div class="feature-icon">{{ block.settings.feature_icon }}</div>
+                  {% endif %}
+                  <div class="feature-text">
+                    {% if block.settings.feature_title != blank %}
+                      <strong>{{ block.settings.feature_title }}</strong>
+                    {% endif %}
+                    {% if block.settings.feature_description != blank %}
+                      <span>{{ block.settings.feature_description }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+        
+        {% if section.settings.show_stats %}
+          <div class="hero-stats">
+            {% for block in section.blocks %}
+              {% if block.type == 'statistic' %}
+                <div class="stat-item" {{ block.shopify_attributes }}>
+                  <div class="stat-number">{{ block.settings.stat_number }}</div>
+                  <div class="stat-label">{{ block.settings.stat_label }}</div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+        
+        {% if section.settings.primary_button_text != blank or section.settings.secondary_button_text != blank %}
+          <div class="hero-cta">
+            {% if section.settings.primary_button_text != blank %}
+              <a href="{{ section.settings.primary_button_url }}" 
+                 class="btn btn--primary btn--{{ section.settings.button_size }}">
+                {{ section.settings.primary_button_text }}
+              </a>
+            {% endif %}
+            {% if section.settings.secondary_button_text != blank %}
+              <a href="{{ section.settings.secondary_button_url }}" 
+                 class="btn btn--secondary btn--{{ section.settings.button_size }}">
+                {{ section.settings.secondary_button_text }}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+      
+      {% if section.settings.show_image %}
+        <div class="hero-image">
+          {% if section.settings.hero_image != blank %}
+            <img src="{{ section.settings.hero_image | image_url: width: 600 }}" 
+                 alt="{{ section.settings.hero_image.alt | default: section.settings.hero_title }}"
+                 class="hero-main-image">
+          {% else %}
+            <img src="{{ 'AAI-Full-Color-Logo.jpg' | asset_url }}" 
+                 alt="AAI - Amusement Adventure Institute"
+                 class="hero-main-image">
+          {% endif %}
+          
+          {% if section.settings.show_credentials %}
+            <div class="credentials-overlay">
+              {% for block in section.blocks %}
+                {% if block.type == 'credential' %}
+                  <div class="credential-badge" {{ block.shopify_attributes }}>
+                    <span class="badge-text">{{ block.settings.credential_text }}</span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "AAI Universal Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Content"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Professional Safety Education"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Leading the amusement industry with comprehensive training programs."
+    },
+    {
+      "type": "header",
+      "content": "Layout & Style"
+    },
+    {
+      "type": "select",
+      "id": "hero_style",
+      "label": "Hero Style",
+      "options": [
+        { "value": "hero-standard", "label": "Standard" },
+        { "value": "hero-centered", "label": "Centered" },
+        { "value": "hero-split", "label": "Split Layout" },
+        { "value": "hero-overlay", "label": "Background Overlay" }
+      ],
+      "default": "hero-standard"
+    },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Content Layout",
+      "options": [
+        { "value": "text-left-image-right", "label": "Text Left, Image Right" },
+        { "value": "text-right-image-left", "label": "Text Right, Image Left" },
+        { "value": "text-center", "label": "Text Centered" },
+        { "value": "text-only", "label": "Text Only" }
+      ],
+      "default": "text-left-image-right"
+    },
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show Hero Image",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "header",
+      "content": "Features Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_features",
+      "label": "Show Feature Items",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Statistics Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show Statistics",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Credentials"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_credentials",
+      "label": "Show Credential Badges",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Call to Action Buttons"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Primary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_url",
+      "label": "Primary Button URL"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Secondary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_url",
+      "label": "Secondary Button URL"
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "Button Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "large"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_icon",
+          "label": "Feature Icon (emoji or text)",
+          "default": "🎓"
+        },
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature Title",
+          "default": "Professional Training"
+        },
+        {
+          "type": "text",
+          "id": "feature_description",
+          "label": "Feature Description",
+          "default": "Industry-leading certification programs"
+        }
+      ]
+    },
+    {
+      "type": "statistic",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "text",
+          "id": "stat_number",
+          "label": "Statistic Number",
+          "default": "500+"
+        },
+        {
+          "type": "text",
+          "id": "stat_label",
+          "label": "Statistic Label",
+          "default": "Professionals Certified"
+        }
+      ]
+    },
+    {
+      "type": "credential",
+      "name": "Credential Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "credential_text",
+          "label": "Credential Text",
+          "default": "IAAPA Certified"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Universal Hero",
+      "blocks": [
+        {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "500+",
+            "stat_label": "Professionals Certified"
+          }
+        },
+        {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "50+",
+            "stat_label": "Courses Available"
+          }
+        },
+        {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "25+",
+            "stat_label": "Industry Partners"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

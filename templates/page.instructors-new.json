@@ -1,0 +1,144 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "hero_title": "Learn From Industry Experts",
+        "hero_subtitle": "Our instructors bring decades of real-world experience from leading amusement parks, manufacturers, and regulatory bodies worldwide.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-center",
+        "show_image": true,
+        "primary_button_text": "Browse Courses",
+        "primary_button_url": "/collections/courses",
+        "secondary_button_text": "Become an Instructor",
+        "secondary_button_url": "/pages/partnerships"
+      }
+    },
+    "instructor_showcase": {
+      "type": "aai-instructor-showcase",
+      "settings": {
+        "section_title": "Meet Our Expert Instructors",
+        "section_subtitle": "Learn from industry leaders with decades of hands-on experience in amusement safety",
+        "grid_layout": "grid-3",
+        "show_join_team_cta": true,
+        "cta_title": "Join Our Expert Team",
+        "cta_description": "Share your expertise and help shape the future of amusement industry safety. We're always looking for qualified professionals to expand our instructor network.",
+        "cta_button_text": "Apply to Teach",
+        "cta_url": "/pages/partnerships"
+      },
+      "blocks": {
+        "instructor1": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Dr. Sarah Johnson",
+            "instructor_title": "Senior Safety Inspector & Lead Educator",
+            "instructor_bio": "<p>Dr. Johnson brings over 15 years of experience in amusement park safety, having worked with major theme parks and served on multiple ASTM F24 committees. She holds a Ph.D. in Mechanical Engineering with a specialization in ride dynamics and safety systems.</p>",
+            "specialties": "Ride Safety Inspection|Risk Assessment|Staff Training|Regulatory Compliance|Emergency Response",
+            "experience_years": "15",
+            "courses_taught": "200",
+            "show_credentials": true,
+            "credentials": "IAAPA, ASTM F24, NAARSO",
+            "show_social_links": false
+          }
+        },
+        "instructor2": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Mike Rodriguez",
+            "instructor_title": "Operations & Maintenance Specialist",
+            "instructor_bio": "<p>Mike has spent over 20 years in amusement park operations, starting as a ride operator and working his way up to Director of Maintenance at one of the world's largest theme park chains. His hands-on experience makes complex maintenance procedures accessible to learners at all levels.</p>",
+            "specialties": "Mechanical Systems|Preventive Maintenance|Quality Control|Operations Management|Troubleshooting",
+            "experience_years": "20",
+            "courses_taught": "150",
+            "show_credentials": true,
+            "credentials": "IAAPA, ASTM F24, NFPA",
+            "show_social_links": false
+          }
+        },
+        "instructor3": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Lisa Chen",
+            "instructor_title": "Safety Technology & Innovation Expert",
+            "instructor_bio": "<p>Lisa leads the integration of cutting-edge technology in amusement safety systems. With a background in both software engineering and safety consulting, she bridges the gap between traditional safety practices and modern technological solutions.</p>",
+            "specialties": "Safety Technology|Digital Systems|IoT Integration|Data Analytics|Innovation Management",
+            "experience_years": "12",
+            "courses_taught": "100",
+            "show_credentials": true,
+            "credentials": "IAAPA, IEEE, PMP",
+            "show_social_links": false
+          }
+        },
+        "instructor4": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "James Thompson",
+            "instructor_title": "Regulatory Affairs & Compliance Director",
+            "instructor_bio": "<p>James has worked extensively with state and federal regulatory bodies, helping to shape modern amusement device regulations. His expertise in navigating complex compliance requirements is invaluable for operators seeking to maintain the highest safety standards.</p>",
+            "specialties": "Regulatory Compliance|Code Development|Legal Requirements|Documentation|Auditing",
+            "experience_years": "18",
+            "courses_taught": "175",
+            "show_credentials": true,
+            "credentials": "IAAPA, ASTM F24, NAARSO, AIMS",
+            "show_social_links": false
+          }
+        },
+        "instructor5": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Maria Gonzalez",
+            "instructor_title": "Training & Development Specialist",
+            "instructor_bio": "<p>Maria specializes in developing comprehensive training programs that translate complex safety concepts into practical, actionable knowledge. Her background in adult education and safety management creates engaging learning experiences that stick.</p>",
+            "specialties": "Curriculum Development|Adult Learning|Safety Management|Training Delivery|Assessment Design",
+            "experience_years": "14",
+            "courses_taught": "250",
+            "show_credentials": true,
+            "credentials": "IAAPA, CPTD, CHST",
+            "show_social_links": false
+          }
+        },
+        "instructor6": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Robert Kim",
+            "instructor_title": "Ride Design & Engineering Consultant",
+            "instructor_bio": "<p>Robert brings a unique manufacturer's perspective to safety education, having spent 16 years designing and engineering attractions for leading ride manufacturers. His insights into design intent and engineering principles provide deep technical understanding.</p>",
+            "specialties": "Ride Design|Engineering Principles|Manufacturing Standards|Technical Documentation|Design Reviews",
+            "experience_years": "16",
+            "courses_taught": "120",
+            "show_credentials": true,
+            "credentials": "IAAPA, ASTM F24, PE",
+            "show_social_links": false
+          }
+        }
+      },
+      "block_order": ["instructor1", "instructor2", "instructor3", "instructor4", "instructor5", "instructor6"]
+    },
+    "expertise_areas": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Comprehensive Expertise Coverage",
+        "layout_style": "text-only",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_body": "<p>Our instructor team covers every aspect of amusement industry safety, from foundational principles to cutting-edge innovations. This comprehensive coverage ensures that learners receive well-rounded education that prepares them for real-world challenges.</p>"
+      },
+      "blocks": {
+        "expertise_grid": {
+          "type": "credential_grid",
+          "settings": {
+            "grid_title": "Areas of Expertise",
+            "credential_1_title": "Safety & Inspection",
+            "credential_1_desc": "Comprehensive ride safety protocols, inspection procedures, and risk assessment methodologies",
+            "credential_2_title": "Operations & Maintenance", 
+            "credential_2_desc": "Day-to-day operations management, preventive maintenance, and emergency response procedures",
+            "credential_3_title": "Technology & Innovation",
+            "credential_3_desc": "Modern safety technologies, digital systems integration, and future-forward solutions"
+          }
+        }
+      },
+      "block_order": ["expertise_grid"]
+    }
+  },
+  "order": ["hero", "instructor_showcase", "expertise_areas"]
+}

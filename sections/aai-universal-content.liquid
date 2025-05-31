@@ -1,0 +1,402 @@
+{% comment %}
+  Universal Content Section - Flexible content blocks for any AAI page
+  Supports text, images, lists, and various layout options
+{% endcomment %}
+
+{{ 'section-aai-content.css' | asset_url | stylesheet_tag }}
+
+<section class="aai-content page-section {{ section.settings.background_style }}">
+  <div class="aai-container">
+    {% if section.settings.section_title != blank %}
+      <div class="section-header">
+        <h2 class="section-title">{{ section.settings.section_title }}</h2>
+        {% if section.settings.section_subtitle != blank %}
+          <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    <div class="content-grid" data-layout="{{ section.settings.layout_style }}">
+      {% if section.settings.show_main_content %}
+        <div class="content-text">
+          {% if section.settings.content_title != blank %}
+            <h3>{{ section.settings.content_title }}</h3>
+          {% endif %}
+          
+          {% if section.settings.content_body != blank %}
+            <div class="content-body">
+              {{ section.settings.content_body }}
+            </div>
+          {% endif %}
+          
+          {% if section.blocks.size > 0 %}
+            <div class="content-blocks">
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'text_block' %}
+                    <div class="text-block" {{ block.shopify_attributes }}>
+                      {% if block.settings.block_title != blank %}
+                        <h4>{{ block.settings.block_title }}</h4>
+                      {% endif %}
+                      {% if block.settings.block_content != blank %}
+                        <div class="block-content">{{ block.settings.block_content }}</div>
+                      {% endif %}
+                    </div>
+                    
+                  {% when 'feature_list' %}
+                    <div class="feature-list" {{ block.shopify_attributes }}>
+                      {% if block.settings.list_title != blank %}
+                        <h4>{{ block.settings.list_title }}</h4>
+                      {% endif %}
+                      {% if block.settings.list_items != blank %}
+                        <ul class="feature-items">
+                          {% assign items = block.settings.list_items | split: '|' %}
+                          {% for item in items %}
+                            <li>{{ item | strip }}</li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </div>
+                    
+                  {% when 'credential_grid' %}
+                    <div class="credential-grid" {{ block.shopify_attributes }}>
+                      {% if block.settings.grid_title != blank %}
+                        <h4>{{ block.settings.grid_title }}</h4>
+                      {% endif %}
+                      <div class="credentials-container">
+                        {% if block.settings.credential_1_title != blank %}
+                          <div class="credential-item">
+                            <strong>{{ block.settings.credential_1_title }}</strong>
+                            {% if block.settings.credential_1_desc != blank %}
+                              <p>{{ block.settings.credential_1_desc }}</p>
+                            {% endif %}
+                          </div>
+                        {% endif %}
+                        {% if block.settings.credential_2_title != blank %}
+                          <div class="credential-item">
+                            <strong>{{ block.settings.credential_2_title }}</strong>
+                            {% if block.settings.credential_2_desc != blank %}
+                              <p>{{ block.settings.credential_2_desc }}</p>
+                            {% endif %}
+                          </div>
+                        {% endif %}
+                        {% if block.settings.credential_3_title != blank %}
+                          <div class="credential-item">
+                            <strong>{{ block.settings.credential_3_title }}</strong>
+                            {% if block.settings.credential_3_desc != blank %}
+                              <p>{{ block.settings.credential_3_desc }}</p>
+                            {% endif %}
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                    
+                  {% when 'button_group' %}
+                    <div class="button-group" {{ block.shopify_attributes }}>
+                      {% if block.settings.button_1_text != blank %}
+                        <a href="{{ block.settings.button_1_url }}" 
+                           class="btn btn--{{ block.settings.button_1_style }} btn--{{ block.settings.button_size }}">
+                          {{ block.settings.button_1_text }}
+                        </a>
+                      {% endif %}
+                      {% if block.settings.button_2_text != blank %}
+                        <a href="{{ block.settings.button_2_url }}" 
+                           class="btn btn--{{ block.settings.button_2_style }} btn--{{ block.settings.button_size }}">
+                          {{ block.settings.button_2_text }}
+                        </a>
+                      {% endif %}
+                    </div>
+                {% endcase %}
+              {% endfor %}
+            </div>
+          {% endif %}
+          
+          {% if section.settings.main_button_text != blank %}
+            <div class="content-cta">
+              <a href="{{ section.settings.main_button_url }}" 
+                 class="btn btn--{{ section.settings.main_button_style }} btn--{{ section.settings.main_button_size }}">
+                {{ section.settings.main_button_text }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      
+      {% if section.settings.show_image and section.settings.content_image != blank %}
+        <div class="content-image">
+          <img src="{{ section.settings.content_image | image_url: width: 600 }}" 
+               alt="{{ section.settings.content_image.alt | default: section.settings.section_title }}"
+               loading="lazy">
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AAI Universal Content",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle"
+    },
+    {
+      "type": "header",
+      "content": "Layout & Style"
+    },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Content Layout",
+      "options": [
+        { "value": "text-only", "label": "Text Only" },
+        { "value": "text-left-image-right", "label": "Text Left, Image Right" },
+        { "value": "text-right-image-left", "label": "Text Right, Image Left" },
+        { "value": "text-center", "label": "Text Centered" },
+        { "value": "two-column", "label": "Two Column Text" }
+      ],
+      "default": "text-only"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background Style",
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "section-alt-1", "label": "Alternative Background 1" },
+        { "value": "section-alt-2", "label": "Alternative Background 2" },
+        { "value": "section-dark", "label": "Dark Background" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Main Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_main_content",
+      "label": "Show Main Content",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "content_title",
+      "label": "Content Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content_body",
+      "label": "Content Body"
+    },
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show Content Image",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "content_image",
+      "label": "Content Image"
+    },
+    {
+      "type": "header",
+      "content": "Main Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "main_button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "main_button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "select",
+      "id": "main_button_style",
+      "label": "Button Style",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" },
+        { "value": "outline", "label": "Outline" }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "select",
+      "id": "main_button_size",
+      "label": "Button Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": "Text Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Block Title"
+        },
+        {
+          "type": "richtext",
+          "id": "block_content",
+          "label": "Block Content"
+        }
+      ]
+    },
+    {
+      "type": "feature_list",
+      "name": "Feature List",
+      "settings": [
+        {
+          "type": "text",
+          "id": "list_title",
+          "label": "List Title"
+        },
+        {
+          "type": "textarea",
+          "id": "list_items",
+          "label": "List Items (separate with |)",
+          "info": "Example: Item 1|Item 2|Item 3"
+        }
+      ]
+    },
+    {
+      "type": "credential_grid",
+      "name": "Credential Grid",
+      "settings": [
+        {
+          "type": "text",
+          "id": "grid_title",
+          "label": "Grid Title",
+          "default": "Industry Recognition"
+        },
+        {
+          "type": "text",
+          "id": "credential_1_title",
+          "label": "Credential 1 Title"
+        },
+        {
+          "type": "text",
+          "id": "credential_1_desc",
+          "label": "Credential 1 Description"
+        },
+        {
+          "type": "text",
+          "id": "credential_2_title",
+          "label": "Credential 2 Title"
+        },
+        {
+          "type": "text",
+          "id": "credential_2_desc",
+          "label": "Credential 2 Description"
+        },
+        {
+          "type": "text",
+          "id": "credential_3_title",
+          "label": "Credential 3 Title"
+        },
+        {
+          "type": "text",
+          "id": "credential_3_desc",
+          "label": "Credential 3 Description"
+        }
+      ]
+    },
+    {
+      "type": "button_group",
+      "name": "Button Group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_1_text",
+          "label": "Button 1 Text"
+        },
+        {
+          "type": "url",
+          "id": "button_1_url",
+          "label": "Button 1 URL"
+        },
+        {
+          "type": "select",
+          "id": "button_1_style",
+          "label": "Button 1 Style",
+          "options": [
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" },
+            { "value": "outline", "label": "Outline" }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "text",
+          "id": "button_2_text",
+          "label": "Button 2 Text"
+        },
+        {
+          "type": "url",
+          "id": "button_2_url",
+          "label": "Button 2 URL"
+        },
+        {
+          "type": "select",
+          "id": "button_2_style",
+          "label": "Button 2 Style",
+          "options": [
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" },
+            { "value": "outline", "label": "Outline" }
+          ],
+          "default": "secondary"
+        },
+        {
+          "type": "select",
+          "id": "button_size",
+          "label": "Button Size",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ],
+          "default": "medium"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Universal Content",
+      "blocks": [
+        {
+          "type": "text_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

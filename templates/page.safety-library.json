@@ -1,66 +1,104 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "title": "Safety Library",
+        "subtitle": "Comprehensive resource center for safety professionals",
+        "background_style": "bg-light",
+        "show_stats": false,
+        "show_features": false,
+        "show_cta": false
+      }
+    },
+    "search_section": {
+      "type": "aai-universal-content",
       "blocks": {
-        "hero": {
-          "type": "text",
+        "search_block": {
+          "type": "content_block",
           "settings": {
-            "text": "<h1>Safety Library</h1><p class='lead'>Comprehensive resource center for safety professionals</p>",
-            "type_preset": "h1",
-            "alignment": "center",
-            "color": "#1e3a5f",
-            "padding-block-start": 40,
-            "padding-block-end": 20
-          }
-        },
-        "search_resources": {
-          "type": "text",
-          "settings": {
-            "text": "<div class='resource-search'><input type='search' placeholder='Search safety documents, guides, and resources...' class='resource-search-input'><button class='resource-search-btn'>Search</button></div>",
-            "alignment": "center",
-            "padding-block-start": 20,
-            "padding-block-end": 40
-          }
-        },
-        "resource_categories": {
-          "type": "text",
-          "settings": {
-            "text": "<div class='resource-categories'><div class='category'><h3>Technical Documents</h3><ul><li>Inspection checklists and procedures</li><li>Maintenance schedules and protocols</li><li>Safety system specifications</li><li>Risk assessment templates</li></ul><a href='#' class='category-link'>Browse Technical Docs</a></div><div class='category'><h3>Regulatory Guides</h3><ul><li>Federal and state regulations</li><li>International standards compliance</li><li>Permit and licensing requirements</li><li>Regulatory update notifications</li></ul><a href='#' class='category-link'>View Regulatory Guides</a></div><div class='category'><h3>Training Materials</h3><ul><li>Instructor resources and guides</li><li>Student handbooks and references</li><li>Presentation templates</li><li>Assessment and evaluation tools</li></ul><a href='#' class='category-link'>Access Training Materials</a></div><div class='category'><h3>Industry Reports</h3><ul><li>Safety statistics and trends</li><li>Incident analysis reports</li><li>Best practice case studies</li><li>Technology advancement updates</li></ul><a href='#' class='category-link'>Read Industry Reports</a></div></div>",
-            "type_preset": "body",
-            "alignment": "center",
-            "padding-block-start": 40,
-            "padding-block-end": 40
-          }
-        },
-        "contribute": {
-          "type": "text",
-          "settings": {
-            "text": "<div class='contribute-section'><h3>Contribute to Our Library</h3><p>Share your expertise and help build the industry's most comprehensive safety resource collection.</p><a href='/pages/contact' class='btn btn-primary'>Submit Resources</a></div>",
-            "type_preset": "h3",
-            "alignment": "center",
-            "background": true,
-            "background_color": "#f8f9fa",
-            "padding-block-start": 40,
-            "padding-block-end": 40
+            "title": "",
+            "content": "<div class='resource-search'><input type='search' placeholder='Search safety documents, guides, and resources...' class='resource-search-input'><button class='resource-search-btn'>Search</button></div>",
+            "alignment": "center"
           }
         }
       },
       "block_order": [
-        "hero",
-        "search_resources",
-        "resource_categories",
-        "contribute"
+        "search_block"
       ],
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "padding-block-start": 40,
-        "padding-block-end": 80
+        "layout": "single-column",
+        "background_style": "bg-light"
+      }
+    },
+    "resource_categories": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "technical_docs": {
+          "type": "content_block",
+          "settings": {
+            "title": "Technical Documents",
+            "content": "<ul><li>Inspection checklists and procedures</li><li>Maintenance schedules and protocols</li><li>Safety system specifications</li><li>Risk assessment templates</li></ul><a href='#' class='category-link'>Browse Technical Docs</a>"
+          }
+        },
+        "regulatory_guides": {
+          "type": "content_block",
+          "settings": {
+            "title": "Regulatory Guides",
+            "content": "<ul><li>Federal and state regulations</li><li>International standards compliance</li><li>Permit and licensing requirements</li><li>Regulatory update notifications</li></ul><a href='#' class='category-link'>View Regulatory Guides</a>"
+          }
+        },
+        "training_materials": {
+          "type": "content_block",
+          "settings": {
+            "title": "Training Materials",
+            "content": "<ul><li>Instructor resources and guides</li><li>Student handbooks and references</li><li>Presentation templates</li><li>Assessment and evaluation tools</li></ul><a href='#' class='category-link'>Access Training Materials</a>"
+          }
+        },
+        "industry_reports": {
+          "type": "content_block",
+          "settings": {
+            "title": "Industry Reports",
+            "content": "<ul><li>Safety statistics and trends</li><li>Incident analysis reports</li><li>Best practice case studies</li><li>Technology advancement updates</li></ul><a href='#' class='category-link'>Read Industry Reports</a>"
+          }
+        }
+      },
+      "block_order": [
+        "technical_docs",
+        "regulatory_guides",
+        "training_materials",
+        "industry_reports"
+      ],
+      "settings": {
+        "layout": "four-column",
+        "background_style": "bg-light"
+      }
+    },
+    "contribute_section": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "contribute_cta": {
+          "type": "content_block",
+          "settings": {
+            "title": "Contribute to Our Library",
+            "content": "<p>Share your expertise and help build the industry's most comprehensive safety resource collection.</p><a href='/pages/contact' class='btn btn-primary'>Submit Resources</a>",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "contribute_cta"
+      ],
+      "settings": {
+        "layout": "single-column",
+        "background_style": "bg-primary"
       }
     }
   },
   "order": [
-    "main"
+    "hero",
+    "search_section",
+    "resource_categories",
+    "contribute_section"
   ]
 }

@@ -1,67 +1,121 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "title": "Professional Webinars",
+        "subtitle": "Live and recorded sessions with industry experts",
+        "background_style": "bg-light",
+        "show_stats": false,
+        "show_features": false,
+        "show_cta": false
+      }
+    },
+    "intro": {
+      "type": "aai-universal-content",
       "blocks": {
-        "hero": {
-          "type": "text",
+        "intro_text": {
+          "type": "content_block",
           "settings": {
-            "text": "<h1>Professional Webinars</h1><p class='lead'>Live and recorded sessions with industry experts</p>",
-            "type_preset": "h1",
-            "alignment": "center",
-            "color": "#1e3a5f",
-            "padding-block-start": 40,
-            "padding-block-end": 20
-          }
-        },
-        "webinar_intro": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Join our monthly webinar series featuring cutting-edge topics, regulatory updates, and expert insights from leading safety professionals.</p>",
-            "max_width": "narrow",
-            "alignment": "center",
-            "padding-block-start": 20,
-            "padding-block-end": 40
-          }
-        },
-        "upcoming_webinars": {
-          "type": "text",
-          "settings": {
-            "text": "<div class='webinar-section'><h3>Upcoming Live Sessions</h3><div class='webinar-grid'><div class='webinar-card'><h4>Advanced NDT Techniques for Ride Inspection</h4><p class='presenter'>Dr. Sarah Mitchell, P.E.</p><p class='date'>June 15, 2025 | 2:00 PM EST</p><p class='duration'>90 minutes | CEU: 1.5</p><p>Explore the latest non-destructive testing methods for identifying structural issues before they become critical.</p><button class='register-btn'>Register Now</button></div><div class='webinar-card'><h4>Regulatory Updates: 2025 Safety Standards</h4><p class='presenter'>Robert Thompson, QSI</p><p class='date'>June 29, 2025 | 1:00 PM EST</p><p class='duration'>60 minutes | CEU: 1.0</p><p>Comprehensive review of new and updated safety standards taking effect in 2025.</p><button class='register-btn'>Register Now</button></div></div></div>",
-            "type_preset": "body",
-            "alignment": "center",
-            "padding-block-start": 40,
-            "padding-block-end": 40
-          }
-        },
-        "recorded_webinars": {
-          "type": "text",
-          "settings": {
-            "text": "<div class='webinar-section'><h3>Recorded Webinar Library</h3><div class='recorded-grid'><div class='recorded-card'><h4>Risk Assessment in Modern Amusement Parks</h4><p class='presenter'>Maria Chen, Ph.D.</p><p class='views'>1,247 views | Available with subscription</p><button class='watch-btn'>Watch Now</button></div><div class='recorded-card'><h4>Maintenance Excellence: Predictive vs Preventive</h4><p class='presenter'>James Rodriguez, CIT</p><p class='views'>892 views | Available with subscription</p><button class='watch-btn'>Watch Now</button></div><div class='recorded-card'><h4>Emergency Response Planning and Protocols</h4><p class='presenter'>Dr. Sarah Mitchell, P.E.</p><p class='views'>1,156 views | Available with subscription</p><button class='watch-btn'>Watch Now</button></div></div></div>",
-            "type_preset": "body",
-            "alignment": "center",
-            "background": true,
-            "background_color": "#f8f9fa",
-            "padding-block-start": 40,
-            "padding-block-end": 40
+            "title": "",
+            "content": "<p>Join our monthly webinar series featuring cutting-edge topics, regulatory updates, and expert insights from leading safety professionals.</p>",
+            "alignment": "center"
           }
         }
       },
       "block_order": [
-        "hero",
-        "webinar_intro",
-        "upcoming_webinars",
-        "recorded_webinars"
+        "intro_text"
       ],
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "padding-block-start": 40,
-        "padding-block-end": 80
+        "layout": "single-column",
+        "background_style": "bg-light"
+      }
+    },
+    "upcoming_webinars": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "section_title": {
+          "type": "content_block",
+          "settings": {
+            "title": "Upcoming Live Sessions",
+            "content": "",
+            "alignment": "center"
+          }
+        },
+        "ndt_techniques": {
+          "type": "content_block",
+          "settings": {
+            "title": "Advanced NDT Techniques for Ride Inspection",
+            "content": "<p class='presenter'>Dr. Sarah Mitchell, P.E.</p><p class='date'>June 15, 2025 | 2:00 PM EST</p><p class='duration'>90 minutes | CEU: 1.5</p><p>Explore the latest non-destructive testing methods for identifying structural issues before they become critical.</p><button class='register-btn'>Register Now</button>"
+          }
+        },
+        "regulatory_updates": {
+          "type": "content_block",
+          "settings": {
+            "title": "Regulatory Updates: 2025 Safety Standards",
+            "content": "<p class='presenter'>Robert Thompson, QSI</p><p class='date'>June 29, 2025 | 1:00 PM EST</p><p class='duration'>60 minutes | CEU: 1.0</p><p>Comprehensive review of new and updated safety standards taking effect in 2025.</p><button class='register-btn'>Register Now</button>"
+          }
+        }
+      },
+      "block_order": [
+        "section_title",
+        "ndt_techniques",
+        "regulatory_updates"
+      ],
+      "settings": {
+        "layout": "two-column",
+        "background_style": "bg-light"
+      }
+    },
+    "recorded_webinars": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "recorded_title": {
+          "type": "content_block",
+          "settings": {
+            "title": "Recorded Webinar Library",
+            "content": "",
+            "alignment": "center"
+          }
+        },
+        "risk_assessment": {
+          "type": "content_block",
+          "settings": {
+            "title": "Risk Assessment in Modern Amusement Parks",
+            "content": "<p class='presenter'>Maria Chen, Ph.D.</p><p class='views'>1,247 views | Available with subscription</p><button class='watch-btn'>Watch Now</button>"
+          }
+        },
+        "maintenance_excellence": {
+          "type": "content_block",
+          "settings": {
+            "title": "Maintenance Excellence: Predictive vs Preventive",
+            "content": "<p class='presenter'>James Rodriguez, CIT</p><p class='views'>892 views | Available with subscription</p><button class='watch-btn'>Watch Now</button>"
+          }
+        },
+        "emergency_response": {
+          "type": "content_block",
+          "settings": {
+            "title": "Emergency Response Planning and Protocols",
+            "content": "<p class='presenter'>Dr. Sarah Mitchell, P.E.</p><p class='views'>1,156 views | Available with subscription</p><button class='watch-btn'>Watch Now</button>"
+          }
+        }
+      },
+      "block_order": [
+        "recorded_title",
+        "risk_assessment",
+        "maintenance_excellence",
+        "emergency_response"
+      ],
+      "settings": {
+        "layout": "three-column",
+        "background_style": "bg-primary"
       }
     }
   },
   "order": [
-    "main"
+    "hero",
+    "intro",
+    "upcoming_webinars",
+    "recorded_webinars"
   ]
 }

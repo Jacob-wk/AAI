@@ -1,67 +1,124 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "hero_title": "Corporate Training Solutions",
+        "hero_subtitle": "Partner with AAI to develop customized safety training programs that meet your organization's specific requirements and operational needs.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-left-image-right",
+        "show_image": true,
+        "show_features": true,
+        "primary_button_text": "Request Consultation",
+        "primary_button_url": "/pages/contact",
+        "secondary_button_text": "View Training Options",
+        "secondary_button_url": "#training-solutions"
+      },
       "blocks": {
-        "hero": {
-          "type": "text",
+        "feature1": {
+          "type": "feature",
           "settings": {
-            "text": "<h1>Corporate Training Solutions</h1><p class='lead'>Enterprise-level safety training tailored to your organization</p>",
-            "type_preset": "h1",
-            "alignment": "center",
-            "color": "#1e3a5f",
-            "padding-block-start": 40,
-            "padding-block-end": 20
+            "feature_icon": "🏢",
+            "feature_title": "Enterprise Scale",
+            "feature_description": "Solutions for organizations of all sizes"
           }
         },
-        "overview": {
-          "type": "text",
+        "feature2": {
+          "type": "feature",
           "settings": {
-            "text": "<p>Partner with AAI to develop customized training programs that meet your organization's specific safety requirements and operational needs.</p>",
-            "max_width": "narrow",
-            "alignment": "center",
-            "padding-block-start": 20,
-            "padding-block-end": 40
+            "feature_icon": "📋",
+            "feature_title": "Custom Curriculum",
+            "feature_description": "Tailored to your specific operational needs"
           }
         },
-        "solutions": {
-          "type": "text",
+        "feature3": {
+          "type": "feature",
           "settings": {
-            "text": "<div class='corporate-solutions'><div class='solution-card'><h3>On-Site Training Programs</h3><p>Bring our expert instructors to your facility for hands-on training tailored to your specific equipment and procedures.</p><ul><li>Customized curriculum development</li><li>Equipment-specific training</li><li>Flexible scheduling</li><li>Group discounts available</li></ul></div><div class='solution-card'><h3>Virtual Learning Solutions</h3><p>Interactive online training modules that your team can complete at their own pace, with progress tracking and assessments.</p><ul><li>24/7 access to training materials</li><li>Progress tracking and reporting</li><li>Interactive simulations</li><li>Mobile-friendly platform</li></ul></div><div class='solution-card'><h3>Compliance Consulting</h3><p>Expert guidance on regulatory compliance, safety program development, and best practice implementation.</p><ul><li>Regulatory compliance audits</li><li>Safety program development</li><li>Documentation review</li><li>Ongoing support and updates</li></ul></div></div>",
-            "type_preset": "body",
-            "alignment": "center",
-            "padding-block-start": 40,
-            "padding-block-end": 40
-          }
-        },
-        "consultation_form": {
-          "type": "text",
-          "settings": {
-            "text": "<div class='consultation-cta'><h3>Request a Consultation</h3><p>Let's discuss how AAI can help your organization achieve excellence in safety training.</p><a href='/pages/contact' class='btn btn-primary'>Schedule Consultation</a></div>",
-            "type_preset": "h3",
-            "alignment": "center",
-            "background": true,
-            "background_color": "#f8f9fa",
-            "padding-block-start": 40,
-            "padding-block-end": 40
+            "feature_icon": "🎯",
+            "feature_title": "Measurable Results",
+            "feature_description": "Track progress and demonstrate ROI"
           }
         }
       },
-      "block_order": [
-        "hero",
-        "overview",
-        "solutions",
-        "consultation_form"
-      ],
+      "block_order": ["feature1", "feature2", "feature3"]
+    },
+    "training_benefits": {
+      "type": "aai-universal-content",
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "padding-block-start": 40,
-        "padding-block-end": 80
+        "section_title": "Why Choose AAI Corporate Training?",
+        "section_subtitle": "Transform your organization's safety culture with proven training methodologies",
+        "layout_style": "two-column",
+        "background_style": "bg-light",
+        "show_main_content": true,
+        "content_title": "Enterprise-Level Excellence",
+        "content_body": "<p>Our corporate training programs combine industry-leading expertise with flexible delivery methods to meet your organization's unique challenges. We work with leading theme parks, water parks, and entertainment venues worldwide.</p>"
+      },
+      "blocks": {
+        "benefit1": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Training Advantages",
+            "list_items": "Reduced insurance costs through certified staff\nImproved operational efficiency and safety metrics\nEnhanced employee confidence and job satisfaction\nStrong regulatory compliance and audit readiness"
+          }
+        },
+        "benefit2": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Delivery Options",
+            "list_items": "On-site training at your facility\nVirtual instructor-led sessions\nBlended learning approaches\nSelf-paced online modules"
+          }
+        }
+      },
+      "block_order": ["benefit1", "benefit2"]
+    },
+    "training_solutions": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Training Solutions",
+        "section_subtitle": "Comprehensive programs designed for different organizational roles and requirements",
+        "layout_style": "single-column",
+        "show_main_content": true
+      },
+      "blocks": {
+        "solution1": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "On-Site Training Programs",
+            "block_content": "<p>Bring our expert instructors to your facility for hands-on training tailored to your specific equipment and procedures.</p><ul><li>Customized curriculum development</li><li>Equipment-specific training</li><li>Flexible scheduling</li><li>Group discounts available</li></ul>"
+          }
+        },
+        "solution2": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Virtual Learning Solutions",
+            "block_content": "<p>Interactive online training modules that your team can complete at their own pace, with progress tracking and assessments.</p><ul><li>24/7 access to training materials</li><li>Progress tracking and reporting</li><li>Interactive simulations</li><li>Mobile-friendly platform</li></ul>"
+          }
+        },
+        "solution3": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Compliance Consulting",
+            "block_content": "<p>Expert guidance on regulatory compliance, safety program development, and best practice implementation.</p><ul><li>Regulatory compliance audits</li><li>Safety program development</li><li>Documentation review</li><li>Ongoing support and updates</li></ul>"
+          }
+        }
+      },
+      "block_order": ["solution1", "solution2", "solution3"]
+    },
+    "call_to_action": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Request a Consultation",
+        "section_subtitle": "Let's discuss how AAI can help your organization achieve excellence in safety training",
+        "layout_style": "centered",
+        "background_style": "bg-primary",
+        "show_main_content": true,
+        "content_body": "<p>Schedule a consultation to explore customized training solutions for your organization.</p>",
+        "primary_button_text": "Schedule Consultation",
+        "primary_button_url": "/pages/contact",
+        "secondary_button_text": "Download Brochure",
+        "secondary_button_url": "/pages/contact"
       }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["hero", "training_benefits", "training_solutions", "call_to_action"]
 }
