@@ -25,7 +25,7 @@
         "show_cart": true
       }
     },
-    "aai_hero_phWYC4": {
+    "aai_hero_9WAUn3": {
       "type": "aai-hero",
       "name": "AAI Hero",
       "settings": {
@@ -54,6 +54,6 @@
   },
   "order": [
     "aai_header_gP9EMD",
-    "aai_hero_phWYC4"
+    "aai_hero_9WAUn3"
   ]
 }
