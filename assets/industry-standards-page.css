@@ -1,0 +1,535 @@
+/* Industry Standards Styles */
+.aai-industry-standards {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.aai-hero-standards {
+  background: linear-gradient(135deg, var(--authority-navy) 0%, #2c5282 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.aai-hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.aai-hero-description {
+  font-size: 1.25rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.aai-standards-badges {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.aai-standards-badge {
+  background: rgba(255,255,255,0.15);
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Standards Overview */
+.aai-standards-overview {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.aai-standards-overview h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 20px;
+}
+
+.aai-section-description {
+  text-align: center;
+  font-size: 1.125rem;
+  color: #64748b;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+.aai-standards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.aai-standard-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aai-standard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.aai-standard-header {
+  background: var(--authority-navy);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aai-standard-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.aai-standard-code {
+  background: rgba(255,255,255,0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.aai-standard-content {
+  padding: 30px;
+}
+
+.aai-standard-content p {
+  color: #64748b;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.aai-standard-key-areas h4 {
+  color: var(--authority-navy);
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.aai-standard-key-areas ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+}
+
+.aai-standard-key-areas li {
+  color: #475569;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.aai-standard-key-areas li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--safety-orange);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.aai-standard-updates {
+  background: #f1f5f9;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.aai-standard-updates strong {
+  color: var(--authority-navy);
+}
+
+/* Compliance Framework */
+.aai-compliance-framework {
+  padding: 80px 0;
+}
+
+.aai-compliance-framework h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 60px;
+}
+
+.aai-framework-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.aai-compliance-pyramid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.aai-pyramid-level {
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  position: relative;
+}
+
+.aai-level-1 { background: var(--authority-navy); }
+.aai-level-2 { background: var(--electric-blue); }
+.aai-level-3 { background: var(--safety-orange); }
+.aai-level-4 { background: #64748b; }
+
+.aai-pyramid-level span {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.aai-pyramid-level small {
+  opacity: 0.9;
+  font-size: 0.875rem;
+}
+
+.aai-framework-description h3 {
+  font-size: 1.75rem;
+  color: var(--authority-navy);
+  margin-bottom: 20px;
+}
+
+.aai-framework-description p {
+  color: #64748b;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.aai-compliance-benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.aai-benefit-item h4 {
+  color: var(--authority-navy);
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.aai-benefit-item p {
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Standards Updates */
+.aai-standards-updates {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.aai-standards-updates h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 60px;
+}
+
+.aai-updates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.aai-update-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border-left: 4px solid;
+}
+
+.aai-update-critical { border-left-color: #dc2626; }
+.aai-update-important { border-left-color: var(--safety-orange); }
+.aai-update-standard { border-left-color: var(--electric-blue); }
+
+.aai-update-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.aai-update-priority {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.aai-update-critical .aai-update-priority {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.aai-update-important .aai-update-priority {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.aai-update-standard .aai-update-priority {
+  background: #eff6ff;
+  color: var(--electric-blue);
+}
+
+.aai-update-date {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.aai-update-card h3 {
+  color: var(--authority-navy);
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.aai-update-card p {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.aai-update-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.aai-btn-sm {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+}
+
+/* Compliance Resources */
+.aai-compliance-resources {
+  padding: 80px 0;
+}
+
+.aai-compliance-resources h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 60px;
+}
+
+.aai-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.aai-resource-category {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border-top: 4px solid var(--safety-orange);
+}
+
+.aai-resource-category h3 {
+  color: var(--authority-navy);
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.aai-resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aai-resource-list li {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.aai-resource-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.aai-resource-list a {
+  color: #475569;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.aai-resource-list a:hover {
+  color: var(--electric-blue);
+}
+
+/* Expert Consultation */
+.aai-expert-consultation {
+  padding: 80px 0;
+  background: var(--authority-navy);
+  color: white;
+}
+
+.aai-consultation-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.aai-consultation-info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.aai-consultation-info p {
+  font-size: 1.125rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.aai-expert-services {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.aai-service-item h4 {
+  color: white;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.aai-service-item p {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.aai-consultation-form {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.aai-consultation-form h3 {
+  color: var(--authority-navy);
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Newsletter */
+.aai-newsletter-signup {
+  padding: 60px 0;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.aai-newsletter-content h2 {
+  font-size: 2rem;
+  color: var(--authority-navy);
+  margin-bottom: 15px;
+}
+
+.aai-newsletter-content p {
+  color: #64748b;
+  font-size: 1.125rem;
+  margin-bottom: 30px;
+}
+
+.aai-newsletter-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.aai-newsletter-inputs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.aai-newsletter-inputs input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.aai-newsletter-benefits {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .aai-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .aai-standards-badges {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .aai-framework-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .aai-consultation-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .aai-compliance-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .aai-newsletter-inputs {
+    flex-direction: column;
+  }
+
+  .aai-newsletter-benefits {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

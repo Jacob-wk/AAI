@@ -1,0 +1,43 @@
+/* Test Page Styles */
+
+.test-page {
+  padding: var(--spacing-xl) 0;
+}
+
+.test-hero {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.test-checklist,
+.test-navigation,
+.test-info {
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-lg);
+  background: var(--light-grey);
+  border-radius: 8px;
+  text-align: left;
+}
+
+.test-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--spacing-md);
+}
+
+.test-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.test-info li {
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid var(--medium-grey);
+}
+
+.test-info li:last-child {
+  border-bottom: none;
+}

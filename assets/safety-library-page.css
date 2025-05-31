@@ -1,0 +1,691 @@
+/* Safety Library Page Styles - AAI Professional Safety Education */
+
+.aai-safety-library {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Hero Section */
+.aai-hero-library {
+  background: linear-gradient(135deg, var(--authority-navy) 0%, #2c5282 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.aai-hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.aai-hero-description {
+  font-size: 1.25rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Search Bar */
+.aai-library-search {
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.aai-search-input-group {
+  display: flex;
+  background: white;
+  border-radius: 12px;
+  padding: 4px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.aai-search-input {
+  flex: 1;
+  padding: 16px 20px;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  color: var(--authority-navy);
+}
+
+.aai-search-button {
+  background: var(--safety-orange);
+  color: white;
+  border: none;
+  padding: 16px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.aai-search-button:hover {
+  background: #e55a2b;
+}
+
+.aai-search-filters {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.aai-filter-select {
+  padding: 10px 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+}
+
+.aai-filter-select option {
+  background: var(--authority-navy);
+  color: white;
+}
+
+/* Library Stats */
+.aai-library-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 40px;
+}
+
+.aai-stat {
+  text-align: center;
+}
+
+.aai-stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--safety-orange);
+  margin-bottom: 5px;
+}
+
+.aai-stat-label {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+}
+
+/* Quick Categories */
+.aai-quick-categories {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.aai-quick-categories h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 60px;
+}
+
+.aai-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.aai-category-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid var(--safety-orange);
+}
+
+.aai-category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.aai-category-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.aai-category-card h3 {
+  font-size: 1.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.aai-category-card p {
+  color: #64748b;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.aai-category-count {
+  background: #f1f5f9;
+  color: var(--authority-navy);
+  padding: 8px 16px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.aai-category-link {
+  color: var(--electric-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.aai-category-link:hover {
+  color: var(--safety-orange);
+}
+
+/* Featured Resources */
+.aai-featured-resources {
+  padding: 80px 0;
+}
+
+.aai-featured-resources h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 60px;
+}
+
+.aai-featured-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 30px;
+}
+
+.aai-featured-item {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(30, 58, 95, 0.1);
+  border: 1px solid #e2e8f0;
+  position: relative;
+}
+
+.aai-featured-primary {
+  background: linear-gradient(135deg, var(--authority-navy) 0%, #2c5282 100%);
+  color: white;
+}
+
+.aai-featured-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--safety-orange);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.aai-featured-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.aai-featured-primary h3 {
+  color: white;
+}
+
+.aai-featured-item h3:not(.aai-featured-primary h3) {
+  color: var(--authority-navy);
+}
+
+.aai-featured-item p {
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.aai-featured-primary p {
+  color: rgba(255,255,255,0.9);
+}
+
+.aai-featured-item p:not(.aai-featured-primary p) {
+  color: #64748b;
+}
+
+.aai-featured-meta {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.aai-meta-item {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.aai-featured-actions {
+  display: flex;
+  gap: 15px;
+}
+
+/* Document Sections */
+.aai-document-section {
+  padding: 80px 0;
+}
+
+.aai-section-alt {
+  background: #f8fafc;
+}
+
+.aai-document-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 60px;
+}
+
+.aai-document-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+}
+
+.aai-document-category {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.aai-document-category h3 {
+  font-size: 1.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 30px;
+  font-weight: 600;
+  border-bottom: 3px solid var(--safety-orange);
+  padding-bottom: 10px;
+}
+
+.aai-document-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.aai-document-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.aai-document-item:hover {
+  border-color: var(--electric-blue);
+}
+
+.aai-document-info h4 {
+  color: var(--authority-navy);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.aai-document-info p {
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.aai-document-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.aai-document-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.aai-view-all {
+  color: var(--electric-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.aai-view-all:hover {
+  color: var(--safety-orange);
+}
+
+/* Procedures Categories */
+.aai-procedures-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.aai-procedure-type {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.aai-procedure-type h3 {
+  color: var(--authority-navy);
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.aai-procedure-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aai-procedure-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.aai-procedure-list li:last-child {
+  border-bottom: none;
+}
+
+.aai-procedure-list a {
+  color: #475569;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.aai-procedure-list a:hover {
+  color: var(--electric-blue);
+}
+
+.aai-doc-format {
+  background: #f1f5f9;
+  color: var(--authority-navy);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Advanced Search */
+.aai-advanced-search {
+  padding: 80px 0;
+}
+
+.aai-advanced-search h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 60px;
+}
+
+.aai-search-panel {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+}
+
+.aai-search-options {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  height: fit-content;
+}
+
+.aai-filter-group {
+  margin-bottom: 30px;
+}
+
+.aai-filter-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--authority-navy);
+  margin-bottom: 15px;
+}
+
+.aai-filter-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aai-filter-checkboxes label {
+  font-weight: normal;
+  color: #64748b;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.aai-search-results {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.aai-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.aai-results-header h3 {
+  color: var(--authority-navy);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.aai-sort-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.aai-search-result-list {
+  padding: 0 30px;
+}
+
+.aai-search-result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 30px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.aai-search-result-item:last-child {
+  border-bottom: none;
+}
+
+.aai-result-content h4 {
+  color: var(--authority-navy);
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.aai-result-content p {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.aai-result-meta {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.aai-result-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Pagination */
+.aai-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.aai-pagination-btn {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #64748b;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.aai-pagination-btn:hover:not(:disabled) {
+  border-color: var(--electric-blue);
+  color: var(--electric-blue);
+}
+
+.aai-pagination-active {
+  background: var(--electric-blue);
+  color: white;
+  border-color: var(--electric-blue);
+}
+
+.aai-pagination-dots {
+  padding: 8px 12px;
+  color: #94a3b8;
+}
+
+/* Contribute Section */
+.aai-contribute {
+  padding: 80px 0;
+  background: var(--authority-navy);
+  color: white;
+}
+
+.aai-contribute-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.aai-contribute h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.aai-contribute-info p {
+  font-size: 1.125rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.aai-contribution-types {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.aai-contribution-type h4 {
+  color: white;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.aai-contribution-type p {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.aai-contribute-form {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.aai-contribute-form h3 {
+  color: var(--authority-navy);
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .aai-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .aai-library-stats {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .aai-search-filters {
+    flex-direction: column;
+  }
+
+  .aai-featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aai-document-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aai-procedures-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .aai-search-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .aai-contribute-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .aai-contribution-types {
+    grid-template-columns: 1fr;
+  }
+}

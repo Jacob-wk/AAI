@@ -1,0 +1,587 @@
+/* Partnerships Page Styles */
+.aai-partnerships {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Hero Section */
+.aai-hero-partnerships {
+  background: linear-gradient(135deg, var(--authority-navy) 0%, #2c5282 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.aai-hero-partnerships::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 107, 53, 0.1);
+  transform: skewX(-15deg);
+  transform-origin: top;
+}
+
+.aai-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.aai-hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.aai-hero-description {
+  font-size: 1.25rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.aai-partnership-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 40px;
+}
+
+.aai-stat {
+  text-align: center;
+}
+
+.aai-stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--safety-orange);
+  margin-bottom: 5px;
+}
+
+.aai-stat-label {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+}
+
+/* Partnership Types */
+.aai-partnership-types {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.aai-partnership-types h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 20px;
+}
+
+.aai-section-description {
+  text-align: center;
+  font-size: 1.125rem;
+  color: #64748b;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+.aai-types-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.aai-type-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border-top: 4px solid var(--safety-orange);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aai-type-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.aai-type-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.aai-type-card h3 {
+  font-size: 1.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.aai-type-card p {
+  color: #64748b;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.aai-type-benefits {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.aai-benefit {
+  background: #f1f5f9;
+  color: var(--authority-navy);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.aai-current-partners {
+  text-align: center;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.aai-current-partners strong {
+  color: var(--authority-navy);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.aai-current-partners span {
+  color: #64748b;
+}
+
+/* Featured Partners */
+.aai-featured-partners {
+  padding: 80px 0;
+}
+
+.aai-featured-partners h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 60px;
+}
+
+.aai-partners-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.aai-partner-category {
+  text-align: center;
+}
+
+.aai-partner-category h3 {
+  font-size: 1.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.aai-partner-logos {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.aai-partner-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  max-width: 200px;
+}
+
+.aai-logo-placeholder {
+  width: 120px;
+  height: 80px;
+  background: var(--authority-navy);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.aai-partner-name {
+  font-size: 0.875rem;
+  color: #64748b;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Partnership Benefits */
+.aai-partnership-benefits {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.aai-partnership-benefits h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 60px;
+}
+
+.aai-benefits-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.aai-partnership-network {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.aai-network-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: var(--safety-orange);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  z-index: 2;
+}
+
+.aai-network-node {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: var(--electric-blue);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.aai-node-1 { top: 0; left: 50%; transform: translateX(-50%); }
+.aai-node-2 { top: 25%; right: 0; }
+.aai-node-3 { bottom: 25%; right: 0; }
+.aai-node-4 { bottom: 0; left: 50%; transform: translateX(-50%); }
+.aai-node-5 { bottom: 25%; left: 0; }
+.aai-node-6 { top: 25%; left: 0; }
+
+.aai-benefits-list h3 {
+  font-size: 1.75rem;
+  color: var(--authority-navy);
+  margin-bottom: 30px;
+}
+
+.aai-benefit-items {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.aai-benefit-item h4 {
+  color: var(--authority-navy);
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.aai-benefit-item p {
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Success Stories */
+.aai-success-stories {
+  padding: 80px 0;
+}
+
+.aai-success-stories h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--authority-navy);
+  margin-bottom: 60px;
+}
+
+.aai-stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.aai-story-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(30, 58, 95, 0.1);
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.aai-story-header {
+  background: var(--authority-navy);
+  color: white;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aai-story-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.aai-story-type {
+  background: rgba(255,255,255,0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.aai-story-content {
+  padding: 30px 25px;
+}
+
+.aai-story-content p {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.aai-story-metrics {
+  display: flex;
+  gap: 30px;
+}
+
+.aai-metric {
+  text-align: center;
+}
+
+.aai-metric-value {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--safety-orange);
+  margin-bottom: 5px;
+}
+
+.aai-metric-label {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+/* Partner Application */
+.aai-partner-application {
+  padding: 80px 0;
+  background: var(--authority-navy);
+  color: white;
+}
+
+.aai-application-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.aai-application-info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.aai-application-info p {
+  font-size: 1.125rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.aai-partnership-process h3 {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.aai-process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.aai-process-step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.aai-step-number {
+  background: var(--safety-orange);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.aai-step-content h4 {
+  font-size: 1.125rem;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.aai-step-content p {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.aai-partnership-criteria h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.aai-criteria-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aai-criteria-list li {
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 12px;
+  padding-left: 25px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.aai-criteria-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--safety-orange);
+  font-weight: bold;
+}
+
+.aai-application-form {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.aai-application-form h3 {
+  color: var(--authority-navy);
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Current Partners CTA */
+.aai-current-partners-cta {
+  padding: 60px 0;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.aai-cta-content h2 {
+  font-size: 2rem;
+  color: var(--authority-navy);
+  margin-bottom: 15px;
+}
+
+.aai-cta-content p {
+  color: #64748b;
+  font-size: 1.125rem;
+  margin-bottom: 30px;
+}
+
+.aai-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .aai-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .aai-partnership-stats {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .aai-types-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aai-partner-logos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .aai-benefits-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .aai-partnership-network {
+    width: 300px;
+    height: 300px;
+  }
+
+  .aai-application-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .aai-cta-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}

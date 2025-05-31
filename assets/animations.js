@@ -48,6 +48,10 @@ class AAIAnimations {
     });
   }
 
+  /**
+   * Handle staggered animations for container children
+   * @param {Element} container - The container element
+   */
   handleStaggeredAnimations(container) {
     // Find child elements with delay classes
     const delayedElements = container.querySelectorAll('[class*="anim-delay"]');
@@ -67,7 +71,11 @@ class AAIAnimations {
     });
   }
 
-  // Public method to trigger specific animations
+  /**
+   * Public method to trigger specific animations
+   * @param {HTMLElement} element - The DOM element to animate
+   * @param {string} animationType - The animation type class to apply
+   */
   static triggerAnimation(element, animationType = 'fade-in') {
     if (!element) return;
     
@@ -77,7 +85,10 @@ class AAIAnimations {
     }, 10);
   }
 
-  // Public method to reset animations
+  /**
+   * Public method to reset animations
+   * @param {HTMLElement} element - The DOM element to reset
+   */
   static resetAnimation(element) {
     if (!element) return;
     
@@ -98,4 +109,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Export for manual usage
+// @ts-ignore
 window.AAIAnimations = AAIAnimations;
