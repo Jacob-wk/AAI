@@ -42,6 +42,20 @@
     },
     "user_dashboard_LMVMKX": {
       "type": "user-dashboard",
+      "blocks": {
+        "current_course_BiknhH": {
+          "type": "current_course",
+          "settings": {
+            "course_name": "Advanced Safety Management",
+            "instructor": "Dr. Sarah Johnson",
+            "progress_percentage": 65,
+            "course_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "current_course_BiknhH"
+      ],
       "name": "User Dashboard",
       "settings": {
         "completed_courses": 3,
