@@ -109,12 +109,114 @@
   color: var(--clean-white);
 }
 
+.section-alt-navy-1 h1,
+.section-alt-navy-1 h2,
+.section-alt-navy-1 h3,
+.section-alt-navy-1 h4,
+.section-alt-navy-1 h5,
+.section-alt-navy-1 h6 {
+  color: var(--clean-white);
+}
+
+.section-alt-navy-1 p {
+  color: var(--clean-white);
+}
+
+.section-alt-navy-1 .section-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.section-alt-navy-1 li {
+  color: var(--clean-white);
+}
+
+.section-alt-navy-1 span {
+  color: var(--clean-white);
+}
+
+.section-alt-navy-1 a:not(.btn):not(.button) {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+}
+
+.section-alt-navy-1 a:not(.btn):not(.button):hover {
+  color: var(--clean-white);
+}
+
 .section-alt-navy-2 {
   background: linear-gradient(135deg, var(--authority-navy) 0%, #2a4a6b 100%);
   color: var(--clean-white);
 }
 
+.section-alt-navy-2 h1,
+.section-alt-navy-2 h2,
+.section-alt-navy-2 h3,
+.section-alt-navy-2 h4,
+.section-alt-navy-2 h5,
+.section-alt-navy-2 h6 {
+  color: var(--clean-white);
+}
+
+.section-alt-navy-2 p {
+  color: var(--clean-white);
+}
+
+.section-alt-navy-2 .section-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.section-alt-navy-2 li {
+  color: var(--clean-white);
+}
+
+.section-alt-navy-2 span {
+  color: var(--clean-white);
+}
+
+.section-alt-navy-2 a:not(.btn):not(.button) {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+}
+
+.section-alt-navy-2 a:not(.btn):not(.button):hover {
+  color: var(--clean-white);
+}
+
 .section-alt-navy-3 {
   background: linear-gradient(135deg, #1a2f4a 0%, var(--authority-navy) 100%);
+  color: var(--clean-white);
+}
+
+.section-alt-navy-3 h1,
+.section-alt-navy-3 h2,
+.section-alt-navy-3 h3,
+.section-alt-navy-3 h4,
+.section-alt-navy-3 h5,
+.section-alt-navy-3 h6 {
+  color: var(--clean-white);
+}
+
+.section-alt-navy-3 p {
+  color: var(--clean-white);
+}
+
+.section-alt-navy-3 .section-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.section-alt-navy-3 li {
+  color: var(--clean-white);
+}
+
+.section-alt-navy-3 span {
+  color: var(--clean-white);
+}
+
+.section-alt-navy-3 a:not(.btn):not(.button) {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+}
+
+.section-alt-navy-3 a:not(.btn):not(.button):hover {
   color: var(--clean-white);
 }

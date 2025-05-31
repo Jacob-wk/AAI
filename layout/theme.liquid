@@ -4,6 +4,47 @@
   lang="{{ request.locale.iso_code }}"
 >
   <head>
+    <style>
+      /* Critical container styles loaded immediately */
+      .aai-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        width: 100%;
+      }
+      .aai-container-wide {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        width: 100%;
+      }
+      .aai-container-narrow {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        width: 100%;
+      }
+      .aai-container-full {
+        width: 100%;
+        padding: 0 1.5rem;
+      }
+      @media screen and (max-width: 768px) {
+        .aai-container,
+        .aai-container-wide,
+        .aai-container-narrow,
+        .aai-container-full {
+          padding: 0 1rem;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        .aai-container,
+        .aai-container-wide,
+        .aai-container-narrow,
+        .aai-container-full {
+          padding: 0 0.5rem;
+        }
+      }
+    </style>
     {{ 'variables.css' | asset_url | stylesheet_tag }}
     {{ 'reset.css' | asset_url | stylesheet_tag }}
     {{ 'containers.css' | asset_url | stylesheet_tag }}
