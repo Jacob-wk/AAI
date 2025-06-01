@@ -1,4 +1,5 @@
 /* AAI Demo Experience Interactive JavaScript */
+// @ts-nocheck
 
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize demo experience functionality
@@ -47,6 +48,11 @@ function initializeDemoExperience() {
   });
 }
 
+/**
+ * Opens the demo modal for a specific course
+ * @param {string} courseId - The course identifier
+ * @param {string} courseTitle - The course title
+ */
 function openDemoModal(courseId, courseTitle) {
   const modal = document.querySelector('.aai-demo-modal');
   const overlay = document.querySelector('.aai-demo-modal-overlay');
@@ -62,11 +68,11 @@ function openDemoModal(courseId, courseTitle) {
 
   // Set iframe source (placeholder for actual demo)
   if (iframe && courseId) {
-    iframe.src = `https://demo.intuto.com/course/${courseId}`;
+    /** @type {HTMLIFrameElement} */ (iframe).src = `https://demo.intuto.com/course/${courseId}`;
   }
 
   // Show modal with animation
-  overlay.style.display = 'flex';
+  /** @type {HTMLElement} */ (overlay).style.display = 'flex';
   setTimeout(() => {
     overlay.classList.add('active');
     modal.classList.add('active');
@@ -91,11 +97,11 @@ function closeDemoModal() {
   overlay.classList.remove('active');
 
   setTimeout(() => {
-    overlay.style.display = 'none';
+    /** @type {HTMLElement} */ (overlay).style.display = 'none';
     
     // Clear iframe
     if (iframe) {
-      iframe.src = '';
+      /** @type {HTMLIFrameElement} */ (iframe).src = '';
     }
   }, 300);
 
@@ -115,8 +121,8 @@ function initializeCoursePreview() {
         e.preventDefault();
         e.stopPropagation();
         
-        const courseId = card.dataset.courseId;
-        const videoId = this.dataset.videoId;
+        const courseId = /** @type {HTMLElement} */ (card).dataset.courseId;
+        const videoId = /** @type {HTMLElement} */ (this).dataset.videoId;
         
         if (videoId) {
           playPreviewVideo(card, videoId);
@@ -135,6 +141,11 @@ function initializeCoursePreview() {
   });
 }
 
+/**
+ * Plays preview video for a course card
+ * @param {HTMLElement} card - The course card element
+ * @param {string} videoId - The video identifier
+ */
 function playPreviewVideo(card, videoId) {
   const thumbnail = card.querySelector('.aai-preview-thumbnail');
   const playBtn = card.querySelector('.aai-preview-play-btn');
@@ -162,13 +173,13 @@ function initializeProgressTracking() {
   const progressBars = document.querySelectorAll('.aai-demo-progress-bar');
 
   progressBars.forEach(bar => {
-    const progress = bar.dataset.progress || 0;
+    const progress = /** @type {HTMLElement} */ (bar).dataset.progress || 0;
     const fill = bar.querySelector('.aai-progress-fill');
     
     if (fill) {
       // Animate progress bar
       setTimeout(() => {
-        fill.style.width = `${progress}%`;
+        /** @type {HTMLElement} */ (fill).style.width = `${progress}%`;
       }, 500);
     }
   });
@@ -180,6 +191,10 @@ function initializeProgressTracking() {
   }
 }
 
+/**
+ * Simulates progress updates for demo purposes
+ * @param {HTMLElement} container - The container element
+ */
 function simulateProgressUpdates(container) {
   const steps = [
     { step: 1, title: 'Introduction to Safety Protocols', completed: true },
@@ -207,13 +222,19 @@ function simulateProgressUpdates(container) {
   }, 3000);
 }
 
+/**
+ * Updates the progress display
+ * @param {HTMLElement} container - The container element
+ * @param {Array} steps - Array of step objects
+ * @param {number} currentStep - Current step number
+ */
 function updateProgressDisplay(container, steps, currentStep) {
   const progressBar = container.querySelector('.aai-progress-fill');
   const stepList = container.querySelector('.aai-step-list');
   
   if (progressBar) {
     const progress = (currentStep / steps.length) * 100;
-    progressBar.style.width = `${progress}%`;
+    /** @type {HTMLElement} */ (progressBar).style.width = `${progress}%`;
   }
 
   if (stepList) {
@@ -227,6 +248,10 @@ function updateProgressDisplay(container, steps, currentStep) {
   }
 }
 
+/**
+ * Shows completion message
+ * @param {HTMLElement} container - The container element
+ */
 function showCompletionMessage(container) {
   const message = document.createElement('div');
   message.className = 'aai-completion-message';
@@ -248,13 +273,18 @@ function showCompletionMessage(container) {
 }
 
 // Professional analytics integration
+/**
+ * Tracks demo interaction for analytics
+ * @param {string} action - The action being tracked
+ * @param {object} data - Additional data to track
+ */
 function trackDemoInteraction(action, data = {}) {
   // Integration with professional analytics
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'demo_interaction', {
+  if (typeof window.gtag !== 'undefined') {
+    window.gtag('event', 'demo_interaction', {
       action: action,
-      course_id: data.courseId,
-      step: data.step,
+      course_id: data.courseId || '',
+      step: data.step || '',
       custom_data: data
     });
   }
@@ -264,8 +294,10 @@ function trackDemoInteraction(action, data = {}) {
 }
 
 // Export for external usage
-window.AAIDemoExperience = {
-  openDemoModal,
-  closeDemoModal,
-  trackDemoInteraction
-};
+if (typeof window !== 'undefined') {
+  window.AAIDemoExperience = {
+    openDemoModal,
+    closeDemoModal,
+    trackDemoInteraction
+  };
+}
