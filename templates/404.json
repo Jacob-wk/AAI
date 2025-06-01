@@ -1,52 +1,72 @@
 {
   "sections": {
-    "main": {
-      "type": "main-404",
-      "settings": {}
+    "hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "hero_title": "Page Not Found",
+        "hero_subtitle": "Sorry, the page you're looking for doesn't exist. Let's get you back on track with our safety education resources.",
+        "hero_style": "hero-centered",
+        "layout_style": "text-center",
+        "show_image": false,
+        "show_stats": false,
+        "show_features": false,
+        "primary_button_text": "Return Home",
+        "primary_button_url": "/",
+        "secondary_button_text": "Browse Courses",
+        "secondary_button_url": "/collections/courses"
+      }
     },
-    "error_content": {
-      "type": "section",
+    "helpful_links": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Popular Pages",
+        "section_subtitle": "Find what you're looking for with these helpful links",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "3",
+        "background_style": "section-alt-1"
+      },
       "blocks": {
-        "heading": {
-          "type": "text",
+        "courses": {
+          "type": "text_block",
           "settings": {
-            "text": "<h1>Page Not Found</h1>",
-            "type_preset": "h1",
-            "alignment": "center",
-            "padding-block-end": 16
+            "block_title": "Training Courses",
+            "block_content": "<p>Explore our comprehensive safety education catalog with professional certification programs.</p><p><a href='/collections/courses' class='btn btn--primary'>View Courses</a></p>"
           }
         },
-        "message": {
-          "type": "text",
+        "instructors": {
+          "type": "text_block",
           "settings": {
-            "text": "<p>Sorry, the page you are looking for could not be found. Please check the URL or return to our homepage.</p>",
-            "type_preset": "paragraph",
-            "alignment": "center",
-            "padding-block-end": 24
+            "block_title": "Expert Instructors",
+            "block_content": "<p>Meet our faculty of industry professionals who bring real-world experience to your education.</p><p><a href='/pages/instructors' class='btn btn--primary'>Meet Faculty</a></p>"
           }
         },
-        "home_button": {
-          "type": "button",
+        "contact": {
+          "type": "text_block",
           "settings": {
-            "label": "Return to Homepage",
-            "link": "/",
-            "style_class": "button-primary"
+            "block_title": "Get Support",
+            "block_content": "<p>Need help finding something specific? Our team is here to assist with your learning journey.</p><p><a href='/pages/contact' class='btn btn--primary'>Contact Us</a></p>"
           }
         }
       },
-      "block_order": ["heading", "message", "home_button"],
+      "block_order": ["courses", "instructors", "contact"]
+    },
+    "search_section": {
+      "type": "aai-universal-content",
       "settings": {
-        "content_direction": "column",
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 40,
-        "padding-block-end": 40
-      }
+        "section_title": "Search Our Site",
+        "layout_style": "text-center",
+        "background_style": ""
+      },
+      "blocks": {
+        "search_form": {
+          "type": "text_block",
+          "settings": {
+            "block_content": "<form action='/search' method='get' class='search-form'><input type='search' name='q' placeholder='Search courses, instructors, or resources...' class='search-input'><button type='submit' class='btn btn--primary'>Search</button></form>"
+          }
+        }
+      },
+      "block_order": ["search_form"]
     }
   },
-  "order": [
-    "main",
-    "error_content"
-  ]
+  "order": ["hero", "helpful_links", "search_section"]
 }

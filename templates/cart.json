@@ -1,11 +1,71 @@
 {
   "sections": {
+    "cart_hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "hero_title": "Your Professional Development Cart",
+        "hero_subtitle": "Review your selected courses and safety education resources",
+        "layout_style": "single-column"
+      }
+    },
     "main": {
       "type": "main-cart",
       "settings": {}
+    },
+    "training_support": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Training Support",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": 3
+      },
+      "blocks": {
+        "support_block": {
+          "type": "text_block",
+          "settings": {
+            "title": "Expert Assistance",
+            "content": "<p>Our training specialists are available to help you select the right courses for your professional development goals.</p>"
+          }
+        },
+        "certification_block": {
+          "type": "text_block",
+          "settings": {
+            "title": "Certification Path",
+            "content": "<p>All courses contribute to professional certification and continuing education requirements in the amusement industry.</p>"
+          }
+        },
+        "group_block": {
+          "type": "text_block",
+          "settings": {
+            "title": "Group Training",
+            "content": "<p>Looking to train multiple employees? Contact us for group discounts and corporate training solutions.</p>"
+          }
+        }
+      },
+      "block_order": ["support_block", "certification_block", "group_block"]
+    },
+    "contact_cta": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Need Help?",
+        "layout_style": "single-column"
+      },
+      "blocks": {
+        "contact_block": {
+          "type": "text_block",
+          "settings": {
+            "title": "Contact Our Training Team",
+            "content": "<p>Have questions about course selection or need assistance with your order? Our training specialists are here to help.</p><p><a href='/pages/contact' class='btn btn-primary'>Contact Us</a> <a href='tel:+1234567890' class='btn btn-secondary'>Call Now</a></p>"
+          }
+        }
+      },
+      "block_order": ["contact_block"]
     }
   },
   "order": [
-    "main"
+    "cart_hero",
+    "main",
+    "training_support",
+    "contact_cta"
   ]
 }

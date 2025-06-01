@@ -1,11 +1,71 @@
 {
   "sections": {
+    "search_hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "hero_title": "Search Safety Education Resources",
+        "hero_subtitle": "Find courses, resources, and documentation for professional safety education",
+        "layout_style": "single-column"
+      }
+    },
     "main": {
       "type": "search-header",
       "settings": {}
+    },
+    "search_help": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Search Tips",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": 3
+      },
+      "blocks": {
+        "tip_1": {
+          "type": "text_block",
+          "settings": {
+            "title": "Course Search",
+            "content": "<p>Search for specific courses by topic, certification level, or instructor name to find the perfect training program.</p>"
+          }
+        },
+        "tip_2": {
+          "type": "text_block",
+          "settings": {
+            "title": "Resource Lookup",
+            "content": "<p>Find safety documents, standards, and guidelines using keywords or document types.</p>"
+          }
+        },
+        "tip_3": {
+          "type": "text_block",
+          "settings": {
+            "title": "Quick Access",
+            "content": "<p>Use our popular categories below to quickly navigate to commonly requested content.</p>"
+          }
+        }
+      },
+      "block_order": ["tip_1", "tip_2", "tip_3"]
+    },
+    "popular_searches": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Popular Searches",
+        "layout_style": "single-column"
+      },
+      "blocks": {
+        "popular_block": {
+          "type": "text_block",
+          "settings": {
+            "title": "Frequently Searched Topics",
+            "content": "<ul><li><a href='/collections/certifications'>Safety Certifications</a></li><li><a href='/collections/courses'>Professional Courses</a></li><li><a href='/pages/industry-standards'>Industry Standards</a></li><li><a href='/pages/safety-library'>Safety Library</a></li><li><a href='/pages/corporate-training'>Corporate Training</a></li><li><a href='/pages/webinars'>Safety Webinars</a></li></ul>"
+          }
+        }
+      },
+      "block_order": ["popular_block"]
     }
   },
   "order": [
-    "main"
+    "search_hero",
+    "main",
+    "search_help",
+    "popular_searches"
   ]
 }

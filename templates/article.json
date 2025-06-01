@@ -1,17 +1,70 @@
 {
   "sections": {
+    "article_hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "hero_title": "Safety Education Blog",
+        "hero_subtitle": "Industry insights, best practices, and expert perspectives on amusement park safety",
+        "layout_style": "single-column"
+      }
+    },
     "main": {
       "type": "main-blog-post",
       "settings": {
-        "blog_show_author": false,
+        "blog_show_author": true,
         "blog_show_date": true,
         "show_share_buttons": true,
         "article_comment_enable": true,
         "blog_show_tags": true
       }
+    },
+    "related_content": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Related Resources",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": 2
+      },
+      "blocks": {
+        "courses_block": {
+          "type": "text_block",
+          "settings": {
+            "title": "Professional Courses",
+            "content": "<p>Explore our comprehensive safety education courses designed by industry experts.</p><p><a href='/collections/courses' class='btn btn-primary'>View Courses</a></p>"
+          }
+        },
+        "library_block": {
+          "type": "text_block",
+          "settings": {
+            "title": "Safety Library",
+            "content": "<p>Access our extensive collection of safety documents, standards, and resources.</p><p><a href='/pages/safety-library' class='btn btn-secondary'>Browse Library</a></p>"
+          }
+        }
+      },
+      "block_order": ["courses_block", "library_block"]
+    },
+    "newsletter_signup": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Stay Informed",
+        "layout_style": "single-column"
+      },
+      "blocks": {
+        "newsletter_block": {
+          "type": "text_block",
+          "settings": {
+            "title": "Subscribe to Safety Updates",
+            "content": "<p>Get the latest industry news, safety alerts, and educational content delivered to your inbox.</p><p>Join thousands of safety professionals who trust AAI for critical industry updates and expert insights.</p>"
+          }
+        }
+      },
+      "block_order": ["newsletter_block"]
     }
   },
   "order": [
-    "main"
+    "article_hero",
+    "main",
+    "related_content",
+    "newsletter_signup"
   ]
 }

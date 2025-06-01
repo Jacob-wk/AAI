@@ -1,36 +1,47 @@
 {
   "sections": {
-    "blog_header": {
-      "type": "section",
+    "hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "hero_title": "{{ blog.title | default: 'Safety Education Blog' }}",
+        "hero_subtitle": "Stay updated with the latest insights, industry trends, and safety education news from AAI experts and industry professionals.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-center",
+        "show_image": false,
+        "show_stats": false,
+        "show_features": true,
+        "primary_button_text": "Latest Articles",
+        "primary_button_url": "#articles",
+        "secondary_button_text": "Subscribe",
+        "secondary_button_url": "/pages/contact"
+      },
       "blocks": {
-        "heading": {
-          "type": "text",
+        "feature1": {
+          "type": "feature",
           "settings": {
-            "text": "<h1>{{ blog.title | default: 'Safety Education Blog' }}</h1>",
-            "type_preset": "h1",
-            "alignment": "center",
-            "padding-block-end": 16
+            "feature_icon": "📚",
+            "feature_title": "Expert Insights",
+            "feature_description": "Industry analysis from safety professionals"
           }
         },
-        "description": {
-          "type": "text",
+        "feature2": {
+          "type": "feature",
           "settings": {
-            "text": "<p>Stay updated with the latest insights, industry trends, and safety education news from AAI experts.</p>",
-            "type_preset": "paragraph",
-            "alignment": "center",
-            "padding-block-end": 24
+            "feature_icon": "📈",
+            "feature_title": "Industry Trends",
+            "feature_description": "Latest developments in safety standards"
+          }
+        },
+        "feature3": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "💡",
+            "feature_title": "Best Practices",
+            "feature_description": "Practical tips for safety professionals"
           }
         }
       },
-      "block_order": ["heading", "description"],
-      "settings": {
-        "content_direction": "column",
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 40,
-        "padding-block-end": 20
-      }
+      "block_order": ["feature1", "feature2", "feature3"]
     },
     "main": {
       "type": "main-blog",
@@ -41,10 +52,21 @@
         "show_author": false,
         "show_excerpt": true
       }
+    },
+    "newsletter": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Stay Informed",
+        "section_subtitle": "Get the latest safety education updates delivered to your inbox",
+        "layout_style": "text-center",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_body": "<p>Join our newsletter for exclusive insights, course announcements, and industry updates from AAI's expert team.</p>",
+        "main_button_text": "Subscribe Now",
+        "main_button_url": "/pages/contact",
+        "main_button_style": "primary"
+      }
     }
   },
-  "order": [
-    "blog_header",
-    "main"
-  ]
+  "order": ["hero", "main", "newsletter"]
 }

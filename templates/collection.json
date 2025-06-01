@@ -1,36 +1,44 @@
 {
   "sections": {
-    "collection_banner": {
-      "type": "section",
+    "hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "hero_title": "{{ collection.title | default: 'Training Courses' }}",
+        "hero_subtitle": "{{ collection.description | default: 'Discover our comprehensive selection of professional safety education courses designed for industry professionals.' }}",
+        "hero_style": "hero-standard",
+        "layout_style": "text-center",
+        "show_image": false,
+        "show_stats": true,
+        "show_features": false,
+        "primary_button_text": "View All Courses",
+        "primary_button_url": "#products",
+        "secondary_button_text": "Get Help Choosing",
+        "secondary_button_url": "/pages/contact"
+      },
       "blocks": {
-        "heading": {
-          "type": "text",
+        "stat1": {
+          "type": "statistic",
           "settings": {
-            "text": "<h1>{{ collection.title | default: 'Our Products' }}</h1>",
-            "type_preset": "h1",
-            "alignment": "center",
-            "padding-block-end": 16
+            "stat_number": "50+",
+            "stat_label": "Professional Courses"
           }
         },
-        "description": {
-          "type": "text",
+        "stat2": {
+          "type": "statistic",
           "settings": {
-            "text": "<p>{{ collection.description | default: 'Discover our carefully curated selection of professional safety education courses and training materials.' }}</p>",
-            "type_preset": "paragraph",
-            "alignment": "center",
-            "padding-block-end": 24
+            "stat_number": "98%",
+            "stat_label": "Completion Rate"
+          }
+        },
+        "stat3": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "500+",
+            "stat_label": "Certified Professionals"
           }
         }
       },
-      "block_order": ["heading", "description"],
-      "settings": {
-        "content_direction": "column",
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 40,
-        "padding-block-end": 20
-      }
+      "block_order": ["stat1", "stat2", "stat3"]
     },
     "main": {
       "type": "main-collection",
@@ -41,10 +49,21 @@
         "filter_type": "sidebar",
         "show_product_count": true
       }
+    },
+    "help_section": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Need Help Choosing?",
+        "section_subtitle": "Our experts can help you find the right training for your needs",
+        "layout_style": "text-center",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_body": "<p>Not sure which course is right for you? Our training specialists can recommend the perfect program based on your experience level, career goals, and industry requirements.</p>",
+        "main_button_text": "Contact an Expert",
+        "main_button_url": "/pages/contact",
+        "main_button_style": "primary"
+      }
     }
   },
-  "order": [
-    "collection_banner",
-    "main"
-  ]
+  "order": ["hero", "main", "help_section"]
 }
