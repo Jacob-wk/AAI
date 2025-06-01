@@ -30,7 +30,7 @@
           {% endif %}
           
           {% if section.blocks.size > 0 %}
-            <div class="content-blocks">
+            <div class="content-blocks" data-columns="{{ section.settings.blocks_per_row | default: 1 }}">
               {% for block in section.blocks %}
                 {% case block.type %}
                   {% when 'text_block' %}
@@ -164,9 +164,23 @@
         { "value": "text-left-image-right", "label": "Text Left, Image Right" },
         { "value": "text-right-image-left", "label": "Text Right, Image Left" },
         { "value": "text-center", "label": "Text Centered" },
-        { "value": "two-column", "label": "Two Column Text" }
+        { "value": "two-column", "label": "Two Column Text" },
+        { "value": "blocks-grid", "label": "Content Blocks Grid" }
       ],
       "default": "text-only"
+    },
+    {
+      "type": "select",
+      "id": "blocks_per_row",
+      "label": "Blocks Per Row",
+      "options": [
+        { "value": "1", "label": "1 Column" },
+        { "value": "2", "label": "2 Columns" },
+        { "value": "3", "label": "3 Columns" },
+        { "value": "4", "label": "4 Columns" }
+      ],
+      "default": "1",
+      "info": "Only applies when using Content Blocks Grid layout"
     },
     {
       "type": "select",

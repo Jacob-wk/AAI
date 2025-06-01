@@ -3,56 +3,43 @@
     "hero": {
       "type": "aai-universal-hero",
       "settings": {
-        "title": "Industry Standards & Compliance",
-        "subtitle": "Comprehensive guide to amusement industry safety standards",
-        "background_style": "bg-light",
+        "hero_title": "Industry Standards & Compliance",
+        "hero_subtitle": "Comprehensive guide to amusement industry safety standards",
         "show_stats": false,
-        "show_features": false,
-        "show_cta": false
+        "show_features": false
       }
     },
     "overview": {
       "type": "aai-universal-content",
-      "blocks": {
-        "overview_text": {
-          "type": "content_block",
-          "settings": {
-            "title": "",
-            "content": "<p>Stay current with the latest safety standards, regulations, and compliance requirements from leading industry organizations worldwide.</p>",
-            "alignment": "center"
-          }
-        }
-      },
-      "block_order": [
-        "overview_text"
-      ],
       "settings": {
-        "layout": "single-column",
-        "background_style": "bg-light"
+        "content_title": "",
+        "content_body": "<p>Stay current with the latest safety standards, regulations, and compliance requirements from leading industry organizations worldwide.</p>",
+        "layout_style": "text-center",
+        "background_style": ""
       }
     },
     "standards_categories": {
       "type": "aai-universal-content",
       "blocks": {
         "astm_standards": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "ASTM Standards",
-            "content": "<ul><li>F24.10.03 - Inspection of Amusement Rides</li><li>F24.10.01 - Quality Assurance</li><li>F24.61.02 - Patron Safety Systems</li><li>F24.10.04 - Maintenance and Operation</li></ul>"
+            "block_title": "ASTM Standards",
+            "block_content": "<ul><li>F24.10.03 - Inspection of Amusement Rides</li><li>F24.10.01 - Quality Assurance</li><li>F24.61.02 - Patron Safety Systems</li><li>F24.10.04 - Maintenance and Operation</li></ul>"
           }
         },
         "international_standards": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "International Standards",
-            "content": "<ul><li>EN 13814 - European Safety Standards</li><li>CSA Z267 - Canadian Standards</li><li>AS 3533 - Australian Standards</li><li>JIS A 8701 - Japanese Safety Standards</li></ul>"
+            "block_title": "International Standards",
+            "block_content": "<ul><li>EN 13814 - European Safety Standards</li><li>CSA Z267 - Canadian Standards</li><li>AS 3533 - Australian Standards</li><li>JIS A 8701 - Japanese Safety Standards</li></ul>"
           }
         },
         "regulatory_bodies": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "Regulatory Bodies",
-            "content": "<ul><li>CPSC - Consumer Product Safety Commission</li><li>OSHA - Occupational Safety Standards</li><li>State Regulatory Authorities</li><li>Local Jurisdiction Requirements</li></ul>"
+            "block_title": "Regulatory Bodies",
+            "block_content": "<ul><li>CPSC - Consumer Product Safety Commission</li><li>OSHA - Occupational Safety Standards</li><li>State Regulatory Authorities</li><li>Local Jurisdiction Requirements</li></ul>"
           }
         }
       },
@@ -62,28 +49,20 @@
         "regulatory_bodies"
       ],
       "settings": {
-        "layout": "three-column",
-        "background_style": "bg-light"
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "3",
+        "background_style": ""
       }
     },
     "compliance_resources": {
       "type": "aai-universal-content",
-      "blocks": {
-        "resources_cta": {
-          "type": "content_block",
-          "settings": {
-            "title": "Compliance Resources",
-            "content": "<p>Access our comprehensive library of compliance tools, checklists, and documentation templates.</p><a href='/pages/safety-library' class='btn btn-primary'>View Safety Library</a>",
-            "alignment": "center"
-          }
-        }
-      },
-      "block_order": [
-        "resources_cta"
-      ],
       "settings": {
-        "layout": "single-column",
-        "background_style": "bg-primary"
+        "content_title": "Compliance Resources",
+        "content_body": "<p>Access our comprehensive library of compliance tools, checklists, and documentation templates.</p>",
+        "main_button_text": "View Safety Library",
+        "main_button_url": "/pages/safety-library",
+        "layout_style": "text-center",
+        "background_style": "section-alt-1"
       }
     }
   },

@@ -45,15 +45,17 @@
     "training_benefits": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Why Choose AAI Corporate Training?",
-        "section_subtitle": "Transform your organization's safety culture with proven training methodologies",
         "layout_style": "two-column",
-        "background_style": "bg-light",
-        "show_main_content": true,
-        "content_title": "Enterprise-Level Excellence",
-        "content_body": "<p>Our corporate training programs combine industry-leading expertise with flexible delivery methods to meet your organization's unique challenges. We work with leading theme parks, water parks, and entertainment venues worldwide.</p>"
+        "background_style": "bg-light"
       },
       "blocks": {
+        "main_content": {
+          "type": "text_block",
+          "settings": {
+            "title": "Enterprise-Level Excellence",
+            "content": "<p>Our corporate training programs combine industry-leading expertise with flexible delivery methods to meet your organization's unique challenges. We work with leading theme parks, water parks, and entertainment venues worldwide.</p>"
+          }
+        },
         "benefit1": {
           "type": "feature_list",
           "settings": {
@@ -69,55 +71,61 @@
           }
         }
       },
-      "block_order": ["benefit1", "benefit2"]
+      "block_order": ["main_content", "benefit1", "benefit2"]
     },
     "training_solutions": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Training Solutions",
-        "section_subtitle": "Comprehensive programs designed for different organizational roles and requirements",
-        "layout_style": "single-column",
-        "show_main_content": true
+        "layout_style": "single-column"
       },
       "blocks": {
+        "header": {
+          "type": "text_block",
+          "settings": {
+            "title": "Training Solutions",
+            "content": "<p>Comprehensive programs designed for different organizational roles and requirements</p>"
+          }
+        },
         "solution1": {
           "type": "text_block",
           "settings": {
-            "block_title": "On-Site Training Programs",
-            "block_content": "<p>Bring our expert instructors to your facility for hands-on training tailored to your specific equipment and procedures.</p><ul><li>Customized curriculum development</li><li>Equipment-specific training</li><li>Flexible scheduling</li><li>Group discounts available</li></ul>"
+            "title": "On-Site Training Programs",
+            "content": "<p>Bring our expert instructors to your facility for hands-on training tailored to your specific equipment and procedures.</p><ul><li>Customized curriculum development</li><li>Equipment-specific training</li><li>Flexible scheduling</li><li>Group discounts available</li></ul>"
           }
         },
         "solution2": {
           "type": "text_block",
           "settings": {
-            "block_title": "Virtual Learning Solutions",
-            "block_content": "<p>Interactive online training modules that your team can complete at their own pace, with progress tracking and assessments.</p><ul><li>24/7 access to training materials</li><li>Progress tracking and reporting</li><li>Interactive simulations</li><li>Mobile-friendly platform</li></ul>"
+            "title": "Virtual Learning Solutions",
+            "content": "<p>Interactive online training modules that your team can complete at their own pace, with progress tracking and assessments.</p><ul><li>24/7 access to training materials</li><li>Progress tracking and reporting</li><li>Interactive simulations</li><li>Mobile-friendly platform</li></ul>"
           }
         },
         "solution3": {
           "type": "text_block",
           "settings": {
-            "block_title": "Compliance Consulting",
-            "block_content": "<p>Expert guidance on regulatory compliance, safety program development, and best practice implementation.</p><ul><li>Regulatory compliance audits</li><li>Safety program development</li><li>Documentation review</li><li>Ongoing support and updates</li></ul>"
+            "title": "Compliance Consulting",
+            "content": "<p>Expert guidance on regulatory compliance, safety program development, and best practice implementation.</p><ul><li>Regulatory compliance audits</li><li>Safety program development</li><li>Documentation review</li><li>Ongoing support and updates</li></ul>"
           }
         }
       },
-      "block_order": ["solution1", "solution2", "solution3"]
+      "block_order": ["header", "solution1", "solution2", "solution3"]
     },
     "call_to_action": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Request a Consultation",
-        "section_subtitle": "Let's discuss how AAI can help your organization achieve excellence in safety training",
-        "layout_style": "centered",
-        "background_style": "bg-primary",
-        "show_main_content": true,
-        "content_body": "<p>Schedule a consultation to explore customized training solutions for your organization.</p>",
-        "primary_button_text": "Schedule Consultation",
-        "primary_button_url": "/pages/contact",
-        "secondary_button_text": "Download Brochure",
-        "secondary_button_url": "/pages/contact"
-      }
+        "layout_style": "single-column",
+        "background_style": "bg-primary"
+      },
+      "blocks": {
+        "cta_content": {
+          "type": "text_block",
+          "settings": {
+            "title": "Request a Consultation",
+            "content": "<p>Let's discuss how AAI can help your organization achieve excellence in safety training. Schedule a consultation to explore customized training solutions for your organization.</p><div class='button-group'><a href='/pages/contact' class='btn btn-primary'>Schedule Consultation</a><a href='/pages/contact' class='btn btn-secondary'>Download Brochure</a></div>"
+          }
+        }
+      },
+      "block_order": ["cta_content"]
     }
   },
   "order": ["hero", "training_benefits", "training_solutions", "call_to_action"]

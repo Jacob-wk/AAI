@@ -3,112 +3,84 @@
     "hero": {
       "type": "aai-universal-hero",
       "settings": {
-        "title": "Professional Webinars",
-        "subtitle": "Live and recorded sessions with industry experts",
-        "background_style": "bg-light",
+        "hero_title": "Professional Webinars",
+        "hero_subtitle": "Live and recorded sessions with industry experts",
         "show_stats": false,
-        "show_features": false,
-        "show_cta": false
+        "show_features": false
       }
     },
     "intro": {
       "type": "aai-universal-content",
-      "blocks": {
-        "intro_text": {
-          "type": "content_block",
-          "settings": {
-            "title": "",
-            "content": "<p>Join our monthly webinar series featuring cutting-edge topics, regulatory updates, and expert insights from leading safety professionals.</p>",
-            "alignment": "center"
-          }
-        }
-      },
-      "block_order": [
-        "intro_text"
-      ],
       "settings": {
-        "layout": "single-column",
-        "background_style": "bg-light"
+        "content_body": "<p>Join our monthly webinar series featuring cutting-edge topics, regulatory updates, and expert insights from leading safety professionals.</p>",
+        "layout_style": "text-center",
+        "background_style": ""
       }
     },
     "upcoming_webinars": {
       "type": "aai-universal-content",
       "blocks": {
-        "section_title": {
-          "type": "content_block",
-          "settings": {
-            "title": "Upcoming Live Sessions",
-            "content": "",
-            "alignment": "center"
-          }
-        },
         "ndt_techniques": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "Advanced NDT Techniques for Ride Inspection",
-            "content": "<p class='presenter'>Dr. Sarah Mitchell, P.E.</p><p class='date'>June 15, 2025 | 2:00 PM EST</p><p class='duration'>90 minutes | CEU: 1.5</p><p>Explore the latest non-destructive testing methods for identifying structural issues before they become critical.</p><button class='register-btn'>Register Now</button>"
+            "block_title": "Advanced NDT Techniques for Ride Inspection",
+            "block_content": "<p class='presenter'>Dr. Sarah Mitchell, P.E.</p><p class='date'>June 15, 2025 | 2:00 PM EST</p><p class='duration'>90 minutes | CEU: 1.5</p><p>Explore the latest non-destructive testing methods for identifying structural issues before they become critical.</p><button class='register-btn'>Register Now</button>"
           }
         },
         "regulatory_updates": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "Regulatory Updates: 2025 Safety Standards",
-            "content": "<p class='presenter'>Robert Thompson, QSI</p><p class='date'>June 29, 2025 | 1:00 PM EST</p><p class='duration'>60 minutes | CEU: 1.0</p><p>Comprehensive review of new and updated safety standards taking effect in 2025.</p><button class='register-btn'>Register Now</button>"
+            "block_title": "Regulatory Updates: 2025 Safety Standards",
+            "block_content": "<p class='presenter'>Robert Thompson, QSI</p><p class='date'>June 29, 2025 | 1:00 PM EST</p><p class='duration'>60 minutes | CEU: 1.0</p><p>Comprehensive review of new and updated safety standards taking effect in 2025.</p><button class='register-btn'>Register Now</button>"
           }
         }
       },
       "block_order": [
-        "section_title",
         "ndt_techniques",
         "regulatory_updates"
       ],
       "settings": {
-        "layout": "two-column",
-        "background_style": "bg-light"
+        "section_title": "Upcoming Live Sessions",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "2",
+        "background_style": ""
       }
     },
     "recorded_webinars": {
       "type": "aai-universal-content",
       "blocks": {
-        "recorded_title": {
-          "type": "content_block",
-          "settings": {
-            "title": "Recorded Webinar Library",
-            "content": "",
-            "alignment": "center"
-          }
-        },
         "risk_assessment": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "Risk Assessment in Modern Amusement Parks",
-            "content": "<p class='presenter'>Maria Chen, Ph.D.</p><p class='views'>1,247 views | Available with subscription</p><button class='watch-btn'>Watch Now</button>"
+            "block_title": "Risk Assessment in Modern Amusement Parks",
+            "block_content": "<p class='presenter'>Maria Chen, Ph.D.</p><p class='views'>1,247 views | Available with subscription</p><button class='watch-btn'>Watch Now</button>"
           }
         },
         "maintenance_excellence": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "Maintenance Excellence: Predictive vs Preventive",
-            "content": "<p class='presenter'>James Rodriguez, CIT</p><p class='views'>892 views | Available with subscription</p><button class='watch-btn'>Watch Now</button>"
+            "block_title": "Maintenance Excellence: Predictive vs Preventive",
+            "block_content": "<p class='presenter'>James Rodriguez, CIT</p><p class='views'>892 views | Available with subscription</p><button class='watch-btn'>Watch Now</button>"
           }
         },
         "emergency_response": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "Emergency Response Planning and Protocols",
-            "content": "<p class='presenter'>Dr. Sarah Mitchell, P.E.</p><p class='views'>1,156 views | Available with subscription</p><button class='watch-btn'>Watch Now</button>"
+            "block_title": "Emergency Response Planning and Protocols",
+            "block_content": "<p class='presenter'>Dr. Sarah Mitchell, P.E.</p><p class='views'>1,156 views | Available with subscription</p><button class='watch-btn'>Watch Now</button>"
           }
         }
       },
       "block_order": [
-        "recorded_title",
         "risk_assessment",
         "maintenance_excellence",
         "emergency_response"
       ],
       "settings": {
-        "layout": "three-column",
-        "background_style": "bg-primary"
+        "section_title": "Recorded Webinar Library",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "3",
+        "background_style": "section-alt-1"
       }
     }
   },

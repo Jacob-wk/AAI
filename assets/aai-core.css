@@ -1,0 +1,264 @@
+/* AAI Core CSS - Professional header and navigation styles */
+
+/* Professional header credentials bar */
+.aai-header-top {
+  background: var(--authority-navy);
+  color: var(--clean-white);
+  padding: 8px 0;
+  font-size: 0.85rem;
+  border-bottom: 2px solid var(--safety-orange);
+}
+
+.aai-credentials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.aai-credential-badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.aai-credential-badge:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Main header navigation */
+.aai-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--clean-white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.aai-header-main {
+  padding: 15px 0;
+  background: var(--clean-white);
+}
+
+.aai-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Logo styling */
+.aai-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--authority-navy);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.aai-logo img {
+  height: 40px;
+  width: auto;
+}
+
+/* Navigation menu */
+.aai-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.aai-nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 25px;
+}
+
+.aai-nav-item {
+  position: relative;
+}
+
+.aai-nav-link {
+  color: var(--charcoal-grey);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 0;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.aai-nav-link:hover {
+  color: var(--electric-blue);
+}
+
+.aai-nav-link:after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--electric-blue);
+  transition: width 0.3s ease;
+}
+
+.aai-nav-link:hover:after {
+  width: 100%;
+}
+
+/* Header actions */
+.aai-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.aai-search-btn,
+.aai-account-btn,
+.aai-cart-btn {
+  background: none;
+  border: none;
+  color: var(--charcoal-grey);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.aai-search-btn:hover,
+.aai-account-btn:hover,
+.aai-cart-btn:hover {
+  background: var(--light-grey);
+  color: var(--electric-blue);
+}
+
+/* Mobile menu button */
+.aai-mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--charcoal-grey);
+  cursor: pointer;
+  padding: 8px;
+  font-size: 1.2rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .aai-credentials {
+    gap: 10px;
+    font-size: 0.8rem;
+  }
+  
+  .aai-credential-badge {
+    padding: 3px 8px;
+    font-size: 0.75rem;
+  }
+  
+  .aai-nav {
+    display: none;
+  }
+  
+  .aai-mobile-menu-btn {
+    display: block;
+  }
+  
+  .aai-header-content {
+    padding: 0 15px;
+  }
+  
+  .aai-logo {
+    font-size: 1.1rem;
+  }
+  
+  .aai-logo img {
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aai-header-top {
+    padding: 6px 0;
+    font-size: 0.75rem;
+  }
+  
+  .aai-credentials {
+    gap: 8px;
+  }
+  
+  .aai-credential-badge {
+    padding: 2px 6px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Professional mobile menu overlay (when needed) */
+.aai-mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--clean-white);
+  z-index: 9999;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.aai-mobile-menu.active {
+  transform: translateY(0);
+}
+
+.aai-mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.aai-mobile-menu-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--charcoal-grey);
+  cursor: pointer;
+}
+
+.aai-mobile-menu-nav {
+  padding: 20px;
+}
+
+.aai-mobile-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.aai-mobile-menu-item {
+  margin-bottom: 20px;
+}
+
+.aai-mobile-menu-link {
+  color: var(--charcoal-grey);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: block;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.aai-mobile-menu-link:hover {
+  color: var(--electric-blue);
+}

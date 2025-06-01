@@ -3,23 +3,18 @@
     "hero": {
       "type": "aai-universal-hero",
       "settings": {
-        "title": "{{ page.title | default: 'Course Access' }}",
-        "subtitle": "Continue your professional development journey",
-        "background_style": "bg-light",
-        "show_stats": false,
-        "show_features": false,
-        "show_cta": false
+        "hero_title": "{{ page.title | default: 'Course Access' }}",
+        "hero_subtitle": "Continue your professional development journey",
+        "background_style": "bg-light"
       }
     },
     "course_player": {
       "type": "aai-universal-content",
       "blocks": {
         "intuto_player": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "",
-            "content": "<div class='intuto-player-container'><div id='intuto-course-player'><p>Loading course content...</p></div></div>",
-            "alignment": "center"
+            "content": "<div class='intuto-player-container'><div id='intuto-course-player'><p>Loading course content...</p></div></div>"
           }
         }
       },
@@ -27,7 +22,7 @@
         "intuto_player"
       ],
       "settings": {
-        "layout": "single-column",
+        "layout_style": "single-column",
         "background_style": "bg-light"
       }
     },
@@ -35,11 +30,9 @@
       "type": "aai-universal-content",
       "blocks": {
         "nav_links": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "",
-            "content": "<div class='course-navigation'><div class='nav-item'><a href='/account' class='btn btn-outline'>← Back to Dashboard</a></div><div class='nav-item'><a href='/collections/courses' class='btn btn-outline'>Browse More Courses</a></div></div>",
-            "alignment": "center"
+            "content": "<div class='course-navigation'><div class='nav-item'><a href='/account' class='btn btn-outline'>← Back to Dashboard</a></div><div class='nav-item'><a href='/collections/courses' class='btn btn-outline'>Browse More Courses</a></div></div>"
           }
         }
       },
@@ -47,7 +40,7 @@
         "nav_links"
       ],
       "settings": {
-        "layout": "single-column",
+        "layout_style": "single-column",
         "background_style": "bg-light"
       }
     },
@@ -55,11 +48,10 @@
       "type": "aai-universal-content",
       "blocks": {
         "support_info": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Need Help?",
-            "content": "<p>If you experience any technical issues with the course player, please contact our support team.</p><a href='/pages/help-center' class='btn btn-primary'>Get Support</a>",
-            "alignment": "center"
+            "content": "<p>If you experience any technical issues with the course player, please contact our support team.</p><a href='/pages/help-center' class='btn btn-primary'>Get Support</a>"
           }
         }
       },
@@ -67,7 +59,7 @@
         "support_info"
       ],
       "settings": {
-        "layout": "single-column",
+        "layout_style": "single-column",
         "background_style": "bg-primary"
       }
     }

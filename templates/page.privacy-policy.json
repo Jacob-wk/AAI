@@ -3,47 +3,39 @@
     "hero": {
       "type": "aai-universal-hero",
       "settings": {
-        "title": "Privacy Policy",
-        "subtitle": "Effective Date: May 30, 2025",
-        "background_style": "bg-light",
-        "show_stats": false,
-        "show_features": false,
-        "show_cta": false
+        "hero_title": "Privacy Policy",
+        "hero_subtitle": "Effective Date: May 30, 2025",
+        "background_style": "bg-light"
       }
     },
     "policy_content": {
       "type": "aai-universal-content",
       "blocks": {
         "introduction": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "",
-            "content": "<p>Amusement Academy International (\"AAI,\" \"we,\" \"us,\" or \"our\") is committed to protecting your privacy and personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our learning management system and related services.</p>",
-            "alignment": "left"
+            "content": "<p>Amusement Academy International (\"AAI,\" \"we,\" \"us,\" or \"our\") is committed to protecting your privacy and personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our learning management system and related services.</p>"
           }
         },
         "data_collection": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Information We Collect",
-            "content": "<h3>Personal Information</h3><ul><li>Name, email address, and contact information</li><li>Professional credentials and certifications</li><li>Educational and employment history</li><li>Payment and billing information</li></ul><h3>Educational Data</h3><ul><li>Course enrollment and completion records</li><li>Assessment scores and progress tracking</li><li>Learning preferences and engagement metrics</li><li>Certificate and credential information</li></ul><h3>Technical Information</h3><ul><li>Device information and browser type</li><li>IP address and location data</li><li>Usage patterns and platform interactions</li><li>Cookies and similar tracking technologies</li></ul>",
-            "alignment": "left"
+            "content": "<h3>Personal Information</h3><ul><li>Name, email address, and contact information</li><li>Professional credentials and certifications</li><li>Educational and employment history</li><li>Payment and billing information</li></ul><h3>Educational Data</h3><ul><li>Course enrollment and completion records</li><li>Assessment scores and progress tracking</li><li>Learning preferences and engagement metrics</li><li>Certificate and credential information</li></ul><h3>Technical Information</h3><ul><li>Device information and browser type</li><li>IP address and location data</li><li>Usage patterns and platform interactions</li><li>Cookies and similar tracking technologies</li></ul>"
           }
         },
         "data_use": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "How We Use Your Information",
-            "content": "<ul><li><strong>Educational Services:</strong> Deliver courses, track progress, issue certificates</li><li><strong>Account Management:</strong> Maintain your profile and subscription</li><li><strong>Communication:</strong> Send course updates, newsletters, and support</li><li><strong>Improvement:</strong> Enhance our platform and educational content</li><li><strong>Compliance:</strong> Meet legal and regulatory requirements</li><li><strong>Marketing:</strong> Promote relevant courses and services (with consent)</li></ul>",
-            "alignment": "left"
+            "content": "<ul><li><strong>Educational Services:</strong> Deliver courses, track progress, issue certificates</li><li><strong>Account Management:</strong> Maintain your profile and subscription</li><li><strong>Communication:</strong> Send course updates, newsletters, and support</li><li><strong>Improvement:</strong> Enhance our platform and educational content</li><li><strong>Compliance:</strong> Meet legal and regulatory requirements</li><li><strong>Marketing:</strong> Promote relevant courses and services (with consent)</li></ul>"
           }
         },
         "data_rights": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Your Rights",
-            "content": "<p>Under GDPR, CCPA, and other applicable privacy laws, you have the right to:</p><ul><li><strong>Access:</strong> Request copies of your personal data</li><li><strong>Rectification:</strong> Correct inaccurate or incomplete information</li><li><strong>Erasure:</strong> Request deletion of your personal data</li><li><strong>Portability:</strong> Receive your data in a machine-readable format</li><li><strong>Objection:</strong> Object to processing for marketing purposes</li><li><strong>Restriction:</strong> Limit how we process your information</li></ul><p>To exercise these rights, contact us at <a href='mailto:privacy@aai-lms.com'>privacy@aai-lms.com</a></p>",
-            "alignment": "left"
+            "content": "<p>Under GDPR, CCPA, and other applicable privacy laws, you have the right to:</p><ul><li><strong>Access:</strong> Request copies of your personal data</li><li><strong>Rectification:</strong> Correct inaccurate or incomplete information</li><li><strong>Erasure:</strong> Request deletion of your personal data</li><li><strong>Portability:</strong> Receive your data in a machine-readable format</li><li><strong>Objection:</strong> Object to processing for marketing purposes</li><li><strong>Restriction:</strong> Limit how we process your information</li></ul><p>To exercise these rights, contact us at <a href='mailto:privacy@aai-lms.com'>privacy@aai-lms.com</a></p>"
           }
         }
       },
@@ -54,7 +46,7 @@
         "data_rights"
       ],
       "settings": {
-        "layout": "single-column",
+        "layout_style": "single-column",
         "background_style": "bg-light"
       }
     },
@@ -62,11 +54,10 @@
       "type": "aai-universal-content",
       "blocks": {
         "contact_info": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Contact Information",
-            "content": "<p>If you have questions about this Privacy Policy or our data practices, please contact:</p><p><strong>Privacy Officer</strong><br>Amusement Academy International<br>Email: <a href='mailto:privacy@aai-lms.com'>privacy@aai-lms.com</a><br>Phone: 1-800-AAI-SAFE</p><p><em>This policy was last updated on May 30, 2025.</em></p>",
-            "alignment": "left"
+            "content": "<p>If you have questions about this Privacy Policy or our data practices, please contact:</p><p><strong>Privacy Officer</strong><br>Amusement Academy International<br>Email: <a href='mailto:privacy@aai-lms.com'>privacy@aai-lms.com</a><br>Phone: 1-800-AAI-SAFE</p><p><em>This policy was last updated on May 30, 2025.</em></p>"
           }
         }
       },
@@ -74,7 +65,7 @@
         "contact_info"
       ],
       "settings": {
-        "layout": "single-column",
+        "layout_style": "single-column",
         "background_style": "bg-primary"
       }
     }

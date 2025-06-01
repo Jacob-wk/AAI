@@ -42,15 +42,17 @@
     "certification_overview": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Industry-Recognized Excellence",
-        "section_subtitle": "AAI certifications are accepted by leading operators, manufacturers, and regulatory bodies worldwide",
         "layout_style": "two-column",
-        "background_style": "bg-light",
-        "show_main_content": true,
-        "content_title": "Why Choose AAI Certification?",
-        "content_body": "<p>Our certification programs combine rigorous academic standards with practical, hands-on experience. Each program is designed by industry experts and regularly updated to reflect current best practices and regulatory requirements.</p>"
+        "background_style": "bg-light"
       },
       "blocks": {
+        "main_content": {
+          "type": "text_block",
+          "settings": {
+            "title": "Why Choose AAI Certification?",
+            "content": "<p>Our certification programs combine rigorous academic standards with practical, hands-on experience. Each program is designed by industry experts and regularly updated to reflect current best practices and regulatory requirements.</p>"
+          }
+        },
         "benefit1": {
           "type": "feature_list",
           "settings": {
@@ -66,95 +68,107 @@
           }
         }
       },
-      "block_order": ["benefit1", "benefit2"]
+      "block_order": ["main_content", "benefit1", "benefit2"]
     },
     "certification_programs": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Certification Programs",
-        "section_subtitle": "Choose from our comprehensive range of specialized certification tracks",
-        "layout_style": "single-column",
-        "show_main_content": true
+        "layout_style": "single-column"
       },
       "blocks": {
+        "header": {
+          "type": "text_block",
+          "settings": {
+            "title": "Certification Programs",
+            "content": "<p>Choose from our comprehensive range of specialized certification tracks</p>"
+          }
+        },
         "cert1": {
           "type": "text_block",
           "settings": {
-            "block_title": "Certified Ride Inspector (CRI)",
-            "block_content": "<p><strong>Duration:</strong> 120 hours | <strong>Format:</strong> Online + Practical</p><p>Comprehensive training in ride inspection procedures, safety systems, and regulatory compliance. Covers mechanical, electrical, and structural inspection techniques.</p><p><strong>Prerequisites:</strong> High school diploma, basic mechanical knowledge</p><p><strong>Certification Validity:</strong> 3 years with continuing education requirements</p><p><strong>Investment:</strong> $2,495</p>"
+            "title": "Certified Ride Inspector (CRI)",
+            "content": "<p><strong>Duration:</strong> 120 hours | <strong>Format:</strong> Online + Practical</p><p>Comprehensive training in ride inspection procedures, safety systems, and regulatory compliance. Covers mechanical, electrical, and structural inspection techniques.</p><p><strong>Prerequisites:</strong> High school diploma, basic mechanical knowledge</p><p><strong>Certification Validity:</strong> 3 years with continuing education requirements</p><p><strong>Investment:</strong> $2,495</p>"
           }
         },
         "cert2": {
           "type": "text_block",
           "settings": {
-            "block_title": "Safety Management Professional (SMP)",
-            "block_content": "<p><strong>Duration:</strong> 80 hours | <strong>Format:</strong> Online + Case Studies</p><p>Advanced program covering safety management systems, risk assessment, incident investigation, and regulatory compliance strategies.</p><p><strong>Prerequisites:</strong> 2+ years industry experience or relevant degree</p><p><strong>Certification Validity:</strong> 3 years with annual updates</p><p><strong>Investment:</strong> $1,895</p>"
+            "title": "Safety Management Professional (SMP)",
+            "content": "<p><strong>Duration:</strong> 80 hours | <strong>Format:</strong> Online + Case Studies</p><p>Advanced program covering safety management systems, risk assessment, incident investigation, and regulatory compliance strategies.</p><p><strong>Prerequisites:</strong> 2+ years industry experience or relevant degree</p><p><strong>Certification Validity:</strong> 3 years with annual updates</p><p><strong>Investment:</strong> $1,895</p>"
           }
         },
         "cert3": {
           "type": "text_block",
           "settings": {
-            "block_title": "Maintenance Excellence Certificate (MEC)",
-            "block_content": "<p><strong>Duration:</strong> 100 hours | <strong>Format:</strong> Blended Learning</p><p>Specialized maintenance certification focusing on preventive and predictive maintenance strategies for optimal facility operations.</p><p><strong>Prerequisites:</strong> Maintenance experience or technical background</p><p><strong>Certification Validity:</strong> 5 years with professional development units</p><p><strong>Investment:</strong> $2,195</p>"
+            "title": "Maintenance Excellence Certificate (MEC)",
+            "content": "<p><strong>Duration:</strong> 100 hours | <strong>Format:</strong> Blended Learning</p><p>Specialized maintenance certification focusing on preventive and predictive maintenance strategies for optimal facility operations.</p><p><strong>Prerequisites:</strong> Maintenance experience or technical background</p><p><strong>Certification Validity:</strong> 5 years with professional development units</p><p><strong>Investment:</strong> $2,195</p>"
           }
         }
       },
-      "block_order": ["cert1", "cert2", "cert3"]
+      "block_order": ["header", "cert1", "cert2", "cert3"]
     },
     "certification_process": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Certification Process",
-        "section_subtitle": "Simple steps to advance your professional credentials",
-        "layout_style": "four-column",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": 4,
         "background_style": "bg-light"
       },
       "blocks": {
+        "header": {
+          "type": "text_block",
+          "settings": {
+            "title": "Certification Process",
+            "content": "<p>Simple steps to advance your professional credentials</p>"
+          }
+        },
         "step1": {
           "type": "text_block",
           "settings": {
-            "block_title": "1. Choose Your Program",
-            "block_content": "<p>Select the certification that aligns with your career goals and current experience level. Our advisors are available to help you make the right choice.</p>"
+            "title": "1. Choose Your Program",
+            "content": "<p>Select the certification that aligns with your career goals and current experience level. Our advisors are available to help you make the right choice.</p>"
           }
         },
         "step2": {
           "type": "text_block",
           "settings": {
-            "block_title": "2. Complete Training",
-            "block_content": "<p>Engage with expert-led content through our interactive online platform, supplemented by hands-on practical sessions when required.</p>"
+            "title": "2. Complete Training",
+            "content": "<p>Engage with expert-led content through our interactive online platform, supplemented by hands-on practical sessions when required.</p>"
           }
         },
         "step3": {
           "type": "text_block",
           "settings": {
-            "block_title": "3. Pass Assessment",
-            "block_content": "<p>Demonstrate your knowledge through comprehensive examinations and practical evaluations designed to test real-world application.</p>"
+            "title": "3. Pass Assessment",
+            "content": "<p>Demonstrate your knowledge through comprehensive examinations and practical evaluations designed to test real-world application.</p>"
           }
         },
         "step4": {
           "type": "text_block",
           "settings": {
-            "block_title": "4. Receive Certification",
-            "block_content": "<p>Upon successful completion, receive your official certification and join our network of certified safety professionals.</p>"
+            "title": "4. Receive Certification",
+            "content": "<p>Upon successful completion, receive your official certification and join our network of certified safety professionals.</p>"
           }
         }
       },
-      "block_order": ["step1", "step2", "step3", "step4"]
+      "block_order": ["header", "step1", "step2", "step3", "step4"]
     },
     "call_to_action": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Ready to Advance Your Career?",
-        "section_subtitle": "Join thousands of professionals who have elevated their expertise with AAI certification",
-        "layout_style": "centered",
-        "background_style": "bg-primary",
-        "show_main_content": true,
-        "content_body": "<p>Take the next step in your professional development with industry-recognized certification that opens doors to new opportunities.</p>",
-        "primary_button_text": "Explore Certifications",
-        "primary_button_url": "/collections/courses",
-        "secondary_button_text": "Contact Advisor",
-        "secondary_button_url": "/pages/contact"
-      }
+        "layout_style": "single-column",
+        "background_style": "bg-primary"
+      },
+      "blocks": {
+        "cta_content": {
+          "type": "text_block",
+          "settings": {
+            "title": "Ready to Advance Your Career?",
+            "content": "<p>Join thousands of professionals who have elevated their expertise with AAI certification. Take the next step in your professional development with industry-recognized certification that opens doors to new opportunities.</p><div class='button-group'><a href='/collections/courses' class='btn btn-primary'>Explore Certifications</a><a href='/pages/contact' class='btn btn-secondary'>Contact Advisor</a></div>"
+          }
+        }
+      },
+      "block_order": ["cta_content"]
     }
   },
   "order": ["hero", "certification_overview", "certification_programs", "certification_process", "call_to_action"]

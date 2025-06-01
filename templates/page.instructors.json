@@ -115,15 +115,17 @@
     "instructor_credentials": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Faculty Credentials & Experience",
-        "section_subtitle": "Our instructors bring real-world expertise and industry recognition",
         "layout_style": "two-column",
-        "background_style": "bg-light",
-        "show_main_content": true,
-        "content_title": "Industry-Leading Expertise",
-        "content_body": "<p>Every AAI instructor is hand-selected for their exceptional experience and commitment to safety education. Our faculty members have worked at major theme parks, served on industry committees, and hold advanced certifications in their specialized areas.</p>"
+        "background_style": "bg-light"
       },
       "blocks": {
+        "main_content": {
+          "type": "text_block",
+          "settings": {
+            "title": "Industry-Leading Expertise",
+            "content": "<p>Every AAI instructor is hand-selected for their exceptional experience and commitment to safety education. Our faculty members have worked at major theme parks, served on industry committees, and hold advanced certifications in their specialized areas.</p>"
+          }
+        },
         "credential1": {
           "type": "feature_list",
           "settings": {
@@ -139,22 +141,24 @@
           }
         }
       },
-      "block_order": ["credential1", "credential2"]
+      "block_order": ["main_content", "credential1", "credential2"]
     },
     "call_to_action": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Learn from the Best",
-        "section_subtitle": "Join thousands of professionals who have advanced their careers with AAI training",
-        "layout_style": "centered",
-        "background_style": "bg-primary",
-        "show_main_content": true,
-        "content_body": "<p>Our expert faculty is ready to guide you through comprehensive safety education that meets the highest industry standards.</p>",
-        "primary_button_text": "Browse All Courses",
-        "primary_button_url": "/collections/courses",
-        "secondary_button_text": "Contact Faculty",
-        "secondary_button_url": "/pages/contact"
-      }
+        "layout_style": "single-column",
+        "background_style": "bg-primary"
+      },
+      "blocks": {
+        "cta_content": {
+          "type": "text_block",
+          "settings": {
+            "title": "Learn from the Best",
+            "content": "<p>Join thousands of professionals who have advanced their careers with AAI training. Our expert faculty is ready to guide you through comprehensive safety education that meets the highest industry standards.</p><div class='button-group'><a href='/collections/courses' class='btn btn-primary'>Browse All Courses</a><a href='/pages/contact' class='btn btn-secondary'>Contact Faculty</a></div>"
+          }
+        }
+      },
+      "block_order": ["cta_content"]
     }
   },
   "order": ["hero", "instructor_showcase", "instructor_credentials", "call_to_action"]

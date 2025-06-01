@@ -3,23 +3,18 @@
     "hero": {
       "type": "aai-universal-hero",
       "settings": {
-        "title": "Industry Partnerships",
-        "subtitle": "Collaborating with leading organizations to advance safety standards",
-        "background_style": "bg-light",
-        "show_stats": false,
-        "show_features": false,
-        "show_cta": false
+        "hero_title": "Industry Partnerships",
+        "hero_subtitle": "Collaborating with leading organizations to advance safety standards",
+        "background_style": "bg-light"
       }
     },
     "intro": {
       "type": "aai-universal-content",
       "blocks": {
         "intro_text": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "",
-            "content": "<p>AAI works closely with industry leaders, manufacturers, operators, and regulatory bodies to ensure our training programs reflect the latest standards and best practices.</p>",
-            "alignment": "center"
+            "content": "<p>AAI works closely with industry leaders, manufacturers, operators, and regulatory bodies to ensure our training programs reflect the latest standards and best practices.</p>"
           }
         }
       },
@@ -27,7 +22,7 @@
         "intro_text"
       ],
       "settings": {
-        "layout": "single-column",
+        "layout_style": "single-column",
         "background_style": "bg-light"
       }
     },
@@ -35,21 +30,21 @@
       "type": "aai-universal-content",
       "blocks": {
         "industry_associations": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Industry Associations",
             "content": "<ul><li>International Association of Amusement Parks and Attractions (IAAPA)</li><li>North American Amusement Ride Safety Officials (NAARSO)</li><li>World Waterpark Association (WWA)</li><li>Amusement Industry Manufacturers & Suppliers (AIMS)</li></ul>"
           }
         },
         "standards_organizations": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Standards Organizations",
             "content": "<ul><li>ASTM International F24 Committee</li><li>American National Standards Institute (ANSI)</li><li>International Organization for Standardization (ISO)</li><li>European Committee for Standardization (CEN)</li></ul>"
           }
         },
         "technology_partners": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Technology Partners",
             "content": "<ul><li>Intuto Learning Management System</li><li>Leading ride manufacturers</li><li>Safety equipment suppliers</li><li>Inspection technology providers</li></ul>"
@@ -62,7 +57,8 @@
         "technology_partners"
       ],
       "settings": {
-        "layout": "three-column",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": 3,
         "background_style": "bg-light"
       }
     },
@@ -70,11 +66,10 @@
       "type": "aai-universal-content",
       "blocks": {
         "partnership_cta": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Become a Partner",
-            "content": "<p>Join our network of industry leaders committed to advancing safety education and standards.</p><a href='/pages/contact' class='btn btn-primary'>Explore Partnership</a>",
-            "alignment": "center"
+            "content": "<p>Join our network of industry leaders committed to advancing safety education and standards.</p><a href='/pages/contact' class='btn btn-primary'>Explore Partnership</a>"
           }
         }
       },
@@ -82,7 +77,7 @@
         "partnership_cta"
       ],
       "settings": {
-        "layout": "single-column",
+        "layout_style": "single-column",
         "background_style": "bg-primary"
       }
     }

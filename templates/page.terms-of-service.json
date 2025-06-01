@@ -3,55 +3,46 @@
     "hero": {
       "type": "aai-universal-hero",
       "settings": {
-        "title": "Terms of Service",
-        "subtitle": "Effective Date: May 30, 2025",
-        "background_style": "bg-light",
-        "show_stats": false,
-        "show_features": false,
-        "show_cta": false
+        "hero_title": "Terms of Service",
+        "hero_subtitle": "Effective Date: May 30, 2025",
+        "background_style": "bg-light"
       }
     },
     "terms_content": {
       "type": "aai-universal-content",
       "blocks": {
         "introduction": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
-            "title": "",
-            "content": "<p>These Terms of Service (\"Terms\") govern your use of the Amusement Academy International learning management system and all related services (\"Services\"). By accessing or using our Services, you agree to be bound by these Terms.</p>",
-            "alignment": "left"
+            "content": "<p>These Terms of Service (\"Terms\") govern your use of the Amusement Academy International learning management system and all related services (\"Services\"). By accessing or using our Services, you agree to be bound by these Terms.</p>"
           }
         },
         "educational_services": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Educational Services",
-            "content": "<h3>Course Access and Completion</h3><ul><li>Course access is granted for the specified duration upon enrollment</li><li>Completion requirements include all modules, assessments, and evaluations</li><li>Certificates are issued upon successful completion of all requirements</li><li>CEU credits are awarded according to accreditation standards</li></ul><h3>Academic Integrity</h3><ul><li>All work must be original and completed independently</li><li>Sharing login credentials or course materials is prohibited</li><li>Cheating, plagiarism, or academic dishonesty may result in account termination</li><li>Professional certification fraud is reported to relevant authorities</li></ul>",
-            "alignment": "left"
+            "content": "<h3>Course Access and Completion</h3><ul><li>Course access is granted for the specified duration upon enrollment</li><li>Completion requirements include all modules, assessments, and evaluations</li><li>Certificates are issued upon successful completion of all requirements</li><li>CEU credits are awarded according to accreditation standards</li></ul><h3>Academic Integrity</h3><ul><li>All work must be original and completed independently</li><li>Sharing login credentials or course materials is prohibited</li><li>Cheating, plagiarism, or academic dishonesty may result in account termination</li><li>Professional certification fraud is reported to relevant authorities</li></ul>"
           }
         },
         "professional_liability": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Professional Liability and Safety",
-            "content": "<h3>Training Limitations</h3><ul><li>Our courses provide educational content and are not substitutes for hands-on training</li><li>Professional judgment and local regulations supersede course content</li><li>Participants must comply with all applicable safety standards and regulations</li><li>AAI is not liable for actions taken based solely on course information</li></ul><h3>Certification Disclaimer</h3><ul><li>Certificates demonstrate completion of educational requirements only</li><li>Professional competency requires practical experience and ongoing education</li><li>Employers and regulators determine certification acceptance and validity</li><li>Participants are responsible for maintaining continuing education requirements</li></ul>",
-            "alignment": "left"
+            "content": "<h3>Training Limitations</h3><ul><li>Our courses provide educational content and are not substitutes for hands-on training</li><li>Professional judgment and local regulations supersede course content</li><li>Participants must comply with all applicable safety standards and regulations</li><li>AAI is not liable for actions taken based solely on course information</li></ul><h3>Certification Disclaimer</h3><ul><li>Certificates demonstrate completion of educational requirements only</li><li>Professional competency requires practical experience and ongoing education</li><li>Employers and regulators determine certification acceptance and validity</li><li>Participants are responsible for maintaining continuing education requirements</li></ul>"
           }
         },
         "payment_refunds": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Payment and Refunds",
-            "content": "<h3>Billing Terms</h3><ul><li>Payment is due upon enrollment unless otherwise arranged</li><li>Corporate accounts may be invoiced with NET 30 terms</li><li>Failed payments may result in course access suspension</li><li>All prices are subject to change with 30 days notice</li></ul><h3>Refund Policy</h3><ul><li>Full refund available within 14 days of enrollment if no content accessed</li><li>Partial refunds may be available for extenuating circumstances</li><li>No refunds after course completion or certificate issuance</li><li>Corporate training contracts have separate refund terms</li></ul>",
-            "alignment": "left"
+            "content": "<h3>Billing Terms</h3><ul><li>Payment is due upon enrollment unless otherwise arranged</li><li>Corporate accounts may be invoiced with NET 30 terms</li><li>Failed payments may result in course access suspension</li><li>All prices are subject to change with 30 days notice</li></ul><h3>Refund Policy</h3><ul><li>Full refund available within 14 days of enrollment if no content accessed</li><li>Partial refunds may be available for extenuating circumstances</li><li>No refunds after course completion or certificate issuance</li><li>Corporate training contracts have separate refund terms</li></ul>"
           }
         },
         "limitation_liability": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Limitation of Liability",
-            "content": "<p><strong>IMPORTANT:</strong> To the maximum extent permitted by law, AAI shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or business opportunities.</p><p>Our total liability for any claim related to the Services shall not exceed the amount paid by you for the specific course or service giving rise to the claim.</p>",
-            "alignment": "left"
+            "content": "<p><strong>IMPORTANT:</strong> To the maximum extent permitted by law, AAI shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or business opportunities.</p><p>Our total liability for any claim related to the Services shall not exceed the amount paid by you for the specific course or service giving rise to the claim.</p>"
           }
         }
       },
@@ -63,7 +54,7 @@
         "limitation_liability"
       ],
       "settings": {
-        "layout": "single-column",
+        "layout_style": "single-column",
         "background_style": "bg-light"
       }
     },
@@ -71,11 +62,10 @@
       "type": "aai-universal-content",
       "blocks": {
         "contact_legal": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "title": "Legal Contact",
-            "content": "<p>For legal inquiries or disputes regarding these Terms:</p><p><strong>Legal Department</strong><br>Amusement Academy International<br>Email: <a href='mailto:legal@aai-lms.com'>legal@aai-lms.com</a><br>Phone: 1-800-AAI-SAFE</p><p><em>These Terms were last updated on May 30, 2025.</em></p>",
-            "alignment": "left"
+            "content": "<p>For legal inquiries or disputes regarding these Terms:</p><p><strong>Legal Department</strong><br>Amusement Academy International<br>Email: <a href='mailto:legal@aai-lms.com'>legal@aai-lms.com</a><br>Phone: 1-800-AAI-SAFE</p><p><em>These Terms were last updated on May 30, 2025.</em></p>"
           }
         }
       },
@@ -83,7 +73,7 @@
         "contact_legal"
       ],
       "settings": {
-        "layout": "single-column",
+        "layout_style": "single-column",
         "background_style": "bg-primary"
       }
     }
