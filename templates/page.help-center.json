@@ -5,8 +5,9 @@
       "settings": {
         "hero_title": "Help Center",
         "hero_subtitle": "Find answers and get support for your AAI learning experience",
-        "show_stats": false,
-        "show_features": false
+        "background_color": "#1e40af",
+        "text_color": "#ffffff",
+        "layout_style": "centered"
       }
     },
     "help_search": {

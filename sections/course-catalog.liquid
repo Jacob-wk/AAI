@@ -97,6 +97,121 @@ COPILOT CONTEXT:
       "type": "url",
       "id": "view_all_url",
       "label": "View All Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Filtering Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show filters",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search bar",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sorting",
+      "label": "Show sorting options",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "default_sort",
+      "label": "Default sort order",
+      "options": [
+        {
+          "value": "title-ascending",
+          "label": "Title A-Z"
+        },
+        {
+          "value": "title-descending", 
+          "label": "Title Z-A"
+        },
+        {
+          "value": "price-ascending",
+          "label": "Price low to high"
+        },
+        {
+          "value": "price-descending",
+          "label": "Price high to low"
+        },
+        {
+          "value": "created-descending",
+          "label": "Newest first"
+        }
+      ],
+      "default": "title-ascending"
+    },
+    {
+      "type": "range",
+      "id": "courses_per_page",
+      "min": 6,
+      "max": 24,
+      "step": 6,
+      "label": "Courses per page",
+      "default": 12
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter_category",
+      "name": "Category Filter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "filter_name",
+          "label": "Filter Name",
+          "default": "Category"
+        },
+        {
+          "type": "textarea",
+          "id": "filter_values",
+          "label": "Filter Values (comma separated)",
+          "default": "Safety Training, Operations, Compliance"
+        }
+      ]
+    },
+    {
+      "type": "filter_duration",
+      "name": "Duration Filter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "filter_name",
+          "label": "Filter Name",
+          "default": "Duration"
+        },
+        {
+          "type": "textarea",
+          "id": "filter_values",
+          "label": "Filter Values (comma separated)",
+          "default": "1-2 hours, 3-4 hours, 1 day, Multi-day"
+        }
+      ]
+    },
+    {
+      "type": "filter_level",
+      "name": "Skill Level Filter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "filter_name",
+          "label": "Filter Name",
+          "default": "Skill Level"
+        },
+        {
+          "type": "textarea",
+          "id": "filter_values",
+          "label": "Filter Values (comma separated)",
+          "default": "Beginner, Intermediate, Advanced, Expert"
+        }
+      ]
     }
   ],
   "presets": [

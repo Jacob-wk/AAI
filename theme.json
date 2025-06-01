@@ -1,0 +1,112 @@
+{
+  "name": "AAI LMS Professional Theme",
+  "version": "1.0.0",
+  "author": "Amusement Academy International",
+  "description": "Professional Learning Management System theme designed for safety education and corporate training",
+  "homepage": "https://aai-lms.com",
+  "documentation": "https://aai-lms.com/theme-docs",
+  "support": "https://aai-lms.com/support",
+  "tags": ["education", "lms", "professional", "safety", "training", "corporate"],
+  "shopify_version": "2.0",
+  "compatibility": {
+    "shopify_features": [
+      "section_groups",
+      "dynamic_sections",
+      "metafields",
+      "product_variants",
+      "local_pickup",
+      "predictive_search"
+    ]
+  },
+  "features": {
+    "responsive": true,
+    "accessibility": true,
+    "performance_optimized": true,
+    "seo_ready": true,
+    "rtl_support": false,
+    "multi_currency": true,
+    "multi_language": true
+  },
+  "demo_url": "https://aai-theme-demo.myshopify.com",
+  "screenshots": [
+    "https://cdn.shopify.com/aai-theme/screenshot-1.jpg",
+    "https://cdn.shopify.com/aai-theme/screenshot-2.jpg"
+  ],
+  "sections": {
+    "dynamic": [
+      "aai-universal-hero",
+      "aai-universal-content", 
+      "aai-instructor-showcase",
+      "aai-demo-experience",
+      "course-catalog",
+      "user-dashboard",
+      "about-hero",
+      "about-content",
+      "main-page",
+      "main-product",
+      "main-collection",
+      "main-blog",
+      "main-article"
+    ],
+    "static": [
+      "aai-header",
+      "aai-footer",
+      "header-professional",
+      "footer-professional",
+      "announcement-bar"
+    ]
+  },
+  "section_groups": [
+    {
+      "name": "header",
+      "type": "header"
+    },
+    {
+      "name": "main", 
+      "type": "main"
+    },
+    {
+      "name": "footer",
+      "type": "footer"
+    }
+  ],
+  "blocks": {
+    "text_block": {
+      "name": "Text Block",
+      "settings": [
+        "block_title",
+        "block_content",
+        "text_alignment"
+      ]
+    },
+    "image_block": {
+      "name": "Image Block", 
+      "settings": [
+        "image",
+        "alt_text",
+        "caption"
+      ]
+    },
+    "course_block": {
+      "name": "Course Block",
+      "settings": [
+        "course_title",
+        "course_description",
+        "course_image",
+        "course_url"
+      ]
+    }
+  },
+  "presets": {
+    "Default": {
+      "color_scheme": "default",
+      "typography": "modern",
+      "layout": "standard"
+    },
+    "Professional": {
+      "color_scheme": "authority_navy",
+      "typography": "corporate", 
+      "layout": "wide"
+    }
+  }
+}

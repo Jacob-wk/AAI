@@ -1,0 +1,35 @@
+[
+  {
+    "name": "header",
+    "type": "header",
+    "sections": [
+      "header-professional",
+      "aai-header",
+      "announcement-bar"
+    ]
+  },
+  {
+    "name": "main",
+    "type": "main",
+    "sections": [
+      "main-page",
+      "main-product",
+      "main-collection",
+      "main-blog",
+      "main-article",
+      "aai-universal-hero",
+      "aai-universal-content",
+      "aai-instructor-showcase",
+      "aai-demo-experience",
+      "course-catalog"
+    ]
+  },
+  {
+    "name": "footer",
+    "type": "footer", 
+    "sections": [
+      "footer-professional",
+      "aai-footer"
+    ]
+  }
+]

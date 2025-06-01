@@ -1,0 +1,33 @@
+theme_name: AAI LMS Professional Theme
+theme_author: Amusement Academy International
+theme_version: 1.0.0
+theme_documentation_url: https://aai-lms.com/help
+theme_support_url: https://aai-lms.com/support
+theme_description: Professional Learning Management System theme designed for safety education and corporate training
+
+shopify:
+  version: "2.0"
+  features:
+    - section_groups
+    - dynamic_sections
+    - metafields
+    - product_variants
+    - local_pickup
+    - predictive_search
+    - color_schemes
+    - dynamic_checkout_buttons
+
+compatibility:
+  liquid_version: 5
+  browser_support:
+    - Chrome 88+
+    - Firefox 85+
+    - Safari 14+
+    - Edge 88+
+  mobile_optimized: true
+  accessibility_compliant: true
+
+build:
+  css_minification: true
+  js_minification: true
+  asset_optimization: true

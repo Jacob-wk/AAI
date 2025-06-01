@@ -1,0 +1,125 @@
+{
+  "wrapper": "div.page-width",
+  "section_groups": [
+    {
+      "name": "header",
+      "type": "header"
+    },
+    {
+      "name": "main",
+      "type": "main"
+    },
+    {
+      "name": "footer",
+      "type": "footer"
+    }
+  ],
+  "sections": {
+    "header": {
+      "type": "header-professional",
+      "settings": {}
+    },
+    "course_hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "hero_title": "Professional Safety Education",
+        "hero_subtitle": "Advance your career with industry-leading safety education courses designed for amusement park professionals. Earn CEU credits and certifications recognized throughout the industry.",
+        "background_color": "#1e40af",
+        "text_color": "#ffffff",
+        "layout_style": "centered",
+        "show_overlay": true,
+        "overlay_opacity": 30
+      }
+    },
+    "course_catalog": {
+      "type": "course-catalog",
+      "settings": {
+        "section_title": "Available Courses",
+        "collection": "courses",
+        "show_filters": true,
+        "show_search": true,
+        "courses_per_page": 12,
+        "show_sorting": true,
+        "default_sort": "title-ascending"
+      },
+      "blocks": [
+        {
+          "type": "filter_category",
+          "settings": {
+            "filter_name": "Course Type",
+            "filter_values": "Safety Training, Leadership Development, Technical Skills, Certification Prep"
+          }
+        },
+        {
+          "type": "filter_duration",
+          "settings": {
+            "filter_name": "Duration",
+            "filter_values": "1-2 hours, 3-4 hours, 1 day, Multi-day"
+          }
+        },
+        {
+          "type": "filter_level",
+          "settings": {
+            "filter_name": "Skill Level",
+            "filter_values": "Beginner, Intermediate, Advanced, Expert"
+          }
+        }
+      ]
+    },
+    "course_benefits": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Why Choose AAI Education?",
+        "content_layout": "three_column",
+        "background_color": "#f8fafc"
+      },
+      "blocks": [
+        {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Industry Recognition",
+            "block_content": "Our courses are IAAPA certified and recognized throughout the amusement industry.",
+            "text_alignment": "center"
+          }
+        },
+        {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Expert Instructors",
+            "block_content": "Learn from seasoned professionals with decades of real-world experience.",
+            "text_alignment": "center"
+          }
+        },
+        {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Flexible Learning",
+            "block_content": "Access courses online at your own pace or join live virtual sessions.",
+            "text_alignment": "center"
+          }
+        }
+      ]
+    },
+    "instructor_showcase": {
+      "type": "aai-instructor-showcase",
+      "settings": {
+        "section_title": "Meet Our Expert Instructors",
+        "show_bio_preview": true,
+        "layout_style": "grid",
+        "instructors_to_show": 3
+      }
+    },
+    "footer": {
+      "type": "footer-professional",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "course_hero",
+    "course_catalog", 
+    "course_benefits",
+    "instructor_showcase",
+    "footer"
+  ]
+}
