@@ -3,9 +3,50 @@
     "main": {
       "type": "main-404",
       "settings": {}
+    },
+    "error_content": {
+      "type": "section",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Page Not Found</h1>",
+            "type_preset": "h1",
+            "alignment": "center",
+            "padding-block-end": 16
+          }
+        },
+        "message": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Sorry, the page you are looking for could not be found. Please check the URL or return to our homepage.</p>",
+            "type_preset": "paragraph",
+            "alignment": "center",
+            "padding-block-end": 24
+          }
+        },
+        "home_button": {
+          "type": "button",
+          "settings": {
+            "label": "Return to Homepage",
+            "link": "/",
+            "style_class": "button-primary"
+          }
+        }
+      },
+      "block_order": ["heading", "message", "home_button"],
+      "settings": {
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "error_content"
   ]
 }

@@ -1,5 +1,37 @@
 {
   "sections": {
+    "collection_banner": {
+      "type": "section",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>{{ collection.title | default: 'Our Products' }}</h1>",
+            "type_preset": "h1",
+            "alignment": "center",
+            "padding-block-end": 16
+          }
+        },
+        "description": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ collection.description | default: 'Discover our carefully curated selection of professional safety education courses and training materials.' }}</p>",
+            "type_preset": "paragraph",
+            "alignment": "center",
+            "padding-block-end": 24
+          }
+        }
+      },
+      "block_order": ["heading", "description"],
+      "settings": {
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 40,
+        "padding-block-end": 20
+      }
+    },
     "main": {
       "type": "main-collection",
       "settings": {
@@ -12,6 +44,7 @@
     }
   },
   "order": [
+    "collection_banner",
     "main"
   ]
 }

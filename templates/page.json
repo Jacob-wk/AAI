@@ -2,7 +2,28 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "text_block_1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Welcome to this page. You can customize this content in the theme editor by adding, removing, or editing blocks.</p>"
+          }
+        },
+        "text_block_2": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>Key Features</h3><p>This page template allows you to add text blocks, images, and buttons. Use the theme customizer to build your content.</p>"
+          }
+        },
+        "button_block_1": {
+          "type": "button",
+          "settings": {
+            "button_text": "Learn More",
+            "button_url": "/"
+          }
+        }
+      }
     }
   },
   "order": [

@@ -1,0 +1,437 @@
+/* AAI Theme - Component CSS */
+/* Reusable UI components for the AAI Learning Management System */
+
+/* Professional Badge Components */
+.aai-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.aai-badge--primary {
+  background-color: var(--safety-orange);
+  color: white;
+}
+
+.aai-badge--secondary {
+  background-color: var(--electric-blue);
+  color: white;
+}
+
+.aai-badge--success {
+  background-color: var(--success-green);
+  color: white;
+}
+
+.aai-badge--outline {
+  background-color: transparent;
+  border: 2px solid var(--authority-navy);
+  color: var(--authority-navy);
+}
+
+/* Professional Alert Components */
+.aai-alert {
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  border-left: 4px solid;
+  position: relative;
+}
+
+.aai-alert--info {
+  background-color: rgba(52, 152, 219, 0.1);
+  border-left-color: var(--electric-blue);
+  color: #1e3a5f;
+}
+
+.aai-alert--success {
+  background-color: rgba(39, 174, 96, 0.1);
+  border-left-color: var(--success-green);
+  color: #155724;
+}
+
+.aai-alert--warning {
+  background-color: rgba(255, 107, 53, 0.1);
+  border-left-color: var(--safety-orange);
+  color: #856404;
+}
+
+.aai-alert--danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-left-color: #dc3545;
+  color: #721c24;
+}
+
+/* Professional Tab Component */
+.aai-tabs {
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 2rem;
+}
+
+.aai-tab-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.aai-tab-item {
+  margin-right: 2px;
+}
+
+.aai-tab-link {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: var(--medium-grey);
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  transition: all 0.2s ease;
+}
+
+.aai-tab-link:hover {
+  color: var(--authority-navy);
+  background-color: #f8f9fa;
+}
+
+.aai-tab-link.active {
+  color: var(--authority-navy);
+  background-color: white;
+  border-color: #dee2e6;
+  border-bottom-color: white;
+  margin-bottom: -1px;
+}
+
+.aai-tab-content {
+  padding: 2rem 0;
+}
+
+.aai-tab-pane {
+  display: none;
+}
+
+.aai-tab-pane.active {
+  display: block;
+}
+
+/* Professional Modal Component */
+.aai-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.aai-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.aai-modal-dialog {
+  background: white;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(-50px);
+  transition: transform 0.3s ease;
+}
+
+.aai-modal.show .aai-modal-dialog {
+  transform: translateY(0);
+}
+
+.aai-modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.aai-modal-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--authority-navy);
+}
+
+.aai-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--medium-grey);
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aai-modal-close:hover {
+  color: var(--authority-navy);
+}
+
+.aai-modal-body {
+  padding: 1.5rem;
+}
+
+.aai-modal-footer {
+  padding: 1.5rem;
+  border-top: 1px solid #dee2e6;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+/* Professional Dropdown Component */
+.aai-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.aai-dropdown-toggle {
+  background: white;
+  border: 1px solid #dee2e6;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.aai-dropdown-toggle:hover {
+  border-color: var(--electric-blue);
+}
+
+.aai-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+.aai-dropdown.show .aai-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.aai-dropdown-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--color-foreground);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.aai-dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: var(--authority-navy);
+}
+
+.aai-dropdown-divider {
+  height: 1px;
+  background-color: #dee2e6;
+  margin: 0.5rem 0;
+}
+
+/* Professional Progress Component */
+.aai-progress {
+  background-color: #e9ecef;
+  border-radius: 10px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.aai-progress-bar {
+  background-color: var(--success-green);
+  height: 100%;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.aai-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  0% {
+    background-position: 1rem 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.aai-progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Professional Tooltip Component */
+.aai-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.aai-tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  background-color: var(--authority-navy);
+  color: white;
+  text-align: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1000;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.aai-tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--authority-navy) transparent transparent transparent;
+}
+
+.aai-tooltip:hover .aai-tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Professional Card Hover Effects */
+.aai-card-hover {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.aai-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Professional Loading Spinner */
+.aai-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--electric-blue);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+/* Professional Status Indicators */
+.aai-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.aai-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.aai-status--online .aai-status-dot {
+  background-color: var(--success-green);
+}
+
+.aai-status--offline .aai-status-dot {
+  background-color: var(--medium-grey);
+}
+
+.aai-status--busy .aai-status-dot {
+  background-color: var(--safety-orange);
+}
+
+.aai-status--away .aai-status-dot {
+  background-color: #ffc107;
+}
+
+/* Responsive utilities for components */
+@media (max-width: 768px) {
+  .aai-modal-dialog {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  }
+  
+  .aai-tab-nav {
+    flex-direction: column;
+  }
+  
+  .aai-tab-item {
+    margin-right: 0;
+    margin-bottom: 2px;
+  }
+  
+  .aai-dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+}

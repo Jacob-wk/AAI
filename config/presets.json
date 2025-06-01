@@ -1,0 +1,110 @@
+{
+  "current": {
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#ffffff",
+          "foreground_heading": "#1e3a5f",
+          "foreground": "#2c3e50",
+          "primary": "#1e3a5f",
+          "primary_hover": "#0f2137",
+          "border": "#e5e7eb",
+          "shadow": "#00000026",
+          "primary_button_background": "#ff6b35",
+          "primary_button_text": "#ffffff",
+          "primary_button_border": "#ff6b35",
+          "primary_button_hover_background": "#e55a2b",
+          "primary_button_hover_text": "#ffffff",
+          "primary_button_hover_border": "#e55a2b",
+          "secondary_button_background": "#3498db",
+          "secondary_button_text": "#ffffff",
+          "secondary_button_border": "#3498db",
+          "secondary_button_hover_background": "#2980b9",
+          "secondary_button_hover_text": "#ffffff",
+          "secondary_button_hover_border": "#2980b9"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#1e3a5f",
+          "foreground_heading": "#ffffff",
+          "foreground": "#ffffff",
+          "primary": "#ff6b35",
+          "primary_hover": "#e55a2b",
+          "border": "#3b5374",
+          "shadow": "#00000040",
+          "primary_button_background": "#ff6b35",
+          "primary_button_text": "#ffffff",
+          "primary_button_border": "#ff6b35",
+          "primary_button_hover_background": "#ffffff",
+          "primary_button_hover_text": "#1e3a5f",
+          "primary_button_hover_border": "#ffffff",
+          "secondary_button_background": "#3498db",
+          "secondary_button_text": "#ffffff",
+          "secondary_button_border": "#3498db",
+          "secondary_button_hover_background": "#2980b9",
+          "secondary_button_hover_text": "#ffffff",
+          "secondary_button_hover_border": "#2980b9"
+        }
+      }
+    }
+  },
+  "presets": {
+    "Professional": {
+      "color_scheme": "scheme-1",
+      "logo": "AAI-Full-Color-Logo.jpg",
+      "page_width": "wide",
+      "type_body_font": "inter_n4",
+      "type_heading_font": "inter_n7",
+      "site_logo": "AAI-Full-Color-Logo.jpg",
+      "site_tagline": "Professional Safety Education Since 2025",
+      "company_name": "American Amusement Industries",
+      "company_email": "info@aai-education.com",
+      "enable_sticky_header": true,
+      "cart_type": "drawer",
+      "enable_product_zoom": true,
+      "show_breadcrumbs": true,
+      "footer_text": "&copy; 2025 American Amusement Industries. All rights reserved.",
+      "footer_show_social": true,
+      "footer_show_newsletter": true,
+      "sections": {
+        "header": {
+          "type": "header-professional",
+          "settings": {
+            "logo": "AAI-Full-Color-Logo.jpg",
+            "menu": "main-menu",
+            "show_search": true,
+            "show_account": true,
+            "show_credentials_bar": true
+          }
+        },
+        "footer": {
+          "type": "footer-professional",
+          "settings": {
+            "show_newsletter": true,
+            "show_social": true,
+            "show_payment_icons": true
+          }
+        }
+      }
+    },
+    "Authority": {
+      "color_scheme": "scheme-2",
+      "logo": "AAI-Full-Color-Logo.jpg",
+      "page_width": "narrow",
+      "type_body_font": "inter_n4",
+      "type_heading_font": "inter_n7",
+      "site_logo": "AAI-Full-Color-Logo.jpg",
+      "site_tagline": "Where Safety Meets Adventure",
+      "company_name": "American Amusement Industries",
+      "company_email": "info@aai-education.com",
+      "enable_sticky_header": true,
+      "cart_type": "drawer",
+      "enable_product_zoom": true,
+      "show_breadcrumbs": true,
+      "footer_text": "&copy; 2025 American Amusement Industries. All rights reserved.",
+      "footer_show_social": true,
+      "footer_show_newsletter": true
+    }
+  }
+}

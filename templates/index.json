@@ -1,24 +1,50 @@
 
 {
   "sections": {
-    "aai_hero_main": {
-      "type": "aai-hero",
+    "hero": {
+      "type": "aai-universal-hero",
       "settings": {
-        "title": "Where Safety Meets Adventure",
-        "subtitle": "Professional safety education for the amusement industry. Advance your career while keeping guests safe.",
+        "hero_title": "Where Safety Meets Adventure",
+        "hero_subtitle": "Professional safety education for the amusement industry. Advance your career while keeping guests safe with industry-leading certification programs.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-left-image-right",
+        "show_image": true,
+        "show_stats": true,
         "primary_button_text": "Explore Courses",
         "primary_button_url": "/collections/courses",
         "secondary_button_text": "Try Free Demo",
-        "secondary_button_url": "/pages/demo",
-        "visual_text": "Safety First, Adventure Always",
-        "show_features": true,
-        "show_trust_indicators": true
-      }
+        "secondary_button_url": "/pages/demo"
+      },
+      "blocks": {
+        "stat1": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "500+",
+            "stat_label": "Certified Professionals"
+          }
+        },
+        "stat2": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "98%",
+            "stat_label": "Pass Rate"
+          }
+        },
+        "stat3": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "15+",
+            "stat_label": "Years Experience"
+          }
+        }
+      },
+      "block_order": ["stat1", "stat2", "stat3"]
     },
-    "user_dashboard_main": {
+    "user_dashboard": {
       "type": "user-dashboard",
       "settings": {
-        "section_title": "Your Learning Dashboard"
+        "section_title": "Your Learning Dashboard",
+        "show_for_logged_in": true
       },
       "blocks": {
         "current_course_1": {
@@ -27,7 +53,6 @@
             "course_name": "Amusement Ride Safety Inspector",
             "instructor": "Dr. Sarah Johnson",
             "progress_percentage": 75,
-            "course_thumbnail": "",
             "course_url": "/products/amusement-ride-safety-inspector"
           }
         },
@@ -37,7 +62,6 @@
             "course_name": "Water Park Operations",
             "instructor": "Mike Rodriguez",
             "progress_percentage": 45,
-            "course_thumbnail": "",
             "course_url": "/products/water-park-operations"
           }
         },
@@ -47,13 +71,25 @@
             "course_name": "Emergency Response Procedures",
             "instructor": "Lisa Chen",
             "progress_percentage": 90,
-            "course_thumbnail": "",
             "course_url": "/products/emergency-response"
           }
         }
+      },
+      "block_order": ["current_course_1", "current_course_2", "current_course_3"]
+    },
+    "guest_demo": {
+      "type": "aai-demo-experience",
+      "settings": {
+        "section_title": "Experience Our Learning Platform",
+        "section_subtitle": "See how industry professionals advance their careers with AAI's comprehensive safety education programs.",
+        "show_for_guests": true,
+        "primary_button_text": "Start Learning Today",
+        "primary_button_url": "/account/register",
+        "secondary_button_text": "Learn More About AAI",
+        "secondary_button_url": "/pages/about"
       }
     },
-    "course_catalog_preview": {
+    "course_catalog": {
       "type": "course-catalog",
       "settings": {
         "section_title": "Featured Courses",
@@ -64,21 +100,71 @@
         "view_all_url": "/collections/courses"
       }
     },
-    "instructor_showcase_main": {
+    "industry_authority": {
+      "type": "aai-universal-content",
+      "settings": {
+        "layout_style": "two-column",
+        "background_style": "bg-light"
+      },
+      "blocks": {
+        "authority_content": {
+          "type": "text_block",
+          "settings": {
+            "title": "Industry-Leading Safety Education",
+            "content": "<p>Trusted by over 500+ amusement industry professionals, AAI has been setting the standard for safety education since 2025. Our comprehensive programs are developed by industry experts and recognized by leading organizations.</p>"
+          }
+        },
+        "credentials": {
+          "type": "credential_grid",
+          "settings": {
+            "grid_title": "Industry Accreditations",
+            "credential_1_title": "IAAPA Member",
+            "credential_1_desc": "International Association of Amusement Parks and Attractions",
+            "credential_2_title": "ASTM F24",
+            "credential_2_desc": "Amusement Rides and Devices Committee",
+            "credential_3_title": "NAARSO",
+            "credential_3_desc": "North American Amusement Ride Safety Officials"
+          }
+        }
+      },
+      "block_order": ["authority_content", "credentials"]
+    },
+    "instructor_showcase": {
       "type": "aai-instructor-showcase",
       "settings": {
         "section_title": "Learn from Industry Experts",
-        "section_subtitle": "Our instructors bring decades of real-world experience",
-        "layout_style": "grid",
+        "section_subtitle": "Our instructors bring decades of real-world experience to every course",
+        "grid_layout": "grid-3",
         "instructors_to_show": 3,
-        "show_credentials": true
+        "show_credentials": true,
+        "show_join_team_cta": false
       }
+    },
+    "call_to_action": {
+      "type": "aai-universal-content",
+      "settings": {
+        "layout_style": "single-column",
+        "background_style": "bg-primary"
+      },
+      "blocks": {
+        "cta_content": {
+          "type": "text_block",
+          "settings": {
+            "title": "Ready to Advance Your Career?",
+            "content": "<p>Join the industry's most respected safety education platform and take your professional development to the next level.</p><div class='button-group'><a href='/account/register' class='btn btn-primary btn-large'>Get Started Today</a><a href='/collections/courses' class='btn btn-secondary btn-large'>Browse Courses</a></div>"
+          }
+        }
+      },
+      "block_order": ["cta_content"]
     }
   },
   "order": [
-    "aai_hero_main",
-    "user_dashboard_main", 
-    "course_catalog_preview",
-    "instructor_showcase_main"
+    "hero",
+    "user_dashboard",
+    "guest_demo", 
+    "course_catalog",
+    "industry_authority",
+    "instructor_showcase",
+    "call_to_action"
   ]
 }

@@ -8,6 +8,46 @@
         "enable_zoom": true
       }
     },
+    "product_info": {
+      "type": "section",
+      "blocks": {
+        "course_details": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>Course Details</h3><p>This comprehensive safety education course provides in-depth training designed by industry experts.</p>",
+            "type_preset": "rte",
+            "alignment": "left",
+            "padding-block-end": 20
+          }
+        },
+        "learning_objectives": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>What You'll Learn</h4><ul><li>Industry best practices and standards</li><li>Practical safety implementation</li><li>Compliance requirements</li><li>Real-world scenarios</li></ul>",
+            "type_preset": "rte",
+            "alignment": "left",
+            "padding-block-end": 20
+          }
+        },
+        "enroll_button": {
+          "type": "button",
+          "settings": {
+            "label": "Enroll Now",
+            "link": "#",
+            "style_class": "button-primary"
+          }
+        }
+      },
+      "block_order": ["course_details", "learning_objectives", "enroll_button"],
+      "settings": {
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "flex-start",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 30,
+        "padding-block-end": 30
+      }
+    },
     "product_recommendations": {
       "type": "product-recommendations",
       "settings": {
@@ -18,6 +58,7 @@
   },
   "order": [
     "main",
+    "product_info",
     "product_recommendations"
   ]
 }

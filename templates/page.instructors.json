@@ -9,8 +9,9 @@
         "layout_style": "text-left-image-right",
         "show_image": true,
         "show_stats": true,
-        "primary_button_text": "View All Instructors",
-        "primary_button_url": "#instructor-showcase",
+        "show_features": true,
+        "primary_button_text": "View Department Heads",
+        "primary_button_url": "#department-heads",
         "secondary_button_text": "Browse Courses",
         "secondary_button_url": "/collections/courses"
       },
@@ -25,123 +26,209 @@
         "stat2": {
           "type": "statistic", 
           "settings": {
-            "stat_number": "12",
+            "stat_number": "25+",
             "stat_label": "Expert Instructors"
           }
         },
         "stat3": {
           "type": "statistic",
           "settings": {
-            "stat_number": "25+",
-            "stat_label": "Industry Certifications"
-          }
-        }
-      },
-      "block_order": ["stat1", "stat2", "stat3"]
-    },
-    "instructor_showcase": {
-      "type": "aai-instructor-showcase",
-      "settings": {
-        "section_title": "Meet Your Instructors",
-        "section_subtitle": "Industry professionals committed to advancing amusement safety education",
-        "layout_style": "grid-3-column",
-        "show_credentials": true,
-        "show_bio": true
-      },
-      "blocks": {
-        "instructor1": {
-          "type": "instructor",
-          "settings": {
-            "instructor_name": "Dr. Sarah Mitchell",
-            "instructor_title": "Director of Safety Operations",
-            "instructor_bio": "25+ years in amusement safety with extensive experience in ASTM F24 compliance and risk management.",
-            "instructor_credentials": "PhD Safety Engineering, IAAPA Certified, ASTM F24 Committee Member",
-            "instructor_specialties": "Risk Assessment, Regulatory Compliance, Safety Management Systems"
-          }
-        },
-        "instructor2": {
-          "type": "instructor",
-          "settings": {
-            "instructor_name": "Mark Thompson",
-            "instructor_title": "Senior Operations Manager",
-            "instructor_bio": "Former Director of Operations at major theme park with expertise in daily operations and maintenance protocols.",
-            "instructor_credentials": "BS Mechanical Engineering, NAARSO Certified, 20+ Years Operations",
-            "instructor_specialties": "Operations Management, Maintenance Protocols, Staff Training"
-          }
-        },
-        "instructor3": {
-          "type": "instructor",
-          "settings": {
-            "instructor_name": "Jennifer Rodriguez",
-            "instructor_title": "Compliance Specialist",
-            "instructor_bio": "Regulatory expert specializing in state and federal compliance requirements for amusement facilities.",
-            "instructor_credentials": "JD Law, Former State Inspector, IAAPA Board Member",
-            "instructor_specialties": "Regulatory Compliance, Legal Requirements, Inspection Protocols"
-          }
-        },
-        "instructor4": {
-          "type": "instructor",
-          "settings": {
-            "instructor_name": "Robert Chen",
-            "instructor_title": "Technical Training Manager",
-            "instructor_bio": "Mechanical engineer with focus on ride systems and technical training for maintenance personnel.",
-            "instructor_credentials": "MS Mechanical Engineering, Professional Engineer, ASTM Member",
-            "instructor_specialties": "Mechanical Systems, Technical Training, Maintenance Engineering"
-          }
-        },
-        "instructor5": {
-          "type": "instructor",
-          "settings": {
-            "instructor_name": "Lisa Anderson",
-            "instructor_title": "Emergency Response Coordinator",
-            "instructor_bio": "Former EMT and safety coordinator with expertise in emergency procedures and crisis management.",
-            "instructor_credentials": "BS Emergency Management, EMT Certified, CPR/AED Instructor",
-            "instructor_specialties": "Emergency Response, Crisis Management, Safety Protocols"
-          }
-        },
-        "instructor6": {
-          "type": "instructor",
-          "settings": {
-            "instructor_name": "David Kumar",
-            "instructor_title": "Water Safety Expert",
-            "instructor_bio": "Aquatic safety specialist with extensive experience in water park operations and lifeguard training.",
-            "instructor_credentials": "Aquatic Facility Operator, Ellis & Associates, NASCO Certified",
-            "instructor_specialties": "Water Safety, Aquatic Operations, Lifeguard Training"
-          }
-        }
-      },
-      "block_order": ["instructor1", "instructor2", "instructor3", "instructor4", "instructor5", "instructor6"]
-    },
-    "instructor_credentials": {
-      "type": "aai-universal-content",
-      "settings": {
-        "layout_style": "two-column",
-        "background_style": "bg-light"
-      },
-      "blocks": {
-        "main_content": {
-          "type": "text_block",
-          "settings": {
-            "title": "Industry-Leading Expertise",
-            "content": "<p>Every AAI instructor is hand-selected for their exceptional experience and commitment to safety education. Our faculty members have worked at major theme parks, served on industry committees, and hold advanced certifications in their specialized areas.</p>"
+            "stat_number": "95%",
+            "stat_label": "Industry Background"
           }
         },
         "credential1": {
-          "type": "feature_list",
+          "type": "feature",
           "settings": {
-            "list_title": "Professional Qualifications",
-            "list_items": "Advanced degrees in engineering, safety, or related fields\nActive industry certifications and continuing education\nReal-world experience at major amusement facilities\nCommitment to current industry best practices"
+            "feature_icon": "🏆",
+            "feature_title": "IAAPA Certified Faculty",
+            "feature_description": ""
           }
         },
         "credential2": {
-          "type": "feature_list",
+          "type": "feature",
           "settings": {
-            "list_title": "Industry Recognition",
-            "list_items": "IAAPA (International Association of Amusement Parks and Attractions) members\nASTM F24 Committee participation\nNAARSO (National Association of Amusement Ride Safety Officials) certification\nState and federal inspection experience"
+            "feature_icon": "👨‍🏫",
+            "feature_title": "Industry Veterans",
+            "feature_description": ""
+          }
+        },
+        "credential3": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "🔧",
+            "feature_title": "Active Practitioners",
+            "feature_description": ""
           }
         }
       },
-      "block_order": ["main_content", "credential1", "credential2"]
+      "block_order": ["stat1", "stat2", "stat3", "credential1", "credential2", "credential3"]
+    },
+    "department_heads": {
+      "type": "aai-instructor-showcase",
+      "settings": {
+        "section_title": "Department Heads",
+        "section_subtitle": "Senior faculty who lead our core curriculum areas with unmatched expertise and industry recognition.",
+        "grid_layout": "grid-2",
+        "show_join_team_cta": false
+      },
+      "blocks": {
+        "dept_head1": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Dr. Jennifer Walsh",
+            "instructor_title": "Chief Academic Officer",
+            "instructor_bio": "25+ years in amusement safety engineering, including 15 years as Director of Safety at Universal Studios. Instrumental in developing modern ride safety protocols now industry standard.",
+            "specialties": "Safety Engineering|Risk Management|ASTM F24 Standards|Universal Design",
+            "experience_years": "25",
+            "courses_taught": "500",
+            "credentials": "PhD Safety Engineering, Professional Engineer (PE), ASTM F24 Committee Chair",
+            "show_credentials": true
+          }
+        },
+        "dept_head2": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Michael Torres",
+            "instructor_title": "Head of Operations Training",
+            "instructor_bio": "Former Operations Director at Six Flags with 20+ years managing daily operations across multiple parks. Expert in staff training, emergency procedures, and guest experience optimization.",
+            "specialties": "Daily Operations|Guest Services|Emergency Response|Staff Training",
+            "experience_years": "20",
+            "courses_taught": "1000",
+            "credentials": "IAAPA Certified Operations Manager, Emergency Response Specialist, Guest Service Excellence Expert",
+            "show_credentials": true
+          }
+        }
+      },
+      "block_order": ["dept_head1", "dept_head2"]
+    },
+    "specialized_faculty": {
+      "type": "aai-instructor-showcase",
+      "settings": {
+        "section_title": "Specialized Faculty", 
+        "section_subtitle": "Subject matter experts who bring deep, specialized knowledge to our advanced certification programs.",
+        "grid_layout": "grid-3",
+        "show_join_team_cta": false
+      },
+      "blocks": {
+        "specialist1": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Dr. Rachel Kim",
+            "instructor_title": "Water Park Safety Specialist",
+            "instructor_bio": "Leading expert in aquatic facility safety with extensive experience in water park design, lifeguard training, and emergency response protocols.",
+            "specialties": "Water Safety|Aquatic Facility Design|Lifeguard Training|Pool Operations",
+            "experience_years": "18",
+            "courses_taught": "300",
+            "credentials": "PhD Aquatic Safety, Certified Pool Operator, Ellis & Associates Master Trainer",
+            "show_credentials": true
+          }
+        },
+        "specialist2": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "James Patterson",
+            "instructor_title": "Regulatory Compliance Expert",
+            "instructor_bio": "Former state inspector with comprehensive knowledge of federal, state, and local regulations governing amusement facilities and safety standards.",
+            "specialties": "Regulatory Compliance|Code Interpretation|Inspection Protocols|Legal Requirements",
+            "experience_years": "22",
+            "courses_taught": "200",
+            "credentials": "JD Law, Former State Inspector, NAARSO Certified, IAAPA Board Member",
+            "show_credentials": true
+          }
+        },
+        "specialist3": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Dr. Maria Santos",
+            "instructor_title": "Risk Assessment & Analysis",
+            "instructor_bio": "Mechanical engineer specializing in failure analysis and risk assessment methodologies for amusement rides and attractions.",
+            "specialties": "Risk Assessment|Failure Analysis|Statistical Methods|Safety Engineering",
+            "experience_years": "16",
+            "courses_taught": "180",
+            "credentials": "PhD Mechanical Engineering, Professional Engineer, Risk Management Certified",
+            "show_credentials": true
+          }
+        },
+        "specialist4": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Thomas Chen",
+            "instructor_title": "Maintenance & Technical Systems",
+            "instructor_bio": "Technical expert with hands-on experience in ride maintenance, mechanical systems, and preventive maintenance program development.",
+            "specialties": "Mechanical Maintenance|Preventive Programs|Technical Training|System Analysis",
+            "experience_years": "24",
+            "courses_taught": "350",
+            "credentials": "MS Engineering, NAARSO Level II, Maintenance Management Certified",
+            "show_credentials": true
+          }
+        },
+        "specialist5": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Lisa Rodriguez",
+            "instructor_title": "Emergency Response Coordinator",
+            "instructor_bio": "Former EMT and emergency management professional specializing in crisis response, evacuation procedures, and emergency preparedness planning.",
+            "specialties": "Emergency Response|Crisis Management|Evacuation Planning|First Aid Training",
+            "experience_years": "14",
+            "courses_taught": "250",
+            "credentials": "BS Emergency Management, EMT-P, CPR/AED Instructor, FEMA Certified",
+            "show_credentials": true
+          }
+        },
+        "specialist6": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Robert Johnson",
+            "instructor_title": "Guest Services & Operations",
+            "instructor_bio": "Operations veteran with expertise in guest experience management, crowd control, and daily operational excellence in high-volume environments.",
+            "specialties": "Guest Experience|Crowd Control|Operations Management|Service Excellence",
+            "experience_years": "19",
+            "courses_taught": "280",
+            "credentials": "IAAPA Operations Certified, Guest Service Excellence, Crowd Management Specialist",
+            "show_credentials": true
+          }
+        }
+      },
+      "block_order": ["specialist1", "specialist2", "specialist3", "specialist4", "specialist5", "specialist6"]
+    },
+    "faculty_qualifications": {
+      "type": "aai-universal-content",
+      "settings": {
+        "layout_style": "three-column",
+        "background_style": "bg-light"
+      },
+      "blocks": {
+        "qual_header": {
+          "type": "text_block",
+          "settings": {
+            "title": "Faculty Qualifications",
+            "content": "<p>Our instructors meet the highest standards of professional excellence, combining academic credentials with real-world experience in the amusement industry.</p>"
+          }
+        },
+        "qual1": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "🎓 Educational Excellence",
+            "list_items": "Advanced degrees in engineering, safety, or related fields\nContinuing education and professional development\nResearch and publication in safety journals\nAcademic teaching methodology training"
+          }
+        },
+        "qual2": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "🏭 Industry Experience",
+            "list_items": "Minimum 10+ years in amusement industry\nHands-on operational experience\nLeadership roles at major facilities\nCurrent professional networks"
+          }
+        },
+        "qual3": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "🏆 Teaching Excellence",
+            "list_items": "Adult learning methodology training\nProfessional education experience\nStudent outcome tracking\nContinuous improvement commitment"
+          }
+        }
+      },
+      "block_order": ["qual_header", "qual1", "qual2", "qual3"]
     },
     "call_to_action": {
       "type": "aai-universal-content",
@@ -154,12 +241,12 @@
           "type": "text_block",
           "settings": {
             "title": "Learn from the Best",
-            "content": "<p>Join thousands of professionals who have advanced their careers with AAI training. Our expert faculty is ready to guide you through comprehensive safety education that meets the highest industry standards.</p><div class='button-group'><a href='/collections/courses' class='btn btn-primary'>Browse All Courses</a><a href='/pages/contact' class='btn btn-secondary'>Contact Faculty</a></div>"
+            "content": "<p>Experience world-class instruction from industry veterans who understand the real challenges you face. Our faculty brings unmatched expertise and practical knowledge to every course.</p><div class='button-group'><a href='/collections/courses' class='btn btn-primary'>Browse Courses</a><a href='/pages/contact' class='btn btn-secondary'>Contact Faculty</a></div>"
           }
         }
       },
       "block_order": ["cta_content"]
     }
   },
-  "order": ["hero", "instructor_showcase", "instructor_credentials", "call_to_action"]
+  "order": ["hero", "department_heads", "specialized_faculty", "faculty_qualifications", "call_to_action"]
 }
