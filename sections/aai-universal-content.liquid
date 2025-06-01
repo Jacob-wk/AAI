@@ -95,13 +95,13 @@
                     <div class="button-group" {{ block.shopify_attributes }}>
                       {% if block.settings.button_1_text != blank %}
                         <a href="{{ block.settings.button_1_url }}" 
-                           class="btn btn--{{ block.settings.button_1_style }} btn--{{ block.settings.button_size }}">
+                           class="aai-btn aai-btn-{{ block.settings.button_1_style }} aai-btn-{{ block.settings.button_size }}">
                           {{ block.settings.button_1_text }}
                         </a>
                       {% endif %}
                       {% if block.settings.button_2_text != blank %}
                         <a href="{{ block.settings.button_2_url }}" 
-                           class="btn btn--{{ block.settings.button_2_style }} btn--{{ block.settings.button_size }}">
+                           class="aai-btn aai-btn-{{ block.settings.button_2_style }} aai-btn-{{ block.settings.button_size }}">
                           {{ block.settings.button_2_text }}
                         </a>
                       {% endif %}
@@ -114,7 +114,7 @@
           {% if section.settings.main_button_text != blank %}
             <div class="content-cta">
               <a href="{{ section.settings.main_button_url }}" 
-                 class="btn btn--{{ section.settings.main_button_style }} btn--{{ section.settings.main_button_size }}">
+                 class="aai-btn aai-btn-{{ section.settings.main_button_style }} aai-btn-{{ section.settings.main_button_size }}">
                 {{ section.settings.main_button_text }}
               </a>
             </div>
@@ -406,19 +406,43 @@
     {
       "name": "AAI Universal Content",
       "settings": {
-        "section_title": "Content Section",
-        "section_subtitle": "Customize this content in the theme editor",
-        "layout_style": "text-only",
+        "section_title": "Discover Our Expertise",
+        "section_subtitle": "Providing industry-leading solutions and comprehensive resources.",
+        "layout_style": "text-left-image-right",
         "show_main_content": true,
-        "content_title": "Welcome",
-        "content_body": "<p>This is a flexible content section that can be customized through the theme editor.</p>"
+        "content_title": "Welcome to AAI Learning",
+        "content_body": "<p>Amusement Adventure Institute (AAI) is dedicated to advancing safety and operational excellence in the amusement industry. Our comprehensive training programs and resources are designed by experts to empower professionals like you.</p><p>Explore our offerings to find the perfect solution for your individual or organizational needs.</p>",
+        "show_image": true,
+        "main_button_text": "Explore Our Courses",
+        "main_button_url": "/collections/all",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
       },
       "blocks": [
         {
           "type": "text_block",
           "settings": {
-            "block_title": "Sample Block",
-            "block_content": "<p>This is a sample content block that demonstrates the flexibility of this section.</p>"
+            "block_title": "Our Mission",
+            "block_content": "<p>To be the global leader in amusement safety education, fostering a culture of safety and continuous improvement through innovative training and expert resources.</p>"
+          }
+        },
+        {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Why Choose AAI?",
+            "list_items": "Expert-Led Curriculum|Industry-Recognized Certifications|Flexible Online Learning|Comprehensive Support"
+          }
+        },
+        {
+          "type": "credential_grid",
+          "settings": {
+            "grid_title": "Trusted By The Best",
+            "credential_1_title": "IAAPA Approved",
+            "credential_1_desc": "Our courses meet the highest standards set by the International Association of Amusement Parks and Attractions.",
+            "credential_2_title": "ASTM Compliant",
+            "credential_2_desc": "Content aligned with ASTM F24 standards for amusement ride safety.",
+            "credential_3_title": "NAARSO Recognized",
+            "credential_3_desc": "Training recognized by the National Association of Amusement Ride Safety Officials."
           }
         }
       ]

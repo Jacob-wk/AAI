@@ -56,13 +56,13 @@
           <div class="hero-cta">
             {% if section.settings.primary_button_text != blank %}
               <a href="{{ section.settings.primary_button_url }}" 
-                 class="btn btn--primary btn--{{ section.settings.button_size }}">
+                 class="aai-btn aai-btn-primary aai-btn-{{ section.settings.button_size }}">
                 {{ section.settings.primary_button_text }}
               </a>
             {% endif %}
             {% if section.settings.secondary_button_text != blank %}
               <a href="{{ section.settings.secondary_button_url }}" 
-                 class="btn btn--secondary btn--{{ section.settings.button_size }}">
+                 class="aai-btn aai-btn-secondary aai-btn-{{ section.settings.button_size }}">
                 {{ section.settings.secondary_button_text }}
               </a>
             {% endif %}
@@ -288,39 +288,68 @@
     {
       "name": "AAI Universal Hero",
       "settings": {
-        "hero_title": "Professional Safety Education",
-        "hero_subtitle": "Leading the industry in comprehensive safety training and certification programs",
+        "hero_title": "Where Safety Meets Adventure",
+        "hero_subtitle": "Professional safety education for the amusement industry. Advance your career while keeping guests safe with industry-leading certification programs.",
         "hero_style": "hero-standard",
         "layout_style": "text-left-image-right",
         "show_image": true,
         "show_stats": true,
-        "show_features": false,
-        "show_credentials": false,
+        "show_features": true,
+        "show_credentials": true,
         "primary_button_text": "Explore Courses",
         "primary_button_url": "/collections/courses",
-        "secondary_button_text": "Learn More",
-        "secondary_button_url": "/pages/about"
+        "secondary_button_text": "Try Free Demo",
+        "secondary_button_url": "/pages/demo",
+        "button_size": "large"
       },
       "blocks": [
         {
           "type": "statistic",
           "settings": {
             "stat_number": "500+",
-            "stat_label": "Professionals Certified"
+            "stat_label": "Certified Professionals"
           }
         },
         {
           "type": "statistic",
           "settings": {
-            "stat_number": "50+",
-            "stat_label": "Courses Available"
+            "stat_number": "98%",
+            "stat_label": "Pass Rate"
           }
         },
         {
           "type": "statistic",
           "settings": {
-            "stat_number": "25+",
-            "stat_label": "Industry Partners"
+            "stat_number": "15+",
+            "stat_label": "Years Experience"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "🎓",
+            "feature_title": "Expert-Led Training",
+            "feature_description": "Courses designed and taught by industry veterans."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "📜",
+            "feature_title": "Recognized Certifications",
+            "feature_description": "Credentials valued by employers worldwide."
+          }
+        },
+        {
+          "type": "credential",
+          "settings": {
+            "credential_text": "IAAPA Approved Provider"
+          }
+        },
+        {
+          "type": "credential",
+          "settings": {
+            "credential_text": "ASTM F24 Compliant"
           }
         }
       ]

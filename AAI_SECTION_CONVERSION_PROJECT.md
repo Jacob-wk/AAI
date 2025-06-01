@@ -22,18 +22,18 @@ Convert all hardcoded AAI LMS liquid pages into fully editable Shopify sections 
 
 ### Pages Requiring Conversion
 1. **About Page** (`page.about.liquid`) - ✅ COMPLETED (Pre-existing sections)
-2. **Demo Page** (`page.demo.liquid`) - ✅ COMPLETED (Pre-existing sections)
+2. **Demo Page** (`page.demo.liquid`) - ⏳ PENDING
 3. **Instructors Page** (`page.instructors.liquid`) - ✅ COMPLETED
 4. **Certifications Page** (`page.certifications.liquid`) - ✅ COMPLETED
 5. **Corporate Training Page** (`page.corporate-training.liquid`) - ✅ COMPLETED
 6. **Industry Standards Page** (`page.industry-standards.liquid`) - ✅ COMPLETED
 7. **Safety Library Page** (`page.safety-library.liquid`) - ✅ COMPLETED
-8. **Webinars Page** (`page.webinars.liquid`) - ✅ COMPLETED
-9. **Help Center Page** (`page.help-center.liquid`) - ✅ COMPLETED
+8. **Webinars Page** (`page.webinars.liquid`) - ⏳ PENDING
+9. **Help Center Page** (`page.help-center.liquid`) - ⏳ PENDING
 10. **Contact Page** (`page.contact.liquid`) - ✅ COMPLETED
 11. **Partnerships Page** (`page.partnerships.liquid`) - ✅ COMPLETED
 12. **Privacy Policy Page** (`page.privacy-policy.liquid`) - ✅ COMPLETED
-13. **Terms of Service Page** (`page.terms-of-service.liquid`) - ✅ COMPLETED
+13. **Terms of Service Page** (`page.terms-of-service.liquid`) - ⏳ PENDING
 14. **Course Access Page** (`page.course-access.liquid`) - ✅ COMPLETED
 
 ## Section Architecture Strategy

@@ -241,7 +241,7 @@
           "type": "text_block",
           "settings": {
             "title": "Learn from the Best",
-            "content": "<p>Experience world-class instruction from industry veterans who understand the real challenges you face. Our faculty brings unmatched expertise and practical knowledge to every course.</p><div class='button-group'><a href='/collections/courses' class='btn btn-primary'>Browse Courses</a><a href='/pages/contact' class='btn btn-secondary'>Contact Faculty</a></div>"
+            "content": "<p>Experience world-class instruction from industry veterans who understand the real challenges you face. Our faculty brings unmatched expertise and practical knowledge to every course.</p><div class='button-group'><a href='/collections/courses' class='aai-btn aai-btn-primary'>Browse Courses</a><a href='/pages/contact' class='aai-btn aai-btn-secondary'>Contact Faculty</a></div>"
           }
         }
       },

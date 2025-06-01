@@ -216,7 +216,42 @@ COPILOT CONTEXT:
   ],
   "presets": [
     {
-      "name": "AAI Course Catalog"
+      "name": "AAI Course Catalog",
+      "settings": {
+        "section_title": "Explore Our Course Catalog",
+        "section_subtitle": "Find the perfect course to advance your skills and career in the amusement industry. From safety certifications to operational excellence.",
+        "products_to_show": 6,
+        "view_all_text": "See All Available Courses",
+        "view_all_url": "/collections/all",
+        "show_filters": true,
+        "show_search": true,
+        "show_sorting": true,
+        "default_sort": "title-ascending",
+        "courses_per_page": 12
+      },
+      "blocks": [
+        {
+          "type": "filter_category",
+          "settings": {
+            "filter_name": "Course Category",
+            "filter_values": "Safety & Compliance, Ride Operations, Maintenance, Guest Services, Management"
+          }
+        },
+        {
+          "type": "filter_duration",
+          "settings": {
+            "filter_name": "Estimated Duration",
+            "filter_values": "Up to 4 hours, 1 Day, 2-3 Days, Self-Paced"
+          }
+        },
+        {
+          "type": "filter_level",
+          "settings": {
+            "filter_name": "Experience Level",
+            "filter_values": "Entry Level, Intermediate, Advanced, Leadership"
+          }
+        }
+      ]
     }
   ]
 }

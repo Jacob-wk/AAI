@@ -1,15 +1,49 @@
 {
   "sections": {
     "main": {
-      "type": "main-page",
-      "disabled": true
-    },
-    "test_content": {
-      "type": "custom-liquid",
+      "type": "aai-universal-content",
       "settings": {
-        "custom_liquid": "<!-- Test page content is handled by page.test.liquid template -->"
-      }
+        "layout_style": "single-column",
+        "background_style": "bg-light",
+        "content_width": "container"
+      },
+      "blocks": {
+        "hero_content": {
+          "type": "text_block",
+          "settings": {
+            "title": "AAI Theme Test Page",
+            "content": "<p>If you can see this page without duplicate headers, the theme is working correctly!</p>"
+          }
+        },
+        "checklist": {
+          "type": "text_block",
+          "settings": {
+            "title": "Theme Setup Checklist:",
+            "content": "<ul><li>✅ Single header (not duplicated)</li><li>✅ AAI branding and colors</li><li>✅ Professional navigation</li><li>✅ Clean page layout</li></ul>"
+          }
+        },
+        "navigation_test": {
+          "type": "text_block",
+          "settings": {
+            "title": "Navigation Test:",
+            "content": "<p>Try these links to verify page routing:</p><div class=\"test-links\"><a href=\"/pages/about\" class=\"aai-btn aai-btn-primary\">About Page</a> <a href=\"/pages/instructors\" class=\"aai-btn aai-btn-secondary\">Instructors</a> <a href=\"/pages/demo\" class=\"aai-btn aai-btn-primary\">Demo</a> <a href=\"/collections/courses\" class=\"aai-btn aai-btn-secondary\">Courses</a></div>"
+          }
+        },
+        "theme_info": {
+          "type": "text_block",
+          "settings": {
+            "title": "Theme Information:",
+            "content": "<ul><li><strong>Theme:</strong> AAI Professional Safety Education</li><li><strong>Template:</strong> {{ template }}</li><li><strong>Page Handle:</strong> {{ page.handle }}</li><li><strong>Shop:</strong> {{ shop.name }}</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "hero_content",
+        "checklist",
+        "navigation_test",
+        "theme_info"
+      ]
     }
   },
-  "order": ["test_content"]
+  "order": ["main"]
 }
