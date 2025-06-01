@@ -19,6 +19,38 @@
       "type": "user-dashboard",
       "settings": {
         "section_title": "Your Learning Dashboard"
+      },
+      "blocks": {
+        "current_course_1": {
+          "type": "current_course",
+          "settings": {
+            "course_name": "Amusement Ride Safety Inspector",
+            "instructor": "Dr. Sarah Johnson",
+            "progress_percentage": 75,
+            "course_thumbnail": "",
+            "course_url": "/products/amusement-ride-safety-inspector"
+          }
+        },
+        "current_course_2": {
+          "type": "current_course",
+          "settings": {
+            "course_name": "Water Park Operations",
+            "instructor": "Mike Rodriguez",
+            "progress_percentage": 45,
+            "course_thumbnail": "",
+            "course_url": "/products/water-park-operations"
+          }
+        },
+        "current_course_3": {
+          "type": "current_course",
+          "settings": {
+            "course_name": "Emergency Response Procedures",
+            "instructor": "Lisa Chen",
+            "progress_percentage": 90,
+            "course_thumbnail": "",
+            "course_url": "/products/emergency-response"
+          }
+        }
       }
     },
     "course_catalog_preview": {

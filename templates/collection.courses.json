@@ -42,29 +42,29 @@
         "show_sorting": true,
         "default_sort": "title-ascending"
       },
-      "blocks": [
-        {
+      "blocks": {
+        "filter_category_1": {
           "type": "filter_category",
           "settings": {
             "filter_name": "Course Type",
             "filter_values": "Safety Training, Leadership Development, Technical Skills, Certification Prep"
           }
         },
-        {
+        "filter_duration_1": {
           "type": "filter_duration",
           "settings": {
             "filter_name": "Duration",
             "filter_values": "1-2 hours, 3-4 hours, 1 day, Multi-day"
           }
         },
-        {
+        "filter_level_1": {
           "type": "filter_level",
           "settings": {
             "filter_name": "Skill Level",
             "filter_values": "Beginner, Intermediate, Advanced, Expert"
           }
         }
-      ]
+      }
     },
     "course_benefits": {
       "type": "aai-universal-content",
@@ -73,8 +73,8 @@
         "content_layout": "three_column",
         "background_color": "#f8fafc"
       },
-      "blocks": [
-        {
+      "blocks": {
+        "text_block_1": {
           "type": "text_block",
           "settings": {
             "block_title": "Industry Recognition",
@@ -82,7 +82,7 @@
             "text_alignment": "center"
           }
         },
-        {
+        "text_block_2": {
           "type": "text_block",
           "settings": {
             "block_title": "Expert Instructors",
@@ -90,7 +90,7 @@
             "text_alignment": "center"
           }
         },
-        {
+        "text_block_3": {
           "type": "text_block",
           "settings": {
             "block_title": "Flexible Learning",
@@ -98,7 +98,7 @@
             "text_alignment": "center"
           }
         }
-      ]
+      }
     },
     "instructor_showcase": {
       "type": "aai-instructor-showcase",
