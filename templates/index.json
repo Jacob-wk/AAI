@@ -1,4 +1,5 @@
 {
+  "name": "Home Page",
   "sections": {
     "hero": {
       "type": "aai-hero",

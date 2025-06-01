@@ -756,12 +756,123 @@
       "template--page.certifications__main": { "type": "main-page", "settings": {} },
       "template--page.corporate-training__main": { "type": "main-page", "settings": {} },
       "template--page.course-access__main": { "type": "main-page", "settings": {} },
-      "template--page.demo__main": { "type": "main-page", "settings": {} },
+      "template--page.demo__demo_hero": {
+        "type": "aai-demo-hero",
+        "settings": {},
+        "blocks": {
+          "feature_1": {
+            "type": "feature_item",
+            "settings": {
+              "icon": "🎓",
+              "feature_title": "Interactive Learning",
+              "feature_description": "Hands-on simulations and real-world scenarios"
+            }
+          },
+          "feature_2": {
+            "type": "feature_item",
+            "settings": {
+              "icon": "📱",
+              "feature_title": "Mobile Optimized",
+              "feature_description": "Learn anywhere, anytime on any device"
+            }
+          },
+          "feature_3": {
+            "type": "feature_item",
+            "settings": {
+              "icon": "🏆",
+              "feature_title": "Industry Recognized",
+              "feature_description": "IAAPA certified and ASTM F24 compliant"
+            }
+          }
+        },
+        "block_order": ["feature_1", "feature_2", "feature_3"]
+      },
+      "template--page.demo__demo_experience_tabs": {
+        "type": "aai-demo-experience-tabs",
+        "settings": {},
+        "blocks": {
+          "dashboard_tab": {
+            "type": "demo_tab_panel",
+            "settings": {
+              "tab_icon": "📊",
+              "tab_title": "Dashboard",
+              "panel_header_title": "Professional Dashboard",
+              "panel_header_subtitle": "Sarah Johnson - Safety Inspector",
+              "panel_content_class": "dashboard-content",
+              "panel_content": "<div class=\\\'dashboard-stats\\\'><div class=\\\'stat-card\\\'><div class=\\\'stat-number\\\'>12</div><div class=\\\'stat-label\\\'>Courses Completed</div></div><div class=\\\'stat-card\\\'><div class=\\\'stat-number\\\'>47</div><div class=\\\'stat-label\\\'>CEU Credits</div></div><div class=\\\'stat-card\\\'><div class=\\\'stat-number\\\'>3</div><div class=\\\'stat-label\\\'>Active Certifications</div></div></div><div class=\\\'dashboard-courses\\\'><h4>Continue Learning</h4><div class=\\\'course-list\\\'><div class=\\\'course-item\\\'><div class=\\\'course-icon\\\'>⚡</div><div class=\\\'course-details\\\'><h5>Electrical Systems Safety</h5><div class=\\\'course-progress\\\'><div class=\\\'progress-bar\\\'><div class=\\\'progress-fill\\\' style=\\\'width: 45%;\\\'></div></div><span>45% Complete</span></div></div><button class=\\\'aai-btn aai-btn-secondary\\\'>Continue</button></div><div class=\\\'course-item\\\'><div class=\\\'course-icon\\\'>🌊</div><div class=\\\'course-details\\\'><h5>Water Park Operations</h5><div class=\\\'course-progress\\\'><div class=\\\'progress-bar\\\'><div class=\\\'progress-fill\\\' style=\\\'width: 80%;\\\'></div></div><span>80% Complete</span></div></div><button class=\\\'aai-btn aai-btn-secondary\\\'>Continue</button></div></div></div>"
+            }
+          },
+          "course_tab": {
+            "type": "demo_tab_panel",
+            "settings": {
+              "tab_icon": "🎓",
+              "tab_title": "Course Experience",
+              "panel_header_title": "Ride Safety Inspector Certification",
+              "panel_header_subtitle": "60 Hours | Professional | 12 CEU Credits",
+              "panel_content_class": "course-content",
+              "panel_content": "<div class=\\\'course-sidebar\\\'><div class=\\\'module-list\\\'><div class=\\\'module-item completed\\\'><span class=\\\'module-icon\\\'>✓</span><span class=\\\'module-title\\\'>Introduction to Safety Standards</span></div><div class=\\\'module-item completed\\\'><span class=\\\'module-icon\\\'>✓</span><span class=\\\'module-title\\\'>Mechanical Systems</span></div><div class=\\\'module-item active\\\'><span class=\\\'module-icon\\\'>▶</span><span class=\\\'module-title\\\'>Electrical Safety</span></div><div class=\\\'module-item\\\'><span class=\\\'module-icon\\\'>○</span><span class=\\\'module-title\\\'>Inspection Procedures</span></div><div class=\\\'module-item\\\'><span class=\\\'module-icon\\\'>○</span><span class=\\\'module-title\\\'>Documentation Requirements</span></div></div></div><div class=\\\'course-main\\\'><div class=\\\'video-player\\\'><div class=\\\'video-placeholder\\\'><div class=\\\'play-button\\\'>▶</div><div class=\\\'video-title\\\'>Chapter 3.2: Control System Safety</div></div></div><div class=\\\'lesson-content\\\'><h4>Electrical Control Systems</h4><p>Understanding the critical safety components of ride control systems is essential for thorough inspections. This module covers...</p><div class=\\\'lesson-navigation\\\'><button class=\\\'aai-btn aai-btn-secondary\\\'>← Previous</button><button class=\\\'aai-btn aai-btn-primary\\\'>Next →</button></div></div></div>"
+            }
+          },
+          "assessment_tab": {
+            "type": "demo_tab_panel",
+            "settings": {
+              "tab_icon": "✅",
+              "tab_title": "Assessments",
+              "panel_header_title": "Module Assessment: Electrical Safety",
+              "panel_header_subtitle": "Question 3 of 10 | 12:30 remaining",
+              "panel_content_class": "assessment-content",
+              "panel_content": "<div class=\\\'question-section\\\'><div class=\\\'question-text\\\'><h4>Which of the following is the most critical safety check when inspecting ride control systems?</h4></div><div class=\\\'answer-options\\\'><label class=\\\'answer-option\\\'><input type=\\\'radio\\\' name=\\\'demo-question\\\' value=\\\'a\\\'><span class=\\\'option-text\\\'>Visual inspection of wiring condition</span></label><label class=\\\'answer-option\\\'><input type=\\\'radio\\\' name=\\\'demo-question\\\' value=\\\'b\\\'><span class=\\\'option-text\\\'>Verification of emergency stop function</span></label><label class=\\\'answer-option\\\'><input type=\\\'radio\\\' name=\\\'demo-question\\\' value=\\\'c\\\'><span class=\\\'option-text\\\'>Testing of operator controls</span></label><label class=\\\'answer-option\\\'><input type=\\\'radio\\\' name=\\\'demo-question\\\' value=\\\'d\\\'><span class=\\\'option-text\\\'>Review of maintenance logs</span></label></div><div class=\\\'question-navigation\\\'><button class=\\\'aai-btn aai-btn-secondary\\\'>← Previous</button><button class=\\\'aai-btn aai-btn-primary\\\'>Next →</button></div></div><div class=\\\'assessment-sidebar\\\'><div class=\\\'progress-indicator\\\'><h5>Assessment Progress</h5><div class=\\\'progress-bar\\\'><div class=\\\'progress-fill\\\' style=\\\'width: 30%;\\\'></div></div><span>3 of 10 questions</span></div><div class=\\\'question-grid\\\'><div class=\\\'question-dot completed\\\'>1</div><div class=\\\'question-dot completed\\\'>2</div><div class=\\\'question-dot active\\\'>3</div><div class=\\\'question-dot\\\'>4</div><div class=\\\'question-dot\\\'>5</div><div class=\\\'question-dot\\\'>6</div><div class=\\\'question-dot\\\'>7</div><div class=\\\'question-dot\\\'>8</div><div class=\\\'question-dot\\\'>9</div><div class=\\\'question-dot\\\'>10</div></div></div>"
+            }
+          },
+          "progress_tab": {
+            "type": "demo_tab_panel",
+            "settings": {
+              "tab_icon": "📈",
+              "tab_title": "Progress Tracking",
+              "panel_header_title": "Learning Progress & Analytics",
+              "panel_header_subtitle": "Last 30 Days",
+              "panel_content_class": "progress-content",
+              "panel_content": "<div class=\\\'progress-charts\\\'><div class=\\\'chart-card\\\'><h4>Course Completion</h4><div class=\\\'completion-chart\\\'><div class=\\\'completion-ring\\\'><div class=\\\'ring-progress\\\' style=\\\'--progress: 75%;\\\'><span class=\\\'ring-percentage\\\'>75%</span></div></div><div class=\\\'completion-details\\\'><div class=\\\'detail-item\\\'><span class=\\\'detail-label\\\'>Completed</span><span class=\\\'detail-value\\\'>12 courses</span></div><div class=\\\'detail-item\\\'><span class=\\\'detail-label\\\'>In Progress</span><span class=\\\'detail-value\\\'>3 courses</span></div><div class=\\\'detail-item\\\'><span class=\\\'detail-label\\\'>Not Started</span><span class=\\\'detail-value\\\'>1 course</span></div></div></div></div><div class=\\\'chart-card\\\'><h4>Learning Streak</h4><div class=\\\'streak-display\\\'><div class=\\\'streak-number\\\'>23</div><div class=\\\'streak-label\\\'>Days</div><div class=\\\'streak-calendar\\\'><div class=\\\'calendar-week\\\'><div class=\\\'day-dot active\\\'></div><div class=\\\'day-dot active\\\'></div><div class=\\\'day-dot active\\\'></div><div class=\\\'day-dot active\\\'></div><div class=\\\'day-dot active\\\'></div><div class=\\\'day-dot\\\'></div><div class=\\\'day-dot\\\'></div></div></div></div></div><div class=\\\'achievements-section\\\'><h4>Recent Achievements</h4><div class=\\\'achievements-list\\\'><div class=\\\'achievement-item\\\'><div class=\\\'achievement-badge\\\'>🏆</div><div class=\\\'achievement-info\\\'><h5>Safety Expert</h5><span>Completed 10 safety courses</span></div><div class=\\\'achievement-date\\\'>2 days ago</div></div><div class=\\\'achievement-item\\\'><div class=\\\'achievement-badge\\\'>⚡</div><div class=\\\'achievement-info\\\'><h5>Quick Learner</h5><span>Completed course in under 2 weeks</span></div><div class=\\\'achievement-date\\\'>1 week ago</div></div><div class=\\\'achievement-item\\\'><div class=\\\'achievement-badge\\\'>🎯</div><div class=\\\'achievement-info\\\'><h5>Perfect Score</h5><span>Scored 100% on final assessment</span></div><div class=\\\'achievement-date\\\'>2 weeks ago</div></div></div></div>"
+            }
+          },
+          "certification_tab": {
+            "type": "demo_tab_panel",
+            "settings": {
+              "tab_icon": "🏆",
+              "tab_title": "Certification",
+              "panel_header_title": "Professional Certification",
+              "panel_header_subtitle": "Status: Completed",
+              "panel_content_class": "certification-content",
+              "panel_content": "<div class=\\\'certificate-preview\\\'><div class=\\\'certificate-card\\\'><div class=\\\'cert-header\\\'><div class=\\\'cert-logo\\\'>AAI</div><div class=\\\'cert-title\\\'><h4>Certificate of Completion</h4><span>Professional Safety Education</span></div></div><div class=\\\'cert-body\\\'><p class=\\\'cert-text\\\'>This is to certify that</p><h3 class=\\\'cert-name\\\'>Sarah Johnson</h3><p class=\\\'cert-text\\\'>has successfully completed</p><h4 class=\\\'cert-course\\\'>Ride Safety Inspector Certification</h4><div class=\\\'cert-details\\\'><div class=\\\'cert-detail\\\'><strong>CEU Credits:</strong> 12 Hours</div><div class=\\\'cert-detail\\\'><strong>Completion Date:</strong> March 15, 2025</div><div class=\\\'cert-detail\\\'><strong>Certificate ID:</strong> AAI-RSI-2025-001234</div></div></div><div class=\\\'cert-footer\\\'><div class=\\\'cert-signature\\\'><div class=\\\'signature-line\\\'></div><span>Director of Education</span></div><div class=\\\'cert-seal\\\'>🏆</div></div></div></div><div class=\\\'certification-actions\\\'><button class=\\\'aai-btn aai-btn-primary cert-btn\\\'>Download PDF</button><button class=\\\'aai-btn aai-btn-secondary cert-btn\\\'>Share Certificate</button><button class=\\\'aai-btn aai-btn-secondary cert-btn\\\'>Verify Online</button><div class=\\\'verification-info\\\'><h5>Digital Verification</h5><p>All AAI certificates include digital verification codes that employers can use to instantly verify credentials.</p><div class=\\\'qr-placeholder\\\'><div class=\\\'qr-code\\\'>QR</div><span>Verification QR Code</span></div></div></div>"
+            }
+          }
+        },
+        "block_order": ["dashboard_tab", "course_tab", "assessment_tab", "progress_tab", "certification_tab"]
+      },
+      "template--page.demo__platform_features": {
+        "type": "aai-demo-platform-features",
+        "settings": {},
+        "blocks": {
+          "feature_1": { "type": "feature_card" },
+          "feature_2": { "type": "feature_card", "settings": {"icon": "📱", "feature_title": "Mobile Learning", "feature_description": "Access courses from any device, anywhere. Perfect for busy professionals who need flexible learning options."}},
+          "feature_3": { "type": "feature_card", "settings": {"icon": "🏆", "feature_title": "Professional Credentials", "feature_description": "Earn industry-recognized certifications and CEU credits that advance your career and meet compliance requirements."}},
+          "feature_4": { "type": "feature_card", "settings": {"icon": "📊", "feature_title": "Progress Tracking", "feature_description": "Monitor your learning journey with detailed analytics, completion tracking, and personalized recommendations."}},
+          "feature_5": { "type": "feature_card", "settings": {"icon": "🤝", "feature_title": "Peer Network", "feature_description": "Connect with other safety professionals, share experiences, and learn from industry veterans worldwide."}},
+          "feature_6": { "type": "feature_card", "settings": {"icon": "🔄", "feature_title": "Continuous Updates", "feature_description": "Stay current with evolving safety standards. Course content is regularly updated to reflect latest industry developments."}}
+        },
+        "block_order": ["feature_1", "feature_2", "feature_3", "feature_4", "feature_5", "feature_6"]
+      },
+      "template--page.demo__demo_cta": {
+        "type": "aai-demo-cta",
+        "settings": {},
+        "blocks": {
+          "stat_1": { "type": "stat_item" },
+          "stat_2": { "type": "stat_item", "settings": {"stat_number": "500+", "stat_label": "Partner Organizations"}},
+          "stat_3": { "type": "stat_item", "settings": {"stat_number": "98%", "stat_label": "Completion Rate"}}
+        },
+        "block_order": ["stat_1", "stat_2", "stat_3"]
+      },
       "template--page.help-center__main": { "type": "main-page", "settings": {} },
-      "template--page.industry-standards__main": { "type": "main-page", "settings": {} },
-      "template--page.instructors__main": { "type": "main-page", "settings": {} },
-      "template--page__main": { "type": "main-page", "settings": {} },
-      "template--page.partnerships__main": { "type": "main-page", "settings": {} },
       "template--page.privacy-policy__main": { "type": "main-page", "settings": {} },
       "template--page.safety-library__main": { "type": "main-page", "settings": {} },
       "template--page.terms-of-service__main": { "type": "main-page", "settings": {} },
