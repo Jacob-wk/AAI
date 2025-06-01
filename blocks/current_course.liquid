@@ -1,0 +1,89 @@
+{% comment %}
+  Current Course Block - Display user's current courses
+  Used in: User dashboard section
+{% endcomment %}
+
+<div class="current-course-block">
+  <div class="course-info">
+    {% if block.settings.course_image != blank %}
+      <div class="course-thumbnail">
+        <img src="{{ block.settings.course_image | image_url: width: 120 }}" 
+             alt="{{ block.settings.course_name }}"
+             loading="lazy">
+      </div>
+    {% endif %}
+    
+    <div class="course-details">
+      <h4 class="course-name">{{ block.settings.course_name | default: "Safety Management Fundamentals" }}</h4>
+      <p class="course-instructor">{{ block.settings.instructor | default: "John Smith, IAAPA Certified" }}</p>
+      
+      {% if block.settings.course_description != blank %}
+        <p class="course-description">{{ block.settings.course_description }}</p>
+      {% endif %}
+    </div>
+  </div>
+  
+  <div class="course-progress">
+    <div class="progress-info">
+      <span class="progress-label">Progress</span>
+      <span class="progress-percentage">{{ block.settings.progress_percentage | default: 65 }}%</span>
+    </div>
+    
+    <div class="progress-bar">
+      <div class="progress-fill" 
+           style="width: {{ block.settings.progress_percentage | default: 65 }}%"></div>
+    </div>
+    
+    <div class="course-actions">
+      <a href="{{ block.settings.continue_url | default: '#' }}" 
+         class="btn btn-primary btn-sm">
+        Continue Course
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Current Course",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "course_image",
+      "label": "Course Image"
+    },
+    {
+      "type": "text",
+      "id": "course_name",
+      "label": "Course Name",
+      "default": "Safety Management Fundamentals"
+    },
+    {
+      "type": "text",
+      "id": "instructor",
+      "label": "Instructor",
+      "default": "John Smith, IAAPA Certified"
+    },
+    {
+      "type": "textarea",
+      "id": "course_description",
+      "label": "Course Description"
+    },
+    {
+      "type": "range",
+      "id": "progress_percentage",
+      "label": "Progress Percentage",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 65,
+      "unit": "%"
+    },
+    {
+      "type": "url",
+      "id": "continue_url",
+      "label": "Continue Course URL"
+    }
+  ]
+}
+{% endschema %}

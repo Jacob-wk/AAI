@@ -1,0 +1,98 @@
+{% comment %}
+  Feature List Block - Display features with icons for AAI
+  Used in: Course pages, about page, etc.
+{% endcomment %}
+
+<div class="feature-list-block">
+  {% if block.settings.heading != blank %}
+    <h3 class="feature-list-heading">{{ block.settings.heading }}</h3>
+  {% endif %}
+  
+  <div class="feature-list">
+    {% if block.settings.feature_1 != blank %}
+      <div class="feature-item">
+        <div class="feature-icon">
+          {% if block.settings.feature_1_icon != blank %}
+            <img src="{{ block.settings.feature_1_icon | image_url: width: 32 }}" alt="">
+          {% else %}
+            ✓
+          {% endif %}
+        </div>
+        <span class="feature-text">{{ block.settings.feature_1 }}</span>
+      </div>
+    {% endif %}
+    
+    {% if block.settings.feature_2 != blank %}
+      <div class="feature-item">
+        <div class="feature-icon">
+          {% if block.settings.feature_2_icon != blank %}
+            <img src="{{ block.settings.feature_2_icon | image_url: width: 32 }}" alt="">
+          {% else %}
+            ✓
+          {% endif %}
+        </div>
+        <span class="feature-text">{{ block.settings.feature_2 }}</span>
+      </div>
+    {% endif %}
+    
+    {% if block.settings.feature_3 != blank %}
+      <div class="feature-item">
+        <div class="feature-icon">
+          {% if block.settings.feature_3_icon != blank %}
+            <img src="{{ block.settings.feature_3_icon | image_url: width: 32 }}" alt="">
+          {% else %}
+            ✓
+          {% endif %}
+        </div>
+        <span class="feature-text">{{ block.settings.feature_3 }}</span>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Feature List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Key Features"
+    },
+    {
+      "type": "text",
+      "id": "feature_1",
+      "label": "Feature 1",
+      "default": "Professional Certification"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_1_icon",
+      "label": "Feature 1 Icon"
+    },
+    {
+      "type": "text",
+      "id": "feature_2",
+      "label": "Feature 2",
+      "default": "Industry Expertise"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_2_icon",
+      "label": "Feature 2 Icon"
+    },
+    {
+      "type": "text",
+      "id": "feature_3",
+      "label": "Feature 3",
+      "default": "Continuing Education"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_3_icon",
+      "label": "Feature 3 Icon"
+    }
+  ]
+}
+{% endschema %}

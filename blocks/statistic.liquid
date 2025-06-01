@@ -1,0 +1,37 @@
+{% comment %}
+  Statistic Block
+  Used within aai-universal-hero sections for displaying stats
+{% endcomment %}
+
+<div class="statistic-block">
+  <div class="stat-number">{{ block.settings.stat_number | default: "100+" }}</div>
+  <div class="stat-label">{{ block.settings.stat_label | default: "Statistic" }}</div>
+  {% if block.settings.stat_description != blank %}
+    <div class="stat-description">{{ block.settings.stat_description }}</div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Statistic",
+  "settings": [
+    {
+      "type": "text",
+      "id": "stat_number",
+      "label": "Number",
+      "default": "100+"
+    },
+    {
+      "type": "text",
+      "id": "stat_label",
+      "label": "Label",
+      "default": "Statistic"
+    },
+    {
+      "type": "text",
+      "id": "stat_description",
+      "label": "Description"
+    }
+  ]
+}
+{% endschema %}

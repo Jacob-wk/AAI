@@ -1,0 +1,179 @@
+<div class="recommended-course">
+  <div class="course-card">
+    {% if block.settings.course_image != blank %}
+      <div class="course-image">
+        <img src="{{ block.settings.course_image | image_url: width: 300 }}" 
+             alt="{{ block.settings.course_title }}" 
+             width="300" height="200" loading="lazy">
+        {% if block.settings.course_badge != blank %}
+          <span class="course-badge">{{ block.settings.course_badge }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    <div class="course-content">
+      <div class="course-header">
+        {% if block.settings.course_category != blank %}
+          <span class="course-category">{{ block.settings.course_category }}</span>
+        {% endif %}
+        <h3 class="course-title">{{ block.settings.course_title | default: 'Course Title' }}</h3>
+      </div>
+      
+      {% if block.settings.course_description != blank %}
+        <p class="course-description">{{ block.settings.course_description }}</p>
+      {% endif %}
+      
+      <div class="course-meta">
+        {% if block.settings.course_duration != blank %}
+          <span class="course-duration">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 1C4.1 1 1 4.1 1 8C1 11.9 4.1 15 8 15C11.9 15 15 11.9 15 8C15 4.1 11.9 1 8 1ZM8 13C5.2 13 3 10.8 3 8C3 5.2 5.2 3 8 3C10.8 3 13 5.2 13 8C13 10.8 10.8 13 8 13Z" fill="currentColor"/>
+              <path d="M8 4V8L11 11" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+            {{ block.settings.course_duration }}
+          </span>
+        {% endif %}
+        
+        {% if block.settings.course_level != blank %}
+          <span class="course-level">{{ block.settings.course_level }}</span>
+        {% endif %}
+        
+        {% if block.settings.lesson_count != blank %}
+          <span class="lesson-count">{{ block.settings.lesson_count }} lessons</span>
+        {% endif %}
+      </div>
+      
+      {% if block.settings.course_rating != blank %}
+        <div class="course-rating">
+          <div class="stars">
+            {% assign rating = block.settings.course_rating | round %}
+            {% for i in (1..5) %}
+              {% if i <= rating %}
+                <span class="star filled">★</span>
+              {% else %}
+                <span class="star">☆</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <span class="rating-text">{{ block.settings.course_rating }}/5</span>
+          {% if block.settings.review_count != blank %}
+            <span class="review-count">({{ block.settings.review_count }} reviews)</span>
+          {% endif %}
+        </div>
+      {% endif %}
+      
+      <div class="course-actions">
+        {% if block.settings.course_url != blank %}
+          <a href="{{ block.settings.course_url }}" class="btn btn-primary course-cta">
+            {{ block.settings.cta_text | default: 'View Course' }}
+          </a>
+        {% endif %}
+        
+        {% if block.settings.show_wishlist %}
+          <button class="btn btn-secondary wishlist-btn" data-course-id="{{ block.settings.course_id }}">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 14L7.05 13.05C3.4 9.68 1 7.39 1 4.5C1 2.42 2.42 1 4.5 1C5.74 1 6.91 1.81 7.5 3C8.09 1.81 9.26 1 10.5 1C12.58 1 14 2.42 14 4.5C14 7.39 11.6 9.68 7.95 13.05L8 14Z" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            Save
+          </button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Recommended Course",
+  "settings": [
+    {
+      "type": "text",
+      "id": "course_id",
+      "label": "Course ID",
+      "info": "Unique identifier for this course"
+    },
+    {
+      "type": "text",
+      "id": "course_title",
+      "label": "Course Title",
+      "default": "Course Title"
+    },
+    {
+      "type": "textarea",
+      "id": "course_description",
+      "label": "Course Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "course_image",
+      "label": "Course Image"
+    },
+    {
+      "type": "text",
+      "id": "course_category",
+      "label": "Category"
+    },
+    {
+      "type": "text",
+      "id": "course_badge",
+      "label": "Course Badge",
+      "placeholder": "e.g., New, Popular, Bestseller"
+    },
+    {
+      "type": "text",
+      "id": "course_duration",
+      "label": "Duration",
+      "placeholder": "e.g., 6 weeks"
+    },
+    {
+      "type": "select",
+      "id": "course_level",
+      "label": "Skill Level",
+      "options": [
+        { "value": "beginner", "label": "Beginner" },
+        { "value": "intermediate", "label": "Intermediate" },
+        { "value": "advanced", "label": "Advanced" },
+        { "value": "expert", "label": "Expert" }
+      ],
+      "default": "beginner"
+    },
+    {
+      "type": "number",
+      "id": "lesson_count",
+      "label": "Number of Lessons"
+    },
+    {
+      "type": "range",
+      "id": "course_rating",
+      "label": "Course Rating",
+      "min": 1,
+      "max": 5,
+      "step": 0.1,
+      "default": 5,
+      "unit": "/5"
+    },
+    {
+      "type": "number",
+      "id": "review_count",
+      "label": "Number of Reviews"
+    },
+    {
+      "type": "url",
+      "id": "course_url",
+      "label": "Course URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Call-to-Action Text",
+      "default": "View Course"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wishlist",
+      "label": "Show Wishlist Button",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

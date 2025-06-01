@@ -1,0 +1,190 @@
+<div class="button-group" 
+     data-layout="{{ block.settings.layout }}"
+     data-alignment="{{ block.settings.alignment }}">
+  
+  {% if block.settings.group_title != blank %}
+    <h3 class="button-group-title">{{ block.settings.group_title }}</h3>
+  {% endif %}
+  
+  <div class="button-container">
+    {% if block.settings.primary_button_text != blank %}
+      <a href="{{ block.settings.primary_button_url | default: '#' }}" 
+         class="btn btn-primary {% if block.settings.primary_button_size != blank %}btn-{{ block.settings.primary_button_size }}{% endif %}">
+        {{ block.settings.primary_button_text }}
+      </a>
+    {% endif %}
+    
+    {% if block.settings.secondary_button_text != blank %}
+      <a href="{{ block.settings.secondary_button_url | default: '#' }}" 
+         class="btn btn-secondary {% if block.settings.secondary_button_size != blank %}btn-{{ block.settings.secondary_button_size }}{% endif %}">
+        {{ block.settings.secondary_button_text }}
+      </a>
+    {% endif %}
+    
+    {% if block.settings.tertiary_button_text != blank %}
+      <a href="{{ block.settings.tertiary_button_url | default: '#' }}" 
+         class="btn btn-outline {% if block.settings.tertiary_button_size != blank %}btn-{{ block.settings.tertiary_button_size }}{% endif %}">
+        {{ block.settings.tertiary_button_text }}
+      </a>
+    {% endif %}
+    
+    {% if block.settings.custom_button_text != blank %}
+      <a href="{{ block.settings.custom_button_url | default: '#' }}" 
+         class="btn btn-custom {% if block.settings.custom_button_size != blank %}btn-{{ block.settings.custom_button_size }}{% endif %}"
+         {% if block.settings.custom_button_style != blank %}style="{{ block.settings.custom_button_style }}"{% endif %}>
+        {{ block.settings.custom_button_text }}
+      </a>
+    {% endif %}
+  </div>
+  
+  {% if block.settings.group_description != blank %}
+    <p class="button-group-description">{{ block.settings.group_description }}</p>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Button Group",
+  "settings": [
+    {
+      "type": "text",
+      "id": "group_title",
+      "label": "Group Title"
+    },
+    {
+      "type": "textarea",
+      "id": "group_description",
+      "label": "Group Description"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "horizontal", "label": "Horizontal" },
+        { "value": "vertical", "label": "Vertical" },
+        { "value": "stacked", "label": "Stacked" }
+      ],
+      "default": "horizontal"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" },
+        { "value": "justified", "label": "Justified" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Primary Button"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Primary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_url",
+      "label": "Primary Button URL"
+    },
+    {
+      "type": "select",
+      "id": "primary_button_size",
+      "label": "Primary Button Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Secondary Button"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Secondary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_url",
+      "label": "Secondary Button URL"
+    },
+    {
+      "type": "select",
+      "id": "secondary_button_size",
+      "label": "Secondary Button Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Tertiary Button"
+    },
+    {
+      "type": "text",
+      "id": "tertiary_button_text",
+      "label": "Tertiary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "tertiary_button_url",
+      "label": "Tertiary Button URL"
+    },
+    {
+      "type": "select",
+      "id": "tertiary_button_size",
+      "label": "Tertiary Button Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Custom Button"
+    },
+    {
+      "type": "text",
+      "id": "custom_button_text",
+      "label": "Custom Button Text"
+    },
+    {
+      "type": "url",
+      "id": "custom_button_url",
+      "label": "Custom Button URL"
+    },
+    {
+      "type": "select",
+      "id": "custom_button_size",
+      "label": "Custom Button Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "text",
+      "id": "custom_button_style",
+      "label": "Custom Button CSS",
+      "placeholder": "background-color: #007bff; color: white;"
+    }
+  ]
+}
+{% endschema %}

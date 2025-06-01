@@ -17,11 +17,15 @@
       "main-collection",
       "main-blog",
       "main-article",
+      "aai-hero",
       "aai-universal-hero",
       "aai-universal-content",
       "aai-instructor-showcase",
       "aai-demo-experience",
-      "course-catalog"
+      "course-catalog",
+      "course-curriculum",
+      "instructor-profile",
+      "user-dashboard"
     ]
   },
   {

@@ -1,0 +1,114 @@
+{% comment %}
+  Course Module Block - Individual course module display
+  Used in: Course detail pages, curriculum sections
+{% endcomment %}
+
+<div class="module-block">
+  <div class="module-header">
+    <div class="module-number">{{ block.settings.module_number | default: "1" }}</div>
+    
+    <div class="module-info">
+      <h4 class="module-title">{{ block.settings.module_title | default: "Safety Fundamentals" }}</h4>
+      
+      {% if block.settings.module_duration != blank %}
+        <span class="module-duration">{{ block.settings.module_duration }}</span>
+      {% endif %}
+    </div>
+    
+    {% if block.settings.is_completed %}
+      <div class="module-status completed">
+        <span class="checkmark">✓</span>
+        <span class="status-text">Completed</span>
+      </div>
+    {% elsif block.settings.is_locked %}
+      <div class="module-status locked">
+        <span class="lock-icon">🔒</span>
+        <span class="status-text">Locked</span>
+      </div>
+    {% else %}
+      <div class="module-status available">
+        <span class="status-text">Available</span>
+      </div>
+    {% endif %}
+  </div>
+  
+  {% if block.settings.module_description != blank %}
+    <div class="module-description">
+      {{ block.settings.module_description }}
+    </div>
+  {% endif %}
+  
+  {% if block.settings.lessons_count != blank %}
+    <div class="module-lessons">
+      <span class="lessons-count">{{ block.settings.lessons_count }} lessons</span>
+    </div>
+  {% endif %}
+  
+  {% unless block.settings.is_locked %}
+    <div class="module-actions">
+      <a href="{{ block.settings.module_url | default: '#' }}" 
+         class="btn btn-primary btn-sm">
+        {% if block.settings.is_completed %}
+          Review Module
+        {% else %}
+          Start Module
+        {% endif %}
+      </a>
+    </div>
+  {% endunless %}
+</div>
+
+{% schema %}
+{
+  "name": "Course Module",
+  "settings": [
+    {
+      "type": "text",
+      "id": "module_number",
+      "label": "Module Number",
+      "default": "1"
+    },
+    {
+      "type": "text",
+      "id": "module_title",
+      "label": "Module Title",
+      "default": "Safety Fundamentals"
+    },
+    {
+      "type": "text",
+      "id": "module_duration",
+      "label": "Duration",
+      "default": "45 minutes"
+    },
+    {
+      "type": "textarea",
+      "id": "module_description",
+      "label": "Description",
+      "default": "Learn the fundamental principles of safety management"
+    },
+    {
+      "type": "text",
+      "id": "lessons_count",
+      "label": "Number of Lessons",
+      "default": "5"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_completed",
+      "label": "Mark as Completed",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "is_locked",
+      "label": "Mark as Locked",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "module_url",
+      "label": "Module URL"
+    }
+  ]
+}
+{% endschema %}

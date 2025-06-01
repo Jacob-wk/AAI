@@ -1,0 +1,110 @@
+{% comment %}
+  Demo Tab Block - Interactive demo tabs for AAI course previews
+  Used in: Demo pages, course preview sections
+{% endcomment %}
+
+<div class="demo-tab-block" data-tab-id="{{ block.id }}">
+  <button class="demo-tab-trigger" 
+          data-tab="{{ block.id }}"
+          aria-controls="demo-content-{{ block.id }}">
+    {% if block.settings.tab_icon != blank %}
+      <img src="{{ block.settings.tab_icon | image_url: width: 24 }}" 
+           alt="" 
+           class="tab-icon">
+    {% endif %}
+    <span class="tab-title">{{ block.settings.tab_title | default: "Demo Tab" }}</span>
+  </button>
+  
+  <div class="demo-tab-content" 
+       id="demo-content-{{ block.id }}"
+       role="tabpanel"
+       aria-labelledby="tab-{{ block.id }}">
+    
+    {% if block.settings.content_heading != blank %}
+      <h3 class="demo-content-heading">{{ block.settings.content_heading }}</h3>
+    {% endif %}
+    
+    {% if block.settings.content_text != blank %}
+      <div class="demo-content-text">
+        {{ block.settings.content_text }}
+      </div>
+    {% endif %}
+    
+    {% if block.settings.demo_video != blank %}
+      <div class="demo-video-container">
+        <video controls class="demo-video">
+          <source src="{{ block.settings.demo_video }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    {% endif %}
+    
+    {% if block.settings.demo_image != blank %}
+      <div class="demo-image-container">
+        <img src="{{ block.settings.demo_image | image_url: width: 600 }}" 
+             alt="{{ block.settings.content_heading }}"
+             class="demo-image">
+      </div>
+    {% endif %}
+    
+    {% if block.settings.cta_text != blank %}
+      <a href="{{ block.settings.cta_url | default: '#' }}" 
+         class="demo-cta-button btn btn-primary">
+        {{ block.settings.cta_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Demo Tab",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tab_title",
+      "label": "Tab Title",
+      "default": "Course Preview"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab_icon",
+      "label": "Tab Icon"
+    },
+    {
+      "type": "text",
+      "id": "content_heading",
+      "label": "Content Heading",
+      "default": "Course Overview"
+    },
+    {
+      "type": "richtext",
+      "id": "content_text",
+      "label": "Content Text",
+      "default": "<p>Explore this interactive course preview...</p>"
+    },
+    {
+      "type": "video_url",
+      "id": "demo_video",
+      "label": "Demo Video URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "demo_image",
+      "label": "Demo Image"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Call to Action Text",
+      "default": "Start Course"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Call to Action URL"
+    }
+  ]
+}
+{% endschema %}

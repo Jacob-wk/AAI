@@ -1,0 +1,82 @@
+{% comment %}
+  Instructor Block
+  Used within aai-instructor-showcase section
+{% endcomment %}
+
+<div class="instructor-card">
+  <div class="instructor-image">
+    {% if block.settings.instructor_image != blank %}
+      <img src="{{ block.settings.instructor_image | image_url: width: 300 }}" 
+           alt="{{ block.settings.instructor_name }}" 
+           loading="lazy">
+    {% else %}
+      <div class="instructor-placeholder">
+        <svg width="120" height="120" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+          <path d="M20 21a8 8 0 1 0-16 0" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+    {% endif %}
+  </div>
+  
+  <div class="instructor-info">
+    <h3 class="instructor-name">{{ block.settings.instructor_name }}</h3>
+    <p class="instructor-title">{{ block.settings.instructor_title }}</p>
+    
+    {% if block.settings.instructor_credentials != blank %}
+      <div class="instructor-credentials">
+        <strong>Credentials:</strong> {{ block.settings.instructor_credentials }}
+      </div>
+    {% endif %}
+    
+    {% if block.settings.instructor_bio != blank %}
+      <p class="instructor-bio">{{ block.settings.instructor_bio }}</p>
+    {% endif %}
+    
+    {% if block.settings.instructor_specialties != blank %}
+      <div class="instructor-specialties">
+        <strong>Specialties:</strong> {{ block.settings.instructor_specialties }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Instructor",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "instructor_image",
+      "label": "Instructor Photo"
+    },
+    {
+      "type": "text",
+      "id": "instructor_name",
+      "label": "Instructor Name",
+      "default": "Instructor Name"
+    },
+    {
+      "type": "text",
+      "id": "instructor_title",
+      "label": "Job Title",
+      "default": "Safety Professional"
+    },
+    {
+      "type": "textarea",
+      "id": "instructor_bio",
+      "label": "Biography"
+    },
+    {
+      "type": "text",
+      "id": "instructor_credentials",
+      "label": "Credentials"
+    },
+    {
+      "type": "text",
+      "id": "instructor_specialties",
+      "label": "Specialties"
+    }
+  ]
+}
+{% endschema %}

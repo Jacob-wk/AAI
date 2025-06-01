@@ -1,0 +1,102 @@
+{% comment %}
+  Certificate Block - Display earned certificates
+  Used in: User dashboard, profile pages
+{% endcomment %}
+
+<div class="certificate-block">
+  <div class="certificate-card">
+    {% if block.settings.certificate_image != blank %}
+      <div class="certificate-image">
+        <img src="{{ block.settings.certificate_image | image_url: width: 200 }}" 
+             alt="{{ block.settings.certificate_name }}"
+             loading="lazy">
+      </div>
+    {% endif %}
+    
+    <div class="certificate-details">
+      <h4 class="certificate-name">{{ block.settings.certificate_name | default: "Safety Management Professional" }}</h4>
+      
+      <div class="certificate-meta">
+        <p class="issue-date">
+          <strong>Issued:</strong> {{ block.settings.issue_date | default: "March 15, 2025" }}
+        </p>
+        
+        {% if block.settings.certificate_id != blank %}
+          <p class="certificate-id">
+            <strong>ID:</strong> {{ block.settings.certificate_id }}
+          </p>
+        {% endif %}
+        
+        {% if block.settings.expiry_date != blank %}
+          <p class="expiry-date">
+            <strong>Expires:</strong> {{ block.settings.expiry_date }}
+          </p>
+        {% endif %}
+      </div>
+      
+      <div class="certificate-actions">
+        {% if block.settings.download_url != blank %}
+          <a href="{{ block.settings.download_url }}" 
+             class="btn btn-outline btn-sm"
+             download>
+            Download PDF
+          </a>
+        {% endif %}
+        
+        {% if block.settings.verify_url != blank %}
+          <a href="{{ block.settings.verify_url }}" 
+             class="btn btn-outline btn-sm"
+             target="_blank">
+            Verify Certificate
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Certificate",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "certificate_image",
+      "label": "Certificate Image"
+    },
+    {
+      "type": "text",
+      "id": "certificate_name",
+      "label": "Certificate Name",
+      "default": "Safety Management Professional"
+    },
+    {
+      "type": "text",
+      "id": "issue_date",
+      "label": "Issue Date",
+      "default": "March 15, 2025"
+    },
+    {
+      "type": "text",
+      "id": "certificate_id",
+      "label": "Certificate ID",
+      "default": "AAI-SMP-2025-001"
+    },
+    {
+      "type": "text",
+      "id": "expiry_date",
+      "label": "Expiry Date"
+    },
+    {
+      "type": "url",
+      "id": "download_url",
+      "label": "Download URL"
+    },
+    {
+      "type": "url",
+      "id": "verify_url",
+      "label": "Verify URL"
+    }
+  ]
+}
+{% endschema %}

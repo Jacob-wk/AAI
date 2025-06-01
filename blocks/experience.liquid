@@ -1,0 +1,170 @@
+<div class="experience-block" data-experience-type="{{ block.settings.experience_type }}">
+  <div class="experience-content">
+    {% if block.settings.experience_icon != blank %}
+      <div class="experience-icon">
+        <img src="{{ block.settings.experience_icon | image_url: width: 60 }}" 
+             alt="{{ block.settings.experience_title }}" 
+             width="60" height="60" loading="lazy">
+      </div>
+    {% else %}
+      <div class="experience-icon default">
+        {% case block.settings.experience_type %}
+          {% when 'hands-on' %}
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+              <path d="M30 5C16.2 5 5 16.2 5 30C5 43.8 16.2 55 30 55C43.8 55 55 43.8 55 30C55 16.2 43.8 5 30 5ZM30 50C19 50 10 41 10 30C10 19 19 10 30 10C41 10 50 19 50 30C50 41 41 50 30 50Z" fill="currentColor"/>
+              <path d="M25 20V35L35 40L37 36L30 32V20H25Z" fill="currentColor"/>
+            </svg>
+          {% when 'project' %}
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+              <path d="M10 10H50V50H10V10ZM15 15V45H45V15H15Z" fill="currentColor"/>
+              <path d="M20 25H40V30H20V25ZM20 35H35V40H20V35Z" fill="currentColor"/>
+            </svg>
+          {% when 'certification' %}
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+              <path d="M30 5L35 20H50L38 30L43 45L30 37L17 45L22 30L10 20H25L30 5Z" fill="currentColor"/>
+            </svg>
+          {% else %}
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+              <path d="M30 5C16.2 5 5 16.2 5 30C5 43.8 16.2 55 30 55C43.8 55 55 43.8 55 30C55 16.2 43.8 5 30 5Z" fill="currentColor"/>
+              <path d="M25 22L35 30L25 38V22Z" fill="white"/>
+            </svg>
+        {% endcase %}
+      </div>
+    {% endif %}
+    
+    <div class="experience-info">
+      <h3 class="experience-title">{{ block.settings.experience_title | default: 'Experience Title' }}</h3>
+      
+      {% if block.settings.experience_description != blank %}
+        <p class="experience-description">{{ block.settings.experience_description }}</p>
+      {% endif %}
+      
+      <div class="experience-details">
+        {% if block.settings.experience_duration != blank %}
+          <div class="detail-item">
+            <span class="detail-label">Duration:</span>
+            <span class="detail-value">{{ block.settings.experience_duration }}</span>
+          </div>
+        {% endif %}
+        
+        {% if block.settings.experience_tools != blank %}
+          <div class="detail-item">
+            <span class="detail-label">Tools:</span>
+            <span class="detail-value">{{ block.settings.experience_tools }}</span>
+          </div>
+        {% endif %}
+        
+        {% if block.settings.experience_difficulty != blank %}
+          <div class="detail-item">
+            <span class="detail-label">Difficulty:</span>
+            <span class="detail-value difficulty-{{ block.settings.experience_difficulty }}">
+              {{ block.settings.experience_difficulty | capitalize }}
+            </span>
+          </div>
+        {% endif %}
+      </div>
+      
+      {% if block.settings.experience_features != blank %}
+        <div class="experience-features">
+          <h4>What You'll Do:</h4>
+          <ul>
+            {% assign features = block.settings.experience_features | split: ',' %}
+            {% for feature in features %}
+              {% assign feature_trimmed = feature | strip %}
+              {% if feature_trimmed != blank %}
+                <li>{{ feature_trimmed }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  {% if block.settings.experience_url != blank %}
+    <div class="experience-action">
+      <a href="{{ block.settings.experience_url }}" class="btn btn-primary experience-cta">
+        {{ block.settings.cta_text | default: 'Start Experience' }}
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Experience",
+  "settings": [
+    {
+      "type": "select",
+      "id": "experience_type",
+      "label": "Experience Type",
+      "options": [
+        { "value": "hands-on", "label": "Hands-On Lab" },
+        { "value": "project", "label": "Project" },
+        { "value": "simulation", "label": "Simulation" },
+        { "value": "case-study", "label": "Case Study" },
+        { "value": "certification", "label": "Certification" },
+        { "value": "workshop", "label": "Workshop" }
+      ],
+      "default": "hands-on"
+    },
+    {
+      "type": "text",
+      "id": "experience_title",
+      "label": "Experience Title",
+      "default": "Experience Title"
+    },
+    {
+      "type": "textarea",
+      "id": "experience_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "experience_icon",
+      "label": "Custom Icon"
+    },
+    {
+      "type": "text",
+      "id": "experience_duration",
+      "label": "Duration",
+      "placeholder": "e.g., 2-3 hours"
+    },
+    {
+      "type": "text",
+      "id": "experience_tools",
+      "label": "Tools/Technologies",
+      "placeholder": "e.g., Python, Jupyter, AWS"
+    },
+    {
+      "type": "select",
+      "id": "experience_difficulty",
+      "label": "Difficulty Level",
+      "options": [
+        { "value": "beginner", "label": "Beginner" },
+        { "value": "intermediate", "label": "Intermediate" },
+        { "value": "advanced", "label": "Advanced" }
+      ],
+      "default": "beginner"
+    },
+    {
+      "type": "textarea",
+      "id": "experience_features",
+      "label": "Features/Activities",
+      "info": "Enter features separated by commas",
+      "placeholder": "Build a model, Analyze data, Deploy solution"
+    },
+    {
+      "type": "url",
+      "id": "experience_url",
+      "label": "Experience URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Call-to-Action Text",
+      "default": "Start Experience"
+    }
+  ]
+}
+{% endschema %}

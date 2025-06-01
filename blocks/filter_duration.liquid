@@ -1,0 +1,71 @@
+<div class="filter-duration">
+  <div class="filter-header">
+    <h4 class="filter-title">{{ block.settings.filter_title | default: 'Duration' }}</h4>
+    {% if block.settings.collapsible %}
+      <button type="button" class="filter-toggle" aria-expanded="true">
+        <svg class="filter-chevron" width="16" height="16" viewBox="0 0 16 16">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+      </button>
+    {% endif %}
+  </div>
+  
+  <div class="filter-content" {% if block.settings.collapsible %}data-collapsible{% endif %}>
+    {% assign durations = block.settings.durations | split: ',' %}
+    {% for duration in durations %}
+      {% assign duration_trimmed = duration | strip %}
+      {% if duration_trimmed != blank %}
+        <label class="filter-option">
+          <input type="checkbox" name="duration" value="{{ duration_trimmed | handle }}" class="filter-checkbox">
+          <span class="filter-label">{{ duration_trimmed }}</span>
+        </label>
+      {% endif %}
+    {% endfor %}
+    
+    {% if block.settings.show_all_option %}
+      <label class="filter-option filter-all">
+        <input type="checkbox" name="duration" value="all" class="filter-checkbox">
+        <span class="filter-label">{{ block.settings.all_text | default: 'Any Duration' }}</span>
+      </label>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Duration Filter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "filter_title",
+      "label": "Filter Title",
+      "default": "Duration"
+    },
+    {
+      "type": "textarea",
+      "id": "durations",
+      "label": "Duration Options",
+      "info": "Enter durations separated by commas",
+      "default": "1-2 weeks, 3-4 weeks, 1-2 months, 3-6 months, 6+ months"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_all_option",
+      "label": "Show 'Any Duration' option",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "all_text",
+      "label": "'All' Option Text",
+      "default": "Any Duration"
+    },
+    {
+      "type": "checkbox",
+      "id": "collapsible",
+      "label": "Make filter collapsible",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

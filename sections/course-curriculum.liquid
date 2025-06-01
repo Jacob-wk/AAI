@@ -1,0 +1,323 @@
+{% comment %}
+  Course Curriculum Section
+  - Displays course curriculum and learning objectives
+  - Professional AAI styling for educational content
+{% endcomment %}
+
+{{ 'section-course-curriculum.css' | asset_url | stylesheet_tag }}
+
+<section class="course-curriculum">
+  <div class="aai-container">
+    {% if section.settings.section_title != blank %}
+      <div class="section-header">
+        <h2 class="section-title">{{ section.settings.section_title }}</h2>
+        {% if section.settings.section_subtitle != blank %}
+          <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="curriculum-content">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'module' %}
+            <div class="curriculum-module" {{ block.shopify_attributes }}>
+              <div class="module-header">
+                <h3 class="module-title">{{ block.settings.module_title }}</h3>
+                {% if block.settings.module_duration != blank %}
+                  <span class="module-duration">{{ block.settings.module_duration }}</span>
+                {% endif %}
+              </div>
+              {% if block.settings.module_description != blank %}
+                <p class="module-description">{{ block.settings.module_description }}</p>
+              {% endif %}
+              {% if block.settings.learning_objectives != blank %}
+                <div class="learning-objectives">
+                  <h4>Learning Objectives:</h4>
+                  <div class="objectives-list">{{ block.settings.learning_objectives }}</div>
+                </div>
+              {% endif %}
+            </div>
+          {% when 'lesson' %}
+            <div class="curriculum-lesson" {{ block.shopify_attributes }}>
+              <div class="lesson-info">
+                <h4 class="lesson-title">{{ block.settings.lesson_title }}</h4>
+                {% if block.settings.lesson_type != blank %}
+                  <span class="lesson-type">{{ block.settings.lesson_type }}</span>
+                {% endif %}
+              </div>
+              {% if block.settings.lesson_description != blank %}
+                <p class="lesson-description">{{ block.settings.lesson_description }}</p>
+              {% endif %}
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_cta %}
+      <div class="curriculum-cta">
+        <a href="{{ section.settings.cta_url | default: '/collections/courses' }}" class="aai-btn-primary">
+          {{ section.settings.cta_text | default: 'Enroll Now' }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.course-curriculum {
+  padding: 60px 0;
+  background: var(--color-background);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-foreground-75);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.curriculum-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.curriculum-module {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-left: 4px solid #ff6b35;
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.module-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e3a5f;
+  margin: 0;
+}
+
+.module-duration {
+  background: #3498db;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.curriculum-lesson {
+  background: #f8f9fa;
+  padding: 20px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border-left: 3px solid #3498db;
+}
+
+.lesson-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.lesson-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #1e3a5f;
+  margin: 0;
+}
+
+.lesson-type {
+  background: #e9ecef;
+  color: #495057;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.curriculum-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.aai-btn-primary {
+  background: #ff6b35;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.aai-btn-primary:hover {
+  background: #e55a2e;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .module-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .lesson-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Course Curriculum",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section title",
+      "default": "Course Curriculum"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section subtitle",
+      "default": "Comprehensive learning modules designed by industry experts"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show call to action",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA button text",
+      "default": "Enroll Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "module",
+      "name": "Course Module",
+      "settings": [
+        {
+          "type": "text",
+          "id": "module_title",
+          "label": "Module title",
+          "default": "Safety Fundamentals"
+        },
+        {
+          "type": "text",
+          "id": "module_duration",
+          "label": "Duration",
+          "default": "2 hours"
+        },
+        {
+          "type": "textarea",
+          "id": "module_description",
+          "label": "Module description",
+          "default": "Introduction to amusement industry safety standards and regulations."
+        },
+        {
+          "type": "richtext",
+          "id": "learning_objectives",
+          "label": "Learning objectives",
+          "default": "<ul><li>Understand ASTM safety standards</li><li>Identify potential hazards</li><li>Implement safety protocols</li></ul>"
+        }
+      ]
+    },
+    {
+      "type": "lesson",
+      "name": "Lesson",
+      "settings": [
+        {
+          "type": "text",
+          "id": "lesson_title",
+          "label": "Lesson title",
+          "default": "ASTM F24 Standards Overview"
+        },
+        {
+          "type": "select",
+          "id": "lesson_type",
+          "label": "Lesson type",
+          "options": [
+            {"value": "video", "label": "Video"},
+            {"value": "reading", "label": "Reading"},
+            {"value": "quiz", "label": "Quiz"},
+            {"value": "interactive", "label": "Interactive"}
+          ],
+          "default": "video"
+        },
+        {
+          "type": "textarea",
+          "id": "lesson_description",
+          "label": "Lesson description",
+          "default": "Comprehensive overview of ASTM F24 committee standards for amusement rides and devices."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Course Curriculum",
+      "blocks": [
+        {
+          "type": "module",
+          "settings": {
+            "module_title": "Safety Fundamentals",
+            "module_duration": "2 hours"
+          }
+        },
+        {
+          "type": "lesson",
+          "settings": {
+            "lesson_title": "ASTM F24 Standards Overview",
+            "lesson_type": "video"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

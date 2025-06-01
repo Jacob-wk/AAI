@@ -1,0 +1,151 @@
+<div class="lesson-block" data-lesson-id="{{ block.settings.lesson_id }}">
+  <div class="lesson-header">
+    {% if block.settings.lesson_thumbnail != blank %}
+      <div class="lesson-thumbnail">
+        <img src="{{ block.settings.lesson_thumbnail | image_url: width: 120 }}" 
+             alt="{{ block.settings.lesson_title }}" 
+             width="120" height="80" loading="lazy">
+        {% if block.settings.lesson_duration != blank %}
+          <span class="lesson-duration">{{ block.settings.lesson_duration }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    <div class="lesson-info">
+      <h4 class="lesson-title">{{ block.settings.lesson_title | default: 'Lesson Title' }}</h4>
+      {% if block.settings.lesson_description != blank %}
+        <p class="lesson-description">{{ block.settings.lesson_description }}</p>
+      {% endif %}
+      
+      <div class="lesson-meta">
+        {% if block.settings.lesson_type != blank %}
+          <span class="lesson-type">{{ block.settings.lesson_type }}</span>
+        {% endif %}
+        {% if block.settings.lesson_difficulty != blank %}
+          <span class="lesson-difficulty">{{ block.settings.lesson_difficulty }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+  <div class="lesson-status">
+    {% if block.settings.is_completed %}
+      <div class="completion-status completed">
+        <svg class="checkmark" width="20" height="20" viewBox="0 0 20 20">
+          <path d="M7 13L3 9L4.4 7.6L7 10.2L15.6 1.6L17 3L7 13Z" fill="currentColor"/>
+        </svg>
+        <span>Completed</span>
+      </div>
+    {% elsif block.settings.is_in_progress %}
+      <div class="completion-status in-progress">
+        <div class="progress-indicator">
+          <div class="progress-bar" style="width: {{ block.settings.progress_percentage | default: 0 }}%"></div>
+        </div>
+        <span>{{ block.settings.progress_percentage | default: 0 }}% Complete</span>
+      </div>
+    {% else %}
+      <div class="completion-status not-started">
+        <span>Not Started</span>
+      </div>
+    {% endif %}
+    
+    {% if block.settings.lesson_url != blank %}
+      <a href="{{ block.settings.lesson_url }}" class="lesson-action-btn">
+        {% if block.settings.is_completed %}
+          Review Lesson
+        {% elsif block.settings.is_in_progress %}
+          Continue
+        {% else %}
+          Start Lesson
+        {% endif %}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Lesson",
+  "settings": [
+    {
+      "type": "text",
+      "id": "lesson_id",
+      "label": "Lesson ID",
+      "info": "Unique identifier for this lesson"
+    },
+    {
+      "type": "text",
+      "id": "lesson_title",
+      "label": "Lesson Title",
+      "default": "Lesson Title"
+    },
+    {
+      "type": "textarea",
+      "id": "lesson_description",
+      "label": "Lesson Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "lesson_thumbnail",
+      "label": "Lesson Thumbnail"
+    },
+    {
+      "type": "text",
+      "id": "lesson_duration",
+      "label": "Duration",
+      "placeholder": "e.g., 15 min"
+    },
+    {
+      "type": "select",
+      "id": "lesson_type",
+      "label": "Lesson Type",
+      "options": [
+        { "value": "video", "label": "Video" },
+        { "value": "reading", "label": "Reading" },
+        { "value": "quiz", "label": "Quiz" },
+        { "value": "assignment", "label": "Assignment" },
+        { "value": "live", "label": "Live Session" }
+      ],
+      "default": "video"
+    },
+    {
+      "type": "select",
+      "id": "lesson_difficulty",
+      "label": "Difficulty",
+      "options": [
+        { "value": "beginner", "label": "Beginner" },
+        { "value": "intermediate", "label": "Intermediate" },
+        { "value": "advanced", "label": "Advanced" }
+      ],
+      "default": "beginner"
+    },
+    {
+      "type": "url",
+      "id": "lesson_url",
+      "label": "Lesson URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_completed",
+      "label": "Mark as Completed",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "is_in_progress",
+      "label": "Mark as In Progress",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "progress_percentage",
+      "label": "Progress Percentage",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "%"
+    }
+  ]
+}
+{% endschema %}

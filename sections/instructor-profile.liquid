@@ -1,0 +1,494 @@
+{% comment %}
+  Instructor Profile Section
+  - Displays individual instructor profile with credentials
+  - Professional AAI styling for instructor showcase
+{% endcomment %}
+
+{{ 'section-instructor-profile.css' | asset_url | stylesheet_tag }}
+
+<section class="instructor-profile">
+  <div class="aai-container">
+    <div class="profile-content">
+      <div class="profile-image">
+        {% if section.settings.instructor_image != blank %}
+          {{ section.settings.instructor_image | image_url: width: 400 | image_tag: 
+             loading: 'lazy',
+             sizes: '(min-width: 750px) 400px, 100vw',
+             widths: '200, 300, 400, 500',
+             alt: section.settings.instructor_name
+          }}
+        {% else %}
+          <div class="placeholder-image">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+              <circle cx="60" cy="45" r="20" fill="#ccc"/>
+              <path d="M20 100c0-22 18-40 40-40s40 18 40 40" fill="#ccc"/>
+            </svg>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="profile-info">
+        <div class="profile-header">
+          {% if section.settings.instructor_name != blank %}
+            <h1 class="instructor-name">{{ section.settings.instructor_name }}</h1>
+          {% endif %}
+          {% if section.settings.instructor_title != blank %}
+            <p class="instructor-title">{{ section.settings.instructor_title }}</p>
+          {% endif %}
+        </div>
+
+        {% if section.settings.instructor_bio != blank %}
+          <div class="instructor-bio">
+            {{ section.settings.instructor_bio }}
+          </div>
+        {% endif %}
+
+        <div class="credentials-section">
+          {% if section.settings.show_credentials %}
+            <h3 class="credentials-title">Professional Credentials</h3>
+            <div class="credentials-grid">
+              {% for block in section.blocks %}
+                {% if block.type == 'credential' %}
+                  <div class="credential-item" {{ block.shopify_attributes }}>
+                    {% if block.settings.credential_icon != blank %}
+                      <div class="credential-icon">
+                        {{ block.settings.credential_icon | image_url: width: 60 | image_tag: 
+                           loading: 'lazy', alt: block.settings.credential_name }}
+                      </div>
+                    {% endif %}
+                    <div class="credential-info">
+                      <h4 class="credential-name">{{ block.settings.credential_name }}</h4>
+                      {% if block.settings.credential_org != blank %}
+                        <p class="credential-org">{{ block.settings.credential_org }}</p>
+                      {% endif %}
+                      {% if block.settings.credential_year != blank %}
+                        <p class="credential-year">{{ block.settings.credential_year }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        {% if section.settings.show_experience %}
+          <div class="experience-section">
+            <h3 class="experience-title">Professional Experience</h3>
+            <div class="experience-list">
+              {% for block in section.blocks %}
+                {% if block.type == 'experience' %}
+                  <div class="experience-item" {{ block.shopify_attributes }}>
+                    <div class="experience-period">{{ block.settings.experience_period }}</div>
+                    <div class="experience-details">
+                      <h4 class="experience-role">{{ block.settings.experience_role }}</h4>
+                      <p class="experience-company">{{ block.settings.experience_company }}</p>
+                      {% if block.settings.experience_description != blank %}
+                        <p class="experience-description">{{ block.settings.experience_description }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if section.settings.show_contact %}
+          <div class="contact-section">
+            <h3 class="contact-title">Get in Touch</h3>
+            <div class="contact-info">
+              {% if section.settings.contact_email != blank %}
+                <a href="mailto:{{ section.settings.contact_email }}" class="contact-link">
+                  <span class="contact-icon">✉</span>
+                  {{ section.settings.contact_email }}
+                </a>
+              {% endif %}
+              {% if section.settings.contact_linkedin != blank %}
+                <a href="{{ section.settings.contact_linkedin }}" class="contact-link" target="_blank">
+                  <span class="contact-icon">💼</span>
+                  LinkedIn Profile
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.instructor-profile {
+  padding: 80px 0;
+  background: var(--color-background);
+}
+
+.profile-content {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.profile-image {
+  position: sticky;
+  top: 100px;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 400px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-header {
+  margin-bottom: 32px;
+}
+
+.instructor-name {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.instructor-title {
+  font-size: 1.25rem;
+  color: #ff6b35;
+  font-weight: 600;
+  margin: 0;
+}
+
+.instructor-bio {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #495057;
+  margin-bottom: 40px;
+}
+
+.credentials-section,
+.experience-section,
+.contact-section {
+  margin-bottom: 40px;
+}
+
+.credentials-title,
+.experience-title,
+.contact-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e3a5f;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+}
+
+.credentials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.credential-item {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-left: 4px solid #3498db;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.credential-icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.credential-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e3a5f;
+  margin-bottom: 4px;
+}
+
+.credential-org {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-bottom: 2px;
+}
+
+.credential-year {
+  font-size: 0.875rem;
+  color: #ff6b35;
+  font-weight: 500;
+  margin: 0;
+}
+
+.experience-list {
+  space-y: 24px;
+}
+
+.experience-item {
+  background: white;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-left: 4px solid #ff6b35;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.experience-period {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #3498db;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.experience-role {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e3a5f;
+  margin-bottom: 4px;
+}
+
+.experience-company {
+  font-size: 1rem;
+  color: #ff6b35;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.experience-description {
+  color: #495057;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #1e3a5f;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #3498db;
+}
+
+.contact-icon {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+  .profile-content {
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .profile-image {
+    position: static;
+  }
+  
+  .instructor-name {
+    font-size: 2.5rem;
+  }
+  
+  .experience-item {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .credentials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Instructor Profile",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Instructor Information"
+    },
+    {
+      "type": "image_picker",
+      "id": "instructor_image",
+      "label": "Instructor photo"
+    },
+    {
+      "type": "text",
+      "id": "instructor_name",
+      "label": "Instructor name",
+      "default": "Dr. Safety Expert"
+    },
+    {
+      "type": "text",
+      "id": "instructor_title",
+      "label": "Job title",
+      "default": "Chief Safety Officer & Lead Instructor"
+    },
+    {
+      "type": "richtext",
+      "id": "instructor_bio",
+      "label": "Biography",
+      "default": "<p>With over 20 years of experience in amusement industry safety, Dr. Expert has dedicated their career to advancing safety standards and training the next generation of safety professionals.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Display Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_credentials",
+      "label": "Show credentials section",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_experience",
+      "label": "Show experience section",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact",
+      "label": "Show contact section",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Contact Information"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Email address"
+    },
+    {
+      "type": "url",
+      "id": "contact_linkedin",
+      "label": "LinkedIn profile URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "credential",
+      "name": "Professional Credential",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "credential_icon",
+          "label": "Credential icon/logo"
+        },
+        {
+          "type": "text",
+          "id": "credential_name",
+          "label": "Credential name",
+          "default": "Certified Safety Professional"
+        },
+        {
+          "type": "text",
+          "id": "credential_org",
+          "label": "Issuing organization",
+          "default": "IAAPA"
+        },
+        {
+          "type": "text",
+          "id": "credential_year",
+          "label": "Year obtained",
+          "default": "2020"
+        }
+      ]
+    },
+    {
+      "type": "experience",
+      "name": "Work Experience",
+      "settings": [
+        {
+          "type": "text",
+          "id": "experience_period",
+          "label": "Time period",
+          "default": "2015 - Present"
+        },
+        {
+          "type": "text",
+          "id": "experience_role",
+          "label": "Job title",
+          "default": "Senior Safety Manager"
+        },
+        {
+          "type": "text",
+          "id": "experience_company",
+          "label": "Company/Organization",
+          "default": "Theme Park Safety Solutions"
+        },
+        {
+          "type": "textarea",
+          "id": "experience_description",
+          "label": "Description",
+          "default": "Led safety initiatives across multiple theme park properties, implementing comprehensive training programs and safety protocols."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instructor Profile",
+      "blocks": [
+        {
+          "type": "credential",
+          "settings": {
+            "credential_name": "Certified Safety Professional",
+            "credential_org": "IAAPA"
+          }
+        },
+        {
+          "type": "experience",
+          "settings": {
+            "experience_role": "Senior Safety Manager",
+            "experience_company": "Theme Park Safety Solutions"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

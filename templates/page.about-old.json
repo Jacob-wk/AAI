@@ -106,7 +106,7 @@
     },
     "main": {
       "type": "main-page",
-      "blocks": {
+      "blocks": [
         "hero",
         "mission", 
         "credentials",

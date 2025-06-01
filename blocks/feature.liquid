@@ -1,0 +1,47 @@
+{% comment %}
+  Feature Block
+  Used within aai-universal-hero sections for feature highlights
+{% endcomment %}
+
+<div class="feature-block">
+  {% if block.settings.feature_icon != blank %}
+    <div class="feature-icon">
+      {{ block.settings.feature_icon }}
+    </div>
+  {% endif %}
+  
+  <div class="feature-content">
+    {% if block.settings.feature_title != blank %}
+      <h4 class="feature-title">{{ block.settings.feature_title }}</h4>
+    {% endif %}
+    
+    {% if block.settings.feature_description != blank %}
+      <p class="feature-description">{{ block.settings.feature_description }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Feature",
+  "settings": [
+    {
+      "type": "text",
+      "id": "feature_icon",
+      "label": "Icon (HTML/SVG)",
+      "info": "Add an icon or emoji"
+    },
+    {
+      "type": "text",
+      "id": "feature_title",
+      "label": "Feature Title",
+      "default": "Feature Title"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_description",
+      "label": "Feature Description"
+    }
+  ]
+}
+{% endschema %}
