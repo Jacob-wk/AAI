@@ -1,4 +1,5 @@
 {
+  "name": "Index Simple Page",
   "sections": {
     "header": {
       "type": "aai-header",

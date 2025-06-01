@@ -1,4 +1,5 @@
 {
+  "name": "Webinars Page",
   "sections": {
     "main": {
       "type": "aai-webinars-hero",

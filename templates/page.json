@@ -1,4 +1,5 @@
 {
+  "name": "Default Page",
   "sections": {
     "hero": {
       "type": "aai-universal-hero",

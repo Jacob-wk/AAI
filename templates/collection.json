@@ -1,4 +1,5 @@
 {
+  "name": "Default Collection",
   "sections": {
     "hero": {
       "type": "aai-universal-hero",

@@ -1,4 +1,5 @@
 {
+  "name": "Article Fixed Layout",
   "sections": {
     "main": {
       "type": "main-blog-post",

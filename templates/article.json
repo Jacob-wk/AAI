@@ -1,4 +1,5 @@
 {
+  "name": "Default Article",
   "sections": {
     "article_hero": {
       "type": "aai-universal-hero",

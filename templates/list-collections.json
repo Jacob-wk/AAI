@@ -1,4 +1,5 @@
 {
+  "name": "List Collections Page",
   "sections": {
     "main": {
       "type": "collection-list",
