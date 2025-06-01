@@ -1,0 +1,80 @@
+{% comment %} /workspaces/AAI/sections/aai-collection-courses-grid.liquid {% endcomment %}
+<div class="collection-courses-grid {{ section.settings.custom_class }}" id="collection-grid-{{ section.id }}">
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <h2 class="collection-grid-title">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <p class="collection-grid-description">{{ section.settings.description }}</p>
+    {% endif %}
+
+    <div class="grid-container">
+      {%- for product in collection.products -%}
+        <div class="course-card">
+          {% if product.featured_image %}
+            <a href="{{ product.url | within: collection }}" class="course-card-image-link">
+              <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.featured_image.alt | escape }}" loading="lazy" class="course-card-image">
+            </a>
+          {% endif %}
+          <div class="course-card-content">
+            <h3 class="course-card-title">
+              <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+            </h3>
+            {% if product.metafields.course.short_description %}
+              <p class="course-card-description">{{ product.metafields.course.short_description }}</p>
+            {% endif %}
+            <div class="course-card-details">
+              {% if product.metafields.course.duration %}
+                <span class="course-duration"><svg><!-- icon --></svg> {{ product.metafields.course.duration }}</span>
+              {% endif %}
+              {% if product.metafields.course.level %}
+                <span class="course-level"><svg><!-- icon --></svg> {{ product.metafields.course.level }}</span>
+              {% endif %}
+            </div>
+            <a href="{{ product.url | within: collection }}" class="aai-btn aai-btn-primary course-card-button">
+              {{ 'products.product.view_course' | t }}
+            </a>
+          </div>
+        </div>
+      {%- else -%}
+        <p>{{ 'collections.general.no_matches' | t }}</p>
+      {%- endfor -%}
+    </div>
+
+    {% if paginate.pages > 1 %}
+      {%- render 'pagination', paginate: paginate -%}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "AAI Collection Courses Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "All Courses"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS Class"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Collection Courses Grid",
+      "settings": {
+        "title": "All Courses"
+      }
+    }
+  ]
+}
+{% endschema %}

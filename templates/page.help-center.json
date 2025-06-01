@@ -1,102 +1,120 @@
 {
+  "name": "Help Center",
   "sections": {
     "hero": {
-      "type": "aai-universal-hero",
+      "type": "aai-help-center-hero",
       "settings": {
-        "hero_title": "Help Center",
-        "hero_subtitle": "Find answers and get support for your AAI learning experience",
-        "background_color": "#1e40af",
-        "text_color": "#ffffff",
-        "layout_style": "centered"
+        "title": "AAI Help Center",
+        "subtitle": "How can we help you today?",
+        "search_placeholder": "Search for answers..."
       }
     },
-    "help_search": {
-      "type": "aai-universal-content",
+    "categories": {
+      "type": "aai-help-categories",
+      "settings": {
+        "title": "Browse by Category"
+      },
       "blocks": {
-        "search_block": {
-          "type": "text_block",
+        "cat_gs": {
+          "type": "category_item",
           "settings": {
-            "block_title": "",
-            "block_content": "<div class='help-search'><input type='search' placeholder='Search help articles...' class='help-search-input'><button class='help-search-btn'>Search</button></div>"
+            "category_icon": "🚀",
+            "category_title": "Getting Started",
+            "category_description": "Find answers to common questions about starting with AAI.",
+            "category_url": "/pages/help-getting-started"
+          }
+        },
+        "cat_cc": {
+          "type": "category_item",
+          "settings": {
+            "category_icon": "🎓",
+            "category_title": "Courses & Certifications",
+            "category_description": "Information about our courses, curriculum, and certification process.",
+            "category_url": "/pages/help-courses"
+          }
+        },
+        "cat_am": {
+          "type": "category_item",
+          "settings": {
+            "category_icon": "👤",
+            "category_title": "Account Management",
+            "category_description": "Help with your AAI account, billing, and subscriptions.",
+            "category_url": "/pages/help-account"
+          }
+        },
+        "cat_ts": {
+          "type": "category_item",
+          "settings": {
+            "category_icon": "🛠️",
+            "category_title": "Technical Support",
+            "category_description": "Troubleshooting tips and technical assistance.",
+            "category_url": "/pages/help-technical"
           }
         }
       },
-      "block_order": [
-        "search_block"
-      ],
-      "settings": {
-        "layout_style": "text-center",
-        "background_style": ""
-      }
+      "block_order": ["cat_gs", "cat_cc", "cat_am", "cat_ts"]
     },
-    "faq_categories": {
-      "type": "aai-universal-content",
+    "faq": {
+      "type": "aai-help-faq",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      },
       "blocks": {
-        "getting_started": {
-          "type": "text_block",
+        "faq_1": {
+          "type": "faq_item",
           "settings": {
-            "block_title": "Getting Started",
-            "block_content": "<ul><li><a href='#'>How to access my courses</a></li><li><a href='#'>Navigating the learning platform</a></li><li><a href='#'>System requirements</a></li><li><a href='#'>Creating your profile</a></li></ul>"
+            "question": "How do I reset my password?",
+            "answer": "You can reset your password from the login page. If you still have trouble, contact support. It won't take long."
           }
         },
-        "course_management": {
-          "type": "text_block",
+        "faq_2": {
+          "type": "faq_item",
           "settings": {
-            "block_title": "Course Management",
-            "block_content": "<ul><li><a href='#'>Enrolling in courses</a></li><li><a href='#'>Tracking progress</a></li><li><a href='#'>Downloading certificates</a></li><li><a href='#'>Course completion requirements</a></li></ul>"
+            "question": "Where can I find my certificates?",
+            "answer": "Your certificates are available in your user dashboard under the 'My Certifications' section."
           }
         },
-        "technical_support": {
-          "type": "text_block",
+        "faq_3": {
+          "type": "faq_item",
           "settings": {
-            "block_title": "Technical Support",
-            "block_content": "<ul><li><a href='#'>Video playback issues</a></li><li><a href='#'>Login problems</a></li><li><a href='#'>Browser compatibility</a></li><li><a href='#'>Mobile access</a></li></ul>"
+            "question": "What if my course progress isn't saving?",
+            "answer": "Ensure you have a stable internet connection. If the issue persists, try clearing your browser cache or contact our support. This usually won't be an issue with our platform."
           }
         },
-        "billing_accounts": {
-          "type": "text_block",
+         "faq_4": {
+          "type": "faq_item",
           "settings": {
-            "block_title": "Billing & Accounts",
-            "block_content": "<ul><li><a href='#'>Payment methods</a></li><li><a href='#'>Refund policy</a></li><li><a href='#'>Group enrollment</a></li><li><a href='#'>Corporate accounts</a></li></ul>"
+            "question": "Are AAI certifications recognized internationally?",
+            "answer": "Yes, AAI certifications are recognized by leading amusement industry organizations worldwide. Many employers list AAI credentials as preferred or required."
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long do I have access to a course after enrolling?",
+            "answer": "Most courses offer lifetime access once purchased. Specific access durations, if any, will be clearly stated on the course enrollment page."
           }
         }
       },
-      "block_order": [
-        "getting_started",
-        "course_management",
-        "technical_support",
-        "billing_accounts"
-      ],
-      "settings": {
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "4",
-        "background_style": ""
-      }
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"]
     },
-    "contact_support": {
-      "type": "aai-universal-content",
-      "blocks": {
-        "support_info": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Still Need Help?",
-            "block_content": "<p>Our support team is here to assist you Monday through Friday, 8 AM to 6 PM EST.</p><div class='contact-options'><a href='/pages/contact' class='btn btn-primary'>Contact Support</a><a href='mailto:support@aai-lms.com' class='btn btn-outline'>Email Support</a></div>"
-          }
-        }
-      },
-      "block_order": [
-        "support_info"
-      ],
+    "contact": {
+      "type": "aai-help-contact",
       "settings": {
-        "layout_style": "text-center",
-        "background_style": "section-alt-1"
+        "title": "Still Need Help?",
+        "description": "Our dedicated support team is here to assist you with any questions or issues you may encounter. Don't hesitate to reach out.",
+        "contact_email_label": "Email Support",
+        "contact_email": "support@aai.com",
+        "contact_phone_label": "Phone Support",
+        "contact_phone": "1-800-555-AAII",
+        "operating_hours": "Mon-Fri, 9 AM - 6 PM EST"
       }
     }
   },
   "order": [
     "hero",
-    "help_search",
-    "faq_categories",
-    "contact_support"
+    "categories",
+    "faq",
+    "contact"
   ]
 }

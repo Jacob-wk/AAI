@@ -1,0 +1,212 @@
+{% comment %}
+  Section: Demo Page Hero
+  Displays the main hero section for the AAI platform demo page.
+{% endcomment %}
+
+{{ 'section-demo-page.css' | asset_url | stylesheet_tag }}
+
+<div class="demo-hero">
+  <div class="aai-container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">{{ section.settings.title }}</h1>
+        <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+        
+        {% if section.blocks.size > 0 %}
+          <div class="demo-features">
+            {% for block in section.blocks %}
+              <div class="demo-feature" {{ block.shopify_attributes }}>
+                <div class="feature-icon">{{ block.settings.icon }}</div>
+                <div class="feature-text">
+                  <strong>{{ block.settings.feature_title }}</strong>
+                  <span>{{ block.settings.feature_description }}</span>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+        
+        <div class="demo-cta">
+          {% if section.settings.cta_primary_text != blank and section.settings.cta_primary_link != blank %}
+            <a href="{{ section.settings.cta_primary_link }}" class="aai-btn aai-btn-primary aai-btn-large">
+              {{ section.settings.cta_primary_text }}
+            </a>
+          {% endif %}
+          {% if section.settings.cta_secondary_text != blank and section.settings.cta_secondary_link != blank %}
+            <a href="{{ section.settings.cta_secondary_link }}" class="aai-btn aai-btn-secondary aai-btn-large">
+              {{ section.settings.cta_secondary_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="demo-preview-card">
+          <div class="preview-header">
+            <div class="preview-controls">
+              <span class="control-dot red"></span>
+              <span class="control-dot yellow"></span>
+              <span class="control-dot green"></span>
+            </div>
+            <span class="preview-title">{{ section.settings.preview_card_title }}</span>
+          </div>
+          <div class="preview-content">
+            <div class="preview-nav">
+              <div class="nav-item active">Dashboard</div>
+              <div class="nav-item">Courses</div>
+              <div class="nav-item">Progress</div>
+            </div>
+            <div class="preview-main">
+              <div class="preview-course">
+                <div class="course-thumbnail">{{ section.settings.preview_course_icon }}</div>
+                <div class="course-info">
+                  <h4>{{ section.settings.preview_course_title }}</h4>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: {{ section.settings.preview_course_progress }}%"></div>
+                  </div>
+                  <span class="progress-text">{{ section.settings.preview_course_progress }}% Complete</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Demo Page Hero",
+  "tag": "section",
+  "class": "aai-demo-hero-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Hero Title",
+      "default": "Experience AAI Learning"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Hero Subtitle",
+      "default": "<p>Take a guided tour of our professional safety education platform. See how industry professionals advance their careers with AAI's comprehensive training programs.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Primary CTA Text",
+      "default": "Start Demo"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_link",
+      "label": "Primary CTA Link",
+      "default": "#demo-experience"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Secondary CTA Text",
+      "default": "Browse Courses"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_link",
+      "label": "Secondary CTA Link",
+      "default": "/collections/courses"
+    },
+    {
+      "type": "header",
+      "content": "Preview Card Content"
+    },
+    {
+      "type": "text",
+      "id": "preview_card_title",
+      "label": "Preview Card Title",
+      "default": "AAI Learning Platform"
+    },
+    {
+      "type": "text",
+      "id": "preview_course_icon",
+      "label": "Preview Course Icon",
+      "default": "🛡️"
+    },
+    {
+      "type": "text",
+      "id": "preview_course_title",
+      "label": "Preview Course Title",
+      "default": "Ride Safety Inspector"
+    },
+    {
+      "type": "range",
+      "id": "preview_course_progress",
+      "label": "Preview Course Progress",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 65
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_item",
+      "name": "Feature Item",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (Emoji or SVG)",
+          "default": "🎓"
+        },
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature Title",
+          "default": "Interactive Learning"
+        },
+        {
+          "type": "text",
+          "id": "feature_description",
+          "label": "Feature Description",
+          "default": "Hands-on simulations and real-world scenarios"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Demo Page Hero",
+      "blocks": [
+        {
+          "type": "feature_item",
+          "settings": {
+            "icon": "🎓",
+            "feature_title": "Interactive Learning",
+            "feature_description": "Hands-on simulations and real-world scenarios"
+          }
+        },
+        {
+          "type": "feature_item",
+          "settings": {
+            "icon": "📱",
+            "feature_title": "Mobile Optimized",
+            "feature_description": "Learn anywhere, anytime on any device"
+          }
+        },
+        {
+          "type": "feature_item",
+          "settings": {
+            "icon": "🏆",
+            "feature_title": "Industry Recognized",
+            "feature_description": "IAAPA certified and ASTM F24 compliant"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

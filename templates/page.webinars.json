@@ -1,93 +1,57 @@
 {
   "sections": {
-    "hero": {
-      "type": "aai-universal-hero",
+    "main": {
+      "type": "aai-webinars-hero",
       "settings": {
-        "hero_title": "Professional Webinars",
-        "hero_subtitle": "Live and recorded sessions with industry experts",
-        "show_stats": false,
-        "show_features": false
+        "title": "AAI Webinars",
+        "subtitle": "<p>Explore our live and on-demand webinars to enhance your knowledge and skills in aviation safety and training.</p>",
+        "button_label": "Explore All Webinars",
+        "button_link": "#webinar-list"
       }
     },
-    "intro": {
-      "type": "aai-universal-content",
+    "webinar_list": {
+      "type": "aai-webinars-list",
       "settings": {
-        "content_body": "<p>Join our monthly webinar series featuring cutting-edge topics, regulatory updates, and expert insights from leading safety professionals.</p>",
-        "layout_style": "text-center",
-        "background_style": ""
-      }
-    },
-    "upcoming_webinars": {
-      "type": "aai-universal-content",
+        "section_title": "Upcoming & On-Demand Webinars"
+      },
       "blocks": {
-        "ndt_techniques": {
-          "type": "text_block",
+        "webinar_1": {
+          "type": "webinar",
           "settings": {
-            "block_title": "Advanced NDT Techniques for Ride Inspection",
-            "block_content": "<p class='presenter'>Dr. Sarah Mitchell, P.E.</p><p class='date'>June 15, 2025 | 2:00 PM EST</p><p class='duration'>90 minutes | CEU: 1.5</p><p>Explore the latest non-destructive testing methods for identifying structural issues before they become critical.</p><button class='register-btn'>Register Now</button>"
+            "webinar_title": "The Future of Aviation Safety Training",
+            "webinar_date": "December 5, 2023",
+            "webinar_time": "3:00 PM EST",
+            "webinar_description": "<p>Join industry leaders as they discuss the evolving landscape of aviation safety training and the technologies shaping its future.</p>",
+            "button_label": "Watch On-Demand",
+            "button_link": "https://example.com/webinar1"
           }
         },
-        "regulatory_updates": {
-          "type": "text_block",
+        "webinar_2": {
+          "type": "webinar",
           "settings": {
-            "block_title": "Regulatory Updates: 2025 Safety Standards",
-            "block_content": "<p class='presenter'>Robert Thompson, QSI</p><p class='date'>June 29, 2025 | 1:00 PM EST</p><p class='duration'>60 minutes | CEU: 1.0</p><p>Comprehensive review of new and updated safety standards taking effect in 2025.</p><button class='register-btn'>Register Now</button>"
+            "webinar_title": "Mastering Crew Resource Management (CRM)",
+            "webinar_date": "January 15, 2024",
+            "webinar_time": "1:00 PM EST",
+            "webinar_description": "<p>A comprehensive workshop on effective Crew Resource Management techniques for pilots and cabin crew.</p>",
+            "button_label": "Register Now",
+            "button_link": "https://example.com/webinar2-registration"
           }
         }
-      },
-      "block_order": [
-        "ndt_techniques",
-        "regulatory_updates"
-      ],
-      "settings": {
-        "section_title": "Upcoming Live Sessions",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "2",
-        "background_style": ""
       }
     },
-    "recorded_webinars": {
-      "type": "aai-universal-content",
-      "blocks": {
-        "risk_assessment": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Risk Assessment in Modern Amusement Parks",
-            "block_content": "<p class='presenter'>Maria Chen, Ph.D.</p><p class='views'>1,247 views | Available with subscription</p><button class='watch-btn'>Watch Now</button>"
-          }
-        },
-        "maintenance_excellence": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Maintenance Excellence: Predictive vs Preventive",
-            "block_content": "<p class='presenter'>James Rodriguez, CIT</p><p class='views'>892 views | Available with subscription</p><button class='watch-btn'>Watch Now</button>"
-          }
-        },
-        "emergency_response": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Emergency Response Planning and Protocols",
-            "block_content": "<p class='presenter'>Dr. Sarah Mitchell, P.E.</p><p class='views'>1,156 views | Available with subscription</p><button class='watch-btn'>Watch Now</button>"
-          }
-        }
-      },
-      "block_order": [
-        "risk_assessment",
-        "maintenance_excellence",
-        "emergency_response"
-      ],
+    "cta": {
+      "type": "aai-webinars-cta",
       "settings": {
-        "section_title": "Recorded Webinar Library",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "3",
-        "background_style": "section-alt-1"
+        "title": "Interested in Presenting?",
+        "text": "<p>We are always looking for experts to share their insights. If you have a topic you'd like to present, let us know!</p>",
+        "button_label": "Submit a Proposal",
+        "button_link": "/pages/contact"
       }
     }
   },
   "order": [
-    "hero",
-    "intro",
-    "upcoming_webinars",
-    "recorded_webinars"
+    "main",
+    "webinar_list",
+    "cta"
   ]
 }

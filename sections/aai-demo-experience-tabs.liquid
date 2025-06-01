@@ -1,0 +1,163 @@
+{% comment %}
+  Section: Demo Experience
+  Displays the interactive tabbed demo interface for the AAI platform.
+{% endcomment %}
+
+{{ 'section-demo-page.css' | asset_url | stylesheet_tag }}
+
+<section class="demo-experience-section page-section section-alt-1" id="demo-experience">
+  <div class="aai-container">
+    <div class="section-header">
+      <h2>{{ section.settings.title }}</h2>
+      <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+    
+    <div class="demo-interface">
+      {% if section.blocks.size > 0 %}
+        <div class="demo-tabs">
+          {% for block in section.blocks %}
+            <button class="demo-tab {% if forloop.first %}active{% endif %}" data-demo="{{ block.id }}" {{ block.shopify_attributes }}>
+              <div class="tab-icon">{{ block.settings.tab_icon }}</div>
+              <span>{{ block.settings.tab_title }}</span>
+            </button>
+          {% endfor %}
+        </div>
+        
+        <div class="demo-panels">
+          {% for block in section.blocks %}
+            <div class="demo-panel {% if forloop.first %}active{% endif %}" id="demo-{{ block.id }}">
+              <div class="demo-screen">
+                {% if block.settings.panel_header_title != blank %}
+                <div class="demo-header">
+                  <h3>{{ block.settings.panel_header_title }}</h3>
+                  {% if block.settings.panel_header_subtitle != blank %}
+                    <div class="user-info"> <!-- Can be adapted based on content -->
+                      <span class="user-name">{{ block.settings.panel_header_subtitle }}</span>
+                    </div>
+                  {% endif %}
+                </div>
+                {% endif %}
+                
+                <div class="{{ block.settings.panel_content_class | default: 'dashboard-content' }}">
+                  {{ block.settings.panel_content }}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<script src="{{ 'section-demo-page.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Demo Experience Tabs",
+  "tag": "section",
+  "class": "aai-demo-experience-tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Interactive Platform Demo"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "<p>Explore our learning platform with this interactive demonstration. Click through the tabs to experience different aspects of AAI education.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "demo_tab_panel",
+      "name": "Demo Tab Panel",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_icon",
+          "label": "Tab Icon (Emoji or SVG)",
+          "default": "📊"
+        },
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "Dashboard"
+        },
+        {
+          "type": "text",
+          "id": "panel_header_title",
+          "label": "Panel Header Title",
+          "info": "Title displayed at the top of the demo panel screen.",
+          "default": "Professional Dashboard"
+        },
+        {
+          "type": "text",
+          "id": "panel_header_subtitle",
+          "label": "Panel Header Subtitle/Info",
+          "info": "Optional subtitle or info for the panel header.",
+          "default": "Sarah Johnson - Safety Inspector"
+        },
+        {
+          "type": "liquid",
+          "id": "panel_content",
+          "label": "Panel Content (Liquid/HTML)",
+          "info": "Enter the HTML/Liquid for this demo panel. Use classes from section-demo-page.css for styling."
+        },
+        {
+          "type": "text",
+          "id": "panel_content_class",
+          "label": "Panel Content Wrapper Class",
+          "info": "Custom class for the main content wrapper of this panel (e.g., 'dashboard-content', 'course-content'). Defaults to 'dashboard-content'.",
+          "default": "dashboard-content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Demo Experience Tabs",
+      "blocks": [
+        {
+          "type": "demo_tab_panel",
+          "settings": {
+            "tab_icon": "📊",
+            "tab_title": "Dashboard",
+            "panel_header_title": "Professional Dashboard",
+            "panel_header_subtitle": "Sarah Johnson - Safety Inspector",
+            "panel_content_class": "dashboard-content",
+            "panel_content": "<div class=\"dashboard-stats\"><div class=\"stat-card\"><div class=\"stat-number\">12</div><div class=\"stat-label\">Courses Completed</div></div><div class=\"stat-card\"><div class=\"stat-number\">47</div><div class=\"stat-label\">CEU Credits</div></div><div class=\"stat-card\"><div class=\"stat-number\">3</div><div class=\"stat-label\">Active Certifications</div></div></div><div class=\"dashboard-courses\"><h4>Continue Learning</h4><div class=\"course-list\"><div class=\"course-item\"><div class=\"course-icon\">⚡</div><div class=\"course-details\"><h5>Electrical Systems Safety</h5><div class=\"course-progress\"><div class=\"progress-bar\"><div class=\"progress-fill\" style=\"width: 45%\"></div></div><span>45% Complete</span></div></div><button class=\"aai-btn aai-btn-secondary\">Continue</button></div><div class=\"course-item\"><div class=\"course-icon\">🌊</div><div class=\"course-details\"><h5>Water Park Operations</h5><div class=\"course-progress\"><div class=\"progress-bar\"><div class=\"progress-fill\" style=\"width: 80%\"></div></div><span>80% Complete</span></div></div><button class=\"aai-btn aai-btn-secondary\">Continue</button></div></div></div>"
+          }
+        },
+        {
+          "type": "demo_tab_panel",
+          "settings": {
+            "tab_icon": "🎓",
+            "tab_title": "Course Experience",
+            "panel_header_title": "Ride Safety Inspector Certification",
+            "panel_header_subtitle": "60 Hours | Professional | 12 CEU Credits",
+            "panel_content_class": "course-content",
+            "panel_content": "<div class=\"course-sidebar\"><div class=\"module-list\"><div class=\"module-item completed\"><span class=\"module-icon\">✓</span><span class=\"module-title\">Introduction to Safety Standards</span></div><div class=\"module-item completed\"><span class=\"module-icon\">✓</span><span class=\"module-title\">Mechanical Systems</span></div><div class=\"module-item active\"><span class=\"module-icon\">▶</span><span class=\"module-title\">Electrical Safety</span></div><div class=\"module-item\"><span class=\"module-icon\">○</span><span class=\"module-title\">Inspection Procedures</span></div><div class=\"module-item\"><span class=\"module-icon\">○</span><span class=\"module-title\">Documentation Requirements</span></div></div></div><div class=\"course-main\"><div class=\"video-player\"><div class=\"video-placeholder\"><div class=\"play-button\">▶</div><div class=\"video-title\">Chapter 3.2: Control System Safety</div></div></div><div class=\"lesson-content\"><h4>Electrical Control Systems</h4><p>Understanding the critical safety components of ride control systems is essential for thorough inspections. This module covers...</p><div class=\"lesson-navigation\"><button class=\"aai-btn aai-btn-secondary\">← Previous</button><button class=\"aai-btn aai-btn-primary\">Next →</button></div></div></div>"
+          }
+        },
+        {
+          "type": "demo_tab_panel",
+          "settings": {
+            "tab_icon": "✅",
+            "tab_title": "Assessments",
+            "panel_header_title": "Module Assessment: Electrical Safety",
+            "panel_header_subtitle": "Question 3 of 10 | 12:30 remaining",
+            "panel_content_class": "assessment-content",
+            "panel_content": "<div class=\"question-section\"><div class=\"question-text\"><h4>Which of the following is the most critical safety check when inspecting ride control systems?</h4></div><div class=\"answer-options\"><label class=\"answer-option\"><input type=\"radio\" name=\"demo-question\" value=\"a\"><span class=\"option-text\">Visual inspection of wiring condition</span></label><label class=\"answer-option\"><input type=\"radio\" name=\"demo-question\" value=\"b\"><span class=\"option-text\">Verification of emergency stop function</span></label><label class=\"answer-option\"><input type=\"radio\" name=\"demo-question\" value=\"c\"><span class=\"option-text\">Testing of operator controls</span></label><label class=\"answer-option\"><input type=\"radio\" name=\"demo-question\" value=\"d\"><span class=\"option-text\">Review of maintenance logs</span></label></div><div class=\"question-navigation\"><button class=\"aai-btn aai-btn-secondary\">← Previous</button><button class=\"aai-btn aai-btn-primary\">Next →</button></div></div><div class=\"assessment-sidebar\"><div class=\"progress-indicator\"><h5>Assessment Progress</h5><div class=\"progress-bar\"><div class=\"progress-fill\" style=\"width: 30%\"></div></div><span>3 of 10 questions</span></div><div class=\"question-grid\"><div class=\"question-dot completed\">1</div><div class=\"question-dot completed\">2</div><div class=\"question-dot active\">3</div><div class=\"question-dot\">4</div><div class=\"question-dot\">5</div><div class=\"question-dot\">6</div><div class=\"question-dot\">7</div><div class=\"question-dot\">8</div><div class=\"question-dot\">9</div><div class=\"question-dot\">10</div></div></div>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

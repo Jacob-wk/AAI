@@ -1,0 +1,151 @@
+/* CSS for section-course-curriculum */
+.course-curriculum {
+  padding: 40px 0;
+  background: var(--color-background);
+}
+
+.course-curriculum .section-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.course-curriculum .section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin-bottom: 12px;
+}
+
+.course-curriculum .section-subtitle {
+  font-size: 1rem;
+  color: var(--color-foreground-75);
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.course-curriculum .curriculum-content {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.course-curriculum .curriculum-module {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  border-left: 4px solid var(--color-accent-1); /* Safety Orange */
+}
+
+.course-curriculum .module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.course-curriculum .module-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-primary); /* Authority Navy */
+  margin: 0;
+}
+
+.course-curriculum .module-duration {
+  background: var(--color-secondary-accent); /* Electric Blue */
+  color: white;
+  padding: 3px 10px;
+  border-radius: 18px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.course-curriculum .module-description,
+.course-curriculum .lesson-description {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.course-curriculum .learning-objectives {
+  margin-top: 15px;
+}
+.course-curriculum .learning-objectives h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+.course-curriculum .learning-objectives .objectives-list ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+.course-curriculum .learning-objectives .objectives-list li {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 5px;
+}
+
+.course-curriculum .curriculum-lesson {
+  background: var(--color-background-alt);
+  padding: 18px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border-left: 3px solid var(--color-secondary-accent); /* Electric Blue */
+}
+
+.course-curriculum .lesson-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.course-curriculum .lesson-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.course-curriculum .lesson-type {
+  background: var(--color-background-muted);
+  color: var(--color-text-tertiary);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.course-curriculum .curriculum-cta {
+  text-align: center;
+  margin-top: 35px;
+}
+
+/* Using existing AAI button classes */
+
+@media (max-width: 768px) {
+  .course-curriculum .module-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  
+  .course-curriculum .lesson-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+  .course-curriculum .section-title {
+    font-size: 1.8rem;
+  }
+  .course-curriculum .module-title {
+    font-size: 1.2rem;
+  }
+  .course-curriculum .lesson-title {
+    font-size: 1rem;
+  }
+}

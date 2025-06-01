@@ -1,0 +1,115 @@
+{% comment %}
+  Section to display a list of webinars.
+{% endcomment %}
+
+<div class="webinars-list-section">
+  <div class="container">
+    <h2>{{ section.settings.section_title }}</h2>
+    <div class="webinars-grid">
+      {% for block in section.blocks %}
+        <div class="webinar-item" {{ block.shopify_attributes }}>
+          <h3>{{ block.settings.webinar_title }}</h3>
+          {% if block.settings.webinar_date != blank %}
+            <p class="webinar-date"><strong>Date:</strong> {{ block.settings.webinar_date }}</p>
+          {% endif %}
+          {% if block.settings.webinar_time != blank %}
+            <p class="webinar-time"><strong>Time:</strong> {{ block.settings.webinar_time }}</p>
+          {% endif %}
+          {% if block.settings.webinar_description != blank %}
+            <div class="webinar-description">{{ block.settings.webinar_description }}</div>
+          {% endif %}
+          {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+            <a href="{{ block.settings.button_link }}" class="aai-btn aai-btn-secondary">{{ block.settings.button_label }}</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Webinars List",
+  "tag": "section",
+  "class": "webinars-list",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Our Webinars"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "webinar",
+      "name": "Webinar Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "webinar_title",
+          "label": "Webinar Title",
+          "default": "Sample Webinar Title"
+        },
+        {
+          "type": "text",
+          "id": "webinar_date",
+          "label": "Date"
+        },
+        {
+          "type": "text",
+          "id": "webinar_time",
+          "label": "Time"
+        },
+        {
+          "type": "richtext",
+          "id": "webinar_description",
+          "label": "Description",
+          "default": "<p>Detailed description of the webinar.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Webinars List",
+      "settings": {
+        "section_title": "Upcoming Webinars"
+      },
+      "blocks": [
+        {
+          "type": "webinar",
+          "settings": {
+            "webinar_title": "Introduction to Safety Standards",
+            "webinar_date": "October 26, 2023",
+            "webinar_time": "2:00 PM EST",
+            "webinar_description": "<p>Join us for an introductory session on the latest safety standards affecting your industry.</p>",
+            "button_label": "Register Here"
+          }
+        },
+        {
+          "type": "webinar",
+          "settings": {
+            "webinar_title": "Advanced Compliance Strategies",
+            "webinar_date": "November 10, 2023",
+            "webinar_time": "11:00 AM EST",
+            "webinar_description": "<p>A deep dive into advanced strategies for maintaining compliance and mitigating risks.</p>",
+            "button_label": "Register Here"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

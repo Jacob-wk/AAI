@@ -1,0 +1,170 @@
+{% comment %}
+  Section: Demo CTA
+  Displays a call to action section for the demo page.
+{% endcomment %}
+
+{{ 'section-demo-page.css' | asset_url | stylesheet_tag }}
+
+<section class="demo-cta-section page-section {{ section.settings.background_style }}">
+  <div class="aai-container">
+    <div class="cta-content">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.subtitle }}</p>
+      
+      {% if section.blocks.size > 0 %}
+        <div class="cta-stats">
+          {% for block in section.blocks %}
+            <div class="cta-stat" {{ block.shopify_attributes }}>
+              <span class="stat-number">{{ block.settings.stat_number }}</span>
+              <span class="stat-label">{{ block.settings.stat_label }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+      
+      <div class="cta-actions">
+        {% if section.settings.cta_primary_text != blank and section.settings.cta_primary_link != blank %}
+          <a href="{{ section.settings.cta_primary_link }}" class="aai-btn aai-btn-primary aai-btn-large">
+            {{ section.settings.cta_primary_text }}
+          </a>
+        {% endif %}
+        {% if section.settings.cta_secondary_text != blank and section.settings.cta_secondary_link != blank %}
+          <a href="{{ section.settings.cta_secondary_link }}" class="aai-btn aai-btn-secondary aai-btn-large">
+            {{ section.settings.cta_secondary_text }}
+          </a>
+        {% endif %}
+      </div>
+      
+      {% if section.settings.guarantee_text != blank %}
+        <div class="cta-guarantee">
+          <p>{{ section.settings.guarantee_text }}</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Demo CTA",
+  "tag": "section",
+  "class": "aai-demo-cta",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "CTA Title",
+      "default": "Ready to Start Your Professional Journey?"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "CTA Subtitle",
+      "default": "<p>Experience the difference that industry-leading safety education makes. Join thousands of professionals who trust AAI for their career development.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Primary CTA Text",
+      "default": "Create Free Account"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_link",
+      "label": "Primary CTA Link",
+      "default": "/account/register"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Secondary CTA Text",
+      "default": "Browse All Courses"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_link",
+      "label": "Secondary CTA Link",
+      "default": "/collections/courses"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee Text",
+      "default": "<strong>30-Day Money-Back Guarantee</strong> • 24/7 Technical Support • Mobile & Desktop Access"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background Style",
+      "options": [
+        {
+          "value": "",
+          "label": "Default (None)"
+        },
+        {
+          "value": "section-alt-1",
+          "label": "Alternate 1 (Light Gray)"
+        },
+        {
+          "value": "section-alt-2",
+          "label": "Alternate 2 (Medium Gray)"
+        },
+        {
+          "value": "section-alt-navy-1",
+          "label": "Alternate Navy 1 (Dark Blue)"
+        }
+      ],
+      "default": "section-alt-navy-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat_item",
+      "name": "Stat Item",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "stat_number",
+          "label": "Stat Number",
+          "default": "15,000+"
+        },
+        {
+          "type": "text",
+          "id": "stat_label",
+          "label": "Stat Label",
+          "default": "Professionals Certified"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Demo CTA",
+      "blocks": [
+        {
+          "type": "stat_item",
+          "settings": {
+            "stat_number": "15,000+",
+            "stat_label": "Professionals Certified"
+          }
+        },
+        {
+          "type": "stat_item",
+          "settings": {
+            "stat_number": "500+",
+            "stat_label": "Partner Organizations"
+          }
+        },
+        {
+          "type": "stat_item",
+          "settings": {
+            "stat_number": "98%",
+            "stat_label": "Completion Rate"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

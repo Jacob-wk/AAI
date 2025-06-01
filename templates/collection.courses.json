@@ -19,95 +19,96 @@
       "type": "header-professional",
       "settings": {}
     },
-    "course_hero": {
-      "type": "aai-universal-hero",
+    "aai_collection_hero": {
+      "type": "aai-collection-courses-hero",
       "settings": {
-        "hero_title": "Professional Safety Education",
-        "hero_subtitle": "Advance your career with industry-leading safety education courses designed for amusement park professionals. Earn CEU credits and certifications recognized throughout the industry.",
-        "background_color": "#1e40af",
-        "text_color": "#ffffff",
-        "layout_style": "centered",
-        "show_overlay": true,
-        "overlay_opacity": 30
+        "title": "Professional Safety Education",
+        "description": "<p>Advance your career with industry-leading safety education courses designed for amusement park professionals. Earn CEU credits and certifications recognized throughout the industry.</p>"
       }
     },
-    "course_catalog": {
-      "type": "course-catalog",
+    "aai_collection_filters": {
+      "type": "aai-collection-courses-filters",
       "settings": {
-        "section_title": "Available Courses",
-        "collection": "courses",
-        "show_filters": true,
+        "title": "Find Your Course",
         "show_search": true,
+        "level_filter_label": "All Levels",
+        "level_options": "Beginner\nIntermediate\nAdvanced",
+        "category_filter_label": "All Categories",
+        "category_options": "Safety Management\nOperations\nMaintenance\nLeadership",
+        "ceu_filter_label": "All CEU Credits",
+        "ceu_options": "1-2 Credits\n3-5 Credits\n6+ Credits"
+      }
+    },
+    "aai_collection_featured": {
+      "type": "aai-collection-courses-featured",
+      "settings": {
+        "title": "Featured Courses",
+        "limit": 3
+      }
+    },
+    "aai_collection_grid": {
+      "type": "aai-collection-courses-grid",
+      "settings": {
+        "title": "All Courses",
+        "collection": "courses",
         "courses_per_page": 12,
-        "show_sorting": true,
-        "default_sort": "title-ascending"
-      },
-      "blocks": {
-        "filter_category_1": {
-          "type": "filter_category",
-          "settings": {
-            "filter_name": "Course Type",
-            "filter_values": "Safety Training, Leadership Development, Technical Skills, Certification Prep"
-          }
-        },
-        "filter_duration_1": {
-          "type": "filter_duration",
-          "settings": {
-            "filter_name": "Duration",
-            "filter_values": "1-2 hours, 3-4 hours, 1 day, Multi-day"
-          }
-        },
-        "filter_level_1": {
-          "type": "filter_level",
-          "settings": {
-            "filter_name": "Skill Level",
-            "filter_values": "Beginner, Intermediate, Advanced, Expert"
-          }
-        }
+        "show_pagination": true,
+        "show_view_switcher": true
       }
     },
-    "course_benefits": {
-      "type": "aai-universal-content",
+    "aai_collection_categories": {
+      "type": "aai-collection-courses-categories",
       "settings": {
-        "section_title": "Why Choose AAI Education?",
-        "content_layout": "three_column",
-        "background_color": "#f8fafc"
+        "title": "Course Categories"
       },
       "blocks": {
-        "text_block_1": {
-          "type": "text_block",
+        "category_1": {
+          "type": "category_card",
           "settings": {
-            "block_title": "Industry Recognition",
-            "block_content": "Our courses are IAAPA certified and recognized throughout the amusement industry.",
-            "text_alignment": "center"
+            "icon": "🛡️",
+            "category_title": "Safety Management",
+            "description": "<p>Comprehensive safety protocols and risk management for amusement operations.</p>",
+            "link_url": "/collections/courses?filter=safety"
           }
         },
-        "text_block_2": {
-          "type": "text_block",
+        "category_2": {
+          "type": "category_card",
           "settings": {
-            "block_title": "Expert Instructors",
-            "block_content": "Learn from seasoned professionals with decades of real-world experience.",
-            "text_alignment": "center"
+            "icon": "⚙️",
+            "category_title": "Operations",
+            "description": "<p>Operational excellence and best practices for efficient park management.</p>",
+            "link_url": "/collections/courses?filter=operations"
           }
         },
-        "text_block_3": {
-          "type": "text_block",
+        "category_3": {
+          "type": "category_card",
           "settings": {
-            "block_title": "Flexible Learning",
-            "block_content": "Access courses online at your own pace or join live virtual sessions.",
-            "text_alignment": "center"
+            "icon": "🔧",
+            "category_title": "Maintenance",
+            "description": "<p>Technical maintenance procedures and equipment care standards.</p>",
+            "link_url": "/collections/courses?filter=maintenance"
+          }
+        },
+        "category_4": {
+          "type": "category_card",
+          "settings": {
+            "icon": "👥",
+            "category_title": "Leadership",
+            "description": "<p>Leadership development and team management for industry professionals.</p>",
+            "link_url": "/collections/courses?filter=leadership"
           }
         }
-      }
+      },
+      "block_order": [
+        "category_1",
+        "category_2",
+        "category_3",
+        "category_4"
+      ]
     },
-    "instructor_showcase": {
-      "type": "aai-instructor-showcase",
-      "settings": {
-        "section_title": "Meet Our Expert Instructors",
-        "show_bio_preview": true,
-        "layout_style": "grid",
-        "instructors_to_show": 3
-      }
+    "aai_collection_video_modal": {
+      "type": "aai-collection-courses-video-modal",
+      "settings": {}
     },
     "footer": {
       "type": "footer-professional",
@@ -116,10 +117,12 @@
   },
   "order": [
     "header",
-    "course_hero",
-    "course_catalog", 
-    "course_benefits",
-    "instructor_showcase",
+    "aai_collection_hero",
+    "aai_collection_filters",
+    "aai_collection_featured",
+    "aai_collection_grid",
+    "aai_collection_categories",
+    "aai_collection_video_modal",
     "footer"
   ]
 }

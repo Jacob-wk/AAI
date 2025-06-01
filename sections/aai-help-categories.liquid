@@ -1,0 +1,130 @@
+{% comment %}
+  Help Center Categories Section
+{% endcomment %}
+
+{{ 'section-help-center.css' | asset_url | stylesheet_tag }}
+
+<section class="help-categories {{ section.settings.background_style }}">
+  <div class="aai-container">
+    {% if section.settings.title != blank %}
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="categories-grid">
+      {% for block in section.blocks %}
+        <div class="category-card" {{ block.shopify_attributes }}>
+          {% if block.settings.icon_svg != blank %}
+            <div class="category-icon">{{ block.settings.icon_svg }}</div>
+          {% endif %}
+          <h3>{{ block.settings.category_title }}</h3>
+          <p>{{ block.settings.category_description }}</p>
+          {% if block.settings.category_link_url != blank and block.settings.category_link_text != blank %}
+            <a href="{{ block.settings.category_link_url }}" class="category-link">{{ block.settings.category_link_text }}</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Help Categories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Browse by Category"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background Style",
+      "options": [
+        { "value": "section-alt-1", "label": "Alternative Background 1" },
+        { "value": "section-alt-2", "label": "Alternative Background 2" },
+        { "value": "section-dark", "label": "Dark Background" },
+        { "value": "", "label": "Default" }
+      ],
+      "default": "section-alt-2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG Code",
+          "info": "Paste SVG code here (e.g., from an icon library). Ensure width and height are set (e.g., width='32' height='32')."
+        },
+        {
+          "type": "text",
+          "id": "category_title",
+          "label": "Category Title",
+          "default": "Category Title"
+        },
+        {
+          "type": "textarea",
+          "id": "category_description",
+          "label": "Category Description",
+          "default": "Brief description of this category."
+        },
+        {
+          "type": "text",
+          "id": "category_link_text",
+          "label": "Link Text",
+          "default": "View Topics"
+        },
+        {
+          "type": "url",
+          "id": "category_link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Help Categories",
+      "settings": {
+        "title": "Browse by Category"
+      },
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/></svg>",
+            "category_title": "Getting Started",
+            "category_description": "Account setup, course enrollment, and first steps",
+            "category_link_text": "View Topics",
+            "category_link_url": "#getting-started-faq"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='currentColor'><path d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z'/></svg>",
+            "category_title": "Course Access",
+            "category_description": "Accessing courses, technical requirements, and troubleshooting",
+            "category_link_text": "View Topics",
+            "category_link_url": "#course-access-faq"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='currentColor'><path d='M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z'/></svg>",
+            "category_title": "Certificates & CEUs",
+            "category_description": "Certificate downloads, CEU credits, and verification",
+            "category_link_text": "View Topics",
+            "category_link_url": "#certificates-faq"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

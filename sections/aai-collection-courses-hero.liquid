@@ -1,0 +1,101 @@
+{% comment %}
+  Hero section for the Courses Collection page.
+  Based on the .liquid.bak file.
+{% endcomment %}
+
+<div class="catalog-hero">
+  <div class="aai-container">
+    <div class="hero-content">
+      <h1 class="hero-title">{{ section.settings.title }}</h1>
+      <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+      
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">{{ section.settings.stat_1_number }}</div>
+          <div class="stat-label">{{ section.settings.stat_1_label }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">{{ section.settings.stat_2_number }}</div>
+          <div class="stat-label">{{ section.settings.stat_2_label }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">{{ section.settings.stat_3_text }}</div>
+          <div class="stat-label">{{ section.settings.stat_3_label }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Courses Hero",
+  "tag": "section",
+  "class": "collection-courses-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Professional Safety Education"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "<p>Advance your career with industry-leading safety education courses designed for amusement park professionals. Earn CEU credits and certifications recognized throughout the industry.</p>"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Statistic 1: Number",
+      "default": "0"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Statistic 1: Label",
+      "default": "Courses Available"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Statistic 2: Number",
+      "default": "1000+"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Statistic 2: Label",
+      "default": "Professionals Trained"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_text",
+      "label": "Statistic 3: Text",
+      "default": "IAAPA"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Statistic 3: Label",
+      "default": "Certified"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Courses Hero",
+      "settings": {
+        "title": "Professional Safety Education",
+        "subtitle": "<p>Advance your career with industry-leading safety education courses designed for amusement park professionals. Earn CEU credits and certifications recognized throughout the industry.</p>",
+        "stat_1_number": "{{ collections.courses.products_count }}",
+        "stat_1_label": "Courses Available",
+        "stat_2_number": "1000+",
+        "stat_2_label": "Professionals Trained",
+        "stat_3_text": "IAAPA",
+        "stat_3_label": "Certified"
+      }
+    }
+  ]
+}
+{% endschema %}

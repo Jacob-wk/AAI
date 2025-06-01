@@ -1,8 +1,7 @@
-
 {
   "sections": {
     "hero": {
-      "type": "aai-universal-hero",
+      "type": "aai-hero",
       "settings": {
         "hero_title": "Where Safety Meets Adventure",
         "hero_subtitle": "Professional safety education for the amusement industry. Advance your career while keeping guests safe with industry-leading certification programs.",

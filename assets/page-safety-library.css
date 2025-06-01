@@ -1,0 +1,315 @@
+/* CSS for the Safety Knowledge Library page */
+
+/* Styles from hero_search_stats_block */
+.aai-library-search {
+  padding: 20px 0;
+  background-color: #f8f9fa;
+}
+
+.aai-library-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.aai-library-stats .aai-stat-number {
+  font-size: 1.5em;
+  font-weight: bold;
+  display: block;
+}
+
+/* Styles from quick_categories_block */
+.aai-quick-categories {
+  padding: 40px 0;
+  background-color: #ffffff;
+}
+
+.aai-quick-categories h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1e3a5f;
+}
+
+.aai-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.aai-category-card {
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+.aai-category-card .aai-category-icon {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.aai-category-card h3 {
+  color: #1e3a5f;
+}
+
+.aai-category-card .aai-category-count {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.aai-category-card .aai-category-link {
+  color: #ff6b35;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Styles from featured_resources_block */
+.aai-featured-resources {
+  padding: 40px 0;
+  background-color: #e9ecef;
+}
+
+.aai-featured-resources h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1e3a5f;
+}
+
+.aai-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.aai-featured-item {
+  border: 1px solid #dee2e6;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.aai-featured-item .aai-featured-badge {
+  background-color: #ff6b35;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.aai-featured-item h3 {
+  color: #1e3a5f;
+}
+
+.aai-featured-item .aai-featured-meta {
+  font-size: 0.9em;
+  color: #555;
+  margin: 10px 0;
+}
+
+.aai-featured-item .aai-btn-secondary {
+  margin-left: 10px;
+}
+
+/* Styles from document_standards_block */
+.aai-document-section {
+  padding: 40px 0;
+  background-color: #ffffff; /* Default, can be overridden by section-alt-* classes */
+}
+
+.aai-document-section.section-alt-3 {
+  background-color: #ffffff;
+}
+
+.aai-document-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1e3a5f;
+}
+
+.aai-document-category {
+  margin-bottom: 30px;
+}
+
+.aai-document-category h3 {
+  color: #1e3a5f;
+  border-bottom: 2px solid #ff6b35;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.aai-document-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 0;
+}
+
+.aai-document-item:last-child {
+  border-bottom: none; /* For items that are truly last in a list if needed */
+}
+
+.aai-document-item h4 {
+  margin: 0 0 5px 0;
+  color: #3498db;
+}
+
+.aai-document-item p {
+  margin: 0 0 10px 0;
+  font-size: 0.9em;
+}
+
+.aai-document-item .aai-document-meta {
+  font-size: 0.8em;
+  color: #555;
+}
+
+.aai-document-item .aai-btn-secondary {
+  margin-left: 5px;
+}
+
+.aai-view-all {
+  display: block;
+  text-align: right;
+  margin-top: 15px;
+  color: #ff6b35;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Styles from operating_procedures_block */
+.aai-document-section.aai-section-alt {
+  background-color: #e9ecef;
+}
+
+.aai-procedures-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.aai-procedure-type h3 {
+  color: #1e3a5f;
+}
+
+.aai-procedure-list {
+  list-style: none;
+  padding: 0;
+}
+
+.aai-procedure-list li {
+  margin-bottom: 8px;
+}
+
+.aai-procedure-list a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.aai-doc-format {
+  font-size: 0.8em;
+  color: #555;
+}
+
+/* Styles from advanced_search_ui_block */
+.aai-advanced-search {
+  padding: 40px 0;
+  background-color: #ffffff;
+}
+
+.aai-advanced-search h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1e3a5f;
+}
+
+.aai-search-panel {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.aai-search-options {
+  flex: 1;
+  min-width: 250px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.aai-filter-group {
+  margin-bottom: 15px;
+}
+
+.aai-filter-group label.filter-label-bold {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.aai-filter-checkboxes label {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.aai-filter-select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+}
+
+.aai-search-results {
+  flex: 2;
+  min-width: 300px;
+}
+
+.aai-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.aai-results-header h3 {
+  margin: 0;
+  color: #1e3a5f;
+}
+
+.aai-sort-options label {
+  margin-right: 5px;
+}
+
+.aai-sort-options select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+}
+
+/* Styles from contribute_section (content_body) */
+.aai-contribution-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: left; /* This was in the inline style, but might be better on child or removed if not needed */
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.aai-contribution-type {
+  flex-basis: 45%;
+  min-width: 250px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.aai-contribution-type h4 {
+  margin-top: 0;
+  color: #1e3a5f;
+}

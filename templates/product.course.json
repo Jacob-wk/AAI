@@ -23,8 +23,46 @@
       "settings": {
         "color_scheme": "",
         "padding_top": 36,
-        "padding_bottom": 36
-      }
+        "padding_bottom": 36,
+        "show_badges": true,
+        "show_duration": true,
+        "show_format": true,
+        "show_instructor_name": true,
+        "prerequisites_title": "Prerequisites",
+        "show_prerequisites_content": true,
+        "learning_objectives_title": "Learning Objectives",
+        "show_learning_objectives_content": true,
+        "whats_included_title": "What's Included"
+      },
+      "blocks": {
+        "included_item_1": {
+          "type": "included_item",
+          "settings": { "item_text": "✓ Lifetime access to course materials" }
+        },
+        "included_item_2": {
+          "type": "included_item",
+          "settings": { "item_text": "✓ Professional certificate upon completion" }
+        },
+        "included_item_3": {
+          "type": "included_item",
+          "settings": { "item_text": "✓ Mobile and desktop access" }
+        },
+        "included_item_4": {
+          "type": "included_item",
+          "settings": { "item_text": "✓ Progress tracking and bookmarks" }
+        },
+        "included_item_5": {
+          "type": "included_item",
+          "settings": { "item_text": "✓ Expert instructor support" }
+        }
+      },
+      "block_order": [
+        "included_item_1",
+        "included_item_2",
+        "included_item_3",
+        "included_item_4",
+        "included_item_5"
+      ]
     },
     "course_curriculum": {
       "type": "course-curriculum",
@@ -63,7 +101,7 @@
   },
   "order": [
     "main",
-    "course_details", 
+    "course_details",
     "course_curriculum",
     "instructor_profile",
     "product-recommendations"

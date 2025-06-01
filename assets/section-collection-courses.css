@@ -1,0 +1,201 @@
+/* CSS for Collection Courses Page Sections */
+
+/* Hero Section */
+.collection-courses-hero .catalog-hero {
+  padding: 60px 0;
+  background-color: #f0f4f8; /* Light blue-grey background */
+  text-align: center;
+}
+.collection-courses-hero .hero-title {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  color: #2c3e50; /* Dark blue */
+}
+.collection-courses-hero .hero-subtitle {
+  font-size: 1.1rem;
+  color: #34495e; /* Medium dark blue */
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+.collection-courses-hero .hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+.collection-courses-hero .stat-item {
+  text-align: center;
+}
+.collection-courses-hero .stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff; /* AAI Primary */
+}
+.collection-courses-hero .stat-label {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Filters Section */
+.collection-courses-filters .catalog-filters {
+  padding: 40px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+.collection-courses-filters .filter-header h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.collection-courses-filters .filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.collection-courses-filters .search-input {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 250px;
+}
+.collection-courses-filters .filter-select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+/* Featured Courses Section */
+.collection-courses-featured .featured-courses {
+  padding: 50px 0;
+}
+.collection-courses-featured .featured-courses h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+.collection-courses-featured .featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* All Courses Section */
+.collection-courses-all .all-courses {
+  padding: 50px 0;
+}
+.collection-courses-all .courses-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.collection-courses-all .courses-header h2 {
+  font-size: 2rem;
+}
+.collection-courses-all .view-controls .view-btn {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.collection-courses-all .view-controls .view-btn.view-btn--active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+.collection-courses-all .courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.collection-courses-all .courses-grid--list {
+  grid-template-columns: 1fr; /* Single column for list view */
+}
+.collection-courses-all .no-results {
+  text-align: center;
+  padding: 40px;
+  border: 1px dashed #ddd;
+  margin-top: 20px;
+}
+
+/* Categories Section */
+.collection-courses-categories .course-categories {
+  padding: 50px 0;
+  background-color: #f8f9fa;
+}
+.collection-courses-categories .course-categories h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+.collection-courses-categories .categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.collection-courses-categories .category-card {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  text-align: center;
+}
+.collection-courses-categories .category-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Video Preview Modal */
+.video-preview-modal .preview-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.video-preview-modal .modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.video-preview-modal .modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  z-index: 1001;
+  width: 80%;
+  max-width: 800px;
+}
+.video-preview-modal .modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.video-preview-modal .video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+.video-preview-modal .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -64,136 +64,6 @@
   </div>
 </section>
 
-<style>
-.course-curriculum {
-  padding: 60px 0;
-  background: var(--color-background);
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--color-foreground);
-  margin-bottom: 16px;
-}
-
-.section-subtitle {
-  font-size: 1.125rem;
-  color: var(--color-foreground-75);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.curriculum-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.curriculum-module {
-  background: white;
-  border-radius: 12px;
-  padding: 32px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border-left: 4px solid #ff6b35;
-}
-
-.module-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.module-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1e3a5f;
-  margin: 0;
-}
-
-.module-duration {
-  background: #3498db;
-  color: white;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.curriculum-lesson {
-  background: #f8f9fa;
-  padding: 20px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  border-left: 3px solid #3498db;
-}
-
-.lesson-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.lesson-title {
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: #1e3a5f;
-  margin: 0;
-}
-
-.lesson-type {
-  background: #e9ecef;
-  color: #495057;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.curriculum-cta {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.aai-btn-primary {
-  background: #ff6b35;
-  color: white;
-  padding: 16px 32px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-.aai-btn-primary:hover {
-  background: #e55a2e;
-  transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-  .module-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  
-  .lesson-info {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
-}
-</style>
-
 {% schema %}
 {
   "name": "Course Curriculum",
@@ -301,19 +171,54 @@
   "presets": [
     {
       "name": "Course Curriculum",
+      "settings": {
+        "section_title": "Course Curriculum",
+        "section_subtitle": "Explore the comprehensive modules and lessons that make up this course.",
+        "show_cta": true,
+        "cta_text": "Enroll in Course",
+        "cta_url": "#"
+      },
       "blocks": [
         {
           "type": "module",
           "settings": {
-            "module_title": "Safety Fundamentals",
-            "module_duration": "2 hours"
+            "module_title": "Module 1: Introduction to Core Concepts",
+            "module_duration": "Approx. 2 hours",
+            "module_description": "Get started with the fundamental principles and key concepts covered in this course.",
+            "learning_objectives": "<ul><li>Understand basic terminology.</li><li>Identify key components.</li><li>Learn foundational theories.</li></ul>"
           }
         },
         {
           "type": "lesson",
           "settings": {
-            "lesson_title": "ASTM F24 Standards Overview",
-            "lesson_type": "video"
+            "lesson_title": "Lesson 1.1: Understanding the Basics",
+            "lesson_type": "video",
+            "lesson_description": "An introductory video explaining the core concepts and their importance."
+          }
+        },
+        {
+          "type": "lesson",
+          "settings": {
+            "lesson_title": "Lesson 1.2: Key Terminology",
+            "lesson_type": "reading",
+            "lesson_description": "A comprehensive guide to the essential terms you will encounter."
+          }
+        },
+        {
+          "type": "module",
+          "settings": {
+            "module_title": "Module 2: Advanced Topics",
+            "module_duration": "Approx. 3 hours",
+            "module_description": "Dive deeper into advanced topics and complex scenarios.",
+            "learning_objectives": "<ul><li>Analyze complex situations.</li><li>Apply advanced techniques.</li><li>Develop critical thinking skills.</li></ul>"
+          }
+        },
+        {
+          "type": "lesson",
+          "settings": {
+            "lesson_title": "Lesson 2.1: Advanced Techniques in Practice",
+            "lesson_type": "interactive",
+            "lesson_description": "Engage with interactive simulations to practice advanced techniques."
           }
         }
       ]

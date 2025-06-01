@@ -1,0 +1,86 @@
+/* CSS for Webinars Page Sections */
+
+/* Hero Section */
+.webinars-hero {
+  padding: 60px 0;
+  background-color: #f8f9fa; /* Example background */
+  text-align: center;
+}
+
+.webinars-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.webinars-hero p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 30px;
+}
+
+/* Webinars List */
+.webinars-list-section {
+  padding: 60px 0;
+}
+
+.webinars-list-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.webinar-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.webinar-item h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #007bff; /* AAI Primary Color */
+}
+
+.webinar-item .webinar-date,
+.webinar-item .webinar-time {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.webinar-item .webinar-description {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.webinar-item .aai-btn {
+  margin-top: 10px;
+}
+
+/* Call to Action Section */
+.webinars-cta-section {
+  padding: 60px 0;
+  background-color: #007bff; /* AAI Primary Color */
+  color: #fff;
+  text-align: center;
+}
+
+.webinars-cta-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.webinars-cta-section p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
