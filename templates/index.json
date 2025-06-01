@@ -1,5 +1,52 @@
 
 {
-  "sections": {},
-  "order": []
+  "sections": {
+    "aai_hero_main": {
+      "type": "aai-hero",
+      "settings": {
+        "title": "Where Safety Meets Adventure",
+        "subtitle": "Professional safety education for the amusement industry. Advance your career while keeping guests safe.",
+        "primary_button_text": "Explore Courses",
+        "primary_button_url": "/collections/courses",
+        "secondary_button_text": "Try Free Demo",
+        "secondary_button_url": "/pages/demo",
+        "visual_text": "Safety First, Adventure Always",
+        "show_features": true,
+        "show_trust_indicators": true
+      }
+    },
+    "user_dashboard_main": {
+      "type": "user-dashboard",
+      "settings": {
+        "section_title": "Your Learning Dashboard"
+      }
+    },
+    "course_catalog_preview": {
+      "type": "course-catalog",
+      "settings": {
+        "section_title": "Featured Courses",
+        "section_subtitle": "Discover our most popular safety training programs",
+        "courses_to_show": 6,
+        "show_view_all": true,
+        "view_all_text": "View All Courses",
+        "view_all_url": "/collections/courses"
+      }
+    },
+    "instructor_showcase_main": {
+      "type": "aai-instructor-showcase",
+      "settings": {
+        "section_title": "Learn from Industry Experts",
+        "section_subtitle": "Our instructors bring decades of real-world experience",
+        "layout_style": "grid",
+        "instructors_to_show": 3,
+        "show_credentials": true
+      }
+    }
+  },
+  "order": [
+    "aai_hero_main",
+    "user_dashboard_main", 
+    "course_catalog_preview",
+    "instructor_showcase_main"
+  ]
 }

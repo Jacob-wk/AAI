@@ -1,77 +1,11 @@
 {
-  "section_groups": [
-    {
-      "name": "header",
-      "type": "header"
-    },
-    {
-      "name": "main",
-      "type": "main"
-    },
-    {
-      "name": "footer", 
-      "type": "footer"
-    }
-  ],
   "sections": {
-    "header": {
-      "type": "header-professional",
-      "settings": {}
-    },
     "main": {
       "type": "main-page",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "name": "Title",
-          "settings": {
-            "text": "<h1>{{ page.title }}</h1>",
-            "type_preset": "h1",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "color": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "background": false,
-            "background_color": "#00000026",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "page-content": {
-          "type": "page-content",
-          "settings": {},
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "page-content"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 80
-      }
-    },
-    "footer": {
-      "type": "footer-professional",
       "settings": {}
     }
   },
   "order": [
-    "header",
-    "main",
-    "footer"
+    "main"
   ]
 }

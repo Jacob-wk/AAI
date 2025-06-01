@@ -1,54 +1,118 @@
 
 
-<div class="section-background color-{{ section.settings.color_scheme }}"></div>
-<div class="section page-width-content color-{{ section.settings.color_scheme }}">
-  <div
-    class="
-      spacing-style
-      layout-panel-flex
-      layout-panel-flex--column
-      section-content-wrapper
-      mobile-column
-    "
-    style="
-      {% render 'layout-panel-style', settings: section.settings %}
-      {% render 'spacing-style', settings: section.settings %}
-    "
-  >
-    {% content_for 'blocks' %}
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width">
+  <div class="main-page">
+    <div class="main-page__header">
+      <h1 class="main-page__title">{{ page.title }}</h1>
+    </div>
+    
+    <div class="main-page__content">
+      <div class="rte">
+        {{ page.content }}
+      </div>
+    </div>
+
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'text' %}
+          <div class="main-page__text-block" {{ block.shopify_attributes }}>
+            <div class="rte">
+              {{ block.settings.text }}
+            </div>
+          </div>
+        {% when 'image' %}
+          <div class="main-page__image-block" {{ block.shopify_attributes }}>
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 1200 }}"
+                alt="{{ block.settings.image.alt | default: page.title }}"
+                width="1200"
+                height="{{ 1200 | divided_by: block.settings.image.aspect_ratio | round }}"
+                loading="lazy"
+              >
+            {% endif %}
+            {% if block.settings.caption != blank %}
+              <p class="image-caption">{{ block.settings.caption }}</p>
+            {% endif %}
+          </div>
+        {% when 'button' %}
+          <div class="main-page__button-block" {{ block.shopify_attributes }}>
+            {% if block.settings.button_text != blank %}
+              <a href="{{ block.settings.button_url | default: '#' }}" class="btn btn--primary">
+                {{ block.settings.button_text }}
+              </a>
+            {% endif %}
+          </div>
+      {% endcase %}
+    {% endfor %}
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "t:names.page",
-  "class": "section-wrapper",
+  "name": "Main Page",
+  "class": "section",
   "blocks": [
     {
-      "type": "@theme"
+      "type": "text",
+      "name": "Text Block",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Add your content here</p>"
+        }
+      ]
     },
     {
-      "type": "@app"
+      "type": "image",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption"
+        }
+      ]
     },
     {
-      "type": "_divider"
+      "type": "button",
+      "name": "Button Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
     }
   ],
-  "disabled_on": {
-    "groups": ["header"]
-  },
   "settings": [
     {
-      "type": "select",
-      "id": "content_direction",
-      "label": "t:settings.direction",
-      "options": [
-        {
-          "value": "column",
-          "label": "t:options.vertical"
-        }
-      ],
-      "default": "column",
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Page"
+    }
+  ]
+}
       "visible_if": "{{ section.settings.gap < 0 }}"
     },
     {
