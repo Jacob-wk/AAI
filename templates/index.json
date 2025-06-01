@@ -3,47 +3,27 @@
     "hero": {
       "type": "aai-hero",
       "settings": {
-        "hero_title": "Where Safety Meets Adventure",
-        "hero_subtitle": "Professional safety education for the amusement industry. Advance your career while keeping guests safe with industry-leading certification programs.",
-        "hero_style": "hero-standard",
-        "layout_style": "text-left-image-right",
-        "show_image": true,
-        "show_stats": true,
+        "title": "Where Safety Meets Adventure",
+        "subtitle": "Professional safety education for the amusement industry. Advance your career while keeping guests safe with industry-leading certification programs.",
+        "show_trust_indicators": true,
         "primary_button_text": "Explore Courses",
         "primary_button_url": "/collections/courses",
         "secondary_button_text": "Try Free Demo",
-        "secondary_button_url": "/pages/demo"
-      },
-      "blocks": {
-        "stat1": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "500+",
-            "stat_label": "Certified Professionals"
-          }
-        },
-        "stat2": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "98%",
-            "stat_label": "Pass Rate"
-          }
-        },
-        "stat3": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "15+",
-            "stat_label": "Years Experience"
-          }
-        }
-      },
-      "block_order": ["stat1", "stat2", "stat3"]
+        "secondary_button_url": "/pages/demo",
+        "stat_1_number": "500+",
+        "stat_1_label": "Certified Professionals",
+        "stat_2_number": "98%",
+        "stat_2_label": "Pass Rate",
+        "stat_3_number": "15+",
+        "stat_3_label": "Years Experience"
+      }
     },
     "user_dashboard": {
       "type": "user-dashboard",
       "settings": {
-        "section_title": "Your Learning Dashboard",
-        "show_for_logged_in": true
+        "completed_courses": 3,
+        "ceu_credits": 12,
+        "certificates": 2
       },
       "blocks": {
         "current_course_1": {
@@ -175,14 +155,15 @@
       "type": "aai-universal-content",
       "settings": {
         "layout_style": "two-column",
-        "background_style": "bg-light"
+        "background_style": "bg-light",
+        "show_main_content": true,
+        "section_title": "Industry-Leading Safety Education"
       },
       "blocks": {
         "authority_content": {
           "type": "text_block",
           "settings": {
-            "title": "Industry-Leading Safety Education",
-            "content": "<p>Trusted by over 500+ amusement industry professionals, AAI has been setting the standard for safety education since 2010. Our comprehensive programs are developed by industry experts and recognized by leading organizations.</p><div class='stats-grid'><div class='stat-item'><span class='stat-number'>500+</span><span class='stat-label'>Certified Professionals</span></div><div class='stat-item'><span class='stat-number'>15+</span><span class='stat-label'>Years Experience</span></div><div class='stat-item'><span class='stat-number'>98%</span><span class='stat-label'>Pass Rate</span></div></div>"
+            "block_content": "<p>Trusted by over 500+ amusement industry professionals, AAI has been setting the standard for safety education since 2010. Our comprehensive programs are developed by industry experts and recognized by leading organizations.</p><div class='stats-grid'><div class='stat-item'><span class='stat-number'>500+</span><span class='stat-label'>Certified Professionals</span></div><div class='stat-item'><span class='stat-number'>15+</span><span class='stat-label'>Years Experience</span></div><div class='stat-item'><span class='stat-number'>98%</span><span class='stat-label'>Pass Rate</span></div></div>"
           }
         },
         "credentials": {
@@ -200,8 +181,8 @@
         "expertise_areas": {
           "type": "text_block",
           "settings": {
-            "title": "Areas of Expertise",
-            "content": "<ul><li><strong>Ride Safety Inspection</strong> - Comprehensive training on mechanical, electrical, and structural safety protocols</li><li><strong>Water Park Operations</strong> - Specialized training for aquatic facility management and safety</li><li><strong>Emergency Response</strong> - Critical incident management and emergency procedures</li><li><strong>Compliance Management</strong> - Staying current with evolving regulations and standards</li><li><strong>Staff Training & Development</strong> - Building safety-focused teams and culture</li></ul>"
+            "block_title": "Areas of Expertise",
+            "block_content": "<ul><li><strong>Ride Safety Inspection</strong> - Comprehensive training on mechanical, electrical, and structural safety protocols</li><li><strong>Water Park Operations</strong> - Specialized training for aquatic facility management and safety</li><li><strong>Emergency Response</strong> - Critical incident management and emergency procedures</li><li><strong>Compliance Management</strong> - Staying current with evolving regulations and standards</li><li><strong>Staff Training & Development</strong> - Building safety-focused teams and culture</li></ul>"
           }
         }
       },
@@ -213,12 +194,10 @@
         "section_title": "Learn from Industry Experts",
         "section_subtitle": "Our instructors bring decades of real-world experience from major theme parks, water parks, and regulatory organizations",
         "grid_layout": "grid-3",
-        "instructors_to_show": 3,
-        "show_credentials": true,
         "show_join_team_cta": true,
-        "join_team_text": "Interested in teaching with AAI?",
-        "join_team_button_text": "Apply to Teach",
-        "join_team_button_url": "/pages/instructors"
+        "cta_title": "Interested in teaching with AAI?",
+        "cta_button_text": "Apply to Teach",
+        "cta_url": "/pages/instructors"
       }
     },
     "call_to_action": {
@@ -226,14 +205,14 @@
       "settings": {
         "layout_style": "single-column",
         "background_style": "bg-primary",
-        "text_alignment": "center"
+        "show_main_content": true,
+        "section_title": "Ready to Advance Your Career?"
       },
       "blocks": {
         "cta_content": {
           "type": "text_block",
           "settings": {
-            "title": "Ready to Advance Your Career?",
-            "content": "<p>Join the industry's most respected safety education platform and take your professional development to the next level. Whether you're starting your career or seeking advanced certifications, AAI has the training you need.</p><div class='cta-buttons'><a href='/account/register' class='aai-btn aai-btn-primary aai-btn-large'>Get Started Today</a><a href='/collections/courses' class='aai-btn aai-btn-secondary aai-btn-large'>Browse Courses</a></div><p class='cta-note'>Free trial available • No setup fees • 30-day money-back guarantee</p>"
+            "block_content": "<p>Join the industry's most respected safety education platform and take your professional development to the next level. Whether you're starting your career or seeking advanced certifications, AAI has the training you need.</p><div class='cta-buttons'><a href='/account/register' class='aai-btn aai-btn-primary aai-btn-large'>Get Started Today</a><a href='/collections/courses' class='aai-btn aai-btn-secondary aai-btn-large'>Browse Courses</a></div><p class='cta-note'>Free trial available • No setup fees • 30-day money-back guarantee</p>"
           }
         }
       },
