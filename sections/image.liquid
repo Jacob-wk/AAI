@@ -1,0 +1,88 @@
+{% comment %}
+  Image Section
+  Flexible image display with text overlay options
+{% endcomment %}
+
+{{ 'section-image.css' | asset_url | stylesheet_tag }}
+
+<div class="image-section">
+  {% if section.settings.image != blank %}
+    <div class="image-wrapper">
+      <img 
+        src="{{ section.settings.image | image_url: width: 1920 }}"
+        alt="{{ section.settings.image.alt | escape }}"
+        loading="lazy"
+        width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.height }}"
+      >
+      
+      {% if section.settings.heading != blank or section.settings.text != blank %}
+        <div class="image-overlay">
+          <div class="image-content">
+            {% if section.settings.heading != blank %}
+              <h2>{{ section.settings.heading }}</h2>
+            {% endif %}
+            {% if section.settings.text != blank %}
+              <p>{{ section.settings.text }}</p>
+            {% endif %}
+            {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+              <a href="{{ section.settings.button_url }}" class="btn btn-{{ section.settings.button_style }}">
+                {{ section.settings.button_text }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Image",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" }
+      ],
+      "default": "primary"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image"
+    }
+  ]
+}
+{% endschema %}

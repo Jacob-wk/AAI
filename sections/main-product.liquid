@@ -1,0 +1,68 @@
+{% comment %}
+  Main Product Section
+  Core product information display
+{% endcomment %}
+
+{{ 'section-product-information.css' | asset_url | stylesheet_tag }}
+
+<div class="product-information page-width">
+  <div class="product-media-wrapper">
+    {% render 'product-media', 
+       product: product, 
+       selected_variant: product.selected_or_first_available_variant %}
+  </div>
+  
+  <div class="product-information__wrapper">
+    <div class="product-form__wrapper">
+      {% render 'product-form', 
+         product: product, 
+         current_variant: product.selected_or_first_available_variant,
+         product_form_id: product_form_id %}
+    </div>
+    
+    {% if product.description != blank %}
+      <div class="product-description">
+        <h3>Description</h3>
+        {{ product.description }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Information",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "gallery_layout",
+      "label": "Gallery Layout",
+      "options": [
+        { "value": "stacked", "label": "Stacked" },
+        { "value": "thumbnail", "label": "Thumbnail" },
+        { "value": "columns", "label": "Columns" }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select", 
+      "id": "gallery_size",
+      "label": "Gallery Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_zoom",
+      "label": "Enable Image Zoom",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,81 @@
+{
+  "current": {
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#ffffff",
+          "foreground_heading": "#000000",
+          "foreground": "#000000cf",
+          "primary": "#1e40af",
+          "primary_hover": "#1d4ed8",
+          "border": "#e5e7eb",
+          "shadow": "#00000026",
+          "primary_button_background": "#1e40af",
+          "primary_button_text": "#ffffff",
+          "primary_button_border": "#1e40af",
+          "primary_button_hover_background": "#1d4ed8",
+          "primary_button_hover_text": "#ffffff",
+          "primary_button_hover_border": "#1d4ed8",
+          "secondary_button_background": "#f8fafc",
+          "secondary_button_text": "#1e40af",
+          "secondary_button_border": "#e5e7eb",
+          "secondary_button_hover_background": "#e5e7eb",
+          "secondary_button_hover_text": "#1d4ed8",
+          "secondary_button_hover_border": "#d1d5db"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#1e40af",
+          "foreground_heading": "#ffffff",
+          "foreground": "#ffffff",
+          "primary": "#ffffff",
+          "primary_hover": "#e5e7eb",
+          "border": "#3b82f6",
+          "shadow": "#00000040",
+          "primary_button_background": "#ffffff",
+          "primary_button_text": "#1e40af",
+          "primary_button_border": "#ffffff",
+          "primary_button_hover_background": "#f8fafc",
+          "primary_button_hover_text": "#1d4ed8",
+          "primary_button_hover_border": "#f8fafc"
+        }
+      }
+    }
+  },
+  "presets": {
+    "Professional": {
+      "color_scheme": "scheme-1",
+      "logo": "AAI-Full-Color-Logo.jpg",
+      "page_width": "wide",
+      "type_body_font": "inter_n4",
+      "type_heading_font": "inter_n7",
+      "sections": {
+        "header": {
+          "type": "header-professional",
+          "settings": {
+            "logo": "AAI-Full-Color-Logo.jpg",
+            "menu": "main-menu",
+            "show_search": true,
+            "show_account": true
+          }
+        },
+        "footer": {
+          "type": "footer-professional",
+          "settings": {
+            "show_newsletter": true,
+            "show_social": true,
+            "show_payment_icons": true
+          }
+        }
+      }
+    },
+    "Authority": {
+      "color_scheme": "scheme-2",
+      "logo": "AAI-Full-Color-Logo.jpg",
+      "page_width": "narrow",
+      "type_body_font": "inter_n4",
+      "type_heading_font": "bricolage_grotesque_n7"
+    }
+  }
+}
