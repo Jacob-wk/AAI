@@ -164,7 +164,7 @@
           "type": "text_block",
           "settings": {
             "title": "Ready to Advance Your Career?",
-            "content": "<p>Join thousands of professionals who have elevated their expertise with AAI certification. Take the next step in your professional development with industry-recognized certification that opens doors to new opportunities.</p><div class='button-group'><a href='/collections/courses' class='btn btn-primary'>Explore Certifications</a><a href='/pages/contact' class='btn btn-secondary'>Contact Advisor</a></div>"
+            "content": "<p>Join thousands of professionals who have elevated their expertise with AAI certification. Take the next step in your professional development with industry-recognized certification that opens doors to new opportunities.</p><div class='button-group'><a href='/collections/courses' class='aai-btn aai-btn-primary'>Explore Certifications</a><a href='/pages/contact' class='aai-btn aai-btn-secondary'>Contact Advisor</a></div>"
           }
         }
       },
