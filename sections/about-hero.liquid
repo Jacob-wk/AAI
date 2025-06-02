@@ -6,7 +6,7 @@
 {{ 'section-aai-universal-hero.css' | asset_url | stylesheet_tag }} /* Added for universal hero styles */
 
 <div class="about-hero aai-hero color-scheme-2"> /* Added aai-hero class */
-  <div class="container aai-container"> /* Added aai-container class */
+  <div class="aai-container"> /* REMOVED 'container' class, kept 'aai-container' */
     <div class="hero-content" data-layout="text-left-image-right"> /* Mimic universal hero structure */
       <div class="hero-text">
         <h1 class="hero-title">{{ section.settings.hero_title | default: "Where Safety Meets Adventure" }}</h1>
