@@ -12,30 +12,22 @@
     },
     "mission": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Our Mission",
-        "section_subtitle": "Advancing safety excellence in the amusement industry through comprehensive professional education and certification programs.",
-        "layout_style": "text-center",
-        "background_style": "section-alt-1",
-        "show_main_content": true,
-        "content_title": ""
-      },
       "blocks": {
-        "mission_card_1": {
+        "feature1": {
           "type": "text_block",
           "settings": {
-            "block_title": "🛡️ Safety Excellence",
-            "block_content": "<p>We set the gold standard for safety education in the amusement industry, ensuring every professional has the knowledge and skills to create safe, thrilling experiences.</p>"
+            "block_title": "Industry Expertise",
+            "block_content": "<p>Learn from professionals with decades of experience in safety management and regulatory compliance.</p>"
           }
         },
-        "mission_card_2": {
+        "feature2": {
           "type": "text_block",
           "settings": {
-            "block_title": "🎓 Professional Development",
-            "block_content": "<p>Our comprehensive certification programs advance careers and establish industry expertise, recognized by leading amusement organizations worldwide.</p>"
+            "block_title": "Comprehensive Training",
+            "block_content": "<p>Access a complete library of courses covering all aspects of amusement industry safety and operations.</p>"
           }
         },
-        "mission_card_3": {
+        "feature3": {
           "type": "text_block",
           "settings": {
             "block_title": "🌟 Industry Leadership",
@@ -64,7 +56,7 @@
             "block_content": "<p>AAI was established by industry veterans with over 50 years of combined experience in amusement park operations, safety management, and education.</p>"
           }
         },
-        "milestone_2": {
+        "feature4": {
           "type": "text_block",
           "settings": {
             "block_title": "Today - Industry Recognition",
@@ -79,63 +71,30 @@
           }
         }
       },
-      "block_order": ["milestone_1", "milestone_2", "founder_quote"]
-    },
-    "accreditations": {
-      "type": "aai-universal-content",
+      "block_order": [
+        "feature1",
+        "feature2",
+        "feature3",
+        "feature4"
+      ],
       "settings": {
-        "section_title": "Accreditations & Recognition",
-        "section_subtitle": "Our programs meet the highest industry standards and are recognized by leading professional organizations.",
+        "section_title": "Customizable Content Section",
+        "section_subtitle": "This content can be easily modified through the theme editor",
         "layout_style": "blocks-grid",
         "blocks_per_row": "2",
-        "background_style": "section-alt-3",
-        "show_main_content": true
-      },
-      "blocks": {
-        "accreditation_1": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "IAAPA Certified",
-            "block_content": "<p>International Association of Amusement Parks and Attractions certified education provider for professional development programs.</p>"
-          }
-        },
-        "accreditation_2": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "ASTM F24 Compliant",
-            "block_content": "<p>All courses align with ASTM F24 Committee on Amusement Rides and Devices safety standards and best practices.</p>"
-          }
-        },
-        "accreditation_3": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "CEU Accredited",
-            "block_content": "<p>Continuing Education Units (CEUs) awarded for professional development and certification maintenance requirements.</p>"
-          }
-        },
-        "accreditation_4": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "ISO Standards",
-            "block_content": "<p>Educational content developed in accordance with ISO quality management and safety standards for consistent excellence.</p>"
-          }
-        }
-      },
-      "block_order": ["accreditation_1", "accreditation_2", "accreditation_3", "accreditation_4"]
-    },
-    "leadership": {
-      "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Leadership Team",
-        "section_subtitle": "Industry veterans with decades of experience in amusement operations, safety management, and professional education.",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "3",
-        "background_style": "section-alt-4",
+        "background_style": "",
         "show_main_content": true,
-        "main_button_text": "Meet Our Instructors",
-        "main_button_url": "/pages/instructors",
-        "main_button_style": "secondary"
-      },
+        "content_title": "Professional Safety Education",
+        "content_body": "<p>AAI (Amusement Adventure Institute) provides comprehensive training programs for safety professionals in the amusement industry. Customize this content through the theme editor to match your specific needs.</p>",
+        "show_image": false,
+        "main_button_text": "Get Started",
+        "main_button_url": "/collections/courses",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
+    },
+    "cta_section": {
+      "type": "aai-universal-content",
       "blocks": {
         "leader_1": {
           "type": "text_block",
@@ -161,50 +120,38 @@
         "contact_leadership_button_block": {
           "type": "button_group",
           "settings": {
-            "button_1_text": "Contact Leadership",
-            "button_1_url": "/pages/contact",
-            "button_1_style": "primary",
+            "button_1_text": "Try Free Demo",
+            "button_1_url": "/pages/demo",
+            "button_1_style": "outline",
+            "button_2_text": "Contact Expert",
+            "button_2_url": "/pages/contact",
+            "button_2_style": "secondary",
             "button_size": "medium"
           }
         }
       },
-      "block_order": ["leader_1", "leader_2", "leader_3", "contact_leadership_button_block"]
-    },
-    "expertise": {
-      "type": "aai-universal-content",
+      "block_order": [
+        "cta_buttons"
+      ],
       "settings": {
-        "section_title": "Our Expertise",
-        "layout_style": "text-only",
-        "background_style": "section-alt-2",
-        "show_main_content": true,
-        "content_body": "<p>With decades of combined experience in amusement safety, our team brings unparalleled expertise to every course, certification, and consultation. We work directly with manufacturers, operators, and regulatory bodies to ensure our curriculum reflects current industry standards and emerging best practices.</p>"
-      },
-      "blocks": {
-        "expertise_list": {
-          "type": "feature_list",
-          "settings": {
-            "list_title": "Areas of Expertise",
-            "list_items": "Ride safety inspection and maintenance|Regulatory compliance and documentation|Risk assessment and management|Emergency response procedures|Staff training and development"
-          }
-        }
-      },
-      "block_order": ["expertise_list"]
-    },
-    "final_cta": {
-      "type": "aai-universal-hero",
-      "settings": {
-        "hero_title": "Ready to Advance Your Career?",
-        "hero_subtitle": "Join hundreds of professionals who have elevated their expertise through AAI's comprehensive safety education programs.",
-        "hero_style": "hero-centered",
+        "section_title": "Ready to Get Started?",
+        "section_subtitle": "Join hundreds of safety professionals advancing their careers with AAI",
         "layout_style": "text-center",
+        "blocks_per_row": "1",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "<p>Whether you're looking to advance your career, meet regulatory requirements, or enhance your organization's safety culture, AAI has the training programs you need.</p>",
         "show_image": false,
-        "primary_button_text": "Browse Courses",
-        "primary_button_url": "/collections/courses",
-        "secondary_button_text": "Get Started",
-        "secondary_button_url": "/pages/contact",
-        "button_size": "large"
+        "main_button_text": "Browse All Courses",
+        "main_button_url": "/collections/courses",
+        "main_button_style": "primary",
+        "main_button_size": "large"
       }
     }
   },
-  "order": ["hero", "mission", "story", "accreditations", "leadership", "expertise", "final_cta"]
+  "order": [
+    "main_content",
+    "cta_section"
+  ]
 }
