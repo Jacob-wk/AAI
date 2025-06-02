@@ -1,0 +1,344 @@
+/* CSS for AAI Universal Hero Section */
+
+.aai-hero {
+  padding: 60px 0; /* Adjust as needed */
+  position: relative;
+}
+
+.aai-container {
+  max-width: 1200px; /* Or your theme's standard container width */
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Adjust as needed */
+}
+
+/* Layout: Text Left, Image Right (Default) */
+.hero-content[data-layout="text-left-image-right"] {
+  flex-direction: row;
+}
+.hero-content[data-layout="text-left-image-right"] .hero-text {
+  flex: 1;
+  padding-right: 20px; /* Space between text and image */
+}
+.hero-content[data-layout="text-left-image-right"] .hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* For credential overlay positioning */
+}
+
+/* Layout: Text Right, Image Left */
+.hero-content[data-layout="text-right-image-left"] {
+  flex-direction: row-reverse;
+}
+.hero-content[data-layout="text-right-image-left"] .hero-text {
+  flex: 1;
+  padding-left: 20px; /* Space between text and image */
+}
+.hero-content[data-layout="text-right-image-left"] .hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* For credential overlay positioning */
+}
+
+/* Layout: Text Centered */
+.hero-content[data-layout="text-center"] .hero-text {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px; /* Adjust as needed */
+}
+.hero-content[data-layout="text-center"] .hero-image {
+  display: none; /* Or handle differently if image should be shown */
+}
+
+/* Layout: Text Only */
+.hero-content[data-layout="text-only"] .hero-text {
+  margin: 0 auto;
+  max-width: 900px; /* Adjust as needed */
+  text-align: center; /* Or left, depending on design */
+}
+.hero-content[data-layout="text-only"] .hero-image {
+  display: none;
+}
+
+
+.hero-text .hero-title {
+  font-size: 2.5rem; /* Adjust as needed */
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.hero-text .hero-subtitle {
+  font-size: 1.1rem; /* Adjust as needed */
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Features */
+.hero-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.hero-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(255,255,255,0.1); /* Example background */
+  padding: 10px;
+  border-radius: 5px;
+}
+.feature-icon {
+  font-size: 1.5rem;
+}
+.feature-text strong {
+  display: block;
+  margin-bottom: 3px;
+}
+
+/* Statistics */
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Initial gap between stat items */
+  justify-content: flex-start; /* Align to start by default */
+  margin-bottom: 30px; /* Space before CTA buttons */
+}
+
+.hero-content[data-layout="text-center"] .hero-stats {
+  justify-content: center; /* Center stats if text is centered */
+}
+
+
+.stat-item {
+  background-color: #FFFFFF; /* White background */
+  padding: 15px 20px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid var(--medium-grey); /* Using existing variable */
+  min-width: 150px; /* Ensure items have some width */
+}
+
+.stat-number {
+  font-size: 2rem; /* Adjust as needed */
+  font-weight: bold;
+  color: var(--authority-navy); /* Blue numbers */
+  display: block;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.9rem; /* Adjust as needed */
+  color: var(--color-foreground); /* Black labels */
+}
+
+/* CTA Buttons */
+.hero-cta {
+  display: flex;
+  gap: 15px; /* Space between buttons */
+  margin-top: 20px; /* Space above buttons, ensure this is enough */
+}
+
+.hero-content[data-layout="text-center"] .hero-cta {
+  justify-content: center; /* Center buttons if text is centered */
+}
+
+.aai-btn {
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.aai-btn-primary {
+  background-color: var(--button-primary-background, #007bff); /* Use theme variables if available */
+  color: var(--button-primary-text, #ffffff);
+}
+.aai-btn-primary:hover {
+  background-color: darken(var(--button-primary-background, #007bff), 10%);
+}
+.aai-btn-secondary {
+  background-color: var(--button-secondary-background, #6c757d);
+  color: var(--button-secondary-text, #ffffff);
+  border: 1px solid var(--button-secondary-border, #6c757d);
+}
+.aai-btn-secondary:hover {
+  background-color: darken(var(--button-secondary-background, #6c757d), 10%);
+}
+
+/* Button Sizes */
+.aai-btn-small { padding: 8px 15px; font-size: 0.9rem; }
+.aai-btn-medium { padding: 10px 20px; font-size: 1rem; }
+.aai-btn-large { padding: 12px 25px; font-size: 1.1rem; }
+
+
+/* Hero Image */
+.hero-image {
+  position: relative; /* For credentials overlay */
+}
+.hero-main-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Optional: if you want rounded corners */
+}
+
+/* Credentials Overlay */
+.credentials-overlay {
+  position: absolute;
+  bottom: 20px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+  padding: 10px;
+  border-radius: 5px;
+  justify-content: center; /* Center badges if they wrap */
+  width: fit-content; /* Adjust width to content */
+  max-width: 90%; /* Ensure it doesn't overflow too much */
+}
+
+.credential-badge {
+  background-color: var(--color-accent-1); /* Example: use accent color */
+  color: var(--color-accent-1-contrast); /* Text color for accent */
+  padding: 8px 15px;
+  border-radius: 20px; /* Pill shape */
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+/* Specific styles for hero-standard, hero-centered etc. if needed */
+.aai-hero.hero-standard {
+  /* Standard specific styles */
+}
+
+.aai-hero.hero-centered .hero-content {
+  /* Centered specific styles */
+  flex-direction: column;
+  text-align: center;
+}
+.aai-hero.hero-centered .hero-image {
+  margin-top: 30px;
+}
+
+.aai-hero.hero-split .hero-content {
+  /* Split specific styles */
+  /* Default is already a split layout (text-left-image-right or reverse) */
+}
+
+.aai-hero.hero-overlay {
+  /* Overlay specific styles - might involve pseudo-elements for background */
+  color: #ffffff; /* Ensure text is readable on overlay */
+}
+.aai-hero.hero-overlay .hero-title,
+.aai-hero.hero-overlay .hero-subtitle {
+  color: #ffffff; /* Ensure text is readable on overlay */
+}
+
+/* Ensure color scheme variables are applied if this section can change colors */
+.aai-hero.color-scheme-1 {
+  /* Styles for color scheme 1 */
+}
+.aai-hero.color-scheme-2 {
+  background-color: var(--color-scheme-2-background);
+  color: var(--color-scheme-2-text);
+}
+.aai-hero.color-scheme-2 .hero-title,
+.aai-hero.color-scheme-2 .hero-subtitle {
+  color: var(--color-scheme-2-text) !important; /* Important to override base if needed */
+}
+
+.aai-hero.color-scheme-2 .stat-item {
+  background-color: #FFFFFF; /* White background */
+  border: 1px solid var(--medium-grey);
+}
+
+.aai-hero.color-scheme-2 .stat-number {
+  color: var(--authority-navy); /* Blue numbers */
+}
+
+.aai-hero.color-scheme-2 .stat-label {
+  color: var(--color-foreground); /* Black labels */
+}
+
+.aai-hero.color-scheme-2 .aai-btn-primary {
+  background-color: var(--color-scheme-2-button-primary-bg, var(--button-primary-background));
+  color: var(--color-scheme-2-button-primary-text, var(--button-primary-text));
+}
+.aai-hero.color-scheme-2 .aai-btn-primary:hover {
+  background-color: darken(var(--color-scheme-2-button-primary-bg, var(--button-primary-background)), 10%);
+}
+
+.aai-hero.color-scheme-2 .aai-btn-secondary {
+  background-color: var(--color-scheme-2-button-secondary-bg, transparent);
+  color: var(--color-scheme-2-button-secondary-text, var(--color-scheme-2-text));
+  border: 1px solid var(--color-scheme-2-button-secondary-border, var(--color-scheme-2-text));
+}
+.aai-hero.color-scheme-2 .aai-btn-secondary:hover {
+  background-color: rgba(255,255,255,0.1); /* Slight white hover for secondary on dark bg */
+  color: var(--color-scheme-2-text);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-content,
+  .hero-content[data-layout="text-left-image-right"],
+  .hero-content[data-layout="text-right-image-left"] {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content[data-layout="text-left-image-right"] .hero-text,
+  .hero-content[data-layout="text-right-image-left"] .hero-text {
+    padding-right: 0;
+    padding-left: 0;
+    margin-bottom: 30px; /* Space between text and image when stacked */
+  }
+  
+  .hero-stats {
+    justify-content: center; /* Center stats on mobile */
+    gap: 15px;
+  }
+
+  .stat-item {
+    min-width: 120px; /* Adjust for smaller screens */
+    padding: 10px 15px;
+  }
+  .stat-number {
+    font-size: 1.8rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .hero-cta {
+    justify-content: center; /* Center buttons on mobile */
+    flex-direction: column; /* Stack buttons on mobile */
+    align-items: center;
+  }
+  .hero-cta .aai-btn {
+    width: 100%;
+    max-width: 300px; /* Max width for stacked buttons */
+  }
+  .credentials-overlay {
+    position: static; /* Stack credentials below image on mobile */
+    transform: none;
+    left: auto;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+

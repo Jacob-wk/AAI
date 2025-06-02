@@ -5,40 +5,40 @@
       "type": "aai-universal-hero",
       "settings": {
         "hero_title": "Contact AAI",
-        "hero_subtitle": "Get in touch with our safety education experts. We're here to help you advance your career and enhance your organization's safety culture.",
+        "hero_subtitle": "Connect with our team of safety education experts. We're here to help advance your professional development and answer your questions regarding courses, corporate training, technical support, and more.",
         "hero_style": "hero-standard",
         "layout_style": "text-center",
         "show_image": false,
         "show_stats": false,
         "show_features": true,
         "primary_button_text": "Send Message",
-        "primary_button_url": "#contact-form",
+        "primary_button_url": "#contact-form-section",
         "secondary_button_text": "Call Us Now",
-        "secondary_button_url": "tel:+1-555-224-7233"
+        "secondary_button_url": "tel:1-800-SAFETY-1"
       },
       "blocks": {
         "feature1": {
           "type": "feature",
           "settings": {
             "feature_icon": "📞",
-            "feature_title": "Expert Support",
-            "feature_description": "Direct access to our training specialists"
+            "feature_title": "24/7 Support",
+            "feature_description": "Emergency course access assistance"
           }
         },
         "feature2": {
           "type": "feature",
           "settings": {
-            "feature_icon": "⚡",
-            "feature_title": "Quick Response",
-            "feature_description": "We respond within 24 hours"
+            "feature_icon": "🎓",
+            "feature_title": "Expert Guidance",
+            "feature_description": "Professional development consultation"
           }
         },
         "feature3": {
           "type": "feature",
           "settings": {
-            "feature_icon": "🎯",
-            "feature_title": "Tailored Solutions",
-            "feature_description": "Customized recommendations for your needs"
+            "feature_icon": "🏢",
+            "feature_title": "Corporate Solutions",
+            "feature_description": "Custom training programs"
           }
         }
       },
@@ -47,38 +47,39 @@
     "contact_info": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Get in Touch",
-        "section_subtitle": "Multiple ways to connect with our team",
+        "section_title": "Quick Contact & Office Information",
+        "section_subtitle": "Reach out directly or find our office details below.",
         "layout_style": "blocks-grid",
         "blocks_per_row": "3",
-        "background_style": ""
+        "background_style": "section-alt-1",
+        "section_width": "page-width"
       },
       "blocks": {
-        "phone": {
+        "phone_info": {
           "type": "text_block",
           "settings": {
             "block_title": "Phone Support",
-            "block_content": "<p><strong>Main Office:</strong><br>1-555-AAI-SAFE<br>(1-555-224-7233)</p><p><strong>Hours:</strong><br>Monday - Friday: 8:00 AM - 6:00 PM EST<br>Saturday: 9:00 AM - 2:00 PM EST</p>"
+            "block_content": "<p><strong>General Inquiries & Support:</strong><br><a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1</a></p><p><strong>Hours:</strong><br>Monday - Friday: 8:00 AM - 8:00 PM EST<br>Saturday: 9:00 AM - 5:00 PM EST</p><p><strong>Emergency Course Access:</strong><br>Available 24/7 for technical issues preventing course access.</p>"
           }
         },
-        "email": {
+        "email_info": {
           "type": "text_block",
           "settings": {
             "block_title": "Email Contact",
-            "block_content": "<p><strong>General Inquiries:</strong><br>info@aailearning.com</p><p><strong>Training Support:</strong><br>training@aailearning.com</p><p><strong>Corporate Sales:</strong><br>corporate@aailearning.com</p>"
+            "block_content": "<p><strong>General & Course Inquiries:</strong><br><a href=\"mailto:info@aai-institute.com\">info@aai-institute.com</a></p><p><strong>Corporate Training:</strong><br><a href=\"mailto:corporate@aai-institute.com\">corporate@aai-institute.com</a></p><p><strong>Technical Support:</strong><br><a href=\"mailto:support@aai-institute.com\">support@aai-institute.com</a></p><p><em>Response within 24 hours.</em></p>"
           }
         },
-        "address": {
+        "address_info": {
           "type": "text_block",
           "settings": {
-            "block_title": "Mailing Address",
-            "block_content": "<p><strong>AAI Learning Center</strong><br>123 Safety Boulevard<br>Suite 456<br>Orlando, FL 32819</p><p><strong>Training Facility:</strong><br>Available for on-site corporate training</p>"
+            "block_title": "AAI Institute Headquarters",
+            "block_content": "<p><strong>Amusement Adventure Institute</strong><br>1234 Safety Boulevard<br>Orlando, FL 32819<br>United States</p><p><a href=\"https://maps.google.com/?q=1234+Safety+Boulevard,Orlando,FL+32819\" target=\"_blank\" class=\"aai-btn aai-btn-outline aai-btn-small\">View on Google Maps</a></p>"
           }
         }
       },
-      "block_order": ["phone", "email", "address"]
+      "block_order": ["phone_info", "email_info", "address_info"]
     },
-    "contact_form": {
+    "contact_form_section": {
       "type": "section",
       "settings": {
         "content_direction": "column",
@@ -94,7 +95,7 @@
         "form_heading": {
           "type": "text",
           "settings": {
-            "text": "<h2>Send Us a Message</h2><p>Fill out the form below and we'll get back to you within 24 hours</p>",
+            "text": "<h2>How Can We Help?</h2><p>Choose the category that best describes your inquiry for faster, more targeted assistance from our specialized teams. Fill out the form below and we'll get back to you within 24 hours.</p>",
             "type_preset": "rte",
             "alignment": "center",
             "padding-block-end": 20
@@ -103,7 +104,6 @@
         "contact_form_block": {
           "type": "contact-form",
           "settings": {
-            "heading": "How Can We Help?",
             "color_scheme": "",
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -114,14 +114,50 @@
       },
       "block_order": ["form_heading", "contact_form_block"]
     },
+    "detailed_inquiries": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Partnerships & Specialized Inquiries",
+        "section_subtitle": "Connect with our specific departments for partnership, media, or legal queries.",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "3",
+        "background_style": "section-alt-2",
+        "section_width": "page-width"
+      },
+      "blocks": {
+        "partnerships": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "🤝 Partnership Opportunities",
+            "block_content": "<p>Interested in partnering with AAI for curriculum development, guest instruction, or industry collaboration?</p><p><strong>Partnership Team</strong><br>📧 <a href=\"mailto:partnerships@aai-institute.com\">partnerships@aai-institute.com</a><br>📞 <a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1 ext. 102</a></p>"
+          }
+        },
+        "media": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "💼 Media & Press",
+            "block_content": "<p>Media inquiries, press releases, speaking engagements, and industry event participation.</p><p><strong>Media Relations</strong><br>📧 <a href=\"mailto:media@aai-institute.com\">media@aai-institute.com</a><br>📞 <a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1 ext. 103</a></p>"
+          }
+        },
+        "legal": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "⚖️ Legal & Compliance",
+            "block_content": "<p>Legal inquiries, compliance questions, certification validation, and regulatory matters.</p><p><strong>Legal Department</strong><br>📧 <a href=\"mailto:legal@aai-institute.com\">legal@aai-institute.com</a><br>📞 <a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1 ext. 104</a></p>"
+          }
+        }
+      },
+      "block_order": ["partnerships", "media", "legal"]
+    },
     "additional_support": {
       "type": "aai-universal-content",
       "settings": {
         "section_title": "Additional Resources",
-        "section_subtitle": "Find answers and get support",
-        "layout_style": "blocks-grid", 
+        "section_subtitle": "Find answers and get support quickly through our other channels.",
+        "layout_style": "blocks-grid",
         "blocks_per_row": "3",
-        "background_style": "section-alt-2"
+        "background_style": "",
+        "section_width": "page-width"
       },
       "blocks": {
         "faq": {
@@ -142,12 +178,12 @@
           "type": "text_block",
           "settings": {
             "block_title": "Schedule Consultation",
-            "block_content": "<p>Book a personalized consultation with our training experts to discuss your specific needs and develop a custom solution.</p><p><a href=\"#contact-form\" class=\"aai-btn aai-btn-outline\">Book Now</a></p>"
+            "block_content": "<p>Book a personalized consultation with our training experts to discuss your specific needs and develop a custom solution.</p><p><a href=\"#contact-form-section\" class=\"aai-btn aai-btn-outline\">Request Consultation</a></p>"
           }
         }
       },
       "block_order": ["faq", "demo", "schedule"]
     }
   },
-  "order": ["hero", "contact_info", "contact_form", "additional_support"]
+  "order": ["hero", "contact_info", "contact_form_section", "detailed_inquiries", "additional_support"]
 }

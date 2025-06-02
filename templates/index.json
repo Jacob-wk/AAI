@@ -152,11 +152,20 @@
         "secondary_cta_text": "Learn More About AAI",
         "secondary_cta_url": "/pages/about"
       }
+    },
+    "course_catalog_index": {
+      "type": "course-catalog",
+      "settings": {
+        "title": "Explore Our Courses",
+        "show_filters": true,
+        "courses_per_page": 6
+      }
     }
   },
   "order": [
     "main",
     "user_dashboard",
-    "guest_demo"
+    "guest_demo",
+    "course_catalog_index"
   ]
 }

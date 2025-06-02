@@ -42,7 +42,7 @@
         {% endif %}
       </div>
       
-      <div class="hero-image-slot"> 
+      <div class="hero-image"> 
         {% if section.settings.hero_image != blank %}
           <img src="{{ section.settings.hero_image | image_url: width: 600, height: 400, crop: 'center' }}" 
                alt="{{ section.settings.hero_image.alt | default: 'About AAI' }}" loading="lazy">
