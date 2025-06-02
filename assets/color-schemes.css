@@ -30,6 +30,7 @@ div[style*="background-color: var(--electric-blue)"] {
   --link-color: rgba(255, 255, 255, 0.95); /* Ensure links are white by default */
   --link-hover-color: white;
   --border-color: rgba(255, 255, 255, 0.2);
+  --color-scheme-2-text: #ffffff; /* Define the new variable here */
   
   color: var(--text-color) !important;
 }

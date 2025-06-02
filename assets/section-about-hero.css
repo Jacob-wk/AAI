@@ -1,7 +1,7 @@
 /* About Hero Section Styles */
 .about-hero {
   background-color: var(--color-scheme-2-background); /* Authority Navy */
-  color: var(--color-text); /* White text, scoped by .color-scheme-2 */
+  color: var(--color-scheme-2-text); /* White text */
   padding: 3rem 0; /* Adjusted padding */
   display: flex; /* For centering content like dashboard */
   align-items: center; /* For centering content like dashboard */
