@@ -25,6 +25,11 @@
   padding-right: 2rem; /* Add some space if image is on the right */
 }
 
+.about-hero.color-scheme-2 .hero-title,
+.about-hero.color-scheme-2 .hero-subtitle {
+  color: var(--color-scheme-2-text) !important; /* Use our defined white variable with !important */
+}
+
 .about-hero .hero-title {
   font-size: 2.8rem; /* Adjusted font size */
   font-weight: 700;
@@ -37,6 +42,7 @@
   line-height: 1.7;
   margin-bottom: 1.5rem;
   opacity: 0.9;
+  /* Ensure subtitle also uses the correct color scheme variable if needed, or inherits */
 }
 
 .about-hero .hero-stats {
@@ -47,15 +53,16 @@
 
 .about-hero .stat-item {
   text-align: left; /* Align text to left for a cleaner look */
-  background-color: rgba(255, 255, 255, 0.05); /* Subtle background for stats */
+  background-color: #FFFFFF; /* White background */
   padding: 1rem;
   border-radius: 8px;
+  border: 1px solid var(--medium-grey); /* Add a subtle border */
 }
 
 .about-hero .stat-number {
   font-size: 2rem; /* Adjusted font size */
   font-weight: 700;
-  color: var(--safety-orange); /* Assuming --safety-orange is defined, or use a specific white/accent */
+  color: var(--authority-navy); /* Blue header text */
   display: block;
   margin-bottom: 0.25rem;
 }
@@ -63,6 +70,7 @@
 .about-hero .stat-label {
   font-size: 0.85rem; /* Adjusted font size */
   opacity: 0.8;
+  color: var(--color-foreground); /* Black body text */
 }
 
 .about-hero .hero-image-slot { /* Renamed from .hero-image for clarity */
@@ -91,7 +99,7 @@
   display: flex;
   flex-wrap: wrap; /* Allow badges to wrap */
   gap: 0.5rem; /* Spacing between badges */
-  justify-content: flex-start; /* Align badges to the start */
+  justify-content: center; /* Center the badges */
   padding: 0.5rem;
   background: rgba(0, 0, 0, 0.3); /* Slight dark overlay for readability */
   border-radius: 0 0 8px 8px; /* Rounded bottom corners if needed */
