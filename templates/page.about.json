@@ -1,4 +1,3 @@
-
 {
   "sections": {
     "hero": {
@@ -6,52 +5,10 @@
       "settings": {
         "hero_title": "Where Safety Meets Adventure",
         "hero_subtitle": "Leading the amusement industry in professional safety education since 2025. AAI provides comprehensive training programs that ensure both thrilling experiences and uncompromising safety standards.",
-        "hero_style": "hero-standard",
-        "layout_style": "text-left-image-right",
-        "show_image": true,
         "show_stats": true,
-        "show_credentials": true,
-        "primary_button_text": "Explore Courses",
-        "primary_button_url": "/collections/courses",
-        "secondary_button_text": "Contact Us",
-        "secondary_button_url": "/pages/contact"
+        "show_credentials": true
       },
-      "blocks": {
-        "stat1": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "500+",
-            "stat_label": "Professionals Certified"
-          }
-        },
-        "stat2": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "50+",
-            "stat_label": "Courses Available"
-          }
-        },
-        "stat3": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "25+",
-            "stat_label": "Industry Partners"
-          }
-        },
-        "cred1": {
-          "type": "credential",
-          "settings": {
-            "credential_text": "IAAPA Certified"
-          }
-        },
-        "cred2": {
-          "type": "credential",
-          "settings": {
-            "credential_text": "ASTM F24 Compliant"
-          }
-        }
-      },
-      "block_order": ["stat1", "stat2", "stat3", "cred1", "cred2"]
+      "block_order": []
     },
     "mission": {
       "type": "aai-universal-content",
@@ -96,7 +53,7 @@
         "layout_style": "text-left-image-right",
         "show_main_content": true,
         "content_title": "",
-        "content_body": "<p class=\"story-intro\">Founded in 2025, the Amusement Adventure Institute emerged from a critical need in the industry: comprehensive, accessible safety education that combines rigorous standards with practical application.</p>",
+        "content_body": "<p>Founded in 2025, the Amusement Adventure Institute emerged from a critical need in the industry: comprehensive, accessible safety education that combines rigorous standards with practical application.</p>",
         "show_image": false
       },
       "blocks": {
@@ -118,7 +75,7 @@
           "type": "text_block",
           "settings": {
             "block_title": "",
-            "block_content": "<blockquote><p>\"Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.\"</p><cite>— AAI Founding Team</cite></blockquote>"
+            "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>"
           }
         }
       },
@@ -184,21 +141,21 @@
           "type": "text_block",
           "settings": {
             "block_title": "Sarah Mitchell - Chief Executive Officer",
-            "block_content": "<p>20+ years in amusement park operations and safety management. Former Director of Safety at major theme park operator.</p><p><small>IAAPA Certified | ASTM F24 Expert</small></p>"
+            "block_content": "<p>20+ years in amusement park operations and safety management. Former Director of Safety at major theme park operator.</p><p>IAAPA Certified | ASTM F24 Expert</p>"
           }
         },
         "leader_2": {
           "type": "text_block",
           "settings": {
             "block_title": "Dr. Robert Chen - Chief Education Officer",
-            "block_content": "<p>PhD in Safety Engineering with 15+ years developing professional education programs for high-risk industries.</p><p><small>PhD Safety Engineering | Professional Engineer</small></p>"
+            "block_content": "<p>PhD in Safety Engineering with 15+ years developing professional education programs for high-risk industries.</p><p>PhD Safety Engineering | Professional Engineer</p>"
           }
         },
         "leader_3": {
           "type": "text_block",
           "settings": {
             "block_title": "Marcus Rodriguez - Director of Industry Relations",
-            "block_content": "<p>18+ years building partnerships with amusement operators worldwide. Expert in regulatory compliance and industry standards.</p><p><small>Industry Relations Expert | Compliance Specialist</small></p>"
+            "block_content": "<p>18+ years building partnerships with amusement operators worldwide. Expert in regulatory compliance and industry standards.</p><p>Industry Relations Expert | Compliance Specialist</p>"
           }
         },
         "contact_leadership_button_block": {
