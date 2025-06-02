@@ -1,20 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "name": "Home Page Test",
   "sections": {
     "main": {
       "type": "aai-hero",
       "settings": {
         "title": "Amusement Adventure Institute",
-        "subtitle": "Where Safety Meets Adventure - Professional safety education for the amusement industry"
+        "subtitle": "Where Safety Meets Adventure - Professional safety education for the amusement industry",
+        "show_features": true,
+        "feature_1": "IAAPA Accredited",
+        "feature_2": "Industry Experts",
+        "feature_3": "CEU Credits",
+        "primary_button_text": "Explore Courses",
+        "primary_button_url": "",
+        "secondary_button_text": "Try Free Demo",
+        "secondary_button_url": "",
+        "visual_text": "Safety First, Adventure Always",
+        "show_trust_indicators": true,
+        "stat_1_number": "10,000+",
+        "stat_1_label": "Professionals Trained",
+        "stat_2_number": "500+",
+        "stat_2_label": "Partner Organizations",
+        "stat_3_number": "25+",
+        "stat_3_label": "Years Experience",
+        "stat_4_number": "100%",
+        "stat_4_label": "Safety Focused"
       }
     },
     "user_dashboard": {
       "type": "user-dashboard",
-      "settings": {
-        "completed_courses": 3,
-        "ceu_credits": 12,
-        "certificates": 2
-      },
       "blocks": {
         "current_course_1": {
           "type": "current_course",
@@ -44,21 +65,19 @@
           }
         }
       },
-      "block_order": ["current_course_1", "current_course_2", "current_course_3"]
+      "block_order": [
+        "current_course_1",
+        "current_course_2",
+        "current_course_3"
+      ],
+      "settings": {
+        "completed_courses": 3,
+        "ceu_credits": 12,
+        "certificates": 2
+      }
     },
     "guest_demo": {
       "type": "aai-demo-experience",
-      "settings": {
-        "section_title": "Experience Our Learning Platform",
-        "section_subtitle": "See how industry professionals advance their careers with AAI's comprehensive safety education programs.",
-        "show_bottom_cta": true,
-        "cta_title": "Ready to Get Started?",
-        "cta_description": "Join thousands of professionals who have advanced their careers with AAI",
-        "primary_cta_text": "Start Learning Today",
-        "primary_cta_url": "/account/register",
-        "secondary_cta_text": "Learn More About AAI",
-        "secondary_cta_url": "/pages/about"
-      },
       "blocks": {
         "demo_tab_1": {
           "type": "demo_tab",
@@ -69,8 +88,13 @@
             "panel_title": "Immersive Learning Experience",
             "panel_description": "Experience our cutting-edge simulation technology that puts you in real amusement park scenarios. Practice safety procedures, emergency responses, and operational protocols in a risk-free environment.",
             "feature_list": "Real-world scenarios|Interactive simulations|Instant feedback|Progress tracking|Virtual equipment training",
+            "demo_video_url": "",
+            "show_interactive_demo": false,
+            "demo_progress": "Step 1 of 5",
+            "demo_content": "",
             "cta_button_text": "Try Demo Course",
-            "cta_button_url": "/pages/demo"
+            "cta_button_url": "/pages/demo",
+            "cta_button_style": "primary"
           }
         },
         "demo_tab_2": {
@@ -82,8 +106,13 @@
             "panel_title": "Learn On The Go",
             "panel_description": "Access your courses from any device with our mobile-optimized platform. Continue your professional development during breaks, commutes, or downtime.",
             "feature_list": "Mobile responsive|Offline access|Sync across devices|Touch-friendly interface|Download for offline",
+            "demo_video_url": "",
+            "show_interactive_demo": false,
+            "demo_progress": "Step 1 of 5",
+            "demo_content": "",
             "cta_button_text": "Download App",
-            "cta_button_url": "/pages/mobile-app"
+            "cta_button_url": "/pages/mobile-app",
+            "cta_button_style": "primary"
           }
         },
         "demo_tab_3": {
@@ -95,54 +124,38 @@
             "panel_title": "Earn Professional Credentials",
             "panel_description": "Complete courses and earn certifications recognized throughout the amusement industry. Build your professional portfolio with credentials that employers value.",
             "feature_list": "IAAPA recognized|Digital certificates|Continuing education credits|Career advancement|Employer verification",
+            "demo_video_url": "",
+            "show_interactive_demo": false,
+            "demo_progress": "Step 1 of 5",
+            "demo_content": "",
             "cta_button_text": "View Certifications",
-            "cta_button_url": "/pages/certifications"
+            "cta_button_url": "/pages/certifications",
+            "cta_button_style": "primary"
           }
         }
       },
-      "block_order": ["demo_tab_1", "demo_tab_2", "demo_tab_3"]
-    },
-    "course_catalog": {
-      "type": "course-catalog",
+      "block_order": [
+        "demo_tab_1",
+        "demo_tab_2",
+        "demo_tab_3"
+      ],
       "settings": {
-        "section_title": "Explore Our Courses",
-        "collection": "all",
-        "products_to_show": 3
-      }
-    },
-    "industry_authority": {
-      "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Industry Authority in Amusement Safety",
-        "section_subtitle": "Decades of Experience, Unmatched Expertise",
-        "layout_style": "text-center",
-        "show_main_content": true,
-        "content_title": "Leading the Way in Safety Standards",
-        "content_body": "<p>AAI stands at the forefront of amusement safety. With over 20 years of dedicated experience, we have trained thousands of professionals and helped shape industry best practices. Our commitment to excellence ensures you receive the most current and comprehensive knowledge available.</p>",
-        "show_image": false,
-        "main_button_text": "Learn About Our Impact",
-        "main_button_url": "/pages/about",
-        "main_button_style": "secondary",
-        "main_button_size": "medium"
-      }
-    },
-    "instructor_showcase": {
-      "type": "aai-instructor-showcase",
-      "settings": {
-        "section_title": "Meet Our Expert Instructors",
-        "section_subtitle": "Learn from the best in the amusement industry",
-        "instructors_to_show": 3,
-        "view_all_button_text": "View All Instructors",
-        "view_all_button_url": "/pages/instructors"
+        "section_title": "Experience Our Learning Platform",
+        "section_subtitle": "See how industry professionals advance their careers with AAI's comprehensive safety education programs.",
+        "section_style": "",
+        "show_bottom_cta": true,
+        "cta_title": "Ready to Get Started?",
+        "cta_description": "Join thousands of professionals who have advanced their careers with AAI",
+        "primary_cta_text": "Start Learning Today",
+        "primary_cta_url": "/account/register",
+        "secondary_cta_text": "Learn More About AAI",
+        "secondary_cta_url": "/pages/about"
       }
     }
   },
   "order": [
     "main",
     "user_dashboard",
-    "guest_demo",
-    "course_catalog",
-    "industry_authority",
-    "instructor_showcase"
+    "guest_demo"
   ]
 }

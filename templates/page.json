@@ -1,5 +1,13 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "name": "Default Page",
   "sections": {
     "hero": {
       "type": "aai-universal-hero",
@@ -39,7 +47,11 @@
           }
         }
       },
-      "block_order": ["stat1", "stat2", "stat3"]
+      "block_order": [
+        "stat1",
+        "stat2",
+        "stat3"
+      ]
     },
     "main_content": {
       "type": "aai-universal-content",
@@ -85,7 +97,12 @@
           }
         }
       },
-      "block_order": ["feature1", "feature2", "feature3", "feature4"]
+      "block_order": [
+        "feature1",
+        "feature2",
+        "feature3",
+        "feature4"
+      ]
     },
     "cta_section": {
       "type": "aai-universal-content",
@@ -115,8 +132,14 @@
           }
         }
       },
-      "block_order": ["cta_buttons"]
+      "block_order": [
+        "cta_buttons"
+      ]
     }
   },
-  "order": ["hero", "main_content", "cta_section"]
+  "order": [
+    "hero",
+    "main_content",
+    "cta_section"
+  ]
 }
