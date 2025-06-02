@@ -1,0 +1,152 @@
+{% comment %}
+  Section: AAI Instructors Grid
+  Displays a grid of instructor cards.
+{% endcomment %}
+
+<div class="aai-instructors-grid-section page-width color-{{ section.settings.color_scheme }}">
+  <div class="section-header">
+    {% if section.settings.section_title != blank %}
+      <h2 class="section-title">{{ section.settings.section_title | escape }}</h2>
+    {% endif %}
+    {% if section.settings.section_subtitle != blank %}
+      <p class="section-subtitle">{{ section.settings.section_subtitle | escape }}</p>
+    {% endif %}
+  </div>
+
+  <div class="instructors-grid-layout">
+    {% for block in section.blocks %}
+      <div class="instructor-card-wrapper" {{ block.shopify_attributes }}>
+        {% case block.type %}
+          {% when 'instructor_card' %}
+            <div class="instructor-card {% if block.settings.featured %}featured{% endif %}">
+              {% if block.settings.image_placeholder_icon != blank %}
+                <div class="instructor-image-placeholder">{{ block.settings.image_placeholder_icon }}</div>
+              {% comment %} Placeholder for actual image if available in schema {% endcomment %}
+              {% endif %}
+              <h3>{{ block.settings.name | escape }}</h3>
+              <p class="instructor-title">{{ block.settings.title | escape }}</p>
+              <p class="instructor-department">{{ block.settings.department | escape }}</p>
+              <div class="instructor-bio">{{ block.settings.bio }}</div>
+              {% if block.settings.credentials.size > 0 %}
+                <ul class="instructor-credentials">
+                  {% for credential in block.settings.credentials %}
+                    <li>{{ credential | escape }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+              {% comment %} Add stats display if needed based on schema {% endcomment %}
+            </div>
+        {% endcase %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "AAI Instructors Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Instructors"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Section Subtitle"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "options": [
+        { "value": "color-scheme-1", "label": "Scheme 1" },
+        { "value": "color-scheme-2", "label": "Scheme 2" },
+        { "value": "color-scheme-background-1", "label": "Background 1" },
+        { "value": "color-scheme-background-2", "label": "Background 2" }
+      ],
+      "default": "color-scheme-background-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "instructor_card",
+      "name": "Instructor Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "image_placeholder_icon",
+          "label": "Image Placeholder Icon",
+          "default": "👨‍🏫"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Instructor Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Instructor Name"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Instructor Title"
+        },
+        {
+          "type": "text",
+          "id": "department",
+          "label": "Department"
+        },
+        {
+          "type": "richtext",
+          "id": "bio",
+          "label": "Biography"
+        },
+        {
+          "type": "text",
+          "id": "credentials",
+          "label": "Credentials (comma-separated)",
+          "info": "Enter credentials separated by commas"
+        },
+        {
+          "type": "text",
+          "id": "stat_1_number",
+          "label": "Statistic 1 Number"
+        },
+        {
+          "type": "text",
+          "id": "stat_1_label",
+          "label": "Statistic 1 Label"
+        },
+        {
+          "type": "text",
+          "id": "stat_2_number",
+          "label": "Statistic 2 Number"
+        },
+        {
+          "type": "text",
+          "id": "stat_2_label",
+          "label": "Statistic 2 Label"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Featured Instructor",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Instructors Grid"
+    }
+  ]
+}
+{% endschema %}

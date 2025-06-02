@@ -3,10 +3,11 @@
 {% endcomment %}
 
 {{ 'section-about-hero.css' | asset_url | stylesheet_tag }}
+{{ 'section-aai-universal-hero.css' | asset_url | stylesheet_tag }} /* Added for universal hero styles */
 
-<div class="about-hero color-scheme-2">
-  <div class="container">
-    <div class="hero-content">
+<div class="about-hero aai-hero color-scheme-2"> /* Added aai-hero class */
+  <div class="container aai-container"> /* Added aai-container class */
+    <div class="hero-content" data-layout="text-left-image-right"> /* Mimic universal hero structure */
       <div class="hero-text">
         <h1 class="hero-title">{{ section.settings.hero_title | default: "Where Safety Meets Adventure" }}</h1>
         <p class="hero-subtitle">
@@ -16,15 +17,34 @@
         {% if section.settings.show_stats %}
           <div class="hero-stats">
             {% if section.blocks.size > 0 %}
+              {%- assign has_statistic_block = false -%}
               {% for block in section.blocks %}
                 {% if block.type == 'statistic' %}
-                  <div class="stat-item">
+                  {%- assign has_statistic_block = true -%}
+                  <div class="stat-item" {{ block.shopify_attributes }}>
                     <div class="stat-number">{{ block.settings.stat_number | default: "0" }}</div>
                     <div class="stat-label">{{ block.settings.stat_label | default: "Statistic" }}</div>
                   </div>
                 {% endif %}
               {% endfor %}
+
+              {% if has_statistic_block == false and (section.settings.stat_1_number != blank or section.settings.stat_2_number != blank or section.settings.stat_3_number != blank) %}
+                {% comment %} Fallback to legacy settings only if no statistic blocks are present {% endcomment %}
+                <div class="stat-item">
+                  <div class="stat-number">{{ section.settings.stat_1_number | default: "500+" }}</div>
+                  <div class="stat-label">{{ section.settings.stat_1_label | default: "Professionals Certified" }}</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">{{ section.settings.stat_2_number | default: "50+" }}</div>
+                  <div class="stat-label">{{ section.settings.stat_2_label | default: "Courses Available" }}</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">{{ section.settings.stat_3_number | default: "25+" }}</div>
+                  <div class="stat-label">{{ section.settings.stat_3_label | default: "Industry Partners" }}</div>
+                </div>
+              {% endif %}
             {% else %}
+              {% comment %} Fallback to legacy settings if section.blocks is empty {% endcomment %}
               <div class="stat-item">
                 <div class="stat-number">{{ section.settings.stat_1_number | default: "500+" }}</div>
                 <div class="stat-label">{{ section.settings.stat_1_label | default: "Professionals Certified" }}</div>
@@ -45,23 +65,36 @@
       <div class="hero-image"> 
         {% if section.settings.hero_image != blank %}
           <img src="{{ section.settings.hero_image | image_url: width: 600, height: 400, crop: 'center' }}" 
-               alt="{{ section.settings.hero_image.alt | default: 'About AAI' }}" loading="lazy">
+               alt="{{ section.settings.hero_image.alt | default: 'About AAI' }}" loading="lazy" class="hero-main-image">
         {% else %}
-          <div style="width:100%; height:100%; background-color: rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center;">
+          <div style="width:100%; height:100%; background-color: rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center;" class="hero-main-image">
             <span style="color: var(--color-scheme-2-text-opacity-50);">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</span>
           </div>
         {% endif %}
         
         {% if section.settings.show_credentials %}
           <div class="credentials-overlay">
-            {% for block in section.blocks %}
-              {% if block.type == 'credential' %}
-                <div class="credential-badge">
-                  <span class="badge-text">{{ block.settings.credential_text | default: "Credential" }}</span>
-                </div>
+            {% if section.blocks.size > 0 %}
+              {%- assign has_credential_block = false -%}
+              {% for block in section.blocks %}
+                {% if block.type == 'credential' %}
+                  {%- assign has_credential_block = true -%}
+                  <div class="credential-badge" {{ block.shopify_attributes }}>
+                    <span class="badge-text">{{ block.settings.credential_text | default: "Credential" }}</span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+              {% if has_credential_block == false and (section.settings.credential_1 != blank or section.settings.credential_2 != blank) %}
+                {% comment %} Fallback to legacy settings only if no credential blocks are present {% endcomment %}
+                 <div class="credential-badge">
+                   <span class="badge-text">{{ section.settings.credential_1 | default: "IAAPA Certified" }}</span>
+                 </div>
+                 <div class="credential-badge">
+                   <span class="badge-text">{{ section.settings.credential_2 | default: "ASTM F24 Compliant" }}</span>
+                 </div>
               {% endif %}
-            {% endfor %}
-            {% if section.blocks.size == 0 or section.blocks | where: "type", "credential" | size == 0 %}
+            {% else %}
+               {% comment %} Fallback to legacy settings if section.blocks is empty {% endcomment %}
                <div class="credential-badge">
                  <span class="badge-text">{{ section.settings.credential_1 | default: "IAAPA Certified" }}</span>
                </div>

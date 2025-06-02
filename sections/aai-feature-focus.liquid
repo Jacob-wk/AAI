@@ -1,0 +1,96 @@
+{% comment %}
+  Section: AAI Feature Focus
+  Highlights key features or points with icons and text.
+{% endcomment %}
+
+<div class="aai-feature-focus-section page-width color-{{ section.settings.color_scheme }}">
+  <div class="section-header">
+    {% if section.settings.section_title != blank %}
+      <h2 class="section-title">{{ section.settings.section_title | escape }}</h2>
+    {% endif %}
+    {% if section.settings.section_subtitle != blank %}
+      <p class="section-subtitle">{{ section.settings.section_subtitle | escape }}</p>
+    {% endif %}
+  </div>
+
+  <div class="feature-focus-grid">
+    {% for block in section.blocks %}
+      <div class="feature-item-wrapper" {{ block.shopify_attributes }}>
+        {% case block.type %}
+          {% when 'feature_item' %}
+            <div class="feature-item">
+              {% if block.settings.icon != blank %}
+                <div class="feature-icon">{{ block.settings.icon }}</div>
+              {% endif %}
+              {% if block.settings.title != blank %}
+                <h3 class="feature-title">{{ block.settings.title | escape }}</h3>
+              {% endif %}
+              {% if block.settings.description_html != blank %}
+                <div class="feature-description">{{ block.settings.description_html }}</div>
+              {% endif %}
+            </div>
+        {% endcase %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "AAI Feature Focus",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Section Subtitle"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "options": [
+        { "value": "color-scheme-1", "label": "Scheme 1" },
+        { "value": "color-scheme-2", "label": "Scheme 2" },
+        { "value": "color-scheme-background-1", "label": "Background 1" },
+        { "value": "color-scheme-background-2", "label": "Background 2" }
+      ],
+      "default": "color-scheme-background-2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_item",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (e.g., Emoji or SVG code)",
+          "default": "⭐"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "html",
+          "id": "description_html",
+          "label": "Description (HTML allowed)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Feature Focus"
+    }
+  ]
+}
+{% endschema %}

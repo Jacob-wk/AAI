@@ -1,0 +1,102 @@
+{% comment %}
+  Section: AAI Universal CTA
+  A flexible call-to-action section.
+{% endcomment %}
+
+<div class="aai-universal-cta-section page-width color-{{ section.settings.color_scheme }}">
+  <div class="cta-content-wrapper">
+    {% if section.settings.title != blank %}
+      <h2 class="cta-title">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+    {% if section.settings.text != blank %}
+      <div class="cta-text">{{ section.settings.text }}</div>
+    {% endif %}
+    <div class="cta-buttons">
+      {% if section.settings.button_1_text != blank and section.settings.button_1_link != blank %}
+        <a href="{{ section.settings.button_1_link }}" class="btn btn--{{ section.settings.button_1_style | default: 'primary' }}">
+          {{ section.settings.button_1_text | escape }}
+        </a>
+      {% endif %}
+      {% if section.settings.button_2_text != blank and section.settings.button_2_link != blank %}
+        <a href="{{ section.settings.button_2_link }}" class="btn btn--{{ section.settings.button_2_style | default: 'secondary' }}">
+          {{ section.settings.button_2_text | escape }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "AAI Universal CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "button_1_text",
+      "label": "Button 1 Text"
+    },
+    {
+      "type": "url",
+      "id": "button_1_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "select",
+      "id": "button_1_style",
+      "label": "Button 1 Style",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "text",
+      "id": "button_2_text",
+      "label": "Button 2 Text"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "select",
+      "id": "button_2_style",
+      "label": "Button 2 Style",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" }
+      ],
+      "default": "secondary"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "options": [
+        { "value": "color-scheme-1", "label": "Scheme 1" },
+        { "value": "color-scheme-2", "label": "Scheme 2" },
+        { "value": "color-scheme-background-1", "label": "Background 1" },
+        { "value": "color-scheme-background-2", "label": "Background 2" }
+      ],
+      "default": "color-scheme-2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Universal CTA"
+    }
+  ]
+}
+{% endschema %}
