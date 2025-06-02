@@ -1,14 +1,14 @@
+
 {
   "sections": {
     "hero": {
-       "type": "about-hero",
+      "type": "about-hero",
       "settings": {
         "hero_title": "Where Safety Meets Adventure",
         "hero_subtitle": "Leading the amusement industry in professional safety education since 2025. AAI provides comprehensive training programs that ensure both thrilling experiences and uncompromising safety standards.",
         "show_stats": true,
         "show_credentials": true
-      },
-      "block_order": []
+      }
     },
     "mission": {
       "type": "aai-universal-content",
@@ -35,19 +35,19 @@
           }
         }
       },
+<<<<<<< HEAD
       "block_order": ["feature1", "feature2", "feature3"]
+=======
+      "block_order": [
+        "feature1",
+        "feature2",
+        "feature3"
+      ],
+      "settings": {}
+>>>>>>> 35bd6b6148731c53544a43d89c21ac74e2c3a7b5
     },
     "story": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Our Story",
-        "background_style": "section-alt-2",
-        "layout_style": "text-left-image-right",
-        "show_main_content": true,
-        "content_title": "",
-        "content_body": "<p>Founded in 2025, the Amusement Adventure Institute emerged from a critical need in the industry: comprehensive, accessible safety education that combines rigorous standards with practical application.</p>",
-        "show_image": false
-      },
       "blocks": {
         "milestone_1": {
           "type": "text_block",
@@ -75,7 +75,20 @@
         "milestone_1",
         "feature4",
         "founder_quote"
+<<<<<<< HEAD
       ]
+=======
+      ],
+      "settings": {
+        "section_title": "Our Story",
+        "layout_style": "text-left-image-right",
+        "background_style": "section-alt-2",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "<p>Founded in 2025, the Amusement Adventure Institute emerged from a critical need in the industry: comprehensive, accessible safety education that combines rigorous standards with practical application.</p>",
+        "show_image": false
+      }
+>>>>>>> 35bd6b6148731c53544a43d89c21ac74e2c3a7b5
     },
     "cta_section": {
       "type": "aai-universal-content",
@@ -114,9 +127,6 @@
           }
         }
       },
-      "block_order": [
-        "cta_buttons"
-      ],
       "settings": {
         "section_title": "Ready to Get Started?",
         "section_subtitle": "Join hundreds of safety professionals advancing their careers with AAI",
