@@ -1,239 +1,107 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+
 {
-  "name": "Instructors Page",
   "sections": {
-    "hero": {
-      "type": "aai-universal-hero",
-      "settings": {
-        "hero_title": "Expert Faculty",
-        "hero_subtitle": "Learn from industry leaders with decades of real-world experience in amusement park operations, safety management, and regulatory compliance.",
-        "hero_style": "hero-standard",
-        "layout_style": "text-left-image-right",
-        "show_image": true,
-        "show_stats": true,
-        "show_features": true,
-        "primary_button_text": "View Department Heads",
-        "primary_button_url": "#department-heads",
-        "secondary_button_text": "Browse Courses",
-        "secondary_button_url": "/collections/courses"
-      },
-      "blocks": {
-        "stat1": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "150+",
-            "stat_label": "Years Combined Experience"
-          }
-        },
-        "stat2": {
-          "type": "statistic", 
-          "settings": {
-            "stat_number": "25+",
-            "stat_label": "Expert Instructors"
-          }
-        },
-        "stat3": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "95%",
-            "stat_label": "Industry Background"
-          }
-        },
-        "credential1": {
-          "type": "feature",
-          "settings": {
-            "feature_icon": "🏆",
-            "feature_title": "IAAPA Certified Faculty",
-            "feature_description": ""
-          }
-        },
-        "credential2": {
-          "type": "feature",
-          "settings": {
-            "feature_icon": "👨‍🏫",
-            "feature_title": "Industry Veterans",
-            "feature_description": ""
-          }
-        },
-        "credential3": {
-          "type": "feature",
-          "settings": {
-            "feature_icon": "🔧",
-            "feature_title": "Active Practitioners",
-            "feature_description": ""
-          }
-        }
-      },
-      "block_order": ["stat1", "stat2", "stat3", "credential1", "credential2", "credential3"]
-    },
-    "department_heads": {
-      "type": "aai-instructor-showcase",
-      "settings": {
-        "section_title": "Department Heads",
-        "section_subtitle": "Senior faculty who lead our core curriculum areas with unmatched expertise and industry recognition.",
-        "grid_layout": "grid-2",
-        "show_join_team_cta": false
-      },
-      "blocks": {
-        "dept_head1": {
-          "type": "instructor",
-          "settings": {
-            "instructor_name": "Dr. Jennifer Walsh",
-            "instructor_title": "Chief Academic Officer",
-            "instructor_bio": "25+ years in amusement safety engineering, including 15 years as Director of Safety at Universal Studios. Instrumental in developing modern ride safety protocols now industry standard.",
-            "specialties": "Safety Engineering|Risk Management",
-            "experience_years": "25",
-            "courses_taught": "500",
-            "credentials": "PhD Safety Engineering, Professional Engineer (PE), ASTM F24 Committee Chair",
-            "show_credentials": true
-          }
-        },
-        "dept_head2": {
-          "type": "instructor",
-          "settings": {
-            "instructor_name": "Michael Torres",
-            "instructor_title": "Head of Operations Training",
-            "instructor_bio": "Former Operations Director at Six Flags with 20+ years managing daily operations across multiple parks. Expert in staff training, emergency procedures, and guest experience optimization.",
-            "specialties": "Daily Operations|Guest Services",
-            "experience_years": "20",
-            "courses_taught": "1000",
-            "credentials": "IAAPA Certified Operations Manager, Emergency Response Specialist, Guest Service Excellence Expert",
-            "show_credentials": true
-          }
-        }
-      },
-      "block_order": ["dept_head1", "dept_head2"]
-    },
-    "specialized_faculty": {
-      "type": "aai-instructor-showcase",
-      "settings": {
-        "section_title": "Specialized Faculty", 
-        "section_subtitle": "Subject matter experts who bring deep, specialized knowledge to our advanced certification programs.",
-        "grid_layout": "grid-4",
-        "show_join_team_cta": false
-      },
-      "blocks": {
-        "specialist1": {
-          "type": "instructor",
-          "settings": {
-            "instructor_name": "David Chen",
-            "instructor_title": "Electrical Systems Specialist",
-            "instructor_bio": "Master Electrician with 18+ years in amusement ride electrical systems. Former Chief Electrician at Disney Parks, specializing in complex control systems and electrical safety protocols.",
-            "specialties": "Electrical Safety|Maintenance",
-            "experience_years": "18",
-            "credentials": "Master Electrician, NFPA Certified, Control Systems Expert",
-            "show_credentials": true
-          }
-        },
-        "specialist2": {
-          "type": "instructor",
-          "settings": {
-            "instructor_name": "Lisa Rodriguez",
-            "instructor_title": "Aquatic Safety Director",
-            "instructor_bio": "Aquatic safety expert with 15+ years managing water park operations. Former Director of Aquatic Safety at Schlitterbahn, certified in advanced water rescue and facility management.",
-            "specialties": "Water Park Operations",
-            "experience_years": "15",
-            "credentials": "Certified Pool Operator, Water Safety Instructor, Aquatic Facility Manager",
-            "show_credentials": true
-          }
-        },
-        "specialist3": {
-          "type": "instructor",
-          "settings": {
-            "instructor_name": "Robert Kim",
-            "instructor_title": "Compliance & Inspection Expert",
-            "instructor_bio": "Former state ride inspector with 20+ years in regulatory compliance. Extensive experience with ASTM standards, state regulations, and international safety codes across multiple jurisdictions.",
-            "specialties": "Regulatory Compliance",
-            "experience_years": "20",
-            "credentials": "Certified Ride Inspector, ASTM F24 Member, Regulatory Affairs Specialist",
-            "show_credentials": true
-          }
-        },
-        "specialist4": {
-          "type": "instructor",
-          "settings": {
-            "instructor_name": "Sarah Mitchell",
-            "instructor_title": "Mechanical Systems Engineer",
-            "instructor_bio": "Mechanical engineer with 16+ years in ride design and maintenance. Former Senior Engineer at Intamin, specializing in high-thrill coaster systems and predictive maintenance protocols.",
-            "specialties": "Ride Mechanics|Engineering",
-            "experience_years": "16",
-            "credentials": "Professional Engineer (PE), Ride Design Specialist, Maintenance Excellence Certified",
-            "show_credentials": true
-          }
-        }
-      },
-      "block_order": ["specialist1", "specialist2", "specialist3", "specialist4"]
-    },
-    "guest_instructors": {
+    "main_content": {
       "type": "aai-universal-content",
-      "settings": {
-        "layout_style": "single-column",
-        "background_style": "bg-light",
-        "section_title": "Industry Guest Instructors",
-        "section_subtitle": "Current industry leaders who share the latest developments, trends, and best practices directly from their active roles."
-      },
       "blocks": {
-        "guest_main_content": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid_code": "<div class=\"guest-instructor-showcase\">\n  <div class=\"guest-highlight\" style=\"display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start;\">\n    <div class=\"guest-info\" style=\"flex: 2; min-width: 300px;\">\n      <h3>Current Industry Leaders</h3>\n      <p>Our guest instructor program brings active industry professionals directly into the classroom. These working experts share current challenges, innovative solutions, and emerging trends.</p>\n      <div class=\"guest-stats\" style=\"display: flex; gap: 25px; margin-top: 15px; margin-bottom: 20px; flex-wrap: wrap;\">\n        <div class=\"stat-item\">\n          <div class=\"stat-number\" style=\"font-size: 1.8em; font-weight: bold; color: #005082;\">50+</div>\n          <div class=\"stat-label\" style=\"font-size: 0.9em; color: #333;\">Guest Instructors Annually</div>\n        </div>\n        <div class=\"stat-item\">\n          <div class=\"stat-number\" style=\"font-size: 1.8em; font-weight: bold; color: #005082;\">100+</div>\n          <div class=\"stat-label\" style=\"font-size: 0.9em; color: #333;\">Industry Partners</div>\n        </div>\n      </div>\n      <div class=\"partner-organizations\">\n        <h4 style=\"margin-bottom: 10px; font-size: 1.1em; color: #005082;\">Recent Guest Instructors From:</h4>\n        <ul style=\"list-style-type: disc; margin-left: 20px; padding-left: 0; font-size: 0.95em;\">\n          <li>Disney Parks & Resorts</li>\n          <li>Universal Studios</li>\n          <li>Six Flags Entertainment</li>\n          <li>Cedar Fair</li>\n          <li>SeaWorld Parks</li>\n          <li>Busch Gardens</li>\n          <li>State Inspection Agencies</li>\n          <li>Leading Manufacturers</li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"guest-visual\" style=\"flex: 1; min-width: 250px; text-align: center; background-color: #f0f8ff; padding: 20px; border-radius: 8px; border: 1px solid #cfe2f3;\">\n      <div class=\"partnership-display\">\n        <div class=\"partnership-icon\" style=\"font-size: 2.5em; margin-bottom: 10px; color: #007bff;\">🤝</div>\n        <h4 style=\"margin-bottom: 10px; font-size: 1.2em; color: #005082;\">Industry Partnership Program</h4>\n        <p style=\"font-size: 0.9em; color: #333;\">Active collaboration with leading operators ensures our curriculum reflects current industry needs and emerging best practices.</p>\n      </div>\n    </div>\n  </div>\n</div>"
-          }
-        }
-      },
-      "block_order": ["guest_main_content"]
-    },
-    "faculty_qualifications": {
-      "type": "aai-universal-content",
-      "settings": {
-        "layout_style": "three-column",
-        "background_style": "bg-light",
-        "section_title": "Faculty Standards",
-        "section_subtitle": "Every AAI instructor meets rigorous qualification standards ensuring the highest quality professional education."
-      },
-      "blocks": {
-        "qual1": {
-          "type": "feature_list",
-          "settings": {
-            "list_icon": "🎓",
-            "list_title": "Academic Excellence",
-            "list_items": "Advanced degrees in relevant fields\nProfessional certifications maintained\nContinuing education requirements\nPeer review and evaluation"
-          }
-        },
-        "qual2": {
-          "type": "feature_list",
-          "settings": {
-            "list_icon": "🏭",
-            "list_title": "Industry Experience",
-            "list_items": "Minimum 10+ years field experience\nSenior-level operational roles\nActive industry involvement\nCurrent professional networks"
-          }
-        },
-        "qual3": {
-          "type": "feature_list",
-          "settings": {
-            "list_icon": "🏆",
-            "list_title": "Teaching Excellence",
-            "list_items": "Adult learning methodology training\nProfessional education experience\nStudent outcome tracking\nContinuous improvement commitment"
-          }
-        }
-      },
-      "block_order": ["qual1", "qual2", "qual3"]
-    },
-    "call_to_action": {
-      "type": "aai-universal-content",
-      "settings": {
-        "layout_style": "single-column",
-        "background_style": "bg-primary"
-      },
-      "blocks": {
-        "cta_content": {
+        "feature1": {
           "type": "text_block",
           "settings": {
-            "title": "Learn from the Best",
-            "content": "<p>Experience world-class instruction from industry veterans who understand the real challenges you face. Our faculty brings unmatched expertise and practical knowledge to every course.</p><div class='button-group'><a href='/collections/courses' class='aai-btn aai-btn-primary'>Browse Courses</a><a href='/pages/contact' class='aai-btn aai-btn-secondary'>Contact Faculty</a></div>"
+            "block_title": "Industry Expertise",
+            "block_content": "<p>Learn from professionals with decades of experience in safety management and regulatory compliance.</p>"
+          }
+        },
+        "feature2": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Comprehensive Training",
+            "block_content": "<p>Access a complete library of courses covering all aspects of amusement industry safety and operations.</p>"
+          }
+        },
+        "feature3": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Professional Certification",
+            "block_content": "<p>Earn industry-recognized credentials that advance your career and demonstrate your expertise.</p>"
+          }
+        },
+        "feature4": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Flexible Learning",
+            "block_content": "<p>Study at your own pace with mobile-optimized content accessible anywhere, anytime.</p>"
           }
         }
       },
-      "block_order": ["cta_content"]
+      "block_order": [
+        "feature1",
+        "feature2",
+        "feature3",
+        "feature4"
+      ],
+      "settings": {
+        "section_title": "Customizable Content Section",
+        "section_subtitle": "This content can be easily modified through the theme editor",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "2",
+        "background_style": "",
+        "show_main_content": true,
+        "content_title": "Professional Safety Education",
+        "content_body": "<p>AAI (Amusement Adventure Institute) provides comprehensive training programs for safety professionals in the amusement industry. Customize this content through the theme editor to match your specific needs.</p>",
+        "show_image": false,
+        "main_button_text": "Get Started",
+        "main_button_url": "/collections/courses",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
+    },
+    "cta_section": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "cta_buttons": {
+          "type": "button_group",
+          "settings": {
+            "button_1_text": "Try Free Demo",
+            "button_1_url": "/pages/demo",
+            "button_1_style": "outline",
+            "button_2_text": "Contact Expert",
+            "button_2_url": "/pages/contact",
+            "button_2_style": "secondary",
+            "button_size": "medium"
+          }
+        }
+      },
+      "block_order": [
+        "cta_buttons"
+      ],
+      "settings": {
+        "section_title": "Ready to Get Started?",
+        "section_subtitle": "Join hundreds of safety professionals advancing their careers with AAI",
+        "layout_style": "text-center",
+        "blocks_per_row": "1",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "<p>Whether you're looking to advance your career, meet regulatory requirements, or enhance your organization's safety culture, AAI has the training programs you need.</p>",
+        "show_image": false,
+        "main_button_text": "Browse All Courses",
+        "main_button_url": "/collections/courses",
+        "main_button_style": "primary",
+        "main_button_size": "large"
+      }
     }
   },
-  "order": ["hero", "department_heads", "specialized_faculty", "guest_instructors", "faculty_qualifications", "call_to_action"]
+  "order": [
+    "main_content",
+    "cta_section"
+  ]
 }
