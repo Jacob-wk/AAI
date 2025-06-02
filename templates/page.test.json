@@ -5,45 +5,65 @@
       "settings": {
         "layout_style": "single-column",
         "background_style": "bg-light",
-        "content_width": "container"
+        "content_width": "container",
+        "section_title": "AAI Theme Test Page",
+        "section_subtitle": "Testing Global Animation System and Contact Form"
       },
       "blocks": {
         "hero_content": {
           "type": "text_block",
           "settings": {
-            "title": "AAI Theme Test Page",
-            "content": "<p>If you can see this page without duplicate headers, the theme is working correctly!</p>"
+            "block_title": "Animation Test Section",
+            "block_content": "<p>This page tests our enhanced global animation system. All elements should animate smoothly on scroll and page transitions!</p>"
+          }
+        },
+        "animation_test": {
+          "type": "text_block", 
+          "settings": {
+            "block_title": "Animation Features",
+            "block_content": "<ul><li>Sections animate with fade-in effects</li><li>Blocks slide in from left and right alternately</li><li>Cards and items have staggered animations</li><li>Form elements slide up smoothly</li><li>Page transitions trigger re-animations</li></ul>"
+          }
+        },
+        "test_cards": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Test Cards Section",
+            "block_content": "<div class='card' style='background: white; padding: 2rem; margin: 1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);'><h4>Card 1</h4><p>This card should fade in with animation</p></div><div class='card' style='background: white; padding: 2rem; margin: 1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);'><h4>Card 2</h4><p>This card should have a staggered animation</p></div>"
+          }
+        },
+        "contact_form_test": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Contact Form Test",
+            "block_content": "{% render 'contact-form' %}"
           }
         },
         "checklist": {
           "type": "text_block",
           "settings": {
-            "title": "Theme Setup Checklist:",
-            "content": "<ul><li>✅ Single header (not duplicated)</li><li>✅ AAI branding and colors</li><li>✅ Professional navigation</li><li>✅ Clean page layout</li></ul>"
+            "block_title": "Theme Setup Checklist:",
+            "block_content": "<ul><li>✅ Single header (not duplicated)</li><li>✅ AAI branding and colors</li><li>✅ Professional navigation</li><li>✅ Clean page layout</li><li>✅ Global animations system</li><li>✅ Enhanced contact form</li></ul>"
           }
         },
         "navigation_test": {
           "type": "text_block",
           "settings": {
-            "title": "Navigation Test:",
-            "content": "<p>Try these links to verify page routing:</p><div class=\"test-links\"><a href=\"/pages/about\" class=\"aai-btn aai-btn-primary\">About Page</a> <a href=\"/pages/instructors\" class=\"aai-btn aai-btn-secondary\">Instructors</a> <a href=\"/pages/demo\" class=\"aai-btn aai-btn-primary\">Demo</a> <a href=\"/collections/courses\" class=\"aai-btn aai-btn-secondary\">Courses</a></div>"
-          }
-        },
-        "theme_info": {
-          "type": "text_block",
-          "settings": {
-            "title": "Theme Information:",
-            "content": "<ul><li><strong>Theme:</strong> AAI Professional Safety Education</li><li><strong>Template:</strong> {{ template }}</li><li><strong>Page Handle:</strong> {{ page.handle }}</li><li><strong>Shop:</strong> {{ shop.name }}</li></ul>"
+            "block_title": "Navigation Test:",
+            "block_content": "<p>Try these links to verify page routing and animations:</p><div class=\"test-links\" style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;\"><a href=\"/pages/about\" class=\"btn btn-primary\">About Page</a> <a href=\"/pages/instructors\" class=\"btn btn-secondary\">Instructors</a> <a href=\"/pages/demo\" class=\"btn btn-primary\">Demo</a> <a href=\"/collections/courses\" class=\"btn btn-secondary\">Courses</a></div>"
           }
         }
       },
       "block_order": [
         "hero_content",
+        "animation_test",
+        "test_cards", 
+        "contact_form_test",
         "checklist",
-        "navigation_test",
-        "theme_info"
+        "navigation_test"
       ]
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
