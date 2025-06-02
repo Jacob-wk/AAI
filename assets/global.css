@@ -242,16 +242,4 @@ select:focus {
   100% { transform: rotate(360deg); }
 }
 
-/* AAI Credential Badges in Header */
-.aai-credential-badge {
-  background-color: #ff6b35; /* Scheme 4 Orange */
-  color: #ffffff; /* White text for contrast */
-  padding: 0.25em 0.75em;
-  border-radius: var(--badge-corner-radius, 100px); /* Use theme setting or default */
-  font-size: 0.85em;
-  font-weight: 500;
-  margin: 0 0.25em;
-  display: inline-block;
-  line-height: 1.2;
-  text-align: center;
-}
+/* AAI Credential Badges in Header -- REMOVED, MOVED TO section-aai-header.css */

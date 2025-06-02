@@ -28,11 +28,15 @@
 }
 
 .aai-credential-badge {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
+  background-color: var(--color-scheme-4-button, #ff6b35); /* Scheme 4 Orange */
+  color: var(--color-scheme-4-button_label, #ffffff); /* Scheme 4 White text */
+  padding: 0.3em 0.8em;
+  border-radius: var(--badge-corner-radius, 100px); /* Use theme setting or default */
+  font-size: 0.9em;
   font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  display: inline-block;
 }
 
 /* Main Navigation */
