@@ -7,7 +7,7 @@
     {%- if form.posted_successfully? -%}
       <div class="form-status form-status--success" role="status">
         <h3>{{ 'contact.form.success_title' | t | default: 'Thank you for contacting us!' }}</h3>
-        <p>{{ 'contact.form.success_message' | t | default: 'We\'ve received your message and will get back to you within 24 hours.' }}</p>
+        <p>{{ 'contact.form.success_message' | t | default: "We've received your message and will get back to you within 24 hours." }}</p>
       </div>
     {%- else -%}
       {%- if form.errors -%}
