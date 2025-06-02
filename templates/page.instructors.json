@@ -41,57 +41,55 @@
       "block_order": ["stat1", "stat2", "stat3"]
     },
     "lead_instructors": {
-      "type": "aai-instructor-showcase",
+      "type": "aai-instructors-grid",
       "settings": {
         "section_title": "Lead Faculty",
         "section_subtitle": "Our core instructional team brings unparalleled expertise to every course.",
-        "grid_layout": "grid-2",
-        "section_style": "",
-        "show_join_team_cta": false
+        "color_scheme": "color-scheme-background-1"
       },
       "blocks": {
         "instructor_sarah": {
-          "type": "instructor",
+          "type": "instructor_card",
           "settings": {
-            "instructor_name": "Dr. Sarah Mitchell, P.E.",
-            "instructor_title": "Lead Safety Engineering Instructor",
-            "instructor_image": "sarah-mitchell.jpg",
-            "instructor_bio": "With over 20 years in amusement ride engineering and safety analysis, Dr. Mitchell leads our mechanical systems and safety analysis courses. She holds Professional Engineer licenses in three states and has consulted on major theme park projects worldwide.",
-            "instructor_specialties": "Mechanical Engineering • Safety Analysis • Risk Assessment • ASTM F24 Standards",
-            "instructor_credentials": "Ph.D. Mechanical Engineering • P.E. Licensed • ASTM F24 Committee Member • 150+ Published Safety Analyses"
+            "name": "Dr. Sarah Mitchell, P.E.",
+            "title": "Lead Safety Engineering Instructor",
+            "department": "Engineering & Safety",
+            "bio": "With over 20 years in amusement ride engineering and safety analysis, Dr. Mitchell leads our mechanical systems and safety analysis courses. She holds Professional Engineer licenses in three states and has consulted on major theme park projects worldwide.",
+            "credentials": "Ph.D. Mechanical Engineering, P.E. Licensed, ASTM F24 Committee Member",
+            "featured": true
           }
         },
         "instructor_james": {
-          "type": "instructor",
+          "type": "instructor_card",
           "settings": {
-            "instructor_name": "James Rodriguez",
-            "instructor_title": "Operations & Maintenance Director",
-            "instructor_image": "james-rodriguez.jpg",
-            "instructor_bio": "Former Operations Director at three major theme parks, James brings real-world operational expertise to our management and maintenance courses. His hands-on approach helps students understand the practical challenges of daily operations.",
-            "instructor_specialties": "Operations Management • Preventive Maintenance • Staff Training • Emergency Procedures",
-            "instructor_credentials": "25+ Years Operations Experience • IAAPA Certified • Former Disney Operations • Emergency Response Certified"
+            "name": "James Rodriguez",
+            "title": "Operations & Maintenance Director",
+            "department": "Operations",
+            "bio": "Former Operations Director at three major theme parks, James brings real-world operational expertise to our management and maintenance courses. His hands-on approach helps students understand the practical challenges of daily operations.",
+            "credentials": "25+ Years Operations Experience, IAAPA Certified, Former Disney Operations",
+            "featured": true
           }
         },
         "instructor_maria": {
-          "type": "instructor",
+          "type": "instructor_card",
           "settings": {
-            "instructor_name": "Maria Chen, J.D.",
-            "instructor_title": "Regulatory Compliance Specialist",
-            "instructor_image": "maria-chen.jpg",
-            "instructor_bio": "An attorney specializing in amusement industry law and regulations, Maria ensures our courses cover the latest legal requirements and compliance standards. She regularly represents operators in regulatory matters.",
-            "instructor_specialties": "Legal Compliance • Regulatory Affairs • Documentation • Liability Management",
-            "instructor_credentials": "J.D. Law Degree • Amusement Industry Legal Specialist • 15+ Years Regulatory Experience • Guest Speaker IAAPA Legal Sessions"
+            "name": "Maria Chen, J.D.",
+            "title": "Regulatory Compliance Specialist",
+            "department": "Legal & Compliance",
+            "bio": "An attorney specializing in amusement industry law and regulations, Maria ensures our courses cover the latest legal requirements and compliance standards. She regularly represents operators in regulatory matters.",
+            "credentials": "J.D. Law Degree, Amusement Industry Legal Specialist, 15+ Years Regulatory Experience",
+            "featured": false
           }
         },
         "instructor_david": {
-          "type": "instructor",
+          "type": "instructor_card",
           "settings": {
-            "instructor_name": "David Thompson",
-            "instructor_title": "Inspection & Quality Assurance Expert",
-            "instructor_image": "david-thompson.jpg",
-            "instructor_bio": "A certified inspector with experience at over 200 facilities, David teaches our inspection methodology and quality assurance courses. His systematic approach helps students develop thorough inspection skills.",
-            "instructor_specialties": "Inspection Procedures • Quality Assurance • Documentation • Certification Programs",
-            "instructor_credentials": "NAARSO Certified Inspector • 18+ Years Inspection Experience • 500+ Facilities Inspected • Quality Management Certified"
+            "name": "David Thompson",
+            "title": "Inspection & Quality Assurance Expert",
+            "department": "Quality & Inspection",
+            "bio": "A certified inspector with experience at over 200 facilities, David teaches our inspection methodology and quality assurance courses. His systematic approach helps students develop thorough inspection skills.",
+            "credentials": "NAARSO Certified Inspector, 18+ Years Inspection Experience, 500+ Facilities Inspected",
+            "featured": false
           }
         }
       },
