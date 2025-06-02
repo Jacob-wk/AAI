@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeDemoExperience();
   initializeCoursePreview();
   initializeProgressTracking();
+  initializeSectionDemoTabs(); // Added this line
 });
 
 function initializeDemoExperience() {
@@ -272,32 +273,67 @@ function showCompletionMessage(container) {
   }, 100);
 }
 
-// Professional analytics integration
-/**
- * Tracks demo interaction for analytics
- * @param {string} action - The action being tracked
- * @param {object} data - Additional data to track
- */
-function trackDemoInteraction(action, data = {}) {
-  // Integration with professional analytics
-  if (typeof window.gtag !== 'undefined') {
-    window.gtag('event', 'demo_interaction', {
-      action: action,
-      course_id: data.courseId || '',
-      step: data.step || '',
-      custom_data: data
+function initializeSectionDemoTabs() {
+  const demoExperienceSection = document.querySelector('.aai-demo-experience');
+  if (!demoExperienceSection) return;
+
+  const tabsContainer = demoExperienceSection.querySelector('.demo-tabs');
+  if (!tabsContainer) return;
+
+  const tabs = tabsContainer.querySelectorAll('.demo-tab');
+  const panelsContainer = demoExperienceSection.querySelector('.demo-content');
+  if (!panelsContainer) return;
+
+  if (!tabs.length) return;
+
+  function switchTab(activeTab) {
+    // Deactivate all tabs and panels first
+    tabs.forEach(tab => {
+      tab.classList.remove('active');
+      const panelId = tab.dataset.demoTab;
+      if (panelId) {
+        const panel = panelsContainer.querySelector(`.demo-panel[data-demo-panel="${panelId}"]`);
+        if (panel) {
+          panel.classList.remove('active');
+        }
+      }
     });
+
+    // Activate the clicked tab and its corresponding panel
+    activeTab.classList.add('active');
+    const activePanelId = activeTab.dataset.demoTab;
+    if (activePanelId) {
+      const activePanel = panelsContainer.querySelector(`.demo-panel[data-demo-panel="${activePanelId}"]`);
+      if (activePanel) {
+        activePanel.classList.add('active');
+      }
+    }
   }
 
-  // Console logging for development
-  console.log('Demo interaction:', action, data);
-}
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent any default button action
+      switchTab(this);
+    });
+  });
 
-// Export for external usage
-if (typeof window !== 'undefined') {
-  window.AAIDemoExperience = {
-    openDemoModal,
-    closeDemoModal,
-    trackDemoInteraction
-  };
+  // Ensure the first tab is active by default if no other tab is marked active
+  // and its panel is displayed.
+  const initiallyActiveTab = tabsContainer.querySelector('.demo-tab.active');
+  if (initiallyActiveTab) {
+    // If a tab is already marked as active in HTML, ensure its panel is shown
+    const activePanelId = initiallyActiveTab.dataset.demoTab;
+    if (activePanelId) {
+        const activePanel = panelsContainer.querySelector(`.demo-panel[data-demo-panel="${activePanelId}"]`);
+        if (activePanel) {
+            activePanel.classList.add('active');
+        } else {
+            // If the active tab's panel doesn't exist, default to the first tab
+            if (tabs.length > 0) switchTab(tabs[0]);
+        }
+    }
+  } else if (tabs.length > 0) {
+    // If no tab is marked active, activate the first one
+    switchTab(tabs[0]);
+  }
 }
