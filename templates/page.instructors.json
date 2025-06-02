@@ -1,6 +1,5 @@
 
 {
-  "name": "Instructors Page",
   "sections": {
     "instructors_hero": {
       "type": "aai-universal-hero",

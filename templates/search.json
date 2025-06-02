@@ -1,5 +1,4 @@
 {
-  "name": "Search Page",
   "sections": {
     "search_hero": {
       "type": "aai-universal-hero",

@@ -1,5 +1,4 @@
 {
-  "name": "Help Center",
   "sections": {
     "hero": {
       "type": "aai-help-center-hero",

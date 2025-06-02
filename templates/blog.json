@@ -1,5 +1,4 @@
 {
-  "name": "Default Blog",
   "sections": {
     "hero": {
       "type": "aai-universal-hero",

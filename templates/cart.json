@@ -1,5 +1,4 @@
 {
-  "name": "Cart Page",
   "sections": {
     "cart_hero": {
       "type": "aai-universal-hero",
