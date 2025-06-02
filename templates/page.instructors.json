@@ -52,7 +52,7 @@
       },
       "blocks": {
         "instructor_sarah": {
-          "type": "instructor_profile",
+          "type": "instructor",
           "settings": {
             "instructor_name": "Dr. Sarah Mitchell, P.E.",
             "instructor_title": "Lead Safety Engineering Instructor",
@@ -63,7 +63,7 @@
           }
         },
         "instructor_james": {
-          "type": "instructor_profile",
+          "type": "instructor",
           "settings": {
             "instructor_name": "James Rodriguez",
             "instructor_title": "Operations & Maintenance Director",
@@ -74,7 +74,7 @@
           }
         },
         "instructor_maria": {
-          "type": "instructor_profile",
+          "type": "instructor",
           "settings": {
             "instructor_name": "Maria Chen, J.D.",
             "instructor_title": "Regulatory Compliance Specialist",
@@ -85,7 +85,7 @@
           }
         },
         "instructor_david": {
-          "type": "instructor_profile",
+          "type": "instructor",
           "settings": {
             "instructor_name": "David Thompson",
             "instructor_title": "Inspection & Quality Assurance Expert",
@@ -155,21 +155,21 @@
       },
       "blocks": {
         "academic": {
-          "type": "feature_focus_item",
+          "type": "feature_item",
           "settings": {
             "title": "Academic Excellence",
             "description_html": "<ul><li>Advanced degrees in relevant fields</li><li>Professional certifications maintained</li><li>Continuing education requirements</li><li>Peer review and evaluation</li></ul>"
           }
         },
         "industry": {
-          "type": "feature_focus_item",
+          "type": "feature_item",
           "settings": {
             "title": "Industry Experience",
             "description_html": "<ul><li>Minimum 10 years field experience</li><li>Active industry involvement</li><li>Current with technology trends</li><li>Proven track record of excellence</li></ul>"
           }
         },
         "teaching": {
-          "type": "feature_focus_item",
+          "type": "feature_item",
           "settings": {
             "title": "Teaching Excellence",
             "description_html": "<ul><li>Adult learning methodology training</li><li>Regular student feedback evaluation</li><li>Curriculum development expertise</li><li>Technology integration skills</li></ul>"
