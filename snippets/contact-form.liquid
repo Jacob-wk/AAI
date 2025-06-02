@@ -1,170 +1,66 @@
-{% comment %}
-  Renders a contact form with name, email, phone, and comment fields.
+{%- comment -%}
+  Renders a contact form with proper styling and alignment
+{%- endcomment -%}
 
-  Accepts:
-
-  @param {object} settings - Settings for 'spacing-style' and 'size-style' snippets in the contact form.
-  @param {string} submit_button - HTML for the submit button (rendered via content_for block)
-{% endcomment %}
-
-{% stylesheet %}
-  .contact-form__form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-md);
-  }
-
-  .contact-form__form-row {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-md);
-
-    @media screen and (width >= 750px) {
-      flex-direction: row;
-      align-items: center;
-    }
-  }
-
-  .contact-form__input {
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--color-foreground);
-    background-color: var(--color-input-background);
-    padding: var(--padding-lg) var(--padding-xl);
-    border-radius: var(--style-border-radius-inputs);
-    border: var(--style-border-width-inputs) solid var(--color-input-border);
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .contact-form__input--textarea {
-    resize: vertical;
-    min-height: var(--input-textarea-min-height);
-  }
-
-  .contact-form__error,
-  .contact-form__success {
-    display: flex;
-    align-items: center;
-    gap: var(--gap-xs);
-  }
-{% endstylesheet %}
-<div class="aai-container"> {# Added this container #}
-  <div
-    class="
-      contact-form
-      spacing-style size-style
-      {% if settings.inherit_color_scheme == false %}color-{{ settings.color_scheme }}{% endif %}
-    "
-    style="
-      {% render 'spacing-style', settings: settings %}
-      {% render 'size-style', settings: settings %}
-    "
-    {{ block.shopify_attributes }}
-  >
-    {% assign form_id = block.id | default: section.id | prepend: 'ContactForm-' %}
-
-    {%- form 'contact', id: form_id, class: 'contact-form__form' -%}
-      {%- if form.errors -%}
-        <div
-          class="contact-form__error"
-          tabindex="-1"
-          autofocus
-        >
-          {{- 'icon-error.svg' | inline_asset_content -}}
-
-          {{- form.errors.translated_fields.email | capitalize }}
-          {{ form.errors.messages.email -}}
-        </div>
-      {%- endif -%}
-
-      {%- if form.posted_successfully? -%}
-        <div
-          class="contact-form__success"
-          tabindex="-1"
-          autofocus
-        >
-          {{- 'icon-checkmark.svg' | inline_asset_content -}}
-          {{- 'blocks.contact_form.post_success' | t -}}
-        </div>
-      {%- endif -%}
-
-      <div class="contact-form__form-row">
-        <label
-          class="visually-hidden"
-          for="ContactForm-name"
-        >
-          {{- 'blocks.contact_form.name' | t -}}
-        </label>
-        <input
-          type="text"
-          id="ContactForm-name"
-          class="contact-form__input"
-          autocomplete="name"
-          name="contact[name]"
-          value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-          placeholder="{{ 'blocks.contact_form.name' | t }}"
-        >
-
-        <label
-          class="visually-hidden"
-          for="ContactForm-email"
-        >
-          {{- 'blocks.contact_form.email' | t -}}
-          <span aria-hidden="true">*</span></label
-        >
-        <input
-          type="email"
-          id="ContactForm-email"
-          class="contact-form__input"
-          autocomplete="email"
-          name="contact[email]"
-          spellcheck="false"
-          autocapitalize="off"
-          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-          aria-required="true"
-          {% if form.errors contains 'email' %}
-            aria-invalid="true"
-            aria-describedby="ContactForm-email-error"
-          {% endif %}
-          placeholder="{{ 'blocks.contact_form.email' | t }}"
-        >
+<div class="contact-form-wrapper" style="max-width: {{ form_max_width | default: 600 }}px; margin: 0 auto; text-align: {{ form_alignment | default: 'center' }};">
+  {%- form 'contact', class: 'contact-form' -%}
+    {%- if form.posted_successfully? -%}
+      <div class="form-status form-status--success" role="status">
+        <h3>{{ 'contact.form.success_title' | t }}</h3>
+        <p>{{ 'contact.form.success_message' | t }}</p>
       </div>
+    {%- else -%}
+      {%- if form.errors -%}
+        <div class="form-status form-status--error" role="alert">
+          <h3>{{ 'contact.form.error_title' | t }}</h3>
+          <ul>
+            {%- for field in form.errors -%}
+              <li>{{ field | capitalize }} {{ form.errors.messages[field] }}</li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
 
-      <label
-        class="visually-hidden"
-        for="ContactForm-phone"
-      >
-        {{- 'blocks.contact_form.phone' | t -}}
-      </label>
-      <input
-        type="tel"
-        id="ContactForm-phone"
-        class="contact-form__input"
-        autocomplete="tel"
-        name="contact[phone]"
-        pattern="[0-9\-]*"
-        value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-        placeholder="{{ 'blocks.contact_form.phone' | t }}"
-      >
-
-      <label
-        class="visually-hidden"
-        for="ContactForm-body"
-      >
-        {{- 'blocks.contact_form.comment' | t -}}
-      </label>
-      <textarea
-        rows="10"
-        id="ContactForm-body"
-        class="contact-form__input contact-form__input--textarea"
-        name="contact[body]"
-        placeholder="{{ 'blocks.contact_form.comment' | t }}"
-      >
-        {{- form.body -}}
-      </textarea>
-
-      {{ submit_button }}
-    {%- endform -%}
-  </div>
-</div> {# Closed the container #}
+      <div class="contact-form-fields">
+        <div class="field-group">
+          <div class="field">
+            <label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+            <input type="text" id="ContactFormName" name="contact[name]" value="{{ form.name }}" required>
+          </div>
+          <div class="field">
+            <label for="ContactFormEmail">{{ 'contact.form.email' | t }}</label>
+            <input type="email" id="ContactFormEmail" name="contact[email]" value="{{ form.email }}" required>
+          </div>
+        </div>
+        
+        <div class="field">
+          <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
+          <input type="tel" id="ContactFormPhone" name="contact[phone]" value="{{ form.phone }}">
+        </div>
+        
+        <div class="field">
+          <label for="ContactFormSubject">{{ 'contact.form.subject' | t }}</label>
+          <select id="ContactFormSubject" name="contact[subject]" required>
+            <option value="">Select inquiry type...</option>
+            <option value="Course Information">Course Information</option>
+            <option value="Corporate Training">Corporate Training</option>
+            <option value="Technical Support">Technical Support</option>
+            <option value="Partnership">Partnership Opportunities</option>
+            <option value="General">General Inquiry</option>
+          </select>
+        </div>
+        
+        <div class="field">
+          <label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
+          <textarea id="ContactFormMessage" name="contact[body]" required>{{ form.body }}</textarea>
+        </div>
+        
+        <div class="field field-submit">
+          <button type="submit" class="button button--primary">
+            {{ 'contact.form.send' | t }}
+          </button>
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endform -%}
+</div>

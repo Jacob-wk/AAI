@@ -1,220 +1,178 @@
-
 {
   "sections": {
-    "instructors_hero": {
+    "hero": {
       "type": "aai-universal-hero",
       "settings": {
-        "color_scheme": "color-scheme-1",
-        "section_width": "page-width",
-        "layout_option": "text-left-image-right",
-        "hero_title": "Expert Faculty",
-        "hero_subtitle": "Learn from industry leaders with decades of real-world experience in amusement park operations, safety management, and regulatory compliance.",
-        "image_position_desktop": "right",
-        "image_position_mobile": "bottom",
-        "visual_content_html": "<div><div><strong>IAAPA Certified Faculty</strong></div><div><strong>Industry Veterans</strong></div><div><strong>Active Practitioners</strong></div></div>"
+        "hero_title": "Meet Our Expert Instructors",
+        "hero_subtitle": "Learn from industry veterans with decades of experience in amusement safety, operations, and regulatory compliance.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-center",
+        "show_image": false,
+        "show_stats": true,
+        "show_features": false,
+        "primary_button_text": "Browse Courses",
+        "primary_button_url": "/collections/courses",
+        "secondary_button_text": "Contact Faculty",
+        "secondary_button_url": "/pages/contact"
       },
       "blocks": {
-        "stat_1": {
-          "type": "stat_item",
+        "stat1": {
+          "type": "statistic",
           "settings": {
-            "number": "150+",
-            "label": "Years Combined Experience"
+            "stat_number": "25+",
+            "stat_label": "Expert Instructors"
           }
         },
-        "stat_2": {
-          "type": "stat_item",
+        "stat2": {
+          "type": "statistic",
           "settings": {
-            "number": "25+",
-            "label": "Expert Instructors"
+            "stat_number": "500+",
+            "stat_label": "Years Combined Experience"
           }
         },
-        "stat_3": {
-          "type": "stat_item",
+        "stat3": {
+          "type": "statistic",
           "settings": {
-            "number": "95%",
-            "label": "Industry Background"
+            "stat_number": "15+",
+            "stat_label": "Industry Specializations"
           }
         }
       },
-      "block_order": [
-        "stat_1",
-        "stat_2",
-        "stat_3"
-      ]
+      "block_order": ["stat1", "stat2", "stat3"]
     },
-    "department_heads": {
-      "type": "aai-instructors-grid",
+    "lead_instructors": {
+      "type": "aai-universal-content",
       "settings": {
-        "color_scheme": "color-scheme-background-1",
-        "section_width": "page-width",
-        "section_title": "Department Heads",
-        "section_subtitle": "Senior faculty who lead our core curriculum areas with unmatched expertise and industry recognition."
+        "section_title": "Lead Faculty",
+        "section_subtitle": "Our core instructional team brings unparalleled expertise to every course.",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "2",
+        "background_style": "",
+        "section_width": "page-width"
       },
       "blocks": {
-        "walsh": {
-          "type": "instructor_card",
+        "instructor_sarah": {
+          "type": "instructor_profile",
           "settings": {
-            "image_placeholder_icon": "👨‍🏫",
-            "name": "Dr. Jennifer Walsh",
-            "title": "Chief Academic Officer",
-            "department": "Safety Engineering & Risk Management",
-            "bio": "<p>25+ years in amusement safety engineering, including 15 years as Director of Safety at Universal Studios. Instrumental in developing modern ride safety protocols now industry standard.</p>",
-            "credentials": [
-              "PhD Safety Engineering",
-              "Professional Engineer (PE)",
-              "ASTM F24 Committee Chair"
-            ],
-            "stat_1_number": "500+",
-            "stat_1_label": "Students Taught",
-            "stat_2_number": "15",
-            "stat_2_label": "Courses Created",
-            "featured": true
+            "instructor_name": "Dr. Sarah Mitchell, P.E.",
+            "instructor_title": "Lead Safety Engineering Instructor",
+            "instructor_image": "sarah-mitchell.jpg",
+            "instructor_bio": "With over 20 years in amusement ride engineering and safety analysis, Dr. Mitchell leads our mechanical systems and safety analysis courses. She holds Professional Engineer licenses in three states and has consulted on major theme park projects worldwide.",
+            "instructor_specialties": "Mechanical Engineering • Safety Analysis • Risk Assessment • ASTM F24 Standards",
+            "instructor_credentials": "Ph.D. Mechanical Engineering • P.E. Licensed • ASTM F24 Committee Member • 150+ Published Safety Analyses"
           }
         },
-        "torres": {
-          "type": "instructor_card",
+        "instructor_james": {
+          "type": "instructor_profile",
           "settings": {
-            "image_placeholder_icon": "👨‍🔧",
-            "name": "Michael Torres",
-            "title": "Head of Operations Training",
-            "department": "Daily Operations & Guest Services",
-            "bio": "<p>Former Operations Director at Six Flags with 20+ years managing daily operations across multiple parks. Expert in staff training, emergency procedures, and guest experience optimization.</p>",
-            "credentials": [
-              "IAAPA Certified Operations Manager",
-              "Emergency Response Specialist",
-              "Guest Service Excellence Expert"
-            ],
-            "stat_1_number": "1000+",
-            "stat_1_label": "Staff Trained",
-            "stat_2_number": "12",
-            "stat_2_label": "Parks Managed",
-            "featured": true
+            "instructor_name": "James Rodriguez",
+            "instructor_title": "Operations & Maintenance Director",
+            "instructor_image": "james-rodriguez.jpg",
+            "instructor_bio": "Former Operations Director at three major theme parks, James brings real-world operational expertise to our management and maintenance courses. His hands-on approach helps students understand the practical challenges of daily operations.",
+            "instructor_specialties": "Operations Management • Preventive Maintenance • Staff Training • Emergency Procedures",
+            "instructor_credentials": "25+ Years Operations Experience • IAAPA Certified • Former Disney Operations • Emergency Response Certified"
+          }
+        },
+        "instructor_maria": {
+          "type": "instructor_profile",
+          "settings": {
+            "instructor_name": "Maria Chen, J.D.",
+            "instructor_title": "Regulatory Compliance Specialist",
+            "instructor_image": "maria-chen.jpg",
+            "instructor_bio": "An attorney specializing in amusement industry law and regulations, Maria ensures our courses cover the latest legal requirements and compliance standards. She regularly represents operators in regulatory matters.",
+            "instructor_specialties": "Legal Compliance • Regulatory Affairs • Documentation • Liability Management",
+            "instructor_credentials": "J.D. Law Degree • Amusement Industry Legal Specialist • 15+ Years Regulatory Experience • Guest Speaker IAAPA Legal Sessions"
+          }
+        },
+        "instructor_david": {
+          "type": "instructor_profile",
+          "settings": {
+            "instructor_name": "David Thompson",
+            "instructor_title": "Inspection & Quality Assurance Expert",
+            "instructor_image": "david-thompson.jpg",
+            "instructor_bio": "A certified inspector with experience at over 200 facilities, David teaches our inspection methodology and quality assurance courses. His systematic approach helps students develop thorough inspection skills.",
+            "instructor_specialties": "Inspection Procedures • Quality Assurance • Documentation • Certification Programs",
+            "instructor_credentials": "NAARSO Certified Inspector • 18+ Years Inspection Experience • 500+ Facilities Inspected • Quality Management Certified"
           }
         }
       },
-      "block_order": [
-        "walsh",
-        "torres"
-      ]
+      "block_order": ["instructor_sarah", "instructor_james", "instructor_maria", "instructor_david"]
     },
     "specialized_faculty": {
-      "type": "aai-instructors-grid",
+      "type": "aai-universal-content",
       "settings": {
-        "color_scheme": "color-scheme-background-2",
-        "section_width": "page-width",
         "section_title": "Specialized Faculty",
-        "section_subtitle": "Subject matter experts who bring deep, specialized knowledge to our advanced certification programs."
+        "section_subtitle": "Expert instructors for niche areas and advanced topics.",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "3",
+        "background_style": "section-alt-1",
+        "section_width": "page-width"
       },
       "blocks": {
-        "chen": {
-          "type": "instructor_card",
+        "electrical_expert": {
+          "type": "text_block",
           "settings": {
-            "image_placeholder_icon": "⚡",
-            "name": "David Chen",
-            "title": "Electrical Systems Specialist",
-            "department": "Electrical Safety & Maintenance",
-            "bio": "<p>Master Electrician with 18+ years in amusement ride electrical systems. Former Chief Electrician at Disney Parks, specializing in complex control systems and electrical safety protocols.</p>",
-            "credentials": [
-              "Master Electrician",
-              "NFPA Certified",
-              "Control Systems Expert"
-            ]
+            "block_title": "⚡ Electrical Systems",
+            "block_content": "<p><strong>Robert Kim, Licensed Electrician</strong></p><p>Electrical safety, control systems, and power distribution for amusement devices.</p><p><em>Master Electrician • 20+ Years • Control Systems Specialist</em></p>"
           }
         },
-        "rodriguez": {
-          "type": "instructor_card",
+        "water_safety": {
+          "type": "text_block",
           "settings": {
-            "image_placeholder_icon": "🌊",
-            "name": "Lisa Rodriguez",
-            "title": "Aquatic Safety Director",
-            "department": "Water Park Operations",
-            "bio": "<p>Aquatic safety expert with 15+ years managing water park operations. Former Director of Aquatic Safety at Schlitterbahn, certified in advanced water rescue and facility management.</p>",
-            "credentials": [
-              "Certified Pool Operator",
-              "Water Safety Instructor",
-              "Aquatic Facility Manager"
-            ]
+            "block_title": "🌊 Aquatic Safety",
+            "block_content": "<p><strong>Lisa Park, Aquatic Safety Director</strong></p><p>Water park operations, aquatic risk management, and lifeguard training programs.</p><p><em>Aquatic Facility Operator • Water Safety Instructor • Pool Operations Certified</em></p>"
           }
         },
-        "kim": {
-          "type": "instructor_card",
+        "accessibility": {
+          "type": "text_block",
           "settings": {
-            "image_placeholder_icon": "📋",
-            "name": "Robert Kim",
-            "title": "Compliance & Inspection Expert",
-            "department": "Regulatory Compliance",
-            "bio": "<p>Former state ride inspector with 20+ years in regulatory compliance. Extensive experience with ASTM standards, state regulations, and international safety codes across multiple jurisdictions.</p>",
-            "credentials": [
-              "Certified Ride Inspector",
-              "ASTM F24 Member",
-              "Regulatory Affairs Specialist"
-            ]
-          }
-        },
-        "mitchell": {
-          "type": "instructor_card",
-          "settings": {
-            "image_placeholder_icon": "🏗️",
-            "name": "Sarah Mitchell",
-            "title": "Mechanical Systems Engineer",
-            "department": "Ride Mechanics & Engineering",
-            "bio": "<p>Mechanical engineer with 16+ years in ride design and maintenance. Former Senior Engineer at Intamin, specializing in high-thrill coaster systems and predictive maintenance protocols.</p>",
-            "credentials": [
-              "Professional Engineer (PE)",
-              "Ride Design Specialist",
-              "Maintenance Excellence Certified"
-            ]
+            "block_title": "♿ Accessibility Compliance",
+            "block_content": "<p><strong>Michael Adams, ADA Specialist</strong></p><p>Americans with Disabilities Act compliance, inclusive design, and accessibility auditing.</p><p><em>ADA Compliance Certified • Universal Design Specialist • Accessibility Consultant</em></p>"
           }
         }
       },
-      "block_order": [
-        "chen",
-        "rodriguez",
-        "kim",
-        "mitchell"
-      ]
+      "block_order": ["electrical_expert", "water_safety", "accessibility"]
     },
     "guest_instructors": {
-      "type": "aai-custom-content",
+      "type": "aai-universal-content",
       "settings": {
-        "color_scheme": "color-scheme-1",
-        "section_width": "page-width",
         "section_title": "Industry Guest Instructors",
-        "section_subtitle": "Current industry leaders who share the latest developments, trends, and best practices directly from their active roles.",
-        "html_content": "<div><div><div><h3>Current Industry Leaders</h3><p>Our guest instructor program brings active industry professionals directly into the classroom. These working experts share current challenges, innovative solutions, and emerging trends.</p><div><div><strong>50+</strong><br>Guest Instructors Annually</div><div><strong>100+</strong><br>Industry Partners</div></div><div><h4>Recent Guest Instructors From:</h4><ul><li>Disney Parks &amp; Resorts</li><li>Universal Studios</li><li>Six Flags Entertainment</li><li>Cedar Fair</li><li>SeaWorld Parks</li><li>Busch Gardens</li><li>State Inspection Agencies</li><li>Leading Manufacturers</li></ul></div></div><div><div><div>🤝</div><h4>Industry Partnership Program</h4><p>Active collaboration with leading operators ensures our curriculum reflects current industry needs and emerging best practices.</p></div></div></div></div>"
+        "section_subtitle": "Regular guest lectures from leading industry professionals and subject matter experts.",
+        "layout_style": "text-only",
+        "background_style": "",
+        "section_width": "page-width",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "<p>AAI regularly features guest instructors from major theme parks, manufacturers, regulatory agencies, and consulting firms. These industry leaders share current trends, real-world case studies, and emerging technologies that keep our curriculum at the forefront of industry developments.</p><h4>Recent Guest Instructors Include:</h4><ul><li><strong>Walt Disney World</strong> - Senior Operations Managers</li><li><strong>Universal Studios</strong> - Safety Directors</li><li><strong>Six Flags</strong> - Maintenance Supervisors</li><li><strong>Cedar Fair</strong> - Training Coordinators</li><li><strong>Intamin AG</strong> - Design Engineers</li><li><strong>B&M Coasters</strong> - Project Managers</li><li><strong>State Regulatory Agencies</strong> - Chief Inspectors</li><li><strong>Insurance Companies</strong> - Risk Assessment Specialists</li></ul>"
       }
     },
     "faculty_standards": {
       "type": "aai-feature-focus",
       "settings": {
-        "color_scheme": "color-scheme-background-2",
         "section_width": "page-width",
         "section_title": "Faculty Standards",
         "section_subtitle": "Every AAI instructor meets rigorous qualification standards ensuring the highest quality professional education."
       },
       "blocks": {
         "academic": {
-          "type": "feature_item",
+          "type": "feature_focus_item",
           "settings": {
-            "icon": "🎓",
             "title": "Academic Excellence",
             "description_html": "<ul><li>Advanced degrees in relevant fields</li><li>Professional certifications maintained</li><li>Continuing education requirements</li><li>Peer review and evaluation</li></ul>"
           }
         },
         "industry": {
-          "type": "feature_item",
+          "type": "feature_focus_item",
           "settings": {
-            "icon": "🏭",
             "title": "Industry Experience",
-            "description_html": "<ul><li>Minimum 10+ years field experience</li><li>Senior-level operational roles</li><li>Active industry involvement</li><li>Current professional networks</li></ul>"
+            "description_html": "<ul><li>Minimum 10 years field experience</li><li>Active industry involvement</li><li>Current with technology trends</li><li>Proven track record of excellence</li></ul>"
           }
         },
         "teaching": {
-          "type": "feature_item",
+          "type": "feature_focus_item",
           "settings": {
-            "icon": "🏆",
             "title": "Teaching Excellence",
-            "description_html": "<ul><li>Adult learning methodology training</li><li>Professional education experience</li><li>Student outcome tracking</li><li>Continuous improvement commitment</li></ul>"
+            "description_html": "<ul><li>Adult learning methodology training</li><li>Regular student feedback evaluation</li><li>Curriculum development expertise</li><li>Technology integration skills</li></ul>"
           }
         }
       },
@@ -240,12 +198,5 @@
       }
     }
   },
-  "order": [
-    "instructors_hero",
-    "department_heads",
-    "specialized_faculty",
-    "guest_instructors",
-    "faculty_standards",
-    "instructors_cta"
-  ]
+  "order": ["hero", "lead_instructors", "specialized_faculty", "guest_instructors", "faculty_standards", "instructors_cta"]
 }

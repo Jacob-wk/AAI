@@ -79,39 +79,24 @@
       "block_order": ["phone_info", "email_info", "address_info"]
     },
     "contact_form_section": {
-      "type": "section",
+      "type": "aai-universal-content",
       "settings": {
-        "content_direction": "column",
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 24,
+        "section_title": "How Can We Help?",
+        "section_subtitle": "Choose the category that best describes your inquiry for faster, more targeted assistance from our specialized teams. Fill out the form below and we'll get back to you within 24 hours.",
+        "layout_style": "text-center",
+        "background_style": "section-alt-2",
         "section_width": "page-width",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "show_main_content": false
       },
       "blocks": {
-        "form_heading": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>How Can We Help?</h2><p>Choose the category that best describes your inquiry for faster, more targeted assistance from our specialized teams. Fill out the form below and we'll get back to you within 24 hours.</p>",
-            "type_preset": "rte",
-            "alignment": "center",
-            "padding-block-end": 20
-          }
-        },
         "contact_form_block": {
-          "type": "contact-form",
+          "type": "contact_form",
           "settings": {
-            "color_scheme": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "color_scheme": "scheme-1"
           }
         }
       },
-      "block_order": ["form_heading", "contact_form_block"]
+      "block_order": ["contact_form_block"]
     },
     "detailed_inquiries": {
       "type": "aai-universal-content",
@@ -120,7 +105,7 @@
         "section_subtitle": "Connect with our specific departments for partnership, media, or legal queries.",
         "layout_style": "blocks-grid",
         "blocks_per_row": "3",
-        "background_style": "section-alt-2",
+        "background_style": "",
         "section_width": "page-width"
       },
       "blocks": {
@@ -155,7 +140,7 @@
         "section_subtitle": "Find answers and get support quickly through our other channels.",
         "layout_style": "blocks-grid",
         "blocks_per_row": "3",
-        "background_style": "",
+        "background_style": "section-alt-1",
         "section_width": "page-width"
       },
       "blocks": {
