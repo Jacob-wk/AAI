@@ -7,9 +7,105 @@
         "title": "Simplified Test Title",
         "subtitle": "This is a minimal homepage test."
       }
+    },
+    "user_dashboard": {
+      "type": "user-dashboard",
+      "settings": {
+        "completed_courses": 3,
+        "ceu_credits": 12,
+        "certificates": 2
+      },
+      "blocks": {
+        "current_course_1": {
+          "type": "current_course",
+          "settings": {
+            "course_name": "Amusement Ride Safety Inspector",
+            "instructor": "Dr. Sarah Johnson",
+            "progress_percentage": 75,
+            "course_url": "/products/amusement-ride-safety-inspector"
+          }
+        },
+        "current_course_2": {
+          "type": "current_course",
+          "settings": {
+            "course_name": "Water Park Operations",
+            "instructor": "Mike Rodriguez",
+            "progress_percentage": 45,
+            "course_url": "/products/water-park-operations"
+          }
+        },
+        "current_course_3": {
+          "type": "current_course",
+          "settings": {
+            "course_name": "Emergency Response Procedures",
+            "instructor": "Lisa Chen",
+            "progress_percentage": 90,
+            "course_url": "/products/emergency-response"
+          }
+        }
+      },
+      "block_order": ["current_course_1", "current_course_2", "current_course_3"]
+    },
+    "guest_demo": {
+      "type": "aai-demo-experience",
+      "settings": {
+        "section_title": "Experience Our Learning Platform",
+        "section_subtitle": "See how industry professionals advance their careers with AAI's comprehensive safety education programs.",
+        "show_bottom_cta": true,
+        "cta_title": "Ready to Get Started?",
+        "cta_description": "Join thousands of professionals who have advanced their careers with AAI",
+        "primary_cta_text": "Start Learning Today",
+        "primary_cta_url": "/account/register",
+        "secondary_cta_text": "Learn More About AAI",
+        "secondary_cta_url": "/pages/about"
+      },
+      "blocks": {
+        "demo_tab_1": {
+          "type": "demo_tab",
+          "settings": {
+            "tab_icon": "🎓",
+            "tab_title": "Interactive Learning",
+            "tab_description": "Hands-on simulations and real-world scenarios",
+            "panel_title": "Immersive Learning Experience",
+            "panel_description": "Experience our cutting-edge simulation technology that puts you in real amusement park scenarios. Practice safety procedures, emergency responses, and operational protocols in a risk-free environment.",
+            "feature_list": "Real-world scenarios|Interactive simulations|Instant feedback|Progress tracking|Virtual equipment training",
+            "cta_button_text": "Try Demo Course",
+            "cta_button_url": "/pages/demo"
+          }
+        },
+        "demo_tab_2": {
+          "type": "demo_tab",
+          "settings": {
+            "tab_icon": "📱",
+            "tab_title": "Mobile Learning",
+            "tab_description": "Learn anywhere, anytime on any device",
+            "panel_title": "Learn On The Go",
+            "panel_description": "Access your courses from any device with our mobile-optimized platform. Continue your professional development during breaks, commutes, or downtime.",
+            "feature_list": "Mobile responsive|Offline access|Sync across devices|Touch-friendly interface|Download for offline",
+            "cta_button_text": "Download App",
+            "cta_button_url": "/pages/mobile-app"
+          }
+        },
+        "demo_tab_3": {
+          "type": "demo_tab",
+          "settings": {
+            "tab_icon": "🏆",
+            "tab_title": "Certification",
+            "tab_description": "Industry-recognized credentials",
+            "panel_title": "Earn Professional Credentials",
+            "panel_description": "Complete courses and earn certifications recognized throughout the amusement industry. Build your professional portfolio with credentials that employers value.",
+            "feature_list": "IAAPA recognized|Digital certificates|Continuing education credits|Career advancement|Employer verification",
+            "cta_button_text": "View Certifications",
+            "cta_button_url": "/pages/certifications"
+          }
+        }
+      },
+      "block_order": ["demo_tab_1", "demo_tab_2", "demo_tab_3"]
     }
   },
   "order": [
-    "main"
+    "main",
+    "user_dashboard",
+    "guest_demo"
   ]
 }
