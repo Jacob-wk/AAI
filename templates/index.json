@@ -4,8 +4,8 @@
     "main": {
       "type": "aai-hero",
       "settings": {
-        "title": "Simplified Test Title",
-        "subtitle": "This is a minimal homepage test."
+        "title": "Amusement Adventure Institute",
+        "subtitle": "Where Safety Meets Adventure - Professional safety education for the amusement industry"
       }
     },
     "user_dashboard": {
