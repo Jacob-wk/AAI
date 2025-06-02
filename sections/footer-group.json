@@ -11,8 +11,9 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
-    "aai_footer": {
+    "aai_footer_QEiinN": {
       "type": "aai-footer",
+      "name": "AAI Footer",
       "settings": {
         "footer_description": "Professional safety education for the amusement industry since 2025. Advance your career while keeping guests safe.",
         "phone": "",
@@ -32,6 +33,6 @@
     }
   },
   "order": [
-    "aai_footer"
+    "aai_footer_QEiinN"
   ]
 }

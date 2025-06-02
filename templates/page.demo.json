@@ -1,217 +1,192 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "name": "Demo Page",
   "sections": {
-    "demo_hero": {
-      "type": "aai-demo-hero",
-      "settings": {
-        "color_scheme": "color-scheme-1",
-        "section_width": "page-width",
-        "hero_title": "Experience AAI Learning",
-        "hero_subtitle": "Take a guided tour of our professional safety education platform. See how industry professionals advance their careers with AAI's comprehensive training programs.",
-        "primary_cta_text": "Start Demo",
-        "primary_cta_link": "#demo-experience",
-        "secondary_cta_text": "Browse Courses",
-        "secondary_cta_link": "/collections/courses",
-        "visual_content_html": "<div class=\"demo-preview-card\"><div class=\"preview-header\"><div class=\"preview-controls\"><span class=\"control-dot red\"></span><span class=\"control-dot yellow\"></span><span class=\"control-dot green\"></span></div><span class=\"preview-title\">AAI Learning Platform</span></div><div class=\"preview-content\"><div class=\"preview-nav\"><div class=\"nav-item active\">Dashboard</div><div class=\"nav-item\">Courses</div><div class=\"nav-item\">Progress</div></div><div class=\"preview-main\"><div class=\"preview-course\"><div class=\"course-thumbnail\">🛡️</div><div class=\"course-info\"><h4>Ride Safety Inspector</h4><div class=\"progress-bar\"><div class=\"progress-fill\" style=\"width: 65%\"></div></div><span class=\"progress-text\">65% Complete</span></div></div></div></div></div>"
-      },
+    "hero": {
+      "type": "aai-universal-hero",
       "blocks": {
-        "feature_1": {
-          "type": "feature_item",
+        "feature1": {
+          "type": "feature",
           "settings": {
-            "icon": "🎓",
-            "title": "Interactive Learning",
-            "description": "Hands-on simulations and real-world scenarios"
+            "feature_icon": "🎓",
+            "feature_title": "Interactive Learning",
+            "feature_description": "Hands-on simulations and real-world scenarios"
           }
         },
-        "feature_2": {
-          "type": "feature_item",
+        "feature2": {
+          "type": "feature",
           "settings": {
-            "icon": "📱",
-            "title": "Mobile Optimized",
-            "description": "Learn anywhere, anytime on any device"
+            "feature_icon": "📱",
+            "feature_title": "Mobile Optimized",
+            "feature_description": "Learn anywhere, anytime on any device"
           }
         },
-        "feature_3": {
-          "type": "feature_item",
+        "feature3": {
+          "type": "feature",
           "settings": {
-            "icon": "🏆",
-            "title": "Industry Recognized",
-            "description": "IAAPA certified and ASTM F24 compliant"
+            "feature_icon": "🏆",
+            "feature_title": "Industry Recognized",
+            "feature_description": "IAAPA certified and ASTM F24 compliant"
           }
         }
       },
-      "block_order": ["feature_1", "feature_2", "feature_3"]
-    },
-    "demo_experience_tabs": {
-      "type": "aai-demo-experience-tabs",
+      "block_order": [
+        "feature1",
+        "feature2",
+        "feature3"
+      ],
       "settings": {
-        "color_scheme": "color-scheme-background-2",
-        "section_width": "page-width",
-        "section_title": "Interactive Platform Demo",
-        "section_subtitle": "Explore our learning platform with this interactive demonstration. Click through the tabs to experience different aspects of AAI education."
-      },
+        "hero_title": "Experience AAI Learning",
+        "hero_subtitle": "Take a guided tour of our professional safety education platform. See how industry professionals advance their careers with AAI's comprehensive training programs.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-left-image-right",
+        "show_image": true,
+        "show_features": true,
+        "show_stats": true,
+        "show_credentials": false,
+        "primary_button_text": "Start Demo",
+        "primary_button_url": "#demo-experience",
+        "secondary_button_text": "Browse Courses",
+        "secondary_button_url": "/collections/courses",
+        "button_size": "large"
+      }
+    },
+    "demo_experience": {
+      "type": "aai-demo-experience",
       "blocks": {
-        "dashboard_tab": {
-          "type": "demo_tab_panel",
-          "settings": {
-            "tab_icon": "📊",
-            "tab_title": "Dashboard",
-            "panel_header_title": "Professional Dashboard",
-            "panel_header_subtitle": "Sarah Johnson - Safety Inspector",
-            "panel_content_class": "dashboard-content",
-            "panel_content": "<div class=\"demo-screen\"><div class=\"demo-header\"><h3>Professional Dashboard</h3><div class=\"user-info\"><span class=\"user-name\">Sarah Johnson</span><span class=\"user-role\">Safety Inspector</span></div></div><div class=\"dashboard-content\"><div class=\"dashboard-stats\"><div class=\"stat-card\"><div class=\"stat-number\">12</div><div class=\"stat-label\">Courses Completed</div></div><div class=\"stat-card\"><div class=\"stat-number\">47</div><div class=\"stat-label\">CEU Credits</div></div><div class=\"stat-card\"><div class=\"stat-number\">3</div><div class=\"stat-label\">Active Certifications</div></div></div><div class=\"dashboard-courses\"><h4>Continue Learning</h4><div class=\"course-list\"><div class=\"course-item\"><div class=\"course-icon\">⚡</div><div class=\"course-details\"><h5>Electrical Systems Safety</h5><div class=\"course-progress\"><div class=\"progress-bar\"><div class=\"progress-fill\" style=\"width: 45%\"></div></div><span>45% Complete</span></div></div><button class=\"aai-btn aai-btn-secondary\">Continue</button></div><div class=\"course-item\"><div class=\"course-icon\">🌊</div><div class=\"course-details\"><h5>Water Park Operations</h5><div class=\"course-progress\"><div class=\"progress-bar\"><div class=\"progress-fill\" style=\"width: 80%\"></div></div><span>80% Complete</span></div></div><button class=\"aai-btn aai-btn-secondary\">Continue</button></div></div></div></div></div>"
-          }
-        },
-        "course_tab": {
-          "type": "demo_tab_panel",
+        "tab1": {
+          "type": "demo_tab",
           "settings": {
             "tab_icon": "🎓",
-            "tab_title": "Course Experience",
-            "panel_header_title": "Ride Safety Inspector Certification",
-            "panel_header_subtitle": "60 Hours | Professional | 12 CEU Credits",
-            "panel_content_class": "course-content",
-            "panel_content": "<div class=\"demo-screen\"><div class=\"demo-header\"><h3>Ride Safety Inspector Certification</h3><div class=\"course-meta\"><span class=\"course-duration\">60 Hours</span><span class=\"course-level\">Professional</span><span class=\"course-credits\">12 CEU Credits</span></div></div><div class=\"course-content\"><div class=\"course-sidebar\"><div class=\"module-list\"><div class=\"module-item completed\"><span class=\"module-icon\">✓</span><span class=\"module-title\">Introduction to Safety Standards</span></div><div class=\"module-item completed\"><span class=\"module-icon\">✓</span><span class=\"module-title\">Mechanical Systems</span></div><div class=\"module-item active\"><span class=\"module-icon\">▶</span><span class=\"module-title\">Electrical Safety</span></div><div class=\"module-item\"><span class=\"module-icon\">○</span><span class=\"module-title\">Inspection Procedures</span></div><div class=\"module-item\"><span class=\"module-icon\">○</span><span class=\"module-title\">Documentation Requirements</span></div></div></div><div class=\"course-main\"><div class=\"video-player\"><div class=\"video-placeholder\"><div class=\"play-button\">▶</div><div class=\"video-title\">Chapter 3.2: Control System Safety</div></div></div><div class=\"lesson-content\"><h4>Electrical Control Systems</h4><p>Understanding the critical safety components of ride control systems is essential for thorough inspections. This module covers...</p><div class=\"lesson-navigation\"><button class=\"aai-btn aai-btn-secondary\">← Previous</button><button class=\"aai-btn aai-btn-primary\">Next →</button></div></div></div></div></div>"
+            "tab_title": "Interactive Learning",
+            "tab_description": "Hands-on simulations and real-world scenarios",
+            "panel_title": "Immersive Learning Experience",
+            "panel_description": "Experience our cutting-edge simulation technology that puts you in real amusement park scenarios. Practice safety procedures, equipment inspection, and emergency response in a risk-free environment.",
+            "feature_list": "Real-world scenarios|Interactive simulations|Instant feedback|Progress tracking|3D environments",
+            "demo_video_url": "",
+            "show_interactive_demo": false,
+            "demo_progress": "Step 1 of 5",
+            "demo_content": "",
+            "cta_button_text": "Try Interactive Demo",
+            "cta_button_url": "/collections/courses",
+            "cta_button_style": "primary"
           }
         },
-        "assessment_tab": {
-          "type": "demo_tab_panel",
+        "tab2": {
+          "type": "demo_tab",
           "settings": {
-            "tab_icon": "✅",
-            "tab_title": "Assessments",
-            "panel_header_title": "Module Assessment: Electrical Safety",
-            "panel_header_subtitle": "Question 3 of 10 | 12:30 remaining",
-            "panel_content_class": "assessment-content",
-            "panel_content": "<div class=\"demo-screen\"><div class=\"demo-header\"><h3>Module Assessment: Electrical Safety</h3><div class=\"assessment-info\"><span class=\"question-count\">Question 3 of 10</span><span class=\"time-remaining\">12:30 remaining</span></div></div><div class=\"assessment-content\"><div class=\"question-section\"><div class=\"question-text\"><h4>Which of the following is the most critical safety check when inspecting ride control systems?</h4></div><div class=\"answer-options\"><label class=\"answer-option\"><input type=\"radio\" name=\"demo-question\" value=\"a\"><span class=\"option-text\">Visual inspection of wiring condition</span></label><label class=\"answer-option\"><input type=\"radio\" name=\"demo-question\" value=\"b\"><span class=\"option-text\">Verification of emergency stop function</span></label><label class=\"answer-option\"><input type=\"radio\" name=\"demo-question\" value=\"c\"><span class=\"option-text\">Testing of operator controls</span></label><label class=\"answer-option\"><input type=\"radio\" name=\"demo-question\" value=\"d\"><span class=\"option-text\">Review of maintenance logs</span></label></div><div class=\"question-navigation\"><button class=\"aai-btn aai-btn-secondary\">← Previous</button><button class=\"aai-btn aai-btn-primary\">Next →</button></div></div><div class=\"assessment-sidebar\"><div class=\"progress-indicator\"><h5>Assessment Progress</h5><div class=\"progress-bar\"><div class=\"progress-fill\" style=\"width: 30%\"></div></div><span>3 of 10 questions</span></div><div class=\"question-grid\"><div class=\"question-dot completed\">1</div><div class=\"question-dot completed\">2</div><div class=\"question-dot active\">3</div><div class=\"question-dot\">4</div><div class=\"question-dot\">5</div><div class=\"question-dot\">6</div><div class=\"question-dot\">7</div><div class=\"question-dot\">8</div><div class=\"question-dot\">9</div><div class=\"question-dot\">10</div></div></div></div></div>"
+            "tab_icon": "📱",
+            "tab_title": "Mobile Learning",
+            "tab_description": "Learn anywhere, anytime on any device",
+            "panel_title": "Learn On The Go",
+            "panel_description": "Access your courses from any device with our mobile-optimized platform. Download content for offline study and sync your progress across all devices seamlessly.",
+            "feature_list": "Mobile responsive design|Offline content access|Cross-device sync|Touch-friendly interface|Adaptive streaming",
+            "demo_video_url": "",
+            "show_interactive_demo": false,
+            "demo_progress": "Step 1 of 5",
+            "demo_content": "",
+            "cta_button_text": "View Mobile Demo",
+            "cta_button_url": "/collections/courses",
+            "cta_button_style": "primary"
           }
         },
-        "progress_tab": {
-          "type": "demo_tab_panel",
-          "settings": {
-            "tab_icon": "📈",
-            "tab_title": "Progress Tracking",
-            "panel_header_title": "Learning Progress & Analytics",
-            "panel_header_subtitle": "Last 30 Days",
-            "panel_content_class": "progress-content",
-            "panel_content": "<div class=\"demo-screen\"><div class=\"demo-header\"><h3>Learning Progress & Analytics</h3><div class=\"date-range\"><span>Last 30 Days</span></div></div><div class=\"progress-content\"><div class=\"progress-charts\"><div class=\"chart-card\"><h4>Course Completion</h4><div class=\"completion-chart\"><div class=\"completion-ring\"><div class=\"ring-progress\" style=\"--progress: 75%\"><span class=\"ring-percentage\">75%</span></div></div><div class=\"completion-details\"><div class=\"detail-item\"><span class=\"detail-label\">Completed</span><span class=\"detail-value\">12 courses</span></div><div class=\"detail-item\"><span class=\"detail-label\">In Progress</span><span class=\"detail-value\">3 courses</span></div><div class=\"detail-item\"><span class=\"detail-label\">Not Started</span><span class=\"detail-value\">1 course</span></div></div></div></div><div class=\"chart-card\"><h4>Learning Streak</h4><div class=\"streak-display\"><div class=\"streak-number\">23</div><div class=\"streak-label\">Days</div><div class=\"streak-calendar\"><div class=\"calendar-week\"><div class=\"day-dot active\"></div><div class=\"day-dot active\"></div><div class=\"day-dot active\"></div><div class=\"day-dot active\"></div><div class=\"day-dot active\"></div><div class=\"day-dot\"></div><div class=\"day-dot\"></div></div></div></div></div></div><div class=\"achievements-section\"><h4>Recent Achievements</h4><div class=\"achievements-list\"><div class=\"achievement-item\"><div class=\"achievement-badge\">🏆</div><div class=\"achievement-info\"><h5>Safety Expert</h5><span>Completed 10 safety courses</span></div><div class=\"achievement-date\">2 days ago</div></div><div class=\"achievement-item\"><div class=\"achievement-badge\">⚡</div><div class=\"achievement-info\"><h5>Quick Learner</h5><span>Completed course in under 2 weeks</span></div><div class=\"achievement-date\">1 week ago</div></div><div class=\"achievement-item\"><div class=\"achievement-badge\">🎯</div><div class=\"achievement-info\"><h5>Perfect Score</h5><span>Scored 100% on final assessment</span></div><div class=\"achievement-date\">2 weeks ago</div></div></div></div></div></div>"
-          }
-        },
-        "certification_tab": {
-          "type": "demo_tab_panel",
+        "tab3": {
+          "type": "demo_tab",
           "settings": {
             "tab_icon": "🏆",
             "tab_title": "Certification",
-            "panel_header_title": "Professional Certification",
-            "panel_header_subtitle": "Status: Completed",
-            "panel_content_class": "certification-content",
-            "panel_content": "<div class=\"demo-screen\"><div class=\"demo-header\"><h3>Professional Certification</h3><div class=\"cert-status\"><span class=\"status-badge completed\">Completed</span></div></div><div class=\"certification-content\"><div class=\"certificate-preview\"><div class=\"certificate-card\"><div class=\"cert-header\"><div class=\"cert-logo\">AAI</div><div class=\"cert-title\"><h4>Certificate of Completion</h4><span>Professional Safety Education</span></div></div><div class=\"cert-body\"><p class=\"cert-text\">This is to certify that</p><h3 class=\"cert-name\">Sarah Johnson</h3><p class=\"cert-text\">has successfully completed</p><h4 class=\"cert-course\">Ride Safety Inspector Certification</h4><div class=\"cert-details\"><div class=\"cert-detail\"><strong>CEU Credits:</strong> 12 Hours</div><div class=\"cert-detail\"><strong>Completion Date:</strong> March 15, 2025</div><div class=\"cert-detail\"><strong>Certificate ID:</strong> AAI-RSI-2025-001234</div></div></div><div class=\"cert-footer\"><div class=\"cert-signature\"><div class=\"signature-line\"></div><span>Director of Education</span></div><div class=\"cert-seal\">🏆</div></div></div></div><div class=\"certification-actions\"><button class=\"aai-btn aai-btn-primary cert-btn\">Download PDF</button><button class=\"aai-btn aai-btn-secondary cert-btn\">Share Certificate</button><button class=\"aai-btn aai-btn-secondary cert-btn\">Verify Online</button><div class=\"verification-info\"><h5>Digital Verification</h5><p>All AAI certificates include digital verification codes that employers can use to instantly verify credentials.</p><div class=\"qr-placeholder\"><div class=\"qr-code\">QR</div><span>Verification QR Code</span></div></div></div></div></div>"
+            "tab_description": "Industry-recognized credentials",
+            "panel_title": "Earn Professional Credentials",
+            "panel_description": "Complete courses and earn certifications recognized throughout the amusement industry. Track your progress, collect digital badges, and build your professional portfolio.",
+            "feature_list": "IAAPA recognized certificates|Digital badge system|Continuing education credits|Career advancement tracking|Portfolio builder",
+            "demo_video_url": "",
+            "show_interactive_demo": false,
+            "demo_progress": "Step 1 of 5",
+            "demo_content": "",
+            "cta_button_text": "See Certification Process",
+            "cta_button_url": "/pages/certifications",
+            "cta_button_style": "primary"
+          }
+        },
+        "tab4": {
+          "type": "demo_tab",
+          "settings": {
+            "tab_icon": "👥",
+            "tab_title": "Corporate Training",
+            "tab_description": "Team-based learning solutions",
+            "panel_title": "Enterprise Learning Management",
+            "panel_description": "Manage team training with our comprehensive LMS. Track employee progress, generate compliance reports, and customize learning paths for different roles and departments.",
+            "feature_list": "Team management dashboard|Progress reporting|Custom learning paths|Compliance tracking|Bulk enrollment",
+            "demo_video_url": "",
+            "show_interactive_demo": false,
+            "demo_progress": "Step 1 of 5",
+            "demo_content": "",
+            "cta_button_text": "Explore Corporate Features",
+            "cta_button_url": "/pages/corporate-training",
+            "cta_button_style": "primary"
           }
         }
       },
-      "block_order": ["dashboard_tab", "course_tab", "assessment_tab", "progress_tab", "certification_tab"]
-    },
-    "platform_features": {
-      "type": "aai-demo-platform-features",
+      "block_order": [
+        "tab1",
+        "tab2",
+        "tab3",
+        "tab4"
+      ],
       "settings": {
-        "color_scheme": "color-scheme-background-1",
-        "section_width": "page-width",
-        "section_title": "Why Choose AAI Learning Platform?",
-        "section_subtitle": "Designed specifically for safety professionals in the amusement industry, our platform delivers everything you need for career advancement."
-      },
-      "blocks": {
-        "feature_1": {
-          "type": "feature_card",
-          "settings": {
-            "icon": "🎯",
-            "title": "Industry-Specific Content",
-            "description": "Every course is designed by industry experts and tailored to real-world amusement safety challenges you face daily."
-          }
-        },
-        "feature_2": {
-          "type": "feature_card",
-          "settings": {
-            "icon": "📱",
-            "title": "Mobile Learning",
-            "description": "Access courses from any device, anywhere. Perfect for busy professionals who need flexible learning options."
-          }
-        },
-        "feature_3": {
-          "type": "feature_card",
-          "settings": {
-            "icon": "🏆",
-            "title": "Professional Credentials",
-            "description": "Earn industry-recognized certifications and CEU credits that advance your career and meet compliance requirements."
-          }
-        },
-        "feature_4": {
-          "type": "feature_card",
-          "settings": {
-            "icon": "📊",
-            "title": "Progress Tracking",
-            "description": "Monitor your learning journey with detailed analytics, completion tracking, and personalized recommendations."
-          }
-        },
-        "feature_5": {
-          "type": "feature_card",
-          "settings": {
-            "icon": "🤝",
-            "title": "Peer Network",
-            "description": "Connect with other safety professionals, share experiences, and learn from industry veterans worldwide."
-          }
-        },
-        "feature_6": {
-          "type": "feature_card",
-          "settings": {
-            "icon": "🔄",
-            "title": "Continuous Updates",
-            "description": "Stay current with evolving safety standards. Course content is regularly updated to reflect latest industry developments."
-          }
-        }
-      },
-      "block_order": ["feature_1", "feature_2", "feature_3", "feature_4", "feature_5", "feature_6"]
+        "section_title": "Experience AAI Learning Platform",
+        "section_subtitle": "Explore our interactive training modules and see how professionals advance their careers",
+        "section_style": "",
+        "show_bottom_cta": true,
+        "cta_title": "Ready to Get Started?",
+        "cta_description": "Join thousands of professionals who have advanced their careers with AAI",
+        "primary_cta_text": "Start Learning",
+        "primary_cta_url": "/collections/courses",
+        "secondary_cta_text": "Contact Sales",
+        "secondary_cta_url": "/pages/contact"
+      }
     },
-    "demo_cta": {
-      "type": "aai-demo-cta",
-      "settings": {
-        "color_scheme": "color-scheme-2",
-        "section_width": "page-width",
-        "section_title": "Ready to Start Your Professional Journey?",
-        "section_text": "Experience the difference that industry-leading safety education makes. Join thousands of professionals who trust AAI for their career development.",
-        "primary_cta_text": "Create Free Account",
-        "primary_cta_link": "{{ routes.account_register_url }}",
-        "secondary_cta_text": "Browse All Courses",
-        "secondary_cta_link": "/collections/courses",
-        "guarantee_text": "<strong>30-Day Money-Back Guarantee</strong> • 24/7 Technical Support • Mobile & Desktop Access"
-      },
+    "benefits": {
+      "type": "aai-universal-content",
       "blocks": {
-        "stat_1": {
-          "type": "stat_item",
+        "benefits_list": {
+          "type": "feature_list",
           "settings": {
-            "number": "15,000+",
-            "label": "Professionals Certified"
-          }
-        },
-        "stat_2": {
-          "type": "stat_item",
-          "settings": {
-            "number": "500+",
-            "label": "Partner Organizations"
-          }
-        },
-        "stat_3": {
-          "type": "stat_item",
-          "settings": {
-            "number": "98%",
-            "label": "Completion Rate"
+            "list_title": "Platform Benefits",
+            "list_items": "Interactive 3D simulations of real equipment|Expert-led video instruction from industry veterans|Mobile-first design for learning on the go|Comprehensive progress tracking and analytics|Integration with industry standards and regulations|24/7 customer support and technical assistance"
           }
         }
       },
-      "block_order": ["stat_1", "stat_2", "stat_3"]
+      "block_order": [
+        "benefits_list"
+      ],
+      "settings": {
+        "section_title": "Why Choose AAI for Your Professional Development?",
+        "section_subtitle": "",
+        "layout_style": "text-only",
+        "blocks_per_row": "1",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "<p>AAI combines cutting-edge technology with industry expertise to deliver the most comprehensive safety education available. Our platform is designed by professionals, for professionals.</p>",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
     }
   },
   "order": [
-    "demo_hero",
-    "demo_experience_tabs",
-    "platform_features",
-    "demo_cta"
+    "hero",
+    "demo_experience",
+    "benefits"
   ]
 }
