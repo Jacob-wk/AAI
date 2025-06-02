@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer",
@@ -5,27 +14,20 @@
     "aai_footer": {
       "type": "aai-footer",
       "settings": {
-        "company_name": "AAI Institute",
-        "company_description": "Leading the industry in professional safety education and training. We're committed to keeping the amusement industry safe while respecting the joy it brings to millions.",
-        "show_contact_info": true,
-        "contact_phone": "(555) 123-4567",
-        "contact_email": "info@aaiinstitute.com",
-        "contact_address": "123 Safety Boulevard, Education City, EC 12345",
-        "quick_links_title": "Quick Links",
-        "programs_title": "Programs",
-        "resources_title": "Resources",
-        "show_certifications": true,
-        "certification_1": "IAAPA Member",
-        "certification_2": "ASTM F24 Committee",
-        "certification_3": "NAARSO Affiliate",
-        "show_newsletter": true,
-        "newsletter_title": "Industry Updates",
-        "newsletter_description": "Stay informed about the latest safety standards, training opportunities, and industry developments.",
-        "show_social_links": true,
-        "linkedin_url": "https://linkedin.com/company/aai-institute",
-        "twitter_url": "https://twitter.com/aaiinstitute",
-        "youtube_url": "https://youtube.com/aaiinstitute",
-        "copyright_text": "© 2025 AAI Institute. All rights reserved. Professional safety education for the amusement industry."
+        "footer_description": "Professional safety education for the amusement industry since 2025. Advance your career while keeping guests safe.",
+        "phone": "",
+        "email": "",
+        "support_hours": "Mon-Fri 8AM-6PM EST",
+        "menu_1_title": "Courses",
+        "menu_2_title": "Company",
+        "menu_3_title": "Resources",
+        "menu_4_title": "Support",
+        "show_iaapa_badge": true,
+        "show_iso_badge": true,
+        "show_ceu_badge": true,
+        "social_linkedin": "",
+        "social_twitter": "",
+        "social_youtube": ""
       }
     }
   },

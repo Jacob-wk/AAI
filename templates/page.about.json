@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -6,7 +15,15 @@
         "hero_title": "Where Safety Meets Adventure",
         "hero_subtitle": "Leading the amusement industry in professional safety education since 2025. AAI provides comprehensive training programs that ensure both thrilling experiences and uncompromising safety standards.",
         "show_stats": true,
-        "show_credentials": true
+        "stat_1_number": "500+",
+        "stat_1_label": "Professionals Certified",
+        "stat_2_number": "50+",
+        "stat_2_label": "Courses Available",
+        "stat_3_number": "25+",
+        "stat_3_label": "Industry Partners",
+        "show_credentials": true,
+        "credential_1": "IAAPA Certified",
+        "credential_2": "ASTM F24 Compliant"
       }
     },
     "mission": {
@@ -39,7 +56,21 @@
         "feature2",
         "feature3"
       ],
-      "settings": {}
+      "settings": {
+        "section_title": "",
+        "section_subtitle": "",
+        "layout_style": "text-only",
+        "blocks_per_row": "3",
+        "background_style": "",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
     },
     "story": {
       "type": "aai-universal-content",
@@ -61,7 +92,7 @@
         "founder_quote": {
           "type": "text_block",
           "settings": {
-            "block_title": "",
+            "block_title": "Here From Our Founders",
             "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>"
           }
         }
@@ -71,51 +102,30 @@
         "feature4",
         "founder_quote"
       ],
-      "settings": {}
+      "settings": {
+        "section_title": "",
+        "section_subtitle": "",
+        "layout_style": "text-only",
+        "blocks_per_row": "3",
+        "background_style": "section-alt-2",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
     },
     "cta_section": {
       "type": "aai-universal-content",
-      "blocks": {
-        "leader_1": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Sarah Mitchell - Chief Executive Officer",
-            "block_content": "<p>20+ years in amusement park operations and safety management. Former Director of Safety at major theme park operator.</p><p>IAAPA Certified | ASTM F24 Expert</p>"
-          }
-        },
-        "leader_2": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Dr. Robert Chen - Chief Education Officer",
-            "block_content": "<p>PhD in Safety Engineering with 15+ years developing professional education programs for high-risk industries.</p><p>PhD Safety Engineering | Professional Engineer</p>"
-          }
-        },
-        "leader_3": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Marcus Rodriguez - Director of Industry Relations",
-            "block_content": "<p>18+ years building partnerships with amusement operators worldwide. Expert in regulatory compliance and industry standards.</p><p>Industry Relations Expert | Compliance Specialist</p>"
-          }
-        },
-        "contact_leadership_button_block": {
-          "type": "button_group",
-          "settings": {
-            "button_1_text": "Try Free Demo",
-            "button_1_url": "/pages/demo",
-            "button_1_style": "outline",
-            "button_2_text": "Contact Expert",
-            "button_2_url": "/pages/contact",
-            "button_2_style": "secondary",
-            "button_size": "medium"
-          }
-        }
-      },
       "settings": {
         "section_title": "Ready to Get Started?",
         "section_subtitle": "Join hundreds of safety professionals advancing their careers with AAI",
         "layout_style": "text-center",
         "blocks_per_row": "1",
-        "background_style": "section-alt-1",
+        "background_style": "",
         "show_main_content": true,
         "content_title": "",
         "content_body": "<p>Whether you're looking to advance your career, meet regulatory requirements, or enhance your organization's safety culture, AAI has the training programs you need.</p>",
@@ -134,4 +144,3 @@
     "cta_section"
   ]
 }
-
