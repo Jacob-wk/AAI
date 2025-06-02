@@ -7,11 +7,103 @@ class AAIAnimations {
   }
 
   init() {
+    // Apply animations to all elements automatically
+    this.applyGlobalAnimations();
+    
     // Initialize intersection observer for scroll animations
     this.setupScrollAnimations();
     
     // Initialize on page load
     this.animateOnLoad();
+    
+    // Setup page transition animations
+    this.setupPageTransitionAnimations();
+  }
+
+  /**
+   * Automatically apply animation classes to common Shopify elements
+   */
+  applyGlobalAnimations() {
+    // Section-level animations
+    const sections = document.querySelectorAll('section, .page-section, [class*="section-"]');
+    sections.forEach((section, index) => {
+      if (!section.classList.contains('fade-in') && !section.classList.contains('slide-up')) {
+        section.classList.add('fade-in');
+        if (index > 0) section.classList.add('anim-delay-' + Math.min(index, 5));
+      }
+    });
+
+    // Block-level animations
+    const blocks = document.querySelectorAll('[class*="block"], .content-block, .feature-block, .text-block');
+    blocks.forEach((block, index) => {
+      if (!block.classList.contains('slide-up') && !block.classList.contains('fade-in')) {
+        block.classList.add('slide-up');
+        if (index % 2 === 0) {
+          block.classList.add('slide-in-left');
+        } else {
+          block.classList.add('slide-in-right');
+        }
+        block.classList.add('anim-delay-' + Math.min(index + 1, 6));
+      }
+    });
+
+    // Card and item animations
+    const cards = document.querySelectorAll('.card, .course-card, .instructor-card, [class*="item-"], .product-item');
+    cards.forEach((card, index) => {
+      if (!card.classList.contains('fade-in')) {
+        card.classList.add('fade-in', 'slide-up');
+        card.classList.add('anim-delay-' + Math.min(index + 1, 8));
+      }
+    });
+
+    // Navigation and header animations
+    const navItems = document.querySelectorAll('.nav-item, .menu-item, .header-item');
+    navItems.forEach((item, index) => {
+      if (!item.classList.contains('slide-in-left')) {
+        item.classList.add('slide-in-left');
+        item.classList.add('anim-delay-' + Math.min(index + 1, 6));
+      }
+    });
+
+    // Content elements
+    const contentElements = document.querySelectorAll('h1, h2, h3, .content-title, .section-title');
+    contentElements.forEach((element, index) => {
+      if (!element.classList.contains('fade-in')) {
+        element.classList.add('fade-in', 'slide-up');
+        element.classList.add('anim-delay-' + Math.min(index + 1, 4));
+      }
+    });
+
+    // Image and media animations
+    const mediaElements = document.querySelectorAll('img, video, .media, .image-block');
+    mediaElements.forEach((element, index) => {
+      if (!element.classList.contains('fade-in')) {
+        element.classList.add('fade-in');
+        element.classList.add('anim-delay-' + Math.min(index + 2, 6));
+      }
+    });
+
+    // Form and interactive elements
+    const formElements = document.querySelectorAll('.form-group, .input-group, .btn, button');
+    formElements.forEach((element, index) => {
+      if (!element.classList.contains('slide-up')) {
+        element.classList.add('slide-up');
+        element.classList.add('anim-delay-' + Math.min(index + 1, 6));
+      }
+    });
+
+    // List items and features
+    const listItems = document.querySelectorAll('li, .feature-item, .list-item');
+    listItems.forEach((item, index) => {
+      if (!item.classList.contains('slide-in-left') && !item.classList.contains('slide-in-right')) {
+        if (index % 2 === 0) {
+          item.classList.add('slide-in-left');
+        } else {
+          item.classList.add('slide-in-right');
+        }
+        item.classList.add('anim-delay-' + Math.min(index + 1, 8));
+      }
+    });
   }
 
   setupScrollAnimations() {
@@ -38,9 +130,9 @@ class AAIAnimations {
       });
     }, observerOptions);
 
-    // Observe all elements with animation classes
+    // Observe all elements with animation classes - now includes auto-applied animations
     const animatedElements = document.querySelectorAll(
-      '.fade-in, .slide-up, .slide-in-left, .slide-in-right, [class*="anim-delay"]'
+      '.fade-in, .slide-up, .slide-in-left, .slide-in-right, [class*="anim-delay"], section, .page-section, [class*="section-"], [class*="block"], .content-block, .feature-block, .text-block, .card, .course-card, .instructor-card, [class*="item-"], .product-item'
     );
     
     animatedElements.forEach(el => {
@@ -68,6 +160,85 @@ class AAIAnimations {
     const immediateElements = document.querySelectorAll('.aai-animate-immediate');
     immediateElements.forEach(el => {
       el.classList.add('aai-animate-visible');
+    });
+  }
+
+  setupPageTransitionAnimations() {
+    // Listen for page reveal events (View Transitions API)
+    window.addEventListener('pagereveal', () => {
+      this.triggerPageAnimations();
+    });
+
+    // Fallback for browsers without View Transitions API
+    // Re-initialize animations when DOM changes significantly
+    if (typeof MutationObserver !== 'undefined') {
+      const observer = new MutationObserver((mutations) => {
+        let shouldReinitialize = false;
+        
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'childList' && mutation.addedNodes.length > 5) {
+            shouldReinitialize = true;
+          }
+        });
+        
+        if (shouldReinitialize) {
+          // Debounce reinitializations
+          clearTimeout(this.reinitTimeout);
+          this.reinitTimeout = setTimeout(() => {
+            this.reinitializeAnimations();
+          }, 100);
+        }
+      });
+      
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    }
+  }
+
+  triggerPageAnimations() {
+    // Reset all animations first - include all animated elements
+    const animatedElements = document.querySelectorAll(
+      '.fade-in, .slide-up, .slide-in-left, .slide-in-right, [class*="anim-delay"], section, .page-section, [class*="section-"], [class*="block"], .content-block, .feature-block, .text-block, .card, .course-card, .instructor-card, [class*="item-"], .product-item'
+    );
+    
+    animatedElements.forEach(el => {
+      el.classList.remove('aai-animate-visible');
+    });
+
+    // Re-apply global animations to new elements
+    this.applyGlobalAnimations();
+
+    // Trigger animations with slight delay to ensure smooth transition
+    setTimeout(() => {
+      this.reinitializeAnimations();
+    }, 50);
+  }
+
+  reinitializeAnimations() {
+    // Re-setup scroll animations for new elements
+    this.setupScrollAnimations();
+    
+    // Animate elements in viewport immediately
+    this.animateElementsInViewport();
+  }
+
+  animateElementsInViewport() {
+    const animatedElements = document.querySelectorAll(
+      '.fade-in, .slide-up, .slide-in-left, .slide-in-right, [class*="anim-delay"], section, .page-section, [class*="section-"], [class*="block"], .content-block, .feature-block, .text-block, .card, .course-card, .instructor-card, [class*="item-"], .product-item'
+    );
+    
+    animatedElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+      
+      if (isInViewport) {
+        setTimeout(() => {
+          el.classList.add('aai-animate-visible');
+          this.handleStaggeredAnimations(el);
+        }, 10);
+      }
     });
   }
 

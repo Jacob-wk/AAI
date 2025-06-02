@@ -23,40 +23,43 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label for="ContactFormName">{{ 'contact.form.name' | t | default: 'Name' }}</label>
-          <input type="text" id="ContactFormName" name="contact[name]" value="{{ form.name }}" required>
+          <label for="ContactFormName">{{ 'contact.form.name' | t | default: 'Name' }} <span style="color: #ef4444;">*</span></label>
+          <input type="text" id="ContactFormName" name="contact[name]" value="{{ form.name }}" required placeholder="Enter your full name">
         </div>
         <div class="form-group">
-          <label for="ContactFormEmail">{{ 'contact.form.email' | t | default: 'Email address' }}</label>
-          <input type="email" id="ContactFormEmail" name="contact[email]" value="{{ form.email }}" required>
+          <label for="ContactFormEmail">{{ 'contact.form.email' | t | default: 'Email address' }} <span style="color: #ef4444;">*</span></label>
+          <input type="email" id="ContactFormEmail" name="contact[email]" value="{{ form.email }}" required placeholder="your.email@example.com">
         </div>
       </div>
       
       <div class="form-group">
         <label for="ContactFormPhone">{{ 'contact.form.phone' | t | default: 'Phone number' }}</label>
-        <input type="tel" id="ContactFormPhone" name="contact[phone]" value="{{ form.phone }}">
+        <input type="tel" id="ContactFormPhone" name="contact[phone]" value="{{ form.phone }}" placeholder="(555) 123-4567">
       </div>
       
       <div class="form-group">
-        <label for="ContactFormSubject">{{ 'contact.form.subject' | t | default: 'Subject' }}</label>
+        <label for="ContactFormSubject">{{ 'contact.form.subject' | t | default: 'Subject' }} <span style="color: #ef4444;">*</span></label>
         <select id="ContactFormSubject" name="contact[subject]" required>
           <option value="">Select inquiry type...</option>
-          <option value="Course Information">Course Information</option>
-          <option value="Corporate Training">Corporate Training</option>
-          <option value="Technical Support">Technical Support</option>
-          <option value="Partnership">Partnership Opportunities</option>
-          <option value="General">General Inquiry</option>
+          <option value="Course Information" {% if form.subject == 'Course Information' %}selected{% endif %}>Course Information</option>
+          <option value="Corporate Training" {% if form.subject == 'Corporate Training' %}selected{% endif %}>Corporate Training</option>
+          <option value="Technical Support" {% if form.subject == 'Technical Support' %}selected{% endif %}>Technical Support</option>
+          <option value="Partnership" {% if form.subject == 'Partnership' %}selected{% endif %}>Partnership Opportunities</option>
+          <option value="General" {% if form.subject == 'General' %}selected{% endif %}>General Inquiry</option>
         </select>
       </div>
       
       <div class="form-group">
-        <label for="ContactFormMessage">{{ 'contact.form.message' | t | default: 'Message' }}</label>
-        <textarea id="ContactFormMessage" name="contact[body]" rows="5" required>{{ form.body }}</textarea>
+        <label for="ContactFormMessage">{{ 'contact.form.message' | t | default: 'Message' }} <span style="color: #ef4444;">*</span></label>
+        <textarea id="ContactFormMessage" name="contact[body]" rows="5" required placeholder="Please provide details about your inquiry...">{{ form.body }}</textarea>
       </div>
       
       <div class="form-group">
         <button type="submit" class="btn btn-primary">
-          {{ 'contact.form.send' | t | default: 'Send message' }}
+          <span>{{ 'contact.form.send' | t | default: 'Send message' }}</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="currentColor"/>
+          </svg>
         </button>
       </div>
     {%- endif -%}
