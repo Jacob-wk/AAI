@@ -1,5 +1,3 @@
-
-
 {% liquid
   assign order = 'logo,menu,localization,search,mobile_search,actions'
 
@@ -14,15 +12,24 @@
     assign search_style = 'modal'
   endif
 
+  # Determine if header should be transparent
+  assign enable_transparency_for_current_template = false
   if section.settings.enable_transparent_header_home and template.name == 'index'
-    assign transparent = 'always'
-    assign transparent_color_scheme = section.settings.home_color_scheme
+    assign enable_transparency_for_current_template = true
   elsif section.settings.enable_transparent_header_product and template.name == 'product'
-    assign transparent = 'always'
-    assign transparent_color_scheme = section.settings.product_color_scheme
+    assign enable_transparency_for_current_template = true
   elsif section.settings.enable_transparent_header_collection and template.name == 'collection'
-    assign transparent = 'always'
-    assign transparent_color_scheme = section.settings.collection_color_scheme
+    assign enable_transparency_for_current_template = true
+  elsif section.settings.enable_transparent_header_page and template.name == 'page' # Added for generic pages
+    assign enable_transparency_for_current_template = true
+  endif
+
+  assign transparent = false # Default to not transparent
+  assign transparent_color_scheme = ''
+
+  if enable_transparency_for_current_template
+    assign transparent = 'always' # Will be adjusted to 'not-sticky' if sticky is also enabled
+    assign transparent_color_scheme = 'color-' | append: section.settings.color_scheme_transparent # Directly use the dedicated transparent scheme
   endif
 
   if section.settings.enable_sticky_header == 'always'
@@ -33,14 +40,6 @@
 
   if transparent and sticky
     assign transparent = 'not-sticky'
-  endif
-
-  if transparent
-    if transparent_color_scheme == 'inverse'
-      assign transparent_color_scheme = 'color-' | append: section.settings.color_scheme_transparent
-    else
-      assign transparent_color_scheme = 'color-' | append: section.settings.color_scheme_top
-    endif
   endif
 
   capture logo
@@ -585,7 +584,7 @@
 
 {% schema %}
 {
-  "name": "t:names.header",
+  "name": "Header",
   "tag": "header",
   "class": "header-section",
   "settings": [
@@ -876,9 +875,15 @@
     {
       "type": "color_scheme",
       "id": "color_scheme_transparent",
-      "label": "t:settings.inverse",
-      "default": "primary",
-      "visible_if": "{{ section.settings.enable_transparent_header_home or section.settings.enable_transparent_header_product or section.settings.enable_transparent_header_collection }}"
+      "label": "Transparent Header Color Scheme",
+      "info": "Used when transparent header is enabled. Choose a scheme with light text for dark backgrounds (e.g., Scheme 2 - Navy/White).",
+      // Assuming options are populated from global schemes, e.g.:
+      // "options": [
+      //   { "value": "scheme_1_id", "label": "Scheme 1" },
+      //   { "value": "scheme_2_id", "label": "Scheme 2 (Navy BG, White Text)" },
+      //   ...
+      // ],
+      "default": "scheme_2_id" // Example default, ensure this ID matches your Scheme 2
     },
     {
       "type": "header",
@@ -887,25 +892,8 @@
     {
       "type": "checkbox",
       "id": "enable_transparent_header_home",
-      "label": "t:settings.transparent_background",
+      "label": "Enable transparent header on Homepage",
       "default": false
-    },
-    {
-      "type": "select",
-      "id": "home_color_scheme",
-      "label": "t:settings.color_scheme",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:options.default"
-        },
-        {
-          "value": "inverse",
-          "label": "t:options.inverse"
-        }
-      ],
-      "default": "default",
-      "visible_if": "{{ section.settings.enable_transparent_header_home }}"
     },
     {
       "type": "header",
@@ -914,25 +902,8 @@
     {
       "type": "checkbox",
       "id": "enable_transparent_header_product",
-      "label": "t:settings.transparent_background",
+      "label": "Enable transparent header on Product pages",
       "default": false
-    },
-    {
-      "type": "select",
-      "id": "product_color_scheme",
-      "label": "t:settings.color_scheme",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:options.default"
-        },
-        {
-          "value": "inverse",
-          "label": "t:options.inverse"
-        }
-      ],
-      "default": "default",
-      "visible_if": "{{ section.settings.enable_transparent_header_product }}"
     },
     {
       "type": "header",
@@ -941,27 +912,24 @@
     {
       "type": "checkbox",
       "id": "enable_transparent_header_collection",
-      "label": "t:settings.transparent_background",
+      "label": "Enable transparent header on Collection pages",
       "default": false
     },
     {
-      "type": "select",
-      "id": "collection_color_scheme",
-      "label": "t:settings.color_scheme",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:options.default"
-        },
-        {
-          "value": "inverse",
-          "label": "t:options.inverse"
-        }
-      ],
-      "default": "default",
-      "visible_if": "{{ section.settings.enable_transparent_header_collection }}"
+      "type": "header",
+      "content": "t:content.page"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_transparent_header_page",
+      "label": "Enable transparent header on Pages (e.g., About Us)",
+      "default": false,
+      "info": "Ensure 'Transparent Header Color Scheme' is set correctly for light text on dark backgrounds."
     }
   ],
-  "presets": []
+  "blocks": [
+    // ... existing blocks ...
+  ]
+  // ... rest of schema ...
 }
 {% endschema %}

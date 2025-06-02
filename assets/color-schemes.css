@@ -7,6 +7,7 @@
 .aai-navy-section,
 .color-scheme-blue,
 .color-scheme-navy,
+.color-scheme-2, /* Added .color-scheme-2 */
 [data-color-scheme="blue"],
 [data-color-scheme="navy"],
 .aai-hero-library,
@@ -26,7 +27,7 @@ div[style*="background-color: var(--electric-blue)"] {
   --text-color: white;
   --text-color-secondary: rgba(255, 255, 255, 0.9);
   --text-color-muted: rgba(255, 255, 255, 0.8);
-  --link-color: rgba(255, 255, 255, 0.95);
+  --link-color: rgba(255, 255, 255, 0.95); /* Ensure links are white by default */
   --link-hover-color: white;
   --border-color: rgba(255, 255, 255, 0.2);
   
@@ -39,6 +40,7 @@ div[style*="background-color: var(--electric-blue)"] {
 .aai-navy-section *,
 .color-scheme-blue *,
 .color-scheme-navy *,
+.color-scheme-2 *, /* Added .color-scheme-2 * */
 [data-color-scheme="blue"] *,
 [data-color-scheme="navy"] *,
 .aai-hero-library *,
@@ -77,6 +79,12 @@ div[style*="background-color: var(--electric-blue)"] * {
 .color-scheme-blue h4,
 .color-scheme-blue h5,
 .color-scheme-blue h6,
+.color-scheme-2 h1, /* Added .color-scheme-2 headings */
+.color-scheme-2 h2,
+.color-scheme-2 h3,
+.color-scheme-2 h4,
+.color-scheme-2 h5,
+.color-scheme-2 h6,
 .aai-hero-library h1,
 .aai-hero-library h2,
 .aai-hero-library h3,
@@ -103,6 +111,10 @@ div[style*="background-color: var(--electric-blue)"] * {
 .color-scheme-blue span,
 .color-scheme-blue div,
 .color-scheme-blue li,
+.color-scheme-2 p, /* Added .color-scheme-2 text elements */
+.color-scheme-2 span,
+.color-scheme-2 div,
+.color-scheme-2 li,
 .aai-hero-library p,
 .aai-hero-library span,
 .aai-contribute p,
@@ -116,6 +128,7 @@ div[style*="background-color: var(--electric-blue)"] * {
 .aai-blue-background a,
 .aai-hero-section a,
 .color-scheme-blue a,
+.color-scheme-2 a, /* Added .color-scheme-2 links */
 .aai-hero-library a,
 .aai-contribute a,
 .aai-featured-primary a {
@@ -139,6 +152,7 @@ div[style*="background-color: var(--electric-blue)"] * {
 .aai-blue-background .aai-btn,
 .aai-hero-section .aai-btn,
 .color-scheme-blue .aai-btn,
+.color-scheme-2 .aai-btn, /* Added .color-scheme-2 buttons */
 .aai-hero-library .aai-btn,
 .aai-contribute .aai-btn,
 .aai-featured-primary .aai-btn {
@@ -150,6 +164,7 @@ div[style*="background-color: var(--electric-blue)"] * {
 .aai-blue-background .aai-btn:hover,
 .aai-hero-section .aai-btn:hover,
 .color-scheme-blue .aai-btn:hover,
+.color-scheme-2 .aai-btn:hover, /* Added .color-scheme-2 button hover */
 .aai-hero-library .aai-btn:hover,
 .aai-contribute .aai-btn:hover,
 .aai-featured-primary .aai-btn:hover {
@@ -183,7 +198,10 @@ div[style*="background-color: var(--electric-blue)"] * {
 .aai-hero-section select,
 .color-scheme-blue input,
 .color-scheme-blue textarea,
-.color-scheme-blue select {
+.color-scheme-blue select,
+.color-scheme-2 input, /* Added .color-scheme-2 form elements */
+.color-scheme-2 textarea,
+.color-scheme-2 select {
   background: rgba(255, 255, 255, 0.95);
   color: var(--authority-navy);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -202,6 +220,7 @@ div[style*="background-color: var(--electric-blue)"] * {
 .aai-blue-background svg,
 .aai-hero-section svg,
 .color-scheme-blue svg,
+.color-scheme-2 svg, /* Added .color-scheme-2 svgs */
 .aai-hero-library svg,
 .aai-contribute svg,
 .aai-featured-primary svg {
