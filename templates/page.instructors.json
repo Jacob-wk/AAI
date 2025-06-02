@@ -11,7 +11,7 @@
         "hero_subtitle": "Learn from industry leaders with decades of real-world experience in amusement park operations, safety management, and regulatory compliance.",
         "image_position_desktop": "right",
         "image_position_mobile": "bottom",
-        "visual_content_html": "<div class=\"credentials-showcase\"><div class=\"credential-badge\"><span class=\"badge-text\">IAAPA Certified Faculty</span></div><div class=\"credential-badge\"><span class=\"badge-text\">Industry Veterans</span></div><div class=\"credential-badge\"><span class=\"badge-text\">Active Practitioners</span></div></div>"
+        "visual_content_html": "<div><div><strong>IAAPA Certified Faculty</strong></div><div><strong>Industry Veterans</strong></div><div><strong>Active Practitioners</strong></div></div>"
       },
       "blocks": {
         "stat_1": {
@@ -181,7 +181,7 @@
         "section_width": "page-width",
         "section_title": "Industry Guest Instructors",
         "section_subtitle": "Current industry leaders who share the latest developments, trends, and best practices directly from their active roles.",
-        "html_content": "<div class=\"guest-instructor-showcase\"><div class=\"guest-highlight\"><div class=\"guest-info\"><h3>Current Industry Leaders</h3><p>Our guest instructor program brings active industry professionals directly into the classroom. These working experts share current challenges, innovative solutions, and emerging trends.</p><div class=\"guest-stats\"><div class=\"stat-item\"><span class=\"stat-number\">50+</span><span class=\"stat-label\">Guest Instructors Annually</span></div><div class=\"stat-item\"><span class=\"stat-number\">100+</span><span class=\"stat-label\">Industry Partners</span></div></div><div class=\"partner-organizations\"><h4>Recent Guest Instructors From:</h4><ul><li>Disney Parks & Resorts</li><li>Universal Studios</li><li>Six Flags Entertainment</li><li>Cedar Fair</li><li>SeaWorld Parks</li><li>Busch Gardens</li><li>State Inspection Agencies</li><li>Leading Manufacturers</li></ul></div></div><div class=\"guest-visual\"><div class=\"partnership-display\"><div class=\"partnership-icon\">🤝</div><h4>Industry Partnership Program</h4><p>Active collaboration with leading operators ensures our curriculum reflects current industry needs and emerging best practices.</p></div></div></div></div>"
+        "html_content": "<div><div><div><h3>Current Industry Leaders</h3><p>Our guest instructor program brings active industry professionals directly into the classroom. These working experts share current challenges, innovative solutions, and emerging trends.</p><div><div><strong>50+</strong><br>Guest Instructors Annually</div><div><strong>100+</strong><br>Industry Partners</div></div><div><h4>Recent Guest Instructors From:</h4><ul><li>Disney Parks &amp; Resorts</li><li>Universal Studios</li><li>Six Flags Entertainment</li><li>Cedar Fair</li><li>SeaWorld Parks</li><li>Busch Gardens</li><li>State Inspection Agencies</li><li>Leading Manufacturers</li></ul></div></div><div><div><div>🤝</div><h4>Industry Partnership Program</h4><p>Active collaboration with leading operators ensures our curriculum reflects current industry needs and emerging best practices.</p></div></div></div></div>"
       }
     },
     "faculty_standards": {

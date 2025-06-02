@@ -69,7 +69,7 @@
           "type": "text_block",
           "settings": {
             "title": "Become a Partner",
-            "content": "<p>Join our network of industry leaders committed to advancing safety education and standards.</p><a href='/pages/contact' class='aai-btn aai-btn-primary'>Explore Partnership</a>"
+            "content": "<p>Join our network of industry leaders committed to advancing safety education and standards.</p><p><a href='/pages/contact'>Explore Partnership</a></p>"
           }
         }
       },
