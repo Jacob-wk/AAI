@@ -1,14 +1,22 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
-       "type": "about-hero",
+      "type": "about-hero",
       "settings": {
         "hero_title": "Where Safety Meets Adventure",
         "hero_subtitle": "Leading the amusement industry in professional safety education since 2025. AAI provides comprehensive training programs that ensure both thrilling experiences and uncompromising safety standards.",
         "show_stats": true,
         "show_credentials": true
-      },
-      "block_order": []
+      }
     },
     "mission": {
       "type": "aai-universal-content",
@@ -35,19 +43,15 @@
           }
         }
       },
-      "block_order": ["mission_card_1", "mission_card_2", "mission_card_3"]
+      "block_order": [
+        "feature1",
+        "feature2",
+        "feature3"
+      ],
+      "settings": {}
     },
     "story": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Our Story",
-        "background_style": "section-alt-2",
-        "layout_style": "text-left-image-right",
-        "show_main_content": true,
-        "content_title": "",
-        "content_body": "<p>Founded in 2025, the Amusement Adventure Institute emerged from a critical need in the industry: comprehensive, accessible safety education that combines rigorous standards with practical application.</p>",
-        "show_image": false
-      },
       "blocks": {
         "milestone_1": {
           "type": "text_block",
@@ -72,25 +76,18 @@
         }
       },
       "block_order": [
-        "feature1",
-        "feature2",
-        "feature3",
-        "feature4"
+        "milestone_1",
+        "feature4",
+        "founder_quote"
       ],
       "settings": {
-        "section_title": "Customizable Content Section",
-        "section_subtitle": "This content can be easily modified through the theme editor",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "2",
-        "background_style": "",
+        "section_title": "Our Story",
+        "layout_style": "text-left-image-right",
+        "background_style": "section-alt-2",
         "show_main_content": true,
-        "content_title": "Professional Safety Education",
-        "content_body": "<p>AAI (Amusement Adventure Institute) provides comprehensive training programs for safety professionals in the amusement industry. Customize this content through the theme editor to match your specific needs.</p>",
-        "show_image": false,
-        "main_button_text": "Get Started",
-        "main_button_url": "/collections/courses",
-        "main_button_style": "primary",
-        "main_button_size": "medium"
+        "content_title": "",
+        "content_body": "<p>Founded in 2025, the Amusement Adventure Institute emerged from a critical need in the industry: comprehensive, accessible safety education that combines rigorous standards with practical application.</p>",
+        "show_image": false
       }
     },
     "cta_section": {
@@ -130,9 +127,6 @@
           }
         }
       },
-      "block_order": [
-        "cta_buttons"
-      ],
       "settings": {
         "section_title": "Ready to Get Started?",
         "section_subtitle": "Join hundreds of safety professionals advancing their careers with AAI",
@@ -151,7 +145,9 @@
     }
   },
   "order": [
-    "main_content",
+    "hero",
+    "mission",
+    "story",
     "cta_section"
   ]
 }
