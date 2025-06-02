@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "logo": "shopify://shop_images/AAI-Full-Color-Logo.jpg",
@@ -60,64 +69,39 @@
     "variant_swatch_width": 34,
     "variant_swatch_height": 34,
     "variant_swatch_radius": 32,
+    "variant_button_width": "equal-width-buttons",
     "color_schemes": {
       "scheme-1": {
         "settings": {
           "background": "#ffffff",
-          "background_gradient": "",
-          "text": "#2c3e50",
-          "button": "#ff6b35",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#1e3a5f",
           "shadow": "#2c3e50"
         }
       },
       "scheme-2": {
         "settings": {
           "background": "#1e3a5f",
-          "background_gradient": "",
-          "text": "#ffffff",
-          "button": "#ff6b35",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#ffffff",
           "shadow": "#0f1f33"
         }
       },
       "scheme-3": {
         "settings": {
           "background": "#3498db",
-          "background_gradient": "",
-          "text": "#ffffff",
-          "button": "#ff6b35",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#ffffff",
           "shadow": "#2980b9"
         }
       },
       "scheme-4": {
         "settings": {
           "background": "#ff6b35",
-          "background_gradient": "",
-          "text": "#ffffff",
-          "button": "#1e3a5f",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#ffffff",
           "shadow": "#e55a2b"
         }
       },
       "scheme-5": {
         "settings": {
           "background": "#ecf0f1",
-          "background_gradient": "",
-          "text": "#2c3e50",
-          "button": "#ff6b35",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#1e3a5f",
           "shadow": "#d5dbdb"
         }
       }
-    },
-    "variant_button_width": "equal-width-buttons"
+    }
   },
   "presets": {
     "Horizon": {
