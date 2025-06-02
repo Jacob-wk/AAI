@@ -99,14 +99,19 @@
 }
 
 .about-hero .credential-badge {
-  background: var(--color-scheme-4-background); /* Using a contrasting scheme for badges, e.g., Safety Orange */
-  color: var(--color-scheme-4-text); /* Text color for the badge */
-  border-radius: 16px; /* Pill shape */
-  padding: 0.4rem 0.8rem;
-  font-size: 0.75rem;
+  background-color: var(--color-accent-1); /* Explicitly use accent color for background (e.g., Safety Orange) */
+  color: var(--color-text-on-accent-1); /* Explicitly use text color for on-accent background */
+  border-radius: 20px; /* Ensure fully rounded pill shape */
+  padding: 0.5rem 1rem; /* Adjusted padding for better proportions */
+  font-size: 0.8rem; /* Slightly larger font size for readability */
   font-weight: 600;
-  border: none; /* Remove border if not needed */
+  border: 1px solid transparent; /* Ensure no unwanted border */
   box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Optional shadow for depth */
+  display: inline-flex; /* Helps with alignment and if an icon is added */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1; /* Ensure text is vertically centered */
 }
 
 /* Responsive adjustments */
