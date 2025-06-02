@@ -1,8 +1,8 @@
+
 {
-  "name": "About Us",
   "sections": {
     "hero": {
-      "type": "about-hero",
+       "type": "about-hero",
       "settings": {
         "hero_title": "Where Safety Meets Adventure",
         "hero_subtitle": "Leading the amusement industry in professional safety education since 2025. AAI provides comprehensive training programs that ensure both thrilling experiences and uncompromising safety standards.",

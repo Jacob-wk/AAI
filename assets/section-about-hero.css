@@ -1,97 +1,155 @@
 /* About Hero Section Styles */
 .about-hero {
-  background: linear-gradient(135deg, #1e3a5f 0%, #005a9f 50%, #0ea5e9 100%);
-  color: white;
-  padding: 4rem 0;
+  background-color: var(--color-scheme-2-background); /* Authority Navy */
+  color: var(--color-scheme-2-text); /* White text */
+  padding: 3rem 0; /* Adjusted padding */
+  display: flex; /* For centering content like dashboard */
+  align-items: center; /* For centering content like dashboard */
+  min-height: 400px; /* Example height, adjust as needed */
+}
+
+.about-hero .container {
+  max-width: 1200px; /* Or your standard container width */
+  margin: 0 auto;
+  padding: 0 1rem; /* Basic horizontal padding */
 }
 
 .about-hero .hero-content {
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 3rem;
+  grid-template-columns: 1fr 1fr; /* Equal columns for text and image */
+  gap: 2rem; /* Gap between text and image */
   align-items: center;
 }
 
+.about-hero .hero-text {
+  /* Styles for text content area */
+  padding-right: 2rem; /* Add some space if image is on the right */
+}
+
 .about-hero .hero-title {
-  font-size: 3.5rem;
+  font-size: 2.8rem; /* Adjusted font size */
   font-weight: 700;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .about-hero .hero-subtitle {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  font-size: 1.1rem; /* Adjusted font size */
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
   opacity: 0.9;
 }
 
 .about-hero .hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  display: flex; /* Changed to flex for horizontal layout */
+  gap: 1.5rem; /* Spacing between stat items */
+  margin-top: 1.5rem;
 }
 
 .about-hero .stat-item {
-  text-align: center;
+  text-align: left; /* Align text to left for a cleaner look */
+  background-color: rgba(255, 255, 255, 0.05); /* Subtle background for stats */
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 .about-hero .stat-number {
-  font-size: 2.5rem;
+  font-size: 2rem; /* Adjusted font size */
   font-weight: 700;
-  color: var(--safety-orange);
+  color: var(--safety-orange); /* Assuming --safety-orange is defined, or use a specific white/accent */
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .about-hero .stat-label {
-  font-size: 0.9rem;
+  font-size: 0.85rem; /* Adjusted font size */
   opacity: 0.8;
 }
 
-.about-hero .hero-image {
+.about-hero .hero-image-slot { /* Renamed from .hero-image for clarity */
   position: relative;
+  width: 100%;
+  height: 300px; /* Example height, adjust as needed */
+  background-color: rgba(255, 255, 255, 0.1); /* Placeholder background */
+  border-radius: 12px; /* Rounded corners for the image slot */
+  overflow: hidden; /* To contain the image and overlay */
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-.about-hero .hero-logo {
-  max-width: 100%;
-  height: auto;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+.about-hero .hero-image-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Make image cover the slot */
 }
 
 .about-hero .credentials-overlay {
   position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 1rem; /* Position from bottom */
+  left: 1rem; /* Position from left */
+  right: 1rem; /* Stretch to right with padding */
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap; /* Allow badges to wrap */
+  gap: 0.5rem; /* Spacing between badges */
+  justify-content: flex-start; /* Align badges to the start */
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.3); /* Slight dark overlay for readability */
+  border-radius: 0 0 8px 8px; /* Rounded bottom corners if needed */
 }
 
 .about-hero .credential-badge {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
-  font-weight: 500;
+  background: var(--color-scheme-4-background); /* Using a contrasting scheme for badges, e.g., Safety Orange */
+  color: var(--color-scheme-4-text); /* Text color for the badge */
+  border-radius: 16px; /* Pill shape */
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: none; /* Remove border if not needed */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Optional shadow for depth */
 }
 
-@media (max-width: 768px) {
+/* Responsive adjustments */
+@media (max-width: 992px) { /* Tablet and below */
   .about-hero .hero-content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack text and image */
     text-align: center;
   }
-  
-  .about-hero .hero-title {
-    font-size: 2.5rem;
+  .about-hero .hero-text {
+    padding-right: 0; /* Remove padding when stacked */
+    margin-bottom: 2rem; /* Add space below text block */
   }
-  
   .about-hero .hero-stats {
-    grid-template-columns: repeat(1, 1fr);
+    justify-content: center; /* Center stats when stacked */
+  }
+  .about-hero .credentials-overlay {
+    justify-content: center; /* Center badges when stacked */
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) { /* Mobile */
+  .about-hero {
+    padding: 2rem 0;
+  }
+  .about-hero .hero-title {
+    font-size: 2.2rem;
+  }
+  .about-hero .hero-subtitle {
+    font-size: 1rem;
+  }
+  .about-hero .hero-stats {
+    flex-direction: column; /* Stack stat items on mobile */
+    align-items: center;
+  }
+  .about-hero .stat-item {
+    width: 100%; /* Make stat items full width */
+    max-width: 300px; /* Max width for readability */
+    text-align: center;
+  }
+  .about-hero .hero-image-slot {
+    height: 250px; /* Adjust image height for mobile */
   }
 }
