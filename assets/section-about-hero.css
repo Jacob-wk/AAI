@@ -2,11 +2,19 @@
 
 /* Color definition is now primarily handled by color-schemes.css and .aai-hero.color-scheme-2 */
 
-/* Ensure the container within about-hero has consistent padding */
+/* Ensure the container within about-hero has consistent padding and is centered */
 .about-hero .aai-container {
-  padding-left: 15px;
-  padding-right: 15px;
+  max-width: 1200px; /* Standard max-width */
+  margin-left: auto;   /* Center the container */
+  margin-right: auto;  /* Center the container */
+  padding-left: 15px;  /* Consistent internal padding */
+  padding-right: 15px; /* Consistent internal padding */
 }
+
+/* .about-hero .hero-text { */
+  /* If additional left padding specifically for the text block is needed, uncomment below */
+  /* padding-left: 15px; */ /* This would be additive to container padding */
+/* } */
 
 .about-hero .hero-title { /* Specific overrides for about-hero if needed */
   font-size: 2.8rem; 
