@@ -1,0 +1,95 @@
+\
+<div class="aai-container page-width">
+  <h1>{{ 'customer.addresses_page.title' | t }}</h1>
+  <a href="#" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{{ 'customer.addresses_page.add_new' | t }}</a>
+
+  <div id="AddAddress" style="display:none;">
+    {%- form 'customer_address', customer.new_address -%}
+      <h2>{{ 'customer.addresses_page.add_new_title' | t }}</h2>
+      <label for="AddressFirstNameNew">{{ 'customer.addresses_page.first_name' | t }}</label>
+      <input type="text" name="address[first_name]" id="AddressFirstNameNew" value="{{ form.first_name }}">
+      <label for="AddressLastNameNew">{{ 'customer.addresses_page.last_name' | t }}</label>
+      <input type="text" name="address[last_name]" id="AddressLastNameNew" value="{{ form.last_name }}">
+      <label for="AddressCompanyNew">{{ 'customer.addresses_page.company' | t }}</label>
+      <input type="text" name="address[company]" id="AddressCompanyNew" value="{{ form.company }}">
+      <label for="AddressAddress1New">{{ 'customer.addresses_page.address1' | t }}</label>
+      <input type="text" name="address[address1]" id="AddressAddress1New" value="{{ form.address1 }}">
+      <label for="AddressAddress2New">{{ 'customer.addresses_page.address2' | t }}</label>
+      <input type="text" name="address[address2]" id="AddressAddress2New" value="{{ form.address2 }}">
+      <label for="AddressCityNew">{{ 'customer.addresses_page.city' | t }}</label>
+      <input type="text" name="address[city]" id="AddressCityNew" value="{{ form.city }}">
+      <label for="AddressCountryNew">{{ 'customer.addresses_page.country' | t }}</label>
+      <select name="address[country]" id="AddressCountryNew" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+      <div id="AddressProvinceContainerNew" style="display:none;">
+        <label for="AddressProvinceNew">{{ 'customer.addresses_page.province' | t }}</label>
+        <select name="address[province]" id="AddressProvinceNew" data-default="{{ form.province }}"></select>
+      </div>
+      <label for="AddressZipNew">{{ 'customer.addresses_page.zip' | t }}</label>
+      <input type="text" name="address[zip]" id="AddressZipNew" value="{{ form.zip }}" autocapitalize="characters">
+      <label for="AddressPhoneNew">{{ 'customer.addresses_page.phone' | t }}</label>
+      <input type="tel" name="address[phone]" id="AddressPhoneNew" value="{{ form.phone }}">
+      <p>
+        {{ form.set_as_default_checkbox }}
+        <label for="address_default_address_new" class="inline">{{ 'customer.addresses_page.set_as_default' | t }}</label>
+      </p>
+      <button type="submit">{{ 'customer.addresses_page.add_button' | t }}</button>
+      <a href="#" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{{ 'customer.addresses_page.cancel_button' | t }}</a>
+    {%- endform -%}
+  </div>
+
+  {%- paginate customer.addresses by 5 -%}
+    {%- for address in customer.addresses -%}
+      <div>
+        <h3>{{ address.street }}</h3>
+        <p>
+          {{ address.first_name }} {{ address.last_name }}<br>
+          {%- if address.company != blank -%}{{ address.company }}<br>{%- endif -%}
+          {{ address.street }}<br>
+          {%- if address.address2 != blank -%}{{ address.address2 }}<br>{%- endif -%}
+          {{ address.city }}, {% if address.province_code %}{{ address.province_code }}, {% endif %}{{ address.zip | upcase }}<br>
+          {{ address.country }}<br>
+          {{ address.phone }}
+        </p>
+        {%- if address == customer.default_address -%}<strong>{{ 'customer.addresses_page.default_badge' | t }}</strong><br>{%- endif -%}
+        <a href="#" onclick="Shopify.CustomerAddress.toggleEditForm({{ address.id }});return false">{{ 'customer.addresses_page.edit_button' | t }}</a>
+        <a href="#" onclick="Shopify.CustomerAddress.destroy({{ address.id }}, '{{ 'customer.addresses_page.confirm_delete' | t }}');return false">{{ 'customer.addresses_page.delete_button' | t }}</a>
+        
+        <div id="EditAddress_{{ address.id }}" style="display:none;">
+          {%- form 'customer_address', address -%}
+            <h4>{{ 'customer.addresses_page.edit_address_title' | t }}</h4>
+            <label for="AddressFirstName_{{form.id}}">{{ 'customer.addresses_page.first_name' | t }}</label>
+            <input type="text" name="address[first_name]" id="AddressFirstName_{{form.id}}" value="{{form.first_name}}">
+            <button type="submit">{{ 'customer.addresses_page.update_button' | t }}</button>
+            <a href="#" onclick="Shopify.CustomerAddress.toggleEditForm({{form.id}}); return false;">{{ 'customer.addresses_page.cancel_button' | t }}</a>
+          {%- endform -%}
+        </div>
+      </div>
+    {%- endfor -%}
+    {{ paginate | default_pagination }}
+  {%- endpaginate -%}
+</div>
+<script>
+  // Shopify.CustomerAddress functions (simplified for brevity)
+  Shopify = Shopify || {};
+  Shopify.CustomerAddress = {
+    toggleNewForm: function() {
+      var el = document.getElementById('AddAddress');
+      el.style.display = el.style.display == 'none' ? '' : 'none';
+    },
+    toggleEditForm: function(id) {
+      var el = document.getElementById('EditAddress_' + id);
+      el.style.display = el.style.display == 'none' ? '' : 'none';
+    },
+    destroy: function(id, confirm_msg) {
+      if (confirm(confirm_msg || "Are you sure you wish to delete this address?")) {
+        Shopify.postLink('/account/addresses/' + id, {'parameters': {'_method': 'delete'}});
+      }
+    }
+  };
+  // Initialize country/province selectors
+  new Shopify.CountryProvinceSelector('AddressCountryNew', 'AddressProvinceNew', {hideElement: 'AddressProvinceContainerNew'});
+  {% for address in customer.addresses %}
+    new Shopify.CountryProvinceSelector('AddressCountry_{{address.id}}', 'AddressProvince_{{address.id}}', {hideElement: 'AddressProvinceContainer_{{address.id}}'});
+  {% endfor %}
+</script>
+{{ 'customer-account.css' | asset_url | stylesheet_tag }}

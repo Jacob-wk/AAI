@@ -1,0 +1,52 @@
+\
+<div class="aai-container page-width">
+  <h1>{{ 'customer.login_page.title' | t }}</h1>
+  {%- form 'customer_login' -%}
+    {%- if form.errors -%}
+      <div class="form-message form-message--error">
+        {{ form.errors | default_errors }}
+      </div>
+    {%- endif -%}
+
+    <label for="CustomerEmail">{{ 'customer.login_page.email' | t }}</label>
+    <input type="email" name="customer[email]" id="CustomerEmail" autocomplete="email" autocorrect="off" autocapitalize="off" {% if form.errors contains 'form' %}aria-invalid="true"{% endif %}>
+
+    {%- if form.password_needed -%}
+      <label for="CustomerPassword">{{ 'customer.login_page.password' | t }}</label>
+      <input type="password" name="customer[password]" id="CustomerPassword" autocomplete="current-password" {% if form.errors contains 'form' %}aria-invalid="true"{% endif %}>
+    {%- endif -%}
+
+    <button type="submit">{{ 'customer.login_page.sign_in' | t }}</button>
+    <a href="{{ routes.account_register_url }}">{{ 'customer.login_page.create_account' | t }}</a>
+    {%- if form.password_needed -%}
+      <a href="#recover">{{ 'customer.login_page.forgot_password' | t }}</a>
+    {%- endif -%}
+  {%- endform -%}
+
+  <div id="recover" style="display:none;">
+    <h2>{{ 'customer.recover_password.title' | t }}</h2>
+    {%- form 'recover_customer_password' -%}
+      {%- if form.errors -%}
+        <div class="form-message form-message--error">
+          {{ form.errors | default_errors }}
+        </div>
+      {%- endif -%}
+      <label for="RecoverEmail">{{ 'customer.recover_password.email' | t }}</label>
+      <input type="email" name="email" id="RecoverEmail" autocomplete="email" autocorrect="off" autocapitalize="off">
+      <button type="submit">{{ 'customer.recover_password.submit' | t }}</button>
+      <a href="#" onclick="hideRecoverPasswordForm();return false;">{{ 'customer.recover_password.cancel' | t }}</a>
+    {%- endform -%}
+  </div>
+  <script>
+    function showRecoverPasswordForm() {
+      document.getElementById('recover').style.display = 'block';
+      document.querySelector('form[action=\\'/account/login\\']').style.display = 'none';
+    }
+    function hideRecoverPasswordForm() {
+      document.getElementById('recover').style.display = 'none';
+      document.querySelector('form[action=\\'/account/login\\']').style.display = 'block';
+    }
+    if (window.location.hash == '#recover') { showRecoverPasswordForm(); }
+  </script>
+</div>
+{{ 'customer-account.css' | asset_url | stylesheet_tag }}

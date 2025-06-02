@@ -1,0 +1,82 @@
+\
+<div class="aai-container page-width">
+  <h1>{{ 'customer.order_page.title' | t: order_name: order.name }}</h1>
+  <p><a href="{{ routes.account_url }}">{{ 'customer.order_page.return_to_account' | t }}</a></p>
+
+  <h2>{{ 'customer.order_page.order_details' | t }}</h2>
+  <p>{{ 'customer.order_page.date' | t }}: {{ order.created_at | date: "%B %d, %Y %I:%M%p" }}</p>
+  <p>{{ 'customer.order_page.status' | t }}: {{ order.financial_status_label }}</p>
+  {%- if order.fulfillment_status_label -%}
+    <p>{{ 'customer.order_page.fulfillment_status' | t }}: {{ order.fulfillment_status_label }}</p>
+  {%- endif -%}
+
+  <h3>{{ 'customer.order_page.billing_address' | t }}</h3>
+  {{ order.billing_address | format_address }}
+
+  {%- if order.shipping_address -%}
+    <h3>{{ 'customer.order_page.shipping_address' | t }}</h3>
+    {{ order.shipping_address | format_address }}
+  {%- endif -%}
+
+  <h3>{{ 'customer.order_page.items' | t }}</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>{{ 'customer.order_page.product' | t }}</th>
+        <th>{{ 'customer.order_page.sku' | t }}</th>
+        <th>{{ 'customer.order_page.price' | t }}</th>
+        <th>{{ 'customer.order_page.quantity' | t }}</th>
+        <th>{{ 'customer.order_page.total' | t }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for line_item in order.line_items -%}
+        <tr>
+          <td>
+            {{ line_item.title | link_to: line_item.product.url }}
+            {%- if line_item.variant.title != 'Default Title' -%}<br>{{ line_item.variant.title }}{%- endif -%}
+            {%- if line_item.selling_plan_allocation -%}
+              <br>{{ line_item.selling_plan_allocation.selling_plan.name }}
+            {%- endif -%}
+            {%- for discount_allocation in line_item.discount_allocations -%}
+              <br>{{ discount_allocation.discount_application.title }}: -{{ discount_allocation.amount | money }}
+            {%- endfor -%}
+          </td>
+          <td>{{ line_item.sku }}</td>
+          <td>{{ line_item.original_price | money }}</td>
+          <td>{{ line_item.quantity }}</td>
+          <td>{{ line_item.final_line_price | money }}</td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">{{ 'customer.order_page.subtotal' | t }}</td>
+        <td>{{ order.line_items_subtotal_price | money }}</td>
+      </tr>
+      {%- for discount_application in order.discount_applications -%}
+        <tr>
+          <td colspan="4">{{ discount_application.title }}</td>
+          <td>-{{ discount_application.total_allocated_amount | money }}</td>
+        </tr>
+      {%- endfor -%}
+      {%- for shipping_method in order.shipping_methods -%}
+        <tr>
+          <td colspan="4">{{ 'customer.order_page.shipping' | t }} ({{ shipping_method.title }})</td>
+          <td>{{ shipping_method.price | money }}</td>
+        </tr>
+      {%- endfor -%}
+      {%- for tax_line in order.tax_lines -%}
+        <tr>
+          <td colspan="4">{{ 'customer.order_page.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</td>
+          <td>{{ tax_line.price | money }}</td>
+        </tr>
+      {%- endfor -%}
+      <tr>
+        <td colspan="4"><strong>{{ 'customer.order_page.grand_total' | t }}</strong></td>
+        <td><strong>{{ order.total_price | money }}</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{{ 'customer-account.css' | asset_url | stylesheet_tag }}
