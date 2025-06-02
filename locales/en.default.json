@@ -1,12 +1,3 @@
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin language editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
 {
   "accessibility": {
     "account": "Account",
@@ -55,7 +46,6 @@
     "clear": "Clear",
     "clear_all": "Clear all",
     "close": "Close",
-    // Continue shopping link on the cart page which takes the user back to a collection page
     "continue_shopping": "Continue shopping",
     "enter_password": "Enter password",
     "log_in_html": "Have an account? <a href=\"{{ link }}\">Log in</a> to check out faster.",
@@ -304,6 +294,75 @@
       "add_to_cart_error": "Error adding to cart",
       "sold_out": "Sold out",
       "unavailable": "Unavailable"
+    }
+  },
+  "customer": {
+    "login_page": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "sign_in": "Sign In",
+      "create_account": "Create Account",
+      "forgot_password": "Forgot your password?",
+      "link_to_login": "Return to Login"
+    },
+    "register_page": {
+      "title": "Create Account",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create"
+    },
+    "recover_password": {
+      "title": "Reset your password",
+      "email": "Email",
+      "submit": "Submit",
+      "cancel": "Cancel"
+    },
+    "addresses_page": {
+      "title": "Addresses",
+      "add_new": "Add a new address",
+      "add_new_title": "Add a new address",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "company": "Company",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "city": "City",
+      "country": "Country",
+      "province": "Province",
+      "zip": "Postal/Zip Code",
+      "phone": "Phone",
+      "set_as_default": "Set as default address",
+      "add_button": "Add Address",
+      "cancel_button": "Cancel",
+      "default_badge": "Default",
+      "edit_button": "Edit",
+      "delete_button": "Delete",
+      "confirm_delete": "Are you sure you wish to delete this address?",
+      "edit_address_title": "Edit address",
+      "update_button": "Update Address"
+    },
+    "order_page": {
+      "title": "Order {{ order_name }}",
+      "return_to_account": "Return to Account",
+      "order_details": "Order details",
+      "date": "Date",
+      "status": "Payment Status",
+      "fulfillment_status": "Fulfillment Status",
+      "billing_address": "Billing Address",
+      "shipping_address": "Shipping Address",
+      "items": "Items",
+      "product": "Product",
+      "sku": "SKU",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "grand_total": "Total"
     }
   }
 }

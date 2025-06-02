@@ -72,7 +72,7 @@
           "type": "text_block",
           "settings": {
             "block_title": "AAI Institute Headquarters",
-            "block_content": "<p><strong>Amusement Adventure Institute</strong><br>1234 Safety Boulevard<br>Orlando, FL 32819<br>United States</p><p><a href=\"https://maps.google.com/?q=1234+Safety+Boulevard,Orlando,FL+32819\" target=\"_blank\" class=\"aai-btn aai-btn-outline aai-btn-small\">View on Google Maps</a></p>"
+            "block_content": "<p><strong>Amusement Adventure Institute</strong><br>1234 Safety Boulevard<br>Orlando, FL 32819<br>United States</p><p><a href=\"https://maps.google.com/?q=1234+Safety+Boulevard,Orlando,FL+32819\" target=\"_blank\">View on Google Maps</a></p>"
           }
         }
       },
@@ -163,21 +163,21 @@
           "type": "text_block",
           "settings": {
             "block_title": "Frequently Asked Questions",
-            "block_content": "<p>Find answers to common questions about our training programs, certification requirements, and platform features.</p><p><a href=\"/pages/help-center\" class=\"aai-btn aai-btn-outline\">Visit Help Center</a></p>"
+            "block_content": "<p>Find answers to common questions about our training programs, certification requirements, and platform features.</p><p><a href=\"/pages/help-center\">Visit Help Center</a></p>"
           }
         },
         "demo": {
           "type": "text_block",
           "settings": {
             "block_title": "Platform Demo",
-            "block_content": "<p>Experience our interactive learning platform with a guided demo showcasing our training modules and assessment tools.</p><p><a href=\"/pages/demo\" class=\"aai-btn aai-btn-outline\">Take Demo</a></p>"
+            "block_content": "<p>Experience our interactive learning platform with a guided demo showcasing our training modules and assessment tools.</p><p><a href=\"/pages/demo\">Take Demo</a></p>"
           }
         },
         "schedule": {
           "type": "text_block",
           "settings": {
             "block_title": "Schedule Consultation",
-            "block_content": "<p>Book a personalized consultation with our training experts to discuss your specific needs and develop a custom solution.</p><p><a href=\"#contact-form-section\" class=\"aai-btn aai-btn-outline\">Request Consultation</a></p>"
+            "block_content": "<p>Book a personalized consultation with our training experts to discuss your specific needs and develop a custom solution.</p><p><a href=\"#contact-form-section\">Request Consultation</a></p>"
           }
         }
       },
