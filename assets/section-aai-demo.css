@@ -354,3 +354,33 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Bottom CTA Styling */
+.demo-bottom-cta {
+  margin-top: 40px; /* Adjust as needed */
+  padding: 30px;    /* Adjust as needed */
+  background-color: #f9f9f9; /* Example background color */
+  border-radius: 8px; /* Optional: for rounded corners */
+  text-align: center; /* Center align the content */
+}
+
+.demo-bottom-cta .cta-content h3 {
+  font-size: 2rem; /* Adjust as needed */
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin-bottom: 1rem;
+}
+
+.demo-bottom-cta .cta-content p {
+  font-size: 1.1rem; /* Adjust as needed */
+  color: var(--color-foreground-secondary);
+  max-width: 600px; /* Limit width for better readability */
+  margin: 0 auto 1.5rem auto; /* Center the paragraph */
+}
+
+.demo-bottom-cta .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}

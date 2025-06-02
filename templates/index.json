@@ -101,11 +101,48 @@
         }
       },
       "block_order": ["demo_tab_1", "demo_tab_2", "demo_tab_3"]
+    },
+    "course_catalog": {
+      "type": "course-catalog",
+      "settings": {
+        "section_title": "Explore Our Courses",
+        "collection": "all",
+        "products_to_show": 3
+      }
+    },
+    "industry_authority": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Industry Authority in Amusement Safety",
+        "section_subtitle": "Decades of Experience, Unmatched Expertise",
+        "layout_style": "text-center",
+        "show_main_content": true,
+        "content_title": "Leading the Way in Safety Standards",
+        "content_body": "<p>AAI stands at the forefront of amusement safety. With over 20 years of dedicated experience, we have trained thousands of professionals and helped shape industry best practices. Our commitment to excellence ensures you receive the most current and comprehensive knowledge available.</p>",
+        "show_image": false,
+        "main_button_text": "Learn About Our Impact",
+        "main_button_url": "/pages/about",
+        "main_button_style": "secondary",
+        "main_button_size": "medium"
+      }
+    },
+    "instructor_showcase": {
+      "type": "aai-instructor-showcase",
+      "settings": {
+        "section_title": "Meet Our Expert Instructors",
+        "section_subtitle": "Learn from the best in the amusement industry",
+        "instructors_to_show": 3,
+        "view_all_button_text": "View All Instructors",
+        "view_all_button_url": "/pages/instructors"
+      }
     }
   },
   "order": [
     "main",
     "user_dashboard",
-    "guest_demo"
+    "guest_demo",
+    "course_catalog",
+    "industry_authority",
+    "instructor_showcase"
   ]
 }
