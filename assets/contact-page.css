@@ -273,6 +273,52 @@
   color: white;
 }
 
+/* Form Status Messages */
+.form-status {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.form-status--success {
+  background-color: #d1fae5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.form-status--success h3 {
+  color: #047857;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.form-status--success p {
+  margin: 0;
+  color: #065f46;
+}
+
+.form-status--error {
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+}
+
+.form-status--error h3 {
+  color: #dc2626;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.form-status--error ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #991b1b;
+}
+
+.form-status--error li {
+  margin-bottom: 0.25rem;
+}
+
 /* Additional Contact Categories */
 .additional-contact-section {
   margin-bottom: 4rem;
