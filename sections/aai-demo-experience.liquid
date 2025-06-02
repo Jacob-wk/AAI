@@ -64,8 +64,8 @@
                       <div class="demo-toolbar">
                         <span class="demo-progress">{{ block.settings.demo_progress | default: "Step 1 of 5" }}</span>
                         <div class="demo-controls">
-                          <button class="demo-btn demo-prev">Previous</button>
-                          <button class="demo-btn demo-next">Next</button>
+                          <button class="aai-btn demo-prev">Previous</button>
+                          <button class="aai-btn demo-next">Next</button>
                         </div>
                       </div>
                       
@@ -92,7 +92,7 @@
                 
                 {% if block.settings.cta_button_text != blank %}
                   <a href="{{ block.settings.cta_button_url }}" 
-                     class="btn btn--{{ block.settings.cta_button_style }}">
+                     class="aai-btn aai-btn-{{ block.settings.cta_button_style }}">
                     {{ block.settings.cta_button_text }}
                   </a>
                 {% endif %}
@@ -115,13 +115,13 @@
           <div class="cta-buttons">
             {% if section.settings.primary_cta_text != blank %}
               <a href="{{ section.settings.primary_cta_url }}" 
-                 class="btn btn--primary btn--large">
+                 class="aai-btn aai-btn-primary aai-btn-large">
                 {{ section.settings.primary_cta_text }}
               </a>
             {% endif %}
             {% if section.settings.secondary_cta_text != blank %}
               <a href="{{ section.settings.secondary_cta_url }}" 
-                 class="btn btn--secondary btn--large">
+                 class="aai-btn aai-btn-secondary aai-btn-large">
                 {{ section.settings.secondary_cta_text }}
               </a>
             {% endif %}

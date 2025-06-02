@@ -36,12 +36,12 @@
 
         <div class="aai-hero-actions">
           {% if section.settings.primary_button_text != blank %}
-            <a href="{{ section.settings.primary_button_url | default: '#courses' }}" class="aai-btn-primary">
+            <a href="{{ section.settings.primary_button_url | default: '#courses' }}" class="aai-btn aai-btn-primary">
               {{ section.settings.primary_button_text }}
             </a>
           {% endif %}
           {% if section.settings.secondary_button_text != blank %}
-            <a href="{{ section.settings.secondary_button_url | default: '#demo' }}" class="aai-btn-secondary">
+            <a href="{{ section.settings.secondary_button_url | default: '#demo' }}" class="aai-btn aai-btn-secondary">
               {{ section.settings.secondary_button_text }}
             </a>
           {% endif %}
