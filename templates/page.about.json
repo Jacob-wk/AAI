@@ -35,16 +35,7 @@
           }
         }
       },
-<<<<<<< HEAD
-      "block_order": ["feature1", "feature2", "feature3"]
-=======
-      "block_order": [
-        "feature1",
-        "feature2",
-        "feature3"
-      ],
-      "settings": {}
->>>>>>> 35bd6b6148731c53544a43d89c21ac74e2c3a7b5
+      "block_order": ["mission_card_1", "mission_card_2", "mission_card_3"]
     },
     "story": {
       "type": "aai-universal-content",
@@ -72,23 +63,26 @@
         }
       },
       "block_order": [
-        "milestone_1",
-        "feature4",
-        "founder_quote"
-<<<<<<< HEAD
-      ]
-=======
+        "feature1",
+        "feature2",
+        "feature3",
+        "feature4"
       ],
       "settings": {
-        "section_title": "Our Story",
-        "layout_style": "text-left-image-right",
-        "background_style": "section-alt-2",
+        "section_title": "Customizable Content Section",
+        "section_subtitle": "This content can be easily modified through the theme editor",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "2",
+        "background_style": "",
         "show_main_content": true,
-        "content_title": "",
-        "content_body": "<p>Founded in 2025, the Amusement Adventure Institute emerged from a critical need in the industry: comprehensive, accessible safety education that combines rigorous standards with practical application.</p>",
-        "show_image": false
+        "content_title": "Professional Safety Education",
+        "content_body": "<p>AAI (Amusement Adventure Institute) provides comprehensive training programs for safety professionals in the amusement industry. Customize this content through the theme editor to match your specific needs.</p>",
+        "show_image": false,
+        "main_button_text": "Get Started",
+        "main_button_url": "/collections/courses",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
       }
->>>>>>> 35bd6b6148731c53544a43d89c21ac74e2c3a7b5
     },
     "cta_section": {
       "type": "aai-universal-content",
