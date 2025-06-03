@@ -15,7 +15,7 @@ class AAIAnimations {
     return {
       enabled: body.classList.contains('page-animations-enabled'),
       style: body.dataset.pageAnimationStyle || 'fade-up',
-      duration: parseInt(body.dataset.pageAnimationDuration || '600') || 600,
+      duration: parseInt(body.dataset.pageAnimationDuration || '1000') || 1000, // Increased default duration
       easing: 'cubic-bezier(0.16, 1, 0.3, 1)'
     };
   }
@@ -24,9 +24,11 @@ class AAIAnimations {
     // Apply page-level animations first if enabled
     if (this.pageAnimationSettings.enabled) {
       this.initializePageAnimation();
+      // Don't apply component animations when page animations are enabled
+      return;
     }
     
-    // Apply animations to all elements automatically
+    // Apply animations to all elements automatically only if page animations are disabled
     this.applyGlobalAnimations();
     
     // Initialize intersection observer for scroll animations
@@ -72,10 +74,12 @@ class AAIAnimations {
           body.classList.add('page-fade-up'); // Default fallback
       }
       
-      // Trigger the animation after a brief delay
-      requestAnimationFrame(() => {
-        body.classList.add('page-animation-visible');
-      });
+      // Trigger the animation after a brief delay to ensure DOM is ready
+      setTimeout(() => {
+        requestAnimationFrame(() => {
+          body.classList.add('page-animation-visible');
+        });
+      }, 100); // Small delay to ensure everything is loaded
     }
   }
 

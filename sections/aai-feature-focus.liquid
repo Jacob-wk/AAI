@@ -3,35 +3,40 @@
   Highlights key features or points with icons and text.
 {% endcomment %}
 
-<div class="aai-feature-focus-section page-width color-{{ section.settings.color_scheme }}">
-  <div class="section-header">
-    {% if section.settings.section_title != blank %}
-      <h2 class="section-title">{{ section.settings.section_title | escape }}</h2>
-    {% endif %}
-    {% if section.settings.section_subtitle != blank %}
-      <p class="section-subtitle">{{ section.settings.section_subtitle | escape }}</p>
-    {% endif %}
-  </div>
+{{ 'section-aai-feature-focus.css' | asset_url | stylesheet_tag }}
 
-  <div class="feature-focus-grid">
-    {% for block in section.blocks %}
-      <div class="feature-item-wrapper" {{ block.shopify_attributes }}>
-        {% case block.type %}
-          {% when 'feature_item' %}
-            <div class="feature-item">
-              {% if block.settings.icon != blank %}
-                <div class="feature-icon">{{ block.settings.icon }}</div>
-              {% endif %}
-              {% if block.settings.title != blank %}
-                <h3 class="feature-title">{{ block.settings.title | escape }}</h3>
-              {% endif %}
-              {% if block.settings.description_html != blank %}
-                <div class="feature-description">{{ block.settings.description_html }}</div>
-              {% endif %}
-            </div>
-        {% endcase %}
-      </div>
-    {% endfor %}
+{% assign section_padding_class = 'section-padding-' | append: section.settings.section_padding %}
+<div class="aai-feature-focus-section {% if section.settings.color_scheme %}color-{{ section.settings.color_scheme }}{% endif %} {% if section.settings.section_padding %}{{ section_padding_class }}{% endif %}">
+  <div class="page-width">
+    <div class="section-header">
+      {% if section.settings.section_title != blank %}
+        <h2 class="section-title">{{ section.settings.section_title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.section_subtitle != blank %}
+        <p class="section-subtitle">{{ section.settings.section_subtitle | escape }}</p>
+      {% endif %}
+    </div>
+
+    <div class="feature-focus-grid">
+      {% for block in section.blocks %}
+        <div class="feature-item-wrapper" {{ block.shopify_attributes }}>
+          {% case block.type %}
+            {% when 'feature_item' %}
+              <div class="feature-item">
+                {% if block.settings.icon != blank %}
+                  <div class="feature-icon">{{ block.settings.icon }}</div>
+                {% endif %}
+                {% if block.settings.title != blank %}
+                  <h3 class="feature-title">{{ block.settings.title | escape }}</h3>
+                {% endif %}
+                {% if block.settings.description_html != blank %}
+                  <div class="feature-description">{{ block.settings.description_html }}</div>
+                {% endif %}
+              </div>
+          {% endcase %}
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 
@@ -60,6 +65,18 @@
         { "value": "color-scheme-background-2", "label": "Background 2" }
       ],
       "default": "color-scheme-background-2"
+    },
+    {
+      "type": "select",
+      "id": "section_padding",
+      "label": "Section Padding",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "extra-large", "label": "Extra Large" }
+      ],
+      "default": "large"
     }
   ],
   "blocks": [

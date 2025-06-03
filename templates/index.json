@@ -10,9 +10,9 @@
         "feature_2": "Industry Experts",
         "feature_3": "CEU Credits",
         "primary_button_text": "Explore Courses",
-        "primary_button_url": "",
+        "primary_button_url": "/collections/courses",
         "secondary_button_text": "Try Free Demo",
-        "secondary_button_url": "",
+        "secondary_button_url": "/pages/demo",
         "visual_text": "Safety First, Adventure Always",
         "show_trust_indicators": true,
         "stat_1_number": "10,000+",
@@ -23,6 +23,245 @@
         "stat_3_label": "Years Experience",
         "stat_4_number": "100%",
         "stat_4_label": "Safety Focused"
+      }
+    },
+    "about_overview": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "about_block_1": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "Industry-Leading Safety Education",
+            "block_content": "For over 25 years, AAI has been at the forefront of amusement industry safety education. Our comprehensive programs combine cutting-edge technology with real-world expertise to prepare professionals for the challenges of modern amusement operations.",
+            "block_icon": "🎓",
+            "show_cta": true,
+            "cta_text": "Learn More",
+            "cta_url": "/pages/about"
+          }
+        },
+        "about_block_2": {
+          "type": "content_block", 
+          "settings": {
+            "block_title": "IAAPA Accredited Programs",
+            "block_content": "All our courses meet the highest industry standards and are fully accredited by the International Association of Amusement Parks and Attractions (IAAPA). Earn credentials that are recognized worldwide.",
+            "block_icon": "🏆",
+            "show_cta": true,
+            "cta_text": "View Certifications",
+            "cta_url": "/pages/certifications"
+          }
+        },
+        "about_block_3": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "Expert Instructors",
+            "block_content": "Learn from industry veterans with decades of hands-on experience. Our instructors are active professionals who bring real-world insights and current best practices to every course.",
+            "block_icon": "👨‍🏫",
+            "show_cta": true,
+            "cta_text": "Meet Our Team",
+            "cta_url": "/pages/instructors"
+          }
+        }
+      },
+      "block_order": [
+        "about_block_1",
+        "about_block_2", 
+        "about_block_3"
+      ],
+      "settings": {
+        "section_title": "Why Choose AAI?",
+        "section_subtitle": "Trusted by thousands of professionals worldwide",
+        "layout_style": "text-only",
+        "blocks_per_row": "3",
+        "section_style": "centered"
+      }
+    },
+    "instructor_showcase": {
+      "type": "aai-instructor-showcase",
+      "blocks": {
+        "instructor_1": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Dr. Sarah Johnson",
+            "instructor_title": "Chief Safety Officer",
+            "instructor_bio": "25+ years in amusement park safety with expertise in ride inspection and emergency protocols.",
+            "credentials": "PhD Safety Engineering, IAAPA Certified",
+            "show_credentials": true,
+            "specializations": "Ride Safety|Emergency Response|Risk Assessment",
+            "experience_years": "25+"
+          }
+        },
+        "instructor_2": {
+          "type": "instructor", 
+          "settings": {
+            "instructor_name": "Mike Rodriguez",
+            "instructor_title": "Water Park Operations Expert",
+            "instructor_bio": "Former operations manager with deep expertise in water park safety and lifeguard training.",
+            "credentials": "Certified Pool Operator, Water Safety Instructor",
+            "show_credentials": true,
+            "specializations": "Water Safety|Pool Operations|Lifeguard Training",
+            "experience_years": "20+"
+          }
+        },
+        "instructor_3": {
+          "type": "instructor",
+          "settings": {
+            "instructor_name": "Lisa Chen",
+            "instructor_title": "Emergency Response Specialist", 
+            "instructor_bio": "Emergency management professional specializing in amusement park crisis response and evacuation procedures.",
+            "credentials": "Emergency Management Certified, First Aid/CPR Instructor",
+            "show_credentials": true,
+            "specializations": "Emergency Planning|Crisis Management|First Aid Training",
+            "experience_years": "15+"
+          }
+        }
+      },
+      "block_order": [
+        "instructor_1",
+        "instructor_2",
+        "instructor_3"
+      ],
+      "settings": {
+        "section_title": "Learn from Industry Experts",
+        "section_subtitle": "Our instructors bring decades of real-world experience to your professional development",
+        "grid_layout": "3-column",
+        "section_style": "background-light"
+      }
+    },
+    "features_benefits": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "feature_1": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "Interactive Simulations",
+            "block_content": "Practice emergency scenarios and safety procedures in risk-free virtual environments that mirror real-world situations.",
+            "block_icon": "🎮",
+            "show_cta": false
+          }
+        },
+        "feature_2": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "Mobile Learning",
+            "block_content": "Access courses anywhere, anytime on any device. Download content for offline learning during your commute or breaks.",
+            "block_icon": "📱",
+            "show_cta": false
+          }
+        },
+        "feature_3": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "Progress Tracking",
+            "block_content": "Monitor your learning journey with detailed analytics, completion certificates, and continuing education credit tracking.",
+            "block_icon": "📊",
+            "show_cta": false
+          }
+        },
+        "feature_4": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "Industry Recognition",
+            "block_content": "Earn certificates and credentials that are valued by employers throughout the global amusement industry.",
+            "block_icon": "🏅",
+            "show_cta": false
+          }
+        },
+        "feature_5": {
+          "type": "content_block", 
+          "settings": {
+            "block_title": "Expert Support",
+            "block_content": "Get help when you need it with direct access to instructors and our dedicated student support team.",
+            "block_icon": "🤝",
+            "show_cta": false
+          }
+        },
+        "feature_6": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "Lifetime Access",
+            "block_content": "Keep learning with lifetime access to course materials and updates as industry standards evolve.",
+            "block_icon": "♾️",
+            "show_cta": false
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2", 
+        "feature_3",
+        "feature_4",
+        "feature_5",
+        "feature_6"
+      ],
+      "settings": {
+        "section_title": "Advanced Learning Features",
+        "section_subtitle": "Everything you need to advance your safety career",
+        "layout_style": "text-only",
+        "blocks_per_row": "3",
+        "section_style": "centered"
+      }
+    },
+    "testimonials": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "testimonial_1": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "\"AAI's courses helped me advance to Safety Manager within 6 months\"",
+            "block_content": "The comprehensive training and industry recognition made all the difference in my career progression. The instructors' real-world experience was invaluable.",
+            "block_icon": "⭐⭐⭐⭐⭐",
+            "show_cta": false,
+            "author_name": "Jennifer Martinez",
+            "author_title": "Safety Manager, Cedar Fair"
+          }
+        },
+        "testimonial_2": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "\"Best investment I've made in my professional development\"",
+            "block_content": "The mobile platform let me learn during my daily commute. I completed three certifications while maintaining my full-time responsibilities.",
+            "block_icon": "⭐⭐⭐⭐⭐",
+            "show_cta": false,
+            "author_name": "David Thompson",
+            "author_title": "Operations Supervisor, Six Flags"
+          }
+        },
+        "testimonial_3": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "\"The emergency response training saved lives at our park\"",
+            "block_content": "When we had a medical emergency, our team's AAI training kicked in perfectly. The simulation-based learning prepared us for the real thing.",
+            "block_icon": "⭐⭐⭐⭐⭐",
+            "show_cta": false,
+            "author_name": "Maria Rodriguez",
+            "author_title": "Park Manager, Busch Gardens"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3"
+      ],
+      "settings": {
+        "section_title": "What Our Students Say",
+        "section_subtitle": "Join thousands of professionals who have advanced their careers with AAI",
+        "layout_style": "text-only",
+        "blocks_per_row": "3",
+        "section_style": "background-accent"
+      }
+    },
+    "final_cta": {
+      "type": "aai-universal-cta",
+      "settings": {
+        "title": "Ready to Advance Your Safety Career?",
+        "text": "<p>Join over 10,000 professionals who trust AAI for their safety education. Start your journey today with our comprehensive courses and expert instruction.</p>",
+        "button_1_text": "Start Learning Today",
+        "button_1_link": "/account/register",
+        "button_1_style": "primary",
+        "button_2_text": "Browse All Courses",
+        "button_2_link": "/collections/courses",
+        "button_2_style": "secondary"
       }
     },
     "user_dashboard": {
@@ -155,8 +394,13 @@
   },
   "order": [
     "main",
+    "about_overview",
+    "features_benefits", 
+    "instructor_showcase",
     "user_dashboard",
     "guest_demo",
-    "course_catalog_index"
+    "course_catalog_index",
+    "testimonials",
+    "final_cta"
   ]
 }

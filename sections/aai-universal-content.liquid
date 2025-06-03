@@ -30,20 +30,57 @@
           {% endif %}
           
           {% if section.blocks.size > 0 %}
-            <div class="content-blocks" data-columns="{{ section.settings.blocks_per_row | default: 1 }}">
-              {% for block in section.blocks %}
-                {% case block.type %}
-                  {% when 'text_block' %}
-                    <div class="text-block" {{ block.shopify_attributes }}>
-                      {% if block.settings.block_title != blank %}
-                        <h4>{{ block.settings.block_title }}</h4>
-                      {% endif %}
-                      {% if block.settings.block_content != blank %}
-                        <div class="block-content">{{ block.settings.block_content }}</div>
-                      {% endif %}
-                    </div>
-                    
-                  {% when 'feature_list' %}
+            {% if section.settings.layout_style == 'timeline' %}
+              <div class="content-timeline">
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when 'text_block' %}
+                      <div class="timeline-item" {{ block.shopify_attributes }}>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                          {% if block.settings.block_title != blank %}
+                            <h4 class="timeline-title">{{ block.settings.block_title }}</h4>
+                          {% endif %}
+                          {% if block.settings.block_content != blank %}
+                            <div class="timeline-description">{{ block.settings.block_content }}</div>
+                          {% endif %}
+                        </div>
+                      </div>
+                    {% when 'feature_list' %}
+                      <div class="timeline-item" {{ block.shopify_attributes }}>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                          {% if block.settings.list_title != blank %}
+                            <h4 class="timeline-title">{{ block.settings.list_title }}</h4>
+                          {% endif %}
+                          {% if block.settings.list_items != blank %}
+                            <ul class="timeline-features">
+                              {% assign items = block.settings.list_items | split: '|' %}
+                              {% for item in items %}
+                                <li>{{ item | strip }}</li>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                        </div>
+                      </div>
+                  {% endcase %}
+                {% endfor %}
+              </div>
+            {% else %}
+              <div class="content-blocks" data-columns="{{ section.settings.blocks_per_row | default: 1 }}">
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when 'text_block' %}
+                      <div class="text-block" {{ block.shopify_attributes }}>
+                        {% if block.settings.block_title != blank %}
+                          <h4>{{ block.settings.block_title }}</h4>
+                        {% endif %}
+                        {% if block.settings.block_content != blank %}
+                          <div class="block-content">{{ block.settings.block_content }}</div>
+                        {% endif %}
+                      </div>
+                      
+                    {% when 'feature_list' %}
                     <div class="feature-list" {{ block.shopify_attributes }}>
                       {% if block.settings.list_title != blank %}
                         <h4>{{ block.settings.list_title }}</h4>
@@ -114,6 +151,7 @@
                 {% endcase %}
               {% endfor %}
             </div>
+            {% endif %}
           {% endif %}
           
           {% if section.settings.main_button_text != blank %}
@@ -170,7 +208,8 @@
         { "value": "text-right-image-left", "label": "Text Right, Image Left" },
         { "value": "text-center", "label": "Text Centered" },
         { "value": "two-column", "label": "Two Column Text" },
-        { "value": "blocks-grid", "label": "Content Blocks Grid" }
+        { "value": "blocks-grid", "label": "Content Blocks Grid" },
+        { "value": "timeline", "label": "Timeline" }
       ],
       "default": "text-only"
     },

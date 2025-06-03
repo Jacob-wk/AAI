@@ -3,42 +3,47 @@
   Displays a grid of instructor cards.
 {% endcomment %}
 
-<div class="aai-instructors-grid-section page-width color-{{ section.settings.color_scheme }}">
-  <div class="section-header">
-    {% if section.settings.section_title != blank %}
-      <h2 class="section-title">{{ section.settings.section_title | escape }}</h2>
-    {% endif %}
-    {% if section.settings.section_subtitle != blank %}
-      <p class="section-subtitle">{{ section.settings.section_subtitle | escape }}</p>
-    {% endif %}
-  </div>
+{{ 'section-aai-instructors-grid.css' | asset_url | stylesheet_tag }}
 
-  <div class="instructors-grid-layout">
-    {% for block in section.blocks %}
-      <div class="instructor-card-wrapper" {{ block.shopify_attributes }}>
-        {% case block.type %}
-          {% when 'instructor_card' %}
-            <div class="instructor-card {% if block.settings.featured %}featured{% endif %}">
-              {% if block.settings.image_placeholder_icon != blank %}
-                <div class="instructor-image-placeholder">{{ block.settings.image_placeholder_icon }}</div>
-              {% comment %} Placeholder for actual image if available in schema {% endcomment %}
-              {% endif %}
-              <h3>{{ block.settings.name | escape }}</h3>
-              <p class="instructor-title">{{ block.settings.title | escape }}</p>
-              <p class="instructor-department">{{ block.settings.department | escape }}</p>
-              <div class="instructor-bio">{{ block.settings.bio }}</div>
-              {% if block.settings.credentials.size > 0 %}
-                <ul class="instructor-credentials">
-                  {% for credential in block.settings.credentials %}
-                    <li>{{ credential | escape }}</li>
-                  {% endfor %}
-                </ul>
-              {% endif %}
-              {% comment %} Add stats display if needed based on schema {% endcomment %}
-            </div>
-        {% endcase %}
-      </div>
-    {% endfor %}
+<div class="aai-instructors-grid-section{% if section.settings.color_scheme %} {{ section.settings.color_scheme }}{% endif %}{% if section.settings.section_padding %} section-padding-{{ section.settings.section_padding }}{% endif %}">
+  <div class="page-width">
+    <div class="section-header">
+      {% if section.settings.section_title != blank %}
+        <h2 class="section-title">{{ section.settings.section_title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.section_subtitle != blank %}
+        <p class="section-subtitle">{{ section.settings.section_subtitle | escape }}</p>
+      {% endif %}
+    </div>
+
+    <div class="instructors-grid-layout">
+      {% for block in section.blocks %}
+        <div class="instructor-card-wrapper" {{ block.shopify_attributes }}>
+          {% case block.type %}
+            {% when 'instructor_card' %}
+              <div class="instructor-card {% if block.settings.featured %}featured{% endif %}">
+                {% if block.settings.image_placeholder_icon != blank %}
+                  <div class="instructor-image-placeholder">{{ block.settings.image_placeholder_icon }}</div>
+                {% comment %} Placeholder for actual image if available in schema {% endcomment %}
+                {% endif %}
+                <h3>{{ block.settings.name | escape }}</h3>
+                <p class="instructor-title">{{ block.settings.title | escape }}</p>
+                <p class="instructor-department">{{ block.settings.department | escape }}</p>
+                <div class="instructor-bio">{{ block.settings.bio }}</div>
+                {% if block.settings.credentials != blank %}
+                  <ul class="instructor-credentials">
+                    {% assign credentials_list = block.settings.credentials | split: ',' %}
+                    {% for credential in credentials_list %}
+                      <li>{{ credential | strip | escape }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+                {% comment %} Add stats display if needed based on schema {% endcomment %}
+              </div>
+          {% endcase %}
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 
@@ -68,6 +73,18 @@
         { "value": "color-scheme-background-2", "label": "Background 2" }
       ],
       "default": "color-scheme-background-1"
+    },
+    {
+      "type": "select",
+      "id": "section_padding",
+      "label": "Section Padding",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "extra-large", "label": "Extra Large" }
+      ],
+      "default": "large"
     }
   ],
   "blocks": [

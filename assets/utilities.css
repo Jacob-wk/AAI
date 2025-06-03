@@ -295,3 +295,58 @@ body.page-animations-disabled {
     transition: none !important;
   }
 }
+
+/* ===============================================
+   PAGE ANIMATIONS
+   =============================================== */
+
+/* Page animation base styles */
+body.page-animation-applied {
+  --page-animation-duration: 800ms;
+  --page-animation-easing: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Initial hidden state for page animations */
+body.page-fade-in:not(.page-animation-visible),
+body.page-fade-up:not(.page-animation-visible),
+body.page-slide-up:not(.page-animation-visible) {
+  opacity: 0;
+}
+
+body.page-fade-up:not(.page-animation-visible),
+body.page-slide-up:not(.page-animation-visible) {
+  transform: translateY(40px);
+}
+
+/* Visible state animations */
+body.page-animation-visible.page-fade-in {
+  opacity: 1;
+  transition: opacity var(--page-animation-duration) var(--page-animation-easing);
+}
+
+body.page-animation-visible.page-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 
+    opacity var(--page-animation-duration) var(--page-animation-easing),
+    transform var(--page-animation-duration) var(--page-animation-easing);
+}
+
+body.page-animation-visible.page-slide-up {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 
+    opacity var(--page-animation-duration) var(--page-animation-easing),
+    transform calc(var(--page-animation-duration) * 1.2) var(--page-animation-easing);
+}
+
+/* Disable individual component animations when page animation is active */
+body.page-animation-applied .fade-in,
+body.page-animation-applied .slide-up,
+body.page-animation-applied .slide-in-left,
+body.page-animation-applied .slide-in-right {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+}

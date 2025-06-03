@@ -45,6 +45,11 @@
   --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
   --shadow-lg: 0 8px 24px rgba(0,0,0,0.16);
   
+  /* AAI Focus Styles */
+  --focus-outline-radius: 6px;
+  --focus-outline-width: 2px;
+  --focus-outline-offset: 2px;
+  
   /* Animation variables */
   --hover-lift-amount: 4px;
   --hover-scale-amount: 1.03;

@@ -1,12 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
+
 {
   "sections": {
     "hero": {
@@ -92,7 +84,7 @@
         "founder_quote": {
           "type": "text_block",
           "settings": {
-            "block_title": "Here From Our Founders",
+            "block_title": "Hear From Our Founders",
             "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>"
           }
         }
@@ -105,8 +97,8 @@
       "settings": {
         "section_title": "",
         "section_subtitle": "",
-        "layout_style": "text-only",
-        "blocks_per_row": "3",
+        "layout_style": "timeline",
+        "blocks_per_row": "1",
         "background_style": "section-alt-2",
         "show_main_content": true,
         "content_title": "",

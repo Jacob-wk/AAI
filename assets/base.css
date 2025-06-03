@@ -201,7 +201,8 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-primary);
+  box-shadow: 0 0 0 var(--focus-outline-width, 2px) var(--color-primary);
+  border-radius: var(--focus-outline-radius, 6px);
 }
 
 /* Clean button resets */

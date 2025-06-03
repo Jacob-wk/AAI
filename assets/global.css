@@ -216,8 +216,9 @@ a:focus,
 input:focus,
 textarea:focus,
 select:focus {
-  outline: 2px solid var(--electric-blue);
-  outline-offset: 2px;
+  outline: var(--focus-outline-width, 2px) solid var(--electric-blue);
+  outline-offset: var(--focus-outline-offset, 2px);
+  border-radius: var(--focus-outline-radius, 6px);
 }
 
 /* Professional Loading States */

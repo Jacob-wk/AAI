@@ -1409,12 +1409,12 @@
         "type": "range",
         "id": "page_animation_duration",
         "min": 200,
-        "max": 1000,
-        "step": 50,
+        "max": 2000,
+        "step": 100,
         "unit": "ms",
         "label": "Animation duration",
-        "default": 600,
-        "info": "Duration of page transition animations"
+        "default": 1000,
+        "info": "Duration of page transition animations (slower = more elegant)"
       },
       {
         "type": "select",
