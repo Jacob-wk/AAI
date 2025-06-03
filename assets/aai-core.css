@@ -92,28 +92,34 @@
   color: var(--charcoal-grey);
   text-decoration: none;
   font-weight: 500;
-  padding: 10px 0;
-  transition: color 0.3s ease;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
   position: relative;
+  border-radius: 6px;
+  display: inline-block;
 }
 
 .aai-nav-link:hover {
   color: var(--electric-blue);
+  background: rgba(var(--electric-blue-rgb, 52, 144, 220), 0.08);
 }
 
 .aai-nav-link:after {
   content: '';
   position: absolute;
-  bottom: 5px;
-  left: 0;
-  width: 0;
+  bottom: 8px;
+  left: 12px;
+  right: 12px;
+  width: auto;
   height: 2px;
   background: var(--electric-blue);
-  transition: width 0.3s ease;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  border-radius: 1px;
 }
 
 .aai-nav-link:hover:after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 /* Header actions */
