@@ -125,6 +125,16 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
+/* Contact Form Container */
+.contact-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.content-grid[data-layout="text-center"] .contact-form-container {
+  text-align: left; /* Reset text alignment for form elements */
+}
+
 .text-block {
   background: white;
   padding: 30px;
@@ -258,6 +268,11 @@
   
   .text-block {
     padding: 20px;
+  }
+  
+  .contact-form-container {
+    max-width: 100%;
+    margin: 0;
   }
 }
 
