@@ -2,19 +2,6 @@
   "sections": {
     "hero": {
       "type": "aai-universal-hero",
-      "settings": {
-        "hero_title": "Meet Our Expert Instructors",
-        "hero_subtitle": "Learn from industry veterans with decades of experience in amusement safety, operations, and regulatory compliance.",
-        "hero_style": "hero-standard",
-        "layout_style": "text-center",
-        "show_image": false,
-        "show_stats": true,
-        "show_features": false,
-        "primary_button_text": "Browse Courses",
-        "primary_button_url": "/collections/courses",
-        "secondary_button_text": "Contact Faculty",
-        "secondary_button_url": "/pages/contact"
-      },
       "blocks": {
         "stat1": {
           "type": "statistic",
@@ -38,7 +25,24 @@
           }
         }
       },
-      "block_order": ["stat1", "stat2", "stat3"]
+      "block_order": [
+        "stat1",
+        "stat2",
+        "stat3"
+      ],
+      "settings": {
+        "hero_title": "Meet Our Expert Instructors",
+        "hero_subtitle": "Learn from industry veterans with decades of experience in amusement safety, operations, and regulatory compliance.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-center",
+        "show_image": false,
+        "show_features": false,
+        "show_stats": true,
+        "primary_button_text": "Browse Courses",
+        "primary_button_url": "/collections/courses",
+        "secondary_button_text": "Contact Faculty",
+        "secondary_button_url": "/pages/contact"
+      }
     },
     "lead_instructors": {
       "type": "aai-instructors-grid",
@@ -95,55 +99,16 @@
           }
         }
       },
-      "block_order": ["instructor_sarah", "instructor_james", "instructor_maria", "instructor_david"]
+      "block_order": [
+        "instructor_sarah",
+        "instructor_james",
+        "instructor_maria",
+        "instructor_david"
+      ]
     },
     "specialized_faculty": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Specialized Faculty",
-        "section_subtitle": "Expert instructors for niche areas and advanced topics.",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "3",
-        "color_scheme": "color-scheme-2",
-        "background_style": "",
-        "section_width": "page-width",
-        "section_padding": "large"
-      },
-      "blocks": {
-        "electrical_expert": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "⚡ Electrical Systems",
-            "block_content": "<p><strong>Robert Kim, Licensed Electrician</strong></p><p>Electrical safety, control systems, and power distribution for amusement devices.</p><p><em>Master Electrician • 20+ Years • Control Systems Specialist</em></p>"
-          }
-        },
-        "water_safety": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "🌊 Aquatic Safety",
-            "block_content": "<p><strong>Lisa Park, Aquatic Safety Director</strong></p><p>Water park operations, aquatic risk management, and lifeguard training programs.</p><p><em>Aquatic Facility Operator • Water Safety Instructor • Pool Operations Certified</em></p>"
-          }
-        },
-        "accessibility": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "♿ Accessibility Compliance",
-            "block_content": "<p><strong>Michael Adams, ADA Specialist</strong></p><p>Americans with Disabilities Act compliance, inclusive design, and accessibility auditing.</p><p><em>ADA Compliance Certified • Universal Design Specialist • Accessibility Consultant</em></p>"
-          }
-        }
-      },
-      "block_order": ["electrical_expert", "water_safety", "accessibility"]
-    },
-    "guest_instructors": {
-      "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Industry Guest Instructors",
-        "section_subtitle": "Regular guest lectures from leading industry professionals and subject matter experts.",
-        "layout_style": "text-only",
-        "color_scheme": "color-scheme-background-1",
-        "background_style": "",
-        "section_width": "page-width",
-        "section_padding": "large",
         "show_main_content": true,
         "content_title": "",
         "content_body": "<p>AAI regularly features guest instructors from major theme parks, manufacturers, regulatory agencies, and consulting firms. These industry leaders share current trends, real-world case studies, and emerging technologies that keep our curriculum at the forefront of industry developments.</p><h4>Recent Guest Instructors Include:</h4><ul><li><strong>Walt Disney World</strong> - Senior Operations Managers</li><li><strong>Universal Studios</strong> - Safety Directors</li><li><strong>Six Flags</strong> - Maintenance Supervisors</li><li><strong>Cedar Fair</strong> - Training Coordinators</li><li><strong>Intamin AG</strong> - Design Engineers</li><li><strong>B&M Coasters</strong> - Project Managers</li><li><strong>State Regulatory Agencies</strong> - Chief Inspectors</li><li><strong>Insurance Companies</strong> - Risk Assessment Specialists</li></ul>"
@@ -151,13 +116,6 @@
     },
     "faculty_standards": {
       "type": "aai-feature-focus",
-      "settings": {
-        "section_width": "page-width",
-        "color_scheme": "color-scheme-2",
-        "section_padding": "large",
-        "section_title": "Faculty Standards",
-        "section_subtitle": "Every AAI instructor meets rigorous qualification standards ensuring the highest quality professional education."
-      },
       "blocks": {
         "academic": {
           "type": "feature_item",
@@ -185,13 +143,15 @@
         "academic",
         "industry",
         "teaching"
-      ]
+      ],
+      "settings": {
+        "section_title": "Faculty Standards",
+        "section_subtitle": "Every AAI instructor meets rigorous qualification standards ensuring the highest quality professional education."
+      }
     },
     "instructors_cta": {
       "type": "aai-universal-cta",
       "settings": {
-        "color_scheme": "color-scheme-2",
-        "section_width": "page-width",
         "title": "Learn from the Best",
         "text": "<p>Experience world-class instruction from industry veterans who understand the real challenges you face. Our faculty brings unmatched expertise and practical knowledge to every course.</p>",
         "button_1_text": "Browse Courses",
@@ -199,9 +159,17 @@
         "button_1_style": "primary",
         "button_2_text": "Contact Faculty",
         "button_2_link": "/pages/contact",
-        "button_2_style": "secondary"
+        "button_2_style": "secondary",
+        "color_scheme": "color-scheme-2"
       }
     }
   },
-  "order": ["hero", "lead_instructors", "specialized_faculty", "guest_instructors", "faculty_standards", "instructors_cta"]
+  "order": [
+    "hero",
+    "lead_instructors",
+    "specialized_faculty",
+    "guest_instructors",
+    "faculty_standards",
+    "instructors_cta"
+  ]
 }
