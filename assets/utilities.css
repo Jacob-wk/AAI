@@ -234,3 +234,62 @@
 .anim-delay-3 { animation-delay: 0.3s; }
 .anim-delay-4 { animation-delay: 0.4s; }
 .anim-delay-5 { animation-delay: 0.5s; }
+
+/* Page-level animations controlled by theme customizer */
+#MainContent {
+  --page-animation-duration: 600ms;
+  --page-animation-easing: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Page fade in animation */
+.page-fade-in {
+  opacity: 0;
+  transition: opacity var(--page-animation-duration) var(--page-animation-easing);
+}
+
+.page-fade-in.page-animation-visible {
+  opacity: 1;
+}
+
+/* Page fade up animation (recommended default) */
+.page-fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--page-animation-duration) var(--page-animation-easing),
+              transform var(--page-animation-duration) var(--page-animation-easing);
+}
+
+.page-fade-up.page-animation-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Page slide up animation */
+.page-slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--page-animation-duration) var(--page-animation-easing),
+              transform var(--page-animation-duration) var(--page-animation-easing);
+}
+
+.page-slide-up.page-animation-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure page animations don't interfere with other animations */
+.page-animations-disabled #MainContent {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Reduced motion support for page animations */
+@media (prefers-reduced-motion: reduce) {
+  .page-fade-in,
+  .page-fade-up,
+  .page-slide-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

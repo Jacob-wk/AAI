@@ -1370,6 +1370,53 @@
         "default": true
       },
       {
+        "type": "header",
+        "content": "Page Animation Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "page_animation_enabled",
+        "label": "Enable page animations",
+        "info": "Controls fade and ease up animations when navigating to pages",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "page_animation_style",
+        "label": "Page animation style",
+        "options": [
+          {
+            "value": "fade",
+            "label": "Fade in"
+          },
+          {
+            "value": "fade-up",
+            "label": "Fade and ease up (recommended)"
+          },
+          {
+            "value": "slide-up",
+            "label": "Slide up"
+          },
+          {
+            "value": "none",
+            "label": "No animation"
+          }
+        ],
+        "default": "fade-up",
+        "info": "Choose the default animation style for page transitions"
+      },
+      {
+        "type": "range",
+        "id": "page_animation_duration",
+        "min": 200,
+        "max": 1000,
+        "step": 50,
+        "unit": "ms",
+        "label": "Animation duration",
+        "default": 600,
+        "info": "Duration of page transition animations"
+      },
+      {
         "type": "select",
         "id": "card_hover_effect",
         "label": "t:settings.card_hover_effect",
