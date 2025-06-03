@@ -1,20 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "aai-universal-hero",
-      "settings": {
-        "hero_title": "Contact AAI",
-        "hero_subtitle": "Connect with our team of safety education experts. We're here to help advance your professional development and answer your questions regarding courses, corporate training, technical support, and more.",
-        "hero_style": "hero-standard",
-        "layout_style": "text-center",
-        "show_image": false,
-        "show_stats": false,
-        "show_features": true,
-        "primary_button_text": "Send Message",
-        "primary_button_url": "#contact-form-section",
-        "secondary_button_text": "Call Us Now",
-        "secondary_button_url": "tel:1-800-SAFETY-1"
-      },
       "blocks": {
         "feature1": {
           "type": "feature",
@@ -41,18 +37,27 @@
           }
         }
       },
-      "block_order": ["feature1", "feature2", "feature3"]
+      "block_order": [
+        "feature1",
+        "feature2",
+        "feature3"
+      ],
+      "settings": {
+        "hero_title": "Contact AAI",
+        "hero_subtitle": "Connect with our team of safety education experts. We're here to help advance your professional development and answer your questions regarding courses, corporate training, technical support, and more.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-center",
+        "show_image": false,
+        "show_features": true,
+        "show_stats": false,
+        "primary_button_text": "Send Message",
+        "primary_button_url": "#contact-form-section",
+        "secondary_button_text": "Call Us Now",
+        "secondary_button_url": "tel:1-800-SAFETY-1"
+      }
     },
     "contact_info": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Quick Contact & Office Information",
-        "section_subtitle": "Reach out directly or find our office details below.",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "3",
-        "background_style": "section-alt-1",
-        "section_width": "page-width"
-      },
       "blocks": {
         "phone_info": {
           "type": "text_block",
@@ -76,18 +81,21 @@
           }
         }
       },
-      "block_order": ["phone_info", "email_info", "address_info"]
+      "block_order": [
+        "phone_info",
+        "email_info",
+        "address_info"
+      ],
+      "settings": {
+        "section_title": "Quick Contact & Office Information",
+        "section_subtitle": "Reach out directly or find our office details below.",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "3",
+        "background_style": "section-alt-1"
+      }
     },
     "contact_form_section": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "How Can We Help?",
-        "section_subtitle": "Choose the category that best describes your inquiry for faster, more targeted assistance from our specialized teams. Fill out the form below and we'll get back to you within 24 hours.",
-        "layout_style": "text-center",
-        "background_style": "section-alt-2",
-        "section_width": "page-width",
-        "show_main_content": true
-      },
       "blocks": {
         "contact_form_block": {
           "type": "contact_form",
@@ -96,18 +104,19 @@
           }
         }
       },
-      "block_order": ["contact_form_block"]
+      "block_order": [
+        "contact_form_block"
+      ],
+      "settings": {
+        "section_title": "How Can We Help?",
+        "section_subtitle": "Choose the category that best describes your inquiry for faster, more targeted assistance from our specialized teams. Fill out the form below and we'll get back to you within 24 hours.",
+        "layout_style": "text-center",
+        "background_style": "section-alt-2",
+        "show_main_content": true
+      }
     },
     "detailed_inquiries": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Partnerships & Specialized Inquiries",
-        "section_subtitle": "Connect with our specific departments for partnership, media, or legal queries.",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "3",
-        "background_style": "",
-        "section_width": "page-width"
-      },
       "blocks": {
         "partnerships": {
           "type": "text_block",
@@ -131,18 +140,21 @@
           }
         }
       },
-      "block_order": ["partnerships", "media", "legal"]
+      "block_order": [
+        "partnerships",
+        "media",
+        "legal"
+      ],
+      "settings": {
+        "section_title": "Partnerships & Specialized Inquiries",
+        "section_subtitle": "Connect with our specific departments for partnership, media, or legal queries.",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "3",
+        "background_style": ""
+      }
     },
     "additional_support": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Additional Resources",
-        "section_subtitle": "Find answers and get support quickly through our other channels.",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "3",
-        "background_style": "section-alt-1",
-        "section_width": "page-width"
-      },
       "blocks": {
         "faq": {
           "type": "text_block",
@@ -166,8 +178,25 @@
           }
         }
       },
-      "block_order": ["faq", "demo", "schedule"]
+      "block_order": [
+        "faq",
+        "demo",
+        "schedule"
+      ],
+      "settings": {
+        "section_title": "Additional Resources",
+        "section_subtitle": "Find answers and get support quickly through our other channels.",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "3",
+        "background_style": "section-alt-1"
+      }
     }
   },
-  "order": ["hero", "contact_info", "contact_form_section", "detailed_inquiries", "additional_support"]
+  "order": [
+    "hero",
+    "contact_info",
+    "contact_form_section",
+    "detailed_inquiries",
+    "additional_support"
+  ]
 }
