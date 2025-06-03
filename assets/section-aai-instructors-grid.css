@@ -305,13 +305,29 @@
 
 /* Color Scheme Specific Styling */
 .aai-instructors-grid-section.color-scheme-1 {
-  background: rgb(var(--color-background));
-  color: rgb(var(--color-foreground));
+  background: #ffffff;
+  color: #1e3a5f;
+}
+
+.aai-instructors-grid-section.color-scheme-1 .section-title {
+  color: #1e3a5f;
+}
+
+.aai-instructors-grid-section.color-scheme-1 .section-subtitle {
+  color: #6c757d;
 }
 
 .aai-instructors-grid-section.color-scheme-2 {
-  background: rgb(var(--color-background));
-  color: rgb(var(--color-foreground));
+  background: linear-gradient(135deg, #1e3a5f 0%, #005a9f 100%);
+  color: white;
+}
+
+.aai-instructors-grid-section.color-scheme-2 .section-title {
+  color: white;
+}
+
+.aai-instructors-grid-section.color-scheme-2 .section-subtitle {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .aai-instructors-grid-section.color-scheme-background-1 {
@@ -326,13 +342,39 @@
 
 /* Ensure instructor cards have proper background contrast */
 .aai-instructors-grid-section.color-scheme-1 .instructor-card {
-  background: rgba(var(--color-background), 0.95);
-  border: 1px solid rgba(var(--color-foreground), 0.1);
+  background: #ffffff;
+  border: 1px solid rgba(30, 58, 95, 0.1);
+  color: #1e3a5f;
+}
+
+.aai-instructors-grid-section.color-scheme-1 .instructor-card h3 {
+  color: #1e3a5f;
+}
+
+.aai-instructors-grid-section.color-scheme-1 .instructor-bio p {
+  color: #6c757d;
 }
 
 .aai-instructors-grid-section.color-scheme-2 .instructor-card {
-  background: rgba(var(--color-background), 0.95);
-  border: 1px solid rgba(var(--color-foreground), 0.1);
+  background: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-foreground-dark, #1e3a5f);
+}
+
+.aai-instructors-grid-section.color-scheme-2 .instructor-card h3 {
+  color: #1e3a5f;
+}
+
+.aai-instructors-grid-section.color-scheme-2 .instructor-bio p {
+  color: #374151;
+}
+
+.aai-instructors-grid-section.color-scheme-2 .instructor-department {
+  color: #6b7280;
+}
+
+.aai-instructors-grid-section.color-scheme-2 .instructor-credentials li {
+  color: #4b5563;
 }
 
 .aai-instructors-grid-section.color-scheme-background-1 .instructor-card {
