@@ -3,6 +3,8 @@
   A flexible call-to-action section.
 {% endcomment %}
 
+{{ 'section-aai-universal-cta.css' | asset_url | stylesheet_tag }}
+
 <div class="aai-universal-cta-section page-width color-{{ section.settings.color_scheme }}">
   <div class="cta-content-wrapper">
     {% if section.settings.title != blank %}

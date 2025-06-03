@@ -1,6 +1,14 @@
 /* AAI Color Schemes and Blue Background Improvements */
 /* Ensures proper contrast and clean styling across all blue backgrounds */
 
+/* Color Scheme 2 CSS Variables */
+:root {
+  --color-scheme-2-background: linear-gradient(135deg, #1e3a5f 0%, #005a9f 100%);
+  --color-scheme-2-text: #ffffff;
+  --color-scheme-2-button-primary-bg: #ffffff;
+  --color-scheme-2-button-primary-text: #1e3a5f;
+}
+
 /* Global Blue Background Selectors */
 .aai-blue-background,
 .aai-hero-section,

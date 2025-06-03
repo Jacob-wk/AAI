@@ -296,12 +296,12 @@
   color: var(--color-foreground);
 }
 .aai-hero.color-scheme-2 {
-  background-color: var(--color-scheme-2-background);
-  color: var(--color-scheme-2-text);
+  background: linear-gradient(135deg, #1e3a5f 0%, #005a9f 50%, #0ea5e9 100%);
+  color: #ffffff;
 }
 .aai-hero.color-scheme-2 .hero-title,
 .aai-hero.color-scheme-2 .hero-subtitle {
-  color: var(--color-scheme-2-text) !important; /* Important to override base if needed */
+  color: #ffffff !important;
 }
 
 .aai-hero.color-scheme-2 .stat-item {

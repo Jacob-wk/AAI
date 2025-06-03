@@ -1,0 +1,141 @@
+/* AAI Universal CTA Section Styles */
+
+.aai-universal-cta-section {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.cta-content-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.cta-text {
+  font-size: 1.125rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.cta-text p {
+  margin-bottom: 15px;
+}
+
+.cta-text p:last-child {
+  margin-bottom: 0;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  display: inline-block;
+  min-width: 150px;
+}
+
+.cta-buttons .btn--primary {
+  background-color: var(--primary-blue);
+  color: var(--clean-white);
+  border-color: var(--primary-blue);
+}
+
+.cta-buttons .btn--primary:hover {
+  background-color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+.cta-buttons .btn--secondary {
+  background-color: transparent;
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.cta-buttons .btn--secondary:hover {
+  background-color: var(--primary-blue);
+  color: var(--clean-white);
+  transform: translateY(-2px);
+}
+
+/* Color scheme adjustments */
+.color-color-scheme-1 .cta-title {
+  color: var(--primary-blue);
+}
+
+.color-color-scheme-1 .cta-text {
+  color: var(--text-dark);
+}
+
+.color-color-scheme-2 {
+  background: linear-gradient(135deg, #1e3a5f 0%, #005a9f 100%);
+}
+
+.color-color-scheme-2 .cta-title {
+  color: var(--clean-white);
+}
+
+.color-color-scheme-2 .cta-text {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.color-color-scheme-2 .btn--primary {
+  background-color: var(--clean-white);
+  color: var(--primary-blue);
+  border-color: var(--clean-white);
+}
+
+.color-color-scheme-2 .btn--primary:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.color-color-scheme-2 .btn--secondary {
+  background-color: transparent;
+  color: var(--clean-white);
+  border-color: var(--clean-white);
+}
+
+.color-color-scheme-2 .btn--secondary:hover {
+  background-color: var(--clean-white);
+  color: var(--primary-blue);
+  transform: translateY(-2px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .cta-title {
+    font-size: 2rem;
+  }
+  
+  .cta-text {
+    font-size: 1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}

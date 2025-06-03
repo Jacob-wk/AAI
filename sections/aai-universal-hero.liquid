@@ -6,7 +6,7 @@
 {{ 'section-aai-universal-hero.css' | asset_url | stylesheet_tag }}
 {{ 'section-aai-hero.css' | asset_url | stylesheet_tag }}
 
-<div class="aai-hero {{ section.settings.hero_style }} color-scheme-2">
+<div class="aai-hero {{ section.settings.hero_style }} {{ section.settings.color_scheme | default: 'color-scheme-2' }}">
   <div class="aai-container">
     <div class="hero-content" data-layout="{{ section.settings.layout_style }}">
       <div class="hero-text">
