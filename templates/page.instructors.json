@@ -38,6 +38,7 @@
         "show_image": false,
         "show_features": false,
         "show_stats": true,
+        "color_scheme": "color-scheme-2",
         "primary_button_text": "Browse Courses",
         "primary_button_url": "/collections/courses",
         "secondary_button_text": "Contact Faculty",
@@ -49,7 +50,7 @@
       "settings": {
         "section_title": "Lead Faculty",
         "section_subtitle": "Our core instructional team brings unparalleled expertise to every course.",
-        "color_scheme": "color-scheme-background-1",
+        "color_scheme": "color-scheme-2",
         "background_style": "",
         "section_padding": "large"
       },
