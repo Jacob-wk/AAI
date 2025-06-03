@@ -40,41 +40,41 @@ class AAIAnimations {
   }
 
   /**
-   * Initialize page-level animation for the main content
+   * Initialize page-level animation for the entire page
    */
   initializePageAnimation() {
-    const mainContent = document.getElementById('MainContent');
-    if (!mainContent) return;
+    const body = document.body;
+    if (!body) return;
 
     // Apply the page animation class based on customizer setting
-    if (!mainContent.classList.contains('page-animation-applied')) {
-      mainContent.classList.add('page-animation-applied');
+    if (!body.classList.contains('page-animation-applied')) {
+      body.classList.add('page-animation-applied');
       
       // Set CSS custom properties for animation
-      mainContent.style.setProperty('--page-animation-duration', `${this.pageAnimationSettings.duration}ms`);
-      mainContent.style.setProperty('--page-animation-easing', this.pageAnimationSettings.easing);
+      body.style.setProperty('--page-animation-duration', `${this.pageAnimationSettings.duration}ms`);
+      body.style.setProperty('--page-animation-easing', this.pageAnimationSettings.easing);
       
-      // Apply the specific animation style
+      // Apply the specific animation style to the body
       switch (this.pageAnimationSettings.style) {
         case 'fade':
-          mainContent.classList.add('page-fade-in');
+          body.classList.add('page-fade-in');
           break;
         case 'fade-up':
-          mainContent.classList.add('page-fade-up');
+          body.classList.add('page-fade-up');
           break;
         case 'slide-up':
-          mainContent.classList.add('page-slide-up');
+          body.classList.add('page-slide-up');
           break;
         case 'none':
           // No animation
           break;
         default:
-          mainContent.classList.add('page-fade-up'); // Default fallback
+          body.classList.add('page-fade-up'); // Default fallback
       }
       
       // Trigger the animation after a brief delay
       requestAnimationFrame(() => {
-        mainContent.classList.add('page-animation-visible');
+        body.classList.add('page-animation-visible');
       });
     }
   }
@@ -270,10 +270,10 @@ class AAIAnimations {
     });
 
     // Reset and re-apply page-level animation if enabled
-    const mainContent = document.getElementById('MainContent');
-    if (mainContent && this.pageAnimationSettings.enabled) {
-      // Remove existing page animation classes
-      mainContent.classList.remove('page-animation-applied', 'page-animation-visible', 'page-fade-in', 'page-fade-up', 'page-slide-up');
+    const body = document.body;
+    if (body && this.pageAnimationSettings.enabled) {
+      // Remove existing page animation classes from body
+      body.classList.remove('page-animation-applied', 'page-animation-visible', 'page-fade-in', 'page-fade-up', 'page-slide-up');
       
       // Re-initialize page animation
       this.initializePageAnimation();

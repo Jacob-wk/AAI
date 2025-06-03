@@ -241,53 +241,55 @@
   --page-animation-easing: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Page Animation Styles - Applied to body element for full page animation */
+
 /* Page fade in animation */
-.page-fade-in {
+body.page-fade-in {
   opacity: 0;
-  transition: opacity var(--page-animation-duration) var(--page-animation-easing);
+  transition: opacity var(--page-animation-duration, 600ms) var(--page-animation-easing, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-.page-fade-in.page-animation-visible {
+body.page-fade-in.page-animation-visible {
   opacity: 1;
 }
 
 /* Page fade up animation (recommended default) */
-.page-fade-up {
+body.page-fade-up {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity var(--page-animation-duration) var(--page-animation-easing),
-              transform var(--page-animation-duration) var(--page-animation-easing);
+  transition: opacity var(--page-animation-duration, 600ms) var(--page-animation-easing, cubic-bezier(0.16, 1, 0.3, 1)),
+              transform var(--page-animation-duration, 600ms) var(--page-animation-easing, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-.page-fade-up.page-animation-visible {
+body.page-fade-up.page-animation-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Page slide up animation */
-.page-slide-up {
+body.page-slide-up {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity var(--page-animation-duration) var(--page-animation-easing),
-              transform var(--page-animation-duration) var(--page-animation-easing);
+  transition: opacity var(--page-animation-duration, 600ms) var(--page-animation-easing, cubic-bezier(0.16, 1, 0.3, 1)),
+              transform var(--page-animation-duration, 600ms) var(--page-animation-easing, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-.page-slide-up.page-animation-visible {
+body.page-slide-up.page-animation-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Ensure page animations don't interfere with other animations */
-.page-animations-disabled #MainContent {
+/* Ensure page animations don't interfere with other animations when disabled */
+body.page-animations-disabled {
   opacity: 1 !important;
   transform: none !important;
 }
 
 /* Reduced motion support for page animations */
 @media (prefers-reduced-motion: reduce) {
-  .page-fade-in,
-  .page-fade-up,
-  .page-slide-up {
+  body.page-fade-in,
+  body.page-fade-up,
+  body.page-slide-up {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

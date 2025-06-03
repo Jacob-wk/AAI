@@ -86,7 +86,7 @@
         "layout_style": "text-center",
         "background_style": "section-alt-2",
         "section_width": "page-width",
-        "show_main_content": false
+        "show_main_content": true
       },
       "blocks": {
         "contact_form_block": {
