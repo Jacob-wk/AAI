@@ -2,7 +2,7 @@
   Renders a contact form with proper styling and alignment
 {%- endcomment -%}
 
-<div class="contact-form-wrapper" style="max-width: {{ form_max_width | default: 900 }}px; margin: 0 auto;">
+<div class="contact-form-wrapper" style="max-width: {{ form_max_width | default: 1200 }}px; margin: 0 auto;">
   {%- form 'contact', class: 'contact-form' -%}
     {%- if form.posted_successfully? -%}
       <div class="form-status form-status--success" role="status">

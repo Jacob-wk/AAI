@@ -5,7 +5,7 @@
 
 {{ 'section-aai-content.css' | asset_url | stylesheet_tag }}
 
-<section class="aai-content page-section {{ section.settings.background_style }}">
+<section class="aai-content page-section {{ section.settings.background_style }} {{ section.settings.color_scheme }}">
   <div class="aai-container">
     {% if section.settings.section_title != blank %}
       <div class="section-header">

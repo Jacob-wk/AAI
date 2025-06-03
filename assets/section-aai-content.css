@@ -17,6 +17,31 @@
   color: white;
 }
 
+/* Color scheme variations */
+.aai-content.color-scheme-1 {
+  /* Default scheme - light background */
+  background-color: #ffffff;
+}
+
+.aai-content.color-scheme-2 {
+  /* Alternative scheme - blue background */
+  background: linear-gradient(135deg, #1e3a5f 0%, #005a9f 100%);
+  color: white;
+}
+
+.aai-content.color-scheme-2 .section-title {
+  color: white;
+}
+
+.aai-content.color-scheme-2 .section-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.aai-content.section-alt-3 {
+  /* Light gray background for guest instructors */
+  background-color: #f1f3f5;
+}
+
 .section-header {
   text-align: center;
   margin-bottom: 40px;
