@@ -326,21 +326,26 @@
 }
 
 .aai-hero.color-scheme-2 .aai-btn-primary {
-  background-color: var(--color-scheme-2-button-primary-bg, var(--button-primary-background));
-  color: var(--color-scheme-2-button-primary-text, var(--button-primary-text));
+  background-color: var(--color-secondary); /* AAI orange color */
+  color: var(--clean-white);
+  border: none;
 }
 .aai-hero.color-scheme-2 .aai-btn-primary:hover {
-  background-color: darken(var(--color-scheme-2-button-primary-bg, var(--button-primary-background)), 10%);
+  background-color: #e55a2e; /* Darker orange on hover */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .aai-hero.color-scheme-2 .aai-btn-secondary {
-  background-color: var(--color-scheme-2-button-secondary-bg, transparent);
-  color: var(--color-scheme-2-button-secondary-text, var(--color-scheme-2-text));
-  border: 1px solid var(--color-scheme-2-button-secondary-border, var(--color-scheme-2-text));
+  background-color: transparent;
+  color: var(--clean-white);
+  border: 2px solid var(--clean-white);
 }
 .aai-hero.color-scheme-2 .aai-btn-secondary:hover {
-  background-color: rgba(255,255,255,0.1); /* Slight white hover for secondary on dark bg */
-  color: var(--color-scheme-2-text);
+  background-color: var(--clean-white);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 /* Responsive adjustments */
