@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Create AAI Course Products",
+			"type": "shell",
+			"command": "echo 'Creating AAI Course Products for Intuto Integration'",
+			"group": "build",
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

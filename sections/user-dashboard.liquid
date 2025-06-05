@@ -90,7 +90,7 @@ COPILOT CONTEXT:
               {% if block.type == 'recommended_course' %}
                 <div class="recommendation-item">
                   <div class="recommendation-image">
-                    {% if block.settings.course_image %}
+                    {% if block.settings.course_image != blank %}
                       <img src="{{ block.settings.course_image | image_url: width: 80 }}" alt="{{ block.settings.course_name }}">
                     {% else %}
                       <div class="placeholder-image">

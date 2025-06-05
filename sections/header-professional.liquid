@@ -18,8 +18,12 @@ COPILOT CONTEXT:
   <div class="aai-header-top">
     <div style="{{ section_width }}">
       <div class="aai-credentials">
-        <span class="aai-credential-badge">IAAPA Certified</span>
-        <span class="aai-credential-badge">ASTM F24 Compliant</span>
+        {% if section.settings.show_iaapa_badge %}
+          <span class="aai-credential-badge">{{ section.settings.iaapa_badge_text | default: 'IAAPA Certified' }}</span>
+        {% endif %}
+        {% if section.settings.show_astm_badge %}
+          <span class="aai-credential-badge">{{ section.settings.astm_badge_text | default: 'ASTM F24 Compliant' }}</span>
+        {% endif %}
       </div>
       <div class="aai-contact-info">
         📞 {{ section.settings.phone | default: '1-800-SAFETY-1' }} | 📧 {{ section.settings.email | default: 'info@aai-institute.com' }}
@@ -121,6 +125,34 @@ COPILOT CONTEXT:
       "id": "email",
       "label": "Email Address",
       "default": "info@aai-institute.com"
+    },
+    {
+      "type": "header",
+      "content": "Credential Badges"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_iaapa_badge",
+      "label": "Show IAAPA badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "iaapa_badge_text",
+      "label": "IAAPA badge text",
+      "default": "IAAPA Certified"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_astm_badge",
+      "label": "Show ASTM badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "astm_badge_text",
+      "label": "ASTM badge text",
+      "default": "ASTM F24 Compliant"
     },
     {
       "type": "url",

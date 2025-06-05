@@ -1,0 +1,168 @@
+{% comment %}
+  AAI LMS Integration - Shopify Metafields Bulk Import Template
+  Instructions: Copy this template to Shopify Admin > Settings > Metafields
+  Use this to create all required metafields for course products
+{% endcomment %}
+
+{%- comment -%}
+  COURSE INFORMATION METAFIELDS
+  Namespace: course
+{%- endcomment -%}
+
+<!-- Course Level -->
+<script>
+  // Run this in browser console on Shopify Admin Metafields page
+  const courseMetafields = [
+    {
+      namespace: 'course',
+      key: 'level',
+      name: 'Course Level',
+      description: 'Difficulty level of the course',
+      type: 'single_line_text_field',
+      validations: {
+        choices: ['Beginner', 'Intermediate', 'Advanced', 'Professional', 'All Levels']
+      }
+    },
+    {
+      namespace: 'course',
+      key: 'ceu_credits',
+      name: 'CEU Credits',
+      description: 'Continuing Education Unit credits awarded',
+      type: 'integer'
+    },
+    {
+      namespace: 'course',
+      key: 'duration',
+      name: 'Course Duration',
+      description: 'Time required to complete the course',
+      type: 'single_line_text_field'
+    },
+    {
+      namespace: 'course',
+      key: 'prerequisites',
+      name: 'Prerequisites',
+      description: 'Required knowledge or certifications',
+      type: 'single_line_text_field'
+    },
+    {
+      namespace: 'course',
+      key: 'learning_objectives',
+      name: 'Learning Objectives',
+      description: 'Key learning goals (| separated)',
+      type: 'multi_line_text_field'
+    },
+    {
+      namespace: 'course',
+      key: 'standards_covered',
+      name: 'Standards Covered',
+      description: 'Industry standards addressed in course',
+      type: 'single_line_text_field'
+    },
+    {
+      namespace: 'course',
+      key: 'certification_type',
+      name: 'Certification Type',
+      description: 'Type of certificate awarded',
+      type: 'single_line_text_field'
+    },
+    {
+      namespace: 'course',
+      key: 'delivery_method',
+      name: 'Delivery Method',
+      description: 'How the course is delivered',
+      type: 'single_line_text_field',
+      validations: {
+        choices: ['Online', 'Blended', 'In-Person']
+      }
+    },
+    {
+      namespace: 'course',
+      key: 'accreditation',
+      name: 'Accreditation',
+      description: 'Accrediting body or organization',
+      type: 'single_line_text_field'
+    },
+    {
+      namespace: 'course',
+      key: 'language',
+      name: 'Course Language',
+      description: 'Primary language of instruction',
+      type: 'single_line_text_field'
+    }
+  ];
+
+  const intutoMetafields = [
+    {
+      namespace: 'intuto',
+      key: 'course_id',
+      name: 'Intuto Course ID',
+      description: 'Unique identifier in Intuto platform',
+      type: 'single_line_text_field'
+    },
+    {
+      namespace: 'intuto',
+      key: 'token_pool_id',
+      name: 'Token Pool ID',
+      description: 'Code Selling App pool identifier',
+      type: 'single_line_text_field'
+    },
+    {
+      namespace: 'intuto',
+      key: 'enrollment_url_template',
+      name: 'Enrollment URL Template',
+      description: 'Intuto enrollment URL pattern',
+      type: 'url'
+    },
+    {
+      namespace: 'intuto',
+      key: 'completion_webhook',
+      name: 'Completion Webhook',
+      description: 'Webhook URL for course completion notifications',
+      type: 'url'
+    }
+  ];
+
+  console.log('Copy the following configurations to Shopify Admin:');
+  console.log('Course Metafields:', JSON.stringify(courseMetafields, null, 2));
+  console.log('Intuto Metafields:', JSON.stringify(intutoMetafields, null, 2));
+</script>
+
+{%- comment -%}
+  CUSTOMER METAFIELDS FOR COURSE TRACKING
+  Namespace: courses
+{%- endcomment -%}
+
+<script>
+  const customerMetafields = [
+    {
+      namespace: 'courses',
+      key: 'enrolled_courses',
+      name: 'Enrolled Courses',
+      description: 'JSON list of enrolled course IDs and dates',
+      type: 'multi_line_text_field'
+    },
+    {
+      namespace: 'courses',
+      key: 'completed_courses',
+      name: 'Completed Courses',
+      description: 'JSON list of completed course IDs and dates',
+      type: 'multi_line_text_field'
+    },
+    {
+      namespace: 'courses',
+      key: 'total_ceu_earned',
+      name: 'Total CEU Credits Earned',
+      description: 'Sum of all CEU credits earned',
+      type: 'integer'
+    },
+    {
+      namespace: 'courses',
+      key: 'certification_numbers',
+      name: 'Certification Numbers',
+      description: 'JSON object of course certificates',
+      type: 'multi_line_text_field'
+    }
+  ];
+
+  console.log('Customer Metafields:', JSON.stringify(customerMetafields, null, 2));
+</script>

@@ -83,17 +83,17 @@
       <div class="aai-cert-badges">
         {% if section.settings.show_iaapa_badge %}
           <div class="aai-cert-badge">
-            <span>IAAPA Accredited</span>
+            <span>{{ section.settings.iaapa_badge_text | default: 'IAAPA Accredited' }}</span>
           </div>
         {% endif %}
         {% if section.settings.show_iso_badge %}
           <div class="aai-cert-badge">
-            <span>ISO 9001 Certified</span>
+            <span>{{ section.settings.iso_badge_text | default: 'ISO 9001 Certified' }}</span>
           </div>
         {% endif %}
         {% if section.settings.show_ceu_badge %}
           <div class="aai-cert-badge">
-            <span>CEU Provider</span>
+            <span>{{ section.settings.ceu_badge_text | default: 'CEU Provider' }}</span>
           </div>
         {% endif %}
       </div>
@@ -183,20 +183,38 @@
     {
       "type": "checkbox",
       "id": "show_iaapa_badge",
-      "label": "Show IAAPA Badge",
+      "label": "Show Badge 1",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "iaapa_badge_text",
+      "label": "Badge 1 text",
+      "default": "IAAPA Accredited"
     },
     {
       "type": "checkbox",
       "id": "show_iso_badge",
-      "label": "Show ISO Badge",
+      "label": "Show Badge 2",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "iso_badge_text",
+      "label": "Badge 2 text",
+      "default": "ISO 9001 Certified"
     },
     {
       "type": "checkbox",
       "id": "show_ceu_badge",
-      "label": "Show CEU Badge",
+      "label": "Show Badge 3",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "ceu_badge_text",
+      "label": "Badge 3 text",
+      "default": "CEU Provider"
     },
     {
       "type": "header",

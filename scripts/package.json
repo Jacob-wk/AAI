@@ -1,0 +1,22 @@
+{
+  "name": "aai-lms-scripts",
+  "version": "1.0.0",
+  "description": "AAI LMS Integration Scripts",
+  "main": "index.js",
+  "scripts": {
+    "setup-collections": "node collections-setup.js",
+    "update-tci1": "node update-tci1-product.js",
+    "test": "node -e \"console.log('Scripts ready for execution')\""
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0"
+  },
+  "keywords": [
+    "shopify",
+    "intuto", 
+    "lms",
+    "aai"
+  ],
+  "author": "AAI Institute",
+  "license": "ISC"
+}

@@ -1,11 +1,11 @@
 /**
- * Order Created Webhook Handler - FetchApp Integration Monitoring
+ * Order Created Webhook Handler - Code Selling App Integration Monitoring
  * COPILOT CONTEXT:
- * - Monitors orders for course purchases (FetchApp handles actual delivery)
+ * - Monitors orders for course purchases (Code Selling App handles actual delivery)
  * - Tracks order analytics and customer engagement
  * - Professional education platform monitoring
  * - Backup tracking for AAI-specific course enrollment workflow
- * - NOTE: Primary delivery handled by FetchApp, this is for monitoring/analytics only
+ * - NOTE: Primary delivery handled by Code Selling App, this is for monitoring/analytics only
  */
 
 const crypto = require('crypto');
@@ -36,7 +36,7 @@ function hasCourseProducts(order) {
 }
 
 /**
- * Track course purchases for analytics (FetchApp handles delivery)
+ * Track course purchases for analytics (Code Selling App handles delivery)
  */
 async function trackCourseOrder(order) {
   const customer = order.customer;
@@ -63,7 +63,7 @@ async function trackCourseOrder(order) {
     })),
     totalValue: courseItems.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0),
     timestamp: new Date().toISOString(),
-    deliveryMethod: 'FetchApp',
+    deliveryMethod: 'Code Selling App',
     status: 'order_created'
   });
 
@@ -83,7 +83,7 @@ async function trackCourseOrder(order) {
           course_skus: courseItems.map(item => item.sku),
           total_value: courseItems.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0),
           timestamp: new Date().toISOString(),
-          delivery_method: 'fetchapp'
+          delivery_method: 'code_selling_app'
         })
       });
     }
@@ -94,7 +94,7 @@ async function trackCourseOrder(order) {
   return {
     success: true,
     message: 'Course order tracked successfully',
-    deliveryNote: 'Course access will be delivered via FetchApp integration',
+    deliveryNote: 'Course access will be delivered via Code Selling App integration',
     courseCount: courseItems.length
   };
 }
@@ -129,7 +129,7 @@ async function handleOrderCreated(req, res) {
       return res.status(200).json({ message: 'Order received - awaiting payment' });
     }
 
-    // Track course order (FetchApp handles actual delivery)
+    // Track course order (Code Selling App handles actual delivery)
     const trackingResult = await trackCourseOrder(order);
 
     console.log(`Order tracking completed for order ${order.id}: ${trackingResult.courseCount} courses`);
@@ -138,8 +138,8 @@ async function handleOrderCreated(req, res) {
       message: 'Order tracked successfully',
       order_id: order.id,
       courses_tracked: trackingResult.courseCount,
-      delivery_method: 'fetchapp',
-      note: 'Course delivery handled by FetchApp - this webhook is for tracking only'
+      delivery_method: 'code_selling_app',
+      note: 'Course delivery handled by Code Selling App - this webhook is for tracking only'
     });
 
   } catch (error) {

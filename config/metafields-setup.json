@@ -1,0 +1,158 @@
+{
+  "product_metafields": {
+    "course_information": {
+      "namespace": "course",
+      "fields": [
+        {
+          "key": "level",
+          "name": "Course Level",
+          "type": "single_line_text_field",
+          "description": "Course difficulty level (Beginner, Intermediate, Advanced, Professional)",
+          "validation": {
+            "choices": ["Beginner", "Intermediate", "Advanced", "Professional", "All Levels"]
+          }
+        },
+        {
+          "key": "ceu_credits",
+          "name": "CEU Credits",
+          "type": "number_integer",
+          "description": "Number of Continuing Education Unit credits earned"
+        },
+        {
+          "key": "duration",
+          "name": "Course Duration",
+          "type": "single_line_text_field",
+          "description": "Time required to complete course (e.g., '40 Hours', '3 Days')"
+        },
+        {
+          "key": "prerequisites",
+          "name": "Prerequisites",
+          "type": "single_line_text_field",
+          "description": "Required prior knowledge or certifications"
+        },
+        {
+          "key": "learning_objectives",
+          "name": "Learning Objectives",
+          "type": "multi_line_text_field",
+          "description": "Key learning outcomes separated by | character"
+        },
+        {
+          "key": "standards_covered",
+          "name": "Standards Covered",
+          "type": "single_line_text_field",
+          "description": "Industry standards addressed (e.g., 'ASTM F24, IAAPA Guidelines')"
+        },
+        {
+          "key": "certification_type",
+          "name": "Certification Type",
+          "type": "single_line_text_field",
+          "description": "Type of certificate earned upon completion"
+        },
+        {
+          "key": "delivery_method",
+          "name": "Delivery Method",
+          "type": "single_line_text_field",
+          "description": "How the course is delivered",
+          "validation": {
+            "choices": ["Online", "Blended", "In-Person", "Self-Paced"]
+          }
+        },
+        {
+          "key": "accreditation",
+          "name": "Accreditation",
+          "type": "single_line_text_field",
+          "description": "Professional accreditation body (e.g., 'IAAPA Certified')"
+        },
+        {
+          "key": "language",
+          "name": "Course Language",
+          "type": "single_line_text_field",
+          "description": "Primary language of instruction",
+          "default": "English"
+        }
+      ]
+    },
+    "intuto_integration": {
+      "namespace": "intuto",
+      "fields": [
+        {
+          "key": "course_id",
+          "name": "Intuto Course ID",
+          "type": "single_line_text_field",
+          "description": "Unique identifier for course in Intuto platform"
+        },
+        {
+          "key": "token_pool_id",
+          "name": "Code Selling App Pool ID",
+          "type": "single_line_text_field",
+          "description": "Identifier for token pool in Code Selling App"
+        },
+        {
+          "key": "enrollment_url_template",
+          "name": "Enrollment URL Template",
+          "type": "url",
+          "description": "Intuto enrollment URL pattern with token placeholder"
+        },
+        {
+          "key": "completion_webhook",
+          "name": "Completion Webhook URL",
+          "type": "url",
+          "description": "Webhook URL for course completion notifications"
+        },
+        {
+          "key": "embed_url",
+          "name": "Embed Player URL",
+          "type": "url",
+          "description": "Base URL for embedded Intuto course player"
+        }
+      ]
+    }
+  },
+  "customer_metafields": {
+    "course_progress": {
+      "namespace": "course_progress",
+      "fields": [
+        {
+          "key": "completion_data",
+          "name": "Course Completion Data",
+          "type": "json",
+          "description": "JSON object storing course progress and completion status"
+        }
+      ]
+    },
+    "intuto_integration": {
+      "namespace": "intuto",
+      "fields": [
+        {
+          "key": "access_token",
+          "name": "Intuto Access Token",
+          "type": "single_line_text_field",
+          "description": "Customer's Intuto authentication token"
+        },
+        {
+          "key": "user_id",
+          "name": "Intuto User ID",
+          "type": "single_line_text_field",
+          "description": "Customer's unique identifier in Intuto system"
+        }
+      ]
+    }
+  },
+  "usage_instructions": {
+    "setup_steps": [
+      "1. Go to Shopify Admin > Settings > Custom data",
+      "2. Click 'Products' to add product metafields",
+      "3. For each field above, click 'Add definition'",
+      "4. Enter the namespace, key, name, type, and description",
+      "5. Save each metafield definition",
+      "6. Repeat for customer metafields in the 'Customers' section",
+      "7. Test by editing a product and ensuring metafields appear"
+    ],
+    "validation_notes": [
+      "Ensure namespace and key exactly match theme code",
+      "Test metafields display correctly in product templates",
+      "Verify customer metafields sync with Intuto completion data",
+      "Check that all required fields are marked appropriately"
+    ]
+  }
+}

@@ -22,10 +22,21 @@
           {% case block.type %}
             {% when 'instructor_card' %}
               <div class="instructor-card {% if block.settings.featured %}featured{% endif %}">
-                {% if block.settings.image_placeholder_icon != blank %}
-                  <div class="instructor-image-placeholder">{{ block.settings.image_placeholder_icon }}</div>
-                {% comment %} Placeholder for actual image if available in schema {% endcomment %}
-                {% endif %}
+                <div class="instructor-image">
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 300 }}"
+                      alt="{{ block.settings.image.alt | default: block.settings.name | escape }}"
+                      width="300"
+                      height="{{ 300 | divided_by: block.settings.image.aspect_ratio | round }}"
+                      loading="lazy"
+                    >
+                  {% elsif block.settings.image_placeholder_icon != blank %}
+                    <div class="instructor-image-placeholder">{{ block.settings.image_placeholder_icon }}</div>
+                  {% else %}
+                    <div class="instructor-image-placeholder">👨‍🏫</div>
+                  {% endif %}
+                </div>
                 <h3>{{ block.settings.name | escape }}</h3>
                 <p class="instructor-title">{{ block.settings.title | escape }}</p>
                 <p class="instructor-department">{{ block.settings.department | escape }}</p>

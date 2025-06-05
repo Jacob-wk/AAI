@@ -1,0 +1,678 @@
+{% comment %}
+  Course Bundle Product Template - FEC Safety Training Packages
+  Used for: product.bundle.liquid
+  Handles bundled course packages for Family Entertainment Centers
+{% endcomment %}
+
+{%- liquid
+  assign bundle_courses = product.metafields.bundle.courses.value | split: ',' | map: 'strip'
+  assign bundle_savings = product.metafields.bundle.savings.value | default: 0
+  assign bonus_content = product.metafields.bundle.bonus_content.value
+  assign total_ceu = 0
+  assign total_duration = 0
+-%}
+
+<div class="course-bundle-page">
+  <!-- Bundle Hero Section -->
+  <section class="bundle-hero">
+    <div class="container">
+      <div class="bundle-hero__grid">
+        <div class="bundle-hero__content">
+          <div class="bundle-hero__badges">
+            <span class="badge badge--bundle">Course Bundle</span>
+            {%- if bundle_savings > 0 -%}
+              <span class="badge badge--savings">Save ${{ bundle_savings }}</span>
+            {%- endif -%}
+          </div>
+          
+          <h1 class="bundle-hero__title">{{ product.title }}</h1>
+          
+          {%- if product.metafields.course.level.value -%}
+            <p class="bundle-hero__level">{{ product.metafields.course.level.value }} Level</p>
+          {%- endif -%}
+          
+          <div class="bundle-hero__description">
+            {{ product.description }}
+          </div>
+          
+          <!-- Bundle Stats -->
+          <div class="bundle-stats">
+            {%- for course_handle in bundle_courses -%}
+              {%- assign course_product = all_products[course_handle] -%}
+              {%- if course_product.metafields.course.ceu_credits.value -%}
+                {%- assign total_ceu = total_ceu | plus: course_product.metafields.course.ceu_credits.value -%}
+              {%- endif -%}
+            {%- endfor -%}
+            
+            <div class="bundle-stat">
+              <div class="bundle-stat__value">{{ bundle_courses.size }}</div>
+              <div class="bundle-stat__label">Courses</div>
+            </div>
+            <div class="bundle-stat">
+              <div class="bundle-stat__value">{{ total_ceu }}</div>
+              <div class="bundle-stat__label">CEU Credits</div>
+            </div>
+            <div class="bundle-stat">
+              <div class="bundle-stat__value">${{ bundle_savings }}</div>
+              <div class="bundle-stat__label">You Save</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bundle Purchase Card -->
+        <div class="bundle-hero__purchase-card">
+          <div class="purchase-card">
+            <div class="purchase-card__pricing">
+              {%- if product.compare_at_price > product.price -%}
+                <span class="purchase-card__compare-price">${{ product.compare_at_price | money_without_currency }}</span>
+              {%- endif -%}
+              <span class="purchase-card__price">${{ product.price | money_without_currency }}</span>
+            </div>
+            
+            {% form 'product', product, class: 'purchase-card__form' %}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              
+              <button type="submit" class="btn btn--primary btn--full-width purchase-card__button" 
+                      {% unless product.available %}disabled{% endunless %}>
+                {%- if product.available -%}
+                  🎓 Enroll in Bundle - ${{ product.price | money_without_currency }}
+                {%- else -%}
+                  Sold Out
+                {%- endif -%}
+              </button>
+            {% endform %}
+            
+            <div class="purchase-card__features">
+              <div class="feature">
+                <span class="feature__icon">✅</span>
+                <span class="feature__text">Immediate access upon purchase</span>
+              </div>
+              <div class="feature">
+                <span class="feature__icon">📱</span>
+                <span class="feature__text">Mobile-friendly courses</span>
+              </div>
+              <div class="feature">
+                <span class="feature__icon">🏆</span>
+                <span class="feature__text">Professional certificates</span>
+              </div>
+              <div class="feature">
+                <span class="feature__icon">🔄</span>
+                <span class="feature__text">Lifetime access</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Included Courses Section -->
+  <section class="bundle-courses">
+    <div class="container">
+      <h2 class="section__title">Included Courses</h2>
+      <div class="courses-grid">
+        {%- for course_handle in bundle_courses -%}
+          {%- assign course_product = all_products[course_handle] -%}
+          {%- if course_product -%}
+            <div class="course-card course-card--bundle">
+              {%- if course_product.featured_image -%}
+                <div class="course-card__image">
+                  <img src="{{ course_product.featured_image | image_url: width: 400 }}" 
+                       alt="{{ course_product.title }}" 
+                       loading="lazy">
+                </div>
+              {%- endif -%}
+              
+              <div class="course-card__content">
+                <h3 class="course-card__title">
+                  <a href="{{ course_product.url }}">{{ course_product.title }}</a>
+                </h3>
+                
+                <div class="course-card__meta">
+                  {%- if course_product.metafields.course.level.value -%}
+                    <span class="meta-item">
+                      <span class="meta-label">Level:</span>
+                      <span class="meta-value">{{ course_product.metafields.course.level.value }}</span>
+                    </span>
+                  {%- endif -%}
+                  
+                  {%- if course_product.metafields.course.ceu_credits.value -%}
+                    <span class="meta-item">
+                      <span class="meta-label">CEU:</span>
+                      <span class="meta-value">{{ course_product.metafields.course.ceu_credits.value }}</span>
+                    </span>
+                  {%- endif -%}
+                  
+                  {%- if course_product.metafields.course.duration.value -%}
+                    <span class="meta-item">
+                      <span class="meta-label">Duration:</span>
+                      <span class="meta-value">{{ course_product.metafields.course.duration.value }}</span>
+                    </span>
+                  {%- endif -%}
+                </div>
+                
+                <div class="course-card__description">
+                  {{ course_product.description | truncate: 120 }}
+                </div>
+                
+                <div class="course-card__objectives">
+                  {%- if course_product.metafields.course.learning_objectives.value -%}
+                    {%- assign objectives = course_product.metafields.course.learning_objectives.value | split: '|' -%}
+                    <h4>Key Learning Objectives:</h4>
+                    <ul>
+                      {%- for objective in objectives limit: 3 -%}
+                        <li>{{ objective | strip }}</li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+                
+                <div class="course-card__value">
+                  <span class="course-value">Individual Value: ${{ course_product.price | money_without_currency }}</span>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bundle Benefits Section -->
+  <section class="bundle-benefits">
+    <div class="container">
+      <h2 class="section__title">Why Choose This Bundle?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-card__icon">💰</div>
+          <h3 class="benefit-card__title">Significant Savings</h3>
+          <p class="benefit-card__description">
+            Save ${{ bundle_savings }} compared to purchasing courses individually. 
+            Get comprehensive FEC safety training at the best value.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-card__icon">🎯</div>
+          <h3 class="benefit-card__title">Complete Coverage</h3>
+          <p class="benefit-card__description">
+            Covers all essential aspects of family entertainment center safety, 
+            from staff training to legal compliance.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-card__icon">🏆</div>
+          <h3 class="benefit-card__title">Professional Recognition</h3>
+          <p class="benefit-card__description">
+            Earn multiple professional certificates and {{ total_ceu }} CEU credits 
+            recognized throughout the FEC industry.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-card__icon">📈</div>
+          <h3 class="benefit-card__title">Career Advancement</h3>
+          <p class="benefit-card__description">
+            Build comprehensive safety expertise that advances your career 
+            in family entertainment management.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- if bonus_content -%}
+    <!-- Bonus Content Section -->
+    <section class="bundle-bonus">
+      <div class="container">
+        <h2 class="section__title">Bonus Content Included</h2>
+        <div class="bonus-content">
+          {{ bonus_content }}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  <!-- FEC Industry Focus Section -->
+  <section class="fec-focus">
+    <div class="container">
+      <h2 class="section__title">Designed for Family Entertainment Centers</h2>
+      <div class="fec-focus__content">
+        <div class="fec-focus__text">
+          <p>
+            This bundle is specifically designed for trampoline parks, bounce houses, 
+            laser tag centers, and other family entertainment venues. Each course 
+            includes real-world scenarios, industry-specific protocols, and practical 
+            tools you can implement immediately.
+          </p>
+          
+          <div class="fec-features">
+            <div class="fec-feature">
+              <span class="fec-feature__icon">🎪</span>
+              <span class="fec-feature__text">Trampoline park case studies</span>
+            </div>
+            <div class="fec-feature">
+              <span class="fec-feature__icon">👥</span>
+              <span class="fec-feature__text">Staff training modules</span>
+            </div>
+            <div class="fec-feature">
+              <span class="fec-feature__icon">📋</span>
+              <span class="fec-feature__text">Downloadable checklists</span>
+            </div>
+            <div class="fec-feature">
+              <span class="fec-feature__icon">⚖️</span>
+              <span class="fec-feature__text">Insurance compliance</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="fec-focus__image">
+          <!-- Add FEC industry image here -->
+          <img src="{{ 'fec-safety-training.jpg' | asset_url }}" 
+               alt="Family Entertainment Center Safety Training" 
+               loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support Section -->
+  <section class="bundle-support">
+    <div class="container">
+      <h2 class="section__title">Expert Support Included</h2>
+      <div class="support-grid">
+        <div class="support-item">
+          <h3>📧 Email Support</h3>
+          <p>Get answers to your course questions within 4 hours</p>
+        </div>
+        <div class="support-item">
+          <h3>💬 Industry Forums</h3>
+          <p>Connect with other FEC professionals and share experiences</p>
+        </div>
+        <div class="support-item">
+          <h3>📚 Resource Library</h3>
+          <p>Access downloadable templates, checklists, and guides</p>
+        </div>
+        <div class="support-item">
+          <h3>🔄 Course Updates</h3>
+          <p>Receive updates when industry standards or regulations change</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="bundle-cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Ready to Elevate Your FEC Safety Standards?</h2>
+        <p>Join hundreds of family entertainment center professionals who trust AAI Institute for their safety education.</p>
+        
+        {% form 'product', product, class: 'cta-form' %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          
+          <button type="submit" class="btn btn--primary btn--large cta-button" 
+                  {% unless product.available %}disabled{% endunless %}>
+            {%- if product.available -%}
+              🚀 Start Your FEC Safety Training - ${{ product.price | money_without_currency }}
+            {%- else -%}
+              Currently Unavailable
+            {%- endif -%}
+          </button>
+        {% endform %}
+        
+        <div class="cta-guarantee">
+          <span class="guarantee-icon">🛡️</span>
+          <span class="guarantee-text">30-day money-back guarantee</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% stylesheet %}
+.course-bundle-page {
+  --bundle-primary: #1e3c72;
+  --bundle-secondary: #2a5298;
+  --bundle-accent: #e74c3c;
+  --bundle-success: #27ae60;
+  --bundle-warning: #f39c12;
+}
+
+.bundle-hero {
+  background: linear-gradient(135deg, var(--bundle-primary) 0%, var(--bundle-secondary) 100%);
+  color: white;
+  padding: 60px 0;
+}
+
+.bundle-hero__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.bundle-hero__badges {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.badge--bundle {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.badge--savings {
+  background: var(--bundle-accent);
+  color: white;
+}
+
+.bundle-hero__title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.bundle-hero__level {
+  font-size: 18px;
+  color: #f1c40f;
+  margin-bottom: 20px;
+}
+
+.bundle-stats {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.bundle-stat {
+  text-align: center;
+}
+
+.bundle-stat__value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #f1c40f;
+}
+
+.bundle-stat__label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.purchase-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 100px;
+}
+
+.purchase-card__pricing {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.purchase-card__compare-price {
+  font-size: 18px;
+  color: #666;
+  text-decoration: line-through;
+  display: block;
+}
+
+.purchase-card__price {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--bundle-primary);
+}
+
+.purchase-card__button {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.purchase-card__features {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.feature__icon {
+  font-size: 16px;
+}
+
+.feature__text {
+  font-size: 14px;
+  color: #666;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.course-card--bundle {
+  border: 2px solid #f8f9fa;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.course-card--bundle:hover {
+  border-color: var(--bundle-primary);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.course-card__content {
+  padding: 25px;
+}
+
+.course-card__title a {
+  color: var(--bundle-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.course-card__meta {
+  display: flex;
+  gap: 20px;
+  margin: 15px 0;
+  font-size: 14px;
+}
+
+.meta-label {
+  font-weight: 600;
+  color: #666;
+}
+
+.meta-value {
+  color: var(--bundle-accent);
+  font-weight: 600;
+}
+
+.course-card__objectives ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.course-card__objectives li {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.course-value {
+  font-weight: 600;
+  color: var(--bundle-success);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.benefit-card {
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 12px;
+  background: #f8f9fa;
+}
+
+.benefit-card__icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.benefit-card__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--bundle-primary);
+}
+
+.fec-focus__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.fec-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.fec-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.support-item h3 {
+  color: var(--bundle-primary);
+  margin-bottom: 10px;
+}
+
+.bundle-cta {
+  background: var(--bundle-primary);
+  color: white;
+  padding: 60px 0;
+}
+
+.cta-card {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-card h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.cta-button {
+  margin: 30px 0 20px;
+  padding: 18px 40px;
+  font-size: 20px;
+}
+
+.cta-guarantee {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0.9;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .bundle-hero__grid,
+  .fec-focus__content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .bundle-hero__title {
+    font-size: 36px;
+  }
+  
+  .bundle-stats {
+    justify-content: center;
+  }
+  
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .fec-features {
+    grid-template-columns: 1fr;
+  }
+}
+{% endstylesheet %}
+
+{% javascript %}
+// Bundle page analytics and interactions
+document.addEventListener('DOMContentLoaded', function() {
+  // Track bundle page views
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'page_view', {
+      page_title: 'Course Bundle - {{ product.title }}',
+      page_location: window.location.href,
+      content_group1: 'Course Bundle'
+    });
+  }
+  
+  // Track CTA clicks
+  const ctaButtons = document.querySelectorAll('.purchase-card__button, .cta-button');
+  ctaButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'add_to_cart', {
+          currency: 'USD',
+          value: {{ product.price | money_without_currency }},
+          items: [{
+            item_id: '{{ product.id }}',
+            item_name: '{{ product.title }}',
+            item_category: 'Course Bundle',
+            quantity: 1,
+            price: {{ product.price | money_without_currency }}
+          }]
+        });
+      }
+    });
+  });
+});
+{% endjavascript %}

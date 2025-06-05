@@ -173,14 +173,18 @@ COPILOT CONTEXT:
           <div class="credentials-section">
             <h4>Industry Recognition</h4>
             <div class="credential-badges">
-              <div class="credential-badge">
-                <span class="badge-text">IAAPA</span>
-                <span class="badge-label">Accredited</span>
-              </div>
-              <div class="credential-badge">
-                <span class="badge-text">ASTM F24</span>
-                <span class="badge-label">Aligned</span>
-              </div>
+              {% if section.settings.show_iaapa_badge %}
+                <div class="credential-badge">
+                  <span class="badge-text">{{ section.settings.iaapa_badge_text | default: 'IAAPA' }}</span>
+                  <span class="badge-label">{{ section.settings.iaapa_badge_label | default: 'Accredited' }}</span>
+                </div>
+              {% endif %}
+              {% if section.settings.show_astm_badge %}
+                <div class="credential-badge">
+                  <span class="badge-text">{{ section.settings.astm_badge_text | default: 'ASTM F24' }}</span>
+                  <span class="badge-label">{{ section.settings.astm_badge_label | default: 'Aligned' }}</span>
+                </div>
+              {% endif %}
               {% assign accreditation = product.metafields.course.accreditation.value %}
               {% if accreditation %}
                 <div class="credential-badge">
@@ -229,6 +233,46 @@ COPILOT CONTEXT:
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "Color scheme"
+    },
+    {
+      "type": "header",
+      "content": "Industry Credential Badges"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_iaapa_badge",
+      "label": "Show IAAPA badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "iaapa_badge_text",
+      "label": "IAAPA badge text",
+      "default": "IAAPA"
+    },
+    {
+      "type": "text",
+      "id": "iaapa_badge_label",
+      "label": "IAAPA badge label",
+      "default": "Accredited"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_astm_badge",
+      "label": "Show ASTM badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "astm_badge_text",
+      "label": "ASTM badge text",
+      "default": "ASTM F24"
+    },
+    {
+      "type": "text",
+      "id": "astm_badge_label",
+      "label": "ASTM badge label",
+      "default": "Aligned"
     },
     {
       "type": "range",

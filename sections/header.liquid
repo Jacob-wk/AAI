@@ -169,8 +169,12 @@
 <div class="aai-header-top">
   <div class="container">
     <div class="aai-credentials">
-      <span class="aai-credential-badge">IAAPA Certified</span>
-      <span class="aai-credential-badge">ASTM F24 Compliant</span>
+      {% if section.settings.show_iaapa_badge %}
+        <span class="aai-credential-badge">{{ section.settings.iaapa_badge_text | default: 'IAAPA Certified' }}</span>
+      {% endif %}
+      {% if section.settings.show_astm_badge %}
+        <span class="aai-credential-badge">{{ section.settings.astm_badge_text | default: 'ASTM F24 Compliant' }}</span>
+      {% endif %}
     </div>
     <div class="aai-contact-info">
       📞 <a href="tel:1-800-723-3891">1-800-SAFETY-1</a> | 📧 <a href="mailto:info@aai-institute.com">info@aai-institute.com</a>
@@ -925,6 +929,34 @@
       "label": "Enable transparent header on Pages (e.g., About Us)",
       "default": false,
       "info": "Ensure 'Transparent Header Color Scheme' is set correctly for light text on dark backgrounds."
+    },
+    {
+      "type": "header",
+      "content": "AAI Credential Badges"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_iaapa_badge",
+      "label": "Show IAAPA badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "iaapa_badge_text",
+      "label": "IAAPA badge text",
+      "default": "IAAPA Certified"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_astm_badge",
+      "label": "Show ASTM badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "astm_badge_text",
+      "label": "ASTM badge text",
+      "default": "ASTM F24 Compliant"
     }
   ],
   "blocks": [

@@ -1,0 +1,220 @@
+{% comment %}
+  AAI Course Product Template
+  Professional course template with Intuto integration for AAI LMS
+  Brand colors: Authority Navy (#1e3a5f), Safety Orange (#ff6b35), Electric Blue (#3498db)
+{% endcomment %}
+
+{{ 'product-course.css' | asset_url | stylesheet_tag }}
+
+<div class="course-product-page">
+  <div class="container">
+    <div class="course-product-grid">
+      <!-- Course Content Column -->
+      <div class="course-content">
+        <div class="course-header">
+          <div class="course-breadcrumb">
+            <a href="{{ routes.root_url }}">Home</a>
+            <span>/</span>
+            <a href="/collections/courses">Courses</a>
+            <span>/</span>
+            <span>{{ product.title }}</span>
+          </div>
+          
+          <h1 class="course-title">{{ product.title }}</h1>
+          
+          <div class="course-meta-header">
+            {% assign course_level = product.metafields.course.level.value | default: 'Intermediate' %}
+            <span class="course-level-badge course-level-{{ course_level | downcase }}">
+              {{ course_level }}
+            </span>
+            
+            {% assign ceu_credits = product.metafields.course.ceu_credits.value %}
+            {% if ceu_credits %}
+              <span class="ceu-credits-badge">
+                {{ ceu_credits }} CEU Credits
+              </span>
+            {% endif %}
+            
+            {% assign certification = product.metafields.course.certification_type.value %}
+            {% if certification %}
+              <span class="certification-badge">
+                {{ certification }}
+              </span>
+            {% endif %}
+          </div>
+          
+          <div class="course-description">
+            {{ product.description }}
+          </div>
+        </div>
+
+        <!-- Course Details Section -->
+        {% render 'section-course-details-professional', product: product %}
+        
+        <!-- Course Curriculum Section -->
+        {% section 'course-curriculum-professional' %}
+        
+        <!-- Intuto Player Section (for enrolled customers) -->
+        {% if customer and customer.metafields.intuto.access_token %}
+          <div class="course-player-section">
+            <h2>Course Content</h2>
+            {% render 'intuto-player', 
+               course_id: product.metafields.intuto.course_id.value,
+               embed_url: product.metafields.intuto.embed_url.value,
+               customer: customer,
+               course_title: product.title %}
+          </div>
+        {% endif %}
+      </div>
+      
+      <!-- Course Sidebar -->
+      <div class="course-sidebar">
+        <div class="course-enrollment-card">
+          {% if product.featured_image %}
+            <div class="course-image">
+              <img src="{{ product.featured_image | image_url: width: 600 }}" 
+                   alt="{{ product.title }}" 
+                   class="course-featured-image">
+            </div>
+          {% endif %}
+          
+          <div class="course-pricing">
+            <div class="price-container">
+              <span class="current-price">{{ product.price | money }}</span>
+              {% if product.compare_at_price > product.price %}
+                <span class="original-price">{{ product.compare_at_price | money }}</span>
+                <span class="savings">Save {{ product.compare_at_price | minus: product.price | money }}</span>
+              {% endif %}
+            </div>
+          </div>
+          
+          <!-- Course Info Quick Facts -->
+          <div class="course-quick-facts">
+            {% assign duration = product.metafields.course.duration.value %}
+            {% if duration %}
+              <div class="fact-item">
+                <svg class="fact-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/>
+                </svg>
+                <span>{{ duration }}</span>
+              </div>
+            {% endif %}
+            
+            {% assign standards = product.metafields.course.standards_covered.value %}
+            {% if standards %}
+              <div class="fact-item">
+                <svg class="fact-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>{{ standards }}</span>
+              </div>
+            {% endif %}
+            
+            {% assign accreditation = product.metafields.course.accreditation.value %}
+            {% if accreditation %}
+              <div class="fact-item">
+                <svg class="fact-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span>{{ accreditation }}</span>
+              </div>
+            {% endif %}
+          </div>
+          
+          <!-- Prerequisites -->
+          {% assign prerequisites = product.metafields.course.prerequisites.value %}
+          {% if prerequisites and prerequisites != 'None' %}
+            <div class="prerequisites-section">
+              <h4>Prerequisites</h4>
+              <p>{{ prerequisites }}</p>
+            </div>
+          {% endif %}
+          
+          <!-- Enrollment Form -->
+          <div class="course-enrollment-form" id="purchase">
+            {% unless customer and customer.metafields.intuto.access_token %}
+              <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="product-form">
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                
+                <button type="submit" class="enroll-btn btn-primary">
+                  <span class="btn-text">Enroll Now - {{ product.price | money }}</span>
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </button>
+              </form>
+              
+              <div class="enrollment-benefits">
+                <h4>What's Included:</h4>
+                <ul>
+                  <li>Lifetime access to course content</li>
+                  <li>Professional certification upon completion</li>
+                  {% if ceu_credits %}
+                    <li>{{ ceu_credits }} continuing education credits</li>
+                  {% endif %}
+                  <li>Digital certificate download</li>
+                  <li>Expert instructor support</li>
+                </ul>
+              </div>
+            {% else %}
+              <div class="already-enrolled">
+                <h3>✅ You're Enrolled!</h3>
+                <p>You have access to this course. Continue learning below.</p>
+                <a href="#course-content" class="btn btn-primary">Continue Learning</a>
+              </div>
+            {% endunless %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Related Courses Section -->
+{% assign related_collection = collections.courses %}
+{% if related_collection.products.size > 1 %}
+  <section class="related-courses-section">
+    <div class="container">
+      <h2>Related Courses</h2>
+      <div class="related-courses-grid">
+        {% for related_product in related_collection.products limit: 3 %}
+          {% unless related_product.id == product.id %}
+            {% render 'course-card-professional', product: related_product %}
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "{{ product.title | escape }}",
+  "description": "{{ product.description | strip_html | escape }}",
+  "provider": {
+    "@type": "Organization",
+    "name": "AAI Institute",
+    "url": "{{ shop.url }}"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ product.price | money_without_currency }}",
+    "priceCurrency": "{{ cart.currency.iso_code }}"
+  }
+  {% if duration %},
+  "timeRequired": "{{ duration }}"
+  {% endif %}
+  {% if product.metafields.course.learning_objectives.value %},
+  "teaches": {{ product.metafields.course.learning_objectives.value | split: '|' | json }}
+  {% endif %}
+}
+</script>
+
+{% schema %}
+{
+  "name": "Course Product Template",
+  "class": "course-product-template"
+}
+{% endschema %}
