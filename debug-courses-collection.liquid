@@ -1,0 +1,19 @@
+<!-- Debug Collection Data -->
+<div style="background: yellow; padding: 20px; margin: 20px; font-family: monospace;">
+  <h3>DEBUG: Collection Courses Data</h3>
+  <p><strong>Collection Handle:</strong> courses</p>
+  <p><strong>Collection Exists:</strong> {{ collections.courses | json }}</p>
+  <p><strong>Products Count:</strong> {{ collections.courses.products_count }}</p>
+  <p><strong>Products:</strong></p>
+  <ul>
+  {% for product in collections.courses.products limit: 5 %}
+    <li>{{ product.title }} - {{ product.id }}</li>
+  {% endfor %}
+  </ul>
+  <p><strong>All Collections:</strong></p>
+  <ul>
+  {% for collection in collections limit: 10 %}
+    <li>{{ collection.handle }} ({{ collection.products_count }} products)</li>
+  {% endfor %}
+  </ul>
+</div>
