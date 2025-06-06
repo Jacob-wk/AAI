@@ -1,128 +1,41 @@
 {
   "wrapper": "div.page-width",
-  "section_groups": [
-    {
-      "name": "header",
-      "type": "header"
-    },
-    {
-      "name": "main",
-      "type": "main"
-    },
-    {
-      "name": "footer",
-      "type": "footer"
-    }
-  ],
   "sections": {
-    "header": {
-      "type": "header-professional",
-      "settings": {}
-    },
     "aai_collection_hero": {
       "type": "aai-collection-courses-hero",
       "settings": {
         "title": "Professional Certifications & Training",
-        "description": "<p>Advance your career with industry-leading safety certifications designed for Family Entertainment Center and adventure park professionals. Earn CEU credits and certifications recognized throughout the industry.</p>"
+        "subtitle": "<p>Advance your career with industry-leading safety certifications designed for Family Entertainment Center and adventure park professionals. Earn CEU credits and certifications recognized throughout the industry.</p>",
+        "stat_1_number": "50+",
+        "stat_1_label": "Professional Courses",
+        "stat_2_number": "98%",
+        "stat_2_label": "Completion Rate",
+        "stat_3_text": "Industry",
+        "stat_3_label": "Recognized"
       }
     },
-    "aai_collection_filters": {
-      "type": "aai-collection-courses-filters",
+    "main": {
+      "type": "main-collection",
       "settings": {
-        "title": "Find Your Course",
-        "show_search": true,
-        "level_filter_label": "All Levels",
-        "level_options": "Beginner\nIntermediate\nAdvanced",
-        "category_filter_label": "All Categories",
-        "category_options": "Safety Management\nOperations\nMaintenance\nLeadership",
-        "ceu_filter_label": "All CEU Credits",
-        "ceu_options": "1-2 Credits\n3-5 Credits\n6+ Credits"
+        "products_per_page": 12,
+        "show_sort": true,
+        "show_filters": true,
+        "filter_type": "sidebar",
+        "show_product_count": true
       }
     },
-    "aai_collection_featured": {
-      "type": "aai-collection-courses-featured",
+    "dynamic_categories": {
+      "type": "aai-collection-courses-categories-dynamic",
       "settings": {
-        "title": "Featured Courses",
-        "limit": 3
+        "title": "Explore by Category",
+        "description": "Browse courses by topic to find the perfect training for your professional development.",
+        "max_categories": 8
       }
-    },
-    "aai_collection_grid": {
-      "type": "aai-collection-courses-grid",
-      "settings": {
-        "title": "All Courses",
-        "collection": "courses",
-        "courses_per_page": 12,
-        "show_pagination": true,
-        "show_view_switcher": true
-      }
-    },
-    "aai_collection_categories": {
-      "type": "aai-collection-courses-categories",
-      "settings": {
-        "title": "Course Categories"
-      },
-      "blocks": {
-        "category_1": {
-          "type": "category_card",
-          "settings": {
-            "icon": "🛡️",
-            "category_title": "Safety Management",
-            "description": "<p>Comprehensive safety protocols and risk management for amusement operations.</p>",
-            "link_url": "/collections/courses?filter=safety"
-          }
-        },
-        "category_2": {
-          "type": "category_card",
-          "settings": {
-            "icon": "⚙️",
-            "category_title": "Operations",
-            "description": "<p>Operational excellence and best practices for efficient park management.</p>",
-            "link_url": "/collections/courses?filter=operations"
-          }
-        },
-        "category_3": {
-          "type": "category_card",
-          "settings": {
-            "icon": "🔧",
-            "category_title": "Maintenance",
-            "description": "<p>Technical maintenance procedures and equipment care standards.</p>",
-            "link_url": "/collections/courses?filter=maintenance"
-          }
-        },
-        "category_4": {
-          "type": "category_card",
-          "settings": {
-            "icon": "👥",
-            "category_title": "Leadership",
-            "description": "<p>Leadership development and team management for industry professionals.</p>",
-            "link_url": "/collections/courses?filter=leadership"
-          }
-        }
-      },
-      "block_order": [
-        "category_1",
-        "category_2",
-        "category_3",
-        "category_4"
-      ]
-    },
-    "aai_collection_video_modal": {
-      "type": "aai-collection-courses-video-modal",
-      "settings": {}
-    },
-    "footer": {
-      "type": "footer-professional",
-      "settings": {}
     }
   },
   "order": [
-    "header",
     "aai_collection_hero",
-    "aai_collection_filters",
-    "aai_collection_featured",
-    "aai_collection_grid",
-    "aai_collection_categories",
-    "aai_collection_video_modal",
-    "footer"
+    "main",
+    "dynamic_categories"
   ]
 }
