@@ -106,12 +106,7 @@
   <div
     class="collection-wrapper grid gap-style"
   >
-    {% content_for 'block',
-      type: 'filters',
-      id: 'filters',
-      results: collection,
-      results_size: collection.products_count
-    %}
+    {% render 'filters', results: collection, results_size: collection.products_count %}
 
     {% if request.design_mode and shop.products_count == 0 %}
       {% paginate products by 24 %}
@@ -124,7 +119,7 @@
               data-view-transition-id="{{ product.id }}"
               ref="cards[]"
             >
-              {% content_for 'block', type: 'product-card', id: 'product-card', closest.product: product %}
+              {% render 'product-card', product: product %}
             </li>
           {% endfor %}
         {% endcapture %}
@@ -141,9 +136,7 @@
             data-product-id="{{ product.id }}"
             ref="cards[]"
           >
-            {% # theme-check-disable %}
-            {% content_for 'block', type: 'product-card', id: 'product-card', closest.product: product %}
-            {% # theme-check-enable %}
+            {% render 'product-card', product: product %}
           </li>
         {% endfor %}
         {% endcapture %}

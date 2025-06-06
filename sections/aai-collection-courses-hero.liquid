@@ -20,8 +20,7 @@
           assign course_levels = 'Beginner,Intermediate,Advanced,Professional' | split: ','
           assign unique_categories = '' | split: ','
           
-          {% assign collection_handle = section.settings.collection | default: 'courses' %}
-          {% assign target_collection = collections[collection_handle] %}
+          {% assign target_collection = collections.courses %}
           
           if target_collection and target_collection.products_count
             assign total_courses = target_collection.products_count
@@ -48,6 +47,7 @@
           endif
         %}
         
+        {% if section.settings.show_statistics %}
         <div class="stat-item">
           <div class="stat-number">
             {% if total_courses > 0 %}
@@ -80,6 +80,7 @@
           </div>
           <div class="stat-label">{{ section.settings.stat_3_label | default: 'Categories' }}</div>
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -92,11 +93,11 @@
   "class": "collection-courses-hero",
   "settings": [
     {
-      "type": "collection",
-      "id": "collection",
-      "label": "Collection",
-      "info": "Select the collection to display statistics for",
-      "default": "courses"
+      "type": "checkbox",
+      "id": "show_statistics",
+      "label": "Show course statistics",
+      "default": true,
+      "info": "Display dynamic course count, CEU credits, and categories from the courses collection"
     },
     {
       "type": "text",

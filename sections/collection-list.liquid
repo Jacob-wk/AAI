@@ -127,7 +127,7 @@
   {% capture list_items %}
     {% for collection in section_collections limit: max_items %}
       <div class="collection-list__item">
-        {% content_for 'block', type: 'collection-card', id: 'static-collection-card', closest.collection: collection %}
+        {% render 'collection-card', collection: collection %}
       </div>
       {% unless forloop.last %}
         <!--@list/split-->
