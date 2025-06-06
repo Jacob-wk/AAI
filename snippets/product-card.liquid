@@ -148,7 +148,38 @@
     "
     ref="productCardLink"
   >
-    {{ children }}
+    <div class="product-card__media" style="max-width: 500px; margin: auto;">
+      {%- liquid
+        assign final_image_url = ''
+        assign final_image_alt = ''
+
+        if product.featured_media != blank
+          assign final_image_url = product.featured_media | image_url: width: 500
+          assign final_image_alt = product.featured_media.alt | default: product.title | escape
+        elsif product.featured_image != blank
+          assign final_image_url = product.featured_image | image_url: width: 500 // Attempt to use image_url filter on the string URL
+          assign final_image_alt = product.title | escape
+        else
+          assign final_image_url = 'placeholder.svg' | asset_url
+          assign final_image_alt = "Placeholder image"
+        endif
+      -%}
+      {% if final_image_url != blank %}
+        <img src="{{ final_image_url }}" alt="{{ final_image_alt }}" class="product-card__image" loading="lazy" style="width:100%; height:auto; display:block;">
+      {% endif %}
+    </div>
+
+    <div class="product-card__content" style="padding: 10px; text-align: center;">
+      <h3 class="product-card__title">
+        {{ product.title | default: "Product Title" }}
+      </h3>
+      {% if product.price > 0 %}
+        <p class="product-card__price">
+          {{ product.price | money }}
+        </p>
+      {% endif %}
+    </div>
+
   </a>
 </product-card>
 {%- if settings.transition_to_main_product -%}
