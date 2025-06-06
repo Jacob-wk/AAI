@@ -151,13 +151,13 @@
         {% capture children %}
           {% for product in collection.products %}
           {% comment %} --- DEBUG INSIDE LOOP --- {% endcomment %}
-          <div style=\"border: 1px dotted green; padding: 5px; margin: 5px;\">
-            <p style=\"color: green; font-weight: bold;\">Debug (Inside product loop): Processing Product for Card</p>
-            <p>Product Title: {{ product.title | default: \"N/A\" }}</p>
-            <p>Product ID: {{ product.id | default: \"N/A\" }}</p>
+          <div style="border: 1px dotted green; padding: 5px; margin: 5px;">
+            <p style="color: green; font-weight: bold;">Debug (Inside product loop): Processing Product for Card</p>
+            <p>Product Title: {{ product.title | default: "N/A" }}</p>
+            <p>Product ID: {{ product.id | default: "N/A" }}</p>
             <p>Product Available: {{ product.available }}</p>
-            <p>Raw product.featured_image: {{ product.featured_image | json }}</p>
-            <p>Raw product.featured_media: {{ product.featured_media | json }}</p>
+            <p>Raw product.featured_image: <pre>{{ product.featured_image | json }}</pre></p>
+            <p>Raw product.featured_media: <pre>{{ product.featured_media | json }}</pre></p>
             <p>Attempted Featured Image URL (width: 100): 
               {% if product.featured_image %}
                 {{ product.featured_image | image_url: width: 100 }}
@@ -188,8 +188,8 @@
         {% endcapture %}
 
         {% comment %} --- DEBUG CAPTURED CHILDREN --- {% endcomment %}
-        <div style=\"border: 2px dashed purple; padding: 10px; margin-top: 10px;\">
-            <h4 style=\"color: purple;\">DEBUG: Captured 'children' HTML for Product Grid:</h4>
+        <div style="border: 2px dashed purple; padding: 10px; margin-top: 10px;">
+            <h4 style="color: purple;">DEBUG: Captured 'children' HTML for Product Grid:</h4>
             <pre>{{ children | escape }}</pre>
             <p>Length of 'children' string: {{ children | size }}</p>
         </div>
