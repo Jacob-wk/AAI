@@ -1,0 +1,166 @@
+/* Product Form - Course Enrollment Styles */
+
+.product-form-wrapper {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.course-product-info .product-title {
+  font-size: 1.875rem;
+  color: #1e3a5f;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.course-description {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.course-meta {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.course-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.course-badge.ceu-credits {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.course-badge.duration {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.course-badge.level {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.course-price {
+  margin-bottom: 2rem;
+}
+
+.price-amount {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1e3a5f;
+}
+
+.price-compare {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+  margin-left: 0.75rem;
+}
+
+.enroll-btn {
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ff6b35 0%, #f56500 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.enroll-btn:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+.enroll-btn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #9ca3af;
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.course-access-notice {
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.course-access-notice h3 {
+  color: #166534;
+  margin-bottom: 0.5rem;
+}
+
+.course-access-notice a {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.course-benefits h4 {
+  color: #1e3a5f;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.course-benefits ul {
+  list-style: none;
+  padding: 0;
+}
+
+.course-benefits li {
+  padding: 0.5rem 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.product-form__error-message-wrapper {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.product-form__error-message {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .product-form-wrapper {
+    padding: 1.5rem;
+  }
+  
+  .course-meta {
+    flex-direction: column;
+  }
+  
+  .enroll-btn {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+}

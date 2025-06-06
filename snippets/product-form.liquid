@@ -1,0 +1,170 @@
+{% comment %}
+  Renders a product form
+
+  Accepts:
+  - product: {Object} product object.
+  - current_variant: {Object} current variant object.
+  - product_form_id: {String} unique form ID
+  - section_id: {String} section ID for scoping
+
+  Usage:
+  {% render 'product-form', product: product, current_variant: current_variant, product_form_id: product_form_id %}
+{% endcomment %}
+
+{{ 'product-form-course.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign product_form_id = product_form_id | default: 'product-form'
+  assign current_variant = current_variant | default: product.selected_or_first_available_variant
+%}
+
+<div class="product-form-wrapper" data-type="{{ product.type | default: 'product' }}">
+  {% if product.type == 'digital_course' or product.tags contains 'course' %}
+    <!-- Course Product Form -->
+    <div class="course-product-info">
+      <h1 class="product-title">{{ product.title }}</h1>
+      
+      {% if product.metafields.course.short_description %}
+        <p class="course-description">{{ product.metafields.course.short_description }}</p>
+      {% endif %}
+      
+      <div class="course-meta">
+        {% if product.metafields.course.ceu_credits %}
+          <span class="course-badge ceu-credits">{{ product.metafields.course.ceu_credits }} CEU Credits</span>
+        {% endif %}
+        {% if product.metafields.course.duration %}
+          <span class="course-badge duration">{{ product.metafields.course.duration }}</span>
+        {% endif %}
+        {% if product.metafields.course.level %}
+          <span class="course-badge level">{{ product.metafields.course.level }}</span>
+        {% endif %}
+      </div>
+      
+      <div class="course-price">
+        <span class="price-amount">{{ current_variant.price | money }}</span>
+        {% if current_variant.compare_at_price > current_variant.price %}
+          <span class="price-compare">{{ current_variant.compare_at_price | money }}</span>
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="course-enrollment-form">
+      {% unless customer and customer.metafields.intuto.access_token %}
+        <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" 
+              class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}">
+          
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+          
+          {% unless current_variant.available %}
+            <div class="product-form__error-message-wrapper">
+              <span class="product-form__error-message">{{ 'products.product.sold_out' | t }}</span>
+            </div>
+          {% endunless %}
+          
+          <button type="submit" 
+                  class="btn btn-primary enroll-btn{% unless current_variant.available %} disabled{% endunless %}"
+                  {% unless current_variant.available %}disabled{% endunless %}>
+            <span class="btn-text">
+              {% if current_variant.available %}
+                Enroll Now - {{ current_variant.price | money }}
+              {% else %}
+                {{ 'products.product.sold_out' | t }}
+              {% endif %}
+            </span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </button>
+        </form>
+      {% else %}
+        <!-- Customer already has access -->
+        <div class="course-access-notice">
+          <h3>✅ You have access to this course</h3>
+          <p>Visit your <a href="/account">account dashboard</a> to access your courses.</p>
+        </div>
+      {% endunless %}
+      
+      <div class="course-benefits">
+        <h4>What's Included:</h4>
+        <ul>
+          <li>✅ Lifetime access to course content</li>
+          <li>✅ Professional certification upon completion</li>
+          <li>✅ Mobile and desktop access</li>
+          <li>✅ Expert instructor support</li>
+          <li>✅ Industry-recognized training</li>
+        </ul>
+      </div>
+    </div>
+    
+  {% else %}
+    <!-- Regular Product Form -->
+    <div class="product-info">
+      <h1 class="product-title">{{ product.title }}</h1>
+      
+      {% if current_variant.sku != blank %}
+        <p class="variant-sku">SKU: {{ current_variant.sku }}</p>
+      {% endif %}
+      
+      <div class="product-price">
+        <span class="price-amount">{{ current_variant.price | money }}</span>
+        {% if current_variant.compare_at_price > current_variant.price %}
+          <span class="price-compare">{{ current_variant.compare_at_price | money }}</span>
+        {% endif %}
+      </div>
+    </div>
+    
+    <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" 
+          class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}">
+      
+      <input type="hidden" name="id" value="{{ current_variant.id }}">
+      
+      <!-- Variant Selection (if needed) -->
+      {% if product.variants.size > 1 %}
+        <div class="product-form__variants">
+          <!-- Add variant selection logic here if needed -->
+        </div>
+      {% endif %}
+      
+      <!-- Quantity -->
+      <div class="quantity-wrapper">
+        <label class="form__label" for="Quantity-{{ section_id }}">
+          {{ 'products.product.quantity.label' | t }}
+        </label>
+        <quantity-input class="quantity">
+          <button class="quantity__button no-js-hidden" name="minus" type="button">
+            <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <path d="M1 6h10"/>
+            </svg>
+          </button>
+          <input class="quantity__input"
+                 type="number"
+                 name="quantity"
+                 id="Quantity-{{ section_id }}"
+                 min="1"
+                 value="1"
+                 form="{{ product_form_id }}">
+          <button class="quantity__button no-js-hidden" name="plus" type="button">
+            <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <path d="M6 1v10M1 6h10"/>
+            </svg>
+          </button>
+        </quantity-input>
+      </div>
+      
+      <!-- Add to Cart Button -->
+      <button type="submit" 
+              class="btn btn-primary product-form__cart-submit{% unless current_variant.available %} disabled{% endunless %}"
+              {% unless current_variant.available %}disabled{% endunless %}>
+        <span>
+          {% if current_variant.available %}
+            {{ 'products.product.add_to_cart' | t }}
+          {% else %}
+            {{ 'products.product.sold_out' | t }}
+          {% endif %}
+        </span>
+      </button>
+    </form>
+  {% endif %}
+</div>

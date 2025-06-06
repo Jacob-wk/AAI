@@ -1,0 +1,212 @@
+/* Course Access Simple Snippet Styles */
+
+.course-access-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: #1e3a5f;
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  font-size: 1.125rem;
+  color: #6b7280;
+}
+
+.course-access-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid #e5e7eb;
+}
+
+.course-header h3 {
+  font-size: 1.5rem;
+  color: #1e3a5f;
+  margin-bottom: 0.5rem;
+}
+
+.course-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.course-details {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.course-badge {
+  background: #f3f4f6;
+  color: #374151;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.course-badge.ceu-credits {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.course-badge.certificate {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.access-instructions {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.access-method h4 {
+  color: #1e3a5f;
+  margin-bottom: 1rem;
+}
+
+.course-features {
+  margin: 1.5rem 0;
+}
+
+.course-features h5 {
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+.course-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.course-features li {
+  padding: 0.25rem 0;
+  color: #6b7280;
+}
+
+.support-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.no-courses {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+}
+
+.no-courses-content h3 {
+  color: #1e3a5f;
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+}
+
+.course-benefits {
+  margin: 2rem 0;
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.course-benefits h4 {
+  color: #374151;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.course-benefits ul {
+  list-style: none;
+  padding: 0;
+}
+
+.course-benefits li {
+  padding: 0.5rem 0;
+  color: #6b7280;
+}
+
+.professional-support {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.professional-support h4 {
+  color: #1e3a5f;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.support-item {
+  text-align: center;
+}
+
+.support-item strong {
+  display: block;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.support-item a {
+  color: #ff6b35;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.support-item small {
+  display: block;
+  color: #6b7280;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .course-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .course-details {
+    flex-direction: column;
+  }
+  
+  .support-actions {
+    flex-direction: column;
+  }
+  
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,4 +1,8 @@
 {% comment %} /workspaces/AAI/sections/aai-collection-courses-grid.liquid {% endcomment %}
+
+{{ 'section-collection-courses.css' | asset_url | stylesheet_tag }}
+{{ 'collection-courses.css' | asset_url | stylesheet_tag }}
+
 <div class="collection-courses-grid {{ section.settings.custom_class }}" id="collection-grid-{{ section.id }}">
   <div class="container">
     {% if section.settings.title != blank %}
@@ -78,3 +82,5 @@
   ]
 }
 {% endschema %}
+
+<script src="{{ 'collection-courses.js' | asset_url }}" defer></script>

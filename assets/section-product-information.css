@@ -1,0 +1,151 @@
+/* 
+ * Product Information Section Styles
+ * AAI Professional Theme
+ */
+
+.product-information {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  padding: 2rem 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.product-media-wrapper {
+  position: relative;
+}
+
+.product-information__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.product-form__wrapper {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.product-description {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.product-description h3 {
+  color: #1e3a5f;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.product-description p {
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.product-description ul {
+  color: #6b7280;
+  line-height: 1.6;
+  padding-left: 1.5rem;
+}
+
+.product-description li {
+  margin-bottom: 0.5rem;
+}
+
+/* Course-specific styling */
+.product[data-type*="course"] .product-information {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  margin: 2rem auto;
+}
+
+.product[data-type*="course"] .product-form__wrapper {
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  border: 2px solid #e9ecef;
+}
+
+/* Professional course indicators */
+.course-badge {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0.25rem;
+}
+
+.ceu-badge {
+  background: #dcfce7;
+  color: #166534;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Mobile responsive */
+@media screen and (max-width: 990px) {
+  .product-information {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .product-form__wrapper {
+    order: -1;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .product-information {
+    padding: 1rem 0;
+  }
+  
+  .product-form__wrapper,
+  .product-description {
+    padding: 1.5rem;
+  }
+  
+  .product[data-type*="course"] .product-information {
+    padding: 2rem 1rem;
+    margin: 1rem auto;
+  }
+}
+
+/* Animation improvements */
+.product-information {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover states for interactive elements */
+.product-form__wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Focus states for accessibility */
+.product-information *:focus {
+  outline: 2px solid #ff6b35;
+  outline-offset: 2px;
+}

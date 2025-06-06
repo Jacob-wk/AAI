@@ -96,21 +96,30 @@
   class="product-media"
   style="--ratio: {{ media.aspect_ratio }}"
 >
-  {% liquid
-    assign high_res_url = media.preview_image | image_url: width: 3840
-  %}
-  {{
-    media.preview_image
-    | image_url: width: 1946
-    | image_tag:
-      widths: widths,
-      alt: media.alt,
-      sizes: sizes,
-      loading: loading,
-      class: 'product-media__image',
-      transitionToProduct: settings.transition_to_main_product,
-      data_max_resolution: high_res_url
-  }}
+  {% if media.preview_image %}
+    {% liquid
+      assign high_res_url = media.preview_image | image_url: width: 3840
+    %}
+    {{
+      media.preview_image
+      | image_url: width: 1946
+      | image_tag:
+        widths: widths,
+        alt: media.alt,
+        sizes: sizes,
+        loading: loading,
+        class: 'product-media__image',
+        transitionToProduct: settings.transition_to_main_product,
+        data_max_resolution: high_res_url
+    }}
+  {% else %}
+    <div class="product-media__placeholder">
+      <svg class="icon icon-placeholder" viewBox="0 0 100 100">
+        <rect width="100" height="100" fill="#f3f4f6"/>
+        <text x="50" y="50" text-anchor="middle" fill="#9ca3af">No Image</text>
+      </svg>
+    </div>
+  {% endif %}
 
   {%- comment -%}
     TODO we should likely extract to a media snippet

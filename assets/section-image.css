@@ -1,0 +1,63 @@
+/* 
+ * Image Section Styles
+ * AAI Professional Theme
+ */
+
+.image-section {
+  padding: 2rem 0;
+}
+
+.image-section__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.image-section__image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.image-section--centered {
+  text-align: center;
+}
+
+.image-section--full-width .image-section__container {
+  max-width: 100%;
+  padding: 0;
+}
+
+.image-section--full-width .image-section__image {
+  border-radius: 0;
+  width: 100%;
+  height: auto;
+}
+
+.image-section__caption {
+  margin-top: 1rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+/* Animation on scroll */
+.image-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.image-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .image-section {
+    padding: 1rem 0;
+  }
+}
