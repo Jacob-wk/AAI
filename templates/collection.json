@@ -1,69 +1,92 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero": {
-      "type": "aai-universal-hero",
-      "settings": {
-        "hero_title": "{{ collection.title | default: 'Training Courses' }}",
-        "hero_subtitle": "{{ collection.description | default: 'Discover our comprehensive selection of professional safety education courses designed for industry professionals.' }}",
-        "hero_style": "hero-standard",
-        "layout_style": "text-center",
-        "show_image": false,
-        "show_stats": true,
-        "show_features": false,
-        "primary_button_text": "View All Courses",
-        "primary_button_url": "#products",
-        "secondary_button_text": "Get Help Choosing",
-        "secondary_button_url": "/pages/contact"
-      },
-      "blocks": {
-        "stat1": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "50+",
-            "stat_label": "Professional Courses"
-          }
-        },
-        "stat2": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "98%",
-            "stat_label": "Completion Rate"
-          }
-        },
-        "stat3": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "500+",
-            "stat_label": "Certified Professionals"
-          }
-        }
-      },
-      "block_order": ["stat1", "stat2", "stat3"]
-    },
     "main": {
       "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "static": true,
+          "settings": {
+            "enable_filtering": false,
+            "filter_style": "horizontal",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": false,
+            "show_filter_label": false,
+            "enable_sorting": true,
+            "enable_grid_density": true,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 8,
+            "facets_margin_right": 20
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "product-card",
+          "static": true,
+          "settings": {
+            "product": "",
+            "product_card_gap": 16,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
       "settings": {
-        "products_per_page": 24,
-        "show_sort": true,
-        "show_filters": true,
-        "filter_type": "sidebar",
-        "show_product_count": true
+        "layout_type": "grid",
+        "product_card_size": "medium",
+        "mobile_product_card_size": "small",
+        "product_grid_width": "centered",
+        "full_width_on_mobile": true,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 16,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "color_scheme": "",
+        "padding-block-start": 8,
+        "padding-block-end": 8
       }
     },
-    "help_section": {
-      "type": "aai-universal-content",
+    "aai_collection_courses_hero_AMm3kw": {
+      "type": "aai-collection-courses-hero",
+      "name": "Collection Courses Hero",
       "settings": {
-        "section_title": "Need Help Choosing?",
-        "section_subtitle": "Our experts can help you find the right training for your needs",
-        "layout_style": "text-center",
-        "background_style": "section-alt-1",
-        "show_main_content": true,
-        "content_body": "<p>Not sure which course is right for you? Our training specialists can recommend the perfect program based on your experience level, career goals, and industry requirements.</p>",
-        "main_button_text": "Contact an Expert",
-        "main_button_url": "/pages/contact",
-        "main_button_style": "primary"
+        "title": "FEC & Adventure Park Professional Education",
+        "subtitle": "<p>Advance your career with specialized safety education courses designed for Family Entertainment Centers and adventure park professionals. Earn CEU credits and certifications recognized throughout the industry.</p>",
+        "stat_1_number": "7",
+        "stat_1_label": "Courses Available",
+        "stat_2_number": "1000+",
+        "stat_2_label": "FEC Professionals Trained",
+        "stat_3_text": "IAAPA",
+        "stat_3_label": "Certified"
       }
     }
   },
-  "order": ["hero", "main", "help_section"]
+  "order": [
+    "aai_collection_courses_hero_AMm3kw",
+    "main"
+  ]
 }
