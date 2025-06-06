@@ -106,7 +106,11 @@
   <div
     class="collection-wrapper grid gap-style"
   >
-    {% render 'filters', results: collection, results_size: collection.products_count %}
+    {% for block in section.blocks %}
+      {% if block.type == 'filters' %}
+        {% render 'block', block: block, results: collection, results_size: collection.products_count %}
+      {% endif %}
+    {% endfor %}
 
     {% if request.design_mode and shop.products_count == 0 %}
       {% paginate products by 24 %}
@@ -157,6 +161,20 @@
   "enabled_on": {
     "templates": ["collection"]
   },
+  "blocks": [
+    {
+      "type": "filters"
+    },
+    {
+      "type": "product-card"
+    },
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
   "settings": [
     {
       "type": "select",
