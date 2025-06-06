@@ -105,6 +105,7 @@
   <div
     class="collection-wrapper grid gap-style"
   >
+    <!-- Debug: collection = {{ collection.handle }}, products_count = {{ collection.products_count }}, design_mode = {{ request.design_mode }}, shop.products_count = {{ shop.products_count }} -->
     {% for block in section.blocks %}
       {% if block.type == 'filters' %}
         {% render 'block', block: block, results: collection, results_size: collection.products_count %}
@@ -129,20 +130,71 @@
         {% render 'product-grid', section: section, children: children, products: products, paginate: paginate %}
       {% endpaginate %}
     {% else %}
+      {% comment %} DEBUG: Output collection object at the very start {% endcomment %}
+      <div style="background: #ffcc00; padding: 10px; border: 2px solid red; margin-bottom: 20px;">
+        <h3 style="color: red;">DEBUG (Top of main-collection.liquid):</h3>
+        <p>Collection Handle: <strong>{{ collection.handle | default: "Not Set" }}</strong></p>
+        <p>Collection Title: <strong>{{ collection.title | default: "Not Set" }}</strong></p>
+        <p>Number of Products in Collection: <strong>{{ collection.products_count | default: "N/A" }}</strong></p>
+        <p>Is `collection.products` an array? <strong>{{ collection.products | is_array }}</strong></p>
+        <p>First 3 Product Titles (if any):</p>
+        <ul>
+          {% for prod in collection.products limit:3 %}
+            <li>{{ prod.title }} (ID: {{ prod.id }})</li>
+          {% else %}
+            <li>No products found in collection.products loop here.</li>
+          {% endfor %}
+        </ul>
+      </div>
+
       {% paginate collection.products by 24 %}
         {% capture children %}
           {% for product in collection.products %}
-            <li
-              id="{{ section.id }}-{{ product.id }}"
-              class="product-grid__item product-grid__item--{{ forloop.index0 }}"
-              data-page="{{ paginate.current_page }}"
-              data-product-id="{{ product.id }}"
-              ref="cards[]"
-            >
-              {% render 'product-card', product: product %}
-            </li>
+          {% comment %} --- DEBUG INSIDE LOOP --- {% endcomment %}
+          <div style=\"border: 1px dotted green; padding: 5px; margin: 5px;\">
+            <p style=\"color: green; font-weight: bold;\">Debug (Inside product loop): Processing Product for Card</p>
+            <p>Product Title: {{ product.title | default: \"N/A\" }}</p>
+            <p>Product ID: {{ product.id | default: \"N/A\" }}</p>
+            <p>Product Available: {{ product.available }}</p>
+            <p>Raw product.featured_image: {{ product.featured_image | json }}</p>
+            <p>Raw product.featured_media: {{ product.featured_media | json }}</p>
+            <p>Attempted Featured Image URL (width: 100): 
+              {% if product.featured_image %}
+                {{ product.featured_image | image_url: width: 100 }}
+              {% elsif product.featured_media %}
+                {{ product.featured_media.preview_image | image_url: width: 100 }}
+              {% else %}
+                No featured_image or featured_media object found.
+              {% endif %}
+            </p>
+            <p>Attempted Featured Image URL (width: 500 from product.featured_image): 
+              {{ product.featured_image | image_url: width: 500 }}
+            </p>
+            <p>Attempted Featured Image URL (width: 500 from product.featured_media.preview_image): 
+              {{ product.featured_media.preview_image | image_url: width: 500 }}
+            </p>
+          </div>
+          {% comment %} --- END DEBUG --- {% endcomment %}
+          <li
+            id="{{ section.id }}-{{ product.id }}"
+            class="product-grid__item product-grid__item--{{ forloop.index0 }}"
+            data-page="{{ paginate.current_page }}"
+            data-product-id="{{ product.id }}"
+            ref="cards[]"
+          >
+            {% render 'product-card', product: product %}
+          </li>
           {% endfor %}
         {% endcapture %}
+
+        {% comment %} --- DEBUG CAPTURED CHILDREN --- {% endcomment %}
+        <div style=\"border: 2px dashed purple; padding: 10px; margin-top: 10px;\">
+            <h4 style=\"color: purple;\">DEBUG: Captured 'children' HTML for Product Grid:</h4>
+            <pre>{{ children | escape }}</pre>
+            <p>Length of 'children' string: {{ children | size }}</p>
+        </div>
+        {% comment %} --- END DEBUG --- {% endcomment %}
+        
         {% render 'product-grid',
           section: section,
           children: children,
