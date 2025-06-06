@@ -1,37 +1,13 @@
 {
+  "wrapper": "div.page-width",
   "sections": {
     "hero": {
       "type": "aai-collection-courses-hero",
       "settings": {
+        "collection": "courses",
         "title": "Professional Safety Courses",
-        "description": "Industry-leading safety education courses for Family Entertainment Centers and adventure parks. Enhance your skills with IAAPA-certified training.",
-        "show_stats": true,
-        "show_search": true
-      },
-      "blocks": {
-        "stat1": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "7",
-            "stat_label": "Professional Courses"
-          }
-        },
-        "stat2": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "IAAPA",
-            "stat_label": "Certified Training"
-          }
-        },
-        "stat3": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "1-6",
-            "stat_label": "CEU Credits"
-          }
-        }
-      },
-      "block_order": ["stat1", "stat2", "stat3"]
+        "subtitle": "<p>Industry-leading safety education courses for Family Entertainment Centers and adventure parks. Enhance your skills with IAAPA-certified training.</p>"
+      }
     },
     "main": {
       "type": "main-collection",
@@ -42,19 +18,7 @@
         "filter_type": "sidebar",
         "show_product_count": true
       }
-    },
-    "dynamic_categories": {
-      "type": "aai-collection-courses-categories-dynamic",
-      "settings": {
-        "title": "Course Categories",
-        "description": "Explore our courses by category to find the perfect training for your needs.",
-        "max_categories": 8
-      }
     }
   },
-  "order": [
-    "hero",
-    "main", 
-    "dynamic_categories"
-  ]
+  "order": ["hero", "main"]
 }

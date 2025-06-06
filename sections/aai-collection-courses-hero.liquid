@@ -23,7 +23,7 @@
           {% assign collection_handle = section.settings.collection | default: 'courses' %}
           {% assign target_collection = collections[collection_handle] %}
           
-          if target_collection
+          if target_collection and target_collection.products_count
             assign total_courses = target_collection.products_count
             
             for product in target_collection.products
