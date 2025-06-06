@@ -17,8 +17,10 @@
 
     <div class="category-grid">
       {% comment %} Collect all unique tags from course products {% endcomment %}
+      {% assign collection_handle = section.settings.collection | default: 'courses' %}
+      {% assign target_collection = collections[collection_handle] %}
       {% assign course_tags = '' | split: ',' %}
-      {% for product in collections.courses.products %}
+      {% for product in target_collection.products %}
         {% for tag in product.tags %}
           {% unless course_tags contains tag %}
             {% assign course_tags = course_tags | append: tag | split: ',' %}
@@ -29,7 +31,7 @@
       {% comment %} Display tag-based categories {% endcomment %}
       {% for tag in course_tags limit: section.settings.max_categories %}
         {% assign tag_products_count = 0 %}
-        {% for product in collections.courses.products %}
+        {% for product in target_collection.products %}
           {% if product.tags contains tag %}
             {% assign tag_products_count = tag_products_count | plus: 1 %}
           {% endif %}
@@ -62,6 +64,13 @@
   "tag": "section",
   "class": "course-categories-dynamic",
   "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Select the collection to display categories from",
+      "default": "courses"
+    },
     {
       "type": "text",
       "id": "title",

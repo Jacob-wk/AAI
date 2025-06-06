@@ -12,17 +12,73 @@
       <div class="hero-subtitle">{{ section.settings.subtitle }}</div>
       
       <div class="hero-stats">
+        {% comment %} Calculate dynamic statistics from actual collection data {% endcomment %}
+        {% liquid
+          assign total_courses = 0
+          assign total_ceu_credits = 0
+          assign total_duration = 0
+          assign course_levels = 'Beginner,Intermediate,Advanced,Professional' | split: ','
+          assign unique_categories = '' | split: ','
+          
+          {% assign collection_handle = section.settings.collection | default: 'courses' %}
+          {% assign target_collection = collections[collection_handle] %}
+          
+          if target_collection
+            assign total_courses = target_collection.products_count
+            
+            for product in target_collection.products
+              assign ceu = product.metafields.course.ceu_credits.value | default: 0 | plus: 0
+              assign total_ceu_credits = total_ceu_credits | plus: ceu
+              
+              assign duration_str = product.metafields.course.duration.value | default: '0 minutes'
+              assign duration_num = duration_str | split: ' ' | first | plus: 0
+              assign total_duration = total_duration | plus: duration_num
+              
+              for tag in product.tags
+                unless unique_categories contains tag
+                  assign unique_categories = unique_categories | append: tag | split: ','
+                endunless
+              endfor
+            endfor
+          endif
+          
+          assign avg_duration = 0
+          if total_courses > 0
+            assign avg_duration = total_duration | divided_by: total_courses
+          endif
+        %}
+        
         <div class="stat-item">
-          <div class="stat-number">{{ section.settings.stat_1_number }}</div>
-          <div class="stat-label">{{ section.settings.stat_1_label }}</div>
+          <div class="stat-number">
+            {% if total_courses > 0 %}
+              {{ total_courses }}
+            {% else %}
+              {{ section.settings.stat_1_number | default: '0' }}
+            {% endif %}
+          </div>
+          <div class="stat-label">{{ section.settings.stat_1_label | default: 'Courses Available' }}</div>
         </div>
+        
         <div class="stat-item">
-          <div class="stat-number">{{ section.settings.stat_2_number }}</div>
-          <div class="stat-label">{{ section.settings.stat_2_label }}</div>
+          <div class="stat-number">
+            {% if total_ceu_credits > 0 %}
+              {{ total_ceu_credits }}
+            {% else %}
+              {{ section.settings.stat_2_number | default: '0' }}
+            {% endif %}
+          </div>
+          <div class="stat-label">{{ section.settings.stat_2_label | default: 'CEU Credits' }}</div>
         </div>
+        
         <div class="stat-item">
-          <div class="stat-number">{{ section.settings.stat_3_text }}</div>
-          <div class="stat-label">{{ section.settings.stat_3_label }}</div>
+          <div class="stat-number">
+            {% if unique_categories.size > 0 %}
+              {{ unique_categories.size }}
+            {% else %}
+              {{ section.settings.stat_3_text | default: '0' }}
+            {% endif %}
+          </div>
+          <div class="stat-label">{{ section.settings.stat_3_label | default: 'Categories' }}</div>
         </div>
       </div>
     </div>
@@ -35,6 +91,13 @@
   "tag": "section",
   "class": "collection-courses-hero",
   "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Select the collection to display statistics for",
+      "default": "courses"
+    },
     {
       "type": "text",
       "id": "title",
@@ -50,7 +113,8 @@
     {
       "type": "text",
       "id": "stat_1_number",
-      "label": "Statistic 1: Number",
+      "label": "Statistic 1: Fallback Number",
+      "info": "Used only when no courses are available",
       "default": "0"
     },
     {
@@ -62,26 +126,28 @@
     {
       "type": "text",
       "id": "stat_2_number",
-      "label": "Statistic 2: Number",
-      "default": "1000+"
+      "label": "Statistic 2: Fallback Number", 
+      "info": "Used only when no CEU data is available",
+      "default": "0"
     },
     {
       "type": "text",
       "id": "stat_2_label",
       "label": "Statistic 2: Label",
-      "default": "FEC Professionals Trained"
+      "default": "CEU Credits"
     },
     {
       "type": "text",
       "id": "stat_3_text",
-      "label": "Statistic 3: Text",
-      "default": "IAAPA"
+      "label": "Statistic 3: Fallback Number",
+      "info": "Used only when no categories are available", 
+      "default": "0"
     },
     {
       "type": "text",
       "id": "stat_3_label",
       "label": "Statistic 3: Label",
-      "default": "Certified"
+      "default": "Categories"
     }
   ],
   "presets": [
@@ -90,12 +156,12 @@
       "settings": {
         "title": "FEC & Adventure Park Professional Education",
         "subtitle": "<p>Advance your career with specialized safety education courses designed for Family Entertainment Centers and adventure park professionals. Earn CEU credits and certifications recognized throughout the industry.</p>",
-        "stat_1_number": "{{ collections.courses.products_count }}",
+        "stat_1_number": "0",
         "stat_1_label": "Courses Available",
-        "stat_2_number": "1000+",
-        "stat_2_label": "FEC Professionals Trained",
-        "stat_3_text": "IAAPA",
-        "stat_3_label": "Certified"
+        "stat_2_number": "0", 
+        "stat_2_label": "CEU Credits",
+        "stat_3_text": "0",
+        "stat_3_label": "Categories"
       }
     }
   ]

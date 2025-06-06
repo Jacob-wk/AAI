@@ -49,10 +49,18 @@
         </div>
       </div>
       
-      {% comment %} Course progress tracking {% endcomment %}
-      <div class="intuto-progress-sync" data-course-id="{{ intuto_course_id }}" style="display: none;">
-        <input type="hidden" id="progress-{{ intuto_course_id }}" value="{{ intuto_customer.metafields.course_progress[intuto_course_id] | default: 0 }}">
-        <input type="hidden" id="completion-{{ intuto_course_id }}" value="{{ intuto_customer.metafields.course_completion[intuto_course_id] | default: 'false' }}">
+      {% comment %} Course access confirmed - simple enrollment link {% endcomment %}
+      <div class="intuto-player-wrapper">
+        <div class="intuto-access-confirmed">
+          <h3>Course Access Confirmed</h3>
+          <p>You have access to this course. Click the button below to start learning.</p>
+          <a href="{{ intuto_enrollment_url }}" class="intuto-launch-btn" target="_blank" rel="noopener">
+            <span>Start Course</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
       </div>
       
     {% elsif intuto_customer %}

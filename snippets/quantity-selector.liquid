@@ -27,7 +27,7 @@
     on:click="/decreaseQuantity"
     ref="quantityButtons[]"
   >
-    <span class="visually-hidden">Decrease quantity</span
+    <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span
     ><span class="svg-wrapper icon-plus">
       {{- 'icon-minus.svg' | inline_asset_content -}}
     </span>
@@ -58,7 +58,7 @@
     on:click="/increaseQuantity"
     ref="quantityButtons[]"
   >
-    <span class="visually-hidden">Increase quantity</span
+    <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span
     ><span class="svg-wrapper icon-plus">
       {{- 'icon-plus.svg' | inline_asset_content -}}
     </span>

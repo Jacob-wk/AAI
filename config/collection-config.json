@@ -1,0 +1,23 @@
+{
+  "collections": {
+    "courses": {
+      "handle": "courses",
+      "name": "Courses",
+      "description": "Primary courses collection"
+    },
+    "certifications": {
+      "handle": "certifications", 
+      "name": "Certifications",
+      "description": "Certification courses collection"
+    },
+    "workshops": {
+      "handle": "workshops",
+      "name": "Workshops", 
+      "description": "Workshop sessions collection"
+    }
+  },
+  "fallbacks": {
+    "default_collection": "courses",
+    "empty_collection_message": "No courses available at this time."
+  }
+}

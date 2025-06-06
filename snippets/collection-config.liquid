@@ -1,0 +1,23 @@
+{% comment %}
+  Collection Configuration Helper
+  Usage: {% include 'collection-config' %}
+  
+  Available variables after include:
+  - collection_config: Full configuration object
+  - courses_handle: Handle for courses collection
+  - default_collection_handle: Fallback collection handle
+{% endcomment %}
+
+{% assign collection_config_json = 'collection-config.json' | asset_url | split: '?' | first %}
+{% assign collection_config = collection_config_json | default: '{}' %}
+
+{% comment %} Set commonly used collection handles {% endcomment %}
+{% assign courses_handle = 'courses' %}
+{% assign certifications_handle = 'certifications' %}
+{% assign workshops_handle = 'workshops' %}
+{% assign default_collection_handle = 'courses' %}
+
+{% comment %} Helper to get collection by handle with fallback {% endcomment %}
+{% assign courses_collection = collections[courses_handle] | default: collections[default_collection_handle] %}
+{% assign certifications_collection = collections[certifications_handle] %}
+{% assign workshops_collection = collections[workshops_handle] %}

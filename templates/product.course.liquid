@@ -15,7 +15,9 @@
           <div class="course-breadcrumb">
             <a href="{{ routes.root_url }}">Home</a>
             <span>/</span>
-            <a href="/collections/courses">Courses</a>
+            {% comment %} Use the first collection this product belongs to, fallback to courses {% endcomment %}
+            {% assign breadcrumb_collection = product.collections.first | default: collections['courses'] %}
+            <a href="{{ breadcrumb_collection.url }}">{{ breadcrumb_collection.title }}</a>
             <span>/</span>
             <span>{{ product.title }}</span>
           </div>
@@ -171,8 +173,21 @@
 </div>
 
 <!-- Related Courses Section -->
-{% assign related_collection = collections.courses %}
-{% if related_collection.products.size > 1 %}
+{% comment %} Find the first collection this product belongs to for related courses {% endcomment %}
+{% assign related_collection = blank %}
+{% for collection in product.collections %}
+  {% if collection.products.size > 1 %}
+    {% assign related_collection = collection %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Fallback to courses collection if no suitable collection found {% endcomment %}
+{% unless related_collection %}
+  {% assign related_collection = collections['courses'] %}
+{% endunless %}
+
+{% if related_collection and related_collection.products.size > 1 %}
   <section class="related-courses-section">
     <div class="container">
       <h2>Related Courses</h2>

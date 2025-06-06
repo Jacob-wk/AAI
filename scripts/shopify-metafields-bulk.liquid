@@ -128,41 +128,6 @@
 </script>
 
 {%- comment -%}
-  CUSTOMER METAFIELDS FOR COURSE TRACKING
-  Namespace: courses
+  CUSTOMER METAFIELDS REMOVED
+  Progress tracking will be handled by future implementation
 {%- endcomment -%}
-
-<script>
-  const customerMetafields = [
-    {
-      namespace: 'courses',
-      key: 'enrolled_courses',
-      name: 'Enrolled Courses',
-      description: 'JSON list of enrolled course IDs and dates',
-      type: 'multi_line_text_field'
-    },
-    {
-      namespace: 'courses',
-      key: 'completed_courses',
-      name: 'Completed Courses',
-      description: 'JSON list of completed course IDs and dates',
-      type: 'multi_line_text_field'
-    },
-    {
-      namespace: 'courses',
-      key: 'total_ceu_earned',
-      name: 'Total CEU Credits Earned',
-      description: 'Sum of all CEU credits earned',
-      type: 'integer'
-    },
-    {
-      namespace: 'courses',
-      key: 'certification_numbers',
-      name: 'Certification Numbers',
-      description: 'JSON object of course certificates',
-      type: 'multi_line_text_field'
-    }
-  ];
-
-  console.log('Customer Metafields:', JSON.stringify(customerMetafields, null, 2));
-</script>

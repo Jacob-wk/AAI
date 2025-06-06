@@ -108,36 +108,6 @@
       ]
     }
   },
-  "customer_metafields": {
-    "course_progress": {
-      "namespace": "course_progress",
-      "fields": [
-        {
-          "key": "completion_data",
-          "name": "Course Completion Data",
-          "type": "json",
-          "description": "JSON object storing course progress and completion status"
-        }
-      ]
-    },
-    "intuto_integration": {
-      "namespace": "intuto",
-      "fields": [
-        {
-          "key": "access_token",
-          "name": "Intuto Access Token",
-          "type": "single_line_text_field",
-          "description": "Customer's Intuto authentication token"
-        },
-        {
-          "key": "user_id",
-          "name": "Intuto User ID",
-          "type": "single_line_text_field",
-          "description": "Customer's unique identifier in Intuto system"
-        }
-      ]
-    }
-  },
   "usage_instructions": {
     "setup_steps": [
       "1. Go to Shopify Admin > Settings > Custom data",
@@ -145,8 +115,7 @@
       "3. For each field above, click 'Add definition'",
       "4. Enter the namespace, key, name, type, and description",
       "5. Save each metafield definition",
-      "6. Repeat for customer metafields in the 'Customers' section",
-      "7. Test by editing a product and ensuring metafields appear"
+      "6. Test by editing a product and ensuring metafields appear"
     ],
     "validation_notes": [
       "Ensure namespace and key exactly match theme code",

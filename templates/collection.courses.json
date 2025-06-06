@@ -1,18 +1,37 @@
 {
-  "wrapper": "div.page-width",
   "sections": {
-    "aai_collection_hero": {
+    "hero": {
       "type": "aai-collection-courses-hero",
       "settings": {
-        "title": "Professional Certifications & Training",
-        "subtitle": "<p>Advance your career with industry-leading safety certifications designed for Family Entertainment Center and adventure park professionals. Earn CEU credits and certifications recognized throughout the industry.</p>",
-        "stat_1_number": "50+",
-        "stat_1_label": "Professional Courses",
-        "stat_2_number": "98%",
-        "stat_2_label": "Completion Rate",
-        "stat_3_text": "Industry",
-        "stat_3_label": "Recognized"
-      }
+        "title": "Professional Safety Courses",
+        "description": "Industry-leading safety education courses for Family Entertainment Centers and adventure parks. Enhance your skills with IAAPA-certified training.",
+        "show_stats": true,
+        "show_search": true
+      },
+      "blocks": {
+        "stat1": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "7",
+            "stat_label": "Professional Courses"
+          }
+        },
+        "stat2": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "IAAPA",
+            "stat_label": "Certified Training"
+          }
+        },
+        "stat3": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "1-6",
+            "stat_label": "CEU Credits"
+          }
+        }
+      },
+      "block_order": ["stat1", "stat2", "stat3"]
     },
     "main": {
       "type": "main-collection",
@@ -27,15 +46,15 @@
     "dynamic_categories": {
       "type": "aai-collection-courses-categories-dynamic",
       "settings": {
-        "title": "Explore by Category",
-        "description": "Browse courses by topic to find the perfect training for your professional development.",
+        "title": "Course Categories",
+        "description": "Explore our courses by category to find the perfect training for your needs.",
         "max_categories": 8
       }
     }
   },
   "order": [
-    "aai_collection_hero",
-    "main",
+    "hero",
+    "main", 
     "dynamic_categories"
   ]
 }
