@@ -79,8 +79,22 @@
 
   if settings.transition_to_main_product
     assign featured_media_url = product.selected_or_first_available_variant.featured_image | image_url: width: 500
-    if featured_media_url == blank
+    if featured_media_url == blank and product.featured_media
       assign featured_media_url = product.featured_media.preview_image | image_url: width: 500
+    endif
+    if featured_media_url == blank
+      assign featured_media_url = 'placeholder.svg' | asset_url
+    endif
+  else
+    // Ensure a value for featured_media_url even if transition_to_main_product is false,
+    // though it's primarily used by product-card-link which depends on that setting.
+    // This provides a fallback for any direct usage.
+    if product.featured_image
+      assign featured_media_url = product.featured_image | image_url: width: 500
+    elsif product.featured_media
+      assign featured_media_url = product.featured_media.preview_image | image_url: width: 500
+    else
+      assign featured_media_url = 'placeholder.svg' | asset_url
     endif
   endif
 
