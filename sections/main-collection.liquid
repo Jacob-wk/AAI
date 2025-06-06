@@ -154,10 +154,20 @@
           {% comment %} --- DEBUG INSIDE LOOP --- {% endcomment %}
           <div style=\"border: 1px dotted green; padding: 5px; margin: 5px;\">
             <p style=\"color: green; font-weight: bold;\">Debug (Inside product loop): Processing Product for Card</p>
-            <p>Product Title: {{ product.title | default: "N/A" }}</p>
-            <p>Product ID: {{ product.id | default: "N/A" }}</p>
+            <p>Product Title: {{ product.title | default: \"N/A\" }}</p>
+            <p>Product ID: {{ product.id | default: \"N/A\" }}</p>
             <p>Product Available: {{ product.available }}</p>
-            <p>Product Featured Image: {{ product.featured_image.src | image_url: width: 100 | default: "No featured image" }}</p>
+            <p>Raw product.featured_image: {{ product.featured_image | json }}</p>
+            <p>Raw product.featured_media: {{ product.featured_media | json }}</p>
+            <p>Attempted Featured Image URL: 
+              {% if product.featured_image %}
+                {{ product.featured_image | image_url: width: 100 }}
+              {% elsif product.featured_media %}
+                {{ product.featured_media | image_url: width: 100 }}
+              {% else %}
+                No featured_image or featured_media object found.
+              {% endif %}
+            </p>
           </div>
           {% comment %} --- END DEBUG --- {% endcomment %}
           <li
