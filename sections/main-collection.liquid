@@ -148,37 +148,38 @@
         </ul>
       </div>
 
-      {% comment %} TEMPORARY SIMPLIFIED LOOP FOR DEBUGGING {% endcomment %}
-      <div style="border: 2px dashed blue; padding: 10px; margin-top: 10px;">
-        <h4 style="color: blue;">DEBUG: Simplified Product Loop Output:</h4>
-        {% if collection.products_count > 0 %}
-          <ul>
-            {% for product in collection.products %}
-              <li>Product Title: {{ product.title }} (ID: {{ product.id }})</li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          <p>No products found in `collection.products_count` for simplified loop.</p>
-        {% endif %}
-      </div>
-      {% comment %} END TEMPORARY SIMPLIFIED LOOP {% endcomment %}
-
-      {% comment %} ORIGINAL PAGINATE CODE - COMMENTED OUT FOR DEBUGGING
       {% paginate collection.products by 24 %}
         {% capture children %}
           {% for product in collection.products %}
+          {% comment %} --- DEBUG INSIDE LOOP --- {% endcomment %}
+          <div style=\"border: 1px dotted green; padding: 5px; margin: 5px;\">
+            <p style=\"color: green; font-weight: bold;\">Debug (Inside product loop): Processing Product for Card</p>
+            <p>Product Title: {{ product.title | default: "N/A" }}</p>
+            <p>Product ID: {{ product.id | default: "N/A" }}</p>
+            <p>Product Available: {{ product.available }}</p>
+            <p>Product Featured Image: {{ product.featured_image.src | image_url: width: 100 | default: "No featured image" }}</p>
+          </div>
+          {% comment %} --- END DEBUG --- {% endcomment %}
           <li
-            id="{{ section.id }}-{{ product.id }}"
-            class="product-grid__item product-grid__item--{{ forloop.index0 }}"
-            data-page="{{ paginate.current_page }}"
-            data-product-id="{{ product.id }}"
-            ref="cards[]"
+            id=\"{{ section.id }}-{{ product.id }}\"
+            class=\"product-grid__item product-grid__item--{{ forloop.index0 }}\"
+            data-page=\"{{ paginate.current_page }}\"
+            data-product-id=\"{{ product.id }}\"
+            ref=\"cards[]\"
           >
             {% render 'product-card', product: product %}
           </li>
         {% endfor %}
         {% endcapture %}
-        <!-- Debug: children content length = {{ children | size }} -->
+
+        {% comment %} --- DEBUG CAPTURED CHILDREN --- {% endcomment %}
+        <div style=\"border: 2px dashed purple; padding: 10px; margin-top: 10px;\">
+            <h4 style=\"color: purple;\">DEBUG: Captured 'children' HTML for Product Grid:</h4>
+            <pre>{{ children | escape }}</pre>
+            <p>Length of 'children' string: {{ children | size }}</p>
+        </div>
+        {% comment %} --- END DEBUG --- {% endcomment %}
+        
         {% render 'product-grid',
           section: section,
           children: children,
@@ -186,7 +187,6 @@
           paginate: paginate
         %}
       {% endpaginate %}
-      {% endcomment %}
     {% endif %}
   </div>
 </results-list>
