@@ -89,10 +89,10 @@
     // Ensure a value for featured_media_url even if transition_to_main_product is false,
     // though it's primarily used by product-card-link which depends on that setting.
     // This provides a fallback for any direct usage.
-    if product.featured_image
-      assign featured_media_url = product.featured_image | image_url: width: 500
-    elsif product.featured_media
-      assign featured_media_url = product.featured_media.preview_image | image_url: width: 500
+    if product.featured_media
+      assign featured_media_url = product.featured_media | image_url: width: 500
+    elsif product.media.size > 0
+      assign featured_media_url = product.media.first | image_url: width: 500
     else
       assign featured_media_url = 'placeholder.svg' | asset_url
     endif
@@ -156,9 +156,9 @@
         if product.featured_media != blank
           assign final_image_url = product.featured_media | image_url: width: 500
           assign final_image_alt = product.featured_media.alt | default: product.title | escape
-        elsif product.featured_image != blank
-          assign final_image_url = product.featured_image | image_url: width: 500 // Attempt to use image_url filter on the string URL
-          assign final_image_alt = product.title | escape
+        elsif product.media.size > 0
+          assign final_image_url = product.media.first | image_url: width: 500
+          assign final_image_alt = product.media.first.alt | default: product.title | escape
         else
           assign final_image_url = 'placeholder.svg' | asset_url
           assign final_image_alt = "Placeholder image"

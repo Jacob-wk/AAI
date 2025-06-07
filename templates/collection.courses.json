@@ -14,58 +14,23 @@
       "blocks": {
         "filters": {
           "type": "filters",
-          "static": true,
           "settings": {
-            "enable_filtering": true,
-            "filter_style": "horizontal",
-            "filter_width": "centered",
-            "text_label_case": "default",
-            "show_swatch_label": false,
-            "show_filter_label": false,
-            "enable_sorting": true,
-            "enable_grid_density": true,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "facets_margin_bottom": 8,
-            "facets_margin_right": 20
+            "enable_filtering": true
           }
         },
-        "product-card": {
-          "type": "product-card",
-          "static": true,
-          "settings": {
-            "product": "",
-            "product_card_gap": 16,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          }
+        "product-grid": {
+          "type": "product-grid"
         }
       },
+      "block_order": [
+        "filters",
+        "product-grid"
+      ],
       "settings": {
-        "layout_type": "grid",
-        "product_card_size": "medium",
-        "mobile_product_card_size": "small",
-        "product_grid_width": "centered",
-        "full_width_on_mobile": true,
-        "columns_gap_horizontal": 16,
-        "columns_gap_vertical": 16,
-        "padding-inline-start": 0,
-        "padding-inline-end": 0,
-        "color_scheme": "",
-        "padding-block-start": 8,
-        "padding-block-end": 8
+        "columns_desktop": 3,
+        "columns_mobile": 1,
+        "image_ratio": "adapt",
+        "show_vendor": false
       }
     }
   },

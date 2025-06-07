@@ -7,9 +7,11 @@
 
 <div class="product-information page-width">
   <div class="product-media-wrapper">
-    {% render 'product-media', 
+    {% render 'product-media-gallery', 
        product: product, 
-       selected_variant: product.selected_or_first_available_variant %}
+       layout: section.settings.gallery_layout,
+       gallery_size: section.settings.gallery_size,
+       enable_zoom: section.settings.enable_zoom %}
   </div>
   
   <div class="product-information__wrapper">

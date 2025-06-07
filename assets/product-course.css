@@ -486,6 +486,41 @@
   gap: 1.5rem;
 }
 
+/* Course Sidebar Styles */
+.course-sidebar {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: fit-content;
+}
+
+.course-enrollment-card {
+  padding: 0;
+}
+
+.course-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-featured-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.course-pricing {
+  padding: 1.5rem;
+}
+
+/* Course sidebar responsive adjustments */
 @media (max-width: 768px) {
   .product-grid {
     grid-template-columns: 1fr;
@@ -511,5 +546,9 @@
   
   .tab-content {
     padding: 1rem;
+  }
+  
+  .course-image {
+    height: 200px;
   }
 }

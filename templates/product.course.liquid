@@ -72,11 +72,18 @@
       <!-- Course Sidebar -->
       <div class="course-sidebar">
         <div class="course-enrollment-card">
-          {% if product.featured_image %}
+          {% if product.media.size > 0 %}
             <div class="course-image">
-              <img src="{{ product.featured_image | image_url: width: 600 }}" 
-                   alt="{{ product.title }}" 
-                   class="course-featured-image">
+              {% assign featured_media = product.featured_media | default: product.media.first %}
+              {% if featured_media.media_type == 'image' %}
+                <img src="{{ featured_media | image_url: width: 600 }}" 
+                     alt="{{ featured_media.alt | default: product.title }}" 
+                     class="course-featured-image">
+              {% else %}
+                <img src="{{ featured_media.preview_image | image_url: width: 600 }}" 
+                     alt="{{ featured_media.alt | default: product.title }}" 
+                     class="course-featured-image">
+              {% endif %}
             </div>
           {% endif %}
           

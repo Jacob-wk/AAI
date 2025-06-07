@@ -1,0 +1,405 @@
+{% comment %}
+  Renders a product media gallery using Shopify 2.0 best practices
+
+  Accepts:
+  - product: {Object} Product object
+  - variant_images: {Array} Array of variant images  
+  - gallery_layout: {String} Layout style (stacked, thumbnail, columns)
+  - gallery_size: {String} Size setting (small, medium, large)
+  - enable_zoom: {Boolean} Whether to enable image zoom
+  - enable_video_looping: {Boolean} Whether to loop videos
+
+  Usage:
+  {%- render 'product-media-gallery', product: product -%}
+{% endcomment %}
+
+{% liquid
+  assign gallery_layout = gallery_layout | default: 'stacked'
+  assign gallery_size = gallery_size | default: 'medium'
+  assign enable_zoom = enable_zoom | default: true
+  assign widths = '300, 450, 600, 750, 900, 1050, 1200, 1350, 1500, 1650, 1800, 1950, 2000, 2500, 3000, 3500, 4000'
+  assign sizes = '(min-width: 990px) 715px, (min-width: 750px) calc(100vw - 10rem), 100vw'
+%}
+
+<div class="product-media-gallery media-gallery--{{ gallery_layout }} media-gallery--{{ gallery_size }}">
+  {% if product.media.size > 0 %}
+    <div class="product-media-container">
+      {% for media in product.media %}
+        <div class="product-media" 
+             data-media-id="{{ media.id }}"
+             {% if media.media_type == 'image' %}
+               style="--ratio: {{ media.aspect_ratio }}"
+             {% endif %}>
+          
+          {% case media.media_type %}
+            {% when 'image' %}
+              {% liquid
+                assign high_res_url = media | image_url: width: 3840
+              %}
+              {{
+                media
+                | image_url: width: 1946
+                | image_tag:
+                  widths: widths,
+                  alt: media.alt,
+                  sizes: sizes,
+                  loading: 'lazy',
+                  class: 'product-media__image',
+                  data_max_resolution: high_res_url
+              }}
+              
+              {% if enable_zoom %}
+                <button class="product-media__zoom-button" type="button" aria-label="Zoom image">
+                  <svg class="icon icon-zoom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                    <path d="M11 8v6M8 11h6"></path>
+                  </svg>
+                </button>
+              {% endif %}
+
+            {% when 'video' %}
+              <video-component class="product-media__video" data-media-id="{{ media.id }}">
+                <button class="product-media__video-button" type="button" aria-label="Play video">
+                  {{
+                    media.preview_image
+                    | image_url: width: 1946
+                    | image_tag:
+                      widths: widths,
+                      alt: media.preview_image.alt,
+                      sizes: sizes,
+                      loading: 'lazy',
+                      class: 'product-media__video-poster'
+                  }}
+                  <svg class="icon icon-play" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </button>
+                
+                <video 
+                  preload="none" 
+                  poster="{{ media.preview_image | image_url: width: 1946 }}"
+                  {% if enable_video_looping %}loop{% endif %}
+                  muted
+                  playsinline
+                  controls>
+                  {% for source in media.sources %}
+                    <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                  {% endfor %}
+                </video>
+              </video-component>
+
+            {% when 'model' %}
+              <model-viewer-component class="product-media__model" data-media-id="{{ media.id }}">
+                <button class="product-media__model-button" type="button" aria-label="View 3D model">
+                  {{
+                    media.preview_image
+                    | image_url: width: 1946
+                    | image_tag:
+                      widths: widths,
+                      alt: media.preview_image.alt,
+                      sizes: sizes,
+                      loading: 'lazy',
+                      class: 'product-media__model-poster'
+                  }}
+                  <svg class="icon icon-3d" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l8 4v10l-8 4-8-4V6l8-4z"/>
+                  </svg>
+                </button>
+                
+                <model-viewer
+                  src="{{ media.sources[1].url }}"
+                  alt="{{ media.alt }}"
+                  poster="{{ media.preview_image | image_url: width: 1946 }}"
+                  loading="lazy"
+                  reveal="interaction"
+                  camera-controls>
+                </model-viewer>
+              </model-viewer-component>
+
+            {% else %}
+              {% comment %} Fallback for other media types {% endcomment %}
+              {{
+                media.preview_image
+                | image_url: width: 1946
+                | image_tag:
+                  widths: widths,
+                  alt: media.alt,
+                  sizes: sizes,
+                  loading: 'lazy',
+                  class: 'product-media__image'
+              }}
+          {% endcase %}
+        </div>
+      {% endfor %}
+    </div>
+    
+    {% if product.media.size > 1 and gallery_layout == 'thumbnail' %}
+      <div class="product-media-thumbnails">
+        {% for media in product.media %}
+          <button class="product-media-thumbnail {% if forloop.first %}active{% endif %}" 
+                  data-media-id="{{ media.id }}"
+                  type="button"
+                  aria-label="Load image {{ forloop.index }}">
+            {% if media.media_type == 'image' %}
+              {{
+                media
+                | image_url: width: 200
+                | image_tag:
+                  alt: media.alt,
+                  loading: 'lazy',
+                  class: 'product-media-thumbnail__image'
+              }}
+            {% else %}
+              {{
+                media.preview_image
+                | image_url: width: 200
+                | image_tag:
+                  alt: media.alt,
+                  loading: 'lazy',
+                  class: 'product-media-thumbnail__image'
+              }}
+              {% case media.media_type %}
+                {% when 'video' %}
+                  <svg class="product-media-thumbnail__badge icon icon-play" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                {% when 'model' %}
+                  <svg class="product-media-thumbnail__badge icon icon-3d" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l8 4v10l-8 4-8-4V6l8-4z"/>
+                  </svg>
+              {% endcase %}
+            {% endif %}
+          </button>
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+  {% else %}
+    {% comment %} No media available - show placeholder {% endcomment %}
+    <div class="product-media product-media--placeholder">
+      <div class="product-media__placeholder">
+        <svg class="icon icon-placeholder" viewBox="0 0 100 100">
+          <rect width="100" height="100" fill="#f3f4f6"/>
+          <text x="50" y="50" text-anchor="middle" dy="0.3em" fill="#9ca3af" font-size="8">{{ product.title | truncate: 15 }}</text>
+        </svg>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% style %}
+  .product-media-gallery {
+    width: 100%;
+  }
+  
+  .product-media-container {
+    width: 100%;
+  }
+  
+  .product-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: var(--ratio, 1);
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f8f9fa;
+  }
+  
+  .product-media__image,
+  .product-media__video-poster,
+  .product-media__model-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .product-media__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f6;
+  }
+  
+  .product-media__placeholder .icon-placeholder {
+    width: 40%;
+    height: 40%;
+    opacity: 0.5;
+  }
+  
+  .product-media__zoom-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: #1f2937;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  .product-media:hover .product-media__zoom-button {
+    opacity: 1;
+  }
+  
+  .product-media__video-button,
+  .product-media__model-button {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .product-media__video-button::after,
+  .product-media__model-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+  
+  .product-media__video-button:hover::after,
+  .product-media__model-button:hover::after {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .icon-play,
+  .icon-3d {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    color: white;
+    z-index: 1;
+  }
+  
+  .product-media-thumbnails {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  
+  .product-media-thumbnail {
+    flex-shrink: 0;
+    width: 4rem;
+    height: 4rem;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    background: none;
+    padding: 0;
+  }
+  
+  .product-media-thumbnail.active {
+    border-color: #1e3a5f;
+  }
+  
+  .product-media-thumbnail__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .product-media-thumbnail__badge {
+    position: absolute;
+    bottom: 0.25rem;
+    right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 2px;
+    padding: 0.125rem;
+  }
+  
+  /* Layout variations */
+  .media-gallery--thumbnail .product-media-container {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .media-gallery--thumbnail .product-media {
+    flex: 1;
+  }
+  
+  .media-gallery--columns .product-media-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .product-media-thumbnails {
+      justify-content: center;
+    }
+    
+    .media-gallery--thumbnail .product-media-container {
+      flex-direction: column;
+    }
+    
+    .media-gallery--columns .product-media-container {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<script>
+  // Simple media gallery functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const mediaGallery = document.querySelector('.product-media-gallery');
+    if (!mediaGallery) return;
+    
+    const thumbnails = mediaGallery.querySelectorAll('.product-media-thumbnail');
+    const mediaItems = mediaGallery.querySelectorAll('.product-media');
+    
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', function() {
+        const mediaId = this.dataset.mediaId;
+        
+        // Update active thumbnail
+        thumbnails.forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Show corresponding media (simple implementation)
+        // In a full implementation, you'd want more sophisticated gallery navigation
+        console.log('Switch to media:', mediaId);
+      });
+    });
+    
+    // Zoom functionality
+    const zoomButtons = mediaGallery.querySelectorAll('.product-media__zoom-button');
+    zoomButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const image = this.previousElementSibling;
+        if (image && image.dataset.maxResolution) {
+          // Simple zoom implementation - in production you'd want a proper lightbox
+          window.open(image.dataset.maxResolution, '_blank');
+        }
+      });
+    });
+  });
+</script>
