@@ -1,0 +1,139 @@
+/* Collection Page Styles */
+.collection {
+  padding: 2rem 0;
+}
+
+.page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.product-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.product-grid--1-col-desktop {
+  grid-template-columns: 1fr;
+}
+
+.product-grid--2-col-desktop {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.product-grid--3-col-desktop {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.product-grid--4-col-desktop {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.product-grid--5-col-desktop {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .page-width {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Product Card Styles */
+.product-card-wrapper {
+  height: 100%;
+}
+
+.product-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.product-card__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.product-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-card__image {
+  transform: scale(1.05);
+}
+
+.product-card__content {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.product-card__price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.collection-empty {
+  text-align: center;
+  padding: 4rem 0;
+  grid-column: 1 / -1;
+}
+
+.collection-empty h2 {
+  color: #666;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.collection-filters {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
