@@ -1,0 +1,76 @@
+{% comment %}
+  Main List Collections Section
+  Displays all collections in a grid layout
+{% endcomment %}
+
+{{ 'collection-list-simple.css' | asset_url | stylesheet_tag }}
+
+<div class="list-collections">
+  <div class="page-width">
+    {% if section.settings.title != blank or section.settings.description != blank %}
+      <div class="list-collections__header">
+        {% if section.settings.title != blank %}
+          <h1 class="list-collections__title">{{ section.settings.title }}</h1>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <div class="list-collections__description">
+            {{ section.settings.description }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    <div class="collections-grid collections-grid--{{ section.settings.columns_desktop }}-col-desktop">
+      {% for collection in collections %}
+        {% unless collection.handle == 'frontpage' %}
+          <div class="collections-grid__item">
+            {% render 'collection-card', collection: collection %}
+          </div>
+        {% endunless %}
+      {% else %}
+        <div class="collections-empty">
+          <h2>No collections found</h2>
+          <p>There are no collections to display at this time.</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection list",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Collections"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "label": "Number of columns on desktop"
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 2,
+      "step": 1,
+      "default": 1,
+      "label": "Number of columns on mobile"
+    }
+  ]
+}
+{% endschema %}
