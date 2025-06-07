@@ -22,10 +22,36 @@
               <div class="product-grid product-grid--{{ section.settings.columns_desktop }}-col-desktop">
                 {% for product in collection.products %}
                   <div class="product-grid__item">
-                    {% render 'product-card', 
-                       product: product,
-                       media_aspect_ratio: section.settings.image_ratio,
-                       show_vendor: section.settings.show_vendor %}
+                    <div class="product-card-wrapper">
+                      <a href="{{ product.url }}" class="product-card-link">
+                        <div class="product-card">
+                          <div class="product-card__media">
+                            {% if product.featured_media != blank %}
+                              <img src="{{ product.featured_media | image_url: width: 500 }}" 
+                                   alt="{{ product.featured_media.alt | default: product.title | escape }}" 
+                                   class="product-card__image" 
+                                   loading="lazy">
+                            {% elsif product.media.size > 0 %}
+                              <img src="{{ product.media.first | image_url: width: 500 }}" 
+                                   alt="{{ product.media.first.alt | default: product.title | escape }}" 
+                                   class="product-card__image" 
+                                   loading="lazy">
+                            {% else %}
+                              <img src="{{ 'placeholder.svg' | asset_url }}" 
+                                   alt="Placeholder image" 
+                                   class="product-card__image" 
+                                   loading="lazy">
+                            {% endif %}
+                          </div>
+                          <div class="product-card__content">
+                            <h3 class="product-card__title">{{ product.title }}</h3>
+                            {% if product.price > 0 %}
+                              <p class="product-card__price">{{ product.price | money }}</p>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </a>
+                    </div>
                   </div>
                 {% else %}
                   <div class="collection-empty">

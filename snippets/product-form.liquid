@@ -168,3 +168,39 @@
     </form>
   {% endif %}
 </div>
+
+<script>
+// Simple quantity input enhancement
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('quantity-input').forEach(quantity => {
+    const input = quantity.querySelector('.quantity__input');
+    const minusBtn = quantity.querySelector('button[name="minus"]');
+    const plusBtn = quantity.querySelector('button[name="plus"]');
+
+    if (minusBtn && plusBtn && input) {
+      minusBtn.addEventListener('click', () => {
+        const currentValue = parseInt(input.value) || 1;
+        if (currentValue > 1) {
+          input.value = currentValue - 1;
+          minusBtn.disabled = input.value <= 1;
+        }
+      });
+
+      plusBtn.addEventListener('click', () => {
+        const currentValue = parseInt(input.value) || 1;
+        input.value = currentValue + 1;
+        minusBtn.disabled = false;
+      });
+
+      input.addEventListener('change', () => {
+        const value = parseInt(input.value) || 1;
+        input.value = Math.max(1, value);
+        minusBtn.disabled = input.value <= 1;
+      });
+
+      // Initial state
+      minusBtn.disabled = input.value <= 1;
+    }
+  });
+});
+</script>

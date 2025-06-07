@@ -150,6 +150,146 @@
   font-weight: 500;
 }
 
+/* Regular Product Form Styles */
+.product-info .product-title {
+  font-size: 1.875rem;
+  color: #1e3a5f;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.variant-sku {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.product-price {
+  margin-bottom: 2rem;
+}
+
+.product-price .price-amount {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1e3a5f;
+}
+
+.product-price .price-compare {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+  margin-left: 0.75rem;
+}
+
+/* Quantity Input Styles */
+.quantity-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.quantity__button {
+  background: #f9fafb;
+  border: none;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity__button:hover {
+  background: #e5e7eb;
+}
+
+.quantity__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity__input {
+  border: none;
+  padding: 0.75rem;
+  width: 4rem;
+  text-align: center;
+  font-size: 1rem;
+  background: white;
+}
+
+.quantity__input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+/* Add to Cart Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  min-height: 48px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+}
+
+.btn-primary:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.btn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #9ca3af;
+}
+
+.product-form__cart-submit {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Utility Classes */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.no-js-hidden {
+  display: block;
+}
+
 @media (max-width: 768px) {
   .product-form-wrapper {
     padding: 1.5rem;
@@ -162,5 +302,17 @@
   .enroll-btn {
     font-size: 1rem;
     padding: 0.875rem 1.5rem;
+  }
+  
+  .product-info .product-title {
+    font-size: 1.5rem;
+  }
+  
+  .quantity {
+    width: 100%;
+  }
+  
+  .quantity__input {
+    flex: 1;
   }
 }
