@@ -63,32 +63,10 @@
         "gallery_size": "medium",
         "enable_zoom": false
       }
-    },
-    "product_recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "product": "",
-        "recommendation_type": "related",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 4,
-        "columns": 4,
-        "mobile_columns": "2",
-        "columns_gap": 16,
-        "rows_gap": 16,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "gap": 12,
-        "color_scheme": "",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
     }
   },
   "order": [
     "course_hero",
-    "main",
-    "product_recommendations"
+    "main"
   ]
 }
