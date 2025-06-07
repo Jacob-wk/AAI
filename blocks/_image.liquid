@@ -66,7 +66,8 @@
 
 {% assign image = block.settings.image
   | default: closest.collection.featured_image
-  | default: closest.product.featured_image
+  | default: closest.product.featured_media
+  | default: closest.product.media.first
 %}
 {% assign alt = block.settings.alt | default: closest.collection.title | default: closest.product.title %}
 

@@ -115,10 +115,13 @@
           {%- assign course_product = all_products[course_handle] -%}
           {%- if course_product -%}
             <div class="course-card course-card--bundle">
-              {%- if course_product.featured_image -%}
+              {%- assign course_featured_media = course_product.featured_media | default: course_product.media.first -%}
+              {%- if course_featured_media -%}
                 <div class="course-card__image">
-                  <img src="{{ course_product.featured_image | image_url: width: 400 }}" 
-                       alt="{{ course_product.title }}" 
+                  <img src="{{ course_featured_media | image_url: width: 400 }}" 
+                       alt="{{ course_featured_media.alt | default: course_product.title }}" 
+                       width="400"
+                       height="300"
                        loading="lazy">
                 </div>
               {%- endif -%}

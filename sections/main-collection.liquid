@@ -30,16 +30,22 @@
                               <img src="{{ product.featured_media | image_url: width: 500 }}" 
                                    alt="{{ product.featured_media.alt | default: product.title | escape }}" 
                                    class="product-card__image" 
+                                   width="500" 
+                                   height="500"
                                    loading="lazy">
                             {% elsif product.media.size > 0 %}
                               <img src="{{ product.media.first | image_url: width: 500 }}" 
                                    alt="{{ product.media.first.alt | default: product.title | escape }}" 
                                    class="product-card__image" 
+                                   width="500" 
+                                   height="500"
                                    loading="lazy">
                             {% else %}
                               <img src="{{ 'placeholder.svg' | asset_url }}" 
                                    alt="Placeholder image" 
                                    class="product-card__image" 
+                                   width="500" 
+                                   height="500"
                                    loading="lazy">
                             {% endif %}
                           </div>

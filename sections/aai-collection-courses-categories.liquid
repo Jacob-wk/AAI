@@ -13,7 +13,7 @@
                 <div class="category-icon">{{ block.settings.icon_svg }}</div>
               {% elsif block.settings.icon_image != blank %}
                 <div class="category-icon">
-                  <img src="{{ block.settings.icon_image | image_url: width: 80 }}" alt="{{ block.settings.category_name | escape }}" loading="lazy">
+                  <img src="{{ block.settings.icon_image | image_url: width: 80 }}" alt="{{ block.settings.category_name | escape }}" width="80" height="80" loading="lazy">
                 </div>
               {% endif %}
               <span class="category-name">{{ block.settings.category_name | escape }}</span>

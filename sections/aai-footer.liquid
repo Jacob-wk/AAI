@@ -12,7 +12,7 @@
       <div class="aai-footer-column aai-footer-about">
         <div class="aai-footer-logo">
           {% if settings.logo != blank %}
-            <img src="{{ settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" width="200">
+            <img src="{{ settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" width="200" height="80">
           {% else %}
             <h3>{{ shop.name }}</h3>
           {% endif %}

@@ -1,5 +1,5 @@
 {% comment %}
-  Feature List Block - Display features with icons for AAI
+  Feature List Block - Display features with icons for AAI <img src="{{ block.settings.feature_2_icon | image_url: width: 32 }}" alt="" width="32" height="32">
   Used in: Course pages, about page, etc.
 {% endcomment %}
 
@@ -13,7 +13,7 @@
       <div class="feature-item">
         <div class="feature-icon">
           {% if block.settings.feature_1_icon != blank %}
-            <img src="{{ block.settings.feature_1_icon | image_url: width: 32 }}" alt="">
+            <img src="{{ block.settings.feature_1_icon | image_url: width: 32 }}" alt="" width="32" height="32">
           {% else %}
             ✓
           {% endif %}
@@ -26,7 +26,7 @@
       <div class="feature-item">
         <div class="feature-icon">
           {% if block.settings.feature_2_icon != blank %}
-            <img src="{{ block.settings.feature_2_icon | image_url: width: 32 }}" alt="">
+            <img src="{{ block.settings.feature_2_icon | image_url: width: 32 }}" alt="" width="32" height="32">
           {% else %}
             ✓
           {% endif %}
@@ -39,7 +39,7 @@
       <div class="feature-item">
         <div class="feature-icon">
           {% if block.settings.feature_3_icon != blank %}
-            <img src="{{ block.settings.feature_3_icon | image_url: width: 32 }}" alt="">
+            <img src="{{ block.settings.feature_3_icon | image_url: width: 32 }}" alt="" width="32" height="32">
           {% else %}
             ✓
           {% endif %}

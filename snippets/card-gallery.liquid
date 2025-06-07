@@ -206,7 +206,7 @@
     assign temp_ratio = '1'
   elsif image_ratio_setting == 'adapt'
     if product != blank
-      assign current_featured_image_for_ratio = product.featured_image
+      assign current_featured_image_for_ratio = product.featured_media | default: product.media.first
       if current_featured_image_for_ratio == blank and product.featured_media.preview_image != blank
         assign current_featured_image_for_ratio = product.featured_media.preview_image
       endif

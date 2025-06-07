@@ -15,9 +15,10 @@
     <div class="grid-container">
       {%- for product in collection.products -%}
         <div class="course-card">
-          {% if product.featured_image %}
+          {% assign featured_media = product.featured_media | default: product.media.first %}
+          {% if featured_media %}
             <a href="{{ product.url | within: collection }}" class="course-card-image-link">
-              <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.featured_image.alt | escape }}" loading="lazy" class="course-card-image">
+              <img src="{{ featured_media | image_url: width: 400 }}" alt="{{ featured_media.alt | default: product.title | escape }}" width="400" height="300" loading="lazy" class="course-card-image">
             </a>
           {% endif %}
           <div class="course-card-content">

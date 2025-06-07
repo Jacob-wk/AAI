@@ -1,0 +1,251 @@
+accessibility.account
+accessibility.cart
+accessibility.close_dialog
+accessibility.country_region
+accessibility.country_results_count
+accessibility.discount_applied
+accessibility.filter_count
+accessibility.loading_product_recommendations
+accessibility.menu
+accessibility.new_window
+accessibility.open_cart_drawer
+accessibility.pause_video
+accessibility.play_model
+accessibility.play_video
+accessibility.remove_item
+accessibility.reset_search
+accessibility.search_results_count
+accessibility.search_results_no_results
+accessibility.slide_status
+accessibility.slideshow_
+accessibility.slideshow_pause
+accessibility.slideshow_play
+accessibility.unit_price
+actions.added
+actions.apply
+actions.clear
+actions.close
+actions.close_dialog
+actions.continue_shopping
+actions.log_in
+actions.log_in_html
+actions.more
+actions.remove
+actions.remove_discount
+actions.reset
+actions.show_filters
+actions.sign_in_options
+actions.view_in_your_space
+blogs.comment_form.email
+blogs.comment_form.message
+blogs.comment_form.name
+blogs.comment_form.post
+collections.general.no_matches
+contact.form.email
+contact.form.error_title
+contact.form.message
+contact.form.name
+contact.form.phone
+contact.form.send
+contact.form.subject
+contact.form.success_message
+contact.form.success_title
+content.account_orders
+content.account_profile
+content.account_title
+content.account_title_personalized
+content.cart_estimated_total
+content.cart_subtotal
+content.cart_title
+content.cart_total
+content.checkout
+content.discount_code
+content.discount_code_error
+content.discounts
+content.duties_and_taxes_included_shipping_at_checkout_without_policy
+content.duties_and_taxes_included_shipping_at_checkout_without_policy_without_discounts
+content.duties_included_taxes_at_checkout_shipping_at_checkout_without_policy
+content.duties_included_taxes_at_checkout_shipping_at_checkout_without_policy_without_discounts
+content.grid_view.default_view
+content.grid_view.grid_fieldset
+content.grid_view.single_item
+content.grid_view.zoom_out
+content.language
+content.localization_region_and_language
+content.no_products_found
+content.placeholder_image
+content.price
+content.price_filter
+content.price_regular
+content.price_sale
+content.product_badge_sale
+content.product_badge_sold_out
+content.product_image
+content.product_information
+content.product_total
+content.quantity
+content.search_input_label
+content.search_input_placeholder
+content.search_results_label
+content.search_results_no_results
+content.search_results_view_all
+content.seller_note
+content.shipping_discount_error
+content.taxes_at_checkout_shipping_at_checkout_with_policy_html
+content.taxes_at_checkout_shipping_at_checkout_without_policy
+content.taxes_at_checkout_shipping_at_checkout_without_policy_without_discounts
+content.taxes_included_shipping_at_checkout_with_policy_html
+content.taxes_included_shipping_at_checkout_without_policy
+content.unavailable
+content.use_fewer_filters_html
+content.your_cart_is_empty
+customer.addresses_page.add_button
+customer.addresses_page.add_new
+customer.addresses_page.add_new_title
+customer.addresses_page.address1
+customer.addresses_page.address2
+customer.addresses_page.cancel_button
+customer.addresses_page.city
+customer.addresses_page.company
+customer.addresses_page.country
+customer.addresses_page.default_badge
+customer.addresses_page.delete_button
+customer.addresses_page.edit_address_title
+customer.addresses_page.edit_button
+customer.addresses_page.first_name
+customer.addresses_page.last_name
+customer.addresses_page.phone
+customer.addresses_page.province
+customer.addresses_page.set_as_default
+customer.addresses_page.title
+customer.addresses_page.update_button
+customer.addresses_page.zip
+customer.login_page.create_account
+customer.login_page.email
+customer.login_page.forgot_password
+customer.login_page.link_to_login
+customer.login_page.password
+customer.login_page.sign_in
+customer.login_page.title
+customer.order_page.billing_address
+customer.order_page.date
+customer.order_page.fulfillment_status
+customer.order_page.grand_total
+customer.order_page.items
+customer.order_page.order_details
+customer.order_page.price
+customer.order_page.product
+customer.order_page.quantity
+customer.order_page.return_to_account
+customer.order_page.shipping
+customer.order_page.shipping_address
+customer.order_page.sku
+customer.order_page.status
+customer.order_page.subtotal
+customer.order_page.tax
+customer.order_page.title
+customer.order_page.total
+customer.recover_password.cancel
+customer.recover_password.email
+customer.recover_password.submit
+customer.recover_password.title
+customer.register_page.email
+customer.register_page.first_name
+customer.register_page.last_name
+customer.register_page.password
+customer.register_page.submit
+customer.register_page.title
+fields.separator
+general.accessibility.close_modal
+gift_cards.issued.add_to_apple_wallet
+gift_cards.issued.copy_code
+gift_cards.issued.copy_code_success
+gift_cards.issued.expiration_date
+gift_cards.issued.expired
+gift_cards.issued.how_to_use_gift_card
+gift_cards.issued.qr_image_alt
+gift_cards.issued.shop_link
+gift_cards.issued.subtext
+gift_cards.issued.title
+placeholders.search
+products.product.add_to_cart
+products.product.quantity.decrease
+products.product.quantity.increase
+products.product.quantity.label
+products.product.sold_out
+products.product.view_course
+sections.video.no_video_selected
+sections/aai-collection-courses-featured.liquid:                <p class="featured-description">{{ product.description | strip_html | truncate: 120 }}</p>
+sections/main-blog-post.liquid:                    {{- comment.created_at | time_tag: format: 'date' -}}
+sections/main-blog-post.liquid:                  <span>{{- 'blogs.article.comment_author_separator
+sections/main-blog-post.liquid:        <h2 class="h3">{{- 'blogs.article.comments_heading
+sections/predictive-search.liquid:              assign title = 'content.search_results_resource_products
+sections/predictive-search.liquid:            {% assign resource_title = 'content.search_results_resource_articles
+sections/predictive-search.liquid:            {% assign resource_title = 'content.search_results_resource_collections
+sections/predictive-search.liquid:            {% assign resource_title = 'content.search_results_resource_pages
+sections/predictive-search.liquid:          assign title = 'content.recently_viewed_products
+sections/search-header.liquid:      {% assign heading_text = 'content.search_results
+sections/search-header.liquid:    {% assign heading_text = 'content.search
+sections/search-results.liquid:        {% assign default_title = 'content.search_results_resource_products
+snippets/add-to-cart-button.liquid:        {{- 'actions.added
+snippets/add-to-cart-button.liquid:  assign default_add_to_cart_text = 'actions.add_to_cart
+snippets/blog-comment-form.liquid:                {{- 'blogs.comment_form.message
+snippets/blog-comment-form.liquid:                {{- 'blogs.comment_form.name
+snippets/blog-comment-form.liquid:        {{ post_message | t }}
+snippets/blog-comment-form.liquid:        {{- 'blogs.comment_form.error
+snippets/blog-comment-form.liquid:        {{- 'blogs.comment_form.moderated
+snippets/blog-comment-form.liquid:    <h2 class="h3">{{- 'blogs.comment_form.heading
+snippets/cart-bubble.liquid:      {{- 'accessibility.cart_count
+snippets/cart-discount.liquid:              {{- 'accessibility.discount
+snippets/cart-note.liquid:          {{- 'content.seller_note
+snippets/collection-card-clean.liquid:        <p class="collection-card__description">{{ collection.description | strip_html | truncate: 100 }}</p>
+snippets/course-card-professional.liquid:        {{ product.description | truncate: 120 }}
+snippets/editorial-collection-grid.liquid:      assign full_grid_rows = current_grid_index | times: 44
+snippets/editorial-product-grid.liquid:      assign full_grid_rows = current_grid_index | times: 40
+snippets/facets-actions.liquid:        {{- 'actions.clear_all
+snippets/facets-actions.liquid:      {{- 'actions.see_items
+snippets/filter-remove-buttons.liquid:        {{- 'actions.clear_all
+snippets/image.liquid:  {% assign image_height_2x = height | default: image_height | times: 2 %}
+snippets/image.liquid:  {% assign image_height_3x = height | default: image_height | times: 3 %}
+snippets/list-filter.liquid:                {{- 'actions.clear
+snippets/list-filter.liquid:              {{- 'actions.show_less
+snippets/list-filter.liquid:              {{- 'actions.show_more
+snippets/localization-form.liquid:              {{- 'content.no_results_found
+snippets/mega-menu-list.liquid:        assign break_after_float = links_before_wrap | times: 1.0
+snippets/mega-menu-list.liquid:    assign min_featured_collection_columns = min_collections | times: 2
+snippets/predictive-search-empty-state.liquid:      assign default_title = 'content.search_results_resource_products
+snippets/predictive-search-products-list.liquid:            {% assign int_id = _id | times: 1 %}
+snippets/predictive-search-products-list.liquid:          {% assign int_id = _id | times: 1 %}
+snippets/predictive-search-products-list.liquid:  assign recently_viewed_title_text = 'content.recently_viewed_products
+snippets/predictive-search.liquid:          {{- 'content.search_input_label
+snippets/price-filter.liquid:              {{- 'actions.clear
+snippets/product-card.liquid:      {% if block.settings.padding-block-end > 0 %}--zoom-out-padding-block-end: min(var(--padding-xs), {{ block.settings.padding-block-end | times: 0.7}}px);{% endif %}
+snippets/product-card.liquid:      {% if block.settings.padding-block-start > 0 %}--zoom-out-padding-block-start: min(var(--padding-xs), {{ block.settings.padding-block-start | times: 0.7}}px);{% endif %}
+snippets/product-card.liquid:      {% if block.settings.padding-inline-end > 0 %}--zoom-out-padding-inline-end: min(var(--padding-xs), {{ block.settings.padding-inline-end | times: 0.7}}px);{% endif %}
+snippets/product-card.liquid:      {% if block.settings.padding-inline-start > 0 %}--zoom-out-padding-inline-start: min(var(--padding-xs), {{ block.settings.padding-inline-start | times: 0.7}}px);{% endif %}
+snippets/product-grid.liquid:        {% assign product_cycle = row_cycle | times: 2 %}
+snippets/product-media-gallery.liquid:          <text x="50" y="50" text-anchor="middle" dy="0.3em" fill="#9ca3af" font-size="8">{{ product.title | truncate: 15 }}</text>
+snippets/quick-add.liquid:  assign add_to_cart_text = 'actions.add
+snippets/resource-card.liquid:          {{- resource.title | truncate: 60 -}}
+snippets/resource-card.liquid:        {{- 'content.search_results_resource_products_count
+snippets/resource-card.liquid:        {{- resource.excerpt | default: resource.content | strip_html | truncate: 65 -}}
+snippets/skip-to-content-link.liquid:  {{ text | t }}
+snippets/swatch.liquid:    assign swatch_image_width = settings.variant_swatch_width | times: 2
+snippets/tax-info.liquid:          | t: link: shop.shipping_policy.url
+snippets/theme-styles-variables.liquid:              assign fluid_font_size_min = next_font_size_value | times: 1
+snippets/theme-styles-variables.liquid:            assign next_font_size_value_number = next_font_size_value | times: 1
+snippets/theme-styles-variables.liquid:          assign fluid_size = font_size_value | times: 0.1
+snippets/theme-styles-variables.liquid:        assign font_size_value = settings[size_setting] | times: 1
+snippets/theme-styles-variables.liquid:        assign size_setting_value = settings[size_setting] | times: 1
+snippets/typography-style.liquid:          assign font_size_value = settings.font_size | split: 'rem
+snippets/unit-price.liquid:          assign unit = 'blocks.unit_price.unit.
+snippets/unit-price.liquid:        {{- 'blocks.unit_price.per_unit
+snippets/unit-price.liquid:        {{- 'blocks.unit_price.per_unit.single
+snippets/unit-price.liquid:        {{- 'blocks.unit_price.per_unit_accessibility
+snippets/unit-price.liquid:        {{- 'blocks.unit_price.per_unit_accessibility.single
+snippets/unit-price.liquid:      {{- 'blocks.unit_price.per_item
+snippets/unit-price.liquid:      {{- 'blocks.unit_price.per_item.single
+snippets/util-autofill-img-size-attr.liquid:    assign min_width_needed = current_cols | times: card_size_with_gap
+snippets/variant-main-picker.liquid:              assign new_width = settings.variant_swatch_width | times: 1.0 | divided_by: settings.variant_swatch_height | times: 20
+snippets/video.liquid:{% assign alt = 'blocks.load_video
+templates/product.bundle.liquid:                  {{ course_product.description | truncate: 120 }}

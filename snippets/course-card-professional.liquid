@@ -13,6 +13,8 @@ COPILOT CONTEXT:
       <img 
         src="{{ product.featured_media | image_url: width: 400 }}" 
         alt="{{ product.featured_media.alt | default: product.title | escape }}"
+        width="400"
+        height="300"
         loading="lazy"
         class="course-thumbnail"
       >
@@ -20,6 +22,8 @@ COPILOT CONTEXT:
       <img 
         src="{{ product.media.first | image_url: width: 400 }}" 
         alt="{{ product.media.first.alt | default: product.title | escape }}"
+        width="400"
+        height="300"
         loading="lazy"
         class="course-thumbnail"
       >

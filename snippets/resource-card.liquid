@@ -219,11 +219,14 @@
         <div class="resource-card__image-wrapper">
           {% assign resource_products = resource.products | where: 'featured_image' %}
           {% for product in resource_products limit: 4 %}
-            {{
-              product.featured_image
-              | image_url: width: image_width
-              | image_tag: loading: 'lazy', class: 'resource-card__collection-image', sizes: 'auto'
-            }}
+            {% assign product_media = product.featured_media | default: product.media.first %}
+            {% if product_media %}
+              {{
+                product_media
+                | image_url: width: image_width
+                | image_tag: loading: 'lazy', class: 'resource-card__collection-image', sizes: 'auto'
+              }}
+            {% endif %}
           {% endfor %}
         </div>
       {%- endif -%}

@@ -1,0 +1,169 @@
+{% comment %}
+  Collection Filters Snippet
+  Renders filtering options for collection pages
+{% endcomment %}
+
+{% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+{% assign total_active_values = 0 %}
+
+<div class="collection-filters__wrapper">
+  {% if collection.products.size > 0 %}
+    <div class="collection-filters__sort">
+      <label class="collection-filters__label" for="SortBy">
+        {{ 'collections.general.sort_by' | t }}
+      </label>
+      <select name="sort_by" id="SortBy" class="collection-filters__select">
+        <option value="manual"{% if sort_by == 'manual' %} selected{% endif %}>
+          Featured
+        </option>
+        <option value="best-selling"{% if sort_by == 'best-selling' %} selected{% endif %}>
+          Best selling
+        </option>
+        <option value="title-ascending"{% if sort_by == 'title-ascending' %} selected{% endif %}>
+          Alphabetically, A-Z
+        </option>
+        <option value="title-descending"{% if sort_by == 'title-descending' %} selected{% endif %}>
+          Alphabetically, Z-A
+        </option>
+        <option value="price-ascending"{% if sort_by == 'price-ascending' %} selected{% endif %}>
+          Price, low to high
+        </option>
+        <option value="price-descending"{% if sort_by == 'price-descending' %} selected{% endif %}>
+          Price, high to low
+        </option>
+        <option value="created-ascending"{% if sort_by == 'created-ascending' %} selected{% endif %}>
+          Date, old to new
+        </option>
+        <option value="created-descending"{% if sort_by == 'created-descending' %} selected{% endif %}>
+          Date, new to old
+        </option>
+      </select>
+    </div>
+
+    {% if collection.filters.size > 0 %}
+      <div class="collection-filters__filter">
+        <form class="collection-filters__form">
+          {% for filter in collection.filters %}
+            {% case filter.type %}
+              {% when 'list' %}
+                <details class="collection-filters__details">
+                  <summary class="collection-filters__summary">
+                    {{ filter.label }}
+                    {% if filter.active_values.size > 0 %}
+                      <span class="collection-filters__count">({{ filter.active_values.size }})</span>
+                    {% endif %}
+                  </summary>
+                  <div class="collection-filters__list">
+                    {% for value in filter.values %}
+                      <label class="collection-filters__item">
+                        <input type="checkbox" 
+                               name="{{ value.param_name }}" 
+                               value="{{ value.value }}"
+                               {% if value.active %}checked{% endif %}>
+                        <span class="collection-filters__text">
+                          {{ value.label }} ({{ value.count }})
+                        </span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                </details>
+              {% when 'price_range' %}
+                <details class="collection-filters__details">
+                  <summary class="collection-filters__summary">
+                    {{ filter.label }}
+                  </summary>
+                  <div class="collection-filters__price-range">
+                    <label for="Filter-{{ filter.label | handleize }}-LTE">From</label>
+                    <input type="number" 
+                           id="Filter-{{ filter.label | handleize }}-GTE"
+                           name="{{ filter.min_value.param_name }}"
+                           value="{{ filter.min_value.value }}"
+                           {% if filter.min_value.value %}value="{{ filter.min_value.value | divided_by: 100 }}"{% endif %}
+                           placeholder="0"
+                           min="0">
+                    
+                    <label for="Filter-{{ filter.label | handleize }}-LTE">To</label>
+                    <input type="number" 
+                           id="Filter-{{ filter.label | handleize }}-LTE"
+                           name="{{ filter.max_value.param_name }}"
+                           {% if filter.max_value.value %}value="{{ filter.max_value.value | divided_by: 100 }}"{% endif %}
+                           placeholder="{{ filter.range_max | divided_by: 100 }}"
+                           min="0">
+                  </div>
+                </details>
+            {% endcase %}
+          {% endfor %}
+
+          {% assign total_active_values = 0 %}
+          {% for filter in collection.filters %}
+            {% assign total_active_values = total_active_values | plus: filter.active_values.size %}
+          {% endfor %}
+
+          {% if total_active_values > 0 %}
+            <div class="collection-filters__actions">
+              <button type="button" class="collection-filters__clear">
+                {{ 'collections.general.clear_all' | t }}
+              </button>
+            </div>
+          {% endif %}
+        </form>
+      </div>
+    {% endif %}
+  {% endif %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const filterForm = document.querySelector('.collection-filters__form');
+  const sortSelect = document.getElementById('SortBy');
+  const clearButton = document.querySelector('.collection-filters__clear');
+
+  if (sortSelect) {
+    sortSelect.addEventListener('change', function() {
+      const url = new URL(window.location.href);
+      url.searchParams.set('sort_by', this.value);
+      window.location.href = url.toString();
+    });
+  }
+
+  if (filterForm) {
+    filterForm.addEventListener('change', function(e) {
+      if (e.target.type === 'checkbox' || e.target.type === 'number') {
+        const formData = new FormData(filterForm);
+        const url = new URL(window.location.href);
+        
+        // Clear existing filter params
+        for (const [key, value] of url.searchParams.entries()) {
+          if (key.startsWith('filter.')) {
+            url.searchParams.delete(key);
+          }
+        }
+        
+        // Add new filter params
+        for (const [key, value] of formData.entries()) {
+          if (value) {
+            url.searchParams.append(key, value);
+          }
+        }
+        
+        window.location.href = url.toString();
+      }
+    });
+  }
+
+  if (clearButton) {
+    clearButton.addEventListener('click', function() {
+      const url = new URL(window.location.href);
+      
+      // Remove all filter parameters
+      for (const [key, value] of url.searchParams.entries()) {
+        if (key.startsWith('filter.')) {
+          url.searchParams.delete(key);
+        }
+      }
+      
+      window.location.href = url.toString();
+    });
+  }
+});
+</script>

@@ -78,11 +78,17 @@
               {% if featured_media.media_type == 'image' %}
                 <img src="{{ featured_media | image_url: width: 600 }}" 
                      alt="{{ featured_media.alt | default: product.title }}" 
-                     class="course-featured-image">
+                     class="course-featured-image"
+                     width="600"
+                     height="450"
+                     loading="lazy">
               {% else %}
                 <img src="{{ featured_media.preview_image | image_url: width: 600 }}" 
                      alt="{{ featured_media.alt | default: product.title }}" 
-                     class="course-featured-image">
+                     class="course-featured-image"
+                     width="600"
+                     height="450"
+                     loading="lazy">
               {% endif %}
             </div>
           {% endif %}

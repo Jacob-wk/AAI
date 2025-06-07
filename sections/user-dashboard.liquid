@@ -91,7 +91,7 @@ COPILOT CONTEXT:
                 <div class="recommendation-item">
                   <div class="recommendation-image">
                     {% if block.settings.course_image != blank %}
-                      <img src="{{ block.settings.course_image | image_url: width: 80 }}" alt="{{ block.settings.course_name }}">
+                      <img src="{{ block.settings.course_image | image_url: width: 80 }}" alt="{{ block.settings.course_name }}" width="80" height="60">
                     {% else %}
                       <div class="placeholder-image">
                         <svg viewBox="0 0 24 24" fill="currentColor">

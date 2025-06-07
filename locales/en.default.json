@@ -263,6 +263,18 @@
     "errors": "Errors",
     "wrong_password": "Wrong password"
   },
+  "collections": {
+    "general": {
+      "no_matches": "Sorry, there are no products in this collection",
+      "view_all": "View all",
+      "all_categories": "All Categories",
+      "filter_by": "Filter by",
+      "sort_by": "Sort by",
+      "apply": "Apply",
+      "clear": "Clear",
+      "clear_all": "Clear all"
+    }
+  },
   "fields": {
     "separator": "to"
   },

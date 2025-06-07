@@ -21,9 +21,10 @@
         {% if product.metafields.course.featured == 'true' or section.settings.featured_collection != blank %}
           <div class="featured-course-card">
             <div class="featured-image">
-              {% if product.featured_image %}
-                <img src="{{ product.featured_image | image_url: width: 400, height: 250, crop: 'center' }}" 
-                     alt="{{ product.featured_image.alt | escape }}"
+              {% assign featured_media = product.featured_media | default: product.media.first %}
+              {% if featured_media %}
+                <img src="{{ featured_media | image_url: width: 400, height: 250, crop: 'center' }}" 
+                     alt="{{ featured_media.alt | default: product.title | escape }}"
                      loading="lazy"
                      width="400"
                      height="250">
