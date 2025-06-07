@@ -20,6 +20,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  /* Remove card styling to prevent card-within-card issue */
 }
 
 .product-form__wrapper {
@@ -28,6 +29,7 @@
   padding: 2rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   border: 1px solid #e5e7eb;
+  /* Main card styling - this should be the only card appearance */
 }
 
 .product-description {
@@ -70,6 +72,8 @@
 .product[data-type*="course"] .product-form__wrapper {
   background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
   border: 2px solid #e9ecef;
+  /* Remove duplicate box-shadow to prevent visual layering */
+  box-shadow: none;
 }
 
 /* Professional course indicators */

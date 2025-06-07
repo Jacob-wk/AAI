@@ -1,0 +1,128 @@
+/* Product Layout Fixes - AAI Professional Safety Education */
+/* Fixes for card-within-card issues and product form layout problems */
+
+/* Prevent double card appearance in product forms */
+.product-information__wrapper .product-form__wrapper {
+  /* Ensure only one level of card styling */
+  position: relative;
+  isolation: isolate;
+}
+
+/* Remove any inherited card styling from parent containers */
+.product-information__wrapper {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure proper spacing between product form elements */
+.product-form__wrapper > * + * {
+  margin-top: 1.5rem;
+}
+
+/* Fix any conflicting course-specific card styling */
+.product[data-type*="course"] .product-information__wrapper {
+  /* Keep the background gradient for the main container */
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+  border-radius: 16px !important;
+  padding: 3rem 2rem !important;
+  margin: 2rem auto !important;
+  /* But remove any card-like effects */
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.product[data-type*="course"] .product-form__wrapper {
+  /* This should be the only element with card styling */
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%) !important;
+  border: 2px solid #e9ecef !important;
+  border-radius: 12px !important;
+  padding: 2rem !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Fix any nested wrapper issues */
+.product-form__wrapper .product-form-wrapper {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+/* Ensure proper product description styling without card conflicts */
+.product-description {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+  /* Remove any conflicting box-shadow */
+  box-shadow: none;
+  border: 1px solid #e9ecef;
+  margin-top: 2rem;
+}
+
+/* Fix product badge styling to prevent layout issues */
+.course-badge,
+.ceu-badge {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+/* Ensure proper responsive behavior */
+@media screen and (max-width: 990px) {
+  .product-information {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .product[data-type*="course"] .product-information {
+    padding: 2rem 1rem;
+    margin: 1rem auto;
+  }
+  
+  .product-form__wrapper {
+    padding: 1.5rem;
+  }
+}
+
+/* Fix any z-index stacking issues */
+.product-information {
+  position: relative;
+  z-index: 1;
+}
+
+.product-form__wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.product-description {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure consistent font rendering */
+.product-information,
+.product-form__wrapper,
+.product-description {
+  font-family: var(--font-body--family, system-ui, -apple-system, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix any button styling conflicts within product forms */
+.product-form__wrapper .btn,
+.product-form__wrapper button {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.product-form__wrapper .btn:hover,
+.product-form__wrapper button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

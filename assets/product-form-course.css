@@ -1,10 +1,9 @@
 /* Product Form - Course Enrollment Styles */
 
 .product-form-wrapper {
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  /* Remove duplicate card styling - this is handled by .product-form__wrapper in section-product-information.css */
+  position: relative;
+  width: 100%;
 }
 
 .course-product-info .product-title {

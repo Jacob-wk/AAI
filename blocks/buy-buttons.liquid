@@ -43,35 +43,8 @@
 
   .product-form-buttons {
     display: flex;
-    flex-wrap: wrap;
-    gap: calc(var(--gap-sm) / 2);
-
-    @media screen and (width >= 750px) {
-      gap: var(--gap-sm);
-    }
-  }
-
-  .product-form-buttons > *:not(.quantity-selector) {
-    flex: 1;
-    min-width: 185px;
-  }
-
-  .product-form-buttons--stacked > *:not(.quantity-selector) {
-    flex-basis: 51%; /* Force the buttons to be on separate rows */
-  }
-
-  .quantity-selector {
-    flex-grow: 0;
-  }
-
-  /* Course product layout (no quantity selector) */
-  .product-form-buttons:not(:has(.quantity-selector)) {
     flex-direction: column;
     gap: var(--gap-md);
-  }
-
-  .product-form-buttons:not(:has(.quantity-selector)) .add-to-cart-button {
-    min-width: 100%;
   }
 
   .product-form-buttons button {
@@ -80,22 +53,42 @@
     padding-block: var(--padding-lg);
   }
 
+  .enroll-button {
+    background: #1e3a5f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+  }
+
+  .enroll-button:hover {
+    background: #2d5a87;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 58, 95, 0.3);
+  }
+
+  .enroll-button:active {
+    transform: translateY(0);
+  }
+
+  .enroll-button.disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
   .add-to-cart-button {
     text-transform: var(--button-text-case-primary);
   }
 
   .add-to-cart-button.button-secondary {
     text-transform: var(--button-text-case-secondary);
-  }
-
-  .product-form-buttons .shopify-payment-button__button {
-    width: 100%;
-    min-height: var(--minimum-touch-target);
-  }
-
-  .quantity-selector,
-  .add-to-cart-button {
-    height: var(--height-buy-buttons);
   }
 
   .product__pickup-availabilities {
@@ -307,15 +300,8 @@ document.addEventListener('DOMContentLoaded', function() {
         class="product-form-buttons spacing-style{% if block.settings.stacking %} product-form-buttons--stacked{% endif %}"
         style="{% render 'spacing-style', settings: block.settings %}"
       >
-        <!-- Quantity Selector - Only for non-course products -->
-        {% unless product.type == 'digital_course' or product.tags contains 'course' %}
-          <div class="quantity-selector">
-            {% render 'quantity-selector', product: product %}
-          </div>
-        {% else %}
-          <!-- Hidden quantity input for courses (always 1) -->
-          <input type="hidden" name="quantity" value="1">
-        {% endunless %}
+        <!-- Hidden quantity input (always 1 for simplified experience) -->
+        <input type="hidden" name="quantity" value="1">
 
         <!-- Product Description -->
         {% if product.description != blank %}
@@ -324,20 +310,16 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         {% endif %}
 
-        <!-- Add to Cart Button -->
+        <!-- Add to Cart Button (styled as Enroll Now) -->
         <button
           type="submit"
           name="add"
-          class="button add-to-cart-button{% unless can_add_to_cart %} disabled{% endunless %}"
+          class="button add-to-cart-button enroll-button{% unless can_add_to_cart %} disabled{% endunless %}"
           {% unless can_add_to_cart %}disabled{% endunless %}
         >
           <span class="add-to-cart-text">
             {% if can_add_to_cart %}
-              {% if product.type == 'digital_course' or product.tags contains 'course' %}
-                Enroll Now
-              {% else %}
-                {{ add_to_cart_text }}
-              {% endif %}
+              Enroll Now
             {% else %}
               {{ 'products.product.sold_out' | t }}
             {% endif %}
