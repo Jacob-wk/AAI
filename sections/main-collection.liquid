@@ -18,11 +18,9 @@
         
         {% when 'product-grid' %}
           <div class="collection-product-list" {{ block.shopify_attributes }}>
-            <!-- DEBUG: Collection: {{ collection.title }}, Product count: {{ collection.products.size }} -->
             {% paginate collection.products by 24 %}
               <div class="product-grid product-grid--{{ section.settings.columns_desktop }}-col-desktop">
                 {% for product in collection.products %}
-                  <!-- DEBUG: Product: {{ product.title }} -->
                   <div class="product-grid__item">
                     <div class="product-card-wrapper">
                       <a href="{{ product.url }}" class="product-card-link">
@@ -63,7 +61,6 @@
                   </div>
                 {% else %}
                   <div class="collection-empty">
-                    <!-- DEBUG: No products found in collection -->
                     <h2>{{ 'collections.general.no_matches' | t }}</h2>
                   </div>
                 {% endfor %}
