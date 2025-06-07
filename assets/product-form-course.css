@@ -181,6 +181,36 @@
   margin-left: 0.75rem;
 }
 
+/* Product Description Section */
+.product-description-section {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.product-description-section h3 {
+  margin: 0 0 1rem 0;
+  color: #1e3a5f;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.product-description-content {
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.product-description-content p {
+  margin: 0 0 1rem 0;
+}
+
+.product-description-content p:last-child {
+  margin-bottom: 0;
+}
+
 /* Quantity Input Styles */
 .quantity-wrapper {
   margin-bottom: 1.5rem;
@@ -314,5 +344,18 @@
   
   .quantity__input {
     flex: 1;
+  }
+
+  .product-description-section {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+
+  .product-description-section h3 {
+    font-size: 1.125rem;
+  }
+
+  .product-description-content {
+    font-size: 0.875rem;
   }
 }

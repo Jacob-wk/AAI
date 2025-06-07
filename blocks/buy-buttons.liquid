@@ -64,6 +64,16 @@
     flex-grow: 0;
   }
 
+  /* Course product layout (no quantity selector) */
+  .product-form-buttons:not(:has(.quantity-selector)) {
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+
+  .product-form-buttons:not(:has(.quantity-selector)) .add-to-cart-button {
+    min-width: 100%;
+  }
+
   .product-form-buttons button {
     width: 100%;
     padding-inline: var(--padding-4xl);
@@ -207,7 +217,78 @@
     width: var(--icon-size-xs);
     height: var(--icon-size-xs);
   }
+
+  .product-description-modal {
+    margin: var(--margin-md) 0;
+    padding: var(--padding-md);
+    background-color: var(--color-background-secondary);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size--sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    max-width: 100%;
+  }
+
+  .product-description-modal p {
+    margin: 0 0 var(--margin-sm) 0;
+  }
+
+  .product-description-modal p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-description-modal {
+      margin: var(--margin-sm) 0;
+      padding: var(--padding-sm);
+      font-size: var(--font-size--xs);
+    }
+  }
 {% endstylesheet %}
+
+{% comment %}Only load quantity selector script if we have non-course products{% endcomment %}
+{% unless product.type == 'digital_course' or product.tags contains 'course' %}
+  <script src="{{ 'component-quantity-selector.js' | asset_url }}" defer></script>
+{% endunless %}
+
+<script>
+// Simple add to cart enhancement
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle all product forms in buy-buttons blocks
+  document.querySelectorAll('[data-type="add-to-cart-form"]').forEach(form => {
+    const submitButton = form.querySelector('button[type="submit"]');
+    const buttonText = submitButton?.querySelector('.add-to-cart-text');
+    const originalText = buttonText?.textContent;
+
+    if (!submitButton || !buttonText) return;
+
+    form.addEventListener('submit', function(e) {
+      // Prevent double submission
+      if (submitButton.disabled) return;
+
+      // Update button state
+      submitButton.disabled = true;
+      buttonText.textContent = 'Adding...';
+
+      // Re-enable button after a delay (in case of errors)
+      setTimeout(() => {
+        submitButton.disabled = false;
+        buttonText.textContent = originalText;
+      }, 3000);
+    });
+
+    // Handle successful cart addition
+    form.addEventListener('cart:added', function() {
+      buttonText.textContent = 'Added to Cart!';
+      setTimeout(() => {
+        buttonText.textContent = originalText;
+        submitButton.disabled = false;
+      }, 2000);
+    });
+  });
+});
+</script>
 
 <span
   class="buy-buttons-block buy-buttons-block--{{ block.id }}"
@@ -215,53 +296,62 @@
 >
   {%- if product != blank -%}
     {%- assign product_form_id = 'BuyButtons-ProductForm-' | append: block.id -%}
-    <product-form-component
-      data-section-id="{{ section.id }}"
-      data-product-id="{{ product.id }}"
-      data-product-url="{{ product.url }}"
-      on:submit="/handleSubmit"
-    >
+    {%- form 'product', product, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+      <input
+        type="hidden"
+        name="id"
+        value="{{ product.selected_or_first_available_variant.id }}"
+      >
+      
       <div
-        class="visually-hidden"
-        aria-live="assertive"
-        role="status"
-        aria-atomic="true"
-        ref="liveRegion"
-      ></div>
-      {%- form 'product', product, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-        <input
-          type="hidden"
-          name="id"
-          ref="variantId"
-          value="{{ product.selected_or_first_available_variant.id }}"
+        class="product-form-buttons spacing-style{% if block.settings.stacking %} product-form-buttons--stacked{% endif %}"
+        style="{% render 'spacing-style', settings: block.settings %}"
+      >
+        <!-- Quantity Selector - Only for non-course products -->
+        {% unless product.type == 'digital_course' or product.tags contains 'course' %}
+          <div class="quantity-selector">
+            {% render 'quantity-selector', product: product %}
+          </div>
+        {% else %}
+          <!-- Hidden quantity input for courses (always 1) -->
+          <input type="hidden" name="quantity" value="1">
+        {% endunless %}
+
+        <!-- Product Description -->
+        {% if product.description != blank %}
+          <div class="product-description-modal">
+            {{ product.description }}
+          </div>
+        {% endif %}
+
+        <!-- Add to Cart Button -->
+        <button
+          type="submit"
+          name="add"
+          class="button add-to-cart-button{% unless can_add_to_cart %} disabled{% endunless %}"
+          {% unless can_add_to_cart %}disabled{% endunless %}
         >
-        <div
-          class="product-form-buttons spacing-style{% if block.settings.stacking %} product-form-buttons--stacked{% endif %}"
-          style="{% render 'spacing-style', settings: block.settings %}"
-        >
-          {% content_for 'block', type: 'quantity', id: 'quantity' %}
-          {% content_for 'block',
-            type: 'add-to-cart',
-            id: 'add-to-cart',
-            can_add_to_cart: can_add_to_cart,
-            add_to_cart_text: add_to_cart_text
-          %}
-          <span
-            class="product-form-text__error hidden"
-            ref="addToCartTextError"
-          >
-            <span class="svg-wrapper product-form-icon--error">
-              {{- 'icon-error.svg' | inline_asset_content -}}
-            </span>
+          <span class="add-to-cart-text">
+            {% if can_add_to_cart %}
+              {% if product.type == 'digital_course' or product.tags contains 'course' %}
+                Enroll Now
+              {% else %}
+                {{ add_to_cart_text }}
+              {% endif %}
+            {% else %}
+              {{ 'products.product.sold_out' | t }}
+            {% endif %}
           </span>
-          {% content_for 'block',
-            type: 'accelerated-checkout',
-            id: 'accelerated-checkout',
-            can_add_to_cart: can_add_to_cart
-          %}
-        </div>
-      {%- endform -%}
-    </product-form-component>
+        </button>
+
+        <!-- Accelerated Checkout (Buy Now buttons) -->
+        {% if can_add_to_cart %}
+          <div class="shopify-payment-button">
+            {{ form | payment_button }}
+          </div>
+        {% endif %}
+      </div>
+    {%- endform -%}
   {%- else -%}
     <div class="product-form-buttons">
       <button

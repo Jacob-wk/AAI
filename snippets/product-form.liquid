@@ -112,6 +112,16 @@
         {% endif %}
       </div>
     </div>
+
+    <!-- Product Description -->
+    {% if product.description != blank %}
+      <div class="product-description-section">
+        <h3>Product Description</h3>
+        <div class="product-description-content">
+          {{ product.description }}
+        </div>
+      </div>
+    {% endif %}
     
     <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" 
           class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}">
