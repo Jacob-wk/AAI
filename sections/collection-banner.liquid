@@ -1,0 +1,85 @@
+{%- style -%}
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  .collection-banner {
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .collection-banner__title {
+    margin: 0 0 1rem 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  .collection-banner__description {
+    font-size: 1.125rem;
+    color: #666;
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }} page-width">
+  <div class="collection-banner">
+    {% if section.settings.show_collection_description and collection.description != blank %}
+      <h1 class="collection-banner__title">{{ collection.title }}</h1>
+      <div class="collection-banner__description">
+        {{ collection.description }}
+      </div>
+    {% elsif section.settings.title != blank %}
+      <h1 class="collection-banner__title">{{ section.settings.title }}</h1>
+      {% if section.settings.description != blank %}
+        <div class="collection-banner__description">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+    {% else %}
+      <h1 class="collection-banner__title">{{ collection.title }}</h1>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "Show collection description"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Custom title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Custom description"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

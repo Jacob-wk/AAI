@@ -1,12 +1,18 @@
 {
   "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "settings": {
+        "show_collection_description": true
+      }
+    },
     "main": {
       "type": "main-collection",
       "blocks": {
         "filters": {
           "type": "filters",
           "settings": {
-            "enable_filtering": false
+            "enable_filtering": true
           }
         },
         "product-grid": {
@@ -26,6 +32,7 @@
     }
   },
   "order": [
+    "banner",
     "main"
   ]
 }
