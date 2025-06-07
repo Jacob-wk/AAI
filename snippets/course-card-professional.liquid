@@ -9,10 +9,17 @@ COPILOT CONTEXT:
 
 <div class="course-card professional-course" data-product-id="{{ product.id }}">
   <div class="course-image">
-    {% if product.featured_image %}
+    {% if product.featured_media != blank %}
       <img 
-        src="{{ product.featured_image | image_url: width: 400 }}" 
-        alt="{{ product.title }}"
+        src="{{ product.featured_media | image_url: width: 400 }}" 
+        alt="{{ product.featured_media.alt | default: product.title | escape }}"
+        loading="lazy"
+        class="course-thumbnail"
+      >
+    {% elsif product.media.size > 0 %}
+      <img 
+        src="{{ product.media.first | image_url: width: 400 }}" 
+        alt="{{ product.media.first.alt | default: product.title | escape }}"
         loading="lazy"
         class="course-thumbnail"
       >
