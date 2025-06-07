@@ -1,27 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "banner": {
-      "type": "collection-banner",
+    "aai_collection_courses_hero_AMm3kw": {
+      "type": "aai-collection-courses-hero",
+      "name": "Collection Courses Hero",
       "settings": {
-        "show_collection_description": true
+        "title": "FEC & Adventure Park Professional Education",
+        "subtitle": "<p>Advance your career with specialized safety education courses designed for Family Entertainment Centers and adventure park professionals. Earn CEU credits and certifications recognized throughout the industry.</p>",
+        "stat_1_number": "7",
+        "stat_1_label": "Courses Available",
+        "stat_2_number": "1000+",
+        "stat_2_label": "FEC Professionals Trained",
+        "stat_3_text": "IAAPA",
+        "stat_3_label": "Certified"
       }
     },
     "main": {
       "type": "main-collection",
       "blocks": {
-        "filters": {
-          "type": "filters",
-          "settings": {
-            "enable_filtering": true
-          }
-        },
-        "product-grid": {
-          "type": "product-grid"
+        "product_grid_r8EcY4": {
+          "type": "product-grid",
+          "settings": {}
         }
       },
       "block_order": [
-        "filters",
-        "product-grid"
+        "product_grid_r8EcY4"
       ],
       "settings": {
         "columns_desktop": 4,
@@ -32,7 +43,7 @@
     }
   },
   "order": [
-    "banner",
+    "aai_collection_courses_hero_AMm3kw",
     "main"
   ]
 }
