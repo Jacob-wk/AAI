@@ -1,105 +1,94 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": {
-      "type": "main-product",
-      "settings": {
-        "gallery_layout": "stacked",
-        "gallery_size": "medium",
-        "enable_zoom": true
-      }
-    },
     "course_hero": {
       "type": "aai-universal-hero",
-      "settings": {
-        "hero_title": "Professional Safety Education",
-        "hero_subtitle": "Industry-leading courses designed by experts for amusement industry professionals",
-        "layout_style": "single-column",
-        "show_cta": true,
-        "cta_text": "View Course Catalog",
-        "cta_url": "/collections/courses"
-      },
       "blocks": {
         "stat_1": {
           "type": "statistic",
           "settings": {
-            "title": "95%",
-            "subtitle": "Pass Rate",
-            "description": "Students successfully complete certification"
+            "stat_number": "500+",
+            "stat_label": "Professionals Certified"
           }
         },
         "stat_2": {
           "type": "statistic",
           "settings": {
-            "title": "20+",
-            "subtitle": "Years Experience",
-            "description": "Industry expertise in safety education"
+            "stat_number": "500+",
+            "stat_label": "Professionals Certified"
           }
         },
         "stat_3": {
           "type": "statistic",
           "settings": {
-            "title": "5000+",
-            "subtitle": "Professionals Trained",
-            "description": "Certified safety professionals worldwide"
+            "stat_number": "500+",
+            "stat_label": "Professionals Certified"
           }
         }
       },
-      "block_order": ["stat_1", "stat_2", "stat_3"]
-    },
-    "course_content": {
-      "type": "aai-universal-content",
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3"
+      ],
       "settings": {
-        "section_title": "Course Information",
-        "layout_style": "two-column"
-      },
-      "blocks": {
-        "details_block": {
-          "type": "text_block",
-          "settings": {
-            "title": "Course Details",
-            "content": "<p>This comprehensive safety education course provides in-depth training designed by industry experts with decades of practical experience in amusement park safety and operations.</p><ul><li>Interactive online modules</li><li>Real-world case studies</li><li>Expert instructor support</li><li>Professional certification upon completion</li></ul>"
-          }
-        },
-        "objectives_block": {
-          "type": "text_block",
-          "settings": {
-            "title": "Learning Objectives",
-            "content": "<p>Upon completion of this course, participants will be able to:</p><ul><li>Implement industry best practices and safety standards</li><li>Conduct effective safety inspections and assessments</li><li>Understand compliance requirements and regulations</li><li>Apply safety protocols in real-world scenarios</li><li>Manage safety documentation and reporting</li></ul>"
-          }
-        }
-      },
-      "block_order": ["details_block", "objectives_block"]
+        "hero_title": "Professional Safety Education",
+        "hero_subtitle": "Industry-leading courses designed by experts for amusement industry professionals",
+        "hero_style": "hero-standard",
+        "layout_style": "text-center",
+        "show_image": true,
+        "hero_image": "shopify://shop_images/Staff_Training.jpg",
+        "show_features": false,
+        "show_stats": true,
+        "show_credentials": false,
+        "primary_button_text": "",
+        "primary_button_url": "",
+        "secondary_button_text": "",
+        "secondary_button_url": "",
+        "button_size": "large"
+      }
     },
-    "instructor_info": {
-      "type": "aai-universal-content",
+    "main": {
+      "type": "main-product",
       "settings": {
-        "section_title": "Expert Instruction",
-        "layout_style": "single-column"
-      },
-      "blocks": {
-        "instructor_block": {
-          "type": "text_block",
-          "settings": {
-            "title": "Taught by Industry Leaders",
-            "content": "<p>Our courses are developed and taught by recognized experts in amusement industry safety, including former IAAPA Safety Committee members, ASTM F24 Committee participants, and professionals with extensive operational experience.</p><p>All instructors hold advanced certifications and have contributed to the development of industry safety standards and best practices.</p>"
-          }
-        }
-      },
-      "block_order": ["instructor_block"]
+        "gallery_layout": "stacked",
+        "gallery_size": "medium",
+        "enable_zoom": false
+      }
     },
     "product_recommendations": {
       "type": "product-recommendations",
       "settings": {
-        "products_to_show": 4,
-        "heading": "Related Courses"
+        "product": "",
+        "recommendation_type": "related",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 4,
+        "columns": 4,
+        "mobile_columns": "2",
+        "columns_gap": 16,
+        "rows_gap": 16,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 12,
+        "color_scheme": "",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },
   "order": [
+    "course_hero",
     "main",
-    "course_hero", 
-    "course_content",
-    "instructor_info",
     "product_recommendations"
   ]
 }
