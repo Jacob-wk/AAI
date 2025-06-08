@@ -105,6 +105,10 @@
   margin-bottom: 3rem;
 }
 
+.courses-grid[data-view="grid"] {
+  grid-template-columns: repeat(4, 1fr); /* Ensure 4 columns for desktop grid view */
+}
+
 .courses-grid[data-view="list"] {
   grid-template-columns: 1fr;
 }
@@ -456,7 +460,7 @@ body.collection-switching * {
   }
   
   .courses-grid[data-view="grid"] {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* Ensure 2 columns for mobile grid view */
   }
   
   .level-stats {
