@@ -372,7 +372,14 @@
   {% endif %}
 
   {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
-    {% render 'cart-drawer' %}
+    {% render 'standard-cart-drawer' %}
+    <button
+      data-cart-trigger
+      class="header-actions__action action__cart button-unstyled"
+      aria-label="{{ 'accessibility.cart' | t }}"
+    >
+      {% render 'cart-icon-component' %}
+    </button>
   {% else %}
     <a
       href="{{ routes.cart_url }}"

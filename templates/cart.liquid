@@ -1,0 +1,198 @@
+{% comment %}
+  Standard Cart Page Template
+  Clean, accessible cart page implementation
+{% endcomment %}
+
+{{ 'standard-cart-page.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'standard-cart-page.js' | asset_url }}" type="module"></script>
+
+<div class="page-width">
+  <div class="cart-page">
+    <header class="cart-page__header">
+      <h1 class="cart-page__title">{{ 'general.cart.title' | t }}</h1>
+      {% unless cart.empty? %}
+        <p class="cart-page__item-count">
+          {{ 'general.cart.item_count' | t: count: cart.item_count }}
+        </p>
+      {% endunless %}
+    </header>
+
+    {% if cart.empty? %}
+      <div class="cart-page__empty">
+        <div class="cart-page__empty-content">
+          <h2>{{ 'general.cart.empty' | t }}</h2>
+          <p>{{ 'general.cart.empty_text' | t }}</p>
+          <a href="{{ routes.all_products_collection_url }}" class="cart-page__continue-shopping">
+            {{ 'general.continue_shopping' | t }}
+          </a>
+        </div>
+      </div>
+    {% else %}
+      <form action="{{ routes.cart_url }}" method="post" novalidate class="cart-page__form" id="cart-form">
+        <div class="cart-page__content">
+          <div class="cart-page__items">
+            <div class="cart-items-header">
+              <div class="cart-items-header__product">{{ 'general.cart.product' | t }}</div>
+              <div class="cart-items-header__quantity">{{ 'general.cart.quantity' | t }}</div>
+              <div class="cart-items-header__total">{{ 'general.cart.total' | t }}</div>
+            </div>
+
+            <div class="cart-items" id="cart-items">
+              {% for item in cart.items %}
+                <div class="cart-item" data-line="{{ forloop.index }}">
+                  <div class="cart-item__media">
+                    <a href="{{ item.product.url }}">
+                      <img 
+                        src="{{ item.image | image_url: width: 300 }}" 
+                        alt="{{ item.product.title | escape }}"
+                        class="cart-item__image"
+                        loading="lazy"
+                      >
+                    </a>
+                  </div>
+
+                  <div class="cart-item__details">
+                    <div class="cart-item__info">
+                      <h3 class="cart-item__title">
+                        <a href="{{ item.product.url }}">{{ item.product.title | escape }}</a>
+                      </h3>
+                      
+                      {% if item.variant.title != 'Default Title' %}
+                        <div class="cart-item__variant">
+                          {{ item.variant.title | escape }}
+                        </div>
+                      {% endif %}
+                      
+                      {% if item.selling_plan_allocation %}
+                        <div class="cart-item__selling-plan">
+                          {{ item.selling_plan_allocation.selling_plan.name }}
+                        </div>
+                      {% endif %}
+
+                      <div class="cart-item__price">
+                        {% if item.original_price != item.final_price %}
+                          <span class="cart-item__original-price">{{ item.original_price | money }}</span>
+                        {% endif %}
+                        <span class="cart-item__final-price">{{ item.final_price | money }}</span>
+                      </div>
+
+                      {% if item.line_level_discount_allocations.size > 0 %}
+                        <div class="cart-item__discounts">
+                          {% for discount in item.line_level_discount_allocations %}
+                            <div class="cart-item__discount">
+                              {{ discount.discount_application.title }} (-{{ discount.amount | money }})
+                            </div>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                    </div>
+
+                    <div class="cart-item__actions">
+                      <button 
+                        type="button" 
+                        class="cart-item__remove"
+                        data-action="remove"
+                        data-line="{{ forloop.index }}"
+                        aria-label="{{ 'general.cart.remove' | t }} {{ item.product.title | escape }}"
+                      >
+                        {{ 'general.cart.remove' | t }}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="cart-item__quantity">
+                    <div class="quantity-selector">
+                      <button 
+                        type="button" 
+                        class="quantity-selector__btn"
+                        data-action="decrease"
+                        data-line="{{ forloop.index }}"
+                        aria-label="{{ 'general.cart.decrease_quantity' | t }}"
+                      >
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M4 8H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                      </button>
+                      
+                      <input 
+                        type="number" 
+                        class="quantity-selector__input" 
+                        name="updates[{{ item.key }}]"
+                        value="{{ item.quantity }}" 
+                        min="0"
+                        data-line="{{ forloop.index }}"
+                        aria-label="{{ 'general.cart.quantity' | t }}"
+                      >
+                      
+                      <button 
+                        type="button" 
+                        class="quantity-selector__btn"
+                        data-action="increase"
+                        data-line="{{ forloop.index }}"
+                        aria-label="{{ 'general.cart.increase_quantity' | t }}"
+                      >
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M8 4V12M4 8H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="cart-item__total-price">
+                    {{ item.final_line_price | money }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="cart-page__summary">
+            <div class="cart-summary">
+              <h2 class="cart-summary__title">{{ 'general.cart.order_summary' | t }}</h2>
+              
+              <div class="cart-summary__line">
+                <span>{{ 'general.cart.subtotal' | t }}</span>
+                <span class="cart-summary__price" id="cart-subtotal">{{ cart.total_price | money }}</span>
+              </div>
+
+              {% if cart.cart_level_discount_applications.size > 0 %}
+                {% for discount in cart.cart_level_discount_applications %}
+                  <div class="cart-summary__line cart-summary__discount">
+                    <span>{{ discount.title }}</span>
+                    <span class="cart-summary__price">-{{ discount.total_allocated_amount | money }}</span>
+                  </div>
+                {% endfor %}
+              {% endif %}
+
+              {% if cart.total_discount > 0 %}
+                <div class="cart-summary__line cart-summary__total-discount">
+                  <span>{{ 'general.cart.total_savings' | t }}</span>
+                  <span class="cart-summary__price">-{{ cart.total_discount | money }}</span>
+                </div>
+              {% endif %}
+
+              <div class="cart-summary__line cart-summary__total">
+                <span>{{ 'general.cart.total' | t }}</span>
+                <span class="cart-summary__price">{{ cart.total_price | money }}</span>
+              </div>
+
+              <div class="cart-summary__tax-note">
+                <small>{{ 'general.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.privacy_policy.url }}</small>
+              </div>
+
+              <div class="cart-summary__actions">
+                <button type="submit" class="cart-summary__update" name="update">
+                  {{ 'general.cart.update' | t }}
+                </button>
+                
+                <button type="submit" class="cart-summary__checkout" name="add" formaction="/cart">
+                  {{ 'general.cart.checkout' | t }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    {% endif %}
+  </div>
+</div>

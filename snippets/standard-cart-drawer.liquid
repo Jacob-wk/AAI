@@ -1,0 +1,388 @@
+{% comment %}
+  Standard Shopify Cart Drawer - Clean Implementation
+  Uses standard Shopify cart handling with custom styling
+{% endcomment %}
+
+<script src="{{ 'standard-cart-drawer.js' | asset_url }}" type="module"></script>
+
+{% stylesheet %}
+/* Standard Cart Drawer Styling */
+.standard-cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  max-width: 420px;
+  background: white;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.standard-cart-drawer.open {
+  transform: translateX(0);
+}
+
+.standard-cart-drawer__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.standard-cart-drawer__overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.standard-cart-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: white;
+}
+
+.standard-cart-drawer__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.standard-cart-drawer__close {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #6b7280;
+  transition: color 0.2s ease;
+}
+
+.standard-cart-drawer__close:hover {
+  color: #1f2937;
+}
+
+.standard-cart-drawer__content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.standard-cart-drawer__empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: #6b7280;
+}
+
+.standard-cart-drawer__items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.standard-cart-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.standard-cart-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.standard-cart-item__image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f9fafb;
+}
+
+.standard-cart-item__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.standard-cart-item__title {
+  font-weight: 600;
+  color: #1f2937;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.standard-cart-item__title:hover {
+  color: #005a9f;
+}
+
+.standard-cart-item__variant {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.standard-cart-item__quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.standard-cart-item__qty-btn {
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.standard-cart-item__qty-btn:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.standard-cart-item__qty-input {
+  width: 50px;
+  height: 32px;
+  text-align: center;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: white;
+  font-size: 0.875rem;
+}
+
+.standard-cart-item__remove {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.standard-cart-item__remove:hover {
+  background: #dc2626;
+  color: white;
+}
+
+.standard-cart-item__price {
+  text-align: right;
+  font-weight: 600;
+  color: #1f2937;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.standard-cart-drawer__footer {
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 1.5rem;
+}
+
+.standard-cart-drawer__subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.standard-cart-drawer__checkout {
+  width: 100%;
+  background: #005a9f;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.standard-cart-drawer__checkout:hover {
+  background: #004080;
+  color: white;
+}
+
+.standard-cart-drawer__view-cart {
+  width: 100%;
+  background: transparent;
+  color: #005a9f;
+  border: 2px solid #005a9f;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+.standard-cart-drawer__view-cart:hover {
+  background: #005a9f;
+  color: white;
+}
+
+/* Mobile Responsive */
+@media (max-width: 750px) {
+  .standard-cart-drawer {
+    width: 100vw;
+    max-width: none;
+  }
+  
+  .standard-cart-item {
+    grid-template-columns: 60px 1fr auto;
+  }
+  
+  .standard-cart-item__image {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Loading state */
+.standard-cart-drawer.loading {
+  pointer-events: none;
+}
+
+.standard-cart-drawer.loading .standard-cart-drawer__content {
+  opacity: 0.7;
+}
+{% endstylesheet %}
+
+<div id="standard-cart-drawer-overlay" class="standard-cart-drawer__overlay"></div>
+
+<div id="standard-cart-drawer" class="standard-cart-drawer">
+  <div class="standard-cart-drawer__header">
+    <h2 class="standard-cart-drawer__title">
+      {{ 'general.cart.title' | t }}
+      (<span id="cart-item-count">{{ cart.item_count }}</span>)
+    </h2>
+    <button class="standard-cart-drawer__close" id="close-cart-drawer" aria-label="{{ 'general.common.close' | t }}">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="standard-cart-drawer__content">
+    <div id="cart-drawer-items">
+      {% if cart.empty? %}
+        <div class="standard-cart-drawer__empty">
+          <p>{{ 'general.cart.empty' | t }}</p>
+          <a href="{{ routes.all_products_collection_url }}" class="standard-cart-drawer__checkout">
+            {{ 'general.continue_shopping' | t }}
+          </a>
+        </div>
+      {% else %}
+        <div class="standard-cart-drawer__items">
+          {% for item in cart.items %}
+            <div class="standard-cart-item" data-line="{{ forloop.index }}">
+              <img 
+                src="{{ item.image | image_url: width: 160 }}" 
+                alt="{{ item.product.title | escape }}"
+                class="standard-cart-item__image"
+              >
+              
+              <div class="standard-cart-item__details">
+                <a href="{{ item.product.url }}" class="standard-cart-item__title">
+                  {{ item.product.title | escape }}
+                </a>
+                
+                {% if item.variant.title != 'Default Title' %}
+                  <div class="standard-cart-item__variant">
+                    {{ item.variant.title | escape }}
+                  </div>
+                {% endif %}
+                
+                <div class="standard-cart-item__quantity">
+                  <button class="standard-cart-item__qty-btn" data-action="decrease" data-line="{{ forloop.index }}">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M4 8H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                  
+                  <input 
+                    type="number" 
+                    class="standard-cart-item__qty-input" 
+                    value="{{ item.quantity }}" 
+                    min="0"
+                    data-line="{{ forloop.index }}"
+                  >
+                  
+                  <button class="standard-cart-item__qty-btn" data-action="increase" data-line="{{ forloop.index }}">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M8 4V12M4 8H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                  
+                  <button class="standard-cart-item__remove" data-action="remove" data-line="{{ forloop.index }}">
+                    {{ 'general.cart.remove' | t }}
+                  </button>
+                </div>
+              </div>
+              
+              <div class="standard-cart-item__price">
+                {{ item.final_line_price | money }}
+                {% if item.original_line_price != item.final_line_price %}
+                  <span style="text-decoration: line-through; color: #6b7280; font-size: 0.875rem;">
+                    {{ item.original_line_price | money }}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% unless cart.empty? %}
+    <div class="standard-cart-drawer__footer">
+      <div class="standard-cart-drawer__subtotal">
+        <span>{{ 'general.cart.subtotal' | t }}</span>
+        <span id="cart-subtotal">{{ cart.total_price | money }}</span>
+      </div>
+      
+      <a href="{{ routes.cart_url }}/checkout" class="standard-cart-drawer__checkout">
+        {{ 'general.cart.checkout' | t }}
+      </a>
+      
+      <a href="{{ routes.cart_url }}" class="standard-cart-drawer__view-cart">
+        {{ 'general.cart.view_cart' | t }}
+      </a>
+    </div>
+  {% endunless %}
+</div>

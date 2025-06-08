@@ -1,172 +1,117 @@
-{% comment %}
-  This is the cart drawer component.
-{% endcomment %}
+<cart-drawer class="cart-drawer" aria-label="{{ 'accessibility.cart' | t }}" role="dialog" aria-modal="true">
+  <div class="cart-drawer__overlay" on:click="/close"></div>
+  
+  <div class="cart-drawer__content">
+    <div class="cart-drawer__header">
+      <h2 class="cart-drawer__title">{{ 'cart.title' | t }}</h2>
+      <button 
+        class="cart-drawer__close" 
+        on:click="/close"
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        {{ 'icon-close.svg' | inline_asset_content }}
+      </button>
+    </div>
 
-<script
-  src="{{ 'cart-drawer.js' | asset_url }}"
-  type="module"
-></script>
+    <div class="cart-drawer__body">
+      {% if cart == empty %}
+        <div class="cart-drawer__empty">
+          <p>{{ 'cart.empty' | t }}</p>
+          <a href="{{ routes.all_products_collection_url }}" class="button button--primary">
+            {{ 'cart.continue_shopping' | t }}
+          </a>
+        </div>
+      {% else %}
+        <div class="cart-drawer__items">
+          {% for item in cart.items %}
+            <div class="cart-item" data-index="{{ forloop.index }}">
+              <div class="cart-item__image">
+                {% if item.image %}
+                  <img src="{{ item.image | image_url: width: 80 }}" alt="{{ item.image.alt | escape }}">
+                {% endif %}
+              </div>
+              
+              <div class="cart-item__details">
+                <h3 class="cart-item__title">{{ item.product.title }}</h3>
+                {% unless item.variant.title == 'Default Title' %}
+                  <p class="cart-item__variant">{{ item.variant.title }}</p>
+                {% endunless %}
+                
+                <div class="cart-item__quantity">
+                  <label for="quantity-{{ item.index }}" class="visually-hidden">
+                    {{ 'cart.quantity_label' | t }}
+                  </label>
+                  <input 
+                    type="number" 
+                    id="quantity-{{ item.index }}"
+                    name="updates[]" 
+                    value="{{ item.quantity }}" 
+                    min="0"
+                    data-index="{{ item.index }}"
+                    class="cart-item__quantity-input"
+                  >
+                </div>
+                
+                <div class="cart-item__price">
+                  <span class="cart-item__price-current">{{ item.final_line_price | money }}</span>
+                  {% if item.original_line_price != item.final_line_price %}
+                    <span class="cart-item__price-original">{{ item.original_line_price | money }}</span>
+                  {% endif %}
+                </div>
+              </div>
+              
+              <button 
+                class="cart-item__remove" 
+                data-index="{{ item.index }}"
+                aria-label="{{ 'cart.remove_item' | t: title: item.product.title }}"
+              >
+                {{ 'icon-remove.svg' | inline_asset_content }}
+              </button>
+            </div>
+          {% endfor %}
+        </div>
 
-<style>
-  .cart-items__wrapper,
-  .cart-drawer__summary {
-    --cart-secondary-font-family: var(--font-{{settings.cart_price_font}}--family);
-    --cart-secondary-font-style: var(--font-{{settings.cart_price_font}}--style);
-    --cart-secondary-font-weight: var(--font-{{settings.cart_price_font}}--weight);
-  }
+        <div class="cart-drawer__footer">
+          <div class="cart-drawer__subtotal">
+            <span class="cart-drawer__subtotal-label">{{ 'cart.subtotal' | t }}:</span>
+            <span class="cart-drawer__subtotal-price">{{ cart.total_price | money }}</span>
+          </div>
+          
+          {% if cart.cart_level_discount_applications.size > 0 %}
+            <div class="cart-drawer__discounts">
+              {% for discount in cart.cart_level_discount_applications %}
+                <div class="cart-drawer__discount">
+                  <span>{{ discount.title }}</span>
+                  <span>-{{ discount.total_allocated_amount | money }}</span>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+          
+          <div class="cart-drawer__actions">
+            <a href="{{ routes.cart_url }}" class="button button--secondary cart-drawer__view-cart">
+              {{ 'cart.view_cart' | t }}
+            </a>
+            <button type="submit" name="add" class="button button--primary cart-drawer__checkout" form="cart">
+              {{ 'cart.checkout' | t }}
+            </button>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
 
-  .cart-items-component {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cart-drawer__heading .cart-bubble {
-    width: fit-content;
-    border-radius: var(--style-border-radius-buttons-primary);
-    aspect-ratio: auto;
-    padding: var(--cart-padding);
-  }
-
-  .cart-drawer__heading .cart-bubble[data-maintain-ratio] {
-    aspect-ratio: 1;
-    min-width: 26px;
-  }
-
-  .cart-drawer__header {
-    background-color: var(--color-background);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: var(--cart-drawer-padding);
-    border-bottom: var(--style-border-width) solid none;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-
-    @media screen and (width >= 750px) {
-      padding: var(--cart-drawer-padding-desktop);
-    }
-  }
-
-  .cart-drawer__dialog {
-    overflow: hidden;
-  }
-
-  .cart-drawer__inner {
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .cart-drawer__content {
-    height: calc(100% - var(--header-height));
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cart-drawer__summary {
-    background-color: var(--color-background);
-    position: sticky;
-    bottom: 0;
-    z-index: 1;
-  }
-</style>
-
-<cart-drawer-component
-  class="cart-drawer"
-  {{ block.shopify_attributes }}
-  {{ cart_drawer_sizes }}
-  {% if settings.auto_open_cart_drawer %}
-    auto-open
-  {% endif %}
->
-  <button
-    class="button header-actions__action button-unstyled"
+  <button 
+    class="cart-drawer__trigger visually-hidden" 
     on:click="/open"
-    aria-label="{{ 'accessibility.open_cart_drawer' | t }}"
+    aria-label="{{ 'accessibility.cart' | t }}"
   >
     {% render 'cart-icon-component' %}
   </button>
+</cart-drawer>
 
-  <dialog
-    ref="dialog"
-    class="cart-drawer__dialog dialog-modal dialog-drawer color-{{ settings.drawer_color_scheme }}{% if cart.empty? %} cart-drawer--empty{%endif%}"
-    scroll-lock
-  >
-    <div class="cart-drawer__inner">
-      <cart-items-component
-        class="cart-items-component"
-        data-section-id="{{ section.id }}"
-      >
-        {%- if cart.empty? -%}
-          <div class="cart-drawer__header">
-            <button
-              ref="closeButton"
-              on:click="cart-drawer-component/close"
-              class="button cart-drawer__close-button button-unstyled"
-              aria-label="{{ 'actions.close_dialog' | t }}"
-            >
-              <span class="svg-wrapper">
-                {{- 'icon-close.svg' | inline_asset_content -}}
-              </span>
-            </button>
-          </div>
+<script type="module" src="{{ 'cart-drawer.js' | asset_url }}"></script>
 
-          <div
-            class="cart-drawer__content motion-reduce"
-            aria-label="{{ 'accessibility.cart' | t }}"
-          >
-            <span class="cart-drawer__heading h3 cart-drawer__heading--empty">
-              {{ 'content.your_cart_is_empty' | t }}
-            </span>
-
-            <div class="cart-drawer__items">
-              {% render 'cart-products' %}
-            </div>
-          </div>
-        {%- else -%}
-          <div
-            class="cart-drawer__header"
-            id="cart-drawer-header"
-          >
-            <span class="cart-drawer__heading h3">
-              {{ 'content.cart_title' | t }}
-              {% render 'cart-bubble' %}
-            </span>
-
-            <button
-              ref="closeButton"
-              on:click="cart-drawer-component/close"
-              class="button cart-drawer__close-button button-unstyled"
-              aria-label="{{ 'actions.close_dialog' | t }}"
-            >
-              <span class="svg-wrapper">
-                {{- 'icon-close.svg' | inline_asset_content -}}
-              </span>
-            </button>
-          </div>
-
-          <div
-            class="cart-drawer__content motion-reduce"
-            aria-label="{{ 'accessibility.cart' | t }}"
-            style="--header-height: {{ section.settings.header_height | default: 60 }}px;"
-          >
-            <scroll-hint
-              class="cart-drawer__items"
-            >
-              {% render 'cart-products' %}
-            </scroll-hint>
-
-            <div
-              class="cart-drawer__summary"
-            >
-              {% render 'cart-summary' %}
-            </div>
-          </div>
-        {%- endif -%}
-      </cart-items-component>
-    </div>
-  </dialog>
-</cart-drawer-component>
+<form action="{{ routes.cart_url }}" method="post" enctype="multipart/form-data" id="cart">
+  <!-- Hidden form for cart updates -->
+</form>
