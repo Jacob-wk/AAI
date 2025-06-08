@@ -165,45 +165,25 @@
   margin: 0;
 }
 
-/* NEW STYLES FOR PRODUCT GRID BASED ON PROVIDED HTML */
-.courses-collection-page .product-grid { /* Target the element with class="product-grid ..." */
-  display: grid;
-  gap: 1.5rem; /* Adjust gap as needed or use a theme variable */
-}
+/* REMOVING ALL ADDED/MODIFIED .product-grid STYLES FROM PREVIOUS ATTEMPTS */
+/* The CSS blocks that targeted .courses-collection-page .product-grid, 
+   .courses-collection-page .product-grid.product-grid--4-col-desktop,
+   and their media queries are removed here.
+   We will rely on collection-layout.css for the main product grid styling.
+*/
 
-.courses-collection-page .product-grid.product-grid--4-col-desktop { /* Target for column definition */
-  grid-template-columns: repeat(4, 1fr);
-}
-
-@media (max-width: 989px) { /* Tablet breakpoint (adjust if theme uses different, e.g., 990px) */
-  .courses-collection-page .product-grid.product-grid--4-col-desktop {
-    grid-template-columns: repeat(2, 1fr); /* Often 2 or 3 columns on tablet */
-  }
-}
-
-@media (max-width: 749px) { /* Mobile breakpoint (adjust if theme uses different, e.g., 750px or 768px) */
-  .courses-collection-page .product-grid.product-grid--4-col-desktop {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile as per earlier requirement */
-  }
-}
-
-@media (max-width: 480px) { /* Smaller mobile devices */
-  .courses-collection-page .product-grid.product-grid--4-col-desktop {
-    grid-template-columns: 1fr; /* 1 column */
-  }
-}
-
-/* Ensure product card images within this specific grid are constrained.
-   This might be redundant if .product-card__image is already globally styled well,
-   but added for safety. */
-.courses-collection-page .product-grid .product-card__image {
+/* Ensure product card images are well-behaved if not already globally styled.
+   This can remain as a safeguard or be removed if global styles are sufficient. */
+.courses-collection-page .product-card__image {
   display: block;
   width: 100%;
   height: auto; /* Maintain aspect ratio */
   object-fit: cover; /* Cover the area without distorting aspect ratio */
 }
 
-/* Ensure 4-column grid layout for courses */
+/* Keep .courses-grid specific styles if they are used elsewhere on the page
+   or for a different type of grid. If .courses-grid is meant to be the same
+   as .product-grid, these might also need review. */
 .courses-grid--4-col {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
