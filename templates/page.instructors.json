@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -6,7 +15,7 @@
         "stat1": {
           "type": "statistic",
           "settings": {
-            "stat_number": "25+",
+            "stat_number": "6+",
             "stat_label": "Expert Instructors"
           }
         },
@@ -38,64 +47,78 @@
         "show_image": false,
         "show_features": false,
         "show_stats": true,
-        "color_scheme": "color-scheme-2",
+        "show_credentials": false,
         "primary_button_text": "Browse Courses",
         "primary_button_url": "/collections/courses",
         "secondary_button_text": "Contact Faculty",
-        "secondary_button_url": "/pages/contact"
+        "secondary_button_url": "/pages/contact",
+        "button_size": "large"
       }
     },
     "lead_instructors": {
       "type": "aai-instructors-grid",
-      "settings": {
-        "section_title": "Lead Faculty",
-        "section_subtitle": "Our core instructional team brings unparalleled expertise to every course.",
-        "color_scheme": "color-scheme-1",
-        "background_style": "",
-        "section_padding": "large"
-      },
       "blocks": {
         "instructor_sarah": {
           "type": "instructor_card",
           "settings": {
+            "image_placeholder_icon": "👨‍🏫",
             "name": "Dr. Sarah Mitchell, P.E.",
             "title": "Lead Safety Engineering Instructor",
             "department": "Engineering & Safety",
             "bio": "<p>With over 20 years in amusement ride engineering and safety analysis, Dr. Mitchell leads our mechanical systems and safety analysis courses. She holds Professional Engineer licenses in three states and has consulted on major theme park projects worldwide.</p>",
             "credentials": "Ph.D. Mechanical Engineering, P.E. Licensed, ASTM F24 Committee Member",
+            "stat_1_number": "",
+            "stat_1_label": "",
+            "stat_2_number": "",
+            "stat_2_label": "",
             "featured": true
           }
         },
         "instructor_james": {
           "type": "instructor_card",
           "settings": {
+            "image_placeholder_icon": "👨‍🏫",
             "name": "James Rodriguez",
             "title": "Operations & Maintenance Director",
             "department": "Operations",
             "bio": "<p>Former Operations Director at three major theme parks, James brings real-world operational expertise to our management and maintenance courses. His hands-on approach helps students understand the practical challenges of daily operations.</p>",
             "credentials": "25+ Years Operations Experience, IAAPA Certified, Former Disney Operations",
+            "stat_1_number": "",
+            "stat_1_label": "",
+            "stat_2_number": "",
+            "stat_2_label": "",
             "featured": true
           }
         },
         "instructor_maria": {
           "type": "instructor_card",
           "settings": {
+            "image_placeholder_icon": "👨‍🏫",
             "name": "Maria Chen, J.D.",
             "title": "Regulatory Compliance Specialist",
             "department": "Legal & Compliance",
             "bio": "<p>An attorney specializing in amusement industry law and regulations, Maria ensures our courses cover the latest legal requirements and compliance standards. She regularly represents operators in regulatory matters.</p>",
             "credentials": "J.D. Law Degree, Amusement Industry Legal Specialist, 15+ Years Regulatory Experience",
+            "stat_1_number": "",
+            "stat_1_label": "",
+            "stat_2_number": "",
+            "stat_2_label": "",
             "featured": false
           }
         },
         "instructor_david": {
           "type": "instructor_card",
           "settings": {
+            "image_placeholder_icon": "👨‍🏫",
             "name": "David Thompson",
             "title": "Inspection & Quality Assurance Expert",
             "department": "Quality & Inspection",
             "bio": "<p>A certified inspector with experience at over 200 facilities, David teaches our inspection methodology and quality assurance courses. His systematic approach helps students develop thorough inspection skills.</p>",
             "credentials": "NAARSO Certified Inspector, 18+ Years Inspection Experience, 500+ Facilities Inspected",
+            "stat_1_number": "",
+            "stat_1_label": "",
+            "stat_2_number": "",
+            "stat_2_label": "",
             "featured": false
           }
         }
@@ -105,23 +128,49 @@
         "instructor_james",
         "instructor_maria",
         "instructor_david"
-      ]
-    },
-    "guest_instructors": {
-      "type": "aai-universal-content",
+      ],
       "settings": {
-        "show_main_content": true,
-        "content_title": "Industry Guest Instructors",
-        "content_body": "<p>AAI regularly features guest instructors from major theme parks, manufacturers, regulatory agencies, and consulting firms. These industry leaders share current trends, real-world case studies, and emerging technologies that keep our curriculum at the forefront of industry developments.</p><h4>Recent Guest Instructors Include:</h4><ul><li><strong>Walt Disney World</strong> - Senior Operations Managers</li><li><strong>Universal Studios</strong> - Safety Directors</li><li><strong>Six Flags</strong> - Maintenance Supervisors</li><li><strong>Cedar Fair</strong> - Training Coordinators</li><li><strong>Intamin AG</strong> - Design Engineers</li><li><strong>B&M Coasters</strong> - Project Managers</li><li><strong>State Regulatory Agencies</strong> - Chief Inspectors</li><li><strong>Insurance Companies</strong> - Risk Assessment Specialists</li></ul>",
-        "background_style": "section-alt-3"
+        "section_title": "Lead Faculty",
+        "section_subtitle": "Our core instructional team brings unparalleled expertise to every course.",
+        "color_scheme": "color-scheme-1",
+        "section_padding": "large"
       }
     },
     "specialized_faculty": {
       "type": "aai-universal-content",
       "settings": {
+        "section_title": "",
+        "section_subtitle": "",
+        "layout_style": "text-left-image-right",
+        "blocks_per_row": "1",
+        "background_style": "",
         "show_main_content": true,
         "content_title": "Specialized Faculty Expertise",
-        "content_body": "<p>Our specialized faculty members bring deep expertise in specific areas of amusement industry operations. Each brings decades of hands-on experience and maintains active industry involvement.</p><h4>Specialized Areas Include:</h4><ul><li><strong>Ride Mechanics & Engineering</strong> - Advanced troubleshooting and maintenance</li><li><strong>Water Ride Operations</strong> - Specialized water safety protocols</li><li><strong>Emergency Response</strong> - Crisis management and evacuation procedures</li><li><strong>Guest Relations</strong> - Advanced customer service and conflict resolution</li><li><strong>Maintenance Management</strong> - Preventive and predictive maintenance strategies</li><li><strong>Training Development</strong> - Adult learning and curriculum design</li></ul>"
+        "content_body": "<p>Our specialized faculty members bring deep expertise in specific areas of amusement industry operations. Each brings decades of hands-on experience and maintains active industry involvement.</p><h4>Specialized Areas Include:</h4><ul><li><strong>Ride Mechanics & Engineering</strong> - Advanced troubleshooting and maintenance</li><li><strong>Water Ride Operations</strong> - Specialized water safety protocols</li><li><strong>Emergency Response</strong> - Crisis management and evacuation procedures</li><li><strong>Guest Relations</strong> - Advanced customer service and conflict resolution</li><li><strong>Maintenance Management</strong> - Preventive and predictive maintenance strategies</li><li><strong>Training Development</strong> - Adult learning and curriculum design</li></ul>",
+        "show_image": true,
+        "content_image": "shopify://shop_images/Staff_Training.jpg",
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
+    },
+    "guest_instructors": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "",
+        "section_subtitle": "",
+        "layout_style": "text-only",
+        "blocks_per_row": "1",
+        "background_style": "section-alt-3",
+        "show_main_content": true,
+        "content_title": "Industry Guest Instructors",
+        "content_body": "<p>AAI regularly features guest instructors from major theme parks, manufacturers, regulatory agencies, and consulting firms. These industry leaders share current trends, real-world case studies, and emerging technologies that keep our curriculum at the forefront of industry developments.</p><h4>Recent Guest Instructors Include:</h4><ul><li><strong>Walt Disney World</strong> - Senior Operations Managers</li><li><strong>Universal Studios</strong> - Safety Directors</li><li><strong>Six Flags</strong> - Maintenance Supervisors</li><li><strong>Cedar Fair</strong> - Training Coordinators</li><li><strong>Intamin AG</strong> - Design Engineers</li><li><strong>B&M Coasters</strong> - Project Managers</li><li><strong>State Regulatory Agencies</strong> - Chief Inspectors</li><li><strong>Insurance Companies</strong> - Risk Assessment Specialists</li></ul>",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
       }
     },
     "faculty_standards": {
@@ -130,22 +179,25 @@
         "academic": {
           "type": "feature_item",
           "settings": {
+            "icon": "⭐",
             "title": "Academic Excellence",
-            "description_html": "<ul><li>Advanced degrees in relevant fields</li><li>Professional certifications maintained</li><li>Continuing education requirements</li><li>Peer review and evaluation</li></ul>"
+            "description_html": "<ul>\n<li>Advanced degrees in relevant fields</li>\n<li>Professional certifications maintained</li>\n<li>Continuing education requirements</li>\n<li>Peer review and evaluation</li>\n</ul>"
           }
         },
         "industry": {
           "type": "feature_item",
           "settings": {
+            "icon": "⭐",
             "title": "Industry Experience",
-            "description_html": "<ul><li>Minimum 10 years field experience</li><li>Active industry involvement</li><li>Current with technology trends</li><li>Proven track record of excellence</li></ul>"
+            "description_html": "<ul>\n<li>Minimum 10 years field experience</li>\n<li>Active industry involvement</li>\n<li>Current with technology trends</li>\n<li>Proven track record of excellence</li>\n</ul>"
           }
         },
         "teaching": {
           "type": "feature_item",
           "settings": {
+            "icon": "⭐",
             "title": "Teaching Excellence",
-            "description_html": "<ul><li>Adult learning methodology training</li><li>Regular student feedback evaluation</li><li>Curriculum development expertise</li><li>Technology integration skills</li></ul>"
+            "description_html": "<ul>\n<li>Adult learning methodology training</li>\n<li>Regular student feedback evaluation</li>\n<li>Curriculum development expertise</li>\n<li>Technology integration skills</li>\n</ul>"
           }
         }
       },
@@ -156,7 +208,9 @@
       ],
       "settings": {
         "section_title": "Faculty Standards",
-        "section_subtitle": "Every AAI instructor meets rigorous qualification standards ensuring the highest quality professional education."
+        "section_subtitle": "Every AAI instructor meets rigorous qualification standards ensuring the highest quality professional education.",
+        "color_scheme": "color-scheme-background-2",
+        "section_padding": "large"
       }
     },
     "instructors_cta": {
