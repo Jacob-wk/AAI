@@ -1,4 +1,12 @@
-
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -42,10 +50,12 @@
         "show_image": false,
         "show_features": true,
         "show_stats": false,
+        "show_credentials": false,
         "primary_button_text": "Send Message",
         "primary_button_url": "#contact-form-section",
         "secondary_button_text": "Call Us Now",
-        "secondary_button_url": "tel:1-800-SAFETY-1"
+        "secondary_button_url": "tel:1-800-SAFETY-1",
+        "button_size": "large"
       }
     },
     "contact_info": {
@@ -83,7 +93,15 @@
         "section_subtitle": "Reach out directly or find our office details below.",
         "layout_style": "blocks-grid",
         "blocks_per_row": "3",
-        "background_style": "section-alt-1"
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
       }
     },
     "contact_form_section": {
@@ -92,7 +110,7 @@
         "contact_form_block": {
           "type": "contact_form",
           "settings": {
-            "color_scheme": "scheme-1"
+            "color_scheme": "scheme-2"
           }
         }
       },
@@ -103,8 +121,16 @@
         "section_title": "How Can We Help?",
         "section_subtitle": "Choose the category that best describes your inquiry for faster, more targeted assistance from our specialized teams. Fill out the form below and we'll get back to you within 24 hours.",
         "layout_style": "text-center",
+        "blocks_per_row": "1",
         "background_style": "section-alt-2",
-        "show_main_content": true
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
       }
     },
     "detailed_inquiries": {
@@ -142,7 +168,15 @@
         "section_subtitle": "Connect with our specific departments for partnership, media, or legal queries.",
         "layout_style": "blocks-grid",
         "blocks_per_row": "3",
-        "background_style": ""
+        "background_style": "",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
       }
     },
     "additional_support": {
@@ -180,7 +214,15 @@
         "section_subtitle": "Find answers and get support quickly through our other channels.",
         "layout_style": "blocks-grid",
         "blocks_per_row": "3",
-        "background_style": "section-alt-1"
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
       }
     }
   },
