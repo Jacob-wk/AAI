@@ -42,7 +42,7 @@
         "product_grid_r8EcY4"
       ],
       "settings": {
-        "columns_desktop": 4,
+        "columns_desktop": 3,
         "columns_mobile": 2,
         "image_ratio": "adapt",
         "show_vendor": false

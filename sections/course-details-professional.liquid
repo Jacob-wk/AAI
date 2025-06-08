@@ -1,0 +1,264 @@
+{% comment %}
+COPILOT CONTEXT:
+- Professional course details section for AAI LMS platform
+- Must maintain professional authority aesthetic
+- Industry credibility focus (detailed course information)
+- Brand colors: Authority Navy (#1e3a5f), Safety Orange (#ff6b35), Electric Blue (#3498db)
+- Professional development focus with CEU credits and prerequisites
+{% endcomment %}
+
+{{ 'section-course-details-professional.css' | asset_url | stylesheet_tag }}
+
+<section class="course-details-professional">
+  <div class="container">
+    <div class="course-details-grid">
+      <!-- Course Overview -->
+      <div class="course-overview">
+        <div class="course-meta-header">
+          {% assign course_level = product.metafields.course.level.value | default: 'Intermediate' %}
+          <span class="course-level-badge course-level-{{ course_level | downcase }}">
+            {{ course_level }}
+          </span>
+          
+          {% assign ceu_credits = product.metafields.course.ceu_credits.value %}
+          {% if ceu_credits %}
+            <span class="ceu-badge">
+              {{ ceu_credits }} CEU Credits
+            </span>
+          {% endif %}
+        </div>
+
+        <h1 class="course-title">{{ product.title }}</h1>
+        
+        {% if product.description != blank %}
+          <div class="course-description">
+            {{ product.description }}
+          </div>
+        {% endif %}
+
+        <!-- Course Highlights -->
+        <div class="course-highlights">
+          <h3>What You'll Learn</h3>
+          <div class="highlights-grid">
+            {% assign learning_objectives = product.metafields.course.learning_objectives.value %}
+            {% if learning_objectives %}
+              {% assign objectives = learning_objectives | split: '|' %}
+              {% for objective in objectives limit: 6 %}
+                <div class="highlight-item">
+                  <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                  </svg>
+                  <span>{{ objective | strip }}</span>
+                </div>
+              {% endfor %}
+            {% else %}
+              <!-- Default learning objectives -->
+              <div class="highlight-item">
+                <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                </svg>
+                <span>Industry best practices and safety protocols</span>
+              </div>
+              <div class="highlight-item">
+                <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                </svg>
+                <span>Professional certification preparation</span>
+              </div>
+              <div class="highlight-item">
+                <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                </svg>
+                <span>Real-world application and case studies</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Information Sidebar -->
+      <div class="course-info-sidebar">
+        <div class="course-info-card">
+          <div class="price-section">
+            <div class="course-price">
+              {% if product.compare_at_price > product.price %}
+                <span class="price-compare">${{ product.compare_at_price | money_without_currency }}</span>
+              {% endif %}
+              <span class="price-current">${{ product.price | money_without_currency }}</span>
+            </div>
+            
+            {% if product.available %}
+              <form action="/cart/add" method="post" enctype="multipart/form-data" class="course-enrollment-form">
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                <button type="submit" class="btn-enroll-now" name="add">
+                  <svg class="enroll-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                  </svg>
+                  Enroll Now
+                </button>
+              </form>
+            {% else %}
+              <button class="btn-waitlist" disabled>
+                Join Waitlist
+              </button>
+            {% endif %}
+          </div>
+
+          <!-- Course Details -->
+          <div class="course-details-list">
+            <h4>Course Details</h4>
+            
+            {% assign duration = product.metafields.course.duration.value %}
+            {% if duration %}
+              <div class="detail-item">
+                <svg class="detail-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15,1H9V3H15M11,14H13V8H11M19.03,7.39L20.45,5.97C20,5.46 19.55,5 19.04,4.56L17.62,6C16.07,4.74 14.12,4 12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22C17,22 21,17.97 21,13C21,10.88 20.26,8.93 19.03,7.39Z"/>
+                </svg>
+                <div>
+                  <span class="detail-label">Duration</span>
+                  <span class="detail-value">{{ duration }}</span>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if ceu_credits %}
+              <div class="detail-item">
+                <svg class="detail-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M5,3C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H5M5,5H19V19H5V5Z"/>
+                </svg>
+                <div>
+                  <span class="detail-label">CEU Credits</span>
+                  <span class="detail-value">{{ ceu_credits }}</span>
+                </div>
+              </div>
+            {% endif %}
+
+            {% assign delivery_method = product.metafields.course.delivery_method.value | default: 'Online' %}
+            <div class="detail-item">
+              <svg class="detail-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17,3A2,2 0 0,1 19,5V15A2,2 0 0,1 17,17H13V19A1,1 0 0,0 14,20H20V22H14A3,3 0 0,1 11,19V17H7C5.89,17 5,16.1 5,15V5A2,2 0 0,1 7,3H17Z"/>
+              </svg>
+              <div>
+                <span class="detail-label">Format</span>
+                <span class="detail-value">{{ delivery_method }}</span>
+              </div>
+            </div>
+
+            {% assign prerequisites = product.metafields.course.prerequisites.value %}
+            {% if prerequisites %}
+              <div class="detail-item">
+                <svg class="detail-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                </svg>
+                <div>
+                  <span class="detail-label">Prerequisites</span>
+                  <span class="detail-value">{{ prerequisites }}</span>
+                </div>
+              </div>
+            {% endif %}
+
+            {% assign language = product.metafields.course.language.value | default: 'English' %}
+            <div class="detail-item">
+              <svg class="detail-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.87,15.07L15.69,14.93L12.87,15.07L15.18,18.28L12.24,20L9.84,17.27L7.91,18.31L7.91,18.31L12.87,15.07Z"/>
+              </svg>
+              <div>
+                <span class="detail-label">Language</span>
+                <span class="detail-value">{{ language }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Industry Credentials -->
+          <div class="credentials-section">
+            <h4>Industry Recognition</h4>
+            <div class="credential-badges">
+              <div class="credential-badge">
+                <span class="badge-text">IAAPA</span>
+                <span class="badge-label">Accredited</span>
+              </div>
+              <div class="credential-badge">
+                <span class="badge-text">ASTM F24</span>
+                <span class="badge-label">Aligned</span>
+              </div>
+              {% assign accreditation = product.metafields.course.accreditation.value %}
+              {% if accreditation %}
+                <div class="credential-badge">
+                  <span class="badge-text">{{ accreditation }}</span>
+                  <span class="badge-label">Certified</span>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- Share Course -->
+          <div class="share-section">
+            <h4>Share This Course</h4>
+            <div class="share-buttons">
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ shop.url }}{{ product.url }}" target="_blank" class="share-btn linkedin">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.5,2H3.5C2.67,2 2,2.67 2,3.5V20.5C2,21.33 2.67,22 3.5,22H20.5C21.33,22 22,21.33 22,20.5V3.5C22,2.67 21.33,2 20.5,2Z"/>
+                </svg>
+                LinkedIn
+              </a>
+              <a href="https://twitter.com/intent/tweet?url={{ shop.url }}{{ product.url }}&text={{ product.title | url_encode }}" target="_blank" class="share-btn twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"/>
+                </svg>
+                Twitter
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Course Details Professional",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Course Details Professional",
+      "settings": {
+        "color_scheme": "background-1"
+      },
+      "blocks": [] // This section does not use blocks directly in its schema, content is from product object
+    }
+  ]
+}
+{% endschema %}

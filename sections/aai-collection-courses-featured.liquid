@@ -1,0 +1,121 @@
+{% comment %}
+  Featured Courses section for the Courses Collection page.
+  Displays a selection of featured courses with video preview option.
+{% endcomment %}
+
+{% assign featured_collection_handle = section.settings.featured_collection | default: collection.handle %}
+{% assign limit = section.settings.max_courses %}
+
+{% if featured_collection_handle != blank %}
+  {% assign featured_collection = collections[featured_collection_handle] %}
+  {% assign featured_products = featured_collection.products | default: collection.products %}
+{% else %}
+  {% assign featured_products = collection.products %}
+{% endif %}
+
+<div class="featured-courses">
+  <div class="aai-container">
+    <h2>{{ section.settings.title }}</h2>
+    <div class="featured-grid">
+      {% for product in featured_products limit: limit %}
+        {% if product.metafields.course.featured == 'true' or section.settings.featured_collection != blank %}
+          <div class="featured-course-card">
+            <div class="featured-image">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 400, height: 250, crop: 'center' }}" 
+                     alt="{{ product.featured_image.alt | escape }}"
+                     loading="lazy"
+                     width="400"
+                     height="250">
+              {% else %}
+                <div class="image-placeholder">
+                  {% render 'icon-image-placeholder' %}
+                </div>
+              {% endif %}
+              
+              {% if product.metafields.course.preview_video_url != blank %}
+                <div class="preview-overlay">
+                  <button class="play-btn" 
+                          data-video-url="{{ product.metafields.course.preview_video_url }}" 
+                          data-video-title="{{ product.title | escape }}"
+                          aria-label="Play preview for {{ product.title | escape }}">
+                    {% render 'icon-play' %}
+                  </button>
+                </div>
+              {% endif %}
+            </div>
+            
+            <div class="featured-content">
+              <div class="featured-badges">
+                {% if product.metafields.course.ceu_credits != blank %}
+                  <span class="badge badge--ceu">{{ product.metafields.course.ceu_credits }} CEU</span>
+                {% endif %}
+                <span class="badge badge--featured">Featured</span>
+              </div>
+              
+              <h3 class="featured-title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+              {% if product.description != blank %}
+                <p class="featured-description">{{ product.description | strip_html | truncate: 120 }}</p>
+              {% endif %}
+              
+              <div class="featured-meta">
+                {% if product.metafields.course.duration != blank %}
+                  <span class="meta-item">{% render 'icon-clock' %} {{ product.metafields.course.duration }}</span>
+                {% endif %}
+                {% if product.metafields.course.level != blank %}
+                  <span class="meta-item">{% render 'icon-level' %} {{ product.metafields.course.level | capitalize }}</span>
+                {% endif %}
+              </div>
+              
+              <div class="featured-footer">
+                <div class="featured-price">{{ product.price | money }}</div>
+                <a href="{{ product.url }}" class="aai-btn aai-btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% else %}
+        <p>{{ 'collections.general.no_matches' | t }}</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Featured Courses",
+  "tag": "section",
+  "class": "collection-courses-featured",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Featured Courses"
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Featured Collection (Optional)",
+      "info": "Select a collection to pull featured courses from. If empty, uses current collection and looks for 'course.featured' metafield."
+    },
+    {
+      "type": "range",
+      "id": "max_courses",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Maximum Courses to Show",
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Featured Courses",
+      "settings": {
+        "title": "Featured Courses"
+      }
+    }
+  ]
+}
+{% endschema %}
