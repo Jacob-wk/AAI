@@ -3,11 +3,7 @@
   Renders collection pages with product grid
 {% endcomment %}
 
-{% stylesheet %}
-  {{ 'collection-layout.css' | asset_url | stylesheet_tag }}
-{% endstylesheet %}
-
-{{ 'collection-clean.css' | asset_url | stylesheet_tag }}
+{{ 'collection-layout.css' | asset_url | stylesheet_tag }}
 
 <div class="collection section-{{ section.id }}">
   <div class="page-width">
