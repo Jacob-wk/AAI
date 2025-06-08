@@ -1,0 +1,173 @@
+{% comment %}
+  Collection-Based Course Organization
+  Organizes courses by their collection memberships instead of filtering
+{% endcomment %}
+
+{{ 'collection-sorting.css' | asset_url | stylesheet_tag }}
+
+<div class="collection-sorting section-{{ section.id }}">
+  <div class="page-width">
+    
+    {% comment %} Collection Categories Navigation {% endcomment %}
+    <div class="collection-categories">
+      <h2 class="collection-categories__title">{{ section.settings.title | default: 'Browse by Category' }}</h2>
+      
+      <nav class="collection-nav" aria-label="Course categories">
+        <button class="collection-nav__btn collection-nav__btn--active" data-collection="all">
+          All Courses
+          <span class="course-count">({{ collection.products_count }})</span>
+        </button>
+        
+        {% comment %} Dynamically find collections that share products with the current courses collection {% endcomment %}
+        {% liquid
+          assign related_collections = blank | split: ','
+          assign collection_data = blank | split: ','
+          
+          for product in collection.products limit: 50
+            for product_collection in product.collections
+              unless product_collection.handle == collection.handle or product_collection.handle == 'frontpage'
+                unless related_collections contains product_collection.handle
+                  assign related_collections = related_collections | append: product_collection.handle | split: ','
+                  assign collection_info = product_collection.handle | append: '|' | append: product_collection.title | append: '|' | append: product_collection.products_count
+                  assign collection_data = collection_data | append: collection_info | split: ','
+                endif
+              endunless
+            endfor
+          endfor
+        %}
+        
+        {% for collection_info in collection_data limit: section.settings.max_categories %}
+          {% assign info_parts = collection_info | split: '|' %}
+          {% assign coll_handle = info_parts[0] %}
+          {% assign coll_title = info_parts[1] %}
+          {% assign coll_count = info_parts[2] %}
+          
+          <button class="collection-nav__btn" data-collection="{{ coll_handle }}">
+            {{ coll_title }}
+            <span class="course-count">({{ coll_count }})</span>
+          </button>
+        {% endfor %}
+      </nav>
+    </div>
+
+    {% comment %} Course Grid organized by collections {% endcomment %}
+    <div class="courses-by-collection">
+      
+      {% comment %} All Courses View (Default) {% endcomment %}
+      <div class="collection-group collection-group--active" data-collection-group="all">
+        <div class="courses-grid courses-grid--4-col">
+          {% for product in collection.products %}
+            {% render 'course-card', product: product %}
+          {% endfor %}
+        </div>
+      </div>
+      
+      {% comment %} Individual Collection Views {% endcomment %}
+      {% for collection_info in collection_data limit: section.settings.max_categories %}
+        {% assign info_parts = collection_info | split: '|' %}
+        {% assign coll_handle = info_parts[0] %}
+        {% assign target_collection = collections[coll_handle] %}
+        
+        {% if target_collection and target_collection.products_count > 0 %}
+          <div class="collection-group" data-collection-group="{{ coll_handle }}">
+            <div class="collection-group__header">
+              <h3 class="collection-group__title">{{ target_collection.title }}</h3>
+              {% if target_collection.description != blank %}
+                <p class="collection-group__description">{{ target_collection.description | truncate: 200 }}</p>
+              {% endif %}
+            </div>
+            
+            <div class="courses-grid courses-grid--4-col">
+              {% comment %} Show only products that are both in the main courses collection AND this specific collection {% endcomment %}
+              {% for product in target_collection.products %}
+                {% if collection.products contains product %}
+                  {% render 'course-card', product: product %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    
+    {% comment %} View More Collections Link {% endcomment %}
+    {% if section.settings.view_all_url != blank %}
+      <div class="collection-sorting__footer">
+        <a href="{{ section.settings.view_all_url }}" class="btn btn--secondary">
+          {{ section.settings.view_all_text | default: 'View All Collections' }}
+        </a>
+      </div>
+    {% endif %}
+    
+  </div>
+</div>
+
+<script src="{{ 'collection-sorting.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Collection-Based Course Sorting",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Browse by Category"
+    },
+    {
+      "type": "range",
+      "id": "max_categories",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 6,
+      "label": "Maximum categories to display"
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "View all collections URL",
+      "info": "Link to a page showing all course collections"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View all collections text",
+      "default": "View All Collections"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Courses per row (desktop)",
+      "options": [
+        {"value": "2", "label": "2"},
+        {"value": "3", "label": "3"},
+        {"value": "4", "label": "4"},
+        {"value": "5", "label": "5"}
+      ],
+      "default": "4"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Courses per row (mobile)",
+      "options": [
+        {"value": "1", "label": "1"},
+        {"value": "2", "label": "2"}
+      ],
+      "default": "2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection-Based Course Sorting"
+    }
+  ]
+}
+{% endschema %}

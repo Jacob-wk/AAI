@@ -406,6 +406,62 @@ class CourseCollectionManager {
   }
 }
 
+/**
+ * Collection switching functionality
+ * Handles navigation to different course collections
+ */
+class CollectionSwitcher {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.bindCollectionSwitchEvents();
+  }
+
+  bindCollectionSwitchEvents() {
+    // Handle collection switch inputs
+    document.addEventListener('change', (event) => {
+      /** @type {HTMLElement} */
+      const target = /** @type {HTMLElement} */ (event.target);
+      if (target && target.classList && target.classList.contains('collection-switch-input')) {
+        const collectionHandle = target.dataset?.collectionHandle;
+        if (collectionHandle) {
+          this.switchToCollection(collectionHandle);
+        }
+      }
+    });
+
+    // Handle select dropdown collection switches
+    document.addEventListener('change', (event) => {
+      /** @type {HTMLSelectElement} */
+      const target = /** @type {HTMLSelectElement} */ (event.target);
+      if (target && target.classList && target.classList.contains('sorting-filter__select')) {
+        const value = target.value;
+        if (value && value.startsWith('collection:')) {
+          const collectionHandle = value.replace('collection:', '');
+          this.switchToCollection(collectionHandle);
+        }
+      }
+    });
+  }
+
+  /**
+   * Switch to a different collection
+   * @param {string} collectionHandle - The handle of the collection to switch to
+   */
+  switchToCollection(collectionHandle) {
+    // Construct the new collection URL
+    const newUrl = `/collections/${collectionHandle}`;
+    
+    // Add loading state
+    document.body.classList.add('collection-switching');
+    
+    // Navigate to the new collection
+    window.location.href = newUrl;
+  }
+}
+
 // Course Preview Modal functionality
 class CoursePreviewModal {
   constructor() {
