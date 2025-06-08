@@ -4,7 +4,7 @@
  */
 
 /* Cart Drawer Base */
-.cart-drawer {
+.cart-drawer__dialog {
   padding: 0;
   margin: 0;
   border: none;
@@ -21,11 +21,11 @@
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.cart-drawer[open] {
+.cart-drawer__dialog[open] {
   transform: translateX(0);
 }
 
-.cart-drawer::backdrop {
+.cart-drawer__dialog::backdrop {
   background: rgba(0, 0, 0, 0.5);
 }
 

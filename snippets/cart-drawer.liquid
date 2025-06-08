@@ -1,5 +1,6 @@
-<dialog class="cart-drawer" aria-label="{{ 'accessibility.cart' | t }}" id="cart-drawer">
-  <div class="cart-drawer__overlay" onclick="this.closest('dialog').close()"></div>
+<cart-drawer class="cart-drawer" aria-label="{{ 'accessibility.cart' | t }}">
+  <dialog class="cart-drawer__dialog" aria-label="{{ 'accessibility.cart' | t }}" id="cart-drawer">
+    <div class="cart-drawer__overlay" onclick="this.closest('dialog').close()"></div>
   
   <div class="cart-drawer__content">
     <div class="cart-drawer__header">
@@ -99,8 +100,8 @@
         </div>
       {% endif %}
     </div>
-  </div>
-</dialog>
+  </dialog>
+</cart-drawer>
 
 <script type="module" src="{{ 'cart-drawer.js' | asset_url }}"></script>
 

@@ -30,43 +30,47 @@ class CartDrawer {
 
   bindEvents() {
     // Cart trigger button
-    this.cartTrigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      this.open();
-    });
+    if (this.cartTrigger) {
+      this.cartTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.open();
+      });
+    }
 
     // Close when clicking backdrop
-    this.dialog.addEventListener('click', (e) => {
-      if (e.target === this.dialog) {
-        this.close();
-      }
-    });
+    if (this.dialog) {
+      this.dialog.addEventListener('click', (e) => {
+        if (e.target === this.dialog) {
+          this.close();
+        }
+      });
 
-    // Close on escape key
-    this.dialog.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        this.close();
-      }
-    });
+      // Close on escape key
+      this.dialog.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          this.close();
+        }
+      });
 
-    // Handle close buttons
-    const closeButtons = this.dialog.querySelectorAll('.cart-drawer__close');
-    closeButtons.forEach(button => {
-      button.addEventListener('click', () => this.close());
-    });
+      // Handle close buttons
+      const closeButtons = this.dialog.querySelectorAll('.cart-drawer__close');
+      closeButtons.forEach(button => {
+        button.addEventListener('click', () => this.close());
+      });
+    }
   }
 
   open() {
-    if (this.dialog && !this.dialog.open) {
-      this.dialog.showModal();
+    if (this.dialog && !(/** @type {HTMLDialogElement} */(this.dialog)).open) {
+      (/** @type {HTMLDialogElement} */(this.dialog)).showModal();
       document.body.style.overflow = 'hidden';
       this.dialog.setAttribute('aria-hidden', 'false');
     }
   }
 
   close() {
-    if (this.dialog && this.dialog.open) {
-      this.dialog.close();
+    if (this.dialog && (/** @type {HTMLDialogElement} */(this.dialog)).open) {
+      (/** @type {HTMLDialogElement} */(this.dialog)).close();
       document.body.style.overflow = '';
       this.dialog.setAttribute('aria-hidden', 'true');
     }
@@ -77,4 +81,5 @@ class CartDrawer {
 const cartDrawer = new CartDrawer();
 
 // Also expose globally for other scripts
+// @ts-ignore
 window.CartDrawer = cartDrawer;
