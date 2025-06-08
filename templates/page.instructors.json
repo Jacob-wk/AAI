@@ -15,7 +15,7 @@
         "stat1": {
           "type": "statistic",
           "settings": {
-            "stat_number": "25+",
+            "stat_number": "6+",
             "stat_label": "Expert Instructors"
           }
         },
