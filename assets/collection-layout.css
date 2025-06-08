@@ -1,4 +1,4 @@
-/* Collection Page Styles */
+* Collection Page Styles */
 .collection {
   padding: 2rem 0;
 }
@@ -28,7 +28,7 @@
 }
 
 .product-grid--4-col-desktop {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr) !important; /* Added !important for diagnostics */
 }
 
 .product-grid--5-col-desktop {
@@ -37,7 +37,7 @@
 
 @media (max-width: 768px) {
   .product-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important; /* Added !important for diagnostics */
     gap: 1rem;
   }
   
@@ -48,7 +48,7 @@
 
 @media (max-width: 480px) {
   .product-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important; /* Added !important for diagnostics */
   }
 }
 
