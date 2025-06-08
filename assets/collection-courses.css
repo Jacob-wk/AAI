@@ -105,10 +105,6 @@
   margin-bottom: 3rem;
 }
 
-.courses-grid[data-view="grid"] {
-  grid-template-columns: repeat(4, 1fr); /* Ensure 4 columns for desktop grid view */
-}
-
 .courses-grid[data-view="list"] {
   grid-template-columns: 1fr;
 }
@@ -146,10 +142,6 @@
   transition: transform 0.3s ease;
 }
 
-.product-card:hover .product-card__image {
-  transform: scale(1.05);
-}
-
 .product-card__content {
   padding: 1.5rem;
   flex-grow: 1;
@@ -171,6 +163,44 @@
   font-weight: 700;
   color: #005a9f;
   margin: 0;
+}
+
+/* NEW STYLES FOR PRODUCT GRID BASED ON PROVIDED HTML */
+.courses-collection-page .product-grid { /* Target the element with class="product-grid ..." */
+  display: grid;
+  gap: 1.5rem; /* Adjust gap as needed or use a theme variable */
+}
+
+.courses-collection-page .product-grid.product-grid--4-col-desktop { /* Target for column definition */
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 989px) { /* Tablet breakpoint (adjust if theme uses different, e.g., 990px) */
+  .courses-collection-page .product-grid.product-grid--4-col-desktop {
+    grid-template-columns: repeat(2, 1fr); /* Often 2 or 3 columns on tablet */
+  }
+}
+
+@media (max-width: 749px) { /* Mobile breakpoint (adjust if theme uses different, e.g., 750px or 768px) */
+  .courses-collection-page .product-grid.product-grid--4-col-desktop {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile as per earlier requirement */
+  }
+}
+
+@media (max-width: 480px) { /* Smaller mobile devices */
+  .courses-collection-page .product-grid.product-grid--4-col-desktop {
+    grid-template-columns: 1fr; /* 1 column */
+  }
+}
+
+/* Ensure product card images within this specific grid are constrained.
+   This might be redundant if .product-card__image is already globally styled well,
+   but added for safety. */
+.courses-collection-page .product-grid .product-card__image {
+  display: block;
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Cover the area without distorting aspect ratio */
 }
 
 /* Ensure 4-column grid layout for courses */
@@ -459,8 +489,8 @@ body.collection-switching * {
     min-width: 140px;
   }
   
-  .courses-grid[data-view="grid"] {
-    grid-template-columns: repeat(2, 1fr); /* Ensure 2 columns for mobile grid view */
+  .courses-collection-page .product-grid.grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
   }
   
   .level-stats {
@@ -491,6 +521,10 @@ body.collection-switching * {
   
   .view-toggle {
     align-self: center;
+  }
+  
+  .courses-collection-page .product-grid.grid {
+    grid-template-columns: 1fr; /* 1 column for very small screens */
   }
   
   .level-stats {
