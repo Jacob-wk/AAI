@@ -33,14 +33,17 @@ class CartDrawer {
     if (this.cartTrigger) {
       this.cartTrigger.addEventListener('click', (e) => {
         e.preventDefault();
+        e.stopPropagation();
         this.open();
       });
     }
 
-    // Close when clicking backdrop
+    // Close when clicking backdrop/overlay
     if (this.dialog) {
       this.dialog.addEventListener('click', (e) => {
-        if (e.target === this.dialog) {
+        // Close if clicking the dialog itself (backdrop) or the overlay
+        const target = /** @type {HTMLElement} */ (e.target);
+        if (target === this.dialog || target?.classList?.contains('cart-drawer__overlay')) {
           this.close();
         }
       });
@@ -55,7 +58,10 @@ class CartDrawer {
       // Handle close buttons
       const closeButtons = this.dialog.querySelectorAll('.cart-drawer__close');
       closeButtons.forEach(button => {
-        button.addEventListener('click', () => this.close());
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.close();
+        });
       });
     }
   }
