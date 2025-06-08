@@ -2,75 +2,150 @@
   <dialog class="cart-drawer__dialog" aria-label="{{ 'accessibility.cart' | t }}" id="cart-drawer">
     <div class="cart-drawer__overlay" onclick="this.closest('dialog').close()"></div>
   
-  <div class="cart-drawer__content">
-    <div class="cart-drawer__header">
-      <h2 class="cart-drawer__title">{{ 'cart.title' | t }}</h2>
-      <button 
-        class="cart-drawer__close" 
-        onclick="this.closest('dialog').close()"
-        aria-label="{{ 'accessibility.close' | t }}"
-      >
-        {{ 'icon-close.svg' | inline_asset_content }}
-      </button>
-    </div>
+    <form action="{{ routes.cart_url }}" method="post" enctype="multipart/form-data" id="cart-drawer-form" class="cart-drawer__content">
+      <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title">
+          {{ 'cart.title' | t }} 
+          {% if cart.item_count > 0 %}
+            <span class="cart-drawer__count">({{ cart.item_count }})</span>
+          {% endif %}
+        </h2>
+        <button 
+          type="button"
+          class="cart-drawer__close" 
+          onclick="this.closest('dialog').close()"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          {{ 'icon-close.svg' | inline_asset_content }}
+        </button>
+      </div>
 
-    <div class="cart-drawer__body">
-      {% if cart == empty %}
-        <div class="cart-drawer__empty">
-          <p>{{ 'cart.empty' | t }}</p>
-          <a href="{{ routes.all_products_collection_url }}" class="button button--primary">
-            {{ 'cart.continue_shopping' | t }}
-          </a>
-        </div>
-      {% else %}
-        <div class="cart-drawer__items">
-          {% for item in cart.items %}
-            <div class="cart-item" data-index="{{ forloop.index }}">
-              <div class="cart-item__image">
-                {% if item.image %}
-                  <img src="{{ item.image | image_url: width: 80 }}" alt="{{ item.image.alt | escape }}">
-                {% endif %}
-              </div>
-              
-              <div class="cart-item__details">
-                <h3 class="cart-item__title">{{ item.product.title }}</h3>
-                {% unless item.variant.title == 'Default Title' %}
-                  <p class="cart-item__variant">{{ item.variant.title }}</p>
-                {% endunless %}
-                
-                <div class="cart-item__quantity">
-                  <label for="quantity-{{ item.index }}" class="visually-hidden">
-                    {{ 'cart.quantity_label' | t }}
-                  </label>
-                  <input 
-                    type="number" 
-                    id="quantity-{{ item.index }}"
-                    name="updates[]" 
-                    value="{{ item.quantity }}" 
-                    min="0"
-                    data-index="{{ item.index }}"
-                    class="cart-item__quantity-input"
-                  >
-                </div>
-                
-                <div class="cart-item__price">
-                  <span class="cart-item__price-current">{{ item.final_line_price | money }}</span>
-                  {% if item.original_line_price != item.final_line_price %}
-                    <span class="cart-item__price-original">{{ item.original_line_price | money }}</span>
+      <div class="cart-drawer__body">
+        {% if cart == empty %}
+          <div class="cart-drawer__empty">
+            <p>{{ 'cart.empty' | t }}</p>
+            <a href="{{ routes.all_products_collection_url }}" class="button button--primary">
+              {{ 'cart.continue_shopping' | t }}
+            </a>
+          </div>
+        {% else %}
+          <div class="cart-drawer__items" id="cart-drawer-items">
+            {% for item in cart.items %}
+              <div class="cart-item" data-index="{{ forloop.index }}" data-line="{{ forloop.index }}">
+                <div class="cart-item__image">
+                  {% if item.image %}
+                    <img 
+                      src="{{ item.image | image_url: width: 80 }}" 
+                      alt="{{ item.image.alt | escape }}"
+                      loading="lazy"
+                      width="80"
+                      height="80"
+                    >
                   {% endif %}
                 </div>
+                
+                <div class="cart-item__details">
+                  <h3 class="cart-item__title">
+                    <a href="{{ item.url }}">{{ item.product.title }}</a>
+                  </h3>
+                  {% unless item.variant.title == 'Default Title' %}
+                    <p class="cart-item__variant">{{ item.variant.title }}</p>
+                  {% endunless %}
+                  
+                  {% comment %} Line item properties {% endcomment %}
+                  {% assign property_size = item.properties | size %}
+                  {% if property_size > 0 %}
+                    <div class="cart-item__properties">
+                      {% for p in item.properties %}
+                        {% unless p.last == blank %}
+                          <span class="cart-item__property">
+                            {{ p.first }}: {{ p.last }}
+                          </span>
+                        {% endunless %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                  
+                  <div class="cart-item__quantity">
+                    <label for="quantity-{{ item.index }}" class="visually-hidden">
+                      {{ 'cart.quantity_label' | t }}
+                    </label>
+                    <div class="quantity-selector">
+                      <button 
+                        type="button" 
+                        class="quantity-selector__button" 
+                        data-quantity-change="-1"
+                        data-line="{{ forloop.index }}"
+                        aria-label="{{ 'cart.decrease_quantity' | t }}"
+                      >
+                        -
+                      </button>
+                      <input 
+                        type="number" 
+                        id="quantity-{{ item.index }}"
+                        name="updates[]" 
+                        value="{{ item.quantity }}" 
+                        min="0"
+                        data-line="{{ forloop.index }}"
+                        data-quantity-input
+                        class="quantity-selector__input"
+                        aria-label="{{ 'cart.quantity_label' | t }}"
+                      >
+                      <button 
+                        type="button" 
+                        class="quantity-selector__button" 
+                        data-quantity-change="1"
+                        data-line="{{ forloop.index }}"
+                        aria-label="{{ 'cart.increase_quantity' | t }}"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div class="cart-item__price">
+                    {% comment %} Unit price {% endcomment %}
+                    {% if item.variant.unit_price_measurement %}
+                      <div class="cart-item__unit-price">
+                        {{ item.variant.unit_price | money }}/
+                        {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
+                          {{- item.variant.unit_price_measurement.reference_value -}}
+                        {%- endif -%}
+                        {{ item.variant.unit_price_measurement.reference_unit }}
+                      </div>
+                    {% endif %}
+                    
+                    {% comment %} Line price {% endcomment %}
+                    <span class="cart-item__price-current">{{ item.final_line_price | money }}</span>
+                    {% if item.original_line_price != item.final_line_price %}
+                      <span class="cart-item__price-original">{{ item.original_line_price | money }}</span>
+                    {% endif %}
+                    
+                    {% comment %} Line level discounts {% endcomment %}
+                    {% if item.line_level_discount_allocations.size > 0 %}
+                      <div class="cart-item__discounts">
+                        {% for discount in item.line_level_discount_allocations %}
+                          <span class="cart-item__discount">
+                            {{ discount.discount_application.title }} (-{{ discount.amount | money }})
+                          </span>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+                
+                <button 
+                  type="button"
+                  class="cart-item__remove" 
+                  data-line="{{ forloop.index }}"
+                  data-remove-item
+                  aria-label="{{ 'cart.remove_item' | t: title: item.product.title }}"
+                >
+                  {{ 'icon-remove.svg' | inline_asset_content }}
+                </button>
               </div>
-              
-              <button 
-                class="cart-item__remove" 
-                data-index="{{ item.index }}"
-                aria-label="{{ 'cart.remove_item' | t: title: item.product.title }}"
-              >
-                {{ 'icon-remove.svg' | inline_asset_content }}
-              </button>
-            </div>
-          {% endfor %}
-        </div>
+            {% endfor %}
+          </div>
 
         <div class="cart-drawer__footer">
           <div class="cart-drawer__subtotal">
@@ -93,7 +168,7 @@
             <a href="{{ routes.cart_url }}" class="button button--secondary cart-drawer__view-cart">
               {{ 'cart.view_cart' | t }}
             </a>
-            <button type="submit" name="add" class="button button--primary cart-drawer__checkout" form="cart">
+            <button type="button" class="button button--primary cart-drawer__checkout" onclick="window.location.href='/checkout'">
               {{ 'cart.checkout' | t }}
             </button>
           </div>
