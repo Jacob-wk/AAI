@@ -1,5 +1,6 @@
 import { DialogComponent } from '@theme/dialog';
 import { CartAddEvent } from '@theme/events';
+import { DialogCloseEvent } from '@theme/dialog';
 
 /**
  * A custom element that manages a cart drawer.
@@ -21,6 +22,47 @@ class CartDrawerComponent extends DialogComponent {
     if (this.hasAttribute('auto-open')) {
       this.showDialog();
     }
+  };
+
+  /**
+   * Override showDialog to add proper opening animation
+   */
+  showDialog() {
+    const { dialog } = this.refs;
+    
+    if (dialog.open) return;
+
+    // Remove any closing classes
+    dialog.classList.remove('closing');
+    
+    super.showDialog();
+  }
+
+  /**
+   * Override closeDialog to add proper closing animation
+   */
+  closeDialog = async () => {
+    const { dialog } = this.refs;
+
+    if (!dialog.open) return;
+
+    // Add closing class for slide-out animation
+    dialog.classList.add('closing');
+
+    // Wait for animation to complete
+    await new Promise((resolve) => {
+      const animationTimeout = setTimeout(() => resolve(undefined), 300); // Match CSS transition duration
+      
+      dialog.addEventListener('transitionend', () => {
+        clearTimeout(animationTimeout);
+        resolve(undefined);
+      }, { once: true });
+    });
+
+    dialog.close();
+    dialog.classList.remove('closing');
+
+    this.dispatchEvent(new DialogCloseEvent());
   };
 
   open() {
