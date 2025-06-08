@@ -22,15 +22,15 @@
         "stat_2": {
           "type": "statistic",
           "settings": {
-            "stat_number": "500+",
-            "stat_label": "Professionals Certified"
+            "stat_number": "7+",
+            "stat_label": "Courses"
           }
         },
         "stat_3": {
           "type": "statistic",
           "settings": {
-            "stat_number": "500+",
-            "stat_label": "Professionals Certified"
+            "stat_number": "15+",
+            "stat_label": "Instructors"
           }
         }
       },
