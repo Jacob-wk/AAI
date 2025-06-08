@@ -300,6 +300,41 @@
   border-top: 1px solid #e5e7eb;
 }
 
+/* Collection switching loading state */
+body.collection-switching {
+  cursor: wait;
+}
+
+body.collection-switching * {
+  pointer-events: none;
+}
+
+/* Enhanced collection courses styling for better UX */
+.collection-switch-option .sorting-filter__label {
+  transition: color 0.2s ease;
+}
+
+.collection-switch-option:hover .sorting-filter__label {
+  color: var(--color-accent);
+}
+
+/* Add visual separation for collection options */
+.sorting-filter__options .collection-switch-option:first-of-type {
+  position: relative;
+  margin-top: var(--margin-md);
+  padding-top: var(--padding-md);
+}
+
+.sorting-filter__options .collection-switch-option:first-of-type::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(var(--icon-size-sm) + var(--margin-2xs));
+  right: calc(var(--drawer-padding) / 2);
+  height: 1px;
+  background: var(--color-border);
+}
+
 /* Mobile Responsive */
 @media (max-width: 1024px) {
   .courses-content-grid {

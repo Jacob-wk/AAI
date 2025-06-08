@@ -214,6 +214,38 @@
       overflow-y: visible;
     }
   }
+
+  /* Collection switch styling */
+  .collection-switch-option {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--padding-xs);
+    margin-top: var(--padding-xs);
+  }
+
+  .collection-switch-option:first-of-type {
+    border-top: 2px solid var(--color-border);
+    margin-top: var(--margin-sm);
+    padding-top: var(--padding-sm);
+    position: relative;
+  }
+
+  .collection-switch-option:first-of-type::before {
+    content: "Browse Collections";
+    position: absolute;
+    top: calc(-1 * var(--padding-sm) - 2px);
+    left: 0;
+    font-size: var(--font-size-small);
+    color: var(--color-foreground-muted);
+    font-weight: 500;
+  }
+
+  .collection-switch-input {
+    /* Custom styling for collection switch inputs */
+    &:checked + .sorting-filter__checkmark + .sorting-filter__label {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+  }
 {% endstylesheet %}
 
 <sorting-filter-component
@@ -256,6 +288,16 @@
             {{ option.name }}
           </option>
         {% endfor %}
+        
+        {% comment %} Collection-based sorting options {% endcomment %}
+        {% if template.name == 'collection' and template.suffix == 'courses' %}
+          <option disabled>── Browse by Category ──</option>
+          {% for coll in collections %}
+            {% if coll.handle contains 'courses' and coll.handle != 'courses' and coll.published %}
+              <option value="collection:{{ coll.handle }}">{{ coll.title }}</option>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
       </select>
       <svg
         aria-hidden="true"
@@ -322,6 +364,32 @@
             <label class="sorting-filter__label">{{ option.name }}</label>
           </label>
         {% endfor %}
+        
+        {% comment %} Collection-based sorting options {% endcomment %}
+        {% if template.name == 'collection' and template.suffix == 'courses' %}
+          {% for coll in collections %}
+            {% if coll.handle contains 'courses' and coll.handle != 'courses' and coll.published %}
+              <label
+                class="sorting-filter__option collection-switch-option"
+                id="collection:{{ coll.handle }}"
+              >
+                <input
+                  type="radio"
+                  name="sort_by"
+                  form="FacetFiltersForm--{{ section.id }}-{{ suffix }}"
+                  value="collection:{{ coll.handle }}"
+                  class="sorting-filter__input collection-switch-input"
+                  data-option-name="{{ coll.title }}"
+                  data-collection-handle="{{ coll.handle }}"
+                >
+                <span class="svg-wrapper icon-checkmark sorting-filter__checkmark">
+                  {{- 'icon-checkmark.svg' | inline_asset_content -}}
+                </span>
+                <label class="sorting-filter__label">{{ coll.title }}</label>
+              </label>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
       </floating-panel-component>
     </details>
   </accordion-custom>
