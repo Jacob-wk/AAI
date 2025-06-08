@@ -1,4 +1,12 @@
-
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -40,6 +48,7 @@
         "hero_style": "hero-standard",
         "layout_style": "text-left-image-right",
         "show_image": true,
+        "hero_image": "shopify://shop_images/1377747.jpg",
         "show_features": true,
         "show_stats": true,
         "show_credentials": false,
