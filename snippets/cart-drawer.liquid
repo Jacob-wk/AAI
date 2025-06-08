@@ -1,14 +1,12 @@
-{{ 'cart-styling.css' | asset_url | stylesheet_tag }}
-
-<cart-drawer class="cart-drawer" aria-label="{{ 'accessibility.cart' | t }}" role="dialog" aria-modal="true">
-  <div class="cart-drawer__overlay" on:click="/close"></div>
+<dialog class="cart-drawer" aria-label="{{ 'accessibility.cart' | t }}" id="cart-drawer">
+  <div class="cart-drawer__overlay" onclick="this.closest('dialog').close()"></div>
   
   <div class="cart-drawer__content">
     <div class="cart-drawer__header">
       <h2 class="cart-drawer__title">{{ 'cart.title' | t }}</h2>
       <button 
         class="cart-drawer__close" 
-        on:click="/close"
+        onclick="this.closest('dialog').close()"
         aria-label="{{ 'accessibility.close' | t }}"
       >
         {{ 'icon-close.svg' | inline_asset_content }}
@@ -102,7 +100,7 @@
       {% endif %}
     </div>
   </div>
-</cart-drawer>
+</dialog>
 
 <script type="module" src="{{ 'cart-drawer.js' | asset_url }}"></script>
 

@@ -1,90 +1,80 @@
-import { DialogComponent } from '@theme/dialog';
-import { ThemeEvents } from '@theme/events';
-
 /**
- * Cart drawer component that extends the base dialog functionality
+ * Simple Cart Drawer Implementation
+ * Uses native HTML dialog element for proper modal behavior
  */
-class CartDrawerComponent extends DialogComponent {
-  connectedCallback() {
-    super.connectedCallback();
-    document.addEventListener(ThemeEvents.cartUpdate, this.onCartUpdate);
-    
-    // Connect to the cart trigger button
-    this.setupCartTrigger();
+
+class CartDrawer {
+  constructor() {
+    this.dialog = null;
+    this.cartTrigger = null;
+    this.init();
   }
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    document.removeEventListener(ThemeEvents.cartUpdate, this.onCartUpdate);
-  }
-
-  /**
-   * Setup the cart trigger button connection
-   */
-  setupCartTrigger() {
-    const cartTrigger = document.querySelector('[data-cart-drawer-trigger]');
-    if (cartTrigger) {
-      cartTrigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.showDialog();
-      });
+  init() {
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => this.setup());
+    } else {
+      this.setup();
     }
   }
 
-  /**
-   * Handle cart updates
-   */
-  onCartUpdate = async () => {
-    if (this.refs.dialog && this.refs.dialog.open) {
-      await this.refreshCart();
-    }
-  };
-
-  /**
-   * Override showDialog to add custom animations
-   */
-  showDialog() {
-    this.classList.remove('cart-drawer--closing');
-    super.showDialog();
-    this.classList.add('cart-drawer--opening');
+  setup() {
+    this.dialog = document.getElementById('cart-drawer');
+    this.cartTrigger = document.querySelector('[data-cart-drawer-trigger]');
     
-    setTimeout(() => {
-      this.classList.remove('cart-drawer--opening');
-    }, 300);
+    if (this.dialog && this.cartTrigger) {
+      this.bindEvents();
+    }
   }
 
-  /**
-   * Override closeDialog to add custom animations
-   */
-  closeDialog = async () => {
-    this.classList.add('cart-drawer--closing');
-    
-    // Call the original closeDialog method
-    setTimeout(async () => {
-      // Access the parent's closeDialog via the prototype
-      await DialogComponent.prototype.closeDialog.call(this);
-      this.classList.remove('cart-drawer--closing');
-    }, 300);
-  };
+  bindEvents() {
+    // Cart trigger button
+    this.cartTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.open();
+    });
 
-  /**
-   * Refresh cart content via AJAX
-   */
-  async refreshCart() {
-    try {
-      const response = await fetch('/cart.js');
-      const cart = await response.json();
-      
-      document.dispatchEvent(new CustomEvent(ThemeEvents.cartUpdate, {
-        detail: { data: { itemCount: cart.item_count } }
-      }));
-      
-    } catch (error) {
-      console.error('Error refreshing cart:', error);
+    // Close when clicking backdrop
+    this.dialog.addEventListener('click', (e) => {
+      if (e.target === this.dialog) {
+        this.close();
+      }
+    });
+
+    // Close on escape key
+    this.dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        this.close();
+      }
+    });
+
+    // Handle close buttons
+    const closeButtons = this.dialog.querySelectorAll('.cart-drawer__close');
+    closeButtons.forEach(button => {
+      button.addEventListener('click', () => this.close());
+    });
+  }
+
+  open() {
+    if (this.dialog && !this.dialog.open) {
+      this.dialog.showModal();
+      document.body.style.overflow = 'hidden';
+      this.dialog.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  close() {
+    if (this.dialog && this.dialog.open) {
+      this.dialog.close();
+      document.body.style.overflow = '';
+      this.dialog.setAttribute('aria-hidden', 'true');
     }
   }
 }
 
-if (!customElements.get('cart-drawer')) {
-  customElements.define('cart-drawer', CartDrawerComponent);
-}
+// Initialize cart drawer when page loads
+const cartDrawer = new CartDrawer();
+
+// Also expose globally for other scripts
+window.CartDrawer = cartDrawer;

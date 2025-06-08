@@ -5,22 +5,28 @@
 
 /* Cart Drawer Base */
 .cart-drawer {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  max-width: none;
+  max-height: none;
   position: fixed;
   top: 0;
   right: 0;
   width: 100vw;
   height: 100vh;
   z-index: 1000;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cart-drawer[open] {
-  pointer-events: auto;
-  opacity: 1;
-  visibility: visible;
+  transform: translateX(0);
+}
+
+.cart-drawer::backdrop {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 /* Cart Drawer Overlay */
