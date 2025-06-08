@@ -372,11 +372,12 @@
   {% endif %}
 
   {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
-    {% render 'standard-cart-drawer' %}
-    <button
-      data-cart-trigger
+    {% render 'cart-drawer' %}
+    <button 
       class="header-actions__action action__cart button-unstyled"
+      on:click="/open"
       aria-label="{{ 'accessibility.cart' | t }}"
+      data-cart-drawer-trigger
     >
       {% render 'cart-icon-component' %}
     </button>

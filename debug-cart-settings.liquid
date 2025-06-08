@@ -1,0 +1,7 @@
+<!-- Debug Cart Settings -->
+<div style="position: fixed; top: 0; left: 0; background: red; color: white; padding: 10px; z-index: 9999;">
+  <strong>Debug Info:</strong><br>
+  cart_type: {{ settings.cart_type }}<br>
+  template.name: {{ template.name }}<br>
+  condition result: {% if settings.cart_type == 'drawer' and template.name != 'cart' %}TRUE{% else %}FALSE{% endif %}
+</div>

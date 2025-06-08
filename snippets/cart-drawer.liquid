@@ -1,3 +1,5 @@
+{{ 'cart-styling.css' | asset_url | stylesheet_tag }}
+
 <cart-drawer class="cart-drawer" aria-label="{{ 'accessibility.cart' | t }}" role="dialog" aria-modal="true">
   <div class="cart-drawer__overlay" on:click="/close"></div>
   
@@ -100,14 +102,6 @@
       {% endif %}
     </div>
   </div>
-
-  <button 
-    class="cart-drawer__trigger visually-hidden" 
-    on:click="/open"
-    aria-label="{{ 'accessibility.cart' | t }}"
-  >
-    {% render 'cart-icon-component' %}
-  </button>
 </cart-drawer>
 
 <script type="module" src="{{ 'cart-drawer.js' | asset_url }}"></script>
