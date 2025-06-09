@@ -148,16 +148,29 @@
           <!-- Enrollment Form -->
           <div class="course-enrollment-form" id="purchase">
             {% unless customer and customer.metafields.intuto.access_token %}
-              <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="product-form">
-                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                
-                <button type="submit" class="enroll-btn btn-primary">
-                  <span class="btn-text">Enroll Now - {{ product.price | money }}</span>
-                  <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                </button>
-              </form>
+              <product-form-component 
+                data-product-id="{{ product.id }}"
+                data-section-id="{{ section.id }}"
+              >
+                <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="product-form" on:submit="/handleSubmit">
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" ref="variantId">
+                  
+                  <div class="product-form__error-message-wrapper hidden" ref="addToCartTextError">
+                    <span class="product-form__error-message" aria-live="polite"></span>
+                  </div>
+                  
+                  <add-to-cart-component ref="addToCartButtonContainer" data-product-variant-media="{{ product.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 100 }}">
+                    <button type="submit" class="enroll-btn btn-primary" ref="addToCartButton">
+                      <span class="btn-text">Enroll Now - {{ product.price | money }}</span>
+                      <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    </button>
+                  </add-to-cart-component>
+                  
+                  <div aria-live="polite" class="visually-hidden" ref="liveRegion"></div>
+                </form>
+              </product-form-component>
               
               <div class="enrollment-benefits">
                 <h4>What's Included:</h4>

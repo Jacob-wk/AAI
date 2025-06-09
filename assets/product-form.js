@@ -1,8 +1,8 @@
-import { Component } from '@theme/component';
-import { fetchConfig, onAnimationEnd, preloadImage } from '@theme/utilities';
-import { ThemeEvents, CartAddEvent, CartErrorEvent, VariantUpdateEvent } from '@theme/events';
-import { cartPerformance } from '@theme/performance';
-import { morph } from '@theme/morph';
+import { Component } from './component.js';
+import { fetchConfig, onAnimationEnd, preloadImage } from './utilities.js';
+import { ThemeEvents, CartAddEvent, CartErrorEvent, VariantUpdateEvent } from './events.js';
+import { cartPerformance } from './performance.js';
+import { morph } from './morph.js';
 
 export const ADD_TO_CART_TEXT_ANIMATION_DURATION = 2000;
 

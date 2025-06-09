@@ -50,32 +50,47 @@
     
     <div class="course-enrollment-form">
       {% unless customer and customer.metafields.intuto.access_token %}
-        <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" 
-              class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}">
-          
-          <input type="hidden" name="id" value="{{ current_variant.id }}">
-          
-          {% unless current_variant.available %}
-            <div class="product-form__error-message-wrapper">
-              <span class="product-form__error-message">{{ 'products.product.sold_out' | t }}</span>
+        <product-form-component 
+          data-product-id="{{ product.id }}"
+          data-section-id="{{ section.id }}"
+        >
+          <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" 
+                class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}"
+                on:submit="/handleSubmit">
+            
+            <input type="hidden" name="id" value="{{ current_variant.id }}" ref="variantId">
+            
+            {% unless current_variant.available %}
+              <div class="product-form__error-message-wrapper">
+                <span class="product-form__error-message">{{ 'products.product.sold_out' | t }}</span>
+              </div>
+            {% endunless %}
+            
+            <div class="product-form__error-message-wrapper hidden" ref="addToCartTextError">
+              <span class="product-form__error-message" aria-live="polite"></span>
             </div>
-          {% endunless %}
-          
-          <button type="submit" 
-                  class="btn btn-primary enroll-btn{% unless current_variant.available %} disabled{% endunless %}"
-                  {% unless current_variant.available %}disabled{% endunless %}>
-            <span class="btn-text">
-              {% if current_variant.available %}
-                Enroll Now - {{ current_variant.price | money }}
-              {% else %}
-                {{ 'products.product.sold_out' | t }}
-              {% endif %}
-            </span>
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-          </button>
-        </form>
+            
+            <add-to-cart-component ref="addToCartButtonContainer" data-product-variant-media="{{ current_variant.featured_media.preview_image | image_url: width: 100 }}">
+              <button type="submit" 
+                      ref="addToCartButton"
+                      class="btn btn-primary enroll-btn{% unless current_variant.available %} disabled{% endunless %}"
+                      {% unless current_variant.available %}disabled{% endunless %}>
+                <span class="btn-text">
+                  {% if current_variant.available %}
+                    Enroll Now - {{ current_variant.price | money }}
+                  {% else %}
+                    {{ 'products.product.sold_out' | t }}
+                  {% endif %}
+                </span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </button>
+            </add-to-cart-component>
+            
+            <div aria-live="polite" class="visually-hidden" ref="liveRegion"></div>
+          </form>
+        </product-form-component>
       {% else %}
         <!-- Customer already has access -->
         <div class="course-access-notice">
@@ -123,10 +138,15 @@
       </div>
     {% endif %}
     
-    <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" 
-          class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}">
-      
-      <input type="hidden" name="id" value="{{ current_variant.id }}">
+    <product-form-component 
+      data-product-id="{{ product.id }}"
+      data-section-id="{{ section.id }}"
+    >
+      <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" 
+            class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}"
+            on:submit="/handleSubmit">
+        
+        <input type="hidden" name="id" value="{{ current_variant.id }}" ref="variantId">
       
       <!-- Variant Selection (if needed) -->
       {% if product.variants.size > 1 %}
@@ -163,19 +183,29 @@
         </quantity-input>
       </div>
       
+      <div class="product-form__error-message-wrapper hidden" ref="addToCartTextError">
+        <span class="product-form__error-message" aria-live="polite"></span>
+      </div>
+      
       <!-- Add to Cart Button -->
-      <button type="submit" 
-              class="btn btn-primary product-form__cart-submit{% unless current_variant.available %} disabled{% endunless %}"
-              {% unless current_variant.available %}disabled{% endunless %}>
-        <span>
-          {% if current_variant.available %}
-            {{ 'products.product.add_to_cart' | t }}
-          {% else %}
-            {{ 'products.product.sold_out' | t }}
-          {% endif %}
-        </span>
-      </button>
+      <add-to-cart-component ref="addToCartButtonContainer" data-product-variant-media="{{ current_variant.featured_media.preview_image | image_url: width: 100 }}">
+        <button type="submit" 
+                ref="addToCartButton"
+                class="btn btn-primary product-form__cart-submit{% unless current_variant.available %} disabled{% endunless %}"
+                {% unless current_variant.available %}disabled{% endunless %}>
+          <span>
+            {% if current_variant.available %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% else %}
+              {{ 'products.product.sold_out' | t }}
+            {% endif %}
+          </span>
+        </button>
+      </add-to-cart-component>
+      
+      <div aria-live="polite" class="visually-hidden" ref="liveRegion"></div>
     </form>
+  </product-form-component>
   {% endif %}
 </div>
 
