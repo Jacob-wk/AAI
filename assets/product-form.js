@@ -202,7 +202,7 @@ class ProductFormComponent extends Component {
 
           // When we add more than the maximum amount of items to the cart, we need to dispatch a cart update event
           // because our back-end still adds the max allowed amount to the cart.
-          this.dispatchEvent(
+          document.dispatchEvent(
             new CartAddEvent({}, this.id, {
               didError: true,
               source: 'product-form-component',
@@ -235,7 +235,7 @@ class ProductFormComponent extends Component {
             }, 5000);
           }
 
-          this.dispatchEvent(
+          document.dispatchEvent(
             new CartAddEvent({}, id.toString(), {
               source: 'product-form-component',
               itemCount: Number(formData.get('quantity')),

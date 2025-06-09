@@ -129,7 +129,7 @@
                 data-remove-item
                 aria-label="{{ 'cart.remove_item' | t: title: item.product.title }}"
               >
-                {% render 'icon-delete' %}
+                {{ 'icon-delete.svg' | inline_asset_content }}
               </button>
             </div>
           {% endfor %}
