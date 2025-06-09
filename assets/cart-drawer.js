@@ -52,10 +52,10 @@ class CartDrawerComponent extends Component {
       
       // Check if this is an add event (not just an update)
       const isAddEvent = customEvent.detail?.data?.source === 'product-form-component' || 
-                        customEvent.detail?.data?.variantId || 
                         customEvent.detail?.sourceId?.includes('product-form') ||
-                        customEvent.detail?.source?.includes('add-to-cart') ||
-                        (customEvent.detail?.data && !customEvent.detail?.data?.didError);
+                        (customEvent.detail?.data && !customEvent.detail?.data?.didError && 
+                         customEvent.detail?.source !== 'cart-drawer' && 
+                         customEvent.detail?.source !== 'cart-drawer-refresh');
                         
       // Get the auto-open setting from the cart drawer element data attribute
       const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
@@ -70,29 +70,46 @@ class CartDrawerComponent extends Component {
       if (isAddEvent && autoOpenEnabled && !this.refs.dialog.open) {
         // Small delay to allow cart update to complete
         setTimeout(() => {
+          console.log('Auto-opening cart drawer');
           this.showDialog();
         }, 100);
       }
     });
 
-    // Also listen for direct add-to-cart form submissions as backup
+    // Prevent any form submissions that might redirect to cart
     document.addEventListener('submit', (event) => {
       const form = /** @type {HTMLFormElement} */ (event.target);
-      if (form?.matches('[data-type="add-to-cart-form"]') || form?.action?.includes('/cart/add')) {
+      
+      // If this is an add-to-cart form and auto-open is enabled
+      if (form?.action?.includes('/cart/add')) {
         const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
-        console.log('Add to cart form submitted:', {
-          autoOpenEnabled,
-          formAction: form.action,
-          drawerOpen: this.refs.dialog.open
-        });
         
-        if (autoOpenEnabled && !this.refs.dialog.open) {
-          // Delay to allow form submission to complete
-          setTimeout(() => {
-            console.log('Auto-opening cart drawer after form submission');
-            this.showDialog();
-          }, 500);
+        if (autoOpenEnabled) {
+          console.log('Intercepting add-to-cart form submission');
+          // The product form component should handle the AJAX submission
+          // We just need to ensure we don't navigate away
         }
+      }
+      
+      // Prevent any form submission that goes to /cart
+      if (form?.action?.includes('/cart') && !form.action.includes('/cart/add')) {
+        const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
+        if (autoOpenEnabled) {
+          event.preventDefault();
+          console.log('Prevented cart form submission, opening drawer instead');
+          this.showDialog();
+        }
+      }
+    });
+
+    // Also listen for beforeunload to prevent navigation
+    window.addEventListener('beforeunload', (event) => {
+      const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
+      if (autoOpenEnabled && window.location.href.includes('/cart')) {
+        console.log('Preventing navigation to cart page');
+        event.preventDefault();
+        this.showDialog();
+        return false;
       }
     });
   }
@@ -203,7 +220,8 @@ class CartDrawerComponent extends Component {
         event.preventDefault();
         const change = parseInt(button.getAttribute('data-quantity-change') || '0');
         const line = parseInt(button.getAttribute('data-line') || '0');
-        this.#updateQuantity(line, change);
+        const key = button.getAttribute('data-key');
+        this.#updateQuantity(line, change, key);
       });
     });
 
@@ -213,8 +231,9 @@ class CartDrawerComponent extends Component {
       input.addEventListener('change', (event) => {
         const target = /** @type {HTMLInputElement} */ (event.target);
         const line = parseInt(target.getAttribute('data-line') || '0');
+        const key = target.getAttribute('data-key');
         const newQuantity = parseInt(target.value);
-        this.#setQuantity(line, newQuantity);
+        this.#setQuantity(line, newQuantity, key);
       });
     });
   }
@@ -228,7 +247,8 @@ class CartDrawerComponent extends Component {
       button.addEventListener('click', (event) => {
         event.preventDefault();
         const line = parseInt(button.getAttribute('data-line') || '0');
-        this.#removeItem(line);
+        const key = button.getAttribute('data-key');
+        this.#removeItem(line, key);
       });
     });
   }
@@ -237,13 +257,14 @@ class CartDrawerComponent extends Component {
    * Update quantity by relative change
    * @param {number} line
    * @param {number} change
+   * @param {string|null} key
    */
-  #updateQuantity(line, change) {
+  #updateQuantity(line, change, key) {
     const input = this.refs.dialog.querySelector(`[data-line="${line}"][data-quantity-input]`);
     if (input) {
       const currentQuantity = parseInt(/** @type {HTMLInputElement} */ (input).value);
       const newQuantity = Math.max(0, currentQuantity + change);
-      this.#setQuantity(line, newQuantity);
+      this.#setQuantity(line, newQuantity, key);
     }
   }
 
@@ -251,22 +272,105 @@ class CartDrawerComponent extends Component {
    * Set absolute quantity
    * @param {number} line
    * @param {number} quantity
+   * @param {string|null} key
    */
-  #setQuantity(line, quantity) {
-    this.#updateCart({ [line]: quantity });
+  #setQuantity(line, quantity, key) {
+    if (key) {
+      this.#changeCartItem(key, quantity);
+    } else {
+      // Fallback to line-based update for older themes
+      this.#updateCart({ [line]: quantity });
+    }
   }
 
   /**
    * Remove item from cart
    * @param {number} line
+   * @param {string|null} key
    */
-  #removeItem(line) {
-    this.#updateCart({ [line]: 0 });
+  #removeItem(line, key) {
+    if (key) {
+      this.#changeCartItem(key, 0);
+    } else {
+      // Fallback to line-based update for older themes
+      this.#updateCart({ [line]: 0 });
+    }
+  }
+
+  /**
+   * Change cart item quantity using Shopify 2.0 cart/change.js API
+   * @param {string} key - The line item key
+   * @param {number} quantity - New quantity
+   */
+  async #changeCartItem(key, quantity) {
+    try {
+      // Show loading state
+      this.#setLoadingState(true);
+
+      console.log('Changing cart item:', { key, quantity });
+
+      const response = await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({
+          id: key,
+          quantity: quantity
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        
+        // Reload the cart drawer content
+        await this.#refreshCartContent();
+        
+        // Dispatch cart update event
+        document.dispatchEvent(new CustomEvent(ThemeEvents.cartUpdate, {
+          detail: { 
+            data: data,
+            source: 'cart-drawer',
+            success: true
+          }
+        }));
+      } else {
+        let errorMessage = 'Failed to update cart';
+        
+        try {
+          const errorData = await response.json();
+          console.error('Cart change failed:', {
+            status: response.status,
+            statusText: response.statusText,
+            errorData: errorData,
+            key: key,
+            quantity: quantity
+          });
+          
+          if (response.status === 422) {
+            errorMessage = errorData.message || errorData.description || 'Invalid cart update. Please refresh the page and try again.';
+          } else {
+            errorMessage = errorData.message || errorData.description || errorMessage;
+          }
+        } catch (parseError) {
+          console.error('Failed to parse error response:', parseError);
+          console.error('Response status:', response.status, response.statusText);
+        }
+        
+        this.#showError(errorMessage);
+      }
+    } catch (error) {
+      console.error('Cart change failed:', error);
+      this.#showError('Failed to update cart. Please try again.');
+    } finally {
+      this.#setLoadingState(false);
+    }
   }
 
   /**
    * Update cart via Shopify cart API
-   * @param {Object.<number, number>} updates
+   * @param {Record<string, any>} updates
    */
   async #updateCart(updates) {
     try {
@@ -420,10 +524,25 @@ class CartDrawerComponent extends Component {
     document.addEventListener('click', (event) => {
       const target = /** @type {HTMLElement} */ (event.target);
       const link = target?.closest('a[href*="/cart"]');
-      if (link && link.getAttribute('href') === '/cart') {
+      if (link && (link.getAttribute('href') === '/cart' || link.getAttribute('href') === '/cart/')) {
         event.preventDefault();
         event.stopPropagation();
+        console.log('Intercepting cart link click, opening drawer instead');
         this.showDialog();
+      }
+    }, true); // Use capture phase to intercept early
+
+    // Also intercept any programmatic navigation to cart
+    const originalLocation = window.location;
+    Object.defineProperty(window, 'location', {
+      get: () => originalLocation,
+      set: (value) => {
+        if (typeof value === 'string' && (value.includes('/cart') || value.endsWith('/cart'))) {
+          console.log('Intercepting location change to cart, opening drawer instead');
+          this.showDialog();
+          return;
+        }
+        originalLocation.href = value;
       }
     });
   }

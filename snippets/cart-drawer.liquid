@@ -30,7 +30,7 @@
         {% else %}
           <div class="cart-drawer__items" id="cart-drawer-items">
             {% for item in cart.items %}
-              <div class="cart-item" data-index="{{ forloop.index }}" data-line="{{ forloop.index }}">
+              <div class="cart-item" data-index="{{ forloop.index }}" data-line="{{ forloop.index }}" data-key="{{ item.key }}">
                 <div class="cart-item__image">
                   {% if item.image %}
                     <img 
@@ -75,6 +75,7 @@
                         class="quantity-selector__button" 
                         data-quantity-change="-1"
                         data-line="{{ forloop.index }}"
+                        data-key="{{ item.key }}"
                         aria-label="{{ 'cart.decrease_quantity' | t }}"
                       >
                         -
@@ -86,6 +87,7 @@
                         value="{{ item.quantity }}" 
                         min="0"
                         data-line="{{ forloop.index }}"
+                        data-key="{{ item.key }}"
                         data-quantity-input
                         class="quantity-selector__input"
                         aria-label="{{ 'cart.quantity_label' | t }}"
@@ -95,6 +97,7 @@
                         class="quantity-selector__button" 
                         data-quantity-change="1"
                         data-line="{{ forloop.index }}"
+                        data-key="{{ item.key }}"
                         aria-label="{{ 'cart.increase_quantity' | t }}"
                       >
                         +
@@ -137,6 +140,7 @@
                   type="button"
                   class="cart-item__remove" 
                   data-line="{{ forloop.index }}"
+                  data-key="{{ item.key }}"
                   data-remove-item
                   aria-label="{{ 'cart.remove_item' | t: title: item.product.title }}"
                 >
@@ -164,10 +168,10 @@
           {% endif %}
           
           <div class="cart-drawer__actions">
-            <a href="{{ routes.cart_url }}" class="button button--secondary cart-drawer__view-cart">
+            <button type="button" class="button button--secondary cart-drawer__view-cart" onclick="window.location.href='{{ routes.cart_url }}'">
               {{ 'cart.view_cart' | t }}
-            </a>
-            <button type="button" class="button button--primary cart-drawer__checkout" onclick="window.location.href='/checkout'">
+            </button>
+            <button type="button" class="button button--primary cart-drawer__checkout" onclick="window.location.href='{{ routes.cart_url }}/checkout'">
               {{ 'cart.checkout' | t }}
             </button>
           </div>
