@@ -53,96 +53,47 @@ class CartDrawerComponent extends Component {
       // Get the auto-open setting from the cart drawer element data attribute
       const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
       
-      // Check if this is an add event (not just an update)
-      const isAddEvent = customEvent.detail?.data?.source === 'product-form-component' || 
-                        customEvent.detail?.sourceId?.includes('product-form') ||
-                        // Also check for events that don't have errors and aren't from drawer operations
-                        (customEvent.detail?.data && 
-                         !customEvent.detail?.data?.didError && 
-                         customEvent.detail?.source !== 'cart-drawer' && 
-                         customEvent.detail?.source !== 'cart-drawer-refresh' &&
-                         // Additional check for product-related events
-                         (customEvent.detail?.data?.productId || customEvent.detail?.data?.variantId));
+      // Only proceed if auto-open is enabled and drawer is not already open
+      if (!autoOpenEnabled || this.refs.dialog.open) {
+        return;
+      }
+      
+      // Check if this is an add event from a product form (not from cart drawer operations)
+      const isAddEvent = customEvent.detail?.data?.source === 'product-form-component' && 
+                        !customEvent.detail?.data?.didError;
                         
       console.log('Cart event detected:', {
         isAddEvent,
         autoOpenEnabled,
-        eventDetail: customEvent.detail,
-        drawerOpen: this.refs.dialog.open,
-        eventType: event.type
+        source: customEvent.detail?.data?.source,
+        didError: customEvent.detail?.data?.didError,
+        drawerOpen: this.refs.dialog.open
       });
       
-      if (isAddEvent && autoOpenEnabled && !this.refs.dialog.open) {
-        // Prevent any potential page navigation
-        event.preventDefault?.();
-        
+      if (isAddEvent) {
         // Small delay to allow cart update to complete
         setTimeout(() => {
           console.log('Auto-opening cart drawer');
           this.showDialog();
-        }, 100);
+        }, 150);
       }
     });
-
-    // Listen specifically for add-to-cart form submissions
-    document.addEventListener('submit', (event) => {
-      const form = /** @type {HTMLFormElement} */ (event.target);
+    
+    // Only intercept direct cart page navigation (not form submissions)
+    document.addEventListener('click', (event) => {
+      const target = /** @type {HTMLElement} */ (event.target);
+      const link = target?.closest('a[href="/cart"], a[href="/cart/"]');
       
-      // Check if this is a product form (add-to-cart)
-      if (form && (
-        form.action?.includes('/cart/add') ||
-        form.matches('[action*="/cart/add"]') ||
-        form.querySelector('input[name="id"]') // Product variant ID input
-      )) {
-        const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
-        
-        console.log('Product form submission detected:', {
-          action: form.action,
-          autoOpenEnabled,
-          hasVariantId: !!form.querySelector('input[name="id"]')
-        });
-        
-        if (autoOpenEnabled) {
-          // Don't prevent the form submission, just set up to open drawer after
-          setTimeout(() => {
-            if (!this.refs.dialog.open) {
-              console.log('Auto-opening cart drawer after product form submission');
-              this.showDialog();
-            }
-          }, 500); // Wait for AJAX submission to complete
-        }
-      }
-      
-      // Prevent any other form submission that goes directly to /cart page
-      if (form?.action?.includes('/cart') && !form.action.includes('/cart/add')) {
+      if (link) {
         const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
         if (autoOpenEnabled) {
           event.preventDefault();
-          console.log('Prevented cart page form submission, opening drawer instead');
+          event.stopPropagation();
+          console.log('Intercepting cart link, opening drawer instead');
           this.showDialog();
         }
       }
-    });
-
-    // Also listen for successful fetch requests to cart/add.js
-    const originalFetch = window.fetch;
-    window.fetch = async (...args) => {
-      const response = await originalFetch(...args);
-      
-      // Check if this was a successful add-to-cart request
-      if (args[0] && typeof args[0] === 'string' && args[0].includes('/cart/add.js')) {
-        const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
-        
-        if (response.ok && autoOpenEnabled && !this.refs.dialog.open) {
-          console.log('Successful cart/add.js request detected, auto-opening drawer');
-          setTimeout(() => {
-            this.showDialog();
-          }, 200);
-        }
-      }
-      
-      return response;
-    };
+    }, true);
   }
 
   /**
