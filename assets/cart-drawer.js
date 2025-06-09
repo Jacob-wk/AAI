@@ -73,6 +73,12 @@ class CartDrawerComponent extends Component {
       });
       
       if (isAddEvent && autoOpenEnabled && !this.refs.dialog.open) {
+        // Don't auto-open if we're already on the cart page
+        if (window.location.pathname === '/cart' || window.location.pathname.includes('/cart')) {
+          console.log('Not auto-opening drawer: already on cart page');
+          return;
+        }
+        
         // Prevent any potential page navigation
         event.preventDefault?.();
         

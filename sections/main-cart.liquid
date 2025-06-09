@@ -5,19 +5,45 @@
 {% comment %} Handle cart drawer mode when accessed directly {% endcomment %}
 {% if settings.cart_type == 'drawer' %}
 
-{% comment %} Render cart drawer on cart page for direct access {% endcomment %}
-{% render 'cart-drawer' %}
+<div class="cart-page-drawer-mode">
+  <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+  <div class="section color-{{ section.settings.color_scheme }} section--{{ section.settings.section_width }}">
+    <div class="cart-drawer-redirect" style="{% render 'spacing-style', settings: section.settings %}">
+      <h1>{{ 'cart.title' | t }}</h1>
+      <p>{{ 'cart.drawer_mode_message' | t | default: 'Your cart opens in a convenient side drawer. You can access your cart from any page using the cart icon in the header.' }}</p>
+      
+      {% if cart.item_count > 0 %}
+        <div class="cart-summary">
+          <p><strong>{{ cart.item_count }} {{ 'cart.items_count' | t: count: cart.item_count }}</strong></p>
+          <p><strong>{{ 'cart.subtotal' | t }}: {{ cart.total_price | money }}</strong></p>
+        </div>
+        
+        <div class="cart-actions">
+          <button 
+            type="button" 
+            class="button button--primary cart-drawer-trigger-btn" 
+            data-cart-drawer-trigger
+          >
+            {{ 'cart.view_cart' | t | default: 'View Cart' }}
+          </button>
+          
+          <a href="{{ routes.cart_url }}/checkout" class="button button--secondary">
+            {{ 'cart.checkout' | t }}
+          </a>
+        </div>
+      {% else %}
+        <p>{{ 'cart.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="button button--primary">
+          {{ 'cart.continue_shopping' | t }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
 
-<div class="cart-drawer-redirect">
-  <h1>{{ 'cart.title' | t }}</h1>
-  <p>{{ 'cart.drawer_mode_message' | t | default: 'Your cart opens in a convenient side drawer. Click the button below to view your cart.' }}</p>
-  <button 
-    type="button" 
-    class="cart-drawer-trigger-btn" 
-    data-cart-drawer-trigger
-  >
-    {{ 'cart.view_cart' | t | default: 'View Cart' }}
-  </button>
+{% comment %} Render cart drawer component but keep it hidden by default and disable auto-open {% endcomment %}
+<div style="display: none;">
+  {% render 'cart-drawer', auto_open: false %}
 </div>
 
 <script>
