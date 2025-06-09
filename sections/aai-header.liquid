@@ -88,10 +88,6 @@
 
           {% if section.settings.show_cart %}
             {% if settings.cart_type == 'drawer' %}
-              {% comment %} Only render cart drawer when NOT on cart page to prevent split-screen {% endcomment %}
-              {% unless template.name == 'cart' %}
-                {% render 'cart-drawer' %}
-              {% endunless %}
               <button 
                 class="aai-cart-link button-unstyled"
                 type="button"

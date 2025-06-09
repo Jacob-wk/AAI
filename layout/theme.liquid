@@ -94,6 +94,11 @@
     {% sections 'footer-group' %}
 
     {% render 'search-modal' %}
+    
+    {% comment %} Render cart drawer globally when cart type is drawer {% endcomment %}
+    {% if settings.cart_type == 'drawer' %}
+      {% render 'cart-drawer' %}
+    {% endif %}
 
     {% # theme-check-disable ParserBlockingScript %}
     <script src="{{ 'critical.js' | asset_url }}"></script>

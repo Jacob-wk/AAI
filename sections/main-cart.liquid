@@ -168,10 +168,7 @@
   </div>
 </div>
 
-{% comment %} Render cart drawer component but keep it hidden by default and disable auto-open {% endcomment %}
-<div style="display: none;">
-  {% render 'cart-drawer', auto_open: false %}
-</div>
+{% comment %} Cart drawer is now rendered globally in theme.liquid {% endcomment %}
 
 <script>
   // Enhanced cart page functionality

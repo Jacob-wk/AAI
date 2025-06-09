@@ -1,6 +1,10 @@
-import { Component } from '@theme/component';
-import { ThemeEvents } from '@theme/events';
-import { fetchConfig, onAnimationEnd } from '@theme/utilities';
+import { Component } from './component.js';
+import { ThemeEvents } from './events.js';
+import { fetchConfig, onAnimationEnd } from './utilities.js';
+
+// Immediate debug logging
+console.log('🚀 Cart drawer JavaScript loaded!');
+console.log('Available imports:', { Component, ThemeEvents, fetchConfig, onAnimationEnd });
 
 /**
  * A custom element that displays a cart drawer.
@@ -14,7 +18,18 @@ class CartDrawerComponent extends Component {
   requiredRefs = ['dialog'];
 
   connectedCallback() {
+    console.log('🔌 Cart drawer connectedCallback called!');
+    console.log('🔍 Element details:', {
+      tagName: this.tagName,
+      autoOpen: this.getAttribute('data-auto-open'),
+      hasRefs: !!this.refs,
+      hasDialog: !!this.refs?.dialog
+    });
+    
     super.connectedCallback();
+    
+    console.log('🛒 Cart drawer connected! Auto-open setting:', this.getAttribute('data-auto-open'));
+    console.log('📊 ThemeEvents available:', ThemeEvents);
     
     // Listen for cart trigger clicks
     document.addEventListener('click', this.#handleCartTriggerClick);
@@ -22,6 +37,7 @@ class CartDrawerComponent extends Component {
     
     // Listen for cart updates
     document.addEventListener(ThemeEvents.cartUpdate, this.#handleCartUpdate);
+    console.log('👂 Event listeners added for cart functionality');
     
     // Bind overlay and close button clicks immediately
     this.#bindCloseEvents();
@@ -31,6 +47,8 @@ class CartDrawerComponent extends Component {
     
     // Setup auto-open functionality for add-to-cart actions
     this.#setupAutoOpenFunctionality();
+    
+    console.log('✅ Cart drawer initialization complete!');
   }
 
   disconnectedCallback() {
@@ -45,6 +63,8 @@ class CartDrawerComponent extends Component {
    * Setup auto-open functionality when items are added to cart
    */
   #setupAutoOpenFunctionality() {
+    console.log('🔧 Setting up auto-open functionality...');
+    
     // Listen for cart add events if auto-open is enabled
     document.addEventListener(ThemeEvents.cartUpdate, (event) => {
       // Cast event to CustomEvent for proper type handling
@@ -53,36 +73,38 @@ class CartDrawerComponent extends Component {
       // Get the auto-open setting from the cart drawer element data attribute
       const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
       
-      // Don't auto-open if we're already on the cart page
-      if (window.location.pathname === '/cart' || window.location.pathname.includes('/cart')) {
-        console.log('Not auto-opening drawer: already on cart page');
+      console.log('🎯 Cart update event received:', {
+        autoOpenEnabled,
+        eventDetail: customEvent.detail,
+        currentPath: window.location.pathname,
+        drawerOpen: this.refs.dialog.open
+      });
+      
+      // Don't auto-open if we're already on the cart page or drawer is already open
+      if (window.location.pathname === '/cart' || 
+          window.location.pathname.includes('/cart') ||
+          this.refs.dialog.open) {
+        console.log('❌ Auto-open prevented:', {
+          onCartPage: window.location.pathname.includes('/cart'),
+          drawerOpen: this.refs.dialog.open
+        });
         return;
       }
       
-      // Check if this is an add event (not just an update)
-      const isAddEvent = customEvent.detail?.data?.source === 'product-form-component' || 
-                        customEvent.detail?.sourceId?.includes('product-form') ||
-                        // Also check for events that don't have errors and aren't from drawer operations
-                        (customEvent.detail?.data && 
-                         !customEvent.detail?.data?.didError && 
-                         customEvent.detail?.source !== 'cart-drawer' && 
-                         customEvent.detail?.source !== 'cart-drawer-refresh' &&
-                         // Additional check for product-related events
-                         (customEvent.detail?.data?.productId || customEvent.detail?.data?.variantId));
+      // Simple check: if this is from product form and auto-open is enabled
+      const isFromProductForm = customEvent.detail?.source === 'product-form-component' ||
+                               customEvent.detail?.data?.source === 'product-form-component';
                         
-      console.log('Cart event detected:', {
-        isAddEvent,
+      console.log('🔍 Auto-open check:', {
+        isFromProductForm,
         autoOpenEnabled,
-        eventDetail: customEvent.detail,
-        drawerOpen: this.refs.dialog.open,
-        eventType: event.type,
-        currentPath: window.location.pathname
+        eventSource: customEvent.detail?.source || customEvent.detail?.data?.source,
+        willAutoOpen: isFromProductForm && autoOpenEnabled
       });
       
-      if (isAddEvent && autoOpenEnabled && !this.refs.dialog.open) {
-        // Small delay to allow cart update to complete
+      if (isFromProductForm && autoOpenEnabled) {
+        console.log('✅ Auto-opening cart drawer');
         setTimeout(() => {
-          console.log('Auto-opening cart drawer');
           this.showDialog();
         }, 100);
       }
@@ -511,6 +533,13 @@ class CartDrawerComponent extends Component {
   }
 }
 
+console.log('📝 About to register cart-drawer custom element...');
+console.log('CartDrawerComponent:', CartDrawerComponent);
+
 if (!customElements.get('cart-drawer')) {
+  console.log('✅ Registering cart-drawer custom element');
   customElements.define('cart-drawer', CartDrawerComponent);
+  console.log('🎯 Cart-drawer custom element registered successfully!');
+} else {
+  console.log('⚠️ cart-drawer custom element already registered');
 }
