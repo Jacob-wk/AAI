@@ -283,7 +283,11 @@
     "quantity_label": "Quantity",
     "decrease_quantity": "Decrease quantity",
     "increase_quantity": "Increase quantity",
-    "remove_item": "Remove {{ title }} from cart"
+    "remove_item": "Remove {{ title }} from cart",
+    "items_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    }
   },
   "collections": {
     "general": {

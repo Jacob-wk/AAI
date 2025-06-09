@@ -8,28 +8,155 @@
 <div class="cart-page-drawer-mode">
   <div class="section-background color-{{ section.settings.color_scheme }}"></div>
   <div class="section color-{{ section.settings.color_scheme }} section--{{ section.settings.section_width }}">
-    <div class="cart-drawer-redirect" style="{% render 'spacing-style', settings: section.settings %}">
+    <div class="cart-content" style="{% render 'spacing-style', settings: section.settings %}">
       <h1>{{ 'cart.title' | t }}</h1>
-      <p>{{ 'cart.drawer_mode_message' | t | default: 'Your cart opens in a convenient side drawer. You can access your cart from any page using the cart icon in the header.' }}</p>
       
       {% if cart.item_count > 0 %}
-        <div class="cart-summary">
-          <p><strong>{{ cart.item_count }} {{ 'cart.items_count' | t: count: cart.item_count }}</strong></p>
-          <p><strong>{{ 'cart.subtotal' | t }}: {{ cart.total_price | money }}</strong></p>
+        {% comment %} Render actual cart content {% endcomment %}
+        <div class="cart-items">
+          {% for item in cart.items %}
+            <div class="cart-item" data-index="{{ forloop.index }}" data-line="{{ forloop.index }}" data-key="{{ item.key }}">
+              <div class="cart-item__image">
+                {% if item.image %}
+                  <img 
+                    src="{{ item.image | image_url: width: 120 }}" 
+                    alt="{{ item.image.alt | escape }}"
+                    loading="lazy"
+                    width="120"
+                    height="120"
+                  >
+                {% endif %}
+              </div>
+              
+              <div class="cart-item__details">
+                <h3 class="cart-item__title">
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                </h3>
+                {% unless item.variant.title == 'Default Title' %}
+                  <p class="cart-item__variant">{{ item.variant.title }}</p>
+                {% endunless %}
+                
+                {% comment %} Properties {% endcomment %}
+                {% assign property_size = item.properties | size %}
+                {% if property_size > 0 %}
+                  <div class="cart-item__properties">
+                    {% for p in item.properties %}
+                      {% unless p.last == blank %}
+                        <span class="cart-item__property">
+                          {{ p.first }}: {{ p.last }}
+                        </span>
+                      {% endunless %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                
+                <div class="cart-item__quantity">
+                  <label for="quantity-{{ item.index }}" class="visually-hidden">
+                    {{ 'cart.quantity_label' | t }}
+                  </label>
+                  <div class="quantity-selector">
+                    <button 
+                      type="button" 
+                      class="quantity-selector__button" 
+                      data-quantity-change="-1"
+                      data-line="{{ forloop.index }}"
+                      data-key="{{ item.key }}"
+                      aria-label="{{ 'cart.decrease_quantity' | t }}"
+                    >
+                      -
+                    </button>
+                    <input 
+                      type="number" 
+                      id="quantity-{{ item.index }}"
+                      name="updates[]" 
+                      value="{{ item.quantity }}" 
+                      min="0"
+                      data-line="{{ forloop.index }}"
+                      data-key="{{ item.key }}"
+                      data-quantity-input
+                      class="quantity-selector__input"
+                      aria-label="{{ 'cart.quantity_label' | t }}"
+                    >
+                    <button 
+                      type="button" 
+                      class="quantity-selector__button" 
+                      data-quantity-change="1"
+                      data-line="{{ forloop.index }}"
+                      data-key="{{ item.key }}"
+                      aria-label="{{ 'cart.increase_quantity' | t }}"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="cart-item__price">
+                  {% comment %} Unit price {% endcomment %}
+                  {% if item.variant.unit_price_measurement %}
+                    <div class="cart-item__unit-price">
+                      {{ item.variant.unit_price | money }}/
+                      {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
+                        {{- item.variant.unit_price_measurement.reference_value -}}
+                      {%- endif -%}
+                      {{ item.variant.unit_price_measurement.reference_unit }}
+                    </div>
+                  {% endif %}
+                  
+                  {% comment %} Line price {% endcomment %}
+                  <span class="cart-item__price-current">{{ item.final_line_price | money }}</span>
+                  {% if item.original_line_price != item.final_line_price %}
+                    <span class="cart-item__price-original">{{ item.original_line_price | money }}</span>
+                  {% endif %}
+                  
+                  {% comment %} Line level discounts {% endcomment %}
+                  {% if item.line_level_discount_allocations.size > 0 %}
+                    <div class="cart-item__discounts">
+                      {% for discount in item.line_level_discount_allocations %}
+                        <span class="cart-item__discount">
+                          {{ discount.discount_application.title }} (-{{ discount.amount | money }})
+                        </span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+              
+              <button 
+                type="button"
+                class="cart-item__remove" 
+                data-line="{{ forloop.index }}"
+                data-key="{{ item.key }}"
+                data-remove-item
+                aria-label="{{ 'cart.remove_item' | t: title: item.product.title }}"
+              >
+                {% render 'icon-delete' %}
+              </button>
+            </div>
+          {% endfor %}
         </div>
-        
-        <div class="cart-actions">
-          <button 
-            type="button" 
-            class="button button--primary cart-drawer-trigger-btn" 
-            data-cart-drawer-trigger
-          >
-            {{ 'cart.view_cart' | t | default: 'View Cart' }}
-          </button>
+
+        <div class="cart-footer">
+          <div class="cart-subtotal">
+            <span class="cart-subtotal-label">{{ 'cart.subtotal' | t }}:</span>
+            <span class="cart-subtotal-price">{{ cart.total_price | money }}</span>
+          </div>
           
-          <a href="{{ routes.cart_url }}/checkout" class="button button--secondary">
-            {{ 'cart.checkout' | t }}
-          </a>
+          {% if cart.cart_level_discount_applications.size > 0 %}
+            <div class="cart-discounts">
+              {% for discount in cart.cart_level_discount_applications %}
+                <div class="cart-discount">
+                  <span>{{ discount.title }}</span>
+                  <span>-{{ discount.total_allocated_amount | money }}</span>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+          
+          <div class="cart-actions">
+            <a href="{{ routes.cart_url }}/checkout" class="button button--primary">
+              {{ 'cart.checkout' | t }}
+            </a>
+          </div>
         </div>
       {% else %}
         <p>{{ 'cart.empty' | t }}</p>
@@ -47,16 +174,107 @@
 </div>
 
 <script>
-  // Enhanced cart drawer trigger for cart page
+  // Enhanced cart page functionality
   document.addEventListener('DOMContentLoaded', function() {
-    const triggerButton = document.querySelector('[data-cart-drawer-trigger]');
-    if (triggerButton) {
-      triggerButton.addEventListener('click', function() {
-        const cartDrawer = document.querySelector('cart-drawer');
-        if (cartDrawer && typeof cartDrawer.showDialog === 'function') {
-          cartDrawer.showDialog();
-        }
+    // Get cart drawer instance
+    const cartDrawer = document.querySelector('cart-drawer');
+    
+    // Bind cart controls for the cart page
+    if (cartDrawer && window.location.pathname === '/cart') {
+      // Bind quantity controls
+      const quantityButtons = document.querySelectorAll('[data-quantity-change]');
+      quantityButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          const change = parseInt(button.getAttribute('data-quantity-change') || '0');
+          const line = parseInt(button.getAttribute('data-line') || '0');
+          const key = button.getAttribute('data-key');
+          
+          // Use cart drawer's update method
+          if (cartDrawer.updateQuantity) {
+            cartDrawer.updateQuantity(line, change, key);
+          } else {
+            // Fallback to manual update
+            updateCartItem(key, line, change);
+          }
+        });
       });
+
+      // Bind quantity inputs
+      const quantityInputs = document.querySelectorAll('[data-quantity-input]');
+      quantityInputs.forEach(input => {
+        input.addEventListener('change', (event) => {
+          const target = event.target;
+          const line = parseInt(target.getAttribute('data-line') || '0');
+          const key = target.getAttribute('data-key');
+          const newQuantity = parseInt(target.value);
+          
+          // Use cart drawer's set quantity method
+          if (cartDrawer.setQuantity) {
+            cartDrawer.setQuantity(line, newQuantity, key);
+          } else {
+            // Fallback to manual update
+            setCartItemQuantity(key, newQuantity);
+          }
+        });
+      });
+
+      // Bind remove buttons
+      const removeButtons = document.querySelectorAll('[data-remove-item]');
+      removeButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          const line = parseInt(button.getAttribute('data-line') || '0');
+          const key = button.getAttribute('data-key');
+          
+          // Use cart drawer's remove method
+          if (cartDrawer.removeItem) {
+            cartDrawer.removeItem(line, key);
+          } else {
+            // Fallback to manual removal
+            removeCartItem(key);
+          }
+        });
+      });
+    }
+
+    // Fallback cart update functions
+    async function updateCartItem(key, line, change) {
+      const input = document.querySelector(`[data-line="${line}"][data-quantity-input]`);
+      if (input) {
+        const currentQuantity = parseInt(input.value);
+        const newQuantity = Math.max(0, currentQuantity + change);
+        await setCartItemQuantity(key, newQuantity);
+      }
+    }
+
+    async function setCartItemQuantity(key, quantity) {
+      try {
+        const response = await fetch('/cart/change.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify({
+            id: key,
+            quantity: quantity
+          })
+        });
+
+        if (response.ok) {
+          // Reload the page to show updated cart
+          window.location.reload();
+        } else {
+          console.error('Failed to update cart');
+        }
+      } catch (error) {
+        console.error('Cart update failed:', error);
+      }
+    }
+
+    async function removeCartItem(key) {
+      await setCartItemQuantity(key, 0);
     }
   });
 </script>
