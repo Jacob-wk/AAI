@@ -87,10 +87,26 @@
           {% endif %}
 
           {% if section.settings.show_cart %}
-            <a href="{{ routes.cart_url }}" class="aai-cart-link">
-              {% render 'icon-cart' %}
-              <span class="aai-cart-count">{{ cart.item_count }}</span>
-            </a>
+            {% if settings.cart_type == 'drawer' %}
+              {% comment %} Only render cart drawer when NOT on cart page to prevent split-screen {% endcomment %}
+              {% unless template.name == 'cart' %}
+                {% render 'cart-drawer' %}
+              {% endunless %}
+              <button 
+                class="aai-cart-link button-unstyled"
+                type="button"
+                aria-label="{{ 'accessibility.cart' | t }}"
+                data-cart-drawer-trigger
+              >
+                {% render 'icon-cart' %}
+                <span class="aai-cart-count">{{ cart.item_count }}</span>
+              </button>
+            {% else %}
+              <a href="{{ routes.cart_url }}" class="aai-cart-link">
+                {% render 'icon-cart' %}
+                <span class="aai-cart-count">{{ cart.item_count }}</span>
+              </a>
+            {% endif %}
           {% endif %}
         </div>
 
