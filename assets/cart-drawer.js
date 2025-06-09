@@ -23,7 +23,7 @@ class CartDrawerComponent extends Component {
     // Listen for cart updates
     document.addEventListener(ThemeEvents.cartUpdate, this.#handleCartUpdate);
     
-    // Bind overlay and close button clicks
+    // Bind overlay and close button clicks immediately
     this.#bindCloseEvents();
     
     // Intercept cart page links when drawer is enabled
@@ -101,17 +101,6 @@ class CartDrawerComponent extends Component {
         }
       }
     });
-
-    // Also listen for beforeunload to prevent navigation
-    window.addEventListener('beforeunload', (event) => {
-      const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
-      if (autoOpenEnabled && window.location.href.includes('/cart')) {
-        console.log('Preventing navigation to cart page');
-        event.preventDefault();
-        this.showDialog();
-        return false;
-      }
-    });
   }
 
   /**
@@ -178,7 +167,8 @@ class CartDrawerComponent extends Component {
       this.refs.dialog.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       
-      // Bind quantity and removal controls after opening
+      // Bind all events after opening
+      this.#bindCloseEvents();
       this.#bindCartControls();
     }
   }
@@ -499,6 +489,7 @@ class CartDrawerComponent extends Component {
         if (newContent && currentContent) {
           currentContent.innerHTML = newContent.innerHTML;
           // Re-bind events for the new content
+          this.#bindCloseEvents();
           this.#bindCartControls();
           
           // Dispatch cart updated event
@@ -531,20 +522,6 @@ class CartDrawerComponent extends Component {
         this.showDialog();
       }
     }, true); // Use capture phase to intercept early
-
-    // Also intercept any programmatic navigation to cart
-    const originalLocation = window.location;
-    Object.defineProperty(window, 'location', {
-      get: () => originalLocation,
-      set: (value) => {
-        if (typeof value === 'string' && (value.includes('/cart') || value.endsWith('/cart'))) {
-          console.log('Intercepting location change to cart, opening drawer instead');
-          this.showDialog();
-          return;
-        }
-        originalLocation.href = value;
-      }
-    });
   }
 }
 
