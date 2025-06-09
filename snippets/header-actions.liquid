@@ -14,7 +14,10 @@
   {% endif %}
 
   {% if settings.cart_type == 'drawer' %}
-    {% render 'cart-drawer' %}
+    {% comment %} Only render cart drawer when NOT on cart page to prevent split-screen {% endcomment %}
+    {% unless template.name == 'cart' %}
+      {% render 'cart-drawer' %}
+    {% endunless %}
     <button 
       class="header-actions__action action__cart button-unstyled"
       type="button"
