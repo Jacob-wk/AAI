@@ -3,6 +3,34 @@
   Clean, accessible cart page implementation
 {% endcomment %}
 
+{% comment %} Auto-redirect to cart drawer if drawer is enabled {% endcomment %}
+{% if settings.cart_type == 'drawer' %}
+<script>
+  // Redirect cart page visitors to use drawer instead
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on cart page and drawer is available
+    if (window.location.pathname === '/cart' && document.querySelector('cart-drawer')) {
+      // Replace current history entry to prevent back button issues
+      history.replaceState(null, '', '/');
+      
+      // Wait for cart drawer to be ready, then open it
+      setTimeout(function() {
+        const cartDrawer = document.querySelector('cart-drawer');
+        if (cartDrawer && cartDrawer.showDialog) {
+          cartDrawer.showDialog();
+        } else {
+          // Fallback: trigger cart button click
+          const cartTrigger = document.querySelector('[data-cart-drawer-trigger]');
+          if (cartTrigger) {
+            cartTrigger.click();
+          }
+        }
+      }, 100);
+    }
+  });
+</script>
+{% endif %}
+
 {{ 'standard-cart-page.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'standard-cart-page.js' | asset_url }}" type="module"></script>
 

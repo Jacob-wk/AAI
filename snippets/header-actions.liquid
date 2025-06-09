@@ -13,7 +13,7 @@
     {% render 'account-drawer' %}
   {% endif %}
 
-  {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
+  {% if settings.cart_type == 'drawer' %}
     {% render 'cart-drawer' %}
     <button 
       class="header-actions__action action__cart button-unstyled"

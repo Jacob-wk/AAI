@@ -25,6 +25,12 @@ class CartDrawerComponent extends Component {
     
     // Bind overlay and close button clicks
     this.#bindCloseEvents();
+    
+    // Intercept cart page links when drawer is enabled
+    this.#interceptCartLinks();
+    
+    // Setup auto-open functionality for add-to-cart actions
+    this.#setupAutoOpenFunctionality();
   }
 
   disconnectedCallback() {
@@ -33,6 +39,32 @@ class CartDrawerComponent extends Component {
     document.removeEventListener('click', this.#handleCartTriggerClick);
     document.removeEventListener('keydown', this.#handleEscapeKey);
     document.removeEventListener(ThemeEvents.cartUpdate, this.#handleCartUpdate);
+  }
+
+  /**
+   * Setup auto-open functionality when items are added to cart
+   */
+  #setupAutoOpenFunctionality() {
+    // Listen for cart add events if auto-open is enabled
+    document.addEventListener(ThemeEvents.cartUpdate, (event) => {
+      // Cast event to CustomEvent for proper type handling
+      const customEvent = /** @type {CustomEvent} */ (event);
+      
+      // Check if this is an add event (not just an update)
+      const isAddEvent = customEvent.detail?.data?.source === 'product-form' || 
+                        customEvent.detail?.data?.variantId || 
+                        customEvent.detail?.sourceId?.includes('product-form');
+                        
+      // Get the auto-open setting from the cart drawer element data attribute
+      const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
+      
+      if (isAddEvent && autoOpenEnabled && !this.refs.dialog.open) {
+        // Small delay to allow cart update to complete
+        setTimeout(() => {
+          this.showDialog();
+        }, 100);
+      }
+    });
   }
 
   /**
@@ -257,6 +289,21 @@ class CartDrawerComponent extends Component {
       // Fallback to page reload
       window.location.reload();
     }
+  }
+
+  /**
+   * Intercept links to cart page and open drawer instead
+   */
+  #interceptCartLinks() {
+    document.addEventListener('click', (event) => {
+      const target = /** @type {HTMLElement} */ (event.target);
+      const link = target?.closest('a[href*="/cart"]');
+      if (link && link.getAttribute('href') === '/cart') {
+        event.preventDefault();
+        event.stopPropagation();
+        this.showDialog();
+      }
+    });
   }
 }
 
