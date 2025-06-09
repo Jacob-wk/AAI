@@ -2,6 +2,41 @@
 
 {{ 'cart-styling.css' | asset_url | stylesheet_tag }}
 
+{% comment %} Handle cart drawer mode when accessed directly {% endcomment %}
+{% if settings.cart_type == 'drawer' %}
+
+{% comment %} Render cart drawer on cart page for direct access {% endcomment %}
+{% render 'cart-drawer' %}
+
+<div class="cart-drawer-redirect">
+  <h1>{{ 'cart.title' | t }}</h1>
+  <p>{{ 'cart.drawer_mode_message' | t | default: 'Your cart opens in a convenient side drawer. Click the button below to view your cart.' }}</p>
+  <button 
+    type="button" 
+    class="cart-drawer-trigger-btn" 
+    data-cart-drawer-trigger
+  >
+    {{ 'cart.view_cart' | t | default: 'View Cart' }}
+  </button>
+</div>
+
+<script>
+  // Enhanced cart drawer trigger for cart page
+  document.addEventListener('DOMContentLoaded', function() {
+    const triggerButton = document.querySelector('[data-cart-drawer-trigger]');
+    if (triggerButton) {
+      triggerButton.addEventListener('click', function() {
+        const cartDrawer = document.querySelector('cart-drawer');
+        if (cartDrawer && typeof cartDrawer.showDialog === 'function') {
+          cartDrawer.showDialog();
+        }
+      });
+    }
+  });
+</script>
+
+{% else %}
+
 {% stylesheet %}
   .cart-page {
     --cart-font-size--2xs: var(--font-size--2xs);
@@ -117,6 +152,8 @@
     </div>
   </div>
 </cart-items-component>
+
+{% endif %}
 
 {% schema %}
 {
