@@ -51,13 +51,21 @@ class CartDrawerComponent extends Component {
       const customEvent = /** @type {CustomEvent} */ (event);
       
       // Check if this is an add event (not just an update)
-      const isAddEvent = customEvent.detail?.data?.source === 'product-form' || 
+      const isAddEvent = customEvent.detail?.data?.source === 'product-form-component' || 
                         customEvent.detail?.data?.variantId || 
                         customEvent.detail?.sourceId?.includes('product-form') ||
-                        customEvent.detail?.source?.includes('add-to-cart');
+                        customEvent.detail?.source?.includes('add-to-cart') ||
+                        (customEvent.detail?.data && !customEvent.detail?.data?.didError);
                         
       // Get the auto-open setting from the cart drawer element data attribute
       const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
+      
+      console.log('Cart event detected:', {
+        isAddEvent,
+        autoOpenEnabled,
+        eventDetail: customEvent.detail,
+        drawerOpen: this.refs.dialog.open
+      });
       
       if (isAddEvent && autoOpenEnabled && !this.refs.dialog.open) {
         // Small delay to allow cart update to complete
@@ -67,14 +75,21 @@ class CartDrawerComponent extends Component {
       }
     });
 
-    // Also listen for direct add-to-cart form submissions
+    // Also listen for direct add-to-cart form submissions as backup
     document.addEventListener('submit', (event) => {
       const form = /** @type {HTMLFormElement} */ (event.target);
-      if (form?.matches('[data-type="add-to-cart-form"]')) {
+      if (form?.matches('[data-type="add-to-cart-form"]') || form?.action?.includes('/cart/add')) {
         const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
+        console.log('Add to cart form submitted:', {
+          autoOpenEnabled,
+          formAction: form.action,
+          drawerOpen: this.refs.dialog.open
+        });
+        
         if (autoOpenEnabled && !this.refs.dialog.open) {
           // Delay to allow form submission to complete
           setTimeout(() => {
+            console.log('Auto-opening cart drawer after form submission');
             this.showDialog();
           }, 500);
         }
@@ -251,12 +266,22 @@ class CartDrawerComponent extends Component {
 
   /**
    * Update cart via Shopify cart API
-   * @param {Object} updates
+   * @param {Object.<number, number>} updates
    */
   async #updateCart(updates) {
     try {
       // Show loading state
       this.#setLoadingState(true);
+
+      // Convert updates object to have string keys for Shopify API
+      const formattedUpdates = /** @type {Record<string, number>} */ ({});
+      Object.entries(updates).forEach(([key, value]) => {
+        if (typeof value === 'number') {
+          formattedUpdates[key.toString()] = value;
+        }
+      });
+
+      console.log('Sending cart update:', formattedUpdates);
 
       const response = await fetch('/cart/update.js', {
         method: 'POST',
@@ -264,7 +289,7 @@ class CartDrawerComponent extends Component {
           'Content-Type': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
         },
-        body: JSON.stringify({ updates })
+        body: JSON.stringify({ updates: formattedUpdates })
       });
 
       if (response.ok) {
@@ -282,10 +307,28 @@ class CartDrawerComponent extends Component {
           }
         }));
       } else {
-        const errorData = await response.json();
-        console.error('Cart update failed:', errorData);
-        // Show error message to user
-        this.#showError(errorData.message || 'Failed to update cart');
+        let errorMessage = 'Failed to update cart';
+        
+        try {
+          const errorData = await response.json();
+          console.error('Cart update failed:', {
+            status: response.status,
+            statusText: response.statusText,
+            errorData: errorData,
+            updates: formattedUpdates
+          });
+          
+          if (response.status === 422) {
+            errorMessage = errorData.message || errorData.description || 'Invalid cart update. Please refresh the page and try again.';
+          } else {
+            errorMessage = errorData.message || errorData.description || errorMessage;
+          }
+        } catch (parseError) {
+          console.error('Failed to parse error response:', parseError);
+          console.error('Response status:', response.status, response.statusText);
+        }
+        
+        this.#showError(errorMessage);
       }
     } catch (error) {
       console.error('Cart update failed:', error);
