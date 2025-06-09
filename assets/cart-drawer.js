@@ -53,7 +53,8 @@ class CartDrawerComponent extends Component {
       // Check if this is an add event (not just an update)
       const isAddEvent = customEvent.detail?.data?.source === 'product-form' || 
                         customEvent.detail?.data?.variantId || 
-                        customEvent.detail?.sourceId?.includes('product-form');
+                        customEvent.detail?.sourceId?.includes('product-form') ||
+                        customEvent.detail?.source?.includes('add-to-cart');
                         
       // Get the auto-open setting from the cart drawer element data attribute
       const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
@@ -63,6 +64,20 @@ class CartDrawerComponent extends Component {
         setTimeout(() => {
           this.showDialog();
         }, 100);
+      }
+    });
+
+    // Also listen for direct add-to-cart form submissions
+    document.addEventListener('submit', (event) => {
+      const form = /** @type {HTMLFormElement} */ (event.target);
+      if (form?.matches('[data-type="add-to-cart-form"]')) {
+        const autoOpenEnabled = this.getAttribute('data-auto-open') === 'true';
+        if (autoOpenEnabled && !this.refs.dialog.open) {
+          // Delay to allow form submission to complete
+          setTimeout(() => {
+            this.showDialog();
+          }, 500);
+        }
       }
     });
   }
@@ -240,28 +255,84 @@ class CartDrawerComponent extends Component {
    */
   async #updateCart(updates) {
     try {
+      // Show loading state
+      this.#setLoadingState(true);
+
       const response = await fetch('/cart/update.js', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
         },
         body: JSON.stringify({ updates })
       });
 
       if (response.ok) {
+        const data = await response.json();
+        
         // Reload the cart drawer content
-        this.#refreshCartContent();
+        await this.#refreshCartContent();
         
         // Dispatch cart update event
         document.dispatchEvent(new CustomEvent(ThemeEvents.cartUpdate, {
           detail: { 
-            data: await response.json(),
-            source: 'cart-drawer'
+            data: data,
+            source: 'cart-drawer',
+            success: true
           }
         }));
+      } else {
+        const errorData = await response.json();
+        console.error('Cart update failed:', errorData);
+        // Show error message to user
+        this.#showError(errorData.message || 'Failed to update cart');
       }
     } catch (error) {
       console.error('Cart update failed:', error);
+      this.#showError('Failed to update cart. Please try again.');
+    } finally {
+      this.#setLoadingState(false);
+    }
+  }
+
+  /**
+   * Set loading state for cart operations
+   * @param {boolean} isLoading
+   */
+  #setLoadingState(isLoading) {
+    const cartItems = /** @type {HTMLElement | null} */ (this.refs.dialog.querySelector('.cart-drawer__items'));
+    if (cartItems) {
+      cartItems.style.opacity = isLoading ? '0.6' : '1';
+      cartItems.style.pointerEvents = isLoading ? 'none' : 'auto';
+    }
+  }
+
+  /**
+   * Show error message to user
+   * @param {string} message
+   */
+  #showError(message) {
+    // Create or update error message element
+    let errorElement = /** @type {HTMLElement | null} */ (this.refs.dialog.querySelector('.cart-drawer__error'));
+    if (!errorElement) {
+      errorElement = document.createElement('div');
+      errorElement.className = 'cart-drawer__error';
+      const header = /** @type {HTMLElement | null} */ (this.refs.dialog.querySelector('.cart-drawer__header'));
+      if (header) {
+        header.after(errorElement);
+      }
+    }
+    
+    if (errorElement) {
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+      
+      // Auto-hide error after 5 seconds
+      setTimeout(() => {
+        if (errorElement) {
+          errorElement.style.display = 'none';
+        }
+      }, 5000);
     }
   }
 
@@ -282,6 +353,14 @@ class CartDrawerComponent extends Component {
           currentContent.innerHTML = newContent.innerHTML;
           // Re-bind events for the new content
           this.#bindCartControls();
+          
+          // Dispatch cart updated event
+          document.dispatchEvent(new CustomEvent(ThemeEvents.cartUpdate, {
+            detail: { 
+              source: 'cart-drawer-refresh',
+              success: true
+            }
+          }));
         }
       }
     } catch (error) {

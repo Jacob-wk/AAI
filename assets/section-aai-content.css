@@ -501,3 +501,210 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Credential Grid Styles */
+.credential-grid {
+  margin: 40px 0;
+}
+
+.credential-grid h4,
+.credential-grid .grid-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1e3a5f;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.section-dark .credential-grid h4,
+.section-dark .credential-grid .grid-title {
+  color: white;
+}
+
+.credential-grid .grid-description {
+  font-size: 1.125rem;
+  color: #6c757d;
+  text-align: center;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.section-dark .credential-grid .grid-description {
+  color: #dee2e6;
+}
+
+.credentials-container {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.credential-grid[data-columns="1"] .credentials-container {
+  grid-template-columns: 1fr;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.credential-grid[data-columns="2"] .credentials-container {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.credential-grid[data-columns="3"] .credentials-container {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.credential-grid[data-columns="4"] .credentials-container {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.credential-item {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.credential-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-color: #007bff;
+}
+
+.section-dark .credential-item {
+  background: #2c4a6b;
+  border-color: #495057;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.section-dark .credential-item:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-color: #17a2b8;
+}
+
+.credential-logo {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.credential-logo img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.credential-info {
+  text-align: center;
+}
+
+.credential-item strong,
+.credential-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e3a5f;
+  margin-bottom: 8px;
+  display: block;
+  line-height: 1.4;
+}
+
+.section-dark .credential-item strong,
+.section-dark .credential-name {
+  color: white;
+}
+
+.credential-organization {
+  font-size: 1rem;
+  color: #007bff;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.section-dark .credential-organization {
+  color: #17a2b8;
+}
+
+.credential-item p,
+.credential-description {
+  font-size: 0.95rem;
+  color: #6c757d;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.section-dark .credential-item p,
+.section-dark .credential-description {
+  color: #ced4da;
+}
+
+.credential-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.credential-link:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+  transform: translateY(-1px);
+  color: white;
+  text-decoration: none;
+}
+
+.section-dark .credential-link {
+  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+}
+
+.section-dark .credential-link:hover {
+  background: linear-gradient(135deg, #138496 0%, #0f6674 100%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .credentials-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .credential-item {
+    padding: 20px;
+  }
+  
+  .credential-grid h4,
+  .credential-grid .grid-title {
+    font-size: 1.5rem;
+  }
+  
+  .credential-item strong,
+  .credential-name {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .credential-item {
+    padding: 16px;
+  }
+  
+  .credential-grid {
+    margin: 24px 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .credential-grid[data-columns="4"] .credentials-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .credential-grid[data-columns="3"] .credentials-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

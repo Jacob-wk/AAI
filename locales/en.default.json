@@ -277,7 +277,13 @@
     "continue_shopping": "Continue shopping",
     "title": "Cart",
     "drawer_mode_message": "Your cart opens in a convenient side drawer. Click the button below to view your cart.",
-    "view_cart": "View Cart"
+    "view_cart": "View Cart",
+    "subtotal": "Subtotal",
+    "checkout": "Check out",
+    "quantity_label": "Quantity",
+    "decrease_quantity": "Decrease quantity",
+    "increase_quantity": "Increase quantity",
+    "remove_item": "Remove {{ title }} from cart"
   },
   "collections": {
     "general": {
