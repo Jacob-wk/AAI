@@ -1,148 +1,212 @@
+import { Component } from '@theme/component';
+import { ThemeEvents } from '@theme/events';
+import { fetchConfig, onAnimationEnd } from '@theme/utilities';
+
 /**
- * Simple Cart Drawer Implementation
- * Uses native HTML dialog element for proper modal behavior
+ * A custom element that displays a cart drawer.
+ *
+ * @typedef {object} Refs
+ * @property {HTMLDialogElement} dialog - The dialog element.
+ *
+ * @extends {Component<Refs>}
  */
+class CartDrawerComponent extends Component {
+  requiredRefs = ['dialog'];
 
-class CartDrawer {
-  constructor() {
-    this.dialog = null;
-    this.cartTrigger = null;
-    this.init();
-  }
-
-  init() {
-    // Wait for DOM to be ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => this.setup());
-    } else {
-      this.setup();
-    }
-  }
-
-  setup() {
-    this.dialog = document.getElementById('cart-drawer');
-    this.cartTrigger = document.querySelector('[data-cart-drawer-trigger]');
+  connectedCallback() {
+    super.connectedCallback();
     
-    if (this.dialog && this.cartTrigger) {
-      this.bindEvents();
+    // Listen for cart trigger clicks
+    document.addEventListener('click', this.#handleCartTriggerClick);
+    document.addEventListener('keydown', this.#handleEscapeKey);
+    
+    // Listen for cart updates
+    document.addEventListener(ThemeEvents.cartUpdate, this.#handleCartUpdate);
+    
+    // Bind overlay and close button clicks
+    this.#bindCloseEvents();
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    
+    document.removeEventListener('click', this.#handleCartTriggerClick);
+    document.removeEventListener('keydown', this.#handleEscapeKey);
+    document.removeEventListener(ThemeEvents.cartUpdate, this.#handleCartUpdate);
+  }
+
+  /**
+   * Handle cart trigger button clicks
+   * @param {Event} event
+   */
+  #handleCartTriggerClick = (event) => {
+    const trigger = /** @type {HTMLElement} */ (event.target);
+    if (trigger?.matches('[data-cart-drawer-trigger]') || trigger?.closest('[data-cart-drawer-trigger]')) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.showDialog();
+    }
+  };
+
+  /**
+   * Handle escape key to close drawer
+   * @param {KeyboardEvent} event
+   */
+  #handleEscapeKey = (event) => {
+    if (event.key === 'Escape' && this.refs.dialog.open) {
+      this.closeDialog();
+    }
+  };
+
+  /**
+   * Handle cart updates to refresh drawer content
+   * @param {CustomEvent} event
+   */
+  #handleCartUpdate = (event) => {
+    if (this.refs.dialog.open) {
+      this.#refreshCartContent();
+    }
+  };
+
+  /**
+   * Bind close events for overlay and close buttons
+   */
+  #bindCloseEvents() {
+    // Handle overlay clicks
+    this.refs.dialog.addEventListener('click', (event) => {
+      const target = /** @type {HTMLElement} */ (event.target);
+      if (target === this.refs.dialog || target?.classList?.contains('cart-drawer__overlay')) {
+        this.closeDialog();
+      }
+    });
+
+    // Handle close button clicks
+    const closeButtons = this.refs.dialog.querySelectorAll('.cart-drawer__close');
+    closeButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        this.closeDialog();
+      });
+    });
+  }
+
+  /**
+   * Show the cart drawer
+   */
+  showDialog() {
+    if (!this.refs.dialog.open) {
+      this.refs.dialog.showModal();
+      this.refs.dialog.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      
+      // Bind quantity and removal controls after opening
+      this.#bindCartControls();
     }
   }
 
-  bindEvents() {
-    // Cart trigger button
-    if (this.cartTrigger) {
-      this.cartTrigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.open();
-      });
-    }
-
-    // Close when clicking backdrop/overlay
-    if (this.dialog) {
-      this.dialog.addEventListener('click', (e) => {
-        // Close if clicking the dialog itself (backdrop) or the overlay
-        const target = /** @type {HTMLElement} */ (e.target);
-        if (target === this.dialog || target?.classList?.contains('cart-drawer__overlay')) {
-          this.close();
-        }
-      });
-
-      // Close on escape key
-      this.dialog.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          this.close();
-        }
-      });
-
-      // Handle close buttons
-      const closeButtons = this.dialog.querySelectorAll('.cart-drawer__close');
-      closeButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-          e.preventDefault();
-          this.close();
-        });
-      });
-
-      // Handle quantity changes
-      this.bindQuantityControls();
-
-      // Handle item removal
-      this.bindRemoveButtons();
+  /**
+   * Close the cart drawer with animation
+   */
+  closeDialog() {
+    if (this.refs.dialog.open) {
+      // Add closing class for CSS animation
+      this.refs.dialog.classList.add('closing');
+      
+      // Wait for animation to complete before actually closing
+      setTimeout(() => {
+        this.refs.dialog.close();
+        this.refs.dialog.classList.remove('closing');
+        this.refs.dialog.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }, 300); // Match CSS animation duration
     }
   }
 
-  bindQuantityControls() {
-    if (!this.dialog) return;
+  /**
+   * Bind cart quantity and removal controls
+   */
+  #bindCartControls() {
+    this.#bindQuantityControls();
+    this.#bindRemoveButtons();
+  }
 
+  /**
+   * Bind quantity control buttons and inputs
+   */
+  #bindQuantityControls() {
     // Quantity buttons
-    const quantityButtons = this.dialog.querySelectorAll('[data-quantity-change]');
+    const quantityButtons = this.refs.dialog.querySelectorAll('[data-quantity-change]');
     quantityButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
         const change = parseInt(button.getAttribute('data-quantity-change') || '0');
         const line = parseInt(button.getAttribute('data-line') || '0');
-        this.updateQuantity(line, change);
+        this.#updateQuantity(line, change);
       });
     });
 
     // Quantity inputs
-    const quantityInputs = this.dialog.querySelectorAll('[data-quantity-input]');
+    const quantityInputs = this.refs.dialog.querySelectorAll('[data-quantity-input]');
     quantityInputs.forEach(input => {
-      input.addEventListener('change', (e) => {
-        const target = /** @type {HTMLInputElement} */ (e.target);
+      input.addEventListener('change', (event) => {
+        const target = /** @type {HTMLInputElement} */ (event.target);
         const line = parseInt(target.getAttribute('data-line') || '0');
         const newQuantity = parseInt(target.value);
-        this.setQuantity(line, newQuantity);
-      });
-    });
-  }
-
-  bindRemoveButtons() {
-    if (!this.dialog) return;
-
-    const removeButtons = this.dialog.querySelectorAll('[data-remove-item]');
-    removeButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const line = parseInt(button.getAttribute('data-line') || '0');
-        this.removeItem(line);
+        this.#setQuantity(line, newQuantity);
       });
     });
   }
 
   /**
+   * Bind item removal buttons
+   */
+  #bindRemoveButtons() {
+    const removeButtons = this.refs.dialog.querySelectorAll('[data-remove-item]');
+    removeButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const line = parseInt(button.getAttribute('data-line') || '0');
+        this.#removeItem(line);
+      });
+    });
+  }
+
+  /**
+   * Update quantity by relative change
    * @param {number} line
    * @param {number} change
    */
-  updateQuantity(line, change) {
-    const input = this.dialog?.querySelector(`[data-line="${line}"][data-quantity-input]`);
+  #updateQuantity(line, change) {
+    const input = this.refs.dialog.querySelector(`[data-line="${line}"][data-quantity-input]`);
     if (input) {
-      const currentQuantity = parseInt((/** @type {HTMLInputElement} */ (input)).value);
+      const currentQuantity = parseInt(/** @type {HTMLInputElement} */ (input).value);
       const newQuantity = Math.max(0, currentQuantity + change);
-      this.setQuantity(line, newQuantity);
+      this.#setQuantity(line, newQuantity);
     }
   }
 
   /**
+   * Set absolute quantity
    * @param {number} line
    * @param {number} quantity
    */
-  setQuantity(line, quantity) {
-    this.updateCart({ [line]: quantity });
+  #setQuantity(line, quantity) {
+    this.#updateCart({ [line]: quantity });
   }
 
   /**
+   * Remove item from cart
    * @param {number} line
    */
-  removeItem(line) {
-    this.updateCart({ [line]: 0 });
+  #removeItem(line) {
+    this.#updateCart({ [line]: 0 });
   }
 
   /**
+   * Update cart via Shopify cart API
    * @param {Object} updates
    */
-  async updateCart(updates) {
+  async #updateCart(updates) {
     try {
       const response = await fetch('/cart/update.js', {
         method: 'POST',
@@ -154,14 +218,25 @@ class CartDrawer {
 
       if (response.ok) {
         // Reload the cart drawer content
-        this.refreshCart();
+        this.#refreshCartContent();
+        
+        // Dispatch cart update event
+        document.dispatchEvent(new CustomEvent(ThemeEvents.cartUpdate, {
+          detail: { 
+            data: await response.json(),
+            source: 'cart-drawer'
+          }
+        }));
       }
     } catch (error) {
       console.error('Cart update failed:', error);
     }
   }
 
-  async refreshCart() {
+  /**
+   * Refresh cart drawer content
+   */
+  async #refreshCartContent() {
     try {
       const response = await fetch('/cart?view=drawer');
       if (response.ok) {
@@ -169,13 +244,12 @@ class CartDrawer {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const newContent = doc.querySelector('.cart-drawer__content');
-        const currentContent = this.dialog?.querySelector('.cart-drawer__content');
+        const currentContent = this.refs.dialog.querySelector('.cart-drawer__content');
         
         if (newContent && currentContent) {
           currentContent.innerHTML = newContent.innerHTML;
           // Re-bind events for the new content
-          this.bindQuantityControls();
-          this.bindRemoveButtons();
+          this.#bindCartControls();
         }
       }
     } catch (error) {
@@ -184,27 +258,8 @@ class CartDrawer {
       window.location.reload();
     }
   }
-
-  open() {
-    if (this.dialog && !(/** @type {HTMLDialogElement} */(this.dialog)).open) {
-      (/** @type {HTMLDialogElement} */(this.dialog)).showModal();
-      document.body.style.overflow = 'hidden';
-      this.dialog.setAttribute('aria-hidden', 'false');
-    }
-  }
-
-  close() {
-    if (this.dialog && (/** @type {HTMLDialogElement} */(this.dialog)).open) {
-      (/** @type {HTMLDialogElement} */(this.dialog)).close();
-      document.body.style.overflow = '';
-      this.dialog.setAttribute('aria-hidden', 'true');
-    }
-  }
 }
 
-// Initialize cart drawer when page loads
-const cartDrawer = new CartDrawer();
-
-// Also expose globally for other scripts
-// @ts-ignore
-window.CartDrawer = cartDrawer;
+if (!customElements.get('cart-drawer')) {
+  customElements.define('cart-drawer', CartDrawerComponent);
+}

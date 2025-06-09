@@ -65,6 +65,12 @@
   transform: translateX(0) !important;
 }
 
+/* Closing animation */
+.cart-drawer__dialog.closing .cart-drawer__content {
+  transform: translateX(100%) !important;
+  transition: transform 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53) !important;
+}
+
 /* Header styling */
 .cart-drawer__header {
   padding: 1rem 1.5rem;

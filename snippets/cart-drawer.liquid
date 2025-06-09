@@ -1,6 +1,6 @@
 <cart-drawer class="cart-drawer" aria-label="{{ 'accessibility.cart' | t }}">
-  <dialog class="cart-drawer__dialog" aria-label="{{ 'accessibility.cart' | t }}" id="cart-drawer">
-    <div class="cart-drawer__overlay" onclick="this.closest('dialog').close()"></div>
+  <dialog class="cart-drawer__dialog" ref="dialog" aria-label="{{ 'accessibility.cart' | t }}" id="cart-drawer">
+    <div class="cart-drawer__overlay"></div>
   
     <form action="{{ routes.cart_url }}" method="post" enctype="multipart/form-data" id="cart-drawer-form" class="cart-drawer__content">
       <div class="cart-drawer__header">
@@ -13,7 +13,6 @@
         <button 
           type="button"
           class="cart-drawer__close" 
-          onclick="this.closest('dialog').close()"
           aria-label="{{ 'accessibility.close' | t }}"
         >
           {{ 'icon-close.svg' | inline_asset_content }}
