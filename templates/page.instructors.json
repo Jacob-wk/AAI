@@ -143,30 +143,12 @@
         "section_subtitle": "",
         "layout_style": "text-left-image-right",
         "blocks_per_row": "1",
-        "background_style": "",
+        "background_style": "section-alt-1",
         "show_main_content": true,
         "content_title": "Specialized Faculty Expertise",
         "content_body": "<p>Our specialized faculty members bring deep expertise in specific areas of amusement industry operations. Each brings decades of hands-on experience and maintains active industry involvement.</p><h4>Specialized Areas Include:</h4><ul><li><strong>Ride Mechanics & Engineering</strong> - Advanced troubleshooting and maintenance</li><li><strong>Water Ride Operations</strong> - Specialized water safety protocols</li><li><strong>Emergency Response</strong> - Crisis management and evacuation procedures</li><li><strong>Guest Relations</strong> - Advanced customer service and conflict resolution</li><li><strong>Maintenance Management</strong> - Preventive and predictive maintenance strategies</li><li><strong>Training Development</strong> - Adult learning and curriculum design</li></ul>",
         "show_image": true,
         "content_image": "shopify://shop_images/IMG_1004.heic",
-        "main_button_text": "",
-        "main_button_url": "",
-        "main_button_style": "primary",
-        "main_button_size": "medium"
-      }
-    },
-    "guest_instructors": {
-      "type": "aai-universal-content",
-      "settings": {
-        "section_title": "",
-        "section_subtitle": "",
-        "layout_style": "text-only",
-        "blocks_per_row": "1",
-        "background_style": "section-alt-3",
-        "show_main_content": true,
-        "content_title": "Industry Guest Instructors",
-        "content_body": "<p>AAI regularly features guest instructors from major theme parks, manufacturers, regulatory agencies, and consulting firms. These industry leaders share current trends, real-world case studies, and emerging technologies that keep our curriculum at the forefront of industry developments.</p><h4>Recent Guest Instructors Include:</h4><ul><li><strong>Walt Disney World</strong> - Senior Operations Managers</li><li><strong>Universal Studios</strong> - Safety Directors</li><li><strong>Six Flags</strong> - Maintenance Supervisors</li><li><strong>Cedar Fair</strong> - Training Coordinators</li><li><strong>Intamin AG</strong> - Design Engineers</li><li><strong>B&M Coasters</strong> - Project Managers</li><li><strong>State Regulatory Agencies</strong> - Chief Inspectors</li><li><strong>Insurance Companies</strong> - Risk Assessment Specialists</li></ul>",
-        "show_image": false,
         "main_button_text": "",
         "main_button_url": "",
         "main_button_style": "primary",
@@ -232,7 +214,6 @@
     "hero",
     "lead_instructors",
     "specialized_faculty",
-    "guest_instructors",
     "faculty_standards",
     "instructors_cta"
   ]
