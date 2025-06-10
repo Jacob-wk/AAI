@@ -43,7 +43,7 @@
         "show_stats": false,
         "show_credentials": false,
         "primary_button_text": "Our Story",
-        "primary_button_url": "#aai-container",
+        "primary_button_url": "shopify://pages/about",
         "secondary_button_text": "Call Us Now",
         "secondary_button_url": "tel:1-800-SAFETY-1",
         "button_size": "large"
