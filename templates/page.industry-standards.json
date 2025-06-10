@@ -7,7 +7,6 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-
 {
   "sections": {
     "hero": {
@@ -15,17 +14,17 @@
       "settings": {
         "hero_title": "Industry Standards & Compliance",
         "hero_subtitle": "Comprehensive guide to amusement industry safety standards",
+        "hero_style": "hero-standard",
+        "layout_style": "text-left-image-right",
+        "show_image": true,
+        "show_features": false,
         "show_stats": false,
-        "show_features": false
-      }
-    },
-    "overview": {
-      "type": "aai-universal-content",
-      "settings": {
-        "content_title": "",
-        "content_body": "<p>Stay current with the latest safety standards, regulations, and compliance requirements from leading industry organizations worldwide.</p>",
-        "layout_style": "text-center",
-        "background_style": ""
+        "show_credentials": false,
+        "primary_button_text": "",
+        "primary_button_url": "",
+        "secondary_button_text": "",
+        "secondary_button_url": "",
+        "button_size": "large"
       }
     },
     "standards_categories": {
@@ -59,26 +58,42 @@
         "regulatory_bodies"
       ],
       "settings": {
+        "section_title": "Stay Current, Stay Safe",
+        "section_subtitle": "Stay current with the latest safety standards, regulations, and compliance requirements from leading industry organizations worldwide.",
         "layout_style": "blocks-grid",
         "blocks_per_row": "3",
-        "background_style": ""
+        "background_style": "",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
       }
     },
     "compliance_resources": {
       "type": "aai-universal-content",
       "settings": {
+        "section_title": "",
+        "section_subtitle": "",
+        "layout_style": "text-center",
+        "blocks_per_row": "1",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
         "content_title": "Compliance Resources",
         "content_body": "<p>Access our comprehensive library of compliance tools, checklists, and documentation templates.</p>",
+        "show_image": false,
         "main_button_text": "View Safety Library",
         "main_button_url": "/pages/safety-library",
-        "layout_style": "text-center",
-        "background_style": "section-alt-1"
+        "main_button_style": "primary",
+        "main_button_size": "medium"
       }
     }
   },
   "order": [
     "hero",
-    "overview",
     "standards_categories",
     "compliance_resources"
   ]
