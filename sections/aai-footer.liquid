@@ -47,39 +47,61 @@
       <div class="aai-footer-column">
         <h4>{{ section.settings.menu_1_title | default: "Courses" }}</h4>
         <ul class="aai-footer-links">
-          <li><a href="/collections/courses">All Courses</a></li>
-          <li><a href="/pages/certifications">Certifications</a></li>
-          <li><a href="/pages/corporate-training">Corporate Training</a></li>
-          <li><a href="/pages/webinars">Webinars</a></li>
+          {% if section.settings.footer_menu_1 != blank %}
+            {% for link in linklists[section.settings.footer_menu_1].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          {% else %}
+            <li><a href="/collections/courses">All Courses</a></li>
+            <li><a href="/pages/certifications">Certifications</a></li>
+            <li><a href="/pages/corporate-training">Corporate Training</a></li>
+            <li><a href="/pages/webinars">Webinars</a></li>
+          {% endif %}
         </ul>
       </div>
 
       <div class="aai-footer-column">
         <h4>{{ section.settings.menu_2_title | default: "Company" }}</h4>
         <ul class="aai-footer-links">
-          <li><a href="/pages/about">About AAI</a></li>
-          <li><a href="/pages/instructors">Our Faculty</a></li>
-          <li><a href="/pages/partnerships">Partnerships</a></li>
-          <li><a href="/pages/contact">Contact Us</a></li>
+          {% if section.settings.footer_menu_2 != blank %}
+            {% for link in linklists[section.settings.footer_menu_2].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          {% else %}
+            <li><a href="/pages/about">About AAI</a></li>
+            <li><a href="/pages/instructors">Our Faculty</a></li>
+            <li><a href="/pages/partnerships">Partnerships</a></li>
+            <li><a href="/pages/contact">Contact Us</a></li>
+          {% endif %}
         </ul>
       </div>
 
       <div class="aai-footer-column">
         <h4>{{ section.settings.menu_3_title | default: "Resources" }}</h4>
         <ul class="aai-footer-links">
-          <li><a href="/pages/safety-library">Safety Library</a></li>
-          <li><a href="/pages/industry-standards">Industry Standards</a></li>
-          <li><a href="/pages/help-center">Help Center</a></li>
-          <li><a href="/pages/demo">Platform Demo</a></li>
+          {% if section.settings.footer_menu_3 != blank %}
+            {% for link in linklists[section.settings.footer_menu_3].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          {% else %}
+            <li><a href="/pages/safety-library">Safety Library</a></li>
+            <li><a href="/pages/industry-standards">Industry Standards</a></li>
+            <li><a href="/pages/demo">Platform Demo</a></li>
+          {% endif %}
         </ul>
       </div>
 
       <div class="aai-footer-column">
         <h4>{{ section.settings.menu_4_title | default: "Support" }}</h4>
         <ul class="aai-footer-links">
-          <li><a href="/account/login">Student Login</a></li>
-          <li><a href="/account/register">Create Account</a></li>
-          <li><a href="/pages/help-center">Help Center</a></li>
+          {% if section.settings.footer_menu_4 != blank %}
+            {% for link in linklists[section.settings.footer_menu_4].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          {% else %}
+            <li><a href="/account/login">Student Login</a></li>
+            <li><a href="/account/register">Create Account</a></li>
+          {% endif %}
           {% if section.settings.support_hours != blank %}
             <li class="support-hours">{{ section.settings.support_hours }}</li>
           {% endif %}
@@ -203,6 +225,34 @@
       "id": "menu_4_title",
       "label": "Menu 4 Title",
       "default": "Support"
+    },
+    {
+      "type": "header",
+      "content": "Footer Navigation Links"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu_1",
+      "label": "Menu 1 Links (Courses)",
+      "info": "Select a menu to display under the first footer column"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu_2", 
+      "label": "Menu 2 Links (Company)",
+      "info": "Select a menu to display under the second footer column"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu_3",
+      "label": "Menu 3 Links (Resources)", 
+      "info": "Select a menu to display under the third footer column"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu_4",
+      "label": "Menu 4 Links (Support)",
+      "info": "Select a menu to display under the fourth footer column"
     },
     {
       "type": "header",

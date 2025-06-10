@@ -44,6 +44,8 @@
       {{ 'product-mczrmobile.css' | asset_url | stylesheet_tag }}
     {% elsif template == 'customers/account' %}
       {{ 'customer-account.css' | asset_url | stylesheet_tag }}
+    {% elsif template == '404' %}
+      {{ '404-page.css' | asset_url | stylesheet_tag }}
     {% endif %}
 
     {%- if settings.favicon != blank -%}
