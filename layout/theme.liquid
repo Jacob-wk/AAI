@@ -78,7 +78,7 @@
     {{ content_for_header }}
   </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}{% if settings.page_animation_enabled %} page-animations-enabled{% endif %}" data-page-animation-style="{{ settings.page_animation_style }}" data-page-animation-duration="{{ settings.page_animation_duration }}">
+  <body class="page-fade page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}{% if settings.page_animation_enabled %} page-animations-enabled{% endif %}" data-page-animation-style="{{ settings.page_animation_style }}" data-page-animation-duration="{{ settings.page_animation_duration }}">
     <div id="header-group">
       {% sections 'header-group' %}
     </div>

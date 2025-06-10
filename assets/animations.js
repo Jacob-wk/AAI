@@ -1,18 +1,6 @@
 /* filepath: /workspaces/AAI/assets/animations.js */
 
-// Apply page fade class immediately to prevent flash
-if (document.body) {
-  document.body.classList.add('page-fade');
-  console.log('AAI: Applied page-fade class immediately');
-} else {
-  // If body isn't ready, apply as soon as it is
-  document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('page-fade');
-    console.log('AAI: Applied page-fade class on DOMContentLoaded');
-  });
-}
-
-// AAI Animation System
+// AAI Animation System - page-fade class is now applied directly in HTML
 class AAIAnimations {
   constructor() {
     this.pageAnimationSettings = this.getPageAnimationSettings();
@@ -27,7 +15,7 @@ class AAIAnimations {
     
     return {
       enabled: true, // Simple fade enabled
-      duration: 1500,
+      duration: 800,
       easing: 'ease-out'
     };
   }
@@ -60,10 +48,10 @@ class AAIAnimations {
     console.log('AAI: Initializing page fade animation...');
     console.log('AAI: Body classes:', body.className);
     
-    // Ensure fade class is applied (should already be from immediate application)
+    // page-fade class should already be applied from HTML
     if (!body.classList.contains('page-fade')) {
+      console.log('AAI: Warning - page-fade class not found, adding it');
       body.classList.add('page-fade');
-      console.log('AAI: Added page-fade class in initializePageFade');
     }
     
     // Trigger fade in when DOM is ready
@@ -79,7 +67,7 @@ class AAIAnimations {
         setTimeout(() => {
           console.log('AAI: Page fade complete, triggering scroll animations...');
           this.animateElementsInViewport();
-        }, 300);
+        }, 100);
       });
     };
 
@@ -88,7 +76,7 @@ class AAIAnimations {
       document.addEventListener('DOMContentLoaded', triggerFade, { once: true });
     } else {
       console.log('AAI: DOM already loaded, triggering fade with delay...');
-      setTimeout(triggerFade, 200);
+      setTimeout(triggerFade, 50);
     }
   }
 
