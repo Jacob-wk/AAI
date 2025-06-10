@@ -37,34 +37,18 @@
     },
     "aai_universal_content_f4efTN": {
       "type": "aai-universal-content",
-      "blocks": {
-        "credential_grid_pXD4gM": {
-          "type": "credential_grid",
-          "settings": {
-            "grid_title": "Our Credentials",
-            "credential_1_title": "20+ Years Experience",
-            "credential_1_desc": "Pioneering safety training in the amusement sector.",
-            "credential_2_title": "3000+ Professionals Trained",
-            "credential_2_desc": "Empowering individuals and organizations globally.",
-            "credential_3_title": "Global Standards Development",
-            "credential_3_desc": "Actively contributing to international safety committees."
-          }
-        }
-      },
-      "block_order": [
-        "credential_grid_pXD4gM"
-      ],
       "name": "Industry Authority",
       "settings": {
         "section_title": "Industry Authority in FEC & Adventure Park Safety",
         "section_subtitle": "Decades of Experience, Unmatched Expertise",
-        "layout_style": "text-center",
-        "blocks_per_row": "1",
+        "layout_style": "text-right-image-left",
+        "blocks_per_row": "2",
         "background_style": "",
         "show_main_content": true,
-        "content_title": "Leading the Way in Safety Standards",
+        "content_title": "",
         "content_body": "<p>AAI stands at the forefront of Family Entertainment Center and adventure park safety. With over 20 years of dedicated experience, we have trained thousands of professionals and helped shape industry best practices. Our commitment to excellence ensures you receive the most current and comprehensive knowledge available.</p>",
-        "show_image": false,
+        "show_image": true,
+        "content_image": "shopify://shop_images/1377773.jpg",
         "main_button_text": "Learn About Our Impact",
         "main_button_url": "/pages/about",
         "main_button_style": "secondary",
@@ -85,10 +69,23 @@
             "button_2_style": "secondary",
             "button_size": "large"
           }
+        },
+        "credential_grid_Ermjrk": {
+          "type": "credential_grid",
+          "settings": {
+            "grid_title": "Our Credentials",
+            "credential_1_title": "20+ Years Experience",
+            "credential_1_desc": "Pioneering safety training in the amusement sector.",
+            "credential_2_title": "3000+ Professionals Trained",
+            "credential_2_desc": "Empowering individuals and organizations globally.",
+            "credential_3_title": "Global Standards Development",
+            "credential_3_desc": "Actively contributing to international safety committees."
+          }
         }
       },
       "block_order": [
-        "button_group_HQ9y7U"
+        "button_group_HQ9y7U",
+        "credential_grid_Ermjrk"
       ],
       "name": "Homepage Call to Action",
       "settings": {
