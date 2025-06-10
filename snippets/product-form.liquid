@@ -128,14 +128,11 @@
       </div>
     </div>
 
-    <!-- Product Description -->
-    {% if product.description != blank %}
-      <div class="product-description-section">
-        <h3>Product Description</h3>
-        <div class="product-description-content">
-          {{ product.description }}
-        </div>
-      </div>
+    <!-- Product Description - Only show for course products with special content -->
+    {% if product.type == 'digital_course' or product.tags contains 'course' %}
+      <!-- Course products get special "What's Included" section instead of plain description -->
+    {% else %}
+      <!-- Regular products don't need description here since it's shown separately in the main template -->
     {% endif %}
     
     <product-form-component 
