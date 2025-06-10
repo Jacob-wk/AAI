@@ -243,4 +243,56 @@ select:focus {
   100% { transform: rotate(360deg); }
 }
 
+/* Page Load Animations */
+.page-animation-applied {
+  opacity: 0;
+  transition: opacity var(--page-animation-duration, 1000ms) var(--page-animation-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.page-animation-applied.page-animation-visible {
+  opacity: 1;
+}
+
+.page-fade-in {
+  opacity: 0;
+  transition: opacity var(--page-animation-duration, 1000ms) var(--page-animation-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.page-fade-in.page-animation-visible {
+  opacity: 1;
+}
+
+.page-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--page-animation-duration, 1000ms) var(--page-animation-easing, cubic-bezier(0.16, 1, 0.3, 1)),
+              transform var(--page-animation-duration, 1000ms) var(--page-animation-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.page-fade-up.page-animation-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-slide-up {
+  transform: translateY(100px);
+  transition: transform var(--page-animation-duration, 1000ms) var(--page-animation-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.page-slide-up.page-animation-visible {
+  transform: translateY(0);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .page-animation-applied,
+  .page-fade-in,
+  .page-fade-up,
+  .page-slide-up {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* AAI Credential Badges in Header -- REMOVED, MOVED TO section-aai-header.css */

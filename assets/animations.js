@@ -74,12 +74,25 @@ class AAIAnimations {
           body.classList.add('page-fade-up'); // Default fallback
       }
       
-      // Trigger the animation after a brief delay to ensure DOM is ready
-      setTimeout(() => {
-        requestAnimationFrame(() => {
-          body.classList.add('page-animation-visible');
-        });
-      }, 100); // Small delay to ensure everything is loaded
+      // Improved timing for more reliable page load animation
+      const triggerAnimation = () => {
+        if (document.readyState === 'complete') {
+          // Page is fully loaded, trigger immediately
+          requestAnimationFrame(() => {
+            body.classList.add('page-animation-visible');
+          });
+        } else {
+          // Page still loading, wait for load event
+          window.addEventListener('load', () => {
+            requestAnimationFrame(() => {
+              body.classList.add('page-animation-visible');
+            });
+          }, { once: true });
+        }
+      };
+      
+      // Small delay to ensure DOM is stable, then check readiness
+      setTimeout(triggerAnimation, 50);
     }
   }
 
@@ -279,8 +292,10 @@ class AAIAnimations {
       // Remove existing page animation classes from body
       body.classList.remove('page-animation-applied', 'page-animation-visible', 'page-fade-in', 'page-fade-up', 'page-slide-up');
       
-      // Re-initialize page animation
-      this.initializePageAnimation();
+      // Re-initialize page animation with improved timing
+      setTimeout(() => {
+        this.initializePageAnimation();
+      }, 10); // Very short delay to ensure clean state
     }
 
     // Re-apply global animations to new elements
