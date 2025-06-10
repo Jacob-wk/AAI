@@ -27,20 +27,11 @@
             "feature_title": "Expert Guidance",
             "feature_description": "Professional development consultation"
           }
-        },
-        "feature3": {
-          "type": "feature",
-          "settings": {
-            "feature_icon": "🏢",
-            "feature_title": "Corporate Solutions",
-            "feature_description": "Custom training programs"
-          }
         }
       },
       "block_order": [
         "feature1",
-        "feature2",
-        "feature3"
+        "feature2"
       ],
       "settings": {
         "hero_title": "Contact AAI",
