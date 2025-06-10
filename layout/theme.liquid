@@ -14,8 +14,6 @@
     {{ 'spacing-reset.css' | asset_url | stylesheet_tag }}
     {{ 'cart-styling.css' | asset_url | stylesheet_tag }}
     {{ 'product-layout.css' | asset_url | stylesheet_tag }}
-    {{ 'global.css' | asset_url | stylesheet_tag }}
-    {{ 'aai-animations.css' | asset_url | stylesheet_tag }}
     
     {%- comment -%} Conditional CSS loading for specific templates {%- endcomment -%}
     {% if template == 'index' %}

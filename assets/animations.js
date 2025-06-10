@@ -13,100 +13,48 @@ class AAIAnimations {
   getPageAnimationSettings() {
     const body = document.body;
     
-    const settings = {
-      enabled: true, // Force enable for testing
-      style: body.dataset.pageAnimationStyle || 'fade-up',
-      duration: parseInt(body.dataset.pageAnimationDuration || '1000') || 1000,
-      easing: 'cubic-bezier(0.16, 1, 0.3, 1)'
+    return {
+      enabled: true, // Simple fade enabled
+      duration: 800,
+      easing: 'ease-out'
     };
-    
-    // Debug logging
-    console.log('AAI Animations: Page animation settings:', settings);
-    
-    return settings;
   }
 
   init() {
-    // Apply page-level animations first if enabled
+    // Apply simple page fade animation if enabled
     if (this.pageAnimationSettings.enabled) {
-      this.initializePageAnimation();
-      // Don't apply component animations when page animations are enabled
-      return;
+      this.initializePageFade();
+      return; // Don't apply other animations during page fade
     }
     
-    // Apply animations to all elements automatically only if page animations are disabled
+    // Apply component animations if page animation is disabled
     this.applyGlobalAnimations();
-    
-    // Initialize intersection observer for scroll animations
     this.setupScrollAnimations();
-    
-    // Initialize on page load
     this.animateOnLoad();
-    
-    // Setup page transition animations
     this.setupPageTransitionAnimations();
   }
 
   /**
-   * Initialize page-level animation for the entire page
+   * Initialize simple page fade animation
    */
-  initializePageAnimation() {
+  initializePageFade() {
     const body = document.body;
-    if (!body) return;
+    if (!body || body.classList.contains('page-fade')) return;
 
-    // Apply the page animation class based on customizer setting
-    if (!body.classList.contains('page-animation-applied')) {
-      // Set CSS custom properties for animation
-      body.style.setProperty('--page-animation-duration', `${this.pageAnimationSettings.duration}ms`);
-      body.style.setProperty('--page-animation-easing', this.pageAnimationSettings.easing);
-      
-      // Apply the specific animation style to the body (only one class to avoid conflicts)
-      let animationClass;
-      switch (this.pageAnimationSettings.style) {
-        case 'fade':
-          animationClass = 'page-fade-in';
-          break;
-        case 'fade-up':
-          animationClass = 'page-fade-up';
-          break;
-        case 'slide-up':
-          animationClass = 'page-slide-up';
-          break;
-        case 'none':
-          // No animation, exit early
-          return;
-        default:
-          animationClass = 'page-fade-up'; // Default fallback
-      }
-      
-      // Apply the animation class first
-      body.classList.add(animationClass, 'page-animation-applied');
-      
-      console.log('AAI Animations: Applied classes:', animationClass, 'page-animation-applied');
-      console.log('AAI Animations: Body classes now:', body.className);
-      
-      // Trigger animation with better timing
-      const triggerAnimation = () => {
-        console.log('AAI Animations: Triggering animation...');
-        
-        // Force a reflow to ensure initial styles are applied
-        body.offsetHeight;
-        
-        // Use requestAnimationFrame for smooth animation trigger
-        requestAnimationFrame(() => {
-          body.classList.add('page-animation-visible');
-          console.log('AAI Animations: Added page-animation-visible class');
-          console.log('AAI Animations: Final body classes:', body.className);
-        });
-      };
-      
-      // Wait for DOM to be ready and trigger animation
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', triggerAnimation, { once: true });
-      } else {
-        // DOM is already loaded, trigger with small delay
-        setTimeout(triggerAnimation, 100);
-      }
+    // Apply fade class immediately
+    body.classList.add('page-fade');
+    
+    // Trigger fade in when DOM is ready
+    const triggerFade = () => {
+      requestAnimationFrame(() => {
+        body.classList.add('page-loaded');
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', triggerFade, { once: true });
+    } else {
+      setTimeout(triggerFade, 50);
     }
   }
 
@@ -291,37 +239,23 @@ class AAIAnimations {
     // Update page animation settings for new page
     this.pageAnimationSettings = this.getPageAnimationSettings();
     
-    // Reset all animations first - include all animated elements
-    const animatedElements = document.querySelectorAll(
-      '.fade-in, .slide-up, .slide-in-left, .slide-in-right, [class*="anim-delay"], section, .page-section, [class*="section-"], [class*="block"], .content-block, .feature-block, .text-block, .card, .course-card, .instructor-card, [class*="item-"], .product-item'
-    );
-    
-    animatedElements.forEach(el => {
-      el.classList.remove('aai-animate-visible');
-    });
-
-    // Reset and re-apply page-level animation if enabled
+    // Reset page fade animation
     const body = document.body;
     if (body && this.pageAnimationSettings.enabled) {
-      // Remove existing page animation classes from body
-      body.classList.remove('page-animation-applied', 'page-animation-visible', 'page-fade-in', 'page-fade-up', 'page-slide-up');
+      // Remove existing page animation classes
+      body.classList.remove('page-fade', 'page-loaded');
       
-      // Force reflow to ensure classes are removed before re-adding
+      // Force reflow
       body.offsetHeight;
       
-      // Re-initialize page animation with better timing coordination
+      // Re-initialize simple page fade
       requestAnimationFrame(() => {
-        this.initializePageAnimation();
+        this.initializePageFade();
       });
-    }
-
-    // Re-apply global animations to new elements
-    this.applyGlobalAnimations();
-
-    // Trigger animations with slight delay to ensure smooth transition
-    setTimeout(() => {
+    } else {
+      // If page animations are disabled, handle component animations
       this.reinitializeAnimations();
-    }, 50);
+    }
   }
 
   reinitializeAnimations() {

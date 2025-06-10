@@ -350,3 +350,21 @@ body.page-animation-applied .slide-in-right {
   animation: none !important;
   transition: none !important;
 }
+
+/* Simple Page Fade Animation */
+body.page-fade {
+  opacity: 0;
+  transition: opacity 800ms ease-out;
+}
+
+body.page-fade.page-loaded {
+  opacity: 1;
+}
+
+/* Disable component animations during page fade */
+body.page-fade .fade-in,
+body.page-fade .slide-up {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
