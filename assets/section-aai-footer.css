@@ -16,10 +16,18 @@
   padding-right: 20px;
 }
 
-.aai-footer-logo img {
-  max-width: 200px;
-  height: auto;
+.aai-footer-logo {
   margin-bottom: 16px;
+}
+
+.aai-footer-logo img {
+  width: var(--footer-logo-width, 150px); /* Use custom property with fallback */
+  max-width: var(--footer-logo-width, 150px); /* Override global img max-width */
+  max-height: 80px; /* Limit height for consistent appearance */
+  height: auto;
+  border-radius: 8px; /* Rounded corners */
+  display: inline-block; /* Override global block display */
+  object-fit: contain; /* Ensure logo maintains aspect ratio */
 }
 
 .aai-footer-logo h3 {

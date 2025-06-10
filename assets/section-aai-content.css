@@ -264,6 +264,79 @@
   text-align: left;
 }
 
+/* Button Group Styles */
+.button-group {
+  margin: 32px 0;
+}
+
+.button-group-title {
+  color: var(--authority-navy);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Alignment options */
+.button-group[data-alignment="left"] .button-container {
+  justify-content: flex-start;
+}
+
+.button-group[data-alignment="right"] .button-container {
+  justify-content: flex-end;
+}
+
+.button-group[data-alignment="center"] .button-container {
+  justify-content: center;
+}
+
+.button-group-description {
+  color: var(--charcoal-grey);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .button-container .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .button-group[data-alignment="left"] .button-container,
+  .button-group[data-alignment="right"] .button-container {
+    align-items: center;
+  }
+}
+
+/* Small mobile adjustments */
+@media screen and (max-width: 480px) {
+  .button-container {
+    gap: 8px;
+  }
+  
+  .button-container .btn {
+    max-width: none;
+    width: 100%;
+  }
+}
+
 /* Timeline Layout Styles */
 .content-timeline {
   position: relative;

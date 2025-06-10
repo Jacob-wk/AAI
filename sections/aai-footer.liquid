@@ -10,18 +10,16 @@
   <div class="aai-container">
     <div class="aai-footer-main">
       <div class="aai-footer-column aai-footer-about">
-        <div class="aai-footer-logo">
+        <div class="aai-footer-logo" style="--footer-logo-width: {{ section.settings.footer_logo_width }}px;">
           {% if section.settings.footer_logo != blank %}
             <img src="{{ section.settings.footer_logo | image_url: width: section.settings.footer_logo_width }}" 
                  alt="{{ shop.name }}" 
                  width="{{ section.settings.footer_logo_width }}" 
-                 height="auto"
                  loading="lazy">
           {% elsif settings.logo != blank %}
             <img src="{{ settings.logo | image_url: width: section.settings.footer_logo_width }}" 
                  alt="{{ shop.name }}" 
                  width="{{ section.settings.footer_logo_width }}" 
-                 height="auto"
                  loading="lazy">
           {% else %}
             <h3>{{ shop.name }}</h3>
@@ -150,10 +148,10 @@
       "type": "range",
       "id": "footer_logo_width",
       "label": "Footer Logo Width",
-      "min": 100,
-      "max": 300,
+      "min": 80,
+      "max": 250,
       "step": 10,
-      "default": 200,
+      "default": 150,
       "unit": "px"
     },
     {
