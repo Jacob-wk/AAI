@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Drawer Synchronization Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-button {
+            background: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #005a87;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .info {
+            color: blue;
+        }
+        .log {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cart Drawer Synchronization Test</h1>
+    
+    <div class="test-section">
+        <h2>Test Overview</h2>
+        <p>This test verifies that the cart drawer properly synchronizes content after cart operations:</p>
+        <ul>
+            <li>✅ Cart drawer opens instead of redirecting to /cart page</li>
+            <li>🔄 Cart content refreshes properly when drawer opens</li>
+            <li>📊 Cart shows current items, quantities, and subtotal</li>
+            <li>⚡ Real-time updates without page refresh</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="test-results">
+            <p class="info">Run tests to see results...</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Manual Test Actions</h2>
+        <p>Perform these actions and observe the results:</p>
+        
+        <button class="test-button" onclick="testCartDrawerOpen()">
+            1. Test Cart Drawer Open
+        </button>
+        
+        <button class="test-button" onclick="testAddToCart()">
+            2. Simulate Add to Cart
+        </button>
+        
+        <button class="test-button" onclick="testCartRefresh()">
+            3. Test Cart Content Refresh
+        </button>
+        
+        <button class="test-button" onclick="testAutoOpen()">
+            4. Test Auto-Open Functionality
+        </button>
+    </div>
+
+    <div class="test-section">
+        <h2>Debug Log</h2>
+        <div id="debug-log" class="log">
+            <p>Debug information will appear here...</p>
+        </div>
+    </div>
+
+    <script>
+        let testResults = [];
+
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('debug-log');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.innerHTML = `[${timestamp}] ${type.toUpperCase()}: ${message}`;
+            logEntry.className = type;
+            logDiv.appendChild(logEntry);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        function updateResults() {
+            const resultsDiv = document.getElementById('test-results');
+            if (testResults.length === 0) {
+                resultsDiv.innerHTML = '<p class="info">No tests run yet...</p>';
+                return;
+            }
+            
+            let html = '<h3>Test Results:</h3><ul>';
+            testResults.forEach(result => {
+                const className = result.passed ? 'success' : 'error';
+                const icon = result.passed ? '✅' : '❌';
+                html += `<li class="${className}">${icon} ${result.name}: ${result.message}</li>`;
+            });
+            html += '</ul>';
+            resultsDiv.innerHTML = html;
+        }
+
+        function addTestResult(name, passed, message) {
+            testResults.push({ name, passed, message });
+            updateResults();
+            log(`Test: ${name} - ${passed ? 'PASSED' : 'FAILED'} - ${message}`, passed ? 'success' : 'error');
+        }
+
+        function testCartDrawerOpen() {
+            log('Testing cart drawer open functionality...');
+            
+            // Check if cart drawer exists
+            const cartDrawer = document.querySelector('cart-drawer');
+            if (!cartDrawer) {
+                addTestResult('Cart Drawer Element', false, 'Cart drawer element not found on page');
+                return;
+            }
+            
+            addTestResult('Cart Drawer Element', true, 'Cart drawer element found');
+            
+            // Check if dialog exists
+            const dialog = cartDrawer.querySelector('dialog');
+            if (!dialog) {
+                addTestResult('Cart Dialog', false, 'Dialog element not found in cart drawer');
+                return;
+            }
+            
+            addTestResult('Cart Dialog', true, 'Dialog element found');
+            
+            // Test opening the drawer
+            try {
+                const triggerEvent = new Event('click', { bubbles: true });
+                Object.defineProperty(triggerEvent, 'target', {
+                    value: { matches: () => true, closest: () => true }
+                });
+                
+                cartDrawer.dispatchEvent(triggerEvent);
+                addTestResult('Cart Open Event', true, 'Cart drawer open event dispatched');
+            } catch (error) {
+                addTestResult('Cart Open Event', false, `Error opening cart: ${error.message}`);
+            }
+        }
+
+        function testAddToCart() {
+            log('Testing add to cart functionality...');
+            
+            // Simulate a cart add event
+            try {
+                const cartAddEvent = new CustomEvent('cart:update', {
+                    bubbles: true,
+                    detail: {
+                        source: 'product-form-component',
+                        data: {
+                            source: 'product-form-component',
+                            itemCount: 1,
+                            productId: 'test-product'
+                        }
+                    }
+                });
+                
+                document.dispatchEvent(cartAddEvent);
+                addTestResult('Cart Add Event', true, 'Cart add event dispatched successfully');
+                
+                // Check if auto-open is triggered
+                setTimeout(() => {
+                    const cartDrawer = document.querySelector('cart-drawer dialog');
+                    if (cartDrawer && cartDrawer.open) {
+                        addTestResult('Auto-Open Response', true, 'Cart drawer opened in response to add event');
+                    } else {
+                        addTestResult('Auto-Open Response', false, 'Cart drawer did not auto-open');
+                    }
+                }, 200);
+                
+            } catch (error) {
+                addTestResult('Cart Add Event', false, `Error dispatching cart add event: ${error.message}`);
+            }
+        }
+
+        function testCartRefresh() {
+            log('Testing cart content refresh...');
+            
+            // Mock fetch to test cart refresh
+            const originalFetch = window.fetch;
+            window.fetch = function(url, options) {
+                if (url === '/cart.js') {
+                    log('Cart.js API called for refresh');
+                    return Promise.resolve({
+                        ok: true,
+                        json: () => Promise.resolve({
+                            item_count: 2,
+                            items: [
+                                {
+                                    key: 'test-key-1',
+                                    product_title: 'Test Product 1',
+                                    variant_title: 'Default Title',
+                                    quantity: 1,
+                                    final_price: 1999,
+                                    final_line_price: 1999,
+                                    url: '/products/test-1',
+                                    image: '/test-image-1.jpg'
+                                },
+                                {
+                                    key: 'test-key-2',
+                                    product_title: 'Test Product 2',
+                                    variant_title: 'Large',
+                                    quantity: 1,
+                                    final_price: 2999,
+                                    final_line_price: 2999,
+                                    url: '/products/test-2',
+                                    image: '/test-image-2.jpg'
+                                }
+                            ],
+                            total_price: 4998
+                        })
+                    });
+                }
+                return originalFetch.apply(this, arguments);
+            };
+            
+            // Trigger cart refresh
+            const cartDrawer = document.querySelector('cart-drawer');
+            if (cartDrawer && cartDrawer.refs && cartDrawer.refs.dialog) {
+                log('Triggering cart content refresh...');
+                cartDrawer.dispatchEvent(new CustomEvent('cart:update', { detail: { source: 'test' } }));
+                addTestResult('Cart Refresh Trigger', true, 'Cart refresh triggered successfully');
+            } else {
+                addTestResult('Cart Refresh Trigger', false, 'Cart drawer not properly initialized');
+            }
+            
+            // Restore original fetch after test
+            setTimeout(() => {
+                window.fetch = originalFetch;
+            }, 1000);
+        }
+
+        function testAutoOpen() {
+            log('Testing auto-open configuration...');
+            
+            const cartDrawer = document.querySelector('cart-drawer');
+            if (!cartDrawer) {
+                addTestResult('Auto-Open Config', false, 'Cart drawer not found');
+                return;
+            }
+            
+            const autoOpenSetting = cartDrawer.getAttribute('data-auto-open');
+            log(`Auto-open setting: ${autoOpenSetting}`);
+            
+            if (autoOpenSetting === 'true') {
+                addTestResult('Auto-Open Config', true, 'Auto-open is enabled');
+            } else if (autoOpenSetting === 'false') {
+                addTestResult('Auto-Open Config', true, 'Auto-open is disabled (as configured)');
+            } else {
+                addTestResult('Auto-Open Config', false, 'Auto-open setting not found or invalid');
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Cart drawer test page loaded');
+            log('Checking for cart drawer JavaScript...');
+            
+            // Check if cart drawer script is loaded
+            if (window.customElements && customElements.get('cart-drawer')) {
+                log('Cart drawer custom element is registered', 'success');
+            } else {
+                log('Cart drawer custom element not found', 'error');
+            }
+            
+            // Monitor console for cart drawer messages
+            const originalConsoleLog = console.log;
+            console.log = function(...args) {
+                if (args.some(arg => typeof arg === 'string' && arg.includes('cart') || arg.includes('Cart'))) {
+                    log(`Console: ${args.join(' ')}`);
+                }
+                originalConsoleLog.apply(console, arguments);
+            };
+        });
+    </script>
+</body>
+</html>

@@ -1,6 +1,20 @@
 import { Component } from './component.js';
 import { ThemeEvents } from './events.js';
 import { fetchConfig, onAnimationEnd } from './utilities.js';
+import { sectionRenderer } from './section-renderer.js';
+
+/**
+ * @typedef {Object} ShopifyCartItem
+ * @property {string} key - The line item key
+ * @property {string} product_title - Product title
+ * @property {string} variant_title - Variant title
+ * @property {string} title - Item title
+ * @property {string} url - Product URL
+ * @property {string} image - Image URL
+ * @property {number} quantity - Item quantity
+ * @property {number} final_price - Item price in cents
+ * @property {number} final_line_price - Line total in cents
+ */
 
 // Immediate debug logging
 console.log('🚀 Cart drawer JavaScript loaded!');
@@ -104,7 +118,9 @@ class CartDrawerComponent extends Component {
       
       if (isFromProductForm && autoOpenEnabled) {
         console.log('✅ Auto-opening cart drawer');
-        setTimeout(() => {
+        // First refresh the cart content, then open the drawer
+        setTimeout(async () => {
+          await this.#refreshCartContent();
           this.showDialog();
         }, 100);
       }
@@ -115,11 +131,14 @@ class CartDrawerComponent extends Component {
    * Handle cart trigger button clicks
    * @param {Event} event
    */
-  #handleCartTriggerClick = (event) => {
+  #handleCartTriggerClick = async (event) => {
     const trigger = /** @type {HTMLElement} */ (event.target);
     if (trigger?.matches('[data-cart-drawer-trigger]') || trigger?.closest('[data-cart-drawer-trigger]')) {
       event.preventDefault();
       event.stopPropagation();
+      
+      // Refresh cart content before opening drawer to ensure fresh data
+      await this.#refreshCartContent();
       this.showDialog();
     }
   };
@@ -138,10 +157,15 @@ class CartDrawerComponent extends Component {
    * Handle cart updates to refresh drawer content
    * @param {CustomEvent} event
    */
-  #handleCartUpdate = (event) => {
-    if (this.refs.dialog.open) {
-      this.#refreshCartContent();
-    }
+  #handleCartUpdate = async (event) => {
+    console.log('🔄 Cart update event received:', event.detail);
+    
+    // Always refresh cart content when cart updates occur
+    // This ensures fresh data whether drawer is open or will be opened
+    await this.#refreshCartContent();
+    
+    // If the drawer is currently open, we've already refreshed above
+    // If it's not open but will auto-open, the refresh above ensures fresh content
   };
 
   /**
@@ -482,38 +506,287 @@ class CartDrawerComponent extends Component {
   }
 
   /**
-   * Refresh cart drawer content
+   * Refresh cart drawer content using cart.js API
    */
   async #refreshCartContent() {
     try {
-      const response = await fetch('/cart?view=drawer');
-      if (response.ok) {
-        const html = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const newContent = doc.querySelector('.cart-drawer__content');
-        const currentContent = this.refs.dialog.querySelector('.cart-drawer__content');
-        
-        if (newContent && currentContent) {
-          currentContent.innerHTML = newContent.innerHTML;
-          // Re-bind events for the new content
-          this.#bindCloseEvents();
-          this.#bindCartControls();
-          
-          // Dispatch cart updated event
-          document.dispatchEvent(new CustomEvent(ThemeEvents.cartUpdate, {
-            detail: { 
-              source: 'cart-drawer-refresh',
-              success: true
-            }
-          }));
+      console.log('🔄 Refreshing cart drawer content...');
+      
+      // Get the latest cart data
+      const response = await fetch('/cart.js', {
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
         }
+      });
+      
+      if (response.ok) {
+        const cart = await response.json();
+        console.log('✅ Cart data received:', cart);
+        
+        // Update cart count in header
+        this.#updateCartCount(cart.item_count);
+        
+        // Update cart items
+        this.#updateCartItems(cart.items);
+        
+        // Update cart subtotal
+        this.#updateCartSubtotal(cart.total_price);
+        
+        // Re-bind events for the updated content
+        this.#bindCloseEvents();
+        this.#bindCartControls();
+        
+        // Dispatch cart updated event
+        document.dispatchEvent(new CustomEvent(ThemeEvents.cartUpdate, {
+          detail: { 
+            source: 'cart-drawer-refresh',
+            success: true,
+            cart: cart
+          }
+        }));
+        
+        console.log('✅ Cart drawer content refreshed successfully');
       }
     } catch (error) {
       console.error('Cart refresh failed:', error);
-      // Fallback to page reload
-      window.location.reload();
+      
+      // Fallback: Try to refresh using simple HTML fetch
+      try {
+        console.log('🔄 Trying fallback refresh method...');
+        const response = await fetch('/cart?view=drawer');
+        if (response.ok) {
+          const html = await response.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const newContent = doc.querySelector('.cart-drawer__content');
+          const currentContent = this.refs.dialog.querySelector('.cart-drawer__content');
+          
+          if (newContent && currentContent) {
+            currentContent.innerHTML = newContent.innerHTML;
+            this.#bindCloseEvents();
+            this.#bindCartControls();
+            console.log('✅ Fallback refresh completed');
+          }
+        }
+      } catch (fallbackError) {
+        console.error('Fallback cart refresh also failed:', fallbackError);
+        // Last resort: page reload
+        console.log('⚠️ Reloading page as last resort...');
+        window.location.reload();
+      }
     }
+  }
+
+  /**
+   * Update cart count in drawer header
+   * @param {number} itemCount - Number of items in cart
+   */
+  #updateCartCount(itemCount) {
+    // Update the count span in the title
+    const countElement = this.refs.dialog.querySelector('.cart-drawer__count');
+    if (countElement) {
+      countElement.textContent = `(${itemCount})`;
+    } else {
+      // If count element doesn't exist, add it to the title
+      const titleElement = this.refs.dialog.querySelector('.cart-drawer__title');
+      if (titleElement) {
+        const countSpan = document.createElement('span');
+        countSpan.className = 'cart-drawer__count';
+        countSpan.textContent = `(${itemCount})`;
+        titleElement.appendChild(document.createTextNode(' '));
+        titleElement.appendChild(countSpan);
+      }
+    }
+    
+    // Also update any cart count badges in the header
+    const headerCountElements = document.querySelectorAll('.cart-count');
+    headerCountElements.forEach(element => {
+      element.textContent = itemCount.toString();
+    });
+  }
+
+  /**
+   * Update cart items in drawer
+   * @param {ShopifyCartItem[]} items - Cart items array from cart.js
+   */
+  #updateCartItems(items) {
+    const itemsContainer = this.refs.dialog.querySelector('.cart-drawer__items');
+    const bodyElement = this.refs.dialog.querySelector('.cart-drawer__body');
+    
+    if (!bodyElement) {
+      console.error('Cart drawer body not found');
+      return;
+    }
+    
+    if (items.length === 0) {
+      // Show empty cart state - replace entire body content
+      bodyElement.innerHTML = `
+        <div class="cart-drawer__empty">
+          <p>Your cart is empty</p>
+          <a href="/collections/all" class="button button--primary">
+            Continue Shopping
+          </a>
+        </div>
+      `;
+      return;
+    }
+    
+    // If we have items but no items container, we need to recreate the structure
+    if (!itemsContainer) {
+      bodyElement.innerHTML = `
+        <div class="cart-drawer__items" id="cart-drawer-items">
+        </div>
+        <div class="cart-drawer__footer">
+          <div class="cart-drawer__subtotal">
+            <span class="cart-drawer__subtotal-label">Subtotal:</span>
+            <span class="cart-drawer__subtotal-price">$0.00</span>
+          </div>
+          <div class="cart-drawer__actions">
+            <button type="button" class="button button--secondary cart-drawer__view-cart" onclick="window.location.href='/cart'">
+              View Cart
+            </button>
+            <button type="button" class="button button--primary cart-drawer__checkout" onclick="window.location.href='/checkout'">
+              Checkout
+            </button>
+          </div>
+        </div>
+      `;
+    }
+    
+    const updatedItemsContainer = this.refs.dialog.querySelector('.cart-drawer__items');
+    if (!updatedItemsContainer) return;
+    
+    // Clear current items
+    updatedItemsContainer.innerHTML = '';
+    
+    // Add updated items
+    items.forEach((item, index) => {
+      const itemElement = this.#createCartItemElement(item, index + 1);
+      updatedItemsContainer.appendChild(itemElement);
+    });
+  }
+
+  /**
+   * Create cart item element
+   * @param {ShopifyCartItem} item - Cart item from cart.js
+   * @param {number} line - Line number (1-based)
+   * @returns {Element} - Cart item element
+   */
+  #createCartItemElement(item, line) {
+    const itemDiv = document.createElement('div');
+    itemDiv.className = 'cart-item';
+    itemDiv.setAttribute('data-index', line.toString());
+    itemDiv.setAttribute('data-line', line.toString());
+    itemDiv.setAttribute('data-key', item.key);
+    
+    // Format price (item.price is in cents)
+    const formattedPrice = this.#formatMoney(item.final_price);
+    const formattedLinePrice = this.#formatMoney(item.final_line_price);
+    
+    // Build item HTML to match the Liquid template structure
+    itemDiv.innerHTML = `
+      <div class="cart-item__image">
+        ${item.image ? `
+          <img 
+            src="${item.image}" 
+            alt="${item.title}"
+            loading="lazy"
+            width="80"
+            height="80"
+          >
+        ` : ''}
+      </div>
+      
+      <div class="cart-item__details">
+        <h3 class="cart-item__title">
+          <a href="${item.url}">${item.product_title}</a>
+        </h3>
+        ${item.variant_title && item.variant_title !== 'Default Title' ? `
+          <p class="cart-item__variant">${item.variant_title}</p>
+        ` : ''}
+        
+        <div class="cart-item__quantity">
+          <label for="quantity-${line}" class="visually-hidden">Quantity</label>
+          <div class="quantity-selector">
+            <button 
+              type="button" 
+              class="quantity-selector__button" 
+              data-quantity-change="-1"
+              data-line="${line}"
+              data-key="${item.key}"
+              aria-label="Decrease quantity"
+            >
+              -
+            </button>
+            <input 
+              type="number" 
+              id="quantity-${line}"
+              name="updates[]"
+              value="${item.quantity}" 
+              min="0"
+              data-line="${line}"
+              data-key="${item.key}"
+              data-quantity-input
+              class="quantity-selector__input"
+              aria-label="Quantity"
+            >
+            <button 
+              type="button" 
+              class="quantity-selector__button" 
+              data-quantity-change="1"
+              data-line="${line}"
+              data-key="${item.key}"
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        
+        <div class="cart-item__price">
+          <span class="cart-item__price-current">${formattedLinePrice}</span>
+        </div>
+      </div>
+      
+      <button 
+        type="button"
+        class="cart-item__remove" 
+        data-line="${line}"
+        data-key="${item.key}"
+        data-remove-item
+        aria-label="Remove ${item.product_title}"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    `;
+    
+    return itemDiv;
+  }
+
+  /**
+   * Update cart subtotal
+   * @param {number} totalPrice - Total price in cents
+   */
+  #updateCartSubtotal(totalPrice) {
+    const subtotalElement = this.refs.dialog.querySelector('.cart-drawer__subtotal-price');
+    if (subtotalElement) {
+      subtotalElement.textContent = this.#formatMoney(totalPrice);
+    }
+  }
+
+  /**
+   * Format money amount (from cents to currency string)
+   * @param {number} cents - Amount in cents
+   * @returns {string} - Formatted money string
+   */
+  #formatMoney(cents) {
+    const amount = cents / 100;
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    }).format(amount);
   }
 
   /**
