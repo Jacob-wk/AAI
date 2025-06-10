@@ -1,7 +1,7 @@
 import { Component } from './component.js';
 import { ThemeEvents } from './events.js';
 import { fetchConfig, onAnimationEnd } from './utilities.js';
-import { sectionRenderer } from './section-renderer.js';
+import { SectionRenderer } from './section-renderer.js';
 
 /**
  * @typedef {Object} ShopifyCartItem
@@ -163,7 +163,13 @@ class CartDrawerComponent extends Component {
   #handleCartUpdate = async (event) => {
     console.log('🔄 Cart update event received:', event.detail);
     
-    // Always refresh cart content when cart updates occur
+    // Prevent infinite loop: Don't refresh if this event came from our own refresh
+    if (event.detail?.source === 'cart-drawer-refresh') {
+      console.log('⏭️ Ignoring cart-drawer-refresh event to prevent infinite loop');
+      return;
+    }
+    
+    // Always refresh cart content when cart updates occur from other sources
     // This ensures fresh data whether drawer is open or will be opened
     await this.#refreshCartContent();
     
@@ -544,6 +550,10 @@ class CartDrawerComponent extends Component {
           detail: { 
             source: 'cart-drawer-refresh',
             success: true,
+            data: {
+              itemCount: cart.item_count,
+              source: 'cart-drawer-refresh'
+            },
             cart: cart
           }
         }));

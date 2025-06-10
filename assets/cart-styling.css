@@ -694,7 +694,7 @@ body:has(.cart-drawer__dialog[open]) {
 .quantity-selector__button:hover {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
-  transform: translateY(-1px);
+  /* Removed transform to prevent flickering */
 }
 
 .quantity-selector__input {
@@ -716,7 +716,7 @@ body:has(.cart-drawer__dialog[open]) {
 .cart-item__remove:hover {
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   color: white;
-  transform: translateY(-2px);
+  /* Removed transform to prevent flickering */
   box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
 }
 
@@ -784,12 +784,12 @@ body:has(.cart-drawer__dialog[open]) {
 }
 
 .cart__checkout-button:hover {
-  transform: translateY(-3px);
+  /* Removed transform to prevent flickering */
   box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5);
 }
 
 .cart__checkout-button:active {
-  transform: translateY(-1px);
+  /* Removed transform to prevent flickering */
   box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
