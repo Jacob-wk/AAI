@@ -1374,13 +1374,12 @@ body:has(.cart-drawer__dialog[open]) {
 /* Quantity selector */
 .cart-page .quantity-selector {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   border: 2px solid #e5e7eb;
   border-radius: 8px;
   background: #ffffff;
   overflow: hidden;
   transition: border-color 0.2s ease;
-  width: 144px;
   height: 44px;
   flex-shrink: 0;
 }
@@ -1393,8 +1392,8 @@ body:has(.cart-drawer__dialog[open]) {
 .cart-page .quantity-selector__button {
   background: #f9fafb;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1405,16 +1404,6 @@ body:has(.cart-drawer__dialog[open]) {
   transition: all 0.2s ease;
   user-select: none;
   flex-shrink: 0;
-}
-
-.cart-page .quantity-selector__button:first-child {
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-}
-
-.cart-page .quantity-selector__button:last-child {
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
 }
 
 .cart-page .quantity-selector__button:hover {
@@ -1429,7 +1418,7 @@ body:has(.cart-drawer__dialog[open]) {
 .cart-page .quantity-selector__input {
   border: none;
   width: 60px;
-  height: 40px;
+  height: 100%;
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
@@ -1439,8 +1428,6 @@ body:has(.cart-drawer__dialog[open]) {
   appearance: textfield;
   -moz-appearance: textfield;
   flex-shrink: 0;
-  border-left: 1px solid #e5e7eb;
-  border-right: 1px solid #e5e7eb;
 }
 
 .cart-page .quantity-selector__input::-webkit-outer-spin-button,
