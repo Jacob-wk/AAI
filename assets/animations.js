@@ -292,10 +292,13 @@ class AAIAnimations {
       // Remove existing page animation classes from body
       body.classList.remove('page-animation-applied', 'page-animation-visible', 'page-fade-in', 'page-fade-up', 'page-slide-up');
       
-      // Re-initialize page animation with improved timing
-      setTimeout(() => {
+      // Force reflow to ensure classes are removed before re-adding
+      body.offsetHeight;
+      
+      // Re-initialize page animation with better timing coordination
+      requestAnimationFrame(() => {
         this.initializePageAnimation();
-      }, 10); // Very short delay to ensure clean state
+      });
     }
 
     // Re-apply global animations to new elements
