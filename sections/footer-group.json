@@ -15,6 +15,8 @@
       "type": "aai-footer",
       "name": "AAI Footer",
       "settings": {
+        "footer_logo": "shopify://shop_images/AAI_Square.png",
+        "footer_logo_width": 100,
         "footer_description": "Professional safety education for the amusement industry since 2025. Advance your career while keeping guests safe.",
         "phone": "",
         "email": "",
@@ -24,8 +26,11 @@
         "menu_3_title": "Resources",
         "menu_4_title": "Support",
         "show_iaapa_badge": true,
+        "iaapa_badge_text": "IAAPA Accredited",
         "show_iso_badge": true,
+        "iso_badge_text": "ISO 9001 Certified",
         "show_ceu_badge": true,
+        "ceu_badge_text": "CEU Provider",
         "social_linkedin": "",
         "social_twitter": "",
         "social_youtube": ""
