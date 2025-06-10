@@ -205,7 +205,6 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  max-width: 120px;
   background: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -1392,7 +1391,6 @@ body:has(.cart-drawer__dialog[open]) {
 .cart-page .quantity-selector__button {
   background: #f9fafb;
   border: none;
-  width: 44px;
   height: 100%;
   display: flex;
   align-items: center;
