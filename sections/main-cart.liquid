@@ -5,7 +5,7 @@
 {% comment %} Handle cart drawer mode when accessed directly {% endcomment %}
 {% if settings.cart_type == 'drawer' %}
 
-<div class="cart-page-drawer-mode">
+<div class="cart-page">
   <div class="section-background color-{{ section.settings.color_scheme }}"></div>
   <div class="section color-{{ section.settings.color_scheme }} section--{{ section.settings.section_width }}">
     <div class="cart-content" style="{% render 'spacing-style', settings: section.settings %}">
