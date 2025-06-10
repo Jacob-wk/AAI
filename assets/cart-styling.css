@@ -229,11 +229,15 @@
   justify-content: center;
   transition: all 0.2s ease;
   color: #333;
+  /* FIXED: Prevent button flashing */
+  position: relative;
+  z-index: 5;
 }
 
 .quantity-selector__button:hover {
   background: var(--color-primary, #007bff);
   color: white;
+  /* REMOVED any transform properties to prevent flashing */
 }
 
 .quantity-selector__button:disabled {
@@ -325,12 +329,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* FIXED: Prevent pointer-events conflicts */
+  position: relative;
+  z-index: 10;
 }
 
 .cart-item__remove:hover {
   color: #e74c3c;
   background: #fef2f2;
-  transform: scale(1.1);
+  /* REMOVED problematic transform that causes flashing */
 }
 
 .cart-item__remove svg {
@@ -338,6 +345,8 @@
   height: 18px;
   stroke-width: 1.5;
   transition: stroke-width 0.2s ease;
+  /* FIXED: Prevent SVG from interfering with pointer events */
+  pointer-events: none;
 }
 
 .cart-item__remove:hover svg {
@@ -1095,9 +1104,13 @@ body:has(.cart-drawer__dialog[open]) {
   100% { transform: rotate(360deg); }
 }
 
-/* Cart item animations */
-.cart-item {
+/* Cart item animations - FIXED: Only animate on initial load */
+.cart-item:not(.cart-item--loaded) {
   animation: cartItemSlideIn 0.3s ease-out;
+}
+
+.cart-item.cart-item--loaded {
+  animation: none;
 }
 
 @keyframes cartItemSlideIn {
@@ -1127,30 +1140,21 @@ body:has(.cart-drawer__dialog[open]) {
   }
 }
 
-/* Quantity button active state */
+/* Quantity button active state - FIXED: Removed transform to prevent flashing */
 .quantity-selector__button:active {
-  transform: scale(0.95);
+  opacity: 0.8;
 }
 
-/* Cart item hover effects */
+/* Cart item hover effects - SIMPLIFIED to prevent flashing */
 .cart-page-drawer-mode .cart-item {
   position: relative;
-  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.cart-page-drawer-mode .cart-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transition: left 0.5s ease;
-}
-
-.cart-page-drawer-mode .cart-item:hover::before {
-  left: 100%;
+/* REMOVED problematic ::before pseudo-element animation */
+.cart-page-drawer-mode .cart-item:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 /* Success/Error states */
@@ -1536,12 +1540,15 @@ body:has(.cart-drawer__dialog[open]) {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* FIXED: Prevent pointer-events conflicts */
+  position: relative;
+  z-index: 10;
 }
 
 .cart-page-drawer-mode .cart-item__remove:hover {
   background: #fee;
   color: var(--color-error, #dc3545);
-  transform: scale(1.1);
+  /* REMOVED problematic transform that causes flashing */
 }
 
 .cart-page-drawer-mode .cart-item__remove svg {
@@ -1549,6 +1556,8 @@ body:has(.cart-drawer__dialog[open]) {
   height: 20px;
   stroke-width: 1.5;
   transition: stroke-width 0.2s ease;
+  /* FIXED: Prevent SVG from interfering with pointer events */
+  pointer-events: none;
 }
 
 .cart-page-drawer-mode .cart-item__remove:hover svg {

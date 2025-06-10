@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart Drawer Icon Flashing Fix Test</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 20px; 
+      background: #f5f5f5;
+    }
+    
+    .test-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .test-button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 10px;
+      font-size: 16px;
+      transition: background 0.2s ease;
+    }
+    
+    .test-button:hover {
+      background: #0056b3;
+    }
+    
+    .status {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border-left: 4px solid;
+    }
+    
+    .status.success {
+      background: #d4edda;
+      border-color: #28a745;
+      color: #155724;
+    }
+    
+    .status.error {
+      background: #f8d7da;
+      border-color: #dc3545;
+      color: #721c24;
+    }
+    
+    .status.info {
+      background: #d1ecf1;
+      border-color: #17a2b8;
+      color: #0c5460;
+    }
+    
+    .test-results {
+      font-family: monospace;
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      border: 1px solid #dee2e6;
+      white-space: pre-wrap;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    
+    h1 { color: #333; }
+    h2 { color: #666; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <h1>🛒 Cart Drawer Icon Flashing Fix Test</h1>
+  
+  <div class="status info">
+    <strong>Test Purpose:</strong> Verify that cart drawer icons no longer flash on hover and all interactive elements are properly clickable.
+  </div>
+
+  <div class="test-section">
+    <h2>🎯 Test Scenarios</h2>
+    <button class="test-button" onclick="testCartDrawerOpen()">1. Test Cart Drawer Opening</button>
+    <button class="test-button" onclick="testIconInteractions()">2. Test Icon Hover Interactions</button>
+    <button class="test-button" onclick="testCartAnimations()">3. Test Cart Item Animations</button>
+    <button class="test-button" onclick="testQuantityControls()">4. Test Quantity Controls</button>
+    <button class="test-button" onclick="runFullTest()">🚀 Run All Tests</button>
+  </div>
+
+  <div class="test-section">
+    <h2>📊 Test Results</h2>
+    <div id="testResults" class="test-results">Ready to run tests...</div>
+  </div>
+
+  <div class="test-section">
+    <h2>✅ Expected Fixes</h2>
+    <ul>
+      <li><strong>Animation Control:</strong> Cart items should only animate once on load, not continuously</li>
+      <li><strong>Icon Stability:</strong> Remove buttons, quantity controls, and close buttons should not flash on hover</li>
+      <li><strong>Click Responsiveness:</strong> All interactive elements should be clickable without interference</li>
+      <li><strong>Loading Class:</strong> Cart items should have <code>cart-item--loaded</code> class to prevent repeated animations</li>
+      <li><strong>Hover Effects:</strong> Smooth hover effects without transform conflicts</li>
+    </ul>
+  </div>
+
+  <script>
+    let testResults = '';
+    
+    function log(message, type = 'info') {
+      const timestamp = new Date().toLocaleTimeString();
+      testResults += `[${timestamp}] ${type.toUpperCase()}: ${message}\n`;
+      document.getElementById('testResults').textContent = testResults;
+      console.log(`[Cart Test] ${message}`);
+    }
+    
+    function testCartDrawerOpen() {
+      log('🧪 Testing cart drawer opening...', 'info');
+      
+      // Look for cart trigger elements
+      const cartTriggers = document.querySelectorAll('[data-cart-drawer-trigger]');
+      log(`Found ${cartTriggers.length} cart trigger elements`, 'info');
+      
+      // Check if cart drawer element exists
+      const cartDrawer = document.querySelector('cart-drawer');
+      if (cartDrawer) {
+        log('✅ Cart drawer element found', 'success');
+        
+        // Check if dialog element exists within cart drawer
+        const dialog = cartDrawer.querySelector('.cart-drawer__dialog');
+        if (dialog) {
+          log('✅ Cart drawer dialog found', 'success');
+          
+          // Test opening the drawer
+          if (cartTriggers.length > 0) {
+            log('🔥 Simulating cart trigger click...', 'info');
+            cartTriggers[0].click();
+            
+            setTimeout(() => {
+              if (dialog.hasAttribute('open')) {
+                log('✅ Cart drawer opened successfully!', 'success');
+                
+                // Check for loaded class on cart items
+                const cartItems = dialog.querySelectorAll('.cart-item');
+                const loadedItems = dialog.querySelectorAll('.cart-item--loaded');
+                log(`Found ${cartItems.length} cart items, ${loadedItems.length} with loaded class`, 'info');
+                
+                if (loadedItems.length === cartItems.length && cartItems.length > 0) {
+                  log('✅ All cart items have loaded class - animations controlled!', 'success');
+                } else if (cartItems.length === 0) {
+                  log('ℹ️ No cart items to test (empty cart)', 'info');
+                } else {
+                  log('⚠️ Some cart items missing loaded class', 'error');
+                }
+              } else {
+                log('❌ Cart drawer did not open', 'error');
+              }
+            }, 500);
+          } else {
+            log('⚠️ No cart triggers found to test with', 'error');
+          }
+        } else {
+          log('❌ Cart drawer dialog not found', 'error');
+        }
+      } else {
+        log('❌ Cart drawer element not found', 'error');
+      }
+    }
+    
+    function testIconInteractions() {
+      log('🧪 Testing icon hover interactions...', 'info');
+      
+      const cartDrawer = document.querySelector('cart-drawer');
+      if (!cartDrawer) {
+        log('❌ Cart drawer not found for icon testing', 'error');
+        return;
+      }
+      
+      const dialog = cartDrawer.querySelector('.cart-drawer__dialog');
+      if (!dialog) {
+        log('❌ Cart drawer dialog not found', 'error');
+        return;
+      }
+      
+      // Test close button
+      const closeButtons = dialog.querySelectorAll('.cart-drawer__close');
+      log(`Found ${closeButtons.length} close buttons`, 'info');
+      
+      // Test remove buttons
+      const removeButtons = dialog.querySelectorAll('.cart-item__remove');
+      log(`Found ${removeButtons.length} remove buttons`, 'info');
+      
+      // Test quantity buttons
+      const quantityButtons = dialog.querySelectorAll('.quantity-selector__button');
+      log(`Found ${quantityButtons.length} quantity buttons`, 'info');
+      
+      // Check for proper pointer events and CSS
+      let hasProblematicStyles = false;
+      
+      removeButtons.forEach((button, index) => {
+        const svg = button.querySelector('svg');
+        if (svg && svg.style.pointerEvents !== 'none') {
+          log(`⚠️ Remove button ${index + 1} SVG missing pointer-events: none`, 'error');
+          hasProblematicStyles = true;
+        }
+      });
+      
+      if (!hasProblematicStyles && removeButtons.length > 0) {
+        log('✅ All remove button SVGs have proper pointer-events settings', 'success');
+      }
+      
+      log('🔍 Hover test: Move your mouse over cart icons to verify no flashing occurs', 'info');
+    }
+    
+    function testCartAnimations() {
+      log('🧪 Testing cart item animations...', 'info');
+      
+      const cartDrawer = document.querySelector('cart-drawer');
+      if (!cartDrawer) {
+        log('❌ Cart drawer not found', 'error');
+        return;
+      }
+      
+      const cartItems = cartDrawer.querySelectorAll('.cart-item');
+      const loadedItems = cartDrawer.querySelectorAll('.cart-item--loaded');
+      
+      log(`Cart items: ${cartItems.length}, Loaded items: ${loadedItems.length}`, 'info');
+      
+      if (cartItems.length === 0) {
+        log('ℹ️ No cart items to test animations', 'info');
+        return;
+      }
+      
+      // Check CSS animation rules
+      const style = getComputedStyle(cartItems[0]);
+      const animation = style.animation;
+      
+      if (loadedItems.length === cartItems.length) {
+        log('✅ All cart items marked as loaded - preventing continuous animations', 'success');
+      } else {
+        log('⚠️ Some cart items not marked as loaded - may cause animation loops', 'error');
+      }
+      
+      // Check for animation CSS rules
+      log(`Animation CSS: ${animation || 'none'}`, 'info');
+    }
+    
+    function testQuantityControls() {
+      log('🧪 Testing quantity control interactions...', 'info');
+      
+      const cartDrawer = document.querySelector('cart-drawer');
+      if (!cartDrawer) {
+        log('❌ Cart drawer not found', 'error');
+        return;
+      }
+      
+      const quantityButtons = cartDrawer.querySelectorAll('.quantity-selector__button');
+      const quantityInputs = cartDrawer.querySelectorAll('.quantity-selector__input');
+      
+      log(`Quantity buttons: ${quantityButtons.length}, Quantity inputs: ${quantityInputs.length}`, 'info');
+      
+      if (quantityButtons.length === 0) {
+        log('ℹ️ No quantity controls to test', 'info');
+        return;
+      }
+      
+      // Check for event listeners
+      let buttonsWithListeners = 0;
+      quantityButtons.forEach(button => {
+        if (button.onclick || button.getAttribute('data-quantity-change')) {
+          buttonsWithListeners++;
+        }
+      });
+      
+      log(`Quantity buttons with event handling: ${buttonsWithListeners}/${quantityButtons.length}`, 'info');
+      
+      if (buttonsWithListeners === quantityButtons.length) {
+        log('✅ All quantity buttons have proper event handling', 'success');
+      } else {
+        log('⚠️ Some quantity buttons missing event handling', 'error');
+      }
+    }
+    
+    function runFullTest() {
+      log('🚀 Starting full cart drawer test suite...', 'info');
+      testResults = ''; // Clear previous results
+      
+      setTimeout(() => testCartDrawerOpen(), 100);
+      setTimeout(() => testIconInteractions(), 1000);
+      setTimeout(() => testCartAnimations(), 2000);
+      setTimeout(() => testQuantityControls(), 3000);
+      setTimeout(() => log('✅ Full test suite completed!', 'success'), 4000);
+    }
+    
+    // Auto-run basic checks on page load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        log('🔍 Auto-running basic cart drawer checks...', 'info');
+        
+        // Check if cart drawer element exists
+        const cartDrawer = document.querySelector('cart-drawer');
+        if (cartDrawer) {
+          log('✅ Cart drawer custom element found', 'success');
+        } else {
+          log('❌ Cart drawer custom element not found', 'error');
+        }
+        
+        // Check if cart styling is loaded
+        const cartStyleLink = document.querySelector('link[href*="cart-styling"]');
+        if (cartStyleLink) {
+          log('✅ Cart styling CSS loaded', 'success');
+        } else {
+          log('⚠️ Cart styling CSS not detected', 'error');
+        }
+        
+        log('📝 Ready for manual testing. Click the test buttons above.', 'info');
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

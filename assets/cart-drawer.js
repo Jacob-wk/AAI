@@ -62,6 +62,9 @@ class CartDrawerComponent extends Component {
     // Setup auto-open functionality for add-to-cart actions
     this.#setupAutoOpenFunctionality();
     
+    // Mark existing cart items as loaded to prevent continuous animations
+    this.#markExistingItemsAsLoaded();
+    
     console.log('✅ Cart drawer initialization complete!');
   }
 
@@ -674,7 +677,7 @@ class CartDrawerComponent extends Component {
    */
   #createCartItemElement(item, line) {
     const itemDiv = document.createElement('div');
-    itemDiv.className = 'cart-item';
+    itemDiv.className = 'cart-item cart-item--loaded';  // Add loaded class to prevent continuous animations
     itemDiv.setAttribute('data-index', line.toString());
     itemDiv.setAttribute('data-line', line.toString());
     itemDiv.setAttribute('data-key', item.key);
@@ -804,6 +807,20 @@ class CartDrawerComponent extends Component {
       }
     }, true); // Use capture phase to intercept early
   }
+
+  /**
+   * Mark existing cart items as loaded to prevent continuous animations
+   */
+  #markExistingItemsAsLoaded() {
+    const cartItems = this.refs.dialog.querySelectorAll('.cart-item');
+    cartItems.forEach(item => {
+      if (!item.classList.contains('cart-item--loaded')) {
+        item.classList.add('cart-item--loaded');
+      }
+    });
+    console.log(`✅ Marked ${cartItems.length} existing cart items as loaded`);
+  }
+
 }
 
 console.log('📝 About to register cart-drawer custom element...');
