@@ -62,7 +62,7 @@
           "type": "button_group",
           "settings": {
             "button_1_text": "Browse All Courses",
-            "button_1_url": "/collections/all-courses",
+            "button_1_url": "shopify://collections/courses",
             "button_1_style": "primary",
             "button_2_text": "Corporate Training Solutions",
             "button_2_url": "/pages/corporate-training",
@@ -97,7 +97,7 @@
         "show_main_content": true,
         "content_title": "",
         "content_body": "<p><strong>Whether you're looking to enhance your skills, certify your team, or ensure compliance, AAI has the resources you need.  </strong></p><p>Explore our comprehensive course catalog or get in touch with our experts to discuss your specific training requirements.</p>",
-        "show_image": false,
+        "show_image": true,
         "main_button_text": "",
         "main_button_url": "",
         "main_button_style": "primary",
