@@ -177,6 +177,7 @@
 .aai-btn-large {
   padding: 18px 36px;
   font-size: 1.125rem;
+  margin: 5px;
 }
 
 /* Mobile responsiveness */
@@ -211,5 +212,6 @@
   .aai-btn-large {
     width: 100%;
     max-width: 300px;
+    margin: 5px;
   }
 }
