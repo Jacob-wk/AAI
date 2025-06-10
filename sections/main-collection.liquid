@@ -8,14 +8,7 @@
 <div class="collection section-{{ section.id }}">
   <div class="page-width">
     {% for block in section.blocks %}
-      {% case block.type %}
-        {% when 'filters' %}
-          {% if collection.filters.size > 0 and block.settings.enable_filtering %}
-            <div class="collection-filters" {{ block.shopify_attributes }}>
-              {% render 'collection-filters', collection: collection, block: block %}
-            </div>
-          {% endif %}
-        
+      {% case block.type %}        
         {% when 'product-grid' %}
           <div class="collection-product-list" {{ block.shopify_attributes }}>
             {% paginate collection.products by 24 %}
@@ -125,21 +118,8 @@
       "default": false,
       "label": "Show product vendor"
     }
-  ],
+    ],
   "blocks": [
-    {
-      "type": "filters",
-      "name": "Filters",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "checkbox",
-          "id": "enable_filtering",
-          "default": true,
-          "label": "Enable filtering"
-        }
-      ]
-    },
     {
       "type": "product-grid", 
       "name": "Product grid",
@@ -148,9 +128,6 @@
   ],
   "default": {
     "blocks": [
-      {
-        "type": "filters"
-      },
       {
         "type": "product-grid"
       }

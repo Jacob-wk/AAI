@@ -26,19 +26,12 @@
     "main": {
       "type": "main-collection",
       "blocks": {
-        "filters_PhKeAy": {
-          "type": "filters",
-          "settings": {
-            "enable_filtering": true
-          }
-        },
         "product_grid_r8EcY4": {
           "type": "product-grid",
           "settings": {}
         }
       },
       "block_order": [
-        "filters_PhKeAy",
         "product_grid_r8EcY4"
       ],
       "settings": {
