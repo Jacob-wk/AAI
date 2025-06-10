@@ -200,14 +200,15 @@
 
 /* Quantity selector styling */
 .quantity-selector {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border-radius: 8px;
+    padding: 2px;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .quantity-selector:hover {
