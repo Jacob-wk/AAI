@@ -12,12 +12,18 @@ class AAIAnimations {
    */
   getPageAnimationSettings() {
     const body = document.body;
-    return {
-      enabled: body.classList.contains('page-animations-enabled'),
+    
+    const settings = {
+      enabled: true, // Force enable for testing
       style: body.dataset.pageAnimationStyle || 'fade-up',
-      duration: parseInt(body.dataset.pageAnimationDuration || '1000') || 1000, // Increased default duration
+      duration: parseInt(body.dataset.pageAnimationDuration || '1000') || 1000,
       easing: 'cubic-bezier(0.16, 1, 0.3, 1)'
     };
+    
+    // Debug logging
+    console.log('AAI Animations: Page animation settings:', settings);
+    
+    return settings;
   }
 
   init() {
@@ -50,49 +56,57 @@ class AAIAnimations {
 
     // Apply the page animation class based on customizer setting
     if (!body.classList.contains('page-animation-applied')) {
-      body.classList.add('page-animation-applied');
-      
       // Set CSS custom properties for animation
       body.style.setProperty('--page-animation-duration', `${this.pageAnimationSettings.duration}ms`);
       body.style.setProperty('--page-animation-easing', this.pageAnimationSettings.easing);
       
-      // Apply the specific animation style to the body
+      // Apply the specific animation style to the body (only one class to avoid conflicts)
+      let animationClass;
       switch (this.pageAnimationSettings.style) {
         case 'fade':
-          body.classList.add('page-fade-in');
+          animationClass = 'page-fade-in';
           break;
         case 'fade-up':
-          body.classList.add('page-fade-up');
+          animationClass = 'page-fade-up';
           break;
         case 'slide-up':
-          body.classList.add('page-slide-up');
+          animationClass = 'page-slide-up';
           break;
         case 'none':
-          // No animation
-          break;
+          // No animation, exit early
+          return;
         default:
-          body.classList.add('page-fade-up'); // Default fallback
+          animationClass = 'page-fade-up'; // Default fallback
       }
       
-      // Improved timing for more reliable page load animation
+      // Apply the animation class first
+      body.classList.add(animationClass, 'page-animation-applied');
+      
+      console.log('AAI Animations: Applied classes:', animationClass, 'page-animation-applied');
+      console.log('AAI Animations: Body classes now:', body.className);
+      
+      // Trigger animation with better timing
       const triggerAnimation = () => {
-        if (document.readyState === 'complete') {
-          // Page is fully loaded, trigger immediately
-          requestAnimationFrame(() => {
-            body.classList.add('page-animation-visible');
-          });
-        } else {
-          // Page still loading, wait for load event
-          window.addEventListener('load', () => {
-            requestAnimationFrame(() => {
-              body.classList.add('page-animation-visible');
-            });
-          }, { once: true });
-        }
+        console.log('AAI Animations: Triggering animation...');
+        
+        // Force a reflow to ensure initial styles are applied
+        body.offsetHeight;
+        
+        // Use requestAnimationFrame for smooth animation trigger
+        requestAnimationFrame(() => {
+          body.classList.add('page-animation-visible');
+          console.log('AAI Animations: Added page-animation-visible class');
+          console.log('AAI Animations: Final body classes:', body.className);
+        });
       };
       
-      // Small delay to ensure DOM is stable, then check readiness
-      setTimeout(triggerAnimation, 50);
+      // Wait for DOM to be ready and trigger animation
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', triggerAnimation, { once: true });
+      } else {
+        // DOM is already loaded, trigger with small delay
+        setTimeout(triggerAnimation, 100);
+      }
     }
   }
 

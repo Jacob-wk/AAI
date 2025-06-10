@@ -244,14 +244,7 @@ select:focus {
 }
 
 /* Page Load Animations */
-.page-animation-applied {
-  opacity: 0;
-  transition: opacity var(--page-animation-duration, 1000ms) var(--page-animation-easing, cubic-bezier(0.16, 1, 0.3, 1));
-}
-
-.page-animation-applied.page-animation-visible {
-  opacity: 1;
-}
+/* Removed redundant .page-animation-applied styles to avoid conflicts */
 
 .page-fade-in {
   opacity: 0;

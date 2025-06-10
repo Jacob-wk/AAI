@@ -6,19 +6,6 @@ body {
   --page-animation-easing: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Page animation states */
-.page-animation-applied {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity var(--page-animation-duration) var(--page-animation-easing),
-              transform var(--page-animation-duration) var(--page-animation-easing);
-}
-
-.page-animation-applied.page-animation-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* Specific page animation styles */
 .page-fade-in {
   opacity: 0;
