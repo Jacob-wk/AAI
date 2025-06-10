@@ -160,9 +160,9 @@
         <quantity-input class="quantity">
           <button class="quantity__button no-js-hidden" name="minus" type="button">
             <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-              <path d="M1 6h10"/>
-            </svg>
+            <span class="svg-wrapper icon-minus">
+              {{- 'icon-minus.svg' | inline_asset_content -}}
+            </span>
           </button>
           <input class="quantity__input"
                  type="number"
@@ -173,9 +173,9 @@
                  form="{{ product_form_id }}">
           <button class="quantity__button no-js-hidden" name="plus" type="button">
             <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-              <path d="M6 1v10M1 6h10"/>
-            </svg>
+            <span class="svg-wrapper icon-plus">
+              {{- 'icon-plus.svg' | inline_asset_content -}}
+            </span>
           </button>
         </quantity-input>
       </div>
@@ -185,7 +185,10 @@
       </div>
       
       <!-- Add to Cart Button -->
-      <add-to-cart-component ref="addToCartButtonContainer" data-product-variant-media="{{ current_variant.featured_media.preview_image | image_url: width: 100 }}">
+      <add-to-cart-component ref="addToCartButtonContainer"
+        {% if current_variant.featured_media.preview_image %}
+          data-product-variant-media="{{ current_variant.featured_media.preview_image | image_url: width: 100 }}"
+        {% endif %}>
         <button type="submit" 
                 ref="addToCartButton"
                 class="btn btn-primary product-form__cart-submit{% unless current_variant.available %} disabled{% endunless %}"
