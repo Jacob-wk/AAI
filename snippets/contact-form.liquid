@@ -1,9 +1,58 @@
 {%- comment -%}
-  Renders a contact form with proper styling and alignment
+  Renders a contact form with configurable styling and settings
+  
+  Accepts:
+    - settings: block settings object with form configuration
+    - form_max_width: override for maximum form width
+    - recipient_email: email address to send form submissions to
 {%- endcomment -%}
 
-<div class="contact-form-wrapper" style="max-width: {{ form_max_width | default: 1200 }}px; margin: 0 auto;">
+{%- liquid
+  assign width_class = settings.width | default: 'medium'
+  assign width_mobile = settings.width_mobile | default: 'wide'
+  assign color_scheme = settings.color_scheme | default: 'scheme-1'
+  assign recipient = settings.recipient_email | default: 'info@aailearning.com'
+  assign submit_text = settings.submit_button_text | default: 'Send Message'
+  
+  # Width mappings
+  case width_class
+    when 'narrow'
+      assign desktop_width = '50%'
+    when 'medium'
+      assign desktop_width = '70%'
+    when 'wide'
+      assign desktop_width = '85%'
+    when 'full'
+      assign desktop_width = '100%'
+    else
+      assign desktop_width = '70%'
+  endcase
+  
+  case width_mobile
+    when 'narrow'
+      assign mobile_width = '85%'
+    when 'wide'
+      assign mobile_width = '95%'
+    when 'full'
+      assign mobile_width = '100%'
+    else
+      assign mobile_width = '95%'
+  endcase
+-%}
+
+<div class="contact-form-wrapper {{ color_scheme }}" style="max-width: {{ desktop_width }}; margin: 0 auto;">
+  <style>
+    @media (max-width: 768px) {
+      .contact-form-wrapper {
+        max-width: {{ mobile_width }} !important;
+      }
+    }
+  </style>
+  
   {%- form 'contact', class: 'contact-form' -%}
+    <!-- Hidden field for recipient email -->
+    <input type="hidden" name="contact[recipient]" value="{{ recipient }}">
+    
     {%- if form.posted_successfully? -%}
       <div class="form-status form-status--success" role="status">
         <h3>{{ 'contact.form.success_title' | t | default: 'Thank you for contacting us!' }}</h3>
@@ -23,12 +72,62 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label for="ContactFormName">{{ 'contact.form.name' | t | default: 'Name' }} <span style="color: #ef4444;">*</span></label>
-          <input type="text" id="ContactFormName" name="contact[name]" value="{{ form.name }}" required placeholder="Enter your full name">
+          <label for="ContactFormName">{{ 'contact.form.name' | t | default: 'Name' }} <span class="required">*</span></label>
+          <input type="text" 
+                 id="ContactFormName" 
+                 name="contact[name]" 
+                 value="{{ form.name }}" 
+                 required 
+                 placeholder="{{ settings.name_placeholder | default: 'Enter your full name' }}">
         </div>
         <div class="form-group">
-          <label for="ContactFormEmail">{{ 'contact.form.email' | t | default: 'Email address' }} <span style="color: #ef4444;">*</span></label>
-          <input type="email" id="ContactFormEmail" name="contact[email]" value="{{ form.email }}" required placeholder="your.email@example.com">
+          <label for="ContactFormEmail">{{ 'contact.form.email' | t | default: 'Email address' }} <span class="required">*</span></label>
+          <input type="email" 
+                 id="ContactFormEmail" 
+                 name="contact[email]" 
+                 value="{{ form.email }}" 
+                 required 
+                 placeholder="{{ settings.email_placeholder | default: 'your.email@company.com' }}">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ContactFormPhone">{{ 'contact.form.phone' | t | default: 'Phone number' }}</label>
+          <input type="tel" 
+                 id="ContactFormPhone" 
+                 name="contact[phone]" 
+                 value="{{ form.phone }}" 
+                 placeholder="(555) 123-4567">
+        </div>
+        <div class="form-group">
+          <label for="ContactFormSubject">{{ 'contact.form.subject' | t | default: 'Subject' }} <span class="required">*</span></label>
+          <input type="text" 
+                 id="ContactFormSubject" 
+                 name="contact[subject]" 
+                 value="{{ form.subject }}" 
+                 required 
+                 placeholder="{{ settings.subject_placeholder | default: 'How can we help you?' }}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="ContactFormMessage">{{ 'contact.form.message' | t | default: 'Message' }} <span class="required">*</span></label>
+        <textarea id="ContactFormMessage" 
+                  name="contact[body]" 
+                  required 
+                  rows="5" 
+                  placeholder="{{ settings.message_placeholder | default: 'Tell us about your training needs...' }}">{{ form.body }}</textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="aai-btn aai-btn-primary aai-btn-large">
+          {{ submit_text }}
+        </button>
+      </div>
+    {%- endif -%}
+  {%- endform -%}
+</div>
         </div>
       </div>
       

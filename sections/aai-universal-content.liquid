@@ -4,6 +4,7 @@
 {% endcomment %}
 
 {{ 'section-aai-content.css' | asset_url | stylesheet_tag }}
+{{ 'contact-form.css' | asset_url | stylesheet_tag }}
 
 <section class="aai-content page-section {{ section.settings.background_style }} {{ section.settings.color_scheme }}">
   <div class="aai-container">
@@ -61,6 +62,13 @@
                               {% endfor %}
                             </ul>
                           {% endif %}
+                        </div>
+                      </div>
+                    {% when 'contact_form' %}
+                      <div class="timeline-item" {{ block.shopify_attributes }}>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                          {% render 'contact-form', settings: block.settings %}
                         </div>
                       </div>
                   {% endcase %}
@@ -450,12 +458,90 @@
       "name": "Contact Form",
       "settings": [
         {
+          "type": "header",
+          "content": "Form Configuration"
+        },
+        {
+          "type": "email",
+          "id": "recipient_email",
+          "label": "Recipient Email",
+          "default": "info@aailearning.com",
+          "info": "Email address where form submissions will be sent"
+        },
+        {
+          "type": "text",
+          "id": "submit_button_text",
+          "label": "Submit Button Text",
+          "default": "Send Message"
+        },
+        {
+          "type": "header",
+          "content": "Width Settings"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Desktop Width",
+          "options": [
+            { "value": "narrow", "label": "Narrow (50%)" },
+            { "value": "medium", "label": "Medium (70%)" },
+            { "value": "wide", "label": "Wide (85%)" },
+            { "value": "full", "label": "Full Width (100%)" }
+          ],
+          "default": "medium"
+        },
+        {
+          "type": "select",
+          "id": "width_mobile",
+          "label": "Mobile Width",
+          "options": [
+            { "value": "narrow", "label": "Narrow (85%)" },
+            { "value": "wide", "label": "Wide (95%)" },
+            { "value": "full", "label": "Full Width (100%)" }
+          ],
+          "default": "wide"
+        },
+        {
+          "type": "header",
+          "content": "Form Field Customization"
+        },
+        {
+          "type": "text",
+          "id": "name_placeholder",
+          "label": "Name Field Placeholder",
+          "default": "Enter your full name"
+        },
+        {
+          "type": "text",
+          "id": "email_placeholder",
+          "label": "Email Field Placeholder",
+          "default": "your.email@company.com"
+        },
+        {
+          "type": "text",
+          "id": "subject_placeholder",
+          "label": "Subject Field Placeholder",
+          "default": "How can we help you?"
+        },
+        {
+          "type": "text",
+          "id": "message_placeholder",
+          "label": "Message Field Placeholder",
+          "default": "Tell us about your training needs..."
+        },
+        {
+          "type": "header",
+          "content": "Styling"
+        },
+        {
           "type": "select",
           "id": "color_scheme",
           "label": "Color Scheme",
           "options": [
             { "value": "scheme-1", "label": "Default" },
-            { "value": "scheme-2", "label": "Alternative" }
+            { "value": "scheme-2", "label": "Alternative" },
+            { "value": "scheme-3", "label": "Accent" },
+            { "value": "inverse", "label": "Inverse" }
           ],
           "default": "scheme-1"
         }
@@ -560,6 +646,35 @@
             "button_2_url": "/pages/corporate-training",
             "button_2_style": "secondary",
             "button_size": "large"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contact Us",
+      "settings": {
+        "section_title": "Get in Touch",
+        "section_subtitle": "Ready to advance your career in the amusement industry? Have questions about our courses? We're here to help.",
+        "layout_style": "text-center",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_title": "Contact Our Expert Team",
+        "content_body": "<p>Whether you're looking for course information, corporate training solutions, or technical support, our knowledgeable team is ready to assist you. Fill out the form below and we'll get back to you within 24 hours.</p>",
+        "show_image": false
+      },
+      "blocks": [
+        {
+          "type": "contact_form",
+          "settings": {
+            "recipient_email": "info@aailearning.com",
+            "submit_button_text": "Send Message",
+            "width": "medium",
+            "width_mobile": "wide",
+            "color_scheme": "scheme-1",
+            "name_placeholder": "Your full name",
+            "email_placeholder": "your.email@company.com",
+            "subject_placeholder": "How can we help you?",
+            "message_placeholder": "Tell us about your training needs or ask any questions you may have..."
           }
         }
       ]

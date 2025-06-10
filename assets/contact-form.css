@@ -1,0 +1,195 @@
+/* Contact Form Styling - Enhanced for AAI Universal Content */
+
+.contact-form-wrapper {
+  padding: 2rem;
+  border-radius: 12px;
+  background: rgb(var(--color-background));
+  border: 1px solid rgba(var(--color-border), 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.contact-form-wrapper.scheme-2 {
+  background: rgb(var(--color-background-alt));
+}
+
+.contact-form-wrapper.scheme-3 {
+  background: rgb(var(--color-accent-background));
+}
+
+.contact-form-wrapper.inverse {
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+.contact-form {
+  width: 100%;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: rgb(var(--color-foreground));
+  font-size: 0.95rem;
+}
+
+.contact-form-wrapper.inverse .form-group label {
+  color: rgb(var(--color-background));
+}
+
+.required {
+  color: #ef4444;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.875rem 1rem;
+  border: 1px solid rgba(var(--color-border), 0.3);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: rgb(var(--color-button));
+  box-shadow: 0 0 0 3px rgba(var(--color-button), 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-actions {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.form-actions .aai-btn {
+  min-width: 180px;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+/* Form Status Messages */
+.form-status {
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.form-status--success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+}
+
+.form-status--error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.form-status h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.form-status p {
+  margin: 0;
+}
+
+.form-status ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.form-status li {
+  margin-bottom: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-form-wrapper {
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 0.75rem;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .form-actions .aai-btn {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form-wrapper {
+    padding: 1rem;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+  }
+}
+
+/* Contact Form Container in AAI Universal Content */
+.aai-content .contact-form-container {
+  margin: 2rem 0;
+}
+
+.aai-content .contact-form-container:first-child {
+  margin-top: 0;
+}
+
+.aai-content .contact-form-container:last-child {
+  margin-bottom: 0;
+}
+
+/* Timeline layout specific styling */
+.content-timeline .contact-form-container {
+  margin: 0;
+}
+
+.timeline-item .contact-form-wrapper {
+  margin-top: 1rem;
+  padding: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .timeline-item .contact-form-wrapper {
+    padding: 1rem;
+  }
+}

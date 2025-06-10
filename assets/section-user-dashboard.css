@@ -2,6 +2,7 @@
   padding: 40px 0;
   background: #f8fafc;
   min-height: 60vh;
+  align-items: center;
 }
 
 .dashboard-header {
