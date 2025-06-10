@@ -1,21 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "aai-universal-hero",
-      "settings": {
-        "hero_title": "Enterprise Safety Training Solutions",
-        "hero_subtitle": "Comprehensive safety training programs designed for your organization's specific needs. From compliance requirements to advanced safety protocols, we deliver results that protect your people and your business.",
-        "hero_style": "hero-standard",
-        "layout_style": "text-left-image-right",
-        "show_image": true,
-        "hero_image": "",
-        "show_stats": true,
-        "show_features": true,
-        "primary_button_text": "Schedule Consultation",
-        "primary_button_url": "#consultation-form-section",
-        "secondary_button_text": "View Case Studies",
-        "secondary_button_url": "#case-studies-section"
-      },
       "blocks": {
         "stat1": {
           "type": "statistic",
@@ -41,169 +36,126 @@
         "feature1": {
           "type": "feature",
           "settings": {
-            "feature_icon": "🛡️",
-            "feature_title": "OSHA Compliant",
-            "feature_description": "Training meets OSHA standards."
+            "feature_icon": "🏢",
+            "feature_title": "Enterprise Scale",
+            "feature_description": "Solutions for organizations of all sizes"
           }
         },
         "feature2": {
           "type": "feature",
           "settings": {
-            "feature_icon": "📜",
-            "feature_title": "Industry Standard",
-            "feature_description": "Aligned with current best practices."
+            "feature_icon": "📋",
+            "feature_title": "Custom Curriculum",
+            "feature_description": "Tailored to your specific operational needs"
           }
         },
         "feature3": {
           "type": "feature",
           "settings": {
-            "feature_icon": "✍️",
-            "feature_title": "Custom Curricula",
-            "feature_description": "Tailored to your specific needs."
+            "feature_icon": "🎯",
+            "feature_title": "Measurable Results",
+            "feature_description": "Track progress and demonstrate ROI"
           }
         }
       },
-      "block_order": ["stat1", "stat2", "stat3", "feature1", "feature2", "feature3"]
-    },
-    "services_overview": {
-      "type": "aai-universal-content",
+      "block_order": [
+        "stat1",
+        "stat2",
+        "stat3",
+        "feature1",
+        "feature2",
+        "feature3"
+      ],
       "settings": {
-        "section_title": "Tailored Training Solutions",
-        "section_subtitle": "We understand that every organization has unique safety challenges. Our corporate training programs are fully customizable to meet your specific industry requirements, compliance standards, and operational goals.",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "2",
-        "background_style": "section-alt-1",
-        "section_width": "page-width"
-      },
+        "hero_title": "Enterprise Safety Training Solutions",
+        "hero_subtitle": "Comprehensive safety training programs designed for your organization's specific needs. From compliance requirements to advanced safety protocols, we deliver results that protect your people and your business.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-left-image-right",
+        "show_image": true,
+        "show_features": true,
+        "show_stats": true,
+        "show_credentials": false,
+        "primary_button_text": "Schedule Consultation",
+        "primary_button_url": "/pages/contact",
+        "secondary_button_text": "View Case Studies",
+        "secondary_button_url": "#case-studies",
+        "button_size": "large"
+      }
+    },
+    "training_benefits": {
+      "type": "aai-universal-content",
       "blocks": {
-        "service1": {
-          "type": "text_block",
+        "benefit1": {
+          "type": "feature_list",
           "settings": {
-            "block_title": "📋 Compliance Training",
-            "block_content": "<p>Stay ahead of regulatory requirements with our comprehensive compliance training programs covering OSHA, state regulations, and industry-specific standards.</p><ul><li>OSHA 10 & 30 Hour Training</li><li>Industry-Specific Compliance</li><li>Regulatory Update Programs</li><li>Audit Preparation</li></ul>"
+            "list_title": "Training Advantages",
+            "list_items": "Reduced insurance costs through certified staff\nImproved operational efficiency and safety metrics\nEnhanced employee confidence and job satisfaction\nStrong regulatory compliance and audit readiness"
           }
         },
-        "service2": {
-          "type": "text_block",
+        "benefit2": {
+          "type": "feature_list",
           "settings": {
-            "block_title": "🎯 Custom Curriculum Development",
-            "block_content": "<p>Work with our instructional designers to create training programs that address your organization\\'s specific safety challenges and operational procedures.</p><ul><li>Site-Specific Training</li><li>Equipment-Specific Protocols</li><li>Emergency Response Plans</li><li>Performance Assessments</li></ul>"
-          }
-        },
-        "service3": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "👥 Leadership Development",
-            "block_content": "<p>Develop safety leaders within your organization with our specialized management training programs focused on safety culture and incident prevention.</p><ul><li>Safety Leadership Training</li><li>Incident Investigation</li><li>Safety Culture Development</li><li>Management Coaching</li></ul>"
-          }
-        },
-        "service4": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "📊 Analytics & Reporting",
-            "block_content": "<p>Track training progress, compliance status, and safety performance with our comprehensive reporting and analytics platform.</p><ul><li>Real-Time Dashboards</li><li>Compliance Tracking</li><li>Performance Analytics</li><li>Custom Reports</li></ul>"
+            "list_title": "Delivery Options",
+            "list_items": "On-site training at your facility\nVirtual instructor-led sessions\nBlended learning approaches\nSelf-paced online modules"
           }
         }
       },
-      "block_order": ["service1", "service2", "service3", "service4"]
-    },
-    "delivery_options": {
-      "type": "aai-universal-content",
+      "block_order": [
+        "benefit1",
+        "benefit2"
+      ],
       "settings": {
-        "section_title": "Flexible Training Delivery",
+        "section_title": "",
         "section_subtitle": "",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "3",
-        "background_style": "section-alt-2",
-        "section_width": "page-width"
-      },
-      "blocks": {
-        "delivery1": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "On-Site Training",
-            "block_content": "<p>Our certified instructors come to your facility to deliver training that\\'s directly relevant to your specific equipment, procedures, and work environment.</p><ul><li>✓ Site-specific content</li><li>✓ Equipment familiarization</li><li>✓ Team building</li><li>✓ Immediate application</li></ul>"
-          }
-        },
-        "delivery2": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Virtual Instructor-Led",
-            "block_content": "<p>Interactive online sessions with our expert instructors, featuring real-time Q&A, group discussions, and hands-on exercises adapted for virtual delivery.</p><ul><li>✓ Cost-effective scaling</li><li>✓ Geographic flexibility</li><li>✓ Interactive engagement</li><li>✓ Recording available</li></ul>"
-          }
-        },
-        "delivery3": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Blended Learning",
-            "block_content": "<p>Combine online self-paced modules with in-person practical sessions for maximum flexibility and effectiveness in your training program.</p><ul><li>✓ Flexible scheduling</li><li>✓ Self-paced theory</li><li>✓ Hands-on practice</li><li>✓ Optimal learning</li></ul>"
-          }
-        }
-      },
-      "block_order": ["delivery1", "delivery2", "delivery3"]
-    },
-    "case_studies_section": {
-      "type": "aai-universal-content",
-      "id": "case-studies-section",
-      "settings": {
-        "section_title": "Success Stories",
-        "section_subtitle": "",
-        "layout_style": "blocks-grid",
+        "layout_style": "text-center",
         "blocks_per_row": "2",
-        "background_style": "section-alt-3",
-        "section_width": "page-width"
-      },
-      "blocks": {
-        "case_study1": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Major Theme Park Operator",
-            "block_content": "<h6>Entertainment Industry</h6><h4>Challenge</h4><p>Regional theme park chain needed to standardize safety training across 12 locations with varying state regulations and equipment types.</p><h4>Solution</h4><p>Custom blended learning program with site-specific modules, virtual instructor-led sessions, and on-site practical assessments.</p><h4>Results</h4><ul><li>45% reduction in safety incidents</li><li>100% compliance across all locations</li><li>30% reduction in training costs</li><li>98% employee satisfaction rate</li></ul>"
-          }
-        },
-        "case_study2": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Water Park Resort Chain",
-            "block_content": "<h6>Aquatic Recreation</h6><h4>Challenge</h4><p>Seasonal staffing challenges with high turnover requiring rapid, effective safety training for lifeguards and ride operators.</p><h4>Solution</h4><p>Accelerated certification program with digital badging, micro-learning modules, and mobile-friendly assessments.</p><h4>Results</h4><ul><li>60% faster certification process</li><li>Zero preventable incidents in season 1</li><li>85% staff retention improvement</li><li>Streamlined hiring process</li></ul>"
-          }
-        }
-      },
-      "block_order": ["case_study1", "case_study2"]
+        "background_style": "bg-light",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
     },
-    "consultation_form_section": {
-      "type": "section",
-      "id": "consultation-form-section",
-      "settings": {
-        "section_width": "page-width",
-        "color_scheme": "color-scheme-accent-2",
-        "padding-block-start": 40,
-        "padding-block-end": 40,
-        "content_direction": "column",
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 30
-      },
+    "aai_universal_content_V7XKxU": {
+      "type": "aai-universal-content",
       "blocks": {
-        "consultation_info": {
-          "type": "text",
+        "text_block_jhnLaM": {
+          "type": "text_block",
           "settings": {
-            "text": "<h2>Get Your Custom Training Solution</h2><p>Our safety training experts will work with you to assess your needs, understand your challenges, and design a training program that delivers measurable results.</p><h3>Our Process</h3><div><div><span>1</span><div><h4>Assessment</h4><p>We analyze your current training needs, compliance requirements, and safety challenges.</p></div></div><div><span>2</span><div><h4>Design</h4><p>Our team creates a customized training program tailored to your specific requirements.</p></div></div><div><span>3</span><div><h4>Delivery</h4><p>We implement the training using your preferred delivery method and schedule.</p></div></div><div><span>4</span><div><h4>Support</h4><p>Ongoing support, updates, and performance monitoring ensure continued success.</p></div></div></div>",
-            "type_preset": "rte",
-            "alignment": "center",
-            "padding-block-end": 20
-          }
-        },
-        "form_block": {
-          "type": "contact-form",
-          "settings": {
-            "heading": "Schedule Your Consultation",
-            "color_scheme": "color-scheme-2"
+            "block_title": "Our Mission",
+            "block_content": "<p>To be the global leader in Family Entertainment Center and adventure park safety education, fostering a culture of safety and continuous improvement through innovative training and expert resources.</p>"
           }
         }
       },
-      "block_order": ["consultation_info", "form_block"]
+      "block_order": [
+        "text_block_jhnLaM"
+      ],
+      "name": "AAI Universal Content",
+      "settings": {
+        "section_title": "Discover Our Expertise",
+        "section_subtitle": "Providing industry-leading solutions and comprehensive resources.",
+        "layout_style": "text-left-image-right",
+        "blocks_per_row": "1",
+        "background_style": "",
+        "show_main_content": true,
+        "content_title": "Welcome to AAI Learning",
+        "content_body": "<p>Amusement Adventure Institute (AAI) is dedicated to advancing safety and operational excellence in the amusement industry. Our comprehensive training programs and resources are designed by experts to empower professionals like you.</p><p>Explore our offerings to find the perfect solution for your individual or organizational needs.</p>",
+        "show_image": true,
+        "content_image": "shopify://shop_images/Courses_Collection.png",
+        "main_button_text": "Explore Our Courses",
+        "main_button_url": "/collections/all",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
     }
   },
-  "order": ["hero", "services_overview", "delivery_options", "case_studies_section", "consultation_form_section"]
+  "order": [
+    "hero",
+    "training_benefits",
+    "aai_universal_content_V7XKxU"
+  ]
 }
