@@ -361,9 +361,11 @@ body.page-fade.page-loaded {
   opacity: 1;
 }
 
-/* Disable component animations during page fade */
-body.page-fade .fade-in,
-body.page-fade .slide-up {
+/* Disable component animations ONLY during page fade transition, not after */
+body.page-fade:not(.page-loaded) .fade-in,
+body.page-fade:not(.page-loaded) .slide-up,
+body.page-fade:not(.page-loaded) .slide-in-left,
+body.page-fade:not(.page-loaded) .slide-in-right {
   opacity: 1 !important;
   transform: none !important;
   animation: none !important;

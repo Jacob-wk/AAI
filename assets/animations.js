@@ -24,7 +24,10 @@ class AAIAnimations {
     // Apply simple page fade animation if enabled
     if (this.pageAnimationSettings.enabled) {
       this.initializePageFade();
-      return; // Don't apply other animations during page fade
+      // Still set up scroll animations - they'll work after page fade completes
+      this.setupScrollAnimations();
+      this.setupPageTransitionAnimations();
+      return;
     }
     
     // Apply component animations if page animation is disabled
@@ -48,6 +51,11 @@ class AAIAnimations {
     const triggerFade = () => {
       requestAnimationFrame(() => {
         body.classList.add('page-loaded');
+        
+        // After page fade completes, ensure scroll animations work
+        setTimeout(() => {
+          this.animateElementsInViewport();
+        }, 100);
       });
     };
 
