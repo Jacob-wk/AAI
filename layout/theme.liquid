@@ -68,6 +68,9 @@
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-schemes' -%}
 
+    {% comment %} Load animations script early for page fade effect {% endcomment %}
+    <script src="{{ 'animations.js' | asset_url }}"></script>
+
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}
     {% endif %}
@@ -102,7 +105,6 @@
 
     {% # theme-check-disable ParserBlockingScript %}
     <script src="{{ 'critical.js' | asset_url }}"></script>
-    <script src="{{ 'animations.js' | asset_url }}"></script>
     <script type="module" src="{{ 'cart-drawer.js' | asset_url }}"></script>
     {% # theme-check-enable ParserBlockingScript %}
 

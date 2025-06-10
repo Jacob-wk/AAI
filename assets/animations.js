@@ -1,5 +1,17 @@
 /* filepath: /workspaces/AAI/assets/animations.js */
 
+// Apply page fade class immediately to prevent flash
+if (document.body) {
+  document.body.classList.add('page-fade');
+  console.log('AAI: Applied page-fade class immediately');
+} else {
+  // If body isn't ready, apply as soon as it is
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('page-fade');
+    console.log('AAI: Applied page-fade class on DOMContentLoaded');
+  });
+}
+
 // AAI Animation System
 class AAIAnimations {
   constructor() {
@@ -43,15 +55,25 @@ class AAIAnimations {
    */
   initializePageFade() {
     const body = document.body;
-    if (!body || body.classList.contains('page-fade')) return;
+    if (!body) return;
 
-    // Apply fade class immediately
-    body.classList.add('page-fade');
+    console.log('AAI: Initializing page fade animation...');
+    console.log('AAI: Body classes:', body.className);
+    
+    // Ensure fade class is applied (should already be from immediate application)
+    if (!body.classList.contains('page-fade')) {
+      body.classList.add('page-fade');
+      console.log('AAI: Added page-fade class in initializePageFade');
+    }
     
     // Trigger fade in when DOM is ready
     const triggerFade = () => {
+      console.log('AAI: Triggering fade animation...');
+      
       requestAnimationFrame(() => {
         body.classList.add('page-loaded');
+        console.log('AAI: Added page-loaded class');
+        console.log('AAI: Final body classes:', body.className);
         
         // After page fade completes, ensure scroll animations work
         setTimeout(() => {
@@ -62,8 +84,10 @@ class AAIAnimations {
     };
 
     if (document.readyState === 'loading') {
+      console.log('AAI: DOM still loading, waiting for DOMContentLoaded...');
       document.addEventListener('DOMContentLoaded', triggerFade, { once: true });
     } else {
+      console.log('AAI: DOM already loaded, triggering fade with delay...');
       setTimeout(triggerFade, 50);
     }
   }
