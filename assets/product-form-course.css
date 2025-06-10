@@ -223,12 +223,15 @@
 }
 
 .quantity {
-  display: flex;
-  align-items: center;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  overflow: hidden;
-  width: fit-content;
+display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border-radius: 8px;
+    padding: 2px;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .quantity__button {
