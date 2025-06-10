@@ -25,6 +25,7 @@ class AAIAnimations {
     if (this.pageAnimationSettings.enabled) {
       this.initializePageFade();
       // Still set up scroll animations - they'll work after page fade completes
+      this.applyGlobalAnimations(); // Important: Apply animation classes to elements
       this.setupScrollAnimations();
       this.setupPageTransitionAnimations();
       return;
@@ -54,6 +55,7 @@ class AAIAnimations {
         
         // After page fade completes, ensure scroll animations work
         setTimeout(() => {
+          console.log('AAI: Page fade complete, triggering scroll animations...');
           this.animateElementsInViewport();
         }, 100);
       });
@@ -153,6 +155,8 @@ class AAIAnimations {
   }
 
   setupScrollAnimations() {
+    console.log('AAI: Setting up scroll animations...');
+    
     // Create intersection observer for scroll-triggered animations
     const observerOptions = {
       threshold: 0.1,
@@ -163,6 +167,7 @@ class AAIAnimations {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const element = entry.target;
+          console.log('AAI: Element entering viewport:', element);
           
           // Add visible class to trigger animations
           element.classList.add('aai-animate-visible');
@@ -180,6 +185,8 @@ class AAIAnimations {
     const animatedElements = document.querySelectorAll(
       '.fade-in, .slide-up, .slide-in-left, .slide-in-right, [class*="anim-delay"], section, .page-section, [class*="section-"], [class*="block"], .content-block, .feature-block, .text-block, .card, .course-card, .instructor-card, [class*="item-"], .product-item'
     );
+    
+    console.log('AAI: Found', animatedElements.length, 'elements to animate');
     
     animatedElements.forEach(el => {
       observer.observe(el);
