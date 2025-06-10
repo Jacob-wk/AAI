@@ -15,7 +15,7 @@ class AAIAnimations {
     
     return {
       enabled: true, // Simple fade enabled
-      duration: 800,
+      duration: 400,
       easing: 'ease-out'
     };
   }
@@ -67,7 +67,7 @@ class AAIAnimations {
         setTimeout(() => {
           console.log('AAI: Page fade complete, triggering scroll animations...');
           this.animateElementsInViewport();
-        }, 100);
+        }, 50);
       });
     };
 
@@ -76,7 +76,7 @@ class AAIAnimations {
       document.addEventListener('DOMContentLoaded', triggerFade, { once: true });
     } else {
       console.log('AAI: DOM already loaded, triggering fade with delay...');
-      setTimeout(triggerFade, 50);
+      setTimeout(triggerFade, 25);
     }
   }
 
