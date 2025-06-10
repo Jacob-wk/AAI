@@ -55,6 +55,42 @@
         "main_button_size": "medium"
       }
     },
+    "aai_universal_content_QGrVx9": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "credential_grid_HzXgfy": {
+          "type": "credential_grid",
+          "settings": {
+            "grid_title": "Our Credentials",
+            "credential_1_title": "20+ Years Experience",
+            "credential_1_desc": "Pioneering safety training in the amusement sector.",
+            "credential_2_title": "100+ Professionals Trained",
+            "credential_2_desc": "Empowering individuals and organizations globally.",
+            "credential_3_title": "Global Standards Development",
+            "credential_3_desc": "Actively contributing to international safety committees."
+          }
+        }
+      },
+      "block_order": [
+        "credential_grid_HzXgfy"
+      ],
+      "name": "Homepage Call to Action",
+      "settings": {
+        "section_title": "",
+        "section_subtitle": "",
+        "layout_style": "text-center",
+        "blocks_per_row": "1",
+        "background_style": "section-dark",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "",
+        "show_image": true,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "small"
+      }
+    },
     "aai_universal_content_DiPa6P": {
       "type": "aai-universal-content",
       "blocks": {
@@ -69,23 +105,10 @@
             "button_2_style": "secondary",
             "button_size": "large"
           }
-        },
-        "credential_grid_Ermjrk": {
-          "type": "credential_grid",
-          "settings": {
-            "grid_title": "Our Credentials",
-            "credential_1_title": "20+ Years Experience",
-            "credential_1_desc": "Pioneering safety training in the amusement sector.",
-            "credential_2_title": "3000+ Professionals Trained",
-            "credential_2_desc": "Empowering individuals and organizations globally.",
-            "credential_3_title": "Global Standards Development",
-            "credential_3_desc": "Actively contributing to international safety committees."
-          }
         }
       },
       "block_order": [
-        "button_group_HQ9y7U",
-        "credential_grid_Ermjrk"
+        "button_group_HQ9y7U"
       ],
       "name": "Homepage Call to Action",
       "settings": {
@@ -93,7 +116,7 @@
         "section_subtitle": "Take your career to the next level.",
         "layout_style": "text-center",
         "blocks_per_row": "1",
-        "background_style": "section-dark",
+        "background_style": "section-alt-2",
         "show_main_content": true,
         "content_title": "",
         "content_body": "<p><strong>Whether you're looking to enhance your skills, certify your team, or ensure compliance, AAI has the resources you need.  </strong></p><p>Explore our comprehensive course catalog or get in touch with our experts to discuss your specific training requirements.</p>",
@@ -117,6 +140,7 @@
   "order": [
     "main",
     "aai_universal_content_f4efTN",
+    "aai_universal_content_QGrVx9",
     "aai_universal_content_DiPa6P",
     "user_dashboard_K9qwwg"
   ]
