@@ -159,10 +159,12 @@
           </div>
         </div>
       {% else %}
-        <p>{{ 'cart.empty' | t }}</p>
-        <a href="{{ routes.all_products_collection_url }}" class="button button--primary">
-          {{ 'cart.continue_shopping' | t }}
-        </a>
+        <div class="cart-empty">
+          <p>{{ 'cart.empty' | t }}</p>
+          <a href="{{ routes.all_products_collection_url }}" class="button button--primary">
+            {{ 'cart.continue_shopping' | t }}
+          </a>
+        </div>
       {% endif %}
     </div>
   </div>

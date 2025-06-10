@@ -1378,9 +1378,10 @@ body:has(.cart-drawer__dialog[open]) {
   border: 2px solid #e5e7eb;
   border-radius: 8px;
   background: #ffffff;
-  overflow: visible;
+  overflow: hidden;
   transition: border-color 0.2s ease;
-  width: fit-content;
+  width: 144px;
+  height: 44px;
   flex-shrink: 0;
 }
 
@@ -1404,8 +1405,6 @@ body:has(.cart-drawer__dialog[open]) {
   transition: all 0.2s ease;
   user-select: none;
   flex-shrink: 0;
-  position: relative;
-  z-index: 1;
 }
 
 .cart-page .quantity-selector__button:first-child {
@@ -1421,12 +1420,10 @@ body:has(.cart-drawer__dialog[open]) {
 .cart-page .quantity-selector__button:hover {
   background: #e5e7eb;
   color: #1f2937;
-  z-index: 2;
 }
 
 .cart-page .quantity-selector__button:active {
   background: #d1d5db;
-  transform: scale(0.95);
 }
 
 .cart-page .quantity-selector__input {
