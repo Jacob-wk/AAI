@@ -102,6 +102,12 @@
                 {% content_for 'block', block: block %}
               </div>
             {% endunless %}
+          {% for block in section.blocks %}
+            {% unless block.type == 'feature' or block.type == 'statistic' or block.type == 'credential' %}
+              <div class="hero-theme-block" {{ block.shopify_attributes }}>
+                {% content_for 'block', block: block %}
+              </div>
+            {% endunless %}
           {% endfor %}
         </div>
       {% endif %}
