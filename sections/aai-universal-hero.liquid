@@ -99,13 +99,7 @@
           {% for block in section.blocks %}
             {% unless block.type == 'feature' or block.type == 'statistic' or block.type == 'credential' %}
               <div class="hero-theme-block" {{ block.shopify_attributes }}>
-                {% content_for 'block', block: block %}
-              </div>
-            {% endunless %}
-          {% for block in section.blocks %}
-            {% unless block.type == 'feature' or block.type == 'statistic' or block.type == 'credential' %}
-              <div class="hero-theme-block" {{ block.shopify_attributes }}>
-                {% content_for 'block', block: block %}
+                {% render block %}
               </div>
             {% endunless %}
           {% endfor %}
@@ -118,7 +112,6 @@
 {% schema %}
 {
   "name": "AAI Universal Hero",
-  "category": "t:categories.banners",
   "settings": [
     {
       "type": "header",
@@ -310,6 +303,7 @@
   "presets": [
     {
       "name": "AAI Universal Hero",
+      "category": "AAI Hero",
       "settings": {
         "hero_title": "Where Safety Meets Adventure",
         "hero_subtitle": "Professional safety education for the amusement industry. Advance your career while keeping guests safe with industry-leading certification programs.",

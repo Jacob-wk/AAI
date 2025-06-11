@@ -76,7 +76,7 @@
                       <div class="timeline-item" {{ block.shopify_attributes }}>
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
-                          {% content_for 'block', block: block %}
+                          {% render block %}
                         </div>
                       </div>
                   {% endcase %}
@@ -167,7 +167,7 @@
                   {% else %}
                     <!-- Handle theme blocks and app blocks -->
                     <div class="theme-block-container" {{ block.shopify_attributes }}>
-                      {% content_for 'block', block: block %}
+                      {% render block %}
                     </div>
                 {% endcase %}
               {% endfor %}
@@ -200,7 +200,6 @@
 {% schema %}
 {
   "name": "AAI Universal Content",
-  "category": "t:categories.content",
   "settings": [
     {
       "type": "header",
@@ -571,6 +570,7 @@
   "presets": [
     {
       "name": "AAI Universal Content",
+      "category": "AAI Content",
       "settings": {
         "section_title": "Discover Our Expertise",
         "section_subtitle": "Providing industry-leading solutions and comprehensive resources.",
@@ -615,6 +615,7 @@
     },
     {
       "name": "Industry Authority",
+      "category": "AAI Content",
       "settings": {
         "section_title": "Industry Authority in FEC & Adventure Park Safety",
         "section_subtitle": "Decades of Experience, Unmatched Expertise",
@@ -645,6 +646,7 @@
     },
     {
       "name": "Homepage Call to Action",
+      "category": "AAI Content",
       "settings": {
         "section_title": "Ready to Elevate Your FEC Career?",
         "section_subtitle": "Join thousands of Family Entertainment Center and adventure park professionals who trust AAI for their safety and operational training.",
@@ -672,6 +674,7 @@
     },
     {
       "name": "Contact Us",
+      "category": "AAI Forms",
       "settings": {
         "section_title": "Get in Touch",
         "section_subtitle": "Ready to advance your career in the amusement industry? Have questions about our courses? We're here to help.",
