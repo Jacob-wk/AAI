@@ -1,10 +1,9 @@
 {% comment %}
-  Universal Content Section - Flexible content blocks for any AAI page
-  Supports text, images, lists, and various layout options
+  AAI Universal Content - Using Horizon theme blocks with AAI styling
+  Now supports AI generation while maintaining educational focus
 {% endcomment %}
 
 {{ 'section-aai-content.css' | asset_url | stylesheet_tag }}
-{{ 'contact-form.css' | asset_url | stylesheet_tag }}
 
 <section class="aai-content page-section {{ section.settings.background_style }} {{ section.settings.color_scheme }}">
   <div class="aai-container">
@@ -17,183 +16,33 @@
       </div>
     {% endif %}
     
-    <div class="content-grid" data-layout="{{ section.settings.layout_style }}">
-      {% if section.settings.show_main_content %}
-        <div class="content-text">
-          {% if section.settings.content_title != blank %}
-            <h3>{{ section.settings.content_title }}</h3>
-          {% endif %}
-          
-          {% if section.settings.content_body != blank %}
-            <div class="content-body">
-              {{ section.settings.content_body }}
-            </div>
-          {% endif %}
-          
-          {% if section.blocks.size > 0 %}
-            {% if section.settings.layout_style == 'timeline' %}
-              <div class="content-timeline">
-                {% for block in section.blocks %}
-                  {% case block.type %}
-                    {% when 'text_block' %}
-                      <div class="timeline-item" {{ block.shopify_attributes }}>
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                          {% if block.settings.block_title != blank %}
-                            <h4 class="timeline-title">{{ block.settings.block_title }}</h4>
-                          {% endif %}
-                          {% if block.settings.block_content != blank %}
-                            <div class="timeline-description">{{ block.settings.block_content }}</div>
-                          {% endif %}
-                        </div>
-                      </div>
-                    {% when 'feature_list' %}
-                      <div class="timeline-item" {{ block.shopify_attributes }}>
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                          {% if block.settings.list_title != blank %}
-                            <h4 class="timeline-title">{{ block.settings.list_title }}</h4>
-                          {% endif %}
-                          {% if block.settings.list_items != blank %}
-                            <ul class="timeline-features">
-                              {% assign items = block.settings.list_items | split: '|' %}
-                              {% for item in items %}
-                                <li>{{ item | strip }}</li>
-                              {% endfor %}
-                            </ul>
-                          {% endif %}
-                        </div>
-                      </div>
-                    {% when 'contact_form' %}
-                      <div class="timeline-item" {{ block.shopify_attributes }}>
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                          {% render 'contact-form', settings: block.settings %}
-                        </div>
-                      </div>
-                    {% else %}
-                      <!-- Handle theme blocks and app blocks -->
-                      <div class="timeline-item" {{ block.shopify_attributes }}>
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                          {% render block %}
-                        </div>
-                      </div>
-                  {% endcase %}
-                {% endfor %}
-              </div>
-            {% else %}
-              <div class="content-blocks" data-columns="{{ section.settings.blocks_per_row | default: 1 }}">
-                {% for block in section.blocks %}
-                  {% case block.type %}
-                    {% when 'text_block' %}
-                      <div class="text-block" {{ block.shopify_attributes }}>
-                        {% if block.settings.block_title != blank %}
-                          <h4>{{ block.settings.block_title }}</h4>
-                        {% endif %}
-                        {% if block.settings.block_content != blank %}
-                          <div class="block-content">{{ block.settings.block_content }}</div>
-                        {% endif %}
-                      </div>
-                      
-                    {% when 'feature_list' %}
-                    <div class="feature-list" {{ block.shopify_attributes }}>
-                      {% if block.settings.list_title != blank %}
-                        <h4>{{ block.settings.list_title }}</h4>
-                      {% endif %}
-                      {% if block.settings.list_items != blank %}
-                        <ul class="feature-items">
-                          {% assign items = block.settings.list_items | split: '|' %}
-                          {% for item in items %}
-                            <li>{{ item | strip }}</li>
-                          {% endfor %}
-                        </ul>
-                      {% endif %}
-                    </div>
-                    
-                  {% when 'credential_grid' %}
-                    <div class="credential-grid" {{ block.shopify_attributes }}>
-                      {% if block.settings.grid_title != blank %}
-                        <h4>{{ block.settings.grid_title }}</h4>
-                      {% endif %}
-                      <div class="credentials-container">
-                        {% if block.settings.credential_1_title != blank %}
-                          <div class="credential-item">
-                            <strong>{{ block.settings.credential_1_title }}</strong>
-                            {% if block.settings.credential_1_desc != blank %}
-                              <p>{{ block.settings.credential_1_desc }}</p>
-                            {% endif %}
-                          </div>
-                        {% endif %}
-                        {% if block.settings.credential_2_title != blank %}
-                          <div class="credential-item">
-                            <strong>{{ block.settings.credential_2_title }}</strong>
-                            {% if block.settings.credential_2_desc != blank %}
-                              <p>{{ block.settings.credential_2_desc }}</p>
-                            {% endif %}
-                          </div>
-                        {% endif %}
-                        {% if block.settings.credential_3_title != blank %}
-                          <div class="credential-item">
-                            <strong>{{ block.settings.credential_3_title }}</strong>
-                            {% if block.settings.credential_3_desc != blank %}
-                              <p>{{ block.settings.credential_3_desc }}</p>
-                            {% endif %}
-                          </div>
-                        {% endif %}
-                      </div>
-                    </div>
-                    
-                  {% when 'button_group' %}
-                    <div class="button-group" {{ block.shopify_attributes }}>
-                      {% if block.settings.button_1_text != blank %}
-                        <a href="{{ block.settings.button_1_url }}" 
-                           class="aai-btn aai-btn-{{ block.settings.button_1_style }} aai-btn-{{ block.settings.button_size }}">
-                          {{ block.settings.button_1_text }}
-                        </a>
-                      {% endif %}
-                      {% if block.settings.button_2_text != blank %}
-                        <a href="{{ block.settings.button_2_url }}" 
-                           class="aai-btn aai-btn-{{ block.settings.button_2_style }} aai-btn-{{ block.settings.button_size }}">
-                          {{ block.settings.button_2_text }}
-                        </a>
-                      {% endif %}
-                    </div>
-                    
-                  {% when 'contact_form' %}
-                    <div class="contact-form-container" {{ block.shopify_attributes }}>
-                      {% render 'contact-form', settings: block.settings %}
-                    </div>
-                  {% else %}
-                    <!-- Handle theme blocks and app blocks -->
-                    <div class="theme-block-container" {{ block.shopify_attributes }}>
-                      {% render block %}
-                    </div>
-                {% endcase %}
-              {% endfor %}
-            </div>
-            {% endif %}
-          {% endif %}
-          
-          {% if section.settings.main_button_text != blank %}
-            <div class="content-cta">
-              <a href="{{ section.settings.main_button_url }}" 
-                 class="aai-btn aai-btn-{{ section.settings.main_button_style }} aai-btn-{{ section.settings.main_button_size }}">
-                {{ section.settings.main_button_text }}
-              </a>
-            </div>
-          {% endif %}
-        </div>
-      {% endif %}
-      
-      {% if section.settings.show_image and section.settings.content_image != blank %}
-        <div class="content-image">
-          <img src="{{ section.settings.content_image | image_url: width: 600 }}" 
-               alt="{{ section.settings.content_image.alt | default: section.settings.section_title }}"
-               loading="lazy">
-        </div>
-      {% endif %}
+    {% if section.settings.show_main_content %}
+      <div class="content-text">
+        {% if section.settings.content_title != blank %}
+          <h3>{{ section.settings.content_title }}</h3>
+        {% endif %}
+        
+        {% if section.settings.content_body != blank %}
+          <div class="content-body">
+            {{ section.settings.content_body }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <!-- Theme blocks rendered with AAI styling context -->
+    <div class="aai-blocks-container" data-layout="{{ section.settings.layout_style }}">
+      {% content_for 'blocks' %}
     </div>
+
+    {% if section.settings.main_button_text != blank %}
+      <div class="content-cta">
+        <a href="{{ section.settings.main_button_url }}" 
+           class="aai-btn aai-btn-{{ section.settings.main_button_style }} aai-btn-{{ section.settings.main_button_size }}">
+          {{ section.settings.main_button_text }}
+        </a>
+      </div>
+    {% endif %}
   </div>
 </section>
 
@@ -224,28 +73,11 @@
       "id": "layout_style",
       "label": "Content Layout",
       "options": [
-        { "value": "text-only", "label": "Text Only" },
-        { "value": "text-left-image-right", "label": "Text Left, Image Right" },
-        { "value": "text-right-image-left", "label": "Text Right, Image Left" },
-        { "value": "text-center", "label": "Text Centered" },
-        { "value": "two-column", "label": "Two Column Text" },
-        { "value": "blocks-grid", "label": "Content Blocks Grid" },
-        { "value": "timeline", "label": "Timeline" }
+        { "value": "timeline", "label": "Timeline" },
+        { "value": "blocks-grid", "label": "Content Grid" },
+        { "value": "text-center", "label": "Centered" }
       ],
-      "default": "text-only"
-    },
-    {
-      "type": "select",
-      "id": "blocks_per_row",
-      "label": "Blocks Per Row",
-      "options": [
-        { "value": "1", "label": "1 Column" },
-        { "value": "2", "label": "2 Columns" },
-        { "value": "3", "label": "3 Columns" },
-        { "value": "4", "label": "4 Columns" }
-      ],
-      "default": "1",
-      "info": "Only applies when using Content Blocks Grid layout"
+      "default": "blocks-grid"
     },
     {
       "type": "select",
@@ -266,7 +98,7 @@
     {
       "type": "checkbox",
       "id": "show_main_content",
-      "label": "Show Main Content",
+      "label": "Show Section Content",
       "default": true
     },
     {
@@ -281,22 +113,7 @@
     },
     {
       "type": "header",
-      "content": "Image Settings"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_image",
-      "label": "Show Content Image",
-      "default": false
-    },
-    {
-      "type": "image_picker",
-      "id": "content_image",
-      "label": "Content Image"
-    },
-    {
-      "type": "header",
-      "content": "Main Call to Action"
+      "content": "Call to Action"
     },
     {
       "type": "text",
@@ -333,234 +150,6 @@
   ],
   "blocks": [
     {
-      "type": "text_block",
-      "name": "Text Block",
-      "settings": [
-        {
-          "type": "text",
-          "id": "block_title",
-          "label": "Block Title"
-        },
-        {
-          "type": "richtext",
-          "id": "block_content",
-          "label": "Block Content"
-        }
-      ]
-    },
-    {
-      "type": "feature_list",
-      "name": "Feature List",
-      "settings": [
-        {
-          "type": "text",
-          "id": "list_title",
-          "label": "List Title"
-        },
-        {
-          "type": "textarea",
-          "id": "list_items",
-          "label": "List Items (separate with |)",
-          "info": "Example: Item 1|Item 2|Item 3"
-        }
-      ]
-    },
-    {
-      "type": "credential_grid",
-      "name": "Credential Grid",
-      "settings": [
-        {
-          "type": "text",
-          "id": "grid_title",
-          "label": "Grid Title",
-          "default": "Industry Recognition"
-        },
-        {
-          "type": "text",
-          "id": "credential_1_title",
-          "label": "Credential 1 Title"
-        },
-        {
-          "type": "text",
-          "id": "credential_1_desc",
-          "label": "Credential 1 Description"
-        },
-        {
-          "type": "text",
-          "id": "credential_2_title",
-          "label": "Credential 2 Title"
-        },
-        {
-          "type": "text",
-          "id": "credential_2_desc",
-          "label": "Credential 2 Description"
-        },
-        {
-          "type": "text",
-          "id": "credential_3_title",
-          "label": "Credential 3 Title"
-        },
-        {
-          "type": "text",
-          "id": "credential_3_desc",
-          "label": "Credential 3 Description"
-        }
-      ]
-    },
-    {
-      "type": "button_group",
-      "name": "Button Group",
-      "settings": [
-        {
-          "type": "text",
-          "id": "button_1_text",
-          "label": "Button 1 Text"
-        },
-        {
-          "type": "url",
-          "id": "button_1_url",
-          "label": "Button 1 URL"
-        },
-        {
-          "type": "select",
-          "id": "button_1_style",
-          "label": "Button 1 Style",
-          "options": [
-            { "value": "primary", "label": "Primary" },
-            { "value": "secondary", "label": "Secondary" },
-            { "value": "outline", "label": "Outline" }
-          ],
-          "default": "primary"
-        },
-        {
-          "type": "text",
-          "id": "button_2_text",
-          "label": "Button 2 Text"
-        },
-        {
-          "type": "url",
-          "id": "button_2_url",
-          "label": "Button 2 URL"
-        },
-        {
-          "type": "select",
-          "id": "button_2_style",
-          "label": "Button 2 Style",
-          "options": [
-            { "value": "primary", "label": "Primary" },
-            { "value": "secondary", "label": "Secondary" },
-            { "value": "outline", "label": "Outline" }
-          ],
-          "default": "secondary"
-        },
-        {
-          "type": "select",
-          "id": "button_size",
-          "label": "Button Size",
-          "options": [
-            { "value": "small", "label": "Small" },
-            { "value": "medium", "label": "Medium" },
-            { "value": "large", "label": "Large" }
-          ],
-          "default": "medium"
-        }
-      ]
-    },
-    {
-      "type": "contact_form",
-      "name": "Contact Form",
-      "settings": [
-        {
-          "type": "header",
-          "content": "Form Configuration"
-        },
-        {
-          "type": "text",
-          "id": "recipient_email",
-          "label": "Recipient Email Address",
-          "default": "info@aailearning.com",
-          "info": "Email address where form submissions will be sent. Please ensure this is a valid email."
-        },
-        {
-          "type": "text",
-          "id": "submit_button_text",
-          "label": "Submit Button Text",
-          "default": "Send Message"
-        },
-        {
-          "type": "header",
-          "content": "Width Settings"
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Desktop Width",
-          "options": [
-            { "value": "narrow", "label": "Narrow (50%)" },
-            { "value": "medium", "label": "Medium (70%)" },
-            { "value": "wide", "label": "Wide (85%)" },
-            { "value": "full", "label": "Full Width (100%)" }
-          ],
-          "default": "medium"
-        },
-        {
-          "type": "select",
-          "id": "width_mobile",
-          "label": "Mobile Width",
-          "options": [
-            { "value": "narrow", "label": "Narrow (85%)" },
-            { "value": "wide", "label": "Wide (95%)" },
-            { "value": "full", "label": "Full Width (100%)" }
-          ],
-          "default": "wide"
-        },
-        {
-          "type": "header",
-          "content": "Form Field Customization"
-        },
-        {
-          "type": "text",
-          "id": "name_placeholder",
-          "label": "Name Field Placeholder",
-          "default": "Enter your full name"
-        },
-        {
-          "type": "text",
-          "id": "email_placeholder",
-          "label": "Email Field Placeholder",
-          "default": "your.email@company.com"
-        },
-        {
-          "type": "text",
-          "id": "subject_placeholder",
-          "label": "Subject Field Placeholder",
-          "default": "How can we help you?"
-        },
-        {
-          "type": "text",
-          "id": "message_placeholder",
-          "label": "Message Field Placeholder",
-          "default": "Tell us about your training needs..."
-        },
-        {
-          "type": "header",
-          "content": "Styling"
-        },
-        {
-          "type": "select",
-          "id": "color_scheme",
-          "label": "Color Scheme",
-          "options": [
-            { "value": "scheme-1", "label": "Default" },
-            { "value": "scheme-2", "label": "Alternative" },
-            { "value": "scheme-3", "label": "Accent" },
-            { "value": "inverse", "label": "Inverse" }
-          ],
-          "default": "scheme-1"
-        }
-      ]
-    },
-    {
       "type": "@theme"
     },
     {
@@ -573,135 +162,38 @@
       "category": "AAI Content",
       "settings": {
         "section_title": "Discover Our Expertise",
-        "section_subtitle": "Providing industry-leading solutions and comprehensive resources.",
-        "layout_style": "text-left-image-right",
-        "show_main_content": true,
+        "section_subtitle": "Comprehensive training for Family Entertainment Center professionals",
         "content_title": "Welcome to AAI Learning",
-        "content_body": "<p>Amusement Adventure Institute (AAI) is dedicated to advancing safety and operational excellence in the amusement industry. Our comprehensive training programs and resources are designed by experts to empower professionals like you.</p><p>Explore our offerings to find the perfect solution for your individual or organizational needs.</p>",
-        "show_image": true,
-        "main_button_text": "Explore Our Courses",
-        "main_button_url": "/collections/all",
-        "main_button_style": "primary",
-        "main_button_size": "medium"
-      },
-      "blocks": [
-        {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Our Mission",
-            "block_content": "<p>To be the global leader in Family Entertainment Center and adventure park safety education, fostering a culture of safety and continuous improvement through innovative training and expert resources.</p>"
-          }
-        },
-        {
-          "type": "feature_list",
-          "settings": {
-            "list_title": "Why Choose AAI?",
-            "list_items": "Expert-Led Curriculum|Industry-Recognized Certifications|Flexible Online Learning|Comprehensive Support"
-          }
-        },
-        {
-          "type": "credential_grid",
-          "settings": {
-            "grid_title": "Trusted By The Best",
-            "credential_1_title": "IAAPA Approved",
-            "credential_1_desc": "Our courses meet the highest standards set by the International Association of Amusement Parks and Attractions.",
-            "credential_2_title": "ASTM Compliant",
-            "credential_2_desc": "Content aligned with ASTM F24 standards for amusement ride safety.",
-            "credential_3_title": "NAARSO Recognized",
-            "credential_3_desc": "Training recognized by the National Association of Amusement Ride Safety Officials."
-          }
-        }
-      ]
+        "content_body": "<p>Amusement Adventure Institute (AAI) provides industry-leading safety and operational training for Family Entertainment Centers and adventure parks.</p>",
+        "layout_style": "blocks-grid",
+        "show_main_content": true
+      }
     },
     {
-      "name": "Industry Authority",
+      "name": "AAI Timeline Content",
       "category": "AAI Content",
       "settings": {
-        "section_title": "Industry Authority in FEC & Adventure Park Safety",
-        "section_subtitle": "Decades of Experience, Unmatched Expertise",
-        "layout_style": "text-center",
-        "show_main_content": true,
-        "content_title": "Leading the Way in Safety Standards",
-        "content_body": "<p>AAI stands at the forefront of Family Entertainment Center and adventure park safety. With over 20 years of dedicated experience, we have trained thousands of professionals and helped shape industry best practices. Our commitment to excellence ensures you receive the most current and comprehensive knowledge available.</p>",
-        "show_image": false,
-        "main_button_text": "Learn About Our Impact",
-        "main_button_url": "/pages/about",
-        "main_button_style": "secondary",
-        "main_button_size": "medium"
-      },
-      "blocks": [
-        {
-          "type": "credential_grid",
-          "settings": {
-            "grid_title": "Our Credentials",
-            "credential_1_title": "20+ Years Experience",
-            "credential_1_desc": "Pioneering safety training in the amusement sector.",
-            "credential_2_title": "10,000+ Professionals Trained",
-            "credential_2_desc": "Empowering individuals and organizations globally.",
-            "credential_3_title": "Global Standards Development",
-            "credential_3_desc": "Actively contributing to international safety committees."
-          }
-        }
-      ]
+        "section_title": "Our Training Journey",
+        "content_title": "Step-by-Step Professional Development",
+        "content_body": "<p>Follow our structured approach to FEC safety certification.</p>",
+        "layout_style": "timeline",
+        "show_main_content": true
+      }
     },
     {
-      "name": "Homepage Call to Action",
+      "name": "AAI Call to Action",
       "category": "AAI Content",
       "settings": {
         "section_title": "Ready to Elevate Your FEC Career?",
-        "section_subtitle": "Join thousands of Family Entertainment Center and adventure park professionals who trust AAI for their safety and operational training.",
-        "layout_style": "text-center",
+        "content_title": "Take the Next Step",
+        "content_body": "<p>Join thousands of professionals who trust AAI for their safety training.</p>",
         "background_style": "section-alt-1",
-        "show_main_content": true,
-        "content_title": "Take the Next Step Towards Excellence",
-        "content_body": "<p>Whether you're looking to enhance your skills, certify your team, or ensure compliance, AAI has the resources you need. Explore our comprehensive course catalog or get in touch with our experts to discuss your specific training requirements.</p>",
-        "show_image": false
-      },
-      "blocks": [
-        {
-          "type": "button_group",
-          "settings": {
-            "button_1_text": "Browse All Courses",
-            "button_1_url": "/collections/all-courses",
-            "button_1_style": "primary",
-            "button_2_text": "Corporate Training Solutions",
-            "button_2_url": "/pages/corporate-training",
-            "button_2_style": "secondary",
-            "button_size": "large"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Contact Us",
-      "category": "AAI Forms",
-      "settings": {
-        "section_title": "Get in Touch",
-        "section_subtitle": "Ready to advance your career in the amusement industry? Have questions about our courses? We're here to help.",
-        "layout_style": "text-center",
-        "background_style": "section-alt-1",
-        "show_main_content": true,
-        "content_title": "Contact Our Expert Team",
-        "content_body": "<p>Whether you're looking for course information, corporate training solutions, or technical support, our knowledgeable team is ready to assist you. Fill out the form below and we'll get back to you within 24 hours.</p>",
-        "show_image": false
-      },
-      "blocks": [
-        {
-          "type": "contact_form",
-          "settings": {
-            "recipient_email": "info@aailearning.com",
-            "submit_button_text": "Send Message",
-            "width": "medium",
-            "width_mobile": "wide",
-            "color_scheme": "scheme-1",
-            "name_placeholder": "Your full name",
-            "email_placeholder": "your.email@company.com",
-            "subject_placeholder": "How can we help you?",
-            "message_placeholder": "Tell us about your training needs or ask any questions you may have..."
-          }
-        }
-      ]
+        "main_button_text": "Explore Courses",
+        "main_button_url": "/collections/courses",
+        "layout_style": "text-center"
+      }
     }
   ]
 }
 {% endschema %}
+
