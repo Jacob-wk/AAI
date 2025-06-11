@@ -708,3 +708,18 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* Theme block container styling */
+.theme-block-container {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: var(--color-background);
+}
+
+.timeline-item .theme-block-container {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}

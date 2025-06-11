@@ -71,6 +71,14 @@
                           {% render 'contact-form', settings: block.settings %}
                         </div>
                       </div>
+                    {% else %}
+                      <!-- Handle theme blocks and app blocks -->
+                      <div class="timeline-item" {{ block.shopify_attributes }}>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                          {% content_for 'block', block: block %}
+                        </div>
+                      </div>
                   {% endcase %}
                 {% endfor %}
               </div>
@@ -156,6 +164,11 @@
                     <div class="contact-form-container" {{ block.shopify_attributes }}>
                       {% render 'contact-form', settings: block.settings %}
                     </div>
+                  {% else %}
+                    <!-- Handle theme blocks and app blocks -->
+                    <div class="theme-block-container" {{ block.shopify_attributes }}>
+                      {% content_for 'block', block: block %}
+                    </div>
                 {% endcase %}
               {% endfor %}
             </div>
@@ -187,6 +200,7 @@
 {% schema %}
 {
   "name": "AAI Universal Content",
+  "category": "t:categories.content",
   "settings": [
     {
       "type": "header",
@@ -546,6 +560,12 @@
           "default": "scheme-1"
         }
       ]
+    },
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
     }
   ],
   "presets": [

@@ -94,6 +94,15 @@
               {% endfor %}
             </div>
           {% endif %}
+          
+          <!-- Theme blocks and app blocks -->
+          {% for block in section.blocks %}
+            {% unless block.type == 'feature' or block.type == 'statistic' or block.type == 'credential' %}
+              <div class="hero-theme-block" {{ block.shopify_attributes }}>
+                {% content_for 'block', block: block %}
+              </div>
+            {% endunless %}
+          {% endfor %}
         </div>
       {% endif %}
     </div>
@@ -103,6 +112,7 @@
 {% schema %}
 {
   "name": "AAI Universal Hero",
+  "category": "t:categories.banners",
   "settings": [
     {
       "type": "header",
@@ -283,6 +293,12 @@
           "default": "IAAPA Certified"
         }
       ]
+    },
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
     }
   ],
   "presets": [
