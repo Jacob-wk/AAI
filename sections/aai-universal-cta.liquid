@@ -13,6 +13,16 @@
     {% if section.settings.text != blank %}
       <div class="cta-text">{{ section.settings.text }}</div>
     {% endif %}
+    
+    {% comment %} Render blocks (like credential grids) {% endcomment %}
+    {% if section.blocks.size > 0 %}
+      <div class="cta-blocks-container">
+        {% for block in section.blocks %}
+          {% render block %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    
     <div class="cta-buttons">
       {% if section.settings.button_1_text != blank and section.settings.button_1_link != blank %}
         <a href="{{ section.settings.button_1_link }}" class="btn btn--{{ section.settings.button_1_style | default: 'primary' }}">
@@ -93,6 +103,14 @@
         { "value": "color-scheme-background-2", "label": "Background 2" }
       ],
       "default": "color-scheme-2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
     }
   ],
   "presets": [
