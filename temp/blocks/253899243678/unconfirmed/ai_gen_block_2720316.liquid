@@ -1,0 +1,337 @@
+{% doc %}
+  @prompt
+    A marquee section
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-marquee-container-{{ ai_gen_id }} {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding }}px 0;
+  }
+
+  .ai-marquee-wrapper-{{ ai_gen_id }} {
+    display: flex;
+    width: 100%;
+  }
+
+  .ai-marquee-{{ ai_gen_id }} {
+    display: flex;
+    white-space: nowrap;
+    will-change: transform;
+  }
+
+  .ai-marquee-item-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 {{ block.settings.spacing }}px;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-marquee-item-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size_mobile }}px;
+      padding: 0 {{ block.settings.spacing_mobile }}px;
+    }
+
+    .ai-marquee-container-{{ ai_gen_id }} {
+      padding: {{ block.settings.padding_mobile }}px 0;
+    }
+  }
+{% endstyle %}
+
+<marquee-scroll-{{ ai_gen_id }} 
+  class="ai-marquee-container-{{ ai_gen_id }}"
+  data-speed="{{ block.settings.scroll_speed }}"
+  data-direction="{{ block.settings.scroll_direction }}"
+  data-pause-on-hover="{{ block.settings.pause_on_hover }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-marquee-wrapper-{{ ai_gen_id }}">
+    <div class="ai-marquee-{{ ai_gen_id }} ai-marquee-primary-{{ ai_gen_id }}">
+      {% for i in (1..5) %}
+        <div class="ai-marquee-item-{{ ai_gen_id }}">
+          {{ block.settings.text }}
+          {% if block.settings.separator != blank %}
+            <span class="ai-marquee-separator-{{ ai_gen_id }}" style="padding: 0 {{ block.settings.spacing }}px;">{{ block.settings.separator }}</span>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="ai-marquee-{{ ai_gen_id }} ai-marquee-secondary-{{ ai_gen_id }}">
+      {% for i in (1..5) %}
+        <div class="ai-marquee-item-{{ ai_gen_id }}">
+          {{ block.settings.text }}
+          {% if block.settings.separator != blank %}
+            <span class="ai-marquee-separator-{{ ai_gen_id }}" style="padding: 0 {{ block.settings.spacing }}px;">{{ block.settings.separator }}</span>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</marquee-scroll-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class MarqueeScroll{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.animationId = null;
+        this.isPaused = false;
+      }
+
+      connectedCallback() {
+        this.speed = parseFloat(this.dataset.speed) || 1;
+        this.direction = this.dataset.direction || 'left';
+        this.pauseOnHover = this.dataset.pauseOnHover === 'true';
+        
+        this.primary = this.querySelector('.ai-marquee-primary-{{ ai_gen_id }}');
+        this.secondary = this.querySelector('.ai-marquee-secondary-{{ ai_gen_id }}');
+        
+        this.setupMarquee();
+        
+        if (this.pauseOnHover) {
+          this.addEventListener('mouseenter', () => this.isPaused = true);
+          this.addEventListener('mouseleave', () => this.isPaused = false);
+        }
+      }
+
+      setupMarquee() {
+        let primaryWidth = 0;
+        
+        // Get the total width of all items in the primary marquee
+        const items = this.primary.querySelectorAll('.ai-marquee-item-{{ ai_gen_id }}');
+        items.forEach(item => {
+          primaryWidth += item.offsetWidth;
+        });
+        
+        // Set the width of both marquees
+        this.primary.style.width = `${primaryWidth}px`;
+        this.secondary.style.width = `${primaryWidth}px`;
+        
+        // Position the secondary marquee
+        if (this.direction === 'left') {
+          this.secondary.style.transform = `translateX(${primaryWidth}px)`;
+        } else {
+          this.primary.style.transform = `translateX(-${primaryWidth}px)`;
+        }
+        
+        // Start the animation
+        this.startAnimation(primaryWidth);
+      }
+
+      startAnimation(width) {
+        let currentPos = 0;
+        
+        const animate = () => {
+          if (!this.isPaused) {
+            if (this.direction === 'left') {
+              currentPos -= this.speed;
+              
+              if (currentPos <= -width) {
+                currentPos = 0;
+              }
+              
+              this.primary.style.transform = `translateX(${currentPos}px)`;
+              this.secondary.style.transform = `translateX(${width + currentPos}px)`;
+            } else {
+              currentPos += this.speed;
+              
+              if (currentPos >= width) {
+                currentPos = 0;
+              }
+              
+              this.primary.style.transform = `translateX(${-width + currentPos}px)`;
+              this.secondary.style.transform = `translateX(${currentPos}px)`;
+            }
+          }
+          
+          this.animationId = requestAnimationFrame(animate);
+        };
+        
+        this.animationId = requestAnimationFrame(animate);
+      }
+
+      disconnectedCallback() {
+        if (this.animationId) {
+          cancelAnimationFrame(this.animationId);
+        }
+      }
+    }
+
+    customElements.define('marquee-scroll-{{ ai_gen_id }}', MarqueeScroll{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Announcement text here"
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Separator",
+      "default": "•",
+      "info": "Character to display between repeated text"
+    },
+    {
+      "type": "header",
+      "content": "Behavior"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 0.5,
+      "max": 5,
+      "step": 0.5,
+      "unit": "x",
+      "label": "Scroll speed",
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "scroll_direction",
+      "label": "Scroll direction",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size (mobile)",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile",
+      "min": 5,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical padding (mobile)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Text spacing",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "spacing_mobile",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Text spacing (mobile)",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee"
+    }
+  ]
+}
+{% endschema %}

@@ -41,18 +41,15 @@
       "settings": {
         "section_title": "Industry Authority in FEC & Adventure Park Safety",
         "section_subtitle": "Decades of Experience, Unmatched Expertise",
-        "layout_style": "text-right-image-left",
-        "blocks_per_row": "2",
+        "layout_style": "blocks-grid",
         "background_style": "",
         "show_main_content": true,
         "content_title": "",
         "content_body": "<p><em><strong>Safety first, but adventure always. </strong></em></p><p><strong>The Amusement Adventure Institute (AAI)</strong> leads the way in safety education for <strong>Family Entertainment Centers</strong> and <strong>adventure parks. </strong></p><p>Backed by over <strong>20 years</strong> of hands-on expertise, we deliver the most <em><strong>current</strong></em>, <em><strong>practical</strong></em>, and <em><strong>trusted </strong></em>knowledge in the industry.</p>",
-        "show_image": true,
-        "content_image": "shopify://shop_images/1377773.jpg",
         "main_button_text": "Learn About Our Impact",
         "main_button_url": "/pages/about",
         "main_button_style": "secondary",
-        "main_button_size": "medium"
+        "main_button_size": "large"
       }
     },
     "aai_universal_content_QGrVx9": {
@@ -62,13 +59,27 @@
           "type": "credential_grid",
           "settings": {
             "grid_title": "Our Credentials",
-            "credential_1_title": "20+ Years Experience",
-            "credential_1_desc": "Pioneering safety training in the amusement sector.",
-            "credential_2_title": "100+ Professionals Trained",
-            "credential_2_desc": "Empowering individuals and organizations globally.",
-            "credential_3_title": "Global Standards Development",
-            "credential_3_desc": "Actively contributing to international safety committees."
-          }
+            "grid_description": "",
+            "grid_columns": "2",
+            "grid_layout": "card",
+            "credential_1_name": "",
+            "credential_1_organization": "",
+            "credential_1_description": "",
+            "credential_1_url": "",
+            "credential_2_name": "",
+            "credential_2_organization": "",
+            "credential_2_description": "",
+            "credential_2_url": "",
+            "credential_3_name": "",
+            "credential_3_organization": "",
+            "credential_3_description": "",
+            "credential_3_url": "",
+            "credential_4_name": "",
+            "credential_4_organization": "",
+            "credential_4_description": "",
+            "credential_4_url": ""
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -79,12 +90,10 @@
         "section_title": "",
         "section_subtitle": "",
         "layout_style": "text-center",
-        "blocks_per_row": "1",
         "background_style": "section-dark",
         "show_main_content": true,
         "content_title": "",
         "content_body": "",
-        "show_image": true,
         "main_button_text": "",
         "main_button_url": "",
         "main_button_style": "primary",
@@ -97,14 +106,25 @@
         "button_group_HQ9y7U": {
           "type": "button_group",
           "settings": {
-            "button_1_text": "Browse All Courses",
-            "button_1_url": "shopify://collections/courses",
-            "button_1_style": "primary",
-            "button_2_text": "Corporate Training Solutions",
-            "button_2_url": "/pages/corporate-training",
-            "button_2_style": "secondary",
-            "button_size": "large"
-          }
+            "group_title": "",
+            "group_description": "",
+            "layout": "horizontal",
+            "alignment": "center",
+            "primary_button_text": "",
+            "primary_button_url": "",
+            "primary_button_size": "medium",
+            "secondary_button_text": "",
+            "secondary_button_url": "",
+            "secondary_button_size": "medium",
+            "tertiary_button_text": "",
+            "tertiary_button_url": "",
+            "tertiary_button_size": "medium",
+            "custom_button_text": "",
+            "custom_button_url": "",
+            "custom_button_size": "medium",
+            "custom_button_style": ""
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -115,16 +135,14 @@
         "section_title": "Take the Next Step Towards Excellence",
         "section_subtitle": "Take your career to the next level.",
         "layout_style": "text-center",
-        "blocks_per_row": "1",
-        "background_style": "",
+        "background_style": "section-alt-1",
         "show_main_content": true,
         "content_title": "",
         "content_body": "<p><strong>Whether you're looking to enhance your skills, certify your team, or ensure compliance, AAI has the resources you need.  </strong></p><p>Explore our comprehensive course catalog or get in touch with our experts to discuss your specific training requirements.</p>",
-        "show_image": true,
-        "main_button_text": "",
-        "main_button_url": "",
+        "main_button_text": "Explore Our Courses",
+        "main_button_url": "shopify://collections/courses",
         "main_button_style": "primary",
-        "main_button_size": "small"
+        "main_button_size": "large"
       }
     },
     "user_dashboard_K9qwwg": {
