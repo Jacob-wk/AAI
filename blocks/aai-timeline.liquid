@@ -1,0 +1,370 @@
+{% comment %}
+  AAI Timeline Block
+  Creates timeline content compatible with Universal Content section
+  Supports both vertical and horizontal timeline layouts
+{% endcomment %}
+
+<div class="aai-timeline-block" 
+     data-orientation="{{ block.settings.orientation }}"
+     {{ block.shopify_attributes }}>
+  
+  {% if block.settings.orientation == 'horizontal' %}
+    <div class="timeline-horizontal">
+      <div class="timeline-item-horizontal">
+        {% if block.settings.timeline_date != blank %}
+          <div class="timeline-date-badge">{{ block.settings.timeline_date }}</div>
+        {% endif %}
+        
+        <div class="timeline-content-horizontal">
+          {% if block.settings.timeline_title != blank %}
+            <h3 class="timeline-title">{{ block.settings.timeline_title }}</h3>
+          {% endif %}
+          
+          {% if block.settings.timeline_description != blank %}
+            <div class="timeline-description">
+              {{ block.settings.timeline_description }}
+            </div>
+          {% endif %}
+          
+          {% if block.settings.timeline_features != blank %}
+            <div class="timeline-features">
+              {{ block.settings.timeline_features }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <!-- Vertical Timeline (default) -->
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        {% if block.settings.timeline_date != blank %}
+          <div class="timeline-date">{{ block.settings.timeline_date }}</div>
+        {% endif %}
+        
+        {% if block.settings.timeline_title != blank %}
+          <h3 class="timeline-title">{{ block.settings.timeline_title }}</h3>
+        {% endif %}
+        
+        {% if block.settings.timeline_description != blank %}
+          <div class="timeline-description">
+            {{ block.settings.timeline_description }}
+          </div>
+        {% endif %}
+        
+        {% if block.settings.timeline_features != blank %}
+          <div class="timeline-features">
+            {{ block.settings.timeline_features }}
+          </div>
+        {% endif %}
+        
+        {% if block.settings.button_text != blank %}
+          <div class="timeline-cta">
+            <a href="{{ block.settings.button_url | default: '#' }}" 
+               class="aai-btn aai-btn-{{ block.settings.button_style }}">
+              {{ block.settings.button_text }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+  /* Vertical Timeline Styles (work with existing CSS) */
+  .aai-timeline-block .timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    min-height: 120px;
+  }
+  
+  .aai-timeline-block .timeline-marker {
+    position: absolute;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--authority-navy, #1e3a5f);
+    border: 4px solid white;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(30, 58, 95, 0.1);
+  }
+  
+  .aai-timeline-block .timeline-content {
+    flex: 1;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+    position: relative;
+    max-width: calc(50% - 40px);
+    margin: 0 20px;
+  }
+  
+  .aai-timeline-block .timeline-item:nth-child(odd) .timeline-content {
+    margin-right: 50%;
+    margin-left: 20px;
+  }
+  
+  .aai-timeline-block .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 50%;
+    margin-right: 20px;
+  }
+  
+  .aai-timeline-block .timeline-date {
+    font-size: 0.9rem;
+    color: var(--electric-blue, #3490dc);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .aai-timeline-block .timeline-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--authority-navy, #1e3a5f);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  
+  .aai-timeline-block .timeline-description {
+    color: var(--charcoal-grey, #495057);
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  
+  .aai-timeline-block .timeline-features {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+  }
+  
+  .aai-timeline-block .timeline-features ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .aai-timeline-block .timeline-features li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 8px;
+    color: var(--charcoal-grey, #495057);
+  }
+  
+  .aai-timeline-block .timeline-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--success-green, #28a745);
+    font-weight: bold;
+  }
+  
+  /* Horizontal Timeline Styles */
+  .timeline-horizontal {
+    display: flex;
+    align-items: center;
+    padding: 24px 0;
+  }
+  
+  .timeline-item-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+  }
+  
+  .timeline-date-badge {
+    background: var(--authority-navy, #1e3a5f);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: center;
+  }
+  
+  .timeline-content-horizontal {
+    flex: 1;
+    background: white;
+    padding: 20px 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--electric-blue, #3490dc);
+  }
+  
+  .timeline-content-horizontal .timeline-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--authority-navy, #1e3a5f);
+    margin-bottom: 8px;
+  }
+  
+  .timeline-content-horizontal .timeline-description {
+    color: var(--charcoal-grey, #495057);
+    line-height: 1.5;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+  
+  /* CTA Button Styles */
+  .timeline-cta {
+    margin-top: 16px;
+  }
+  
+  .aai-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-size: 0.9rem;
+  }
+  
+  .aai-btn-primary {
+    background-color: var(--primary-blue, #005a9f);
+    color: white;
+    border-color: var(--primary-blue, #005a9f);
+  }
+  
+  .aai-btn-primary:hover {
+    background-color: var(--accent-blue, #0066b3);
+    border-color: var(--accent-blue, #0066b3);
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .aai-btn-secondary {
+    background-color: var(--safety-orange, #ff6b35);
+    color: white;
+    border-color: var(--safety-orange, #ff6b35);
+  }
+  
+  .aai-btn-secondary:hover {
+    background-color: #e55a2b;
+    border-color: #e55a2b;
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .aai-btn-outline {
+    background-color: transparent;
+    color: var(--primary-blue, #005a9f);
+    border-color: var(--primary-blue, #005a9f);
+  }
+  
+  .aai-btn-outline:hover {
+    background-color: var(--primary-blue, #005a9f);
+    color: white;
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .aai-timeline-block .timeline-content {
+      max-width: none;
+      margin: 0 0 0 60px !important;
+    }
+    
+    .aai-timeline-block .timeline-marker {
+      left: 30px;
+      width: 16px;
+      height: 16px;
+    }
+    
+    .timeline-item-horizontal {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
+    
+    .timeline-date-badge {
+      align-self: flex-start;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "AAI Timeline",
+  "category": "AAI Content",
+  "settings": [
+    {
+      "type": "select",
+      "id": "orientation",
+      "label": "Timeline Orientation",
+      "options": [
+        { "value": "vertical", "label": "Vertical Timeline" },
+        { "value": "horizontal", "label": "Horizontal Timeline" }
+      ],
+      "default": "vertical"
+    },
+    {
+      "type": "text",
+      "id": "timeline_date",
+      "label": "Date/Year",
+      "default": "2024"
+    },
+    {
+      "type": "text",
+      "id": "timeline_title",
+      "label": "Timeline Title",
+      "default": "Milestone Achievement"
+    },
+    {
+      "type": "richtext",
+      "id": "timeline_description",
+      "label": "Description",
+      "default": "<p>Add your timeline milestone description here. This will appear in the main content area of the timeline item.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "timeline_features",
+      "label": "Features/Benefits",
+      "info": "Add bullet points or key features for this timeline item"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" },
+        { "value": "outline", "label": "Outline" }
+      ],
+      "default": "primary"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Timeline"
+    }
+  ]
+}
+{% endschema %}

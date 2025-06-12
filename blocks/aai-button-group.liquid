@@ -1,0 +1,356 @@
+{% comment %}
+  AAI Button Group Block
+  Professional button group with AAI styling
+  Replaces custom aai-buttons functionality
+{% endcomment %}
+
+<div class="aai-button-group" 
+     data-alignment="{{ block.settings.alignment }}"
+     data-layout="{{ block.settings.layout }}"
+     {{ block.shopify_attributes }}>
+  
+  {% if block.settings.group_title != blank %}
+    <h3 class="button-group-title">{{ block.settings.group_title }}</h3>
+  {% endif %}
+  
+  {% if block.settings.group_description != blank %}
+    <div class="button-group-description">
+      {{ block.settings.group_description }}
+    </div>
+  {% endif %}
+  
+  <div class="button-container">
+    {% if block.settings.primary_button_text != blank %}
+      <a href="{{ block.settings.primary_button_url | default: '#' }}" 
+         class="aai-btn aai-btn-primary aai-btn-{{ block.settings.button_size }}">
+        {{ block.settings.primary_button_text }}
+      </a>
+    {% endif %}
+    
+    {% if block.settings.secondary_button_text != blank %}
+      <a href="{{ block.settings.secondary_button_url | default: '#' }}" 
+         class="aai-btn aai-btn-secondary aai-btn-{{ block.settings.button_size }}">
+        {{ block.settings.secondary_button_text }}
+      </a>
+    {% endif %}
+    
+    {% if block.settings.tertiary_button_text != blank %}
+      <a href="{{ block.settings.tertiary_button_url | default: '#' }}" 
+         class="aai-btn aai-btn-outline aai-btn-{{ block.settings.button_size }}">
+        {{ block.settings.tertiary_button_text }}
+      </a>
+    {% endif %}
+  </div>
+  
+  {% if block.settings.disclaimer_text != blank %}
+    <div class="button-group-disclaimer">
+      {{ block.settings.disclaimer_text }}
+    </div>
+  {% endif %}
+</div>
+
+<style>
+  .aai-button-group {
+    margin: 32px 0;
+  }
+  
+  .aai-button-group[data-alignment="center"] {
+    text-align: center;
+  }
+  
+  .aai-button-group[data-alignment="left"] {
+    text-align: left;
+  }
+  
+  .aai-button-group[data-alignment="right"] {
+    text-align: right;
+  }
+  
+  .button-group-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--authority-navy, #1e3a5f);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  
+  .button-group-description {
+    font-size: 1rem;
+    color: var(--charcoal-grey, #495057);
+    line-height: 1.5;
+    margin-bottom: 24px;
+    max-width: 600px;
+  }
+  
+  .aai-button-group[data-alignment="center"] .button-group-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  .aai-button-group[data-alignment="center"] .button-container {
+    justify-content: center;
+  }
+  
+  .aai-button-group[data-alignment="right"] .button-container {
+    justify-content: flex-end;
+  }
+  
+  .aai-button-group[data-layout="vertical"] .button-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .aai-button-group[data-layout="vertical"][data-alignment="center"] .button-container {
+    align-items: center;
+  }
+  
+  .aai-button-group[data-layout="vertical"][data-alignment="right"] .button-container {
+    align-items: flex-end;
+  }
+  
+  .aai-btn {
+    display: inline-block;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .aai-btn-small {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+  }
+  
+  .aai-btn-medium {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+  
+  .aai-btn-large {
+    padding: 16px 32px;
+    font-size: 1.125rem;
+  }
+  
+  .aai-btn-primary {
+    background-color: var(--primary-blue, #005a9f);
+    color: white;
+    border-color: var(--primary-blue, #005a9f);
+  }
+  
+  .aai-btn-primary:hover {
+    background-color: var(--accent-blue, #0066b3);
+    border-color: var(--accent-blue, #0066b3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 90, 159, 0.3);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .aai-btn-secondary {
+    background-color: var(--safety-orange, #ff6b35);
+    color: white;
+    border-color: var(--safety-orange, #ff6b35);
+  }
+  
+  .aai-btn-secondary:hover {
+    background-color: #e55a2b;
+    border-color: #e55a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .aai-btn-outline {
+    background-color: transparent;
+    color: var(--primary-blue, #005a9f);
+    border-color: var(--primary-blue, #005a9f);
+  }
+  
+  .aai-btn-outline:hover {
+    background-color: var(--primary-blue, #005a9f);
+    color: white;
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  
+  .button-group-disclaimer {
+    margin-top: 16px;
+    font-size: 0.875rem;
+    color: var(--medium-grey, #6b7280);
+    line-height: 1.4;
+    max-width: 500px;
+  }
+  
+  .aai-button-group[data-alignment="center"] .button-group-disclaimer {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .aai-button-group[data-alignment="right"] .button-group-disclaimer {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .button-container {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .aai-btn {
+      width: 100%;
+      display: block;
+    }
+    
+    .button-group-title {
+      font-size: 1.25rem;
+    }
+    
+    .button-group-description {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .aai-button-group {
+      margin: 24px 0;
+    }
+    
+    .button-group-title {
+      font-size: 1.125rem;
+      margin-bottom: 8px;
+    }
+    
+    .button-group-description {
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+    
+    .aai-btn {
+      padding: 14px 20px;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "AAI Button Group",
+  "category": "AAI Components",
+  "settings": [
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "horizontal", "label": "Horizontal" },
+        { "value": "vertical", "label": "Vertical" }
+      ],
+      "default": "horizontal"
+    },
+    {
+      "type": "text",
+      "id": "group_title",
+      "label": "Group Title"
+    },
+    {
+      "type": "richtext",
+      "id": "group_description",
+      "label": "Group Description"
+    },
+    {
+      "type": "header",
+      "content": "Primary Button"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Primary Button Text",
+      "default": "Get Started"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_url",
+      "label": "Primary Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Secondary Button"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Secondary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_url",
+      "label": "Secondary Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Tertiary Button"
+    },
+    {
+      "type": "text",
+      "id": "tertiary_button_text",
+      "label": "Tertiary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "tertiary_button_url",
+      "label": "Tertiary Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "Button Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer_text",
+      "label": "Disclaimer Text",
+      "info": "Small text that appears below the buttons"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Button Group"
+    }
+  ]
+}
+{% endschema %}

@@ -93,9 +93,23 @@
   </section>
 {% endif %}
 
+<!-- Theme blocks and app blocks -->
+{% if section.blocks.size > 0 %}
+  <div class="aai-hero-blocks">
+    <div class="aai-container">
+      {% for block in section.blocks %}
+        <div class="hero-theme-block" {{ block.shopify_attributes }}>
+          {% render block %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
 {% schema %}
 {
   "name": "AAI Hero",
+  "category": "AAI Content",
   "settings": [
     {
       "type": "header",
@@ -235,6 +249,14 @@
       "id": "stat_4_label",
       "label": "Statistic 4 label",
       "default": "Safety Focused"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
     }
   ],
   "presets": [

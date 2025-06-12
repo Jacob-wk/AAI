@@ -1,6 +1,6 @@
 {% comment %}
-  AAI Universal Content - Using Horizon theme blocks with AAI styling
-  Now supports AI generation while maintaining educational focus
+  AAI Universal Content - Pure Shopify 2.0 Block Container
+  Modernized to use blocks exclusively for flexible, AI-compatible content creation
 {% endcomment %}
 
 {{ 'section-aai-content.css' | asset_url | stylesheet_tag }}
@@ -15,65 +15,10 @@
         {% endif %}
       </div>
     {% endif %}
-    <div class="content-grid" data-layout="{{ section.settings.layout_style }}">
-      {% if section.settings.show_main_content %}
-        <div class="content-text">
-          {% if section.settings.content_title != blank %}
-            <h3>{{ section.settings.content_title }}</h3>
-          {% endif %}
-          
-          {% if section.settings.content_body != blank %}
-            <div class="content-body">
-              {{ section.settings.content_body }}
-            </div>
-          {% endif %}
-          
-          {% if section.blocks.size > 0 %}
-            {% if section.settings.layout_style == 'timeline' %}
-              <div class="content-timeline">
-                {% for block in section.blocks %}
-                  <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                      {% if block.settings.block_title != blank %}
-                        <h4 class="timeline-title">{{ block.settings.block_title }}</h4>
-                      {% endif %}
-                      {% if block.settings.block_content != blank %}
-                        <div class="timeline-description">
-                          {{ block.settings.block_content }}
-                        </div>
-                      {% endif %}
-                      {% comment %} Render any theme blocks within timeline items {% endcomment %}
-                      {% render block %}
-                    </div>
-                  </div>
-                {% endfor %}
-              </div>
-            {% else %}
-              <div class="aai-blocks-container">
-                {% content_for 'blocks' %}
-              </div>
-            {% endif %}
-          {% endif %}
-          
-          {% if section.settings.main_button_text != blank %}
-            <div class="content-cta">
-              <a href="{{ section.settings.main_button_url }}" 
-                 class="aai-btn aai-btn-{{ section.settings.main_button_style }} aai-btn-{{ section.settings.main_button_size }}">
-                {{ section.settings.main_button_text }}
-              </a>
-            </div>
-          {% endif %}
-        </div>
-      {% endif %}
-      
-      {% if section.settings.show_image and section.settings.content_image != blank %}
-        <div class="content-image">
-          <img src="{{ section.settings.content_image | image_url: width: 600 }}" 
-               alt="{{ section.settings.content_image.alt | default: section.settings.section_title }}"
-               loading="lazy">
-        </div>
-      {% endif %}
+    
+    {% comment %} Pure block-based content - AI compatible {% endcomment %}
+    <div class="aai-blocks-container">
+      {% content_for 'blocks' %}
     </div>
   </div>
 </section>
@@ -81,6 +26,7 @@
 {% schema %}
 {
   "name": "AAI Universal Content",
+  "category": "AAI Content",
   "settings": [
     {
       "type": "header",
@@ -98,18 +44,7 @@
     },
     {
       "type": "header",
-      "content": "Layout & Style"
-    },
-    {
-      "type": "select",
-      "id": "layout_style",
-      "label": "Content Layout",
-      "options": [
-        { "value": "timeline", "label": "Timeline" },
-        { "value": "blocks-grid", "label": "Content Grid" },
-        { "value": "text-center", "label": "Centered" }
-      ],
-      "default": "blocks-grid"
+      "content": "Background & Style"
     },
     {
       "type": "select",
@@ -124,58 +59,16 @@
       "default": ""
     },
     {
-      "type": "header",
-      "content": "Main Content"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_main_content",
-      "label": "Show Section Content",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "content_title",
-      "label": "Content Title"
-    },
-    {
-      "type": "richtext",
-      "id": "content_body",
-      "label": "Content Body"
-    },
-    {
-      "type": "header",
-      "content": "Call to Action"
-    },
-    {
-      "type": "text",
-      "id": "main_button_text",
-      "label": "Button Text"
-    },
-    {
-      "type": "url",
-      "id": "main_button_url",
-      "label": "Button URL"
-    },
-    {
       "type": "select",
-      "id": "main_button_style",
-      "label": "Button Style",
+      "id": "color_scheme",
+      "label": "Color Scheme",
       "options": [
-        { "value": "primary", "label": "Primary" },
-        { "value": "secondary", "label": "Secondary" },
-        { "value": "outline", "label": "Outline" }
+        { "value": "", "label": "Default" },
+        { "value": "color-scheme-1", "label": "Scheme 1" },
+        { "value": "color-scheme-2", "label": "Scheme 2" }
       ],
-      "default": "primary"
-    },
-    {
-      "type": "select",
-      "id": "main_button_size",
-      "label": "Button Size",
-      "options": [
-        { "value": "small", "label": "Small" },
-        { "value": "medium", "label": "Medium" },
-        { "value": "large", "label": "Large" }
+      "default": ""
+    }
   ],
   "blocks": [
     {
@@ -191,38 +84,51 @@
       "category": "AAI Content",
       "settings": {
         "section_title": "Discover Our Expertise",
-        "section_subtitle": "Comprehensive training for Family Entertainment Center professionals",
-        "content_title": "Welcome to AAI Learning",
-        "content_body": "<p>Amusement Adventure Institute (AAI) provides industry-leading safety and operational training for Family Entertainment Centers and adventure parks.</p>",
-        "layout_style": "blocks-grid",
-        "show_main_content": true
-      }
-    },
-    {
-      "name": "AAI Timeline Content",
-      "category": "AAI Content",
-      "settings": {
-        "section_title": "Our Training Journey",
-        "content_title": "Step-by-Step Professional Development",
-        "content_body": "<p>Follow our structured approach to FEC safety certification.</p>",
-        "layout_style": "timeline",
-        "show_main_content": true
-      }
+        "section_subtitle": "Comprehensive training for Family Entertainment Center professionals"
+      },
+      "blocks": [
+        {
+          "type": "aai-text-only",
+          "settings": {
+            "heading": "Welcome to AAI Learning",
+            "content": "<p>Amusement Adventure Institute (AAI) provides industry-leading safety and operational training for Family Entertainment Centers and adventure parks.</p>",
+            "text_alignment": "center"
+          }
+        },
+        {
+          "type": "aai-content-grid",
+          "settings": {
+            "grid_heading": "Why Choose AAI",
+            "columns": "3",
+            "item_1_title": "Expert Training",
+            "item_1_content": "<p>Learn from industry professionals with years of experience.</p>",
+            "item_1_icon": "🎓",
+            "item_2_title": "Recognized Certification",
+            "item_2_content": "<p>Earn credentials that are valued by employers worldwide.</p>",
+            "item_2_icon": "📜",
+            "item_3_title": "Industry Leadership",
+            "item_3_content": "<p>Join the leaders in Family Entertainment Center safety.</p>",
+            "item_3_icon": "🏆"
+          }
+        }
+      ]
     },
     {
       "name": "AAI Call to Action",
       "category": "AAI Content",
       "settings": {
         "section_title": "Ready to Elevate Your FEC Career?",
-        "content_title": "Take the Next Step",
-        "content_body": "<p>Join thousands of professionals who trust AAI for their safety training.</p>",
-        "background_style": "section-alt-1",
-        "show_main_content": true,
-        "content_title": "Take the Next Step Towards Excellence",
-        "content_body": "<p>Whether you're looking to enhance your skills, certify your team, or ensure compliance, AAI has the resources you need. Explore our comprehensive course catalog or get in touch with our experts to discuss your specific training requirements.</p>",
-        "show_image": false
+        "background_style": "section-alt-1"
       },
       "blocks": [
+        {
+          "type": "aai-text-only",
+          "settings": {
+            "heading": "Take the Next Step Towards Excellence",
+            "content": "<p>Whether you're looking to enhance your skills, certify your team, or ensure compliance, AAI has the resources you need. Explore our comprehensive course catalog or get in touch with our experts to discuss your specific training requirements.</p>",
+            "text_alignment": "center"
+          }
+        },
         {
           "type": "aai-credential-grid",
           "settings": {
@@ -250,45 +156,79 @@
           }
         },
         {
-          "type": "button_group",
+          "type": "aai-button-group",
           "settings": {
-            "button_1_text": "Browse All Courses",
-            "button_1_url": "/collections/all-courses",
-            "button_1_style": "primary",
-            "button_2_text": "Corporate Training Solutions",
-            "button_2_url": "/pages/corporate-training",
-            "button_2_style": "secondary",
-            "button_size": "large"
+            "primary_button_text": "Browse All Courses",
+            "primary_button_url": "/collections/all-courses",
+            "secondary_button_text": "Corporate Training Solutions",
+            "secondary_button_url": "/pages/corporate-training",
+            "button_size": "large",
+            "alignment": "center"
+          }
+        }
+      ]
+    },
+    {
+      "name": "AAI Timeline Content",
+      "category": "AAI Content",
+      "settings": {
+        "section_title": "Our Training Journey",
+        "section_subtitle": "Step-by-step professional development"
+      },
+      "blocks": [
+        {
+          "type": "aai-timeline",
+          "settings": {
+            "timeline_date": "Step 1",
+            "timeline_title": "Assessment & Planning",
+            "timeline_description": "<p>Evaluate your current skills and create a personalized training path.</p>",
+            "orientation": "vertical"
+          }
+        },
+        {
+          "type": "aai-timeline",
+          "settings": {
+            "timeline_date": "Step 2",
+            "timeline_title": "Core Training Modules",
+            "timeline_description": "<p>Complete foundational courses in safety and operations.</p>",
+            "orientation": "vertical"
+          }
+        },
+        {
+          "type": "aai-timeline",
+          "settings": {
+            "timeline_date": "Step 3",
+            "timeline_title": "Specialization & Certification",
+            "timeline_description": "<p>Focus on your area of expertise and earn recognized credentials.</p>",
+            "orientation": "vertical"
           }
         }
       ]
     },
     {
       "name": "Contact Us",
-      "category": "AAI Forms",
+      "category": "AAI Content",
       "settings": {
         "section_title": "Get in Touch",
         "section_subtitle": "Ready to advance your career in the amusement industry? Have questions about our courses? We're here to help.",
-        "layout_style": "text-center",
-        "background_style": "section-alt-1",
-        "show_main_content": true,
-        "content_title": "Contact Our Expert Team",
-        "content_body": "<p>Whether you're looking for course information, corporate training solutions, or technical support, our knowledgeable team is ready to assist you. Fill out the form below and we'll get back to you within 24 hours.</p>",
-        "show_image": false
+        "background_style": "section-alt-1"
       },
       "blocks": [
         {
-          "type": "contact_form",
+          "type": "aai-text-only",
+          "settings": {
+            "heading": "Contact Our Expert Team",
+            "content": "<p>Whether you're looking for course information, corporate training solutions, or technical support, our knowledgeable team is ready to assist you. Fill out the form below and we'll get back to you within 24 hours.</p>",
+            "text_alignment": "center"
+          }
+        },
+        {
+          "type": "contact-form",
           "settings": {
             "recipient_email": "info@aailearning.com",
             "submit_button_text": "Send Message",
             "width": "medium",
-            "width_mobile": "wide",
-            "color_scheme": "scheme-1",
-            "name_placeholder": "Your full name",
-            "email_placeholder": "your.email@company.com",
-            "subject_placeholder": "How can we help you?",
-            "message_placeholder": "Tell us about your training needs or ask any questions you may have..."
+            "color_scheme": "scheme-1"
           }
         }
       ]

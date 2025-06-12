@@ -6,7 +6,7 @@
 {{ 'section-aai-universal-hero.css' | asset_url | stylesheet_tag }}
 {{ 'section-aai-hero.css' | asset_url | stylesheet_tag }}
 
-<div class="aai-hero {{ section.settings.hero_style }} {{ section.settings.color_scheme | default: 'color-scheme-2' }}">
+<div class="aai-hero {{ section.settings.hero_style }} {{ section.settings.background_style }} {{ section.settings.color_scheme | default: 'color-scheme-2' }}">
   <div class="aai-container">
     <div class="hero-content" data-layout="{{ section.settings.layout_style }}">
       <div class="hero-text">
@@ -144,6 +144,29 @@
         { "value": "hero-overlay", "label": "Background Overlay" }
       ],
       "default": "hero-standard"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background Style", 
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "section-alt-1", "label": "Alternative Background 1" },
+        { "value": "section-alt-2", "label": "Alternative Background 2" },
+        { "value": "section-dark", "label": "Dark Background" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "color-scheme-1", "label": "Scheme 1" },
+        { "value": "color-scheme-2", "label": "Scheme 2" }
+      ],
+      "default": "color-scheme-2"
     },
     {
       "type": "select",
@@ -303,7 +326,7 @@
   "presets": [
     {
       "name": "AAI Universal Hero",
-      "category": "AAI Hero",
+      "category": "AAI Content",
       "settings": {
         "hero_title": "Where Safety Meets Adventure",
         "hero_subtitle": "Professional safety education for the amusement industry. Advance your career while keeping guests safe with industry-leading certification programs.",

@@ -131,12 +131,22 @@
         </div>
       </div>
     {% endif %}
+    
+    <!-- Theme blocks and app blocks -->
+    {% for block in section.blocks %}
+      {% unless block.type == 'instructor' %}
+        <div class="instructor-theme-block" {{ block.shopify_attributes }}>
+          {% render block %}
+        </div>
+      {% endunless %}
+    {% endfor %}
   </div>
 </section>
 
 {% schema %}
 {
   "name": "AAI Instructor Showcase",
+  "category": "AAI Content",
   "settings": [
     {
       "type": "header",
@@ -308,6 +318,12 @@
           "label": "Full Profile URL"
         }
       ]
+    },
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
     }
   ],
   "presets": [

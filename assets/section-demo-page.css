@@ -948,3 +948,73 @@
 
 /* Feature Grid Styles */
 
+/* Theme Block Styling for AI-generated content in Demo Experience */
+.demo-theme-blocks {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(var(--color-aai-blue), 0.1);
+}
+
+.demo-theme-block {
+  background: rgba(var(--color-aai-blue), 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(var(--color-aai-blue), 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.demo-theme-block:hover {
+  background: rgba(var(--color-aai-blue), 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.demo-theme-block::before {
+  content: '✨ AI Generated';
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: rgb(var(--color-aai-blue));
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.demo-theme-block h3,
+.demo-theme-block h4 {
+  color: rgb(var(--color-aai-blue));
+  margin-bottom: 1rem;
+}
+
+.demo-theme-block p {
+  color: rgb(var(--color-foreground), 0.85);
+  line-height: 1.6;
+}
+
+.demo-theme-block .button,
+.demo-theme-block .btn {
+  background: rgb(var(--color-aai-blue));
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.demo-theme-block .button:hover,
+.demo-theme-block .btn:hover {
+  background: rgb(var(--color-aai-blue), 0.9);
+  transform: translateY(-1px);
+}
+

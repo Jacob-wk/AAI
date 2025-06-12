@@ -1,0 +1,491 @@
+{% comment %}
+  AAI Content Grid Block
+  Flexible content grid that can display multiple content items
+  Replaces the blocks-grid layout from Universal Content section
+{% endcomment %}
+
+<div class="aai-content-grid" 
+     data-columns="{{ block.settings.columns }}"
+     data-style="{{ block.settings.grid_style }}"
+     {{ block.shopify_attributes }}>
+  
+  {% if block.settings.grid_heading != blank %}
+    <h3 class="grid-heading">{{ block.settings.grid_heading }}</h3>
+  {% endif %}
+  
+  {% if block.settings.grid_description != blank %}
+    <div class="grid-description">
+      {{ block.settings.grid_description }}
+    </div>
+  {% endif %}
+  
+  <div class="content-grid-container">
+    {% for item in (1..6) %}
+      {% assign item_title = 'item_' | append: item | append: '_title' %}
+      {% assign item_content = 'item_' | append: item | append: '_content' %}
+      {% assign item_icon = 'item_' | append: item | append: '_icon' %}
+      {% assign item_image = 'item_' | append: item | append: '_image' %}
+      {% assign item_link = 'item_' | append: item | append: '_link' %}
+      
+      {% if block.settings[item_title] != blank %}
+        <div class="grid-item">
+          {% if block.settings[item_icon] != blank %}
+            <div class="grid-item-icon">{{ block.settings[item_icon] }}</div>
+          {% endif %}
+          
+          {% if block.settings[item_image] != blank %}
+            <div class="grid-item-image">
+              <img src="{{ block.settings[item_image] | image_url: width: 300 }}" 
+                   alt="{{ block.settings[item_title] }}"
+                   loading="lazy">
+            </div>
+          {% endif %}
+          
+          <div class="grid-item-content">
+            {% if block.settings[item_title] != blank %}
+              <h4 class="grid-item-title">{{ block.settings[item_title] }}</h4>
+            {% endif %}
+            
+            {% if block.settings[item_content] != blank %}
+              <div class="grid-item-text">
+                {{ block.settings[item_content] }}
+              </div>
+            {% endif %}
+            
+            {% if block.settings[item_link] != blank %}
+              <a href="{{ block.settings[item_link] }}" class="grid-item-link">
+                Learn More
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .aai-content-grid {
+    margin: 32px 0;
+  }
+  
+  .grid-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--authority-navy, #1e3a5f);
+    text-align: center;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  
+  .grid-description {
+    text-align: center;
+    font-size: 1.125rem;
+    color: var(--charcoal-grey, #495057);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+  
+  .content-grid-container {
+    display: grid;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  
+  /* Grid Column Layouts */
+  .aai-content-grid[data-columns="1"] .content-grid-container {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .aai-content-grid[data-columns="2"] .content-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .aai-content-grid[data-columns="3"] .content-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .aai-content-grid[data-columns="4"] .content-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  
+  /* Grid Item Styles */
+  .grid-item {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .aai-content-grid[data-style="minimal"] .grid-item {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 16px;
+  }
+  
+  .aai-content-grid[data-style="bordered"] .grid-item {
+    border: 2px solid var(--electric-blue, #3490dc);
+    box-shadow: none;
+  }
+  
+  .grid-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  .aai-content-grid[data-style="minimal"] .grid-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .grid-item-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    color: var(--electric-blue, #3490dc);
+  }
+  
+  .grid-item-image {
+    margin-bottom: 16px;
+  }
+  
+  .grid-item-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .grid-item-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--authority-navy, #1e3a5f);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  
+  .grid-item-text {
+    color: var(--charcoal-grey, #495057);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+  }
+  
+  .grid-item-text p {
+    margin-bottom: 12px;
+  }
+  
+  .grid-item-text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .grid-item-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--electric-blue, #3490dc);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+  
+  .grid-item-link:hover {
+    color: var(--accent-blue, #0066b3);
+    text-decoration: none;
+    transform: translateX(4px);
+  }
+  
+  .grid-item-link svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .grid-item-link:hover svg {
+    transform: translateX(4px);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .aai-content-grid[data-columns="2"] .content-grid-container,
+    .aai-content-grid[data-columns="3"] .content-grid-container,
+    .aai-content-grid[data-columns="4"] .content-grid-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .grid-heading {
+      font-size: 1.5rem;
+    }
+    
+    .grid-description {
+      font-size: 1rem;
+      margin-bottom: 24px;
+    }
+    
+    .grid-item {
+      padding: 20px;
+    }
+    
+    .grid-item-image img {
+      height: 140px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .grid-item {
+      padding: 16px;
+    }
+    
+    .grid-item-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+    
+    .grid-item-title {
+      font-size: 1.125rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "AAI Content Grid",
+  "category": "AAI Content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "grid_heading",
+      "label": "Grid Heading",
+      "default": "Our Features"
+    },
+    {
+      "type": "richtext",
+      "id": "grid_description",
+      "label": "Grid Description",
+      "default": "<p>Discover what makes our training programs stand out in the industry.</p>"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Number of Columns",
+      "options": [
+        { "value": "1", "label": "1 Column" },
+        { "value": "2", "label": "2 Columns" },
+        { "value": "3", "label": "3 Columns" },
+        { "value": "4", "label": "4 Columns" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "grid_style",
+      "label": "Grid Style",
+      "options": [
+        { "value": "cards", "label": "Card Style" },
+        { "value": "minimal", "label": "Minimal" },
+        { "value": "bordered", "label": "Bordered" }
+      ],
+      "default": "cards"
+    },
+    {
+      "type": "header",
+      "content": "Grid Item 1"
+    },
+    {
+      "type": "text",
+      "id": "item_1_icon",
+      "label": "Icon (emoji or text)",
+      "default": "🎓"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_1_image",
+      "label": "Image (alternative to icon)"
+    },
+    {
+      "type": "text",
+      "id": "item_1_title",
+      "label": "Title",
+      "default": "Expert Training"
+    },
+    {
+      "type": "richtext",
+      "id": "item_1_content",
+      "label": "Content",
+      "default": "<p>Learn from industry professionals with years of experience.</p>"
+    },
+    {
+      "type": "url",
+      "id": "item_1_link",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Grid Item 2"
+    },
+    {
+      "type": "text",
+      "id": "item_2_icon",
+      "label": "Icon (emoji or text)",
+      "default": "📜"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_2_image",
+      "label": "Image (alternative to icon)"
+    },
+    {
+      "type": "text",
+      "id": "item_2_title",
+      "label": "Title",
+      "default": "Recognized Certification"
+    },
+    {
+      "type": "richtext",
+      "id": "item_2_content",
+      "label": "Content",
+      "default": "<p>Earn credentials that are valued by employers worldwide.</p>"
+    },
+    {
+      "type": "url",
+      "id": "item_2_link",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Grid Item 3"
+    },
+    {
+      "type": "text",
+      "id": "item_3_icon",
+      "label": "Icon (emoji or text)",
+      "default": "🏆"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_3_image",
+      "label": "Image (alternative to icon)"
+    },
+    {
+      "type": "text",
+      "id": "item_3_title",
+      "label": "Title",
+      "default": "Industry Leadership"
+    },
+    {
+      "type": "richtext",
+      "id": "item_3_content",
+      "label": "Content",
+      "default": "<p>Join the leaders in Family Entertainment Center safety.</p>"
+    },
+    {
+      "type": "url",
+      "id": "item_3_link",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Grid Item 4"
+    },
+    {
+      "type": "text",
+      "id": "item_4_icon",
+      "label": "Icon (emoji or text)"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_4_image",
+      "label": "Image (alternative to icon)"
+    },
+    {
+      "type": "text",
+      "id": "item_4_title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "item_4_content",
+      "label": "Content"
+    },
+    {
+      "type": "url",
+      "id": "item_4_link",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Grid Item 5"
+    },
+    {
+      "type": "text",
+      "id": "item_5_icon",
+      "label": "Icon (emoji or text)"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_5_image",
+      "label": "Image (alternative to icon)"
+    },
+    {
+      "type": "text",
+      "id": "item_5_title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "item_5_content",
+      "label": "Content"
+    },
+    {
+      "type": "url",
+      "id": "item_5_link",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Grid Item 6"
+    },
+    {
+      "type": "text",
+      "id": "item_6_icon",
+      "label": "Icon (emoji or text)"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_6_image",
+      "label": "Image (alternative to icon)"
+    },
+    {
+      "type": "text",
+      "id": "item_6_title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "item_6_content",
+      "label": "Content"
+    },
+    {
+      "type": "url",
+      "id": "item_6_link",
+      "label": "Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Content Grid"
+    }
+  ]
+}
+{% endschema %}

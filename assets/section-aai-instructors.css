@@ -233,6 +233,31 @@
   background: var(--color-accent);
 }
 
+/* Theme Block Support */
+.instructor-theme-block {
+  margin: 30px 0;
+  padding: 30px;
+  border-radius: 1rem;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.instructor-theme-block:first-child {
+  margin-top: 0;
+}
+
+.instructor-theme-block:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .instructor-theme-block {
+    margin: 20px 0;
+    padding: 20px;
+  }
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
   .aai-instructors {

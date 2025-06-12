@@ -82,6 +82,17 @@
         </div>
         {% endif %}
       </div>
+      
+      {%- comment -%} Render AI-generated theme blocks {%- endcomment -%}
+      {% if section.blocks.size > 0 %}
+        <div class="courses-hero-blocks">
+          {% for block in section.blocks %}
+            <div class="courses-hero-theme-block" {{ block.shopify_attributes }}>
+              {% render block %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -89,6 +100,7 @@
 {% schema %}
 {
   "name": "Collection Courses Hero",
+  "category": "AAI Content",
   "tag": "section",
   "class": "collection-courses-hero",
   "settings": [
@@ -149,6 +161,14 @@
       "id": "stat_3_label",
       "label": "Statistic 3: Label",
       "default": "Categories"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
     }
   ],
   "presets": [

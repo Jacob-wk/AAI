@@ -723,3 +723,82 @@
   background: transparent;
   border-radius: 0;
 }
+
+/* Modern Block Container Styles */
+.aai-blocks-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Timeline Blocks Container - when multiple timeline blocks are used together */
+.aai-blocks-container:has(.aai-timeline-block) {
+  position: relative;
+}
+
+/* Add connecting line for multiple timeline blocks */
+.aai-blocks-container:has(.aai-timeline-block .timeline-item):before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #1e3a5f, #6c757d);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Remove individual timeline margins when used in groups */
+.aai-blocks-container .aai-timeline-block {
+  margin: 0;
+}
+
+.aai-blocks-container .aai-timeline-block .timeline-item {
+  margin-bottom: 50px;
+}
+
+.aai-blocks-container .aai-timeline-block:last-child .timeline-item {
+  margin-bottom: 0;
+}
+
+/* Block spacing for non-timeline blocks */
+.aai-blocks-container > *:not(.aai-timeline-block) {
+  margin: 40px 0;
+}
+
+.aai-blocks-container > *:first-child {
+  margin-top: 0;
+}
+
+.aai-blocks-container > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Dark section timeline and block adjustments */
+.section-dark .aai-timeline-block .timeline-content,
+.color-scheme-2 .aai-timeline-block .timeline-content {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.section-dark .aai-timeline-block .timeline-title,
+.color-scheme-2 .aai-timeline-block .timeline-title {
+  color: white;
+}
+
+.section-dark .aai-timeline-block .timeline-description,
+.color-scheme-2 .aai-timeline-block .timeline-description {
+  color: #dee2e6;
+}
+
+/* Mobile responsive for timeline containers */
+@media (max-width: 768px) {
+  .aai-blocks-container:has(.aai-timeline-block .timeline-item):before {
+    left: 30px;
+  }
+  
+  .aai-blocks-container .aai-timeline-block .timeline-item {
+    margin-bottom: 30px;
+  }
+}

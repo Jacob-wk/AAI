@@ -137,6 +137,58 @@
   border: 1px solid rgba(var(--color-foreground), 0.2);
 }
 
+/* Theme Block Styling for AI-generated content */
+.feature-theme-block {
+  background: rgba(var(--color-aai-blue), 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(var(--color-aai-blue), 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-theme-block:hover {
+  background: rgba(var(--color-aai-blue), 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-theme-block h3,
+.feature-theme-block h4 {
+  color: rgb(var(--color-aai-blue));
+  margin-bottom: 1rem;
+}
+
+.feature-theme-block p {
+  color: rgb(var(--color-foreground), 0.85);
+  line-height: 1.6;
+}
+
+.feature-theme-block .shopify-section-header {
+  margin-bottom: 1.5rem;
+}
+
+.feature-theme-block .button,
+.feature-theme-block .btn {
+  background: rgb(var(--color-aai-blue));
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.feature-theme-block .button:hover,
+.feature-theme-block .btn:hover {
+  background: rgb(var(--color-aai-blue), 0.9);
+  transform: translateY(-1px);
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .feature-focus-grid {

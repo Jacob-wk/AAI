@@ -9,12 +9,24 @@
     {% if section.settings.button_label != blank and section.settings.button_link != blank %}
       <a href="{{ section.settings.button_link }}" class="aai-btn aai-btn-primary">{{ section.settings.button_label }}</a>
     {% endif %}
+    
+    {%- comment -%} Render AI-generated theme blocks {%- endcomment -%}
+    {% if section.blocks.size > 0 %}
+      <div class="webinars-hero-blocks">
+        {% for block in section.blocks %}
+          <div class="webinars-hero-theme-block" {{ block.shopify_attributes }}>
+            {% render block %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 </div>
 
 {% schema %}
 {
   "name": "Webinars Hero",
+  "category": "AAI Content",
   "tag": "section",
   "class": "webinars-hero-section",
   "settings": [
@@ -50,6 +62,14 @@
         "subtitle": "<p>Stay updated with the latest trends and insights from AAI experts.</p>",
         "button_label": "Register Now"
       }
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
     }
   ]
 }

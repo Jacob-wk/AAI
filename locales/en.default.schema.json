@@ -9,23 +9,26 @@
  */
 {
   "categories": {
-    "banners": "Banners",
-    "basic": "Basic",
-    "collection": "Collection",
-    "collections": "Collections",
-    "collection_list": "Collection list",
-    "custom": "Custom",
-    "decorative": "Decorative",
-    "footer": "Footer",
-    "forms": "Forms",
-    "header": "Header",
-    "layout": "Layout",
-    "links": "Links",
-    "product": "Product",
-    "products": "Products",
-    "product_list": "Product list",
-    "other_sections": "Other",
-    "storytelling": "Storytelling"
+    "aai_education": "🎓 AAI Education",
+    "aai_content": "📋 AAI Content",
+    "aai_safety": "🛡️ Safety & Compliance",
+    "banners": "🏆 Banners & Highlights",
+    "basic": "📝 Basic Content",
+    "collection": "📚 Course Collection",
+    "collections": "📚 Collections",
+    "collection_list": "📋 Collection List",
+    "custom": "⚙️ Custom",
+    "decorative": "🎨 Decorative",
+    "footer": "🔗 Footer",
+    "forms": "📝 Forms",
+    "header": "🏠 Header",
+    "layout": "📐 Layout",
+    "links": "🔗 Links",
+    "product": "🎓 Course Product",
+    "products": "🎓 Courses",
+    "product_list": "📋 Course List",
+    "other_sections": "🔧 Other",
+    "storytelling": "📖 Storytelling"
   },
   "content": {
     "visible_if_collection_has_more_products": "Visible if collection has more products than shown",
@@ -111,7 +114,15 @@
     "variant_settings": "Variant settings",
     "visibility": "Visibility",
     "width": "Width",
-    "width_is_automatically_optimized": "Width is automatically optimized for mobile."
+    "width_is_automatically_optimized": "Width is automatically optimized for mobile.",
+    "aai_safety_content": "🛡️ Safety Education Content",
+    "aai_certification_info": "🏆 Professional Certification Information",
+    "aai_course_features": "📚 Course Features & Benefits",
+    "aai_instructor_profiles": "👨‍🏫 Expert Instructor Information",
+    "aai_compliance_badges": "✅ Industry Compliance & Standards",
+    "aai_demo_experience": "🎮 Interactive Demo Experience",
+    "aai_learning_outcomes": "🎯 Learning Outcomes & Goals",
+    "aai_professional_development": "📈 Professional Development Path"
   },
   "github": {
     "alternating_content_rows": "[Github Issue](https://github.com/Shopify/horizon/issues/2982)",
@@ -149,8 +160,15 @@
     "video_alt_text": "Describe the video for assistive tech users",
     "video_autoplay": "Videos will be muted by default",
     "video_external": "Use a YouTube or Vimeo URL",
-    "pills_usage": "Used for applied filters, discount codes, and search suggestions"
-
+    "pills_usage": "Used for applied filters, discount codes, and search suggestions",
+    "aai_course_setup": "💡 Configure your course content to highlight AAI's professional safety education programs",
+    "aai_certification_display": "🏆 Showcase IAAPA and ASTM F24 compliance certifications to build credibility",
+    "aai_instructor_expertise": "👨‍🏫 Highlight instructor qualifications and industry experience for trust building",
+    "aai_demo_engagement": "🎮 Use interactive demos to showcase the learning platform's capabilities",
+    "aai_safety_focus": "🛡️ Emphasize safety-first approach and industry-specific training content",
+    "aai_mobile_learning": "📱 Optimize for mobile learning experiences and on-the-go professionals",
+    "aai_compliance_badges": "✅ Display compliance certifications prominently to meet industry standards",
+    "aai_professional_outcomes": "📈 Focus on career advancement and professional development outcomes"
   },
   "names": {
     "product_title": "Product title",
@@ -314,7 +332,17 @@
     "video": "Video",
     "video_section": "Video",
     "view_all_button": "View all",
-    "pills": "Pills"
+    "pills": "Pills",
+    "aai_hero_section": "🏠 AAI Hero Banner",
+    "aai_course_showcase": "🎓 Course Showcase",
+    "aai_safety_features": "🛡️ Safety Features",
+    "aai_instructor_grid": "👨‍🏫 Instructor Profiles",
+    "aai_certification_badges": "🏆 Certification Badges",
+    "aai_demo_platform": "🎮 Demo Platform",
+    "aai_testimonials": "💬 Student Success Stories",
+    "aai_compliance_section": "✅ Compliance & Standards",
+    "aai_contact_cta": "📞 Contact & Enrollment",
+    "aai_feature_highlights": "⭐ Feature Highlights"
   },
   "options": {
     "above_carousel": "Above carousel",

@@ -1,0 +1,372 @@
+/* AAI Theme Enhancement Styles
+   Focus: Improved visual hierarchy, accessibility, and professional appearance
+   Author: AAI Theme Development Team
+*/
+
+/* ==========================================================================
+   Enhanced Typography Hierarchy
+   ========================================================================== */
+
+.aai-enhanced-typography {
+  /* Improved heading hierarchy with better spacing */
+  --heading-h1-size: clamp(2.5rem, 5vw, 4rem);
+  --heading-h2-size: clamp(2rem, 4vw, 3rem);
+  --heading-h3-size: clamp(1.5rem, 3vw, 2rem);
+  --heading-h4-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  
+  /* Enhanced line heights for better readability */
+  --body-line-height: 1.6;
+  --heading-line-height: 1.2;
+  
+  /* Professional spacing scale */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 4rem;
+}
+
+/* Enhanced heading styles with professional hierarchy */
+.section-header h1,
+.section-header h2,
+.section-header h3 {
+  font-weight: 600;
+  line-height: var(--heading-line-height);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-authority-navy, #000F9F);
+}
+
+.section-header h1 {
+  font-size: var(--heading-h1-size);
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-header h2 {
+  font-size: var(--heading-h2-size);
+}
+
+.section-header h3 {
+  font-size: var(--heading-h3-size);
+}
+
+/* Enhanced subtitle styling */
+.section-subtitle {
+  font-size: 1.125rem;
+  line-height: var(--body-line-height);
+  color: var(--color-text-secondary, #666);
+  margin-bottom: var(--spacing-xl);
+  max-width: 65ch; /* Optimal reading width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   Professional Button Enhancements
+   ========================================================================== */
+
+.aai-button-enhanced {
+  /* Enhanced button styling with better accessibility */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 2px solid transparent;
+  min-height: 44px; /* Accessibility: minimum touch target */
+}
+
+.aai-button-primary {
+  background-color: var(--color-safety-orange, #FF6B35);
+  color: white;
+  border-color: var(--color-safety-orange, #FF6B35);
+}
+
+.aai-button-primary:hover,
+.aai-button-primary:focus {
+  background-color: var(--color-safety-orange-dark, #E85A2B);
+  border-color: var(--color-safety-orange-dark, #E85A2B);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.aai-button-secondary {
+  background-color: transparent;
+  color: var(--color-authority-navy, #000F9F);
+  border-color: var(--color-authority-navy, #000F9F);
+}
+
+.aai-button-secondary:hover,
+.aai-button-secondary:focus {
+  background-color: var(--color-authority-navy, #000F9F);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 15, 159, 0.2);
+}
+
+/* ==========================================================================
+   Enhanced Card Components
+   ========================================================================== */
+
+.aai-card-enhanced {
+  background: white;
+  border-radius: 1rem;
+  padding: var(--spacing-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease-in-out;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.aai-card-enhanced:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.aai-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+  display: block;
+}
+
+.aai-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-authority-navy, #000F9F);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.3;
+}
+
+.aai-card-description {
+  color: var(--color-text-secondary, #666);
+  line-height: var(--body-line-height);
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Professional Section Spacing
+   ========================================================================== */
+
+.aai-section-enhanced {
+  padding: var(--spacing-xxl) 0;
+}
+
+.aai-section-compact {
+  padding: var(--spacing-xl) 0;
+}
+
+.aai-section-spacious {
+  padding: calc(var(--spacing-xxl) * 1.5) 0;
+}
+
+/* Enhanced container with better max-width */
+.aai-container-enhanced {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .aai-container-enhanced {
+    padding: 0 var(--spacing-lg);
+  }
+}
+
+/* ==========================================================================
+   Grid Enhancements for Feature Sections
+   ========================================================================== */
+
+.aai-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+  .aai-features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+  }
+}
+
+/* ==========================================================================
+   Accessibility Enhancements
+   ========================================================================== */
+
+/* Enhanced focus states for keyboard navigation */
+.aai-button-enhanced:focus,
+.aai-card-enhanced:focus-within {
+  outline: 3px solid var(--color-electric-blue, #007ACC);
+  outline-offset: 2px;
+}
+
+/* Improved color contrast for text */
+.aai-text-high-contrast {
+  color: var(--color-text-primary, #2C2C2C);
+}
+
+.aai-text-medium-contrast {
+  color: var(--color-text-secondary, #666);
+}
+
+/* Skip link for screen readers */
+.aai-skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-authority-navy, #000F9F);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 1000;
+}
+
+.aai-skip-link:focus {
+  top: 0;
+}
+
+/* ==========================================================================
+   Professional Badge Components
+   ========================================================================== */
+
+.aai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-electric-blue, #007ACC);
+  color: white;
+  border-radius: 2rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.aai-badge-certification {
+  background: var(--color-success, #10B981);
+}
+
+.aai-badge-compliance {
+  background: var(--color-authority-navy, #000F9F);
+}
+
+/* ==========================================================================
+   Enhanced Visual Feedback
+   ========================================================================== */
+
+.aai-loading-state {
+  opacity: 0.7;
+  pointer-events: none;
+  position: relative;
+}
+
+.aai-loading-state::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--color-authority-navy, #000F9F);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: aai-spin 1s linear infinite;
+}
+
+@keyframes aai-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   Professional Demo Interface Styling
+   ========================================================================== */
+
+.aai-demo-interface {
+  background: #f8fafc;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.aai-demo-header {
+  background: #ffffff;
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.aai-demo-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.aai-demo-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.aai-demo-control.red { background: #ef4444; }
+.aai-demo-control.yellow { background: #f59e0b; }
+.aai-demo-control.green { background: #10b981; }
+
+.aai-demo-content {
+  padding: var(--spacing-lg);
+  background: white;
+  min-height: 300px;
+}
+
+/* ==========================================================================
+   Responsive Enhancements
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .aai-section-enhanced {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .aai-features-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .aai-button-enhanced {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   Print Styles for Professional Materials
+   ========================================================================== */
+
+@media print {
+  .aai-section-enhanced {
+    padding: 1rem 0;
+    break-inside: avoid;
+  }
+  
+  .aai-card-enhanced {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+  
+  .aai-button-enhanced {
+    border: 1px solid #000;
+    background: white !important;
+    color: black !important;
+  }
+}

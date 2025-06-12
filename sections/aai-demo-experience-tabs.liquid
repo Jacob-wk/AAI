@@ -13,9 +13,18 @@
     </div>
     
     <div class="demo-interface">
-      {% if section.blocks.size > 0 %}
+      {% assign demo_tab_blocks = section.blocks | where: 'type', 'demo_tab_panel' %}
+      {% assign theme_blocks = section.blocks | where: 'type', 'text' %}
+      {% if theme_blocks.size == 0 %}
+        {% assign theme_blocks = section.blocks | where: 'type', 'image' %}
+      {% endif %}
+      {% if theme_blocks.size == 0 %}
+        {% assign theme_blocks = section.blocks | where: 'type', 'button' %}
+      {% endif %}
+      
+      {% if demo_tab_blocks.size > 0 %}
         <div class="demo-tabs">
-          {% for block in section.blocks %}
+          {% for block in demo_tab_blocks %}
             <button class="demo-tab {% if forloop.first %}active{% endif %}" data-demo="{{ block.id }}" {{ block.shopify_attributes }}>
               <div class="tab-icon">{{ block.settings.tab_icon }}</div>
               <span>{{ block.settings.tab_title }}</span>
@@ -24,7 +33,7 @@
         </div>
         
         <div class="demo-panels">
-          {% for block in section.blocks %}
+          {% for block in demo_tab_blocks %}
             <div class="demo-panel {% if forloop.first %}active{% endif %}" id="demo-{{ block.id }}">
               <div class="demo-screen">
                 {% if block.settings.panel_header_title != blank %}
@@ -46,6 +55,17 @@
           {% endfor %}
         </div>
       {% endif %}
+      
+      {%- comment -%} Render AI-generated theme blocks {%- endcomment -%}
+      {% if theme_blocks.size > 0 %}
+        <div class="demo-theme-blocks">
+          {% for block in theme_blocks %}
+            <div class="demo-theme-block" {{ block.shopify_attributes }}>
+              {% render block %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -55,6 +75,7 @@
 {% schema %}
 {
   "name": "Demo Experience Tabs",
+  "category": "AAI Content",
   "tag": "section",
   "class": "aai-demo-experience-tabs",
   "settings": [
@@ -117,6 +138,12 @@
           "default": "dashboard-content"
         }
       ]
+    },
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
     }
   ],
   "presets": [

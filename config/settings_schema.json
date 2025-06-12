@@ -1,36 +1,46 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "AAI Theme",
+    "theme_name": "🎓 AAI Professional Learning Theme",
     "theme_version": "1.0.0",
     "theme_author": "Amusement Academy International",
     "theme_documentation_url": "https://aai-lms.com/help",
     "theme_support_url": "https://aai-lms.com/support"
   },
   {
-    "name": "t:names.logo_and_favicon",
+    "name": "🏠 Brand & Logo",
     "settings": [
+      {
+        "type": "paragraph",
+        "content": "🎯 <strong>Quick Start:</strong> Upload your logo and favicon to establish your professional brand identity."
+      },
       {
         "type": "image_picker",
         "id": "logo",
-        "label": "t:settings.default_logo"
+        "label": "🏢 Main Logo",
+        "info": "Your primary logo - used in headers and main branding areas"
       },
       {
         "type": "image_picker",
         "id": "logo_inverse",
-        "label": "t:settings.inverse_logo",
-        "info": "t:content.inverse_logo_info"
+        "label": "🔄 Inverse Logo (White/Light)",
+        "info": "Light version of your logo for dark backgrounds or overlay sections"
       },
       {
         "type": "image_picker",
         "id": "favicon",
-        "label": "t:settings.favicon"
+        "label": "📋 Favicon",
+        "info": "Small icon that appears in browser tabs (16x16 or 32x32 pixels recommended)"
       }
     ]
   },
   {
-    "name": "t:names.colors",
+    "name": "🎨 Colors & Branding",
     "settings": [
+      {
+        "type": "paragraph",
+        "content": "🎯 <strong>AAI Brand Colors:</strong> Authority Navy (#000F9F), Safety Orange (#FF6B35), Electric Blue (#007ACC). Your professional color schemes are pre-configured for optimal contrast and accessibility."
+      },
       {
         "type": "color_scheme_group",
         "id": "color_schemes",
@@ -38,61 +48,61 @@
           {
             "type": "color",
             "id": "background",
-            "label": "t:settings.background",
+            "label": "🏠 Background Color",
             "default": "#FFFFFF",
             "alpha": true
           },
           {
             "type": "color",
             "id": "foreground_heading",
-            "label": "t:settings.headings",
-            "default": "#000000",
+            "label": "📰 Headings",
+            "default": "#000F9F",
             "alpha": true
           },
           {
             "type": "color",
             "id": "foreground",
-            "label": "t:settings.text",
-            "default": "#000000",
+            "label": "📝 Body Text",
+            "default": "#2C2C2C",
             "alpha": true
           },
           {
             "type": "color",
             "id": "primary",
-            "label": "t:settings.primary_color",
+            "label": "🔵 Primary Brand (Authority Navy)",
             "default": "#000F9F",
             "alpha": true
           },
           {
             "type": "color",
             "id": "primary_hover",
-            "label": "t:settings.primary_hover_color",
-            "default": "#000000",
+            "label": "🔷 Primary Hover State",
+            "default": "#0066CC",
             "alpha": true
           },
           {
             "type": "color",
             "id": "border",
-            "label": "t:settings.borders",
+            "label": "📏 Borders & Dividers",
             "default": "#E6E6E6",
             "alpha": true
           },
           {
             "type": "color",
             "id": "shadow",
-            "label": "t:settings.shadow_color",
-            "default": "#000000",
+            "label": "🌫️ Shadows & Depth",
+            "default": "#00000020",
             "alpha": true
           },
           {
             "type": "header",
-            "content": "t:names.primary_button"
+            "content": "🚀 Primary Action Button"
           },
           {
             "type": "color",
             "id": "primary_button_background",
-            "label": "t:settings.background",
-            "default": "#000F9F",
+            "label": "🟠 Button Background (Safety Orange)",
+            "default": "#FF6B35",
             "alpha": true
           },
           {
@@ -317,95 +327,101 @@
     ]
   },
   {
-    "name": "t:names.typography",
+    "name": "✍️ Typography & Text",
     "settings": [
       {
+        "type": "paragraph",
+        "content": "🎯 <strong>Professional Typography:</strong> Choose fonts that reflect AAI's educational authority and ensure excellent readability across all devices."
+      },
+      {
         "type": "header",
-        "content": "t:content.fonts"
+        "content": "📚 Font Families"
       },
       {
         "type": "font_picker",
         "id": "type_body_font",
         "default": "work_sans_n4",
-        "label": "t:options.body"
+        "label": "📝 Body Text Font",
+        "info": "Used for paragraphs, descriptions, and general content"
       },
       {
         "type": "font_picker",
         "id": "type_subheading_font",
         "default": "work_sans_n5",
-        "label": "t:options.subheading"
+        "label": "📰 Subheading Font",
+        "info": "Used for section subtitles and supporting headings"
       },
       {
         "type": "font_picker",
         "id": "type_heading_font",
         "default": "anonymous_pro_n4",
-        "label": "t:options.heading"
+        "label": "🎯 Main Heading Font",
+        "info": "Used for page titles and primary headings"
       },
       {
         "type": "font_picker",
         "id": "type_accent_font",
         "default": "anonymous_pro_n4",
-        "label": "t:options.accent"
+        "label": "✨ Accent Font",
+        "info": "Used for special text and emphasis elements"
       },
       {
         "type": "header",
-        "content": "t:content.text_presets"
+        "content": "📏 Text Sizing"
       },
       {
         "type": "paragraph",
-        "content": "t:content.responsive_font_sizes"
+        "content": "💡 Font sizes automatically scale across all screen sizes for optimal readability."
       },
       {
         "type": "header",
-        "content": "t:content.paragraph"
+        "content": "📄 Body Text Settings"
       },
       {
         "type": "select",
         "id": "type_size_paragraph",
-        "label": "t:settings.size",
+        "label": "📝 Body Text Size",
         "options": [
           {
-            "value": "10",
-            "label": "10px"
-          },
-          {
             "value": "12",
-            "label": "12px"
+            "label": "12px - Small"
           },
           {
             "value": "14",
-            "label": "14px"
+            "label": "14px - Standard"
           },
           {
             "value": "16",
-            "label": "16px"
+            "label": "16px - Comfortable"
           },
           {
             "value": "18",
-            "label": "18px"
+            "label": "18px - Large"
           }
         ],
-        "default": "14"
+        "default": "16",
+        "info": "Recommended: 16px for optimal readability and accessibility"
       },
       {
         "type": "select",
         "id": "type_line_height_paragraph",
-        "label": "t:settings.line_height",
+        "label": "📏 Body Text Line Height",
         "options": [
           {
             "value": "body-tight",
-            "label": "t:options.tight"
+            "label": "Tight - Compact spacing"
           },
           {
             "value": "body-normal",
-            "label": "t:options.normal"
+            "label": "Normal - Balanced spacing"
           },
           {
             "value": "body-loose",
-            "label": "t:options.loose"
+            "label": "Loose - Relaxed spacing"
           }
         ],
-        "default": "body-normal"
+        "default": "body-normal",
+        "info": "Normal spacing works best for educational content"
       },
       {
         "type": "header",

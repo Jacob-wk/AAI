@@ -1,0 +1,286 @@
+{% comment %}
+  AAI Text Only Block
+  Simple text content block with AAI styling
+  Perfect for centered content sections
+{% endcomment %}
+
+<div class="aai-text-only" 
+     data-alignment="{{ block.settings.text_alignment }}"
+     {{ block.shopify_attributes }}>
+  
+  {% if block.settings.heading != blank %}
+    <h3 class="text-heading">{{ block.settings.heading }}</h3>
+  {% endif %}
+  
+  {% if block.settings.content != blank %}
+    <div class="text-content">
+      {{ block.settings.content }}
+    </div>
+  {% endif %}
+  
+  {% if block.settings.button_text != blank %}
+    <div class="text-cta">
+      <a href="{{ block.settings.button_url | default: '#' }}" 
+         class="aai-btn aai-btn-{{ block.settings.button_style }} aai-btn-{{ block.settings.button_size }}">
+        {{ block.settings.button_text }}
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+  .aai-text-only {
+    max-width: 800px;
+    margin: 32px auto;
+    padding: 0 24px;
+  }
+  
+  .aai-text-only[data-alignment="center"] {
+    text-align: center;
+  }
+  
+  .aai-text-only[data-alignment="left"] {
+    text-align: left;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  .aai-text-only[data-alignment="right"] {
+    text-align: right;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+  .text-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--authority-navy, #1e3a5f);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  
+  .text-content {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--charcoal-grey, #495057);
+    margin-bottom: 32px;
+  }
+  
+  .text-content p {
+    margin-bottom: 16px;
+  }
+  
+  .text-content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .text-content ul,
+  .text-content ol {
+    margin-bottom: 16px;
+    padding-left: 24px;
+  }
+  
+  .text-content li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  
+  .text-content blockquote {
+    border-left: 4px solid var(--electric-blue, #3490dc);
+    padding-left: 24px;
+    margin: 24px 0;
+    font-style: italic;
+    color: var(--authority-navy, #1e3a5f);
+    background: rgba(52, 144, 220, 0.05);
+    padding: 20px 24px;
+    border-radius: 0 8px 8px 0;
+  }
+  
+  .text-content strong {
+    color: var(--authority-navy, #1e3a5f);
+    font-weight: 600;
+  }
+  
+  .text-content a {
+    color: var(--electric-blue, #3490dc);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  
+  .text-content a:hover {
+    color: var(--accent-blue, #0066b3);
+    text-decoration: none;
+  }
+  
+  .text-cta {
+    margin-top: 32px;
+  }
+  
+  .aai-btn {
+    display: inline-block;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-align: center;
+  }
+  
+  .aai-btn-small {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+  }
+  
+  .aai-btn-medium {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+  
+  .aai-btn-large {
+    padding: 16px 32px;
+    font-size: 1.125rem;
+  }
+  
+  .aai-btn-primary {
+    background-color: var(--primary-blue, #005a9f);
+    color: white;
+    border-color: var(--primary-blue, #005a9f);
+  }
+  
+  .aai-btn-primary:hover {
+    background-color: var(--accent-blue, #0066b3);
+    border-color: var(--accent-blue, #0066b3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 90, 159, 0.3);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .aai-btn-secondary {
+    background-color: var(--safety-orange, #ff6b35);
+    color: white;
+    border-color: var(--safety-orange, #ff6b35);
+  }
+  
+  .aai-btn-secondary:hover {
+    background-color: #e55a2b;
+    border-color: #e55a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .aai-btn-outline {
+    background-color: transparent;
+    color: var(--primary-blue, #005a9f);
+    border-color: var(--primary-blue, #005a9f);
+  }
+  
+  .aai-btn-outline:hover {
+    background-color: var(--primary-blue, #005a9f);
+    color: white;
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .aai-text-only {
+      padding: 0 16px;
+      margin: 24px auto;
+    }
+    
+    .text-heading {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    
+    .text-content {
+      font-size: 1rem;
+      margin-bottom: 24px;
+    }
+    
+    .text-cta {
+      margin-top: 24px;
+    }
+    
+    .aai-btn {
+      width: 100%;
+      display: block;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "AAI Text Only",
+  "category": "AAI Content", 
+  "settings": [
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Content Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Add your main content here. This block is perfect for centered text sections, announcements, or any standalone content that doesn't need images.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" },
+        { "value": "outline", "label": "Outline" }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "Button Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Text Only"
+    }
+  ]
+}
+{% endschema %}
