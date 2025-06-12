@@ -41,7 +41,7 @@
       "settings": {
         "section_title": "Industry Authority in FEC & Adventure Park Safety",
         "section_subtitle": "Decades of Experience, Unmatched Expertise",
-        "layout_style": "blocks-grid",
+        "layout_style": "text-right-image-left",
         "background_style": "",
         "show_main_content": true,
         "content_title": "",
@@ -55,43 +55,15 @@
     "aai_universal_content_QGrVx9": {
       "type": "aai-universal-content",
       "blocks": {
-        "aai_credential_grid_qntr3F": {
-          "type": "aai-credential-grid",
-          "name": "AAI Credential Grid",
+        "credential_grid_HzXgfy": {
+          "type": "credential_grid",
           "settings": {
-            "heading": "Industry Leadership & Expertise",
-            "description": "Trusted by professionals worldwide for comprehensive amusement safety education",
-            "layout": "grid-4",
-            "credential_1_title": "IAAPA Certified Training",
-            "credential_1_organization": "International Association of Amusement Parks",
-            "credential_1_description": "Official IAAPA certification programs designed by industry experts for professional advancement.",
-            "credential_1_link": "",
-            "credential_2_title": "ASTM F24 Compliance",
-            "credential_2_organization": "ASTM International Standards",
-            "credential_2_description": "Comprehensive training aligned with ASTM F24 amusement ride safety standards and best practices.",
-            "credential_2_link": "",
-            "credential_3_title": "25+ Years Experience",
-            "credential_3_organization": "Amusement Safety Leadership",
-            "credential_3_description": "Decades of experience training safety professionals and developing industry-leading curricula.",
-            "credential_3_link": "",
-            "credential_4_title": "1,000+ Graduates Certified",
-            "credential_4_organization": "Professional Development Impact",
-            "credential_4_description": "Successfully certified over 1,000 safety professionals across global amusement operations.",
-            "credential_4_link": "",
-            "credential_5_title": "",
-            "credential_5_organization": "",
-            "credential_5_description": "",
-            "credential_5_link": "",
-            "credential_6_title": "",
-            "credential_6_organization": "",
-            "credential_6_description": "",
-            "credential_6_link": ""
-          },
-          "blocks": {}
+            "grid_title": "Our Credentials"
+          }
         }
       },
       "block_order": [
-        "aai_credential_grid_qntr3F"
+        "credential_grid_HzXgfy"
       ],
       "name": "Homepage Call to Action",
       "settings": {
@@ -103,13 +75,22 @@
         "content_title": "",
         "content_body": "",
         "main_button_text": "",
-        "main_button_url": "shopify://collections/courses",
+        "main_button_url": "",
         "main_button_style": "primary",
-        "main_button_size": "large"
+        "main_button_size": "small"
       }
     },
     "aai_universal_content_DiPa6P": {
       "type": "aai-universal-content",
+      "blocks": {
+        "button_group_HQ9y7U": {
+          "type": "button_group",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "button_group_HQ9y7U"
+      ],
       "name": "Homepage Call to Action",
       "settings": {
         "section_title": "Take the Next Step Towards Excellence",
@@ -119,10 +100,19 @@
         "show_main_content": true,
         "content_title": "",
         "content_body": "<p><strong>Whether you're looking to enhance your skills, certify your team, or ensure compliance, AAI has the resources you need.  </strong></p><p>Explore our comprehensive course catalog or get in touch with our experts to discuss your specific training requirements.</p>",
-        "main_button_text": "Browse All Courses",
-        "main_button_url": "shopify://collections/courses",
+        "main_button_text": "",
+        "main_button_url": "",
         "main_button_style": "primary",
-        "main_button_size": "large"
+        "main_button_size": "small"
+      }
+    },
+    "user_dashboard_K9qwwg": {
+      "type": "user-dashboard",
+      "name": "User Dashboard",
+      "settings": {
+        "completed_courses": 3,
+        "ceu_credits": 12,
+        "certificates": 2
       }
     }
   },
@@ -130,6 +120,7 @@
     "main",
     "aai_universal_content_f4efTN",
     "aai_universal_content_QGrVx9",
-    "aai_universal_content_DiPa6P"
+    "aai_universal_content_DiPa6P",
+    "user_dashboard_K9qwwg"
   ]
 }
