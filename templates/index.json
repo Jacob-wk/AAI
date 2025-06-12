@@ -41,14 +41,11 @@
       "settings": {
         "section_title": "Industry Authority in FEC & Adventure Park Safety",
         "section_subtitle": "Decades of Experience, Unmatched Expertise",
-        "layout_style": "text-right-image-left",
-        "blocks_per_row": "2",
+        "layout_style": "blocks-grid",
         "background_style": "",
         "show_main_content": true,
         "content_title": "",
         "content_body": "<p><em><strong>Safety first, but adventure always. </strong></em></p><p><strong>The Amusement Adventure Institute (AAI)</strong> leads the way in safety education for <strong>Family Entertainment Centers</strong> and <strong>adventure parks. </strong></p><p>Backed by over <strong>20 years</strong> of hands-on expertise, we deliver the most <em><strong>current</strong></em>, <em><strong>practical</strong></em>, and <em><strong>trusted </strong></em>knowledge in the industry.</p>",
-        "show_image": true,
-        "content_image": "shopify://shop_images/1377773.jpg",
         "main_button_text": "Learn About Our Impact",
         "main_button_url": "/pages/about",
         "main_button_style": "secondary",
@@ -98,14 +95,14 @@
       ],
       "name": "Homepage Call to Action",
       "settings": {
-        "section_title": "Advance Your Safety Career",
-        "section_subtitle": "Join thousands of professionals who trust AAI for industry-leading safety education",
+        "section_title": "",
+        "section_subtitle": "",
         "layout_style": "text-center",
         "background_style": "section-dark",
         "show_main_content": true,
-        "content_title": "Ready to Get Started?",
-        "content_body": "<p>Explore our comprehensive catalog of IAAPA-certified courses designed specifically for amusement industry professionals. Start your professional development journey today.</p>",
-        "main_button_text": "Browse All Courses",
+        "content_title": "",
+        "content_body": "",
+        "main_button_text": "",
         "main_button_url": "shopify://collections/courses",
         "main_button_style": "primary",
         "main_button_size": "large"
@@ -113,34 +110,6 @@
     },
     "aai_universal_content_DiPa6P": {
       "type": "aai-universal-content",
-      "blocks": {
-        "button_group_HQ9y7U": {
-          "type": "button_group",
-          "settings": {
-            "group_title": "",
-            "group_description": "",
-            "layout": "horizontal",
-            "alignment": "center",
-            "primary_button_text": "Browse All Courses",
-            "primary_button_url": "shopify://collections/courses",
-            "primary_button_size": "large",
-            "secondary_button_text": "Corporate Training Solutions",
-            "secondary_button_url": "shopify://pages/corporate-training",
-            "secondary_button_size": "large",
-            "tertiary_button_text": "",
-            "tertiary_button_url": "",
-            "tertiary_button_size": "medium",
-            "custom_button_text": "",
-            "custom_button_url": "",
-            "custom_button_size": "medium",
-            "custom_button_style": ""
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "button_group_HQ9y7U"
-      ],
       "name": "Homepage Call to Action",
       "settings": {
         "section_title": "Take the Next Step Towards Excellence",
@@ -155,22 +124,12 @@
         "main_button_style": "primary",
         "main_button_size": "large"
       }
-    },
-    "user_dashboard_K9qwwg": {
-      "type": "user-dashboard",
-      "name": "User Dashboard",
-      "settings": {
-        "completed_courses": 3,
-        "ceu_credits": 12,
-        "certificates": 2
-      }
     }
   },
   "order": [
     "main",
     "aai_universal_content_f4efTN",
     "aai_universal_content_QGrVx9",
-    "aai_universal_content_DiPa6P",
-    "user_dashboard_K9qwwg"
+    "aai_universal_content_DiPa6P"
   ]
 }
