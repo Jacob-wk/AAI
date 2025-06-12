@@ -71,7 +71,7 @@
       "settings": {
         "section_width": "full",
         "content_title": "",
-        "content_body": "{{ 'page-safety-library.css' | asset_url | stylesheet_tag }}",
+        "content_body": "",
         "layout_style": "none",
         "background_style": "",
         "text_color": "",
