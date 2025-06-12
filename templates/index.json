@@ -41,7 +41,7 @@
       "settings": {
         "section_title": "Industry Authority in FEC & Adventure Park Safety",
         "section_subtitle": "Decades of Experience, Unmatched Expertise",
-        "layout_style": "text-right-image-left",
+        "layout_style": "blocks-grid",
         "background_style": "",
         "show_main_content": true,
         "content_title": "",
@@ -49,7 +49,7 @@
         "main_button_text": "Learn About Our Impact",
         "main_button_url": "/pages/about",
         "main_button_style": "secondary",
-        "main_button_size": "medium"
+        "main_button_size": "large"
       }
     },
     "aai_universal_content_QGrVx9": {
@@ -59,22 +59,12 @@
           "type": "aai-credential-grid",
           "name": "AAI Credential Grid",
           "settings": {
-            "heading": "Industry Leadership & Expertise",
-            "description": "Trusted by professionals worldwide for comprehensive amusement safety education",
-            "layout": "grid-4",
-            "credential_1_title": "IAAPA Certified Training",
             "credential_1_organization": "International Association of Amusement Parks",
             "credential_1_description": "Official IAAPA certification programs designed by industry experts for professional advancement.",
-            "credential_1_link": "",
-            "credential_2_title": "ASTM F24 Compliance",
             "credential_2_organization": "ASTM International Standards",
             "credential_2_description": "Comprehensive training aligned with ASTM F24 amusement ride safety standards and best practices.",
-            "credential_2_link": "",
-            "credential_3_title": "25+ Years Experience",
             "credential_3_organization": "Amusement Safety Leadership",
             "credential_3_description": "Decades of experience training safety professionals and developing industry-leading curricula.",
-            "credential_3_link": "",
-            "credential_4_title": "1,000+ Graduates Certified",
             "credential_4_organization": "Professional Development Impact",
             "credential_4_description": "Successfully certified over 1,000 safety professionals across global amusement operations.",
             "credential_4_link": "",
