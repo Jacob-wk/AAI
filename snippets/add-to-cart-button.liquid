@@ -71,8 +71,10 @@
 
 {%- liquid
   assign default_add_to_cart_text = 'actions.add_to_cart' | t
-  assign product_variant_media = product.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 100, crop: center
-  if product.selected_or_first_available_variant.featured_media.preview_image == blank
+  assign product_variant_media = ''
+  if product.selected_or_first_available_variant.featured_media.preview_image
+    assign product_variant_media = product.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 100, crop: center
+  elsif product.featured_media.preview_image
     assign product_variant_media = product.featured_media.preview_image | image_url: width: 100, crop: center
   endif
 -%}

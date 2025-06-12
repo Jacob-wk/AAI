@@ -70,7 +70,10 @@
               <span class="product-form__error-message" aria-live="polite"></span>
             </div>
             
-            <add-to-cart-component ref="addToCartButtonContainer" data-product-variant-media="{{ current_variant.featured_media.preview_image | image_url: width: 100 }}">
+            <add-to-cart-component ref="addToCartButtonContainer"
+              {% if current_variant.featured_media.preview_image %}
+                data-product-variant-media="{{ current_variant.featured_media.preview_image | image_url: width: 100 }}"
+              {% endif %}>
               <button type="submit" 
                       ref="addToCartButton"
                       class="btn btn-primary enroll-btn{% unless current_variant.available %} disabled{% endunless %}"

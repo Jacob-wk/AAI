@@ -40,9 +40,7 @@
       {{ 'privacy-policy-page.css' | asset_url | stylesheet_tag }}
     {% elsif template == 'product.course' %}
       {{ 'product-course.css' | asset_url | stylesheet_tag }}
-    {% elsif template == 'product.mczrmobile' %}
-      {{ 'product-mczrmobile.css' | asset_url | stylesheet_tag }}
-    {% elsif template == 'customers/account' %}
+    {% elsif template == 'customers/account' %>
       {{ 'customer-account.css' | asset_url | stylesheet_tag }}
     {% elsif template == '404' %}
       {{ '404-page.css' | asset_url | stylesheet_tag }}
