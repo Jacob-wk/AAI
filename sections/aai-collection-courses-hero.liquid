@@ -99,11 +99,15 @@
 
 {% schema %}
 {
-  "name": "Collection Courses Hero",
-  "category": "AAI Content",
+  "name": "🎓 Collection Courses Hero",
+  "category": "aai_content",
   "tag": "section",
   "class": "collection-courses-hero",
   "settings": [
+    {
+      "type": "header", 
+      "content": "Hero Content"
+    },
     {
       "type": "checkbox",
       "id": "show_statistics",
@@ -122,6 +126,10 @@
       "id": "subtitle",
       "label": "Subtitle",
       "default": "<p>Advance your career with specialized safety education courses designed for Family Entertainment Centers, adventure parks, and amusement facility professionals. Earn CEU credits and certifications recognized throughout the industry.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Statistics Fallback Values"
     },
     {
       "type": "text",
