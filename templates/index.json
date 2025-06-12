@@ -55,29 +55,57 @@
     "aai_universal_content_QGrVx9": {
       "type": "aai-universal-content",
       "blocks": {
-        "credential_grid_HzXgfy": {
-          "type": "credential_grid",
+        "aai_credential_grid_qntr3F": {
+          "type": "aai-credential-grid",
+          "name": "AAI Credential Grid",
           "settings": {
-            "grid_title": "Our Credentials"
-          }
+            "heading": "Industry Leadership & Expertise",
+            "description": "Trusted by professionals worldwide for comprehensive amusement safety education",
+            "layout": "grid-4",
+            "credential_1_title": "IAAPA Certified Training",
+            "credential_1_organization": "International Association of Amusement Parks",
+            "credential_1_description": "Official IAAPA certification programs designed by industry experts for professional advancement.",
+            "credential_1_link": "",
+            "credential_2_title": "ASTM F24 Compliance",
+            "credential_2_organization": "ASTM International Standards",
+            "credential_2_description": "Comprehensive training aligned with ASTM F24 amusement ride safety standards and best practices.",
+            "credential_2_link": "",
+            "credential_3_title": "25+ Years Experience",
+            "credential_3_organization": "Amusement Safety Leadership",
+            "credential_3_description": "Decades of experience training safety professionals and developing industry-leading curricula.",
+            "credential_3_link": "",
+            "credential_4_title": "1,000+ Graduates Certified",
+            "credential_4_organization": "Professional Development Impact",
+            "credential_4_description": "Successfully certified over 1,000 safety professionals across global amusement operations.",
+            "credential_4_link": "",
+            "credential_5_title": "",
+            "credential_5_organization": "",
+            "credential_5_description": "",
+            "credential_5_link": "",
+            "credential_6_title": "",
+            "credential_6_organization": "",
+            "credential_6_description": "",
+            "credential_6_link": ""
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "credential_grid_HzXgfy"
+        "aai_credential_grid_qntr3F"
       ],
       "name": "Homepage Call to Action",
       "settings": {
-        "section_title": "",
-        "section_subtitle": "",
+        "section_title": "Advance Your Safety Career",
+        "section_subtitle": "Join thousands of professionals who trust AAI for industry-leading safety education",
         "layout_style": "text-center",
         "background_style": "section-dark",
         "show_main_content": true,
-        "content_title": "",
-        "content_body": "",
-        "main_button_text": "",
-        "main_button_url": "",
+        "content_title": "Ready to Get Started?",
+        "content_body": "<p>Explore our comprehensive catalog of IAAPA-certified courses designed specifically for amusement industry professionals. Start your professional development journey today.</p>",
+        "main_button_text": "Browse All Courses",
+        "main_button_url": "shopify://collections/courses",
         "main_button_style": "primary",
-        "main_button_size": "small"
+        "main_button_size": "large"
       }
     },
     "aai_universal_content_DiPa6P": {
@@ -85,7 +113,26 @@
       "blocks": {
         "button_group_HQ9y7U": {
           "type": "button_group",
-          "settings": {}
+          "settings": {
+            "group_title": "",
+            "group_description": "",
+            "layout": "horizontal",
+            "alignment": "center",
+            "primary_button_text": "Browse All Courses",
+            "primary_button_url": "shopify://collections/courses",
+            "primary_button_size": "large",
+            "secondary_button_text": "Corporate Training Solutions",
+            "secondary_button_url": "shopify://pages/corporate-training",
+            "secondary_button_size": "large",
+            "tertiary_button_text": "",
+            "tertiary_button_url": "",
+            "tertiary_button_size": "medium",
+            "custom_button_text": "",
+            "custom_button_url": "",
+            "custom_button_size": "medium",
+            "custom_button_style": ""
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -100,10 +147,10 @@
         "show_main_content": true,
         "content_title": "",
         "content_body": "<p><strong>Whether you're looking to enhance your skills, certify your team, or ensure compliance, AAI has the resources you need.  </strong></p><p>Explore our comprehensive course catalog or get in touch with our experts to discuss your specific training requirements.</p>",
-        "main_button_text": "",
-        "main_button_url": "",
+        "main_button_text": "Browse All Courses",
+        "main_button_url": "shopify://collections/courses",
         "main_button_style": "primary",
-        "main_button_size": "small"
+        "main_button_size": "large"
       }
     },
     "user_dashboard_K9qwwg": {
