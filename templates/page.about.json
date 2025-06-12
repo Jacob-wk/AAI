@@ -32,24 +32,15 @@
       "blocks": {
         "feature1": {
           "type": "text_block",
-          "settings": {
-            "block_title": "Industry Expertise",
-            "block_content": "<p>Learn from professionals with decades of experience in safety management and regulatory compliance.</p>"
-          }
+          "settings": {}
         },
         "feature2": {
           "type": "text_block",
-          "settings": {
-            "block_title": "Comprehensive Training",
-            "block_content": "<p>Access a complete library of courses covering all aspects of amusement industry safety and operations.</p>"
-          }
+          "settings": {}
         },
         "feature3": {
           "type": "text_block",
-          "settings": {
-            "block_title": "🌟 Industry Leadership",
-            "block_content": "<p>We collaborate with industry leaders to develop cutting-edge safety protocols and best practices that shape the future of amusement operations.</p>"
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -61,12 +52,10 @@
         "section_title": "",
         "section_subtitle": "",
         "layout_style": "text-only",
-        "blocks_per_row": "3",
         "background_style": "",
         "show_main_content": true,
         "content_title": "",
         "content_body": "",
-        "show_image": false,
         "main_button_text": "",
         "main_button_url": "",
         "main_button_style": "primary",
@@ -79,13 +68,10 @@
         "section_title": "Our Story:",
         "section_subtitle": "About AAI – Amusement Adventure Institute",
         "layout_style": "text-left-image-right",
-        "blocks_per_row": "2",
         "background_style": "section-alt-1",
         "show_main_content": true,
         "content_title": "Who We Are:",
         "content_body": "<p>Established in 2025, the Amusement Adventure Institute (AAI) is a professional education and safety standards platform created to support the trampoline park and family entertainment center industries. AAI develops expert-led training courses, certification programs, and operational resources tailored to the unique needs of amusement operators, park staff, and equipment manufacturers.</p><p>Built by industry veterans, AAI combines practical experience with evolving global safety benchmarks to elevate professionalism, reduce risk, and empower businesses to thrive in an increasingly competitive and regulated environment.</p>",
-        "show_image": true,
-        "content_image": "shopify://shop_images/Staff_Training2.jpg",
         "main_button_text": "",
         "main_button_url": "",
         "main_button_style": "primary",
@@ -97,24 +83,15 @@
       "blocks": {
         "milestone_1": {
           "type": "text_block",
-          "settings": {
-            "block_title": "2025 - Foundation",
-            "block_content": "<p>AAI was established by industry veterans with over 50 years of combined experience in amusement park operations, safety management, and education.</p>"
-          }
+          "settings": {}
         },
         "feature4": {
           "type": "text_block",
-          "settings": {
-            "block_title": "Today - Industry Recognition",
-            "block_content": "<p>Our programs are recognized by IAAPA, comply with ASTM F24 standards, and are trusted by leading amusement operators worldwide.</p>"
-          }
+          "settings": {}
         },
         "founder_quote": {
           "type": "text_block",
-          "settings": {
-            "block_title": "Hear From Our Founders",
-            "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>"
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -126,12 +103,10 @@
         "section_title": "Our Timeline",
         "section_subtitle": "Our history, at a glance:",
         "layout_style": "timeline",
-        "blocks_per_row": "1",
         "background_style": "section-alt-2",
         "show_main_content": true,
         "content_title": "",
         "content_body": "",
-        "show_image": false,
         "main_button_text": "",
         "main_button_url": "",
         "main_button_style": "primary",
@@ -144,12 +119,10 @@
         "section_title": "Ready to Get Started?",
         "section_subtitle": "Join hundreds of safety professionals advancing their careers with AAI",
         "layout_style": "text-center",
-        "blocks_per_row": "1",
         "background_style": "",
         "show_main_content": true,
         "content_title": "",
         "content_body": "<p>Whether you're looking to advance your career, meet regulatory requirements, or enhance your organization's safety culture, AAI has the training programs you need.</p>",
-        "show_image": false,
         "main_button_text": "Browse All Courses",
         "main_button_url": "/collections/courses",
         "main_button_style": "primary",
