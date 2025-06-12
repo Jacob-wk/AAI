@@ -13,6 +13,7 @@
   display: grid;
   gap: 2rem;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .product-grid--1-col-desktop {
