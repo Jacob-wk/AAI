@@ -54,7 +54,7 @@
           data-product-id="{{ product.id }}"
           data-section-id="{{ section.id }}"
         >
-          <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" 
+          <form action="/cart/add" method="post" enctype="multipart/form-data" 
                 class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}"
                 on:submit="/handleSubmit">
             
@@ -139,7 +139,7 @@
       data-product-id="{{ product.id }}"
       data-section-id="{{ section.id }}"
     >
-      <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" 
+      <form action="/cart/add" method="post" enctype="multipart/form-data" 
             class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}"
             on:submit="/handleSubmit">
         
