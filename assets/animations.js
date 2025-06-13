@@ -44,38 +44,23 @@ class AAIAnimations {
   initializePageFade() {
     const body = document.body;
     if (!body) return;
-
-    console.log('AAI: Initializing page fade animation...');
-    console.log('AAI: Body classes:', body.className);
-    
     // page-fade class should already be applied from HTML
     if (!body.classList.contains('page-fade')) {
-      console.log('AAI: Warning - page-fade class not found, adding it');
       body.classList.add('page-fade');
     }
-    
     // Trigger fade in when DOM is ready
     const triggerFade = () => {
-      console.log('AAI: Triggering fade animation...');
-      
       requestAnimationFrame(() => {
         body.classList.add('page-loaded');
-        console.log('AAI: Added page-loaded class');
-        console.log('AAI: Final body classes:', body.className);
-        
         // After page fade completes, ensure scroll animations work
         setTimeout(() => {
-          console.log('AAI: Page fade complete, triggering scroll animations...');
           this.animateElementsInViewport();
         }, 50);
       });
     };
-
     if (document.readyState === 'loading') {
-      console.log('AAI: DOM still loading, waiting for DOMContentLoaded...');
       document.addEventListener('DOMContentLoaded', triggerFade, { once: true });
     } else {
-      console.log('AAI: DOM already loaded, triggering fade with delay...');
       setTimeout(triggerFade, 25);
     }
   }
@@ -167,39 +152,28 @@ class AAIAnimations {
   }
 
   setupScrollAnimations() {
-    console.log('AAI: Setting up scroll animations...');
-    
     // Create intersection observer for scroll-triggered animations
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
     };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const element = entry.target;
-          console.log('AAI: Element entering viewport:', element);
-          
           // Add visible class to trigger animations
           element.classList.add('aai-animate-visible');
-          
           // Handle staggered animations for child elements
           this.handleStaggeredAnimations(element);
-          
           // Stop observing once animated
           observer.unobserve(element);
         }
       });
     }, observerOptions);
-
     // Observe all elements with animation classes - now includes auto-applied animations
     const animatedElements = document.querySelectorAll(
       '.fade-in, .slide-up, .slide-in-left, .slide-in-right, [class*="anim-delay"], section, .page-section, [class*="section-"], [class*="block"], .content-block, .feature-block, .text-block, .card, .course-card, .instructor-card, [class*="item-"], .product-item'
     );
-    
-    console.log('AAI: Found', animatedElements.length, 'elements to animate');
-    
     animatedElements.forEach(el => {
       observer.observe(el);
     });
@@ -297,11 +271,9 @@ class AAIAnimations {
     const animatedElements = document.querySelectorAll(
       '.fade-in, .slide-up, .slide-in-left, .slide-in-right, [class*="anim-delay"], section, .page-section, [class*="section-"], [class*="block"], .content-block, .feature-block, .text-block, .card, .course-card, .instructor-card, [class*="item-"], .product-item'
     );
-    
     animatedElements.forEach(el => {
       const rect = el.getBoundingClientRect();
       const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
-      
       if (isInViewport) {
         setTimeout(() => {
           el.classList.add('aai-animate-visible');
@@ -309,37 +281,6 @@ class AAIAnimations {
         }, 10);
       }
     });
-  }
-
-  /**
-   * Public method to trigger specific animations
-   * @param {HTMLElement} element - The DOM element to animate
-   * @param {string} animationType - The animation type class to apply
-   */
-  static triggerAnimation(element, animationType = 'fade-in') {
-    if (!element) return;
-    
-    element.classList.add(animationType);
-    setTimeout(() => {
-      element.classList.add('aai-animate-visible');
-    }, 10);
-  }
-
-  /**
-   * Public method to reset animations
-   * @param {HTMLElement} element - The DOM element to reset
-   */
-  static resetAnimation(element) {
-    if (!element) return;
-    
-    element.classList.remove('aai-animate-visible');
-    element.style.animation = 'none';
-    
-    // Force reflow
-    element.offsetHeight;
-    
-    // Re-enable animation
-    element.style.animation = '';
   }
 }
 
