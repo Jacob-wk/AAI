@@ -55,8 +55,7 @@
           data-section-id="{{ section.id }}"
         >
           <form action="/cart/add" method="post" enctype="multipart/form-data" 
-                class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}"
-                on:submit="/handleSubmit">
+                class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}">
             
             <input type="hidden" name="id" value="{{ current_variant.id }}" ref="variantId">
             
@@ -143,8 +142,7 @@
       data-section-id="{{ section.id }}"
     >
       <form action="/cart/add" method="post" enctype="multipart/form-data" 
-            class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}"
-            on:submit="/handleSubmit">
+            class="product-form" id="{{ product_form_id }}" data-product-id="{{ product.id }}">
         
         <input type="hidden" name="id" value="{{ current_variant.id }}" ref="variantId">
       

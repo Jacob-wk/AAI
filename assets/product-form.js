@@ -124,6 +124,12 @@ class ProductFormComponent extends Component {
     const { signal } = this.#abortController;
     const target = this.closest('.shopify-section, dialog');
     target?.addEventListener(ThemeEvents.variantUpdate, this.#onVariantUpdate, { signal });
+
+    // Bind form submit event
+    const form = this.querySelector('form');
+    if (form) {
+      form.addEventListener('submit', this.handleSubmit.bind(this), { signal });
+    }
   }
 
   disconnectedCallback() {
