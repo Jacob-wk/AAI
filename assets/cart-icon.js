@@ -41,7 +41,18 @@ class CartIcon extends Component {
    * @param {CartUpdateEvent} event - The cart update event.
    */
   onCartUpdate = async (event) => {
-    const itemCount = event.detail.data?.itemCount ?? 0;
+    // Try to get item count from various possible locations in the event
+    let itemCount = event.detail.data?.itemCount ?? 0;
+    
+    // Fallback: check if there's cart data in a different structure
+    if (itemCount === 0 && event.detail) {
+      // @ts-ignore - Handle legacy event structure
+      const cart = event.detail.cart;
+      if (cart && typeof cart.item_count === 'number') {
+        itemCount = cart.item_count;
+      }
+    }
+    
     const comingFromProductForm = event.detail.data?.source === 'product-form-component';
 
     this.renderCartBubble(itemCount, comingFromProductForm);

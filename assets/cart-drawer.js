@@ -1,7 +1,6 @@
 import { Component } from './component.js';
 import { ThemeEvents } from './events.js';
 import { fetchConfig, onAnimationEnd } from './utilities.js';
-import { sectionRenderer } from './section-renderer.js';
 
 /**
  * @typedef {Object} ShopifyCartItem
@@ -316,9 +315,13 @@ class CartDrawerComponent extends Component {
         // Dispatch cart update event
         document.dispatchEvent(new CustomEvent(ThemeEvents.cartUpdate, {
           detail: { 
-            data: data,
+            data: {
+              itemCount: data.item_count,
+              source: 'cart-drawer'
+            },
             source: 'cart-drawer',
-            success: true
+            success: true,
+            cart: data
           }
         }));
       } else {
@@ -389,9 +392,13 @@ class CartDrawerComponent extends Component {
         // Dispatch cart update event
         document.dispatchEvent(new CustomEvent(ThemeEvents.cartUpdate, {
           detail: { 
-            data: data,
+            data: {
+              itemCount: data.item_count,
+              source: 'cart-drawer'
+            },
             source: 'cart-drawer',
-            success: true
+            success: true,
+            cart: data
           }
         }));
       } else {
