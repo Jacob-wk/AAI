@@ -30,11 +30,6 @@
         "type": "header",
         "children": [
           {
-            "title": "Webinars",
-            "url": "/pages/webinars",
-            "type": "page"
-          },
-          {
             "title": "Safety Library",
             "url": "/pages/safety-library",
             "type": "page"

@@ -51,17 +51,16 @@ AAI Theme/
 5. **Corporate Training** (`page.corporate-training.liquid`) - Enterprise solutions
 6. **Industry Standards** (`page.industry-standards.liquid`) - Compliance documentation
 7. **Safety Library** (`page.safety-library.liquid`) - Searchable resource center
-8. **Webinars** (`page.webinars.liquid`) - Live and recorded sessions
 
 ### Support & Business
-9. **Help Center** (`page.help-center.liquid`) - FAQs and support
-10. **Contact** (`page.contact.liquid`) - Professional inquiry forms
-11. **Demo** (`page.demo.liquid`) - Interactive platform demo
-12. **Partnerships** (`page.partnerships.liquid`) - Industry collaborations
+8. **Help Center** (`page.help-center.liquid`) - FAQs and support
+9. **Contact** (`page.contact.liquid`) - Professional inquiry forms
+10. **Demo** (`page.demo.liquid`) - Interactive platform demo
+11. **Partnerships** (`page.partnerships.liquid`) - Industry collaborations
 
 ### Legal Compliance
-13. **Privacy Policy** (`page.privacy-policy.liquid`) - GDPR/CCPA compliant
-14. **Terms of Service** (`page.terms-of-service.liquid`) - Complete legal framework
+12. **Privacy Policy** (`page.privacy-policy.liquid`) - GDPR/CCPA compliant
+13. **Terms of Service** (`page.terms-of-service.liquid`) - Complete legal framework
 
 ## 🔗 Navigation Structure
 
@@ -74,7 +73,6 @@ Courses
 └── Corporate Training
 
 Training Resources
-├── Webinars
 ├── Safety Library
 └── Industry Standards
 
