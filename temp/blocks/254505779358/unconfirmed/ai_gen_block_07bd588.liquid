@@ -1,6 +1,224 @@
+{% doc %}
+  @prompt
+    scrolling banner marquee reading: Learn More With AAI
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-scrolling-banner-{{ ai_gen_id }} {
+    width: 100%;
+    overflow: hidden;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding }}px 0;
+    position: relative;
+  }
+
+  .ai-scrolling-banner-track-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    animation: ai-scroll-{{ ai_gen_id }} {{ block.settings.speed }}s linear infinite;
+    white-space: nowrap;
+  }
+
+  .ai-scrolling-banner-item-{{ ai_gen_id }} {
+    flex-shrink: 0;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    margin-right: {{ block.settings.spacing }}px;
+    text-transform: {{ block.settings.text_transform }};
+  }
+
+  @keyframes ai-scroll-{{ ai_gen_id }} {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .ai-scrolling-banner-{{ ai_gen_id }}:hover .ai-scrolling-banner-track-{{ ai_gen_id }} {
+    animation-play-state: {{ block.settings.pause_on_hover | default: 'running' }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-scrolling-banner-item-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size | times: 0.8 }}px;
+      margin-right: {{ block.settings.spacing | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-scrolling-banner-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-scrolling-banner-track-{{ ai_gen_id }}">
+    {% assign repeat_count = block.settings.repeat_count %}
+    {% for i in (1..repeat_count) %}
+      <div class="ai-scrolling-banner-item-{{ ai_gen_id }}">
+        {{ block.settings.banner_text }}
+      </div>
+    {% endfor %}
+    {% for i in (1..repeat_count) %}
+      <div class="ai-scrolling-banner-item-{{ ai_gen_id }}">
+        {{ block.settings.banner_text }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Scrolling Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "banner_text",
+      "label": "Banner text",
+      "default": "Learn More With AAI"
+    },
+    {
+      "type": "range",
+      "id": "repeat_count",
+      "min": 3,
+      "max": 20,
+      "step": 1,
+      "label": "Number of repetitions",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 5,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Animation speed",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "options": [
+        {
+          "value": "paused",
+          "label": "Yes"
+        },
+        {
+          "value": "running",
+          "label": "No"
+        }
+      ],
+      "default": "paused"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#000f9f"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Font size",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "select",
+      "id": "text_transform",
+      "label": "Text case",
+      "options": [
+        {
+          "value": "none",
+          "label": "Default"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "lowercase",
+          "label": "Lowercase"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "min": 20,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Spacing between items",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Banner"
+    }
+  ]
+}
 {% endschema %}
