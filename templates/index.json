@@ -126,22 +126,12 @@
         "main_button_style": "primary",
         "main_button_size": "small"
       }
-    },
-    "user_dashboard_K9qwwg": {
-      "type": "user-dashboard",
-      "name": "User Dashboard",
-      "settings": {
-        "completed_courses": 3,
-        "ceu_credits": 12,
-        "certificates": 2
-      }
     }
   },
   "order": [
     "main",
     "aai_universal_content_f4efTN",
     "aai_universal_content_QGrVx9",
-    "aai_universal_content_DiPa6P",
-    "user_dashboard_K9qwwg"
+    "aai_universal_content_DiPa6P"
   ]
 }
