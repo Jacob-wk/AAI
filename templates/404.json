@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -8,68 +17,18 @@
         "hero_style": "hero-centered",
         "layout_style": "text-center",
         "show_image": false,
-        "show_stats": false,
         "show_features": false,
+        "show_stats": false,
+        "show_credentials": false,
         "primary_button_text": "Return Home",
         "primary_button_url": "/",
         "secondary_button_text": "Browse Courses",
         "secondary_button_url": "/collections/courses",
-        "background_style": "hero-dark"
+        "button_size": "large"
       }
-    },
-    "helpful_links": {
-      "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Popular Pages",
-        "section_subtitle": "Find what you're looking for with these helpful links",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "3",
-        "background_style": "section-alt-1",
-        "custom_css_class": "helpful-links"
-      },
-      "blocks": {
-        "courses": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Training Courses",
-            "block_content": "<p>Explore our comprehensive safety education catalog with professional certification programs.</p><p><a href='/collections/courses' class='btn btn-primary'>View Courses</a></p>"
-          }
-        },
-        "instructors": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Expert Instructors",
-            "block_content": "<p>Meet our faculty of industry professionals who bring real-world experience to your education.</p><p><a href='/pages/instructors' class='btn btn-primary'>Meet Faculty</a></p>"
-          }
-        },
-        "contact": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Get Support",
-            "block_content": "<p>Need help finding something specific? Our team is here to assist with your learning journey.</p><p><a href='/pages/contact' class='btn btn-primary'>Contact Us</a></p>"
-          }
-        }
-      },
-      "block_order": ["courses", "instructors", "contact"]
-    },
-    "search_section": {
-      "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Search Our Site",
-        "layout_style": "text-center",
-        "background_style": "",
-        "custom_css_class": "search-section"
-      },
-      "blocks": {
-        "search_form": {
-          "type": "text_block",
-          "settings": {
-            "block_content": "<form action='/search' method='get' class='search-form'><input type='search' name='q' placeholder='Search courses, instructors, or resources...' class='search-input'><button type='submit' class='btn btn-primary'>Search</button></form>"
-          }
-        }
-      },
-      "block_order": ["search_form"]
     }
   },
-  "order": ["hero", "helpful_links", "search_section"]
+  "order": [
+    "hero"
+  ]
 }
