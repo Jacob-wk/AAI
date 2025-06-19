@@ -4,8 +4,9 @@
   Follows AAI naming conventions and Shopify 2.0 best practices
 {% endcomment %}
 
-<section class="aai-safety-library page-width">
-  {% if section.settings.section_title != blank %}
+<section class="aai-safety-library">
+  {% comment %} Only show section header if enabled and not redundant with hero {% endcomment %}
+  {% if section.settings.section_title != blank and section.settings.show_section_header %}
     <div class="section-header text-center">
       <h2 class="section-heading">{{ section.settings.section_title }}</h2>
       {% if section.settings.section_description != blank %}
@@ -290,6 +291,13 @@
       "id": "section_description",
       "label": "Section Description",
       "default": "<p>Your comprehensive resource center for safety documentation, best practices, and technical guidance.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_header",
+      "label": "Show Section Header",
+      "default": false,
+      "info": "Enable this if you don't have a hero section above, or want to show the section title anyway"
     },
     {
       "type": "header",
