@@ -28,7 +28,7 @@
 .collection-courses-hero .stat-number {
   font-size: 2rem;
   font-weight: bold;
-  color: #007bff; /* AAI Primary */
+  color: var(--color-secondary, #ff6b35); /* AAI Orange */
 }
 .collection-courses-hero .stat-label {
   font-size: 0.9rem;
@@ -102,9 +102,9 @@
   cursor: pointer;
 }
 .collection-courses-all .view-controls .view-btn.view-btn--active {
-  background-color: #007bff;
+  background-color: var(--color-secondary, #ff6b35);
   color: white;
-  border-color: #007bff;
+  border-color: var(--color-secondary, #ff6b35);
 }
 .collection-courses-all .courses-grid {
   display: grid;

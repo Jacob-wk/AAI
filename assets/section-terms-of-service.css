@@ -200,7 +200,7 @@
 
 .aai-terms-page-content .quick-nav li a {
   text-decoration: none;
-  color: var(--aai-primary-color, #007bff); /* Or use a specific link color */
+  color: var(--color-primary, #1e3a5f); /* AAI Navy */
 }
 
 .aai-terms-page-content .quick-nav li a:hover {
