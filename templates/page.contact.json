@@ -184,7 +184,7 @@
           "type": "text_block",
           "settings": {
             "block_title": "Platform Demo",
-            "block_content": "<p>Experience our interactive learning platform with a guided demo showcasing our training modules and assessment tools.</p><p><a href=\"/pages/demo\">Take Demo</a></p>"
+            "block_content": "<p>Experience our interactive learning platform through our Safety Library showcasing our training resources and assessment tools.</p><p><a href=\"/pages/safety-library\">Browse Safety Library</a></p>"
           }
         },
         "schedule": {
