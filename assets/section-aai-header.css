@@ -17,19 +17,20 @@
   color: var(--clean-white);
   padding: 8px 0;
   font-size: 0.875rem;
+  /* Ensure full viewport width */
+  width: 100%;
 }
 
 .aai-header-top .page-width {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* Override collection page constraints with higher specificity */
-  max-width: 1200px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
-  width: auto !important;
+  /* Use nearly full viewport width with minimal padding */
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
 }
 
 .aai-credentials {
