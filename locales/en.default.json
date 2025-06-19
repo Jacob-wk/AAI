@@ -43,7 +43,8 @@
     "slideshow_pause": "Pause slideshow",
     "slideshow_play": "Play slideshow",
     "slideshow_previous": "Previous slide",
-    "unit_price": "Unit price"
+    "unit_price": "Unit price",
+    "error": "Error"
   },
   "actions": {
     "add": "Add",
@@ -303,6 +304,11 @@
   },
   "fields": {
     "separator": "to"
+  },
+  "general": {
+    "password_page": {
+      "login_form_error": "Incorrect password. Please try again."
+    }
   },
   "gift_cards": {
     "issued": {
