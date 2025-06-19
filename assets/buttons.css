@@ -279,13 +279,116 @@
 
 /* Button groups for standard Shopify classes */
 .button-group {
-  display: block;
+  display: flex;
   align-items: center;
-  gap: var(--spacing-sm, 8px);
+  gap: var(--spacing-sm, 16px);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
+.button-group .btn,
 .button-group .button {
-  flex: 1;
+  flex: 0 1 auto;
+  min-width: 120px;
+}
+
+/* Button group layout options */
+.button-group[data-layout="horizontal"] {
+  flex-direction: row;
+}
+
+.button-group[data-layout="vertical"] {
+  flex-direction: column;
+}
+
+.button-group[data-layout="stacked"] {
+  flex-direction: column;
+  gap: var(--spacing-xs, 8px);
+}
+
+/* Button group alignment options */
+.button-group[data-alignment="left"] {
+  justify-content: flex-start;
+}
+
+.button-group[data-alignment="center"] {
+  justify-content: center;
+}
+
+.button-group[data-alignment="right"] {
+  justify-content: flex-end;
+}
+
+/* Ensure all button types work in button groups */
+.button-group .btn-primary,
+.button-group .btn-secondary,
+.button-group .btn-outline {
+  margin: 0;
+}
+
+/* Button group title and description */
+.button-group-title {
+  margin-bottom: var(--spacing-sm, 16px);
+  text-align: center;
+  font-weight: var(--font-weight-semibold, 600);
+}
+
+.button-group-description {
+  margin-top: var(--spacing-sm, 16px);
+  text-align: center;
+  opacity: 0.8;
+  font-size: 0.9em;
+}
+
+/* Responsive button group */
+@media screen and (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+    gap: var(--spacing-xs, 12px);
+  }
+  
+  .button-group .btn,
+  .button-group .button {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* Button Group Specific Overrides */
+.button-group .btn-primary {
+  background: var(--color-secondary, #ff6b35) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: var(--color-secondary, #ff6b35) !important;
+}
+
+.button-group .btn-primary:hover {
+  background: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
+}
+
+.button-group .btn-secondary {
+  background: transparent !important;
+  color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--clean-white, #ffffff) !important;
+}
+
+.button-group .btn-secondary:hover {
+  background: var(--clean-white, #ffffff) !important;
+  color: var(--authority-navy, #1e3a5f) !important;
+  border-color: var(--clean-white, #ffffff) !important;
+}
+
+.button-group .btn-outline {
+  background: var(--color-primary, #1e3a5f) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--color-primary, #1e3a5f) !important;
+}
+
+.button-group .btn-outline:hover {
+  background: var(--charcoal-grey, #2c3e50) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: var(--charcoal-grey, #2c3e50) !important;
 }
 
 /* ========================================
@@ -531,7 +634,7 @@ html body .aai-btn.aai-btn-blue:hover {
 body .btn-primary.aai-btn,
 body .btn.aai-btn-primary,
 html body .btn-primary.aai-btn,
-html body .btn.aai-btn-primary {
+html body .btn.aai-btn_primary {
   background: var(--color-secondary, #ff6b35) !important;
   color: var(--clean-white, #ffffff) !important;
   border-color: var(--color-secondary, #ff6b35) !important;
