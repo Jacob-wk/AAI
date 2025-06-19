@@ -283,23 +283,9 @@ async function updateAAICartCounts(event) {
   console.log('AAI cart counts updated:', itemCount);
 }
 
-// Debug: Listen for ALL events to see what's being dispatched
-document.addEventListener('cart:update', (e) => {
-  // @ts-ignore - Custom event has detail property
-  console.log('🔍 Direct cart:update event heard:', e.detail);
-});
-
-// Also listen for any custom events
-['DOMContentLoaded', 'load'].forEach(eventName => {
-  document.addEventListener(eventName, () => {
-    console.log(`🚀 ${eventName} fired - cart-icon.js is loaded`);
-  });
-});
-
-// Manual cart refresh function for debugging
+// Manual cart refresh function (can be called from console if needed)
 // @ts-ignore - Adding to window for debugging
 window.refreshCartCount = async () => {
-  console.log('Manual cart refresh triggered');
   const cartIcons = document.querySelectorAll('cart-icon');
   cartIcons.forEach(async (cartIcon) => {
     // @ts-ignore - CartIcon custom element has refreshCartCount method
@@ -308,4 +294,16 @@ window.refreshCartCount = async () => {
       await cartIcon.refreshCartCount();
     }
   });
+  
+  // Also refresh AAI cart counts
+  try {
+    const response = await fetch('/cart.js');
+    const cart = await response.json();
+    const aaiCartCounts = document.querySelectorAll('.aai-cart-count');
+    aaiCartCounts.forEach((countElement) => {
+      countElement.textContent = String(cart.item_count);
+    });
+  } catch (error) {
+    console.error('Error refreshing cart:', error);
+  }
 };

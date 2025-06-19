@@ -180,7 +180,6 @@ class ProductFormComponent extends Component {
         qty = quantityInput && 'value' in quantityInput ? String(quantityInput.value) : '1';
       }
       const numQty = Number(qty);
-      console.log('Quantity extracted:', numQty);
       return numQty;
     };
 
@@ -262,12 +261,6 @@ class ProductFormComponent extends Component {
               sections: response.sections,
             })
           );
-          
-          console.log('CartAddEvent dispatched with data:', {
-            source: 'product-form-component',
-            itemCount: getQuantityValue(),
-            productId: this.dataset.productId,
-          });
         }
       })
       .catch((error) => {
