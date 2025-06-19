@@ -6,6 +6,9 @@
   z-index: 1000;
   background: var(--clean-white);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* Ensure header maintains full width on all templates */
+  width: 100%;
+  max-width: none;
 }
 
 /* Credentials Top Bar */
@@ -20,6 +23,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* Override collection page constraints with higher specificity */
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  width: auto !important;
 }
 
 .aai-credentials {
