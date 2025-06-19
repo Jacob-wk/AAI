@@ -36,7 +36,7 @@
             "stat_label": "FEC Professionals Trained",
             "stat_description": "",
             "stat_background_color": "#f5f5f5",
-            "stat_text_color": "#0f1f33"
+            "stat_text_color": "#1e3a5f"
           }
         },
         "trust_stat_2": {
@@ -46,7 +46,7 @@
             "stat_label": "FECs & Adventure Parks",
             "stat_description": "",
             "stat_background_color": "#f5f5f5",
-            "stat_text_color": "#0f1f33"
+            "stat_text_color": "#1e3a5f"
           }
         },
         "trust_stat_3": {
@@ -56,7 +56,7 @@
             "stat_label": "Years Experience",
             "stat_description": "",
             "stat_background_color": "#f5f5f5",
-            "stat_text_color": "#0f1f33"
+            "stat_text_color": "#1e3a5f"
           }
         },
         "trust_stat_4": {
@@ -66,7 +66,7 @@
             "stat_label": "Safety Focused",
             "stat_description": "",
             "stat_background_color": "#f5f5f5",
-            "stat_text_color": "#0f1f33"
+            "stat_text_color": "#1e3a5f"
           }
         }
       },
