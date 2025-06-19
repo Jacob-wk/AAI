@@ -107,7 +107,7 @@
         "content_image": "shopify://shop_images/1377773.jpg",
         "main_button_text": "Learn About Our Impact",
         "main_button_url": "/pages/about",
-        "main_button_style": "secondary",
+        "main_button_style": "primary",
         "main_button_size": "medium"
       }
     },
