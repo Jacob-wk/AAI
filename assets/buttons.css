@@ -427,3 +427,92 @@ section .aai-btn.aai-btn-primary:hover,
     width: 100%;
   }
 }
+
+/* ========================================
+   FINAL OVERRIDE SECTION - MAXIMUM PRIORITY
+   Ensures AAI button system cannot be overridden
+   by any other CSS files loaded after this one
+   ======================================== */
+
+/* AAI Primary Button - Maximum specificity override */
+body .aai-btn.aai-btn-primary,
+body a.aai-btn.aai-btn-primary,
+body button.aai-btn.aai-btn-primary,
+body input.aai-btn.aai-btn-primary,
+html body .aai-btn.aai-btn-primary {
+  background: var(--color-secondary, #ff6b35) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--color-secondary, #ff6b35) !important;
+}
+
+body .aai-btn.aai-btn-primary:hover,
+body a.aai-btn.aai-btn-primary:hover,
+body button.aai-btn.aai-btn-primary:hover,
+body input.aai-btn.aai-btn-primary:hover,
+html body .aai-btn.aai-btn-primary:hover {
+  background: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
+}
+
+/* AAI Secondary Button - Maximum specificity override */
+body .aai-btn.aai-btn-secondary,
+body a.aai-btn.aai-btn-secondary,
+body button.aai-btn.aai-btn-secondary,
+body input.aai-btn.aai-btn-secondary,
+html body .aai-btn.aai-btn-secondary {
+  background: transparent !important;
+  color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--clean-white, #ffffff) !important;
+}
+
+body .aai-btn.aai-btn-secondary:hover,
+body a.aai-btn.aai-btn-secondary:hover,
+body button.aai-btn.aai-btn-secondary:hover,
+body input.aai-btn.aai-btn-secondary:hover,
+html body .aai-btn.aai-btn-secondary:hover {
+  background: var(--clean-white, #ffffff) !important;
+  color: var(--authority-navy, #1e3a5f) !important;
+  border-color: var(--clean-white, #ffffff) !important;
+}
+
+/* Override any legacy btn classes that might interfere */
+body .btn-primary.aai-btn,
+body .btn.aai-btn-primary,
+html body .btn-primary.aai-btn,
+html body .btn.aai-btn-primary {
+  background: var(--color-secondary, #ff6b35) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: var(--color-secondary, #ff6b35) !important;
+}
+
+body .btn-primary.aai-btn:hover,
+body .btn.aai-btn-primary:hover,
+html body .btn-primary.aai-btn:hover,
+html body .btn.aai-btn-primary:hover {
+  background: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
+}
+
+body .btn-secondary.aai-btn,
+body .btn.aai-btn-secondary,
+html body .btn-secondary.aai-btn,
+html body .btn.aai-btn-secondary {
+  background: transparent !important;
+  color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--clean-white, #ffffff) !important;
+}
+
+body .btn-secondary.aai-btn:hover,
+body .btn.aai-btn-secondary:hover,
+html body .btn-secondary.aai-btn:hover,
+html body .btn.aai-btn-secondary:hover {
+  background: var(--clean-white, #ffffff) !important;
+  color: var(--authority-navy, #1e3a5f) !important;
+  border-color: var(--clean-white, #ffffff) !important;
+}
+
+/* ========================================
+   END FINAL OVERRIDE SECTION
+   ======================================== */

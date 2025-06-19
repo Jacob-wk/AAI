@@ -18,6 +18,11 @@
   --color-foreground: var(--charcoal-grey);
   --color-background: var(--clean-white);
   
+  /* Button color mappings for compatibility */
+  --color-button: var(--safety-orange);
+  --color-button-text: var(--clean-white);
+  --color-button-hover: #e55a2e;
+  
   /* AAI Typography */
   --font-family-primary: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   --font-weight-light: 300;

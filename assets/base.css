@@ -371,34 +371,9 @@ table {
 }
 
 /* ========================================
-   CRITICAL BUTTON-SECONDARY HOVER FIX
-   ======================================== */
-
-/* Ensure all button-secondary variants never have white background on hover */
-.button-secondary:hover,
-.btn-secondary:hover,
-button.button-secondary:hover,
-button.btn-secondary:hover,
-a.button-secondary:hover,
-a.btn-secondary:hover,
-input.button-secondary:hover,
-input.btn-secondary:hover,
-[class*="button-secondary"]:hover,
-[class*="btn-secondary"]:hover {
-  background-color: #e55a2e !important;
-  background-image: none !important;
-  color: var(--clean-white, #ffffff) !important;
-  border-color: #e55a2e !important;
-}
-
-/* High specificity override for any context */
-* .button-secondary:hover,
-* .btn-secondary:hover {
-  background-color: #e55a2e !important;
-  color: var(--clean-white, #ffffff) !important;
-  border-color: #e55a2e !important;
-}
-
-/* ========================================
-   END CRITICAL BUTTON-SECONDARY HOVER FIX
+   NOTE: Button styles moved to buttons.css
+   
+   This section was removed to prevent conflicts with
+   the AAI button system in buttons.css.
+   All button styling is now centralized in buttons.css
    ======================================== */
