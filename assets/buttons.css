@@ -45,16 +45,16 @@
 }
 
 .aai-btn-secondary {
-  background: var(--color-secondary, #ff6b35) !important;
+  background: transparent !important;
   color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--clean-white, #ffffff) !important;
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-secondary, #ff6b35) !important;
 }
 
 .aai-btn-secondary:hover {
-  background: #e55a2e !important;
-  color: var(--clean-white, #ffffff) !important;
-  border-color: #e55a2e !important;
+  background: var(--clean-white, #ffffff) !important;
+  color: transparent !important;
+  border-color: var(--clean-white, #ffffff) !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -246,7 +246,7 @@
 
 /* Button groups for standard Shopify classes */
 .button-group {
-  display: inline-flex;
+  display: block;
   align-items: center;
   gap: var(--spacing-sm, 8px);
 }
@@ -314,9 +314,9 @@ input.button-secondary:hover {
 .aai-btn.aai-btn-secondary.aai-btn-medium,
 .aai-btn.aai-btn-secondary.aai-btn-large,
 .aai-btn.aai-btn-secondary.aai-btn-xl {
-  background: var(--color-secondary, #ff6b35) !important;
+  background: transparent !important;
   color: var(--clean-white, #ffffff) !important;
-  border-color: var(--color-secondary, #ff6b35) !important;
+  border: 2px solid var(--clean-white, #ffffff) !important;
 }
 
 /* Hover states for all AAI button secondary variants */
@@ -325,9 +325,9 @@ input.button-secondary:hover {
 .aai-btn.aai-btn-secondary.aai-btn-medium:hover,
 .aai-btn.aai-btn-secondary.aai-btn-large:hover,
 .aai-btn.aai-btn-secondary.aai-btn-xl:hover {
-  background: #e55a2e !important;
-  color: var(--clean-white, #ffffff) !important;
-  border-color: #e55a2e !important;
+  background: var(--clean-white, #ffffff) !important;
+  color: transparent !important;
+  border-color: var(--clean-white, #ffffff) !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -338,9 +338,9 @@ section .aai-btn.aai-btn-secondary:hover,
 .aai-hero .aai-btn.aai-btn-secondary:hover,
 .color-scheme-2 .aai-btn.aai-btn-secondary:hover,
 [class*="color-scheme"] .aai-btn.aai-btn-secondary:hover {
-  background: #e55a2e !important;
-  color: var(--clean-white, #ffffff) !important;
-  border-color: #e55a2e !important;
+  background: var(--clean-white, #ffffff) !important;
+  color: transparent !important;
+  border-color: var(--clean-white, #ffffff) !important;
 }
 
 /* ========================================

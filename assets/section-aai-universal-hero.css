@@ -209,14 +209,14 @@
   background-color: darken(var(--button-primary-background, #007bff), 10%);
 }
 .aai-btn-secondary {
-  background-color: var(--color-secondary, #ff6b35);
+  background-color: transparent;
   color: var(--clean-white, #ffffff);
-  border: 1px solid var(--color-secondary, #ff6b35);
+  border: 2px solid var(--clean-white, #ffffff);
 }
 .aai-btn-secondary:hover {
-  background-color: #e55a2e !important;
-  color: var(--clean-white, #ffffff) !important;
-  border-color: #e55a2e !important;
+  background-color: var(--clean-white, #ffffff) !important;
+  color: transparent !important;
+  border-color: var(--clean-white, #ffffff) !important;
 }
 
 /* Button Sizes */
@@ -344,9 +344,9 @@
   border: 2px solid var(--clean-white);
 }
 .aai-hero.color-scheme-2 .aai-btn-secondary:hover {
-  background-color: #e55a2e !important;
-  color: var(--clean-white, #ffffff) !important;
-  border-color: #e55a2e !important;
+  background-color: var(--clean-white, #ffffff) !important;
+  color: transparent !important;
+  border-color: var(--clean-white, #ffffff) !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }

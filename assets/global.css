@@ -64,23 +64,23 @@ a:hover {
 }
 
 .btn-secondary, .aai-btn--secondary {
-  background-color: var(--color-secondary, #ff6b35);
+  background-color: transparent;
   color: var(--clean-white, #ffffff);
-  border: 2px solid var(--color-secondary, #ff6b35);
+  border: 2px solid var(--clean-white, #ffffff);
 }
 
 .btn-secondary:hover, .aai-btn--secondary:hover {
-  background-color: #e55a2e !important;
-  color: var(--clean-white, #ffffff) !important;
-  border-color: #e55a2e !important;
+  background-color: var(--clean-white, #ffffff) !important;
+  color: transparent !important;
+  border-color: var(--clean-white, #ffffff) !important;
   transform: translateY(-1px);
 }
 
 /* Additional button-secondary overrides to prevent white background */
 .button-secondary:hover {
-  background-color: #e55a2e !important;
-  color: var(--clean-white, #ffffff) !important;
-  border-color: #e55a2e !important;
+  background-color: var(--clean-white, #ffffff) !important;
+  color: transparent !important;
+  border-color: var(--clean-white, #ffffff) !important;
 }
 
 /* Form elements */
