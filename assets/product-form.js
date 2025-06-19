@@ -171,6 +171,19 @@ class ProductFormComponent extends Component {
 
     const fetchCfg = fetchConfig('javascript', { body: formData });
 
+    // Helper function to get the correct quantity value
+    const getQuantityValue = () => {
+      let qty = formData.get('quantity');
+      if (!qty || qty === '0' || qty === '') {
+        // Fallback to looking for quantity input in the form
+        const quantityInput = form.querySelector('input[name="quantity"], input[name="qty"], input[type="number"]');
+        qty = quantityInput && 'value' in quantityInput ? String(quantityInput.value) : '1';
+      }
+      const numQty = Number(qty);
+      console.log('Quantity extracted:', numQty);
+      return numQty;
+    };
+
     fetch('/cart/add.js', {
       ...fetchCfg,
       headers: {
@@ -212,7 +225,7 @@ class ProductFormComponent extends Component {
             new CartAddEvent({}, this.id, {
               didError: true,
               source: 'product-form-component',
-              itemCount: Number(formData.get('quantity')),
+              itemCount: getQuantityValue(),
               productId: this.dataset.productId,
             })
           );
@@ -244,7 +257,7 @@ class ProductFormComponent extends Component {
           document.dispatchEvent(
             new CartAddEvent({}, id.toString(), {
               source: 'product-form-component',
-              itemCount: Number(formData.get('quantity')),
+              itemCount: getQuantityValue(),
               productId: this.dataset.productId,
               sections: response.sections,
             })
@@ -252,7 +265,7 @@ class ProductFormComponent extends Component {
           
           console.log('CartAddEvent dispatched with data:', {
             source: 'product-form-component',
-            itemCount: Number(formData.get('quantity')),
+            itemCount: getQuantityValue(),
             productId: this.dataset.productId,
           });
         }
