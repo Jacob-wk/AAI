@@ -72,7 +72,12 @@
         <!-- Account & Actions -->
         <div class="aai-nav-actions">
           {% if section.settings.show_search %}
-            <button class="aai-search-toggle" aria-label="Search">
+            <button 
+              class="aai-search-toggle" 
+              aria-label="Search"
+              on:click="#search-modal/showDialog"
+              type="button"
+            >
               {% render 'icon-search' %}
             </button>
           {% endif %}
@@ -131,10 +136,16 @@
       {% endif %}
     </div>
   </div>
+  
+  <!-- Search Modal -->
+  {% if section.settings.show_search %}
+    {% render 'search-modal' %}
+  {% endif %}
 </header>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
     const mobileMenuToggle = document.querySelector('.aai-mobile-menu-toggle');
     const mobileMenu = document.querySelector('.aai-mobile-menu');
 
