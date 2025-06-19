@@ -7,46 +7,6 @@ import { ThemeEvents, CartUpdateEvent } from './events.js';
  *
  * @typedef {object} Refs
  * @property {HTMLElement} cartBubble // Manual cart refresh function for debugging
-window.refreshCartCount = async () => {
-  console.log('Manual cart refresh triggered');
-  
-  // Refresh standard cart-icon components
-  const cartIcons = document.querySelectorAll('cart-icon');
-  cartIcons.forEach(async (cartIcon) => {
-    // @ts-ignore - CartIcon custom element has refreshCartCount method
-    if (cartIcon.refreshCartCount && typeof cartIcon.refreshCartCount === 'function') {
-      // @ts-ignore - CartIcon custom element has refreshCartCount method
-      await cartIcon.refreshCartCount();
-    }
-  });
-  
-  // Refresh AAI cart counts
-  try {
-    const response = await fetch('/cart.js', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
-    const cart = await response.json();
-    const itemCount = cart.item_count;
-    
-    // Update all AAI cart count elements
-    const aaiCartCounts = document.querySelectorAll('.aai-cart-count');
-    aaiCartCounts.forEach((countElement) => {
-      countElement.textContent = String(itemCount);
-    });
-    
-    console.log('Manual refresh complete, cart count:', itemCount);
-  } catch (error) {
-    console.error('Error during manual cart refresh:', error);
-  }
-};ubble element.
  * @property {HTMLElement} cartBubbleText - The cart bubble text element.
  *
  * @extends {Component<Refs>}
@@ -243,6 +203,7 @@ if (!customElements.get('cart-icon')) {
 // Global cart update handler to ensure all cart icons are updated
 // This catches events even if individual cart-icon components aren't ready yet
 document.addEventListener(ThemeEvents.cartUpdate, async (event) => {
+  console.log('🛒 CART UPDATE EVENT DETECTED!');
   // @ts-ignore - Custom event has detail property
   console.log('Global cart update handler triggered:', event.detail);
   
@@ -305,7 +266,10 @@ async function updateAAICartCounts(event) {
   
   // Update all AAI cart count elements
   const aaiCartCounts = document.querySelectorAll('.aai-cart-count');
+  console.log('Found AAI cart count elements:', aaiCartCounts.length);
+  
   aaiCartCounts.forEach((countElement) => {
+    console.log('Updating cart count element:', countElement, 'from', countElement.textContent, 'to', itemCount);
     countElement.textContent = String(itemCount);
     
     // Add/remove visibility classes if they exist
@@ -318,6 +282,19 @@ async function updateAAICartCounts(event) {
   
   console.log('AAI cart counts updated:', itemCount);
 }
+
+// Debug: Listen for ALL events to see what's being dispatched
+document.addEventListener('cart:update', (e) => {
+  // @ts-ignore - Custom event has detail property
+  console.log('🔍 Direct cart:update event heard:', e.detail);
+});
+
+// Also listen for any custom events
+['DOMContentLoaded', 'load'].forEach(eventName => {
+  document.addEventListener(eventName, () => {
+    console.log(`🚀 ${eventName} fired - cart-icon.js is loaded`);
+  });
+});
 
 // Manual cart refresh function for debugging
 // @ts-ignore - Adding to window for debugging
