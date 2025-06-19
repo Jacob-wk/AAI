@@ -2,19 +2,51 @@
  * AAI Safety Library - Interactive functionality
  * Handles search, filtering, and document management for the Safety Library
  * Follows AAI naming conventions and accessibility best practices
+ * @fileoverview Safety Library JavaScript module with TypeScript-compatible JSDoc
  */
+
+// Type definitions for better IDE support and error prevention
+/**
+ * @typedef {Object} FilterState
+ * @property {string} search - Current search term
+ * @property {string} category - Selected category filter
+ * @property {string} industry - Selected industry filter
+ * @property {string} year - Selected year filter
+ */
+
+/**
+ * @typedef {HTMLElement} SafetyLibraryElement
+ * @property {DOMStringMap} dataset - Element dataset
+ * @property {CSSStyleDeclaration} style - Element style
+ */
+
+// Global declarations to avoid TypeScript errors
+/* global gtag */
+
+// Extend window interface for TypeScript
+/** @type {any} */
+const windowAny = window;
 
 class AAISafetyLibrary {
   constructor() {
-    this.searchInput = document.getElementById('safety-library-search');
+    /** @type {HTMLInputElement|null} */
+    this.searchInput = /** @type {HTMLInputElement|null} */ (document.getElementById('safety-library-search'));
+    /** @type {NodeListOf<HTMLSelectElement>} */
     this.filterSelects = document.querySelectorAll('.aai-filter-select[data-filter]');
+    /** @type {NodeListOf<HTMLButtonElement>} */
     this.categoryButtons = document.querySelectorAll('[data-toggle-category]');
+    /** @type {NodeListOf<HTMLButtonElement>} */
     this.closeButtons = document.querySelectorAll('[data-close-category]');
+    /** @type {NodeListOf<HTMLElement>} */
     this.documentItems = document.querySelectorAll('.aai-document-item');
+    /** @type {NodeListOf<HTMLElement>} */
     this.categoryCards = document.querySelectorAll('.aai-category-card');
+    /** @type {NodeListOf<HTMLElement>} */
     this.categorySections = document.querySelectorAll('.aai-category-section');
+    /** @type {HTMLElement|null} */
     this.noResultsElement = document.querySelector('.aai-no-results');
     
+    /** @type {FilterState} */
     this.currentFilters = {
       search: '',
       category: '',
@@ -28,32 +60,43 @@ class AAISafetyLibrary {
   init() {
     // Search functionality
     if (this.searchInput) {
-      this.searchInput.addEventListener('input', this.debounce((e) => {
-        this.currentFilters.search = e.target.value.toLowerCase();
+      const debouncedSearch = this.debounce(/** @param {Event} e */ (e) => {
+        const target = /** @type {HTMLInputElement} */ (e.target);
+        this.currentFilters.search = target.value.toLowerCase();
         this.filterDocuments();
-      }, 300));
+      }, 300);
+      
+      this.searchInput.addEventListener('input', /** @type {EventListener} */ (debouncedSearch));
     }
 
     // Filter functionality
     this.filterSelects.forEach(select => {
-      select.addEventListener('change', (e) => {
-        const filterType = e.target.dataset.filter;
-        this.currentFilters[filterType] = e.target.value;
-        this.filterDocuments();
+      select.addEventListener('change', /** @param {Event} e */ (e) => {
+        const target = /** @type {HTMLSelectElement} */ (e.target);
+        if (!target?.dataset?.filter) return;
+        
+        const filterType = target.dataset.filter;
+        if (filterType in this.currentFilters) {
+          this.currentFilters[/** @type {keyof FilterState} */ (filterType)] = target.value;
+          this.filterDocuments();
+        }
       });
     });
 
     // Category navigation
     this.categoryButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
+      button.addEventListener('click', /** @param {Event} e */ (e) => {
         e.preventDefault();
-        const categorySlug = e.target.dataset.toggleCategory;
-        this.showCategory(categorySlug);
+        const target = /** @type {HTMLElement} */ (e.target);
+        const categorySlug = target?.dataset?.toggleCategory;
+        if (categorySlug) {
+          this.showCategory(categorySlug);
+        }
       });
     });
 
     this.closeButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
+      button.addEventListener('click', /** @param {Event} e */ (e) => {
         e.preventDefault();
         this.hideAllCategories();
       });
@@ -74,23 +117,26 @@ class AAISafetyLibrary {
     
     // Filter document items
     this.documentItems.forEach(item => {
-      const matchesSearch = this.matchesSearchCriteria(item);
-      const matchesFilters = this.matchesFilterCriteria(item);
+      const htmlItem = /** @type {HTMLElement} */ (item);
+      const matchesSearch = this.matchesSearchCriteria(htmlItem);
+      const matchesFilters = this.matchesFilterCriteria(htmlItem);
       const shouldShow = matchesSearch && matchesFilters;
       
-      item.style.display = shouldShow ? 'flex' : 'none';
+      htmlItem.style.display = shouldShow ? 'flex' : 'none';
       if (shouldShow) visibleCount++;
     });
 
     // Filter category cards in overview
     if (this.currentFilters.category) {
       this.categoryCards.forEach(card => {
-        const categorySlug = card.dataset.category;
-        card.style.display = categorySlug === this.currentFilters.category ? 'block' : 'none';
+        const htmlCard = /** @type {HTMLElement} */ (card);
+        const categorySlug = htmlCard.dataset.category;
+        htmlCard.style.display = categorySlug === this.currentFilters.category ? 'block' : 'none';
       });
     } else {
       this.categoryCards.forEach(card => {
-        card.style.display = 'block';
+        const htmlCard = /** @type {HTMLElement} */ (card);
+        htmlCard.style.display = 'block';
       });
     }
 
@@ -103,12 +149,14 @@ class AAISafetyLibrary {
 
   /**
    * Check if document matches search criteria
+   * @param {HTMLElement} item - Document item element
+   * @returns {boolean} Whether item matches search
    */
   matchesSearchCriteria(item) {
     if (!this.currentFilters.search) return true;
     
     const title = item.dataset.title || '';
-    const description = item.querySelector('.aai-document-description')?.textContent.toLowerCase() || '';
+    const description = item.querySelector('.aai-document-description')?.textContent?.toLowerCase() || '';
     const category = item.dataset.category || '';
     
     const searchTerm = this.currentFilters.search;
@@ -119,6 +167,8 @@ class AAISafetyLibrary {
 
   /**
    * Check if document matches filter criteria
+   * @param {HTMLElement} item - Document item element
+   * @returns {boolean} Whether item matches filters
    */
   matchesFilterCriteria(item) {
     // Category filter
@@ -144,29 +194,30 @@ class AAISafetyLibrary {
 
   /**
    * Show specific category section
+   * @param {string} categorySlug - Category identifier
    */
   showCategory(categorySlug) {
     // Hide category overview
     const categoriesGrid = document.querySelector('.aai-categories-grid');
     if (categoriesGrid) {
-      categoriesGrid.style.display = 'none';
+      /** @type {HTMLElement} */ (categoriesGrid).style.display = 'none';
     }
 
     // Hide all category sections
     this.categorySections.forEach(section => {
-      section.style.display = 'none';
+      /** @type {HTMLElement} */ (section).style.display = 'none';
     });
 
     // Show target category
     const targetSection = document.getElementById(`category-${categorySlug}`);
     if (targetSection) {
-      targetSection.style.display = 'block';
+      /** @type {HTMLElement} */ (targetSection).style.display = 'block';
       targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       
       // Update filter to match category
       const categoryFilter = document.querySelector('[data-filter="category"]');
       if (categoryFilter) {
-        categoryFilter.value = categorySlug;
+        /** @type {HTMLSelectElement} */ (categoryFilter).value = categorySlug;
         this.currentFilters.category = categorySlug;
         this.filterDocuments();
       }
@@ -183,18 +234,18 @@ class AAISafetyLibrary {
     // Show category overview
     const categoriesGrid = document.querySelector('.aai-categories-grid');
     if (categoriesGrid) {
-      categoriesGrid.style.display = 'grid';
+      /** @type {HTMLElement} */ (categoriesGrid).style.display = 'grid';
     }
 
     // Hide all category sections
     this.categorySections.forEach(section => {
-      section.style.display = 'none';
+      /** @type {HTMLElement} */ (section).style.display = 'none';
     });
 
     // Clear category filter
     const categoryFilter = document.querySelector('[data-filter="category"]');
     if (categoryFilter) {
-      categoryFilter.value = '';
+      /** @type {HTMLSelectElement} */ (categoryFilter).value = '';
       this.currentFilters.category = '';
       this.filterDocuments();
     }
@@ -205,18 +256,21 @@ class AAISafetyLibrary {
 
   /**
    * Update category button states for accessibility
+   * @param {string} activeCategory - Currently active category
    */
   updateCategoryButtonStates(activeCategory) {
     this.categoryButtons.forEach(button => {
-      const category = button.dataset.toggleCategory;
+      const htmlButton = /** @type {HTMLElement} */ (button);
+      const category = htmlButton.dataset.toggleCategory;
       const isActive = category === activeCategory;
-      button.setAttribute('aria-expanded', isActive.toString());
-      button.classList.toggle('active', isActive);
+      htmlButton.setAttribute('aria-expanded', isActive.toString());
+      htmlButton.classList.toggle('active', isActive);
     });
   }
 
   /**
    * Toggle no results message
+   * @param {boolean} show - Whether to show no results message
    */
   toggleNoResults(show) {
     if (this.noResultsElement) {
@@ -226,6 +280,7 @@ class AAISafetyLibrary {
 
   /**
    * Update results count display
+   * @param {number} count - Number of visible results
    */
   updateResultsCount(count) {
     const counters = document.querySelectorAll('.aai-results-count');
@@ -240,26 +295,30 @@ class AAISafetyLibrary {
   trackDocumentDownloads() {
     const downloadLinks = document.querySelectorAll('[data-document-download]');
     downloadLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        const documentName = e.target.dataset.documentDownload;
+      link.addEventListener('click', /** @param {Event} e */ (e) => {
+        const target = /** @type {HTMLElement} */ (e.target);
+        const documentName = target?.dataset?.documentDownload;
         
-        // Google Analytics 4 event
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'file_download', {
-            'file_name': documentName,
-            'file_extension': 'pdf',
-            'content_type': 'safety_document'
-          });
-        }
+        if (documentName) {
+          // Google Analytics 4 event
+          if (typeof windowAny.gtag !== 'undefined') {
+            windowAny.gtag('event', 'file_download', {
+              'file_name': documentName,
+              'file_extension': 'pdf',
+              'content_type': 'safety_document'
+            });
+          }
 
-        // Custom analytics or tracking
-        this.logDocumentAccess(documentName);
+          // Custom analytics or tracking
+          this.logDocumentAccess(documentName);
+        }
       });
     });
   }
 
   /**
    * Log document access for internal tracking
+   * @param {string} documentName - Name of the accessed document
    */
   logDocumentAccess(documentName) {
     console.log(`Document accessed: ${documentName}`);
@@ -276,7 +335,7 @@ class AAISafetyLibrary {
    */
   setupKeyboardNavigation() {
     // Escape key to close categories
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', /** @param {KeyboardEvent} e */ (e) => {
       if (e.key === 'Escape') {
         this.hideAllCategories();
       }
@@ -284,12 +343,12 @@ class AAISafetyLibrary {
 
     // Enter key on category cards
     this.categoryCards.forEach(card => {
-      card.addEventListener('keydown', (e) => {
+      card.addEventListener('keydown', /** @param {KeyboardEvent} e */ (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           const button = card.querySelector('[data-toggle-category]');
           if (button) {
-            button.click();
+            /** @type {HTMLElement} */ (button).click();
           }
         }
       });
@@ -307,7 +366,7 @@ class AAISafetyLibrary {
 
     // Clear all filters
     this.filterSelects.forEach(select => {
-      select.value = '';
+      /** @type {HTMLSelectElement} */ (select).value = '';
     });
 
     // Reset filter state
@@ -327,10 +386,14 @@ class AAISafetyLibrary {
 
   /**
    * Debounce utility function
+   * @param {Function} func - Function to debounce
+   * @param {number} wait - Wait time in milliseconds
+   * @returns {Function} Debounced function
    */
   debounce(func, wait) {
+    /** @type {number|undefined} */
     let timeout;
-    return function executedFunction(...args) {
+    return function executedFunction(/** @type {any[]} */ ...args) {
       const later = () => {
         clearTimeout(timeout);
         func(...args);
@@ -345,8 +408,8 @@ class AAISafetyLibrary {
  * Global function to clear filters (called from no-results button)
  */
 function clearLibraryFilters() {
-  if (window.aaiSafetyLibrary) {
-    window.aaiSafetyLibrary.clearAllFilters();
+  if (windowAny.aaiSafetyLibrary) {
+    windowAny.aaiSafetyLibrary.clearAllFilters();
   }
 }
 
@@ -355,7 +418,7 @@ function clearLibraryFilters() {
  */
 document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.aai-safety-library')) {
-    window.aaiSafetyLibrary = new AAISafetyLibrary();
+    windowAny.aaiSafetyLibrary = new AAISafetyLibrary();
   }
 });
 
