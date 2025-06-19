@@ -1,12 +1,52 @@
-import { Component } from '@theme/component';
-import { onAnimationEnd } from '@theme/utilities';
-import { ThemeEvents, CartUpdateEvent } from '@theme/events';
+import { Component } from './component.js';
+import { onAnimationEnd } from './utilities.js';
+import { ThemeEvents, CartUpdateEvent } from './events.js';
 
 /**
  * A custom element that displays a cart icon.
  *
  * @typedef {object} Refs
- * @property {HTMLElement} cartBubble - The cart bubble element.
+ * @property {HTMLElement} cartBubble // Manual cart refresh function for debugging
+window.refreshCartCount = async () => {
+  console.log('Manual cart refresh triggered');
+  
+  // Refresh standard cart-icon components
+  const cartIcons = document.querySelectorAll('cart-icon');
+  cartIcons.forEach(async (cartIcon) => {
+    // @ts-ignore - CartIcon custom element has refreshCartCount method
+    if (cartIcon.refreshCartCount && typeof cartIcon.refreshCartCount === 'function') {
+      // @ts-ignore - CartIcon custom element has refreshCartCount method
+      await cartIcon.refreshCartCount();
+    }
+  });
+  
+  // Refresh AAI cart counts
+  try {
+    const response = await fetch('/cart.js', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const cart = await response.json();
+    const itemCount = cart.item_count;
+    
+    // Update all AAI cart count elements
+    const aaiCartCounts = document.querySelectorAll('.aai-cart-count');
+    aaiCartCounts.forEach((countElement) => {
+      countElement.textContent = String(itemCount);
+    });
+    
+    console.log('Manual refresh complete, cart count:', itemCount);
+  } catch (error) {
+    console.error('Error during manual cart refresh:', error);
+  }
+};ubble element.
  * @property {HTMLElement} cartBubbleText - The cart bubble text element.
  *
  * @extends {Component<Refs>}
@@ -16,6 +56,10 @@ class CartIcon extends Component {
 
   /** @type {number} */
   get currentCartCount() {
+    if (!this.refs.cartBubbleText || Array.isArray(this.refs.cartBubbleText)) {
+      return 0;
+    }
+    
     const visibleCountElement = this.refs.cartBubbleText.querySelector('.cart-bubble__text-count');
     if (visibleCountElement) {
       return parseInt(visibleCountElement.textContent ?? '0', 10);
@@ -25,6 +69,10 @@ class CartIcon extends Component {
   }
 
   set currentCartCount(value) {
+    if (!this.refs.cartBubbleText || Array.isArray(this.refs.cartBubbleText)) {
+      return;
+    }
+    
     // Update the visible cart count
     const visibleCountElement = this.refs.cartBubbleText.querySelector('.cart-bubble__text-count');
     if (visibleCountElement) {
@@ -47,7 +95,8 @@ class CartIcon extends Component {
   connectedCallback() {
     super.connectedCallback();
 
-    document.addEventListener(ThemeEvents.cartUpdate, this.onCartUpdate);
+    console.log('CartIcon connected, current count:', this.currentCartCount);
+    // Event handling is now done globally to prevent race conditions
     this.ensureCartBubbleIsCorrect();
     
     // Also listen for cart changes from other sources (like cart drawer, quick add)
@@ -57,7 +106,7 @@ class CartIcon extends Component {
   disconnectedCallback() {
     super.disconnectedCallback();
 
-    document.removeEventListener(ThemeEvents.cartUpdate, this.onCartUpdate);
+    // Remove individual listeners (global handler will remain)
     document.removeEventListener('cart:refresh', this.refreshCartCount);
   }
 
@@ -134,7 +183,9 @@ class CartIcon extends Component {
     );
 
     if (!animate) return;
-    await onAnimationEnd(this.refs.cartBubbleText);
+    if (this.refs.cartBubbleText && !Array.isArray(this.refs.cartBubbleText)) {
+      await onAnimationEnd(this.refs.cartBubbleText);
+    }
 
     this.refs.cartBubble.classList.remove('cart-bubble--animating');
   };
@@ -188,3 +239,96 @@ class CartIcon extends Component {
 if (!customElements.get('cart-icon')) {
   customElements.define('cart-icon', CartIcon);
 }
+
+// Global cart update handler to ensure all cart icons are updated
+// This catches events even if individual cart-icon components aren't ready yet
+document.addEventListener(ThemeEvents.cartUpdate, async (event) => {
+  // @ts-ignore - Custom event has detail property
+  console.log('Global cart update handler triggered:', event.detail);
+  
+  // Find all cart-icon elements and trigger their update
+  const cartIcons = document.querySelectorAll('cart-icon');
+  cartIcons.forEach(async (cartIcon) => {
+    // @ts-ignore - CartIcon custom element has onCartUpdate method
+    if (cartIcon.onCartUpdate && typeof cartIcon.onCartUpdate === 'function') {
+      // @ts-ignore - CartIcon custom element has onCartUpdate method
+      await cartIcon.onCartUpdate(event);
+    }
+  });
+  
+  // Also update custom AAI cart count elements
+  // @ts-ignore - Event is actually a CustomEvent
+  await updateAAICartCounts(event);
+});
+
+/**
+ * Updates AAI custom cart count elements (.aai-cart-count)
+ * @param {CustomEvent} event - The cart update event
+ */
+async function updateAAICartCounts(event) {
+  // @ts-ignore - Custom event has detail property
+  const comingFromProductForm = event.detail.data?.source === 'product-form-component';
+  
+  let itemCount = 0;
+  
+  if (comingFromProductForm) {
+    // Fetch actual cart count from API for product form events
+    try {
+      const response = await fetch('/cart.js', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const cart = await response.json();
+      itemCount = cart.item_count;
+    } catch (error) {
+      console.error('Error fetching cart data for AAI cart count:', error);
+      // @ts-ignore - Custom event has detail property
+      itemCount = event.detail.data?.itemCount ?? 0;
+    }
+  } else {
+    // @ts-ignore - Custom event has detail property
+    itemCount = event.detail.data?.itemCount ?? 0;
+    
+    // @ts-ignore - Custom event has detail property
+    if (itemCount === 0 && event.detail.cart) {
+      // @ts-ignore - Handle legacy event structure
+      itemCount = event.detail.cart.item_count ?? 0;
+    }
+  }
+  
+  // Update all AAI cart count elements
+  const aaiCartCounts = document.querySelectorAll('.aai-cart-count');
+  aaiCartCounts.forEach((countElement) => {
+    countElement.textContent = String(itemCount);
+    
+    // Add/remove visibility classes if they exist
+    const parentElement = countElement.closest('.aai-cart-wrapper, .aai-cart-container, [class*="cart"]');
+    if (parentElement) {
+      parentElement.classList.toggle('has-items', itemCount > 0);
+      parentElement.classList.toggle('empty-cart', itemCount === 0);
+    }
+  });
+  
+  console.log('AAI cart counts updated:', itemCount);
+}
+
+// Manual cart refresh function for debugging
+// @ts-ignore - Adding to window for debugging
+window.refreshCartCount = async () => {
+  console.log('Manual cart refresh triggered');
+  const cartIcons = document.querySelectorAll('cart-icon');
+  cartIcons.forEach(async (cartIcon) => {
+    // @ts-ignore - CartIcon custom element has refreshCartCount method
+    if (cartIcon.refreshCartCount && typeof cartIcon.refreshCartCount === 'function') {
+      // @ts-ignore - CartIcon custom element has refreshCartCount method
+      await cartIcon.refreshCartCount();
+    }
+  });
+};

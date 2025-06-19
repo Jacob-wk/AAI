@@ -232,7 +232,7 @@ class ProductFormComponent extends Component {
           if (this.refs.addToCartButtonContainer?.refs.addToCartButton) {
             const addToCartButton = this.refs.addToCartButtonContainer.refs.addToCartButton;
             const addedTextElement = addToCartButton.querySelector('.add-to-cart-text--added');
-            const addedText = addedTextElement?.textContent?.trim() || Theme.translations.added;
+            const addedText = addedTextElement?.textContent?.trim() || (typeof Theme !== 'undefined' ? Theme.translations?.added : 'Added to cart');
 
             this.#setLiveRegionText(addedText);
 
@@ -249,6 +249,12 @@ class ProductFormComponent extends Component {
               sections: response.sections,
             })
           );
+          
+          console.log('CartAddEvent dispatched with data:', {
+            source: 'product-form-component',
+            itemCount: Number(formData.get('quantity')),
+            productId: this.dataset.productId,
+          });
         }
       })
       .catch((error) => {
