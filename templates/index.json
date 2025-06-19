@@ -59,8 +59,8 @@
         "show_header": false,
         "show_overlay": false,
         "grid_style": "auto-fit",
-        "section_padding_top": 60,
-        "section_padding_bottom": 60
+        "section_padding_top": 64,
+        "section_padding_bottom": 64
       }
     },
     "aai_universal_content_f4efTN": {
