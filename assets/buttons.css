@@ -62,15 +62,32 @@
   box-shadow: var(--shadow-md);
 }
 
+.aai-btn-blue {
+  background: var(--electric-blue, #3498db) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--electric-blue, #3498db) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.aai-btn-blue:hover {
+  background: #2980b9 !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #2980b9 !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
 .aai-btn-outline {
-  background: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
+  background: var(--color-primary, #1e3a5f) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--color-primary, #1e3a5f) !important;
+  box-shadow: var(--shadow-sm);
 }
 
 .aai-btn-outline:hover {
-  background: var(--color-primary);
-  color: var(--clean-white);
+  background: var(--charcoal-grey, #2c3e50) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: var(--charcoal-grey, #2c3e50) !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -103,6 +120,19 @@
   padding: 20px 40px;
   font-size: 20px;
   min-height: 64px;
+}
+
+/* Blue button size variants */
+.aai-btn-blue.aai-btn-small {
+  padding: 8px 16px;
+  font-size: 14px;
+  min-height: 36px;
+}
+
+.aai-btn-blue.aai-btn-large {
+  padding: 16px 32px;
+  font-size: 18px;
+  min-height: 56px;
 }
 
 /* Button with icons */
@@ -476,6 +506,27 @@ html body .aai-btn.aai-btn-secondary:hover {
   border-color: var(--clean-white, #ffffff) !important;
 }
 
+/* AAI Blue Button - Maximum specificity override */
+body .aai-btn.aai-btn-blue,
+body a.aai-btn.aai-btn-blue,
+body button.aai-btn.aai-btn-blue,
+body input.aai-btn.aai-btn-blue,
+html body .aai-btn.aai-btn-blue {
+  background: var(--electric-blue, #3498db) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--electric-blue, #3498db) !important;
+}
+
+body .aai-btn.aai-btn-blue:hover,
+body a.aai-btn.aai-btn-blue:hover,
+body button.aai-btn.aai-btn-blue:hover,
+body input.aai-btn.aai-btn-blue:hover,
+html body .aai-btn.aai-btn-blue:hover {
+  background: #2980b9 !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #2980b9 !important;
+}
+
 /* Override any legacy btn classes that might interfere */
 body .btn-primary.aai-btn,
 body .btn.aai-btn-primary,
@@ -489,7 +540,7 @@ html body .btn.aai-btn-primary {
 body .btn-primary.aai-btn:hover,
 body .btn.aai-btn-primary:hover,
 html body .btn-primary.aai-btn:hover,
-html body .btn.aai-btn-primary:hover {
+html body .btn.aai-btn_primary:hover {
   background: #e55a2e !important;
   color: var(--clean-white, #ffffff) !important;
   border-color: #e55a2e !important;
@@ -513,6 +564,25 @@ html body .btn.aai-btn-secondary:hover {
   border-color: var(--clean-white, #ffffff) !important;
 }
 
+/* Override any legacy outline button classes */
+body .btn-outline.aai-btn,
+body .btn.aai-btn-outline,
+html body .btn-outline.aai-btn,
+html body .btn.aai-btn-outline {
+  background: var(--color-primary, #1e3a5f) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--color-primary, #1e3a5f) !important;
+}
+
+body .btn-outline.aai-btn:hover,
+body .btn.aai-btn-outline:hover,
+html body .btn-outline.aai-btn:hover,
+html body .btn.aai-btn-outline:hover {
+  background: var(--charcoal-grey, #2c3e50) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: var(--charcoal-grey, #2c3e50) !important;
+}
+
 /* ========================================
    END FINAL OVERRIDE SECTION
    ======================================== */
@@ -534,7 +604,7 @@ html body .btn.aai-btn-secondary:hover {
 
 .btn.aai-btn-primary:hover,
 .btn-primary.aai-btn:hover,
-.button.aai-btn-primary:hover,
+.button.aai-btn_primary:hover,
 .button-primary.aai-btn:hover {
   background: #e55a2e !important;
   color: var(--clean-white, #ffffff) !important;
@@ -553,7 +623,7 @@ html body .btn.aai-btn-secondary:hover {
 .btn.aai-btn-secondary:hover,
 .btn-secondary.aai-btn:hover,
 .button.aai-btn-secondary:hover,
-.button-secondary.aai-btn:hover {
+.button.secondary.aai-btn:hover {
   background: var(--clean-white, #ffffff) !important;
   color: var(--authority-navy, #1e3a5f) !important;
   border-color: var(--clean-white, #ffffff) !important;
