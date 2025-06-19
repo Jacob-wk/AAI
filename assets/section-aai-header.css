@@ -377,12 +377,15 @@
   }
   
   /* Hide the left search icon */
-  .aai-header .predictive-search__icon {
+  .aai-header .predictive-search__icon,
+  .search-modal .predictive-search__icon,
+  .predictive-search__icon {
     display: none !important;
   }
   
   /* Style the search input without left icon */
-  .aai-header .search-input {
+  .aai-header .search-input,
+  .search-modal .search-input {
     flex: 1 !important;
     padding: 0.75rem 1rem !important;
     padding-right: 3rem !important; /* Space for clear button */
@@ -394,13 +397,15 @@
     box-sizing: border-box !important;
   }
   
-  .aai-header .search-input:focus {
+  .aai-header .search-input:focus,
+  .search-modal .search-input:focus {
     border-color: var(--authority-navy, #1e3a5f) !important;
     box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.1) !important;
   }
   
   /* Position and style the clear/reset button inside the input */
-  .aai-header .predictive-search__reset-button {
+  .aai-header .predictive-search__reset-button,
+  .search-modal .predictive-search__reset-button {
     position: absolute !important;
     right: 0.75rem !important;
     top: 50% !important;
