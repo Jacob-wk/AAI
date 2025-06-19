@@ -32,6 +32,7 @@
       {{ 'test-page.css' | asset_url | stylesheet_tag }}
     {% elsif template == 'page.safety-library' %}
       {{ 'safety-library-page.css' | asset_url | stylesheet_tag }}
+      {{ 'aai-safety-library-section.css' | asset_url | stylesheet_tag }}
     {% elsif template == 'page.terms-of-service' %}
       {{ 'terms-of-service-page.css' | asset_url | stylesheet_tag }}
     {% elsif template == 'page.privacy-policy' %}
@@ -104,6 +105,11 @@
     {% # theme-check-disable ParserBlockingScript %}
     <script src="{{ 'critical.js' | asset_url }}"></script>
     <script type="module" src="{{ 'cart-drawer.js' | asset_url }}"></script>
+    
+    {%- comment -%} Safety Library JavaScript for safety-library pages {%- endcomment -%}
+    {% if template == 'page.safety-library' %}
+      <script type="module" src="{{ 'aai-safety-library.js' | asset_url }}"></script>
+    {% endif %}
     {% # theme-check-enable ParserBlockingScript %}
 
     {% if settings.quick_add or settings.mobile_quick_add %}

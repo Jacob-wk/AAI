@@ -14,16 +14,158 @@
         "hero_button_style": "aai-btn aai-btn-primary"
       }
     },
-    "library_content": {
-      "type": "aai-universal-content",
+    "safety_library_main": {
+      "type": "aai-safety-library",
       "blocks": {
-        "hero_search_stats_block": {
-          "type": "text_block",
+        "featured_2025_manual": {
+          "type": "featured_document",
           "settings": {
-            "block_title": "Safety Library Search",
-            "block_content": "<div class=\"aai-library-search\">\n  <div class=\"aai-container\">\n    <form class=\"aai-search-form\">\n      <div class=\"aai-search-input-group\">\n        <input type=\"text\" placeholder=\"Search safety documents, guides, standards...\" class=\"aai-search-input\">\n        <button type=\"submit\" class=\"aai-search-button\">\n          <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\">\n            <path d=\"M21 21L16.5 16.5M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n          </svg>\n        </button>\n      </div>\n      <div class=\"aai-search-filters\">\n        <select class=\"aai-filter-select\">\n          <option value=\"\">All Categories</option>\n          <option value=\"standards\">Standards & Regulations</option>\n          <option value=\"procedures\">Operating Procedures</option>\n          <option value=\"incidents\">Incident Reports</option>\n          <option value=\"guides\">Safety Guides</option>\n          <option value=\"checklists\">Checklists & Forms</option>\n        </select>\n        <select class=\"aai-filter-select\">\n          <option value=\"\">All Industries</option>\n          <option value=\"theme-parks\">Theme Parks</option>\n          <option value=\"water-parks\">Water Parks</option>\n          <option value=\"fec\">Family Entertainment</option>\n          <option value=\"adventure\">Adventure Parks</option>\n        </select>\n      </div>\n    </form>\n    <div class=\"aai-library-stats\">\n      <div class=\"aai-stat\">\n        <span class=\"aai-stat-number\">2,500+</span>\n        <span class=\"aai-stat-label\">Documents</span>\n      </div>\n      <div class=\"aai-stat\">\n        <span class=\"aai-stat-number\">50+</span>\n        <span class=\"aai-stat-label\">Categories</span>\n      </div>\n      <div class=\"aai-stat\">\n        <span class=\"aai-stat-number\">Weekly</span>\n        <span class=\"aai-stat-label\">Updates</span>\n      </div>\n    </div>\n  </div>\n</div>"
+            "document_title": "2025 Comprehensive Safety Manual",
+            "document_description": "Updated safety manual incorporating latest ASTM F24 standards and industry best practices. Essential reading for all safety professionals.",
+            "document_pages": "156",
+            "document_updated": "Jan 2025",
+            "document_category": "Standards",
+            "featured_badge": "New Release"
           }
         },
+        "featured_emergency_response": {
+          "type": "featured_document",
+          "settings": {
+            "document_title": "Emergency Response Procedures",
+            "document_description": "Complete emergency response protocols for various incident types, including evacuation procedures and communication templates.",
+            "document_pages": "45",
+            "document_updated": "Dec 2024",
+            "document_category": "Procedures"
+          }
+        },
+        "featured_height_verification": {
+          "type": "featured_document",
+          "settings": {
+            "document_title": "Height Verification Best Practices",
+            "document_description": "Comprehensive guide to height verification systems, procedures, and compliance requirements across different jurisdictions.",
+            "document_pages": "28",
+            "document_updated": "Nov 2024",
+            "document_category": "Guidelines"
+          }
+        },
+        "category_standards": {
+          "type": "document_category",
+          "settings": {
+            "category_name": "Standards & Regulations",
+            "category_slug": "standards",
+            "category_description": "ASTM, IAAPA, OSHA, and state-specific safety standards and regulatory documents.",
+            "category_icon": "📋",
+            "document_count": 342,
+            "documents_json": "ASTM F24.20-2024: Operations & Maintenance::Standard practice for operation and maintenance of amusement rides and devices.::::Jan 2025::|ASTM F24.30-2023: Patron Safety::Standard for patron safety requirements and design criteria for amusement rides.::::Dec 2024::|ASTM F24.50-2024: Water-Based Attractions::Safety standards specific to water rides, wave pools, and aquatic attractions.::::Nov 2024::|IAAPA Ride Operations Manual 2025::Comprehensive operational guidelines for amusement ride operations and safety management.::::Jan 2025::|IAAPA Safety Management Systems Guide::Framework for implementing comprehensive safety management systems in attractions.::::Dec 2024::"
+          }
+        },
+        "category_procedures": {
+          "type": "document_category",
+          "settings": {
+            "category_name": "Operating Procedures",
+            "category_slug": "procedures",
+            "category_description": "Detailed procedures for ride operations, maintenance protocols, and safety systems.",
+            "category_icon": "⚙️",
+            "document_count": 485,
+            "documents_json": "Daily Inspection Procedures::Comprehensive daily inspection checklists and procedures for all ride types.::::2024::|Height Verification Protocols::Step-by-step procedures for accurate height verification and documentation.::::2024::|Restraint System Checks::Detailed inspection procedures for all restraint system types.::::2024::|Weather-Related Shutdowns::Procedures for weather monitoring and ride closure decisions.::::2024::|Guest Loading Procedures::Safe guest loading and unloading procedures for various ride types.::::2024::|Preventive Maintenance Schedules::Comprehensive maintenance scheduling and tracking procedures.::::2024::|Lockout/Tagout Procedures::OSHA-compliant LOTO procedures for ride maintenance and repair.::::2024::|Non-Destructive Testing Protocols::NDT procedures for structural integrity assessment.::::2024::"
+          }
+        },
+        "category_incidents": {
+          "type": "document_category",
+          "settings": {
+            "category_name": "Incident Analysis",
+            "category_slug": "incidents",
+            "category_description": "Anonymized incident reports, root cause analyses, and lessons learned documentation.",
+            "category_icon": "📊",
+            "document_count": 267,
+            "documents_json": "Incident Investigation Procedures::Comprehensive guide to investigating and documenting safety incidents.::::2024::|Root Cause Analysis Methods::Systematic approaches to identifying underlying causes of incidents.::::2024::|Incident Reporting Templates::Standardized forms and templates for incident documentation.::::2024::|Near Miss Reporting Program::Guidelines for implementing effective near miss reporting systems.::::2024::|Lessons Learned Database::Compilation of lessons learned from industry incidents.::::2024::|Communication Protocols::Procedures for internal and external incident communication.::::2024::"
+          }
+        },
+        "category_guides": {
+          "type": "document_category",
+          "settings": {
+            "category_name": "Safety Guides",
+            "category_slug": "guides",
+            "category_description": "Comprehensive guides covering specific safety topics, equipment, and procedures.",
+            "category_icon": "📖",
+            "document_count": 158,
+            "documents_json": "Ride Safety Management Guide::Comprehensive guide to implementing ride safety management systems.::::2024::|Electrical Safety for Rides::Electrical safety requirements and best practices for amusement rides.::::2024::|Structural Inspection Guide::Guidelines for structural inspection and assessment of ride components.::::2024::|Guest Safety Guidelines::Best practices for ensuring guest safety throughout the park experience.::::2024::|Emergency Evacuation Planning::Comprehensive guide to emergency evacuation planning and procedures.::::2024::"
+          }
+        },
+        "category_checklists": {
+          "type": "document_category",
+          "settings": {
+            "category_name": "Checklists & Forms",
+            "category_slug": "checklists",
+            "category_description": "Ready-to-use inspection checklists, safety forms, and documentation templates.",
+            "category_icon": "✅",
+            "document_count": 124,
+            "documents_json": "Daily Inspection Checklist Template::Customizable daily inspection checklist for various ride types.::::2024::|Incident Report Form::Standardized incident report form template.::::2024::|Maintenance Record Template::Template for documenting maintenance activities and repairs.::::2024::|Training Record Form::Template for tracking employee training and certifications.::::2024::|Safety Audit Checklist::Comprehensive safety audit checklist for annual inspections.::::2024::"
+          }
+        },
+        "category_training": {
+          "type": "document_category",
+          "settings": {
+            "category_name": "Training Materials",
+            "category_slug": "training",
+            "category_description": "Educational resources, training manuals, and instructional materials.",
+            "category_icon": "🎓",
+            "document_count": 203,
+            "documents_json": "New Employee Orientation Manual::Comprehensive orientation program for new safety personnel.::::2024::|Operator Certification Guide::Guidelines and requirements for ride operator certification.::::2024::|Refresher Training Curriculum::Annual refresher training materials and requirements.::::2024::|Skills Assessment Tools::Tools and procedures for assessing employee competency.::::2024::|Training Record Management::Systems and procedures for managing training documentation.::::2024::"
+          }
+        }
+      },
+      "block_order": [
+        "featured_2025_manual",
+        "featured_emergency_response",
+        "featured_height_verification",
+        "category_standards",
+        "category_procedures",
+        "category_incidents",
+        "category_guides",
+        "category_checklists",
+        "category_training"
+      ],
+      "settings": {
+        "section_title": "Safety Knowledge Library",
+        "section_description": "<p>Your comprehensive resource center for safety documentation, best practices, incident reports, and technical guidance. Access thousands of curated documents from industry experts and regulatory bodies.</p>",
+        "show_search": true,
+        "search_placeholder": "Search safety documents, guides, standards...",
+        "show_filters": true,
+        "show_stats": true,
+        "total_documents": "2,500+",
+        "update_frequency": "Weekly",
+        "show_category_overview": true
+      }
+    },
+    "contribute_section": {
+      "type": "aai-universal-content",
+      "settings": {
+        "content_title": "Contribute to the Safety Library",
+        "content_body": "<p>Help grow our comprehensive safety knowledge base by contributing your expertise, case studies, and best practices to benefit the entire industry.</p>\n<div class=\"aai-contribution-types\">\n  <div class=\"aai-contribution-type\">\n    <h4>📝 Best Practices</h4>\n    <p>Share successful safety implementations and innovative procedures</p>\n  </div>\n  <div class=\"aai-contribution-type\">\n    <h4>📊 Case Studies</h4>\n    <p>Contribute anonymized incident analyses and lessons learned</p>\n  </div>\n  <div class=\"aai-contribution-type\">\n    <h4>🔧 Technical Guides</h4>\n    <p>Submit technical documentation and operational procedures</p>\n  </div>\n  <div class=\"aai-contribution-type\">\n    <h4>📋 Templates</h4>\n    <p>Provide useful forms, checklists, and documentation templates</p>\n  </div>\n</div>",
+        "main_button_text": "Submit Resources",
+        "main_button_url": "/pages/contact",
+        "main_button_style": "aai-btn aai-btn-primary",
+        "layout_style": "text-center",
+        "background_style": "section-alt-1",
+        "text_color": "",
+        "section_width": "container"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "safety_library_main",
+    "contribute_section"
+  ]
+}
+            "category_slug": "training",
+            "category_description": "Educational resources, training manuals, and instructional materials.",
+            "category_icon": "🎓",
+            "document_count": 203,
+            "documents_json": "New Employee Orientation Manual::Comprehensive orientation program for new safety personnel.::::2024::|Operator Certification Guide::Guidelines and requirements for ride operator certification.::::2024::|Refresher Training Curriculum::Annual refresher training materials and requirements.::::2024::|Skills Assessment Tools::Tools and procedures for assessing employee competency.::::2024::|Training Record Management::Systems and procedures for managing training documentation.::::2024::"
+          }
+        }
         "quick_categories_block": {
           "type": "text_block",
           "settings": {

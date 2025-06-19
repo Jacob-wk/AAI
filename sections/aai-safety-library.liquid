@@ -1,0 +1,494 @@
+{% comment %}
+  AAI Safety Library Section
+  Modular safety document library with PDF management through Shopify Files
+  Follows AAI naming conventions and Shopify 2.0 best practices
+{% endcomment %}
+
+<section class="aai-safety-library page-width">
+  {% if section.settings.section_title != blank %}
+    <div class="section-header text-center">
+      <h2 class="section-heading">{{ section.settings.section_title }}</h2>
+      {% if section.settings.section_description != blank %}
+        <div class="section-description rte">{{ section.settings.section_description }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% comment %} Search and Filter Interface {% endcomment %}
+  {% if section.settings.show_search %}
+    <div class="aai-library-search-wrapper">
+      <div class="aai-search-container">
+        <div class="aai-search-input-group">
+          <input 
+            type="text" 
+            id="safety-library-search" 
+            placeholder="{{ section.settings.search_placeholder | default: 'Search safety documents, guides, standards...' }}" 
+            class="aai-search-input"
+            data-search-target="safety-documents"
+          >
+          <button type="button" class="aai-search-button" aria-label="Search documents">
+            {% render 'icon-search' %}
+          </button>
+        </div>
+        
+        {% if section.settings.show_filters %}
+          <div class="aai-search-filters">
+            <select class="aai-filter-select" data-filter="category" aria-label="Filter by category">
+              <option value="">All Categories</option>
+              {% for block in section.blocks %}
+                {% if block.type == 'document_category' %}
+                  <option value="{{ block.settings.category_slug }}">{{ block.settings.category_name }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+            
+            <select class="aai-filter-select" data-filter="industry" aria-label="Filter by industry">
+              <option value="">All Industries</option>
+              <option value="theme-parks">Theme Parks</option>
+              <option value="water-parks">Water Parks</option>
+              <option value="fec">Family Entertainment</option>
+              <option value="adventure">Adventure Parks</option>
+              <option value="mobile">Mobile Rides</option>
+            </select>
+            
+            <select class="aai-filter-select" data-filter="year" aria-label="Filter by year">
+              <option value="">Any Year</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+            </select>
+          </div>
+        {% endif %}
+      </div>
+
+      {% comment %} Library Statistics {% endcomment %}
+      {% if section.settings.show_stats %}
+        <div class="aai-library-stats">
+          <div class="aai-stat">
+            <span class="aai-stat-number">{{ section.settings.total_documents | default: '2,500+' }}</span>
+            <span class="aai-stat-label">Documents</span>
+          </div>
+          <div class="aai-stat">
+            <span class="aai-stat-number">{{ section.blocks | where: 'type', 'document_category' | size }}+</span>
+            <span class="aai-stat-label">Categories</span>
+          </div>
+          <div class="aai-stat">
+            <span class="aai-stat-number">{{ section.settings.update_frequency | default: 'Weekly' }}</span>
+            <span class="aai-stat-label">Updates</span>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% comment %} Document Categories and Featured Resources {% endcomment %}
+  <div class="aai-library-content" id="safety-documents">
+    
+    {% comment %} Featured Documents Section {% endcomment %}
+    {% assign featured_blocks = section.blocks | where: 'type', 'featured_document' %}
+    {% if featured_blocks.size > 0 %}
+      <div class="aai-featured-section">
+        <h3 class="aai-section-title">Featured Resources</h3>
+        <div class="aai-featured-grid">
+          {% for block in featured_blocks limit: 3 %}
+            <div class="aai-featured-document" {{ block.shopify_attributes }}>
+              {% if block.settings.featured_badge != blank %}
+                <div class="aai-featured-badge">{{ block.settings.featured_badge }}</div>
+              {% endif %}
+              
+              <div class="aai-document-content">
+                <h4 class="aai-document-title">{{ block.settings.document_title }}</h4>
+                
+                {% if block.settings.document_description != blank %}
+                  <p class="aai-document-description">{{ block.settings.document_description }}</p>
+                {% endif %}
+                
+                <div class="aai-document-meta">
+                  {% if block.settings.document_pages != blank %}
+                    <span class="aai-meta-item">📄 {{ block.settings.document_pages }} pages</span>
+                  {% endif %}
+                  {% if block.settings.document_updated != blank %}
+                    <span class="aai-meta-item">🕒 Updated {{ block.settings.document_updated }}</span>
+                  {% endif %}
+                  {% if block.settings.document_category != blank %}
+                    <span class="aai-meta-item">📂 {{ block.settings.document_category }}</span>
+                  {% endif %}
+                </div>
+                
+                <div class="aai-document-actions">
+                  {% if block.settings.document_file != blank %}
+                    <a 
+                      href="{{ block.settings.document_file }}" 
+                      class="aai-btn aai-btn-primary aai-btn-sm"
+                      target="_blank"
+                      download
+                      data-document-download="{{ block.settings.document_title | handleize }}"
+                    >
+                      {% render 'icon-download' %} Download PDF
+                    </a>
+                  {% endif %}
+                  
+                  {% if block.settings.preview_url != blank %}
+                    <a 
+                      href="{{ block.settings.preview_url }}" 
+                      class="aai-btn aai-btn-secondary aai-btn-sm"
+                      target="_blank"
+                    >
+                      👁️ Preview
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% comment %} Document Categories {% endcomment %}
+    {% assign category_blocks = section.blocks | where: 'type', 'document_category' %}
+    {% if category_blocks.size > 0 %}
+      <div class="aai-categories-section">
+        {% if section.settings.show_category_overview %}
+          <h3 class="aai-section-title">Browse by Category</h3>
+          <div class="aai-categories-grid">
+            {% for block in category_blocks %}
+              <div class="aai-category-card" data-category="{{ block.settings.category_slug }}" {{ block.shopify_attributes }}>
+                {% if block.settings.category_icon != blank %}
+                  <div class="aai-category-icon">{{ block.settings.category_icon }}</div>
+                {% endif %}
+                
+                <h4>{{ block.settings.category_name }}</h4>
+                
+                {% if block.settings.category_description != blank %}
+                  <p>{{ block.settings.category_description }}</p>
+                {% endif %}
+                
+                {% assign document_count = block.settings.document_count | default: 0 %}
+                <div class="aai-category-count">{{ document_count }} documents</div>
+                
+                <button 
+                  class="aai-category-toggle aai-btn aai-btn-outline"
+                  data-toggle-category="{{ block.settings.category_slug }}"
+                  aria-expanded="false"
+                  aria-controls="category-{{ block.settings.category_slug }}"
+                >
+                  Browse {{ block.settings.category_name }} →
+                </button>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% comment %} Detailed Category Sections {% endcomment %}
+        {% for block in category_blocks %}
+          <div 
+            class="aai-category-section" 
+            id="category-{{ block.settings.category_slug }}"
+            data-category="{{ block.settings.category_slug }}"
+            style="display: none;"
+            {{ block.shopify_attributes }}
+          >
+            <div class="aai-category-header">
+              <h3>{{ block.settings.category_name }}</h3>
+              {% if block.settings.category_description != blank %}
+                <p class="aai-category-description">{{ block.settings.category_description }}</p>
+              {% endif %}
+            </div>
+
+            {% comment %} Documents List {% endcomment %}
+            {% if block.settings.documents_json != blank %}
+              {% assign documents = block.settings.documents_json | split: '|' %}
+              <div class="aai-documents-list">
+                {% for document_data in documents %}
+                  {% assign doc_parts = document_data | split: '::' %}
+                  {% if doc_parts.size >= 3 %}
+                    <div class="aai-document-item" 
+                         data-category="{{ block.settings.category_slug }}"
+                         data-title="{{ doc_parts[0] | handleize }}"
+                         data-year="{{ doc_parts[4] | default: '2024' }}"
+                    >
+                      <div class="aai-document-info">
+                        <h5 class="aai-document-title">{{ doc_parts[0] }}</h5>
+                        <p class="aai-document-description">{{ doc_parts[1] }}</p>
+                        <div class="aai-document-meta">
+                          {% if doc_parts[3] != blank %}
+                            <span>📄 {{ doc_parts[3] }}</span>
+                          {% endif %}
+                          {% if doc_parts[4] != blank %}
+                            <span>🕒 {{ doc_parts[4] }}</span>
+                          {% endif %}
+                          <span>📁 PDF</span>
+                        </div>
+                      </div>
+                      <div class="aai-document-actions">
+                        {% if doc_parts[2] != blank %}
+                          <a 
+                            href="{{ doc_parts[2] }}" 
+                            class="aai-btn aai-btn-primary aai-btn-sm"
+                            target="_blank"
+                            download
+                            data-document-download="{{ doc_parts[0] | handleize }}"
+                          >
+                            Download
+                          </a>
+                        {% endif %}
+                        {% if doc_parts[5] != blank %}
+                          <a 
+                            href="{{ doc_parts[5] }}" 
+                            class="aai-btn aai-btn-secondary aai-btn-sm"
+                            target="_blank"
+                          >
+                            Preview
+                          </a>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <button 
+              class="aai-category-close aai-btn aai-btn-outline"
+              data-close-category="{{ block.settings.category_slug }}"
+            >
+              ← Back to Categories
+            </button>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% comment %} No Results Message {% endcomment %}
+    <div class="aai-no-results" style="display: none;">
+      <div class="aai-no-results-content">
+        <h4>No documents found</h4>
+        <p>Try adjusting your search terms or filters to find relevant safety documents.</p>
+        <button class="aai-btn aai-btn-primary" onclick="clearLibraryFilters()">Clear All Filters</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% comment %} Schema Settings {% endcomment %}
+{% schema %}
+{
+  "name": "AAI Safety Library",
+  "tag": "section",
+  "class": "section-aai-safety-library",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Safety Knowledge Library"
+    },
+    {
+      "type": "richtext",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "<p>Your comprehensive resource center for safety documentation, best practices, and technical guidance.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Search & Filter Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show Search Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search Placeholder Text",
+      "default": "Search safety documents, guides, standards..."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show Filter Dropdowns",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show Library Statistics",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "total_documents",
+      "label": "Total Documents Count",
+      "default": "2,500+"
+    },
+    {
+      "type": "text",
+      "id": "update_frequency",
+      "label": "Update Frequency",
+      "default": "Weekly"
+    },
+    {
+      "type": "header",
+      "content": "Display Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_category_overview",
+      "label": "Show Category Overview Cards",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_document",
+      "name": "Featured Document",
+      "settings": [
+        {
+          "type": "text",
+          "id": "document_title",
+          "label": "Document Title",
+          "info": "Main title of the featured document"
+        },
+        {
+          "type": "textarea",
+          "id": "document_description",
+          "label": "Document Description",
+          "info": "Brief description of the document content"
+        },
+        {
+          "type": "url",
+          "id": "document_file",
+          "label": "Document File URL",
+          "info": "Upload PDF to Settings > Files, then paste the URL here"
+        },
+        {
+          "type": "url",
+          "id": "preview_url",
+          "label": "Preview URL",
+          "info": "Optional: Link to preview the document"
+        },
+        {
+          "type": "text",
+          "id": "document_pages",
+          "label": "Page Count",
+          "placeholder": "e.g., 156"
+        },
+        {
+          "type": "text",
+          "id": "document_updated",
+          "label": "Last Updated",
+          "placeholder": "e.g., Jan 2025"
+        },
+        {
+          "type": "text",
+          "id": "document_category",
+          "label": "Category",
+          "placeholder": "e.g., Standards"
+        },
+        {
+          "type": "text",
+          "id": "featured_badge",
+          "label": "Featured Badge",
+          "placeholder": "e.g., New Release, Essential"
+        }
+      ]
+    },
+    {
+      "type": "document_category",
+      "name": "Document Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_name",
+          "label": "Category Name",
+          "info": "Display name for this category"
+        },
+        {
+          "type": "text",
+          "id": "category_slug",
+          "label": "Category Slug",
+          "info": "URL-friendly identifier (e.g., 'standards', 'procedures')"
+        },
+        {
+          "type": "textarea",
+          "id": "category_description",
+          "label": "Category Description",
+          "info": "Brief description of this category"
+        },
+        {
+          "type": "text",
+          "id": "category_icon",
+          "label": "Category Icon",
+          "info": "Emoji or icon for this category",
+          "placeholder": "📋"
+        },
+        {
+          "type": "number",
+          "id": "document_count",
+          "label": "Document Count",
+          "info": "Number of documents in this category"
+        },
+        {
+          "type": "textarea",
+          "id": "documents_json",
+          "label": "Documents Data",
+          "info": "Format: Title::Description::File_URL::Pages::Updated::Preview_URL | Separate multiple documents with |",
+          "placeholder": "ASTM F24.20-2024::Standard practice for operation and maintenance::https://cdn.shopify.com/s/files/example.pdf::45 pages::Jan 2025::|Next Document::Description::URL::Pages::Date::"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AAI Safety Library",
+      "blocks": [
+        {
+          "type": "featured_document",
+          "settings": {
+            "document_title": "2025 Comprehensive Safety Manual",
+            "document_description": "Updated safety manual incorporating latest ASTM F24 standards and industry best practices.",
+            "document_pages": "156",
+            "document_updated": "Jan 2025",
+            "document_category": "Standards",
+            "featured_badge": "New Release"
+          }
+        },
+        {
+          "type": "document_category",
+          "settings": {
+            "category_name": "Standards & Regulations",
+            "category_slug": "standards",
+            "category_description": "ASTM, IAAPA, OSHA, and state-specific safety standards and regulatory documents.",
+            "category_icon": "📋",
+            "document_count": 342
+          }
+        },
+        {
+          "type": "document_category",
+          "settings": {
+            "category_name": "Operating Procedures",
+            "category_slug": "procedures",
+            "category_description": "Detailed procedures for ride operations, maintenance protocols, and safety systems.",
+            "category_icon": "⚙️",
+            "document_count": 485
+          }
+        },
+        {
+          "type": "document_category",
+          "settings": {
+            "category_name": "Incident Analysis",
+            "category_slug": "incidents",
+            "category_description": "Anonymized incident reports, root cause analyses, and lessons learned documentation.",
+            "category_icon": "📊",
+            "document_count": 267
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
