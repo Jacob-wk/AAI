@@ -177,7 +177,7 @@
           "type": "text_block",
           "settings": {
             "block_title": "Frequently Asked Questions",
-            "block_content": "<p>Find answers to common questions about our training programs, certification requirements, and platform features.</p><p><a href=\"/pages/help-center\">Visit Help Center</a></p>"
+            "block_content": "<p>Find answers to common questions about our training programs, certification requirements, and platform features.</p><p><a href=\"/pages/industry-standards\" title=\"Industry Standards\">View Industry Standards</a></p>"
           }
         },
         "demo": {
