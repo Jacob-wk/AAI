@@ -106,36 +106,6 @@
   font-size: 1.1rem;
 }
 
-/* Trust Indicators */
-.aai-trust-indicators {
-  background-color: var(--light-grey);
-  padding: 60px 0;
-}
-
-.aai-trust-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
-  text-align: center;
-}
-
-.aai-trust-item {
-  padding: 20px;
-}
-
-.aai-trust-number {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--authority-navy);
-  margin-bottom: 10px;
-}
-
-.aai-trust-label {
-  font-size: 1rem;
-  color: var(--charcoal-grey);
-  font-weight: 500;
-}
-
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .aai-hero {
@@ -163,14 +133,5 @@
 
   .aai-hero-actions {
     justify-content: center;
-  }
-
-  .aai-trust-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-  }
-
-  .aai-trust-number {
-    font-size: 2rem;
   }
 }

@@ -214,7 +214,8 @@
   border: 1px solid var(--button-secondary-border, #6c757d);
 }
 .aai-btn-secondary:hover {
-  background-color: darken(var(--button-secondary-background, #6c757d), 10%);
+  background-color: var(--button-secondary-hover, #5a6268);
+  color: var(--clean-white);
 }
 
 /* Button Sizes */
@@ -343,7 +344,7 @@
 }
 .aai-hero.color-scheme-2 .aai-btn-secondary:hover {
   background-color: var(--clean-white);
-  color: var(--color-primary);
+  color: var(--charcoal-grey);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }

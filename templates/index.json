@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -23,16 +14,53 @@
         "secondary_button_text": "Learn About AAI",
         "secondary_button_url": "shopify://pages/about",
         "hero_image": "shopify://shop_images/Staff_Training.jpg",
-        "visual_text": "Safety First, Adventure Always",
-        "show_trust_indicators": true,
-        "stat_1_number": "10,000+",
-        "stat_1_label": "Professionals Trained",
-        "stat_2_number": "500+",
-        "stat_2_label": "Partner Organizations",
-        "stat_3_number": "25+",
-        "stat_3_label": "Years Experience",
-        "stat_4_number": "100%",
-        "stat_4_label": "Safety Focused"
+        "visual_text": "Safety First, Adventure Always"
+      }
+    },
+    "trust_indicators": {
+      "type": "aai-trust-indicators",
+      "blocks": {
+        "trust_stat_1": {
+          "type": "trust_stat",
+          "settings": {
+            "stat_number": "10,000+",
+            "stat_label": "FEC Professionals Trained"
+          }
+        },
+        "trust_stat_2": {
+          "type": "trust_stat",
+          "settings": {
+            "stat_number": "800+",
+            "stat_label": "FECs & Adventure Parks"
+          }
+        },
+        "trust_stat_3": {
+          "type": "trust_stat",
+          "settings": {
+            "stat_number": "25+",
+            "stat_label": "Years Experience"
+          }
+        },
+        "trust_stat_4": {
+          "type": "trust_stat",
+          "settings": {
+            "stat_number": "100%",
+            "stat_label": "Safety Focused"
+          }
+        }
+      },
+      "block_order": [
+        "trust_stat_1",
+        "trust_stat_2",
+        "trust_stat_3",
+        "trust_stat_4"
+      ],
+      "settings": {
+        "show_header": false,
+        "show_overlay": false,
+        "grid_style": "auto-fit",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60
       }
     },
     "aai_universal_content_f4efTN": {
@@ -130,6 +158,7 @@
   },
   "order": [
     "main",
+    "trust_indicators",
     "aai_universal_content_f4efTN",
     "aai_universal_content_QGrVx9",
     "aai_universal_content_DiPa6P"

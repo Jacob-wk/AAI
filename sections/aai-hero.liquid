@@ -1,7 +1,7 @@
 {% comment %}
   AAI Hero Section
   - Features AAI branding and LMS-specific content
-  - Trust indicators and course grid preview
+  - Hero content with features and call-to-action buttons
 {% endcomment %}
 
 {{ 'section-aai-hero.css' | asset_url | stylesheet_tag }}
@@ -68,30 +68,7 @@
   </div>
 </section>
 
-{% if section.settings.show_trust_indicators %}
-  <section class="aai-trust-indicators">
-    <div class="aai-container">
-      <div class="aai-trust-grid">
-        <div class="aai-trust-item">
-          <div class="aai-trust-number">{{ section.settings.stat_1_number | default: "10,000+" }}</div>
-          <div class="aai-trust-label">{{ section.settings.stat_1_label | default: "FEC Professionals Trained" }}</div>
-        </div>
-        <div class="aai-trust-item">
-          <div class="aai-trust-number">{{ section.settings.stat_2_number | default: "800+" }}</div>
-          <div class="aai-trust-label">{{ section.settings.stat_2_label | default: "FECs & Adventure Parks" }}</div>
-        </div>
-        <div class="aai-trust-item">
-          <div class="aai-trust-number">{{ section.settings.stat_3_number | default: "25+" }}</div>
-          <div class="aai-trust-label">{{ section.settings.stat_3_label | default: "Years Experience" }}</div>
-        </div>
-        <div class="aai-trust-item">
-          <div class="aai-trust-number">{{ section.settings.stat_4_number | default: "100%" }}</div>
-          <div class="aai-trust-label">{{ section.settings.stat_4_label | default: "Safety Focused" }}</div>
-        </div>
-      </div>
-    </div>
-  </section>
-{% endif %}
+
 
 {% schema %}
 {
@@ -177,64 +154,6 @@
       "id": "visual_text",
       "label": "Placeholder text",
       "default": "Safety First, Adventure Always"
-    },
-    {
-      "type": "header",
-      "content": "Trust Indicators"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_trust_indicators",
-      "label": "Show trust indicators",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "stat_1_number",
-      "label": "Statistic 1 number",
-      "default": "10,000+"
-    },
-    {
-      "type": "text",
-      "id": "stat_1_label",
-      "label": "Statistic 1 label",
-      "default": "Professionals Trained"
-    },
-    {
-      "type": "text",
-      "id": "stat_2_number",
-      "label": "Statistic 2 number",
-      "default": "500+"
-    },
-    {
-      "type": "text",
-      "id": "stat_2_label",
-      "label": "Statistic 2 label",
-      "default": "Partner Organizations"
-    },
-    {
-      "type": "text",
-      "id": "stat_3_number",
-      "label": "Statistic 3 number",
-      "default": "25+"
-    },
-    {
-      "type": "text",
-      "id": "stat_3_label",
-      "label": "Statistic 3 label",
-      "default": "Years Experience"
-    },
-    {
-      "type": "text",
-      "id": "stat_4_number",
-      "label": "Statistic 4 number",
-      "default": "100%"
-    },
-    {
-      "type": "text",
-      "id": "stat_4_label",
-      "label": "Statistic 4 label",
-      "default": "Safety Focused"
     }
   ],
   "presets": [
@@ -251,16 +170,7 @@
         "primary_button_url": "/collections/courses",
         "secondary_button_text": "Try Free Demo",
         "secondary_button_url": "/pages/safety-library",
-        "visual_text": "Safety First, Adventure Always",
-        "show_trust_indicators": true,
-        "stat_1_number": "10,000+",
-        "stat_1_label": "FEC Professionals Trained",
-        "stat_2_number": "800+",
-        "stat_2_label": "FECs & Adventure Parks",
-        "stat_3_number": "25+",
-        "stat_3_label": "Years Experience",
-        "stat_4_number": "100%",
-        "stat_4_label": "Safety Focused"
+        "visual_text": "Safety First, Adventure Always"
       }
     }
   ]

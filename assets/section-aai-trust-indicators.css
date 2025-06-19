@@ -1,0 +1,286 @@
+/* AAI Trust Indicators Section Styles */
+.aai-trust-indicators {
+  background-color: var(--light-grey);
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dynamic padding based on settings */
+.aai-trust-indicators[style*="padding-top"] {
+  padding-top: var(--section-padding-top, 60px);
+}
+
+.aai-trust-indicators[style*="padding-bottom"] {
+  padding-bottom: var(--section-padding-bottom, 60px);
+}
+
+/* Background Image Styling */
+.aai-trust-indicators[style*="background-image"] {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Parallax Effect */
+.aai-trust-indicators.parallax-bg {
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+  .aai-trust-indicators.parallax-bg {
+    background-attachment: scroll; /* Fix mobile parallax issues */
+  }
+}
+
+/* Background Video */
+.aai-trust-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.aai-trust-video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Background Overlay */
+.aai-trust-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Content Container */
+.aai-trust-indicators .aai-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Header */
+.aai-trust-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.aai-trust-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--authority-navy);
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.aai-trust-subtitle {
+  font-size: 1.125rem;
+  color: var(--charcoal-grey);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Trust Grid */
+.aai-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  text-align: center;
+}
+
+.aai-trust-grid.centered-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+  justify-content: center;
+}
+
+/* Trust Items */
+.aai-trust-item {
+  padding: 30px 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aai-trust-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Trust Icon */
+.aai-trust-icon {
+  margin-bottom: 20px;
+}
+
+.aai-trust-icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* Trust Number */
+.aai-trust-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--authority-navy);
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+/* Trust Label */
+.aai-trust-label {
+  font-size: 1rem;
+  color: var(--charcoal-grey);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* Trust Description */
+.aai-trust-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+/* Background Image/Video Variants */
+.aai-trust-indicators[style*="background-image"] .aai-trust-title,
+.aai-trust-indicators .aai-trust-video-bg ~ .aai-container .aai-trust-title {
+  color: var(--clean-white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.aai-trust-indicators[style*="background-image"] .aai-trust-subtitle,
+.aai-trust-indicators .aai-trust-video-bg ~ .aai-container .aai-trust-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.aai-trust-indicators[style*="background-image"] .aai-trust-number,
+.aai-trust-indicators .aai-trust-video-bg ~ .aai-container .aai-trust-number {
+  color: var(--clean-white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.aai-trust-indicators[style*="background-image"] .aai-trust-label,
+.aai-trust-indicators .aai-trust-video-bg ~ .aai-container .aai-trust-label {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.aai-trust-indicators[style*="background-image"] .aai-trust-description,
+.aai-trust-indicators .aai-trust-video-bg ~ .aai-container .aai-trust-description {
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced styling for background image/video */
+.aai-trust-indicators[style*="background-image"] .aai-trust-item,
+.aai-trust-indicators .aai-trust-video-bg ~ .aai-container .aai-trust-item {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .aai-trust-indicators {
+    padding: 40px 0;
+  }
+
+  .aai-trust-header {
+    margin-bottom: 40px;
+  }
+
+  .aai-trust-title {
+    font-size: 1.875rem;
+  }
+
+  .aai-trust-subtitle {
+    font-size: 1rem;
+  }
+
+  .aai-trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .aai-trust-grid.centered-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .aai-trust-item {
+    padding: 20px 15px;
+  }
+
+  .aai-trust-number {
+    font-size: 2rem;
+  }
+
+  .aai-trust-icon img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aai-trust-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .aai-trust-grid.centered-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aai-trust-title {
+    font-size: 1.625rem;
+  }
+
+  .aai-trust-number {
+    font-size: 1.75rem;
+  }
+}
+
+/* Animation on scroll (optional enhancement) */
+@media (prefers-reduced-motion: no-preference) {
+  .aai-trust-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .aai-trust-item:nth-child(1) { animation-delay: 0.1s; }
+  .aai-trust-item:nth-child(2) { animation-delay: 0.2s; }
+  .aai-trust-item:nth-child(3) { animation-delay: 0.3s; }
+  .aai-trust-item:nth-child(4) { animation-delay: 0.4s; }
+  .aai-trust-item:nth-child(5) { animation-delay: 0.5s; }
+  .aai-trust-item:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .aai-trust-item {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  
+  .aai-trust-item:hover {
+    transform: none;
+  }
+}
