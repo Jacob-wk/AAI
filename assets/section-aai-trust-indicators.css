@@ -20,16 +20,16 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll; /* Default to scroll */
 }
 
-/* Parallax Effect */
-.aai-trust-indicators.parallax-bg {
+/* Parallax Effect - Only when class is present */
+.aai-trust-indicators.parallax-bg[style*="background-image"] {
   background-attachment: fixed;
 }
 
 @media (max-width: 768px) {
-  .aai-trust-indicators.parallax-bg {
+  .aai-trust-indicators.parallax-bg[style*="background-image"] {
     background-attachment: scroll; /* Fix mobile parallax issues */
   }
 }
@@ -114,6 +114,16 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Custom Color Support for Trust Items */
+.aai-trust-item[style*="background-color"] {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.aai-trust-item[style*="background-color"]:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
 /* Trust Icon */
 .aai-trust-icon {
   margin-bottom: 20px;
@@ -148,6 +158,20 @@
   color: var(--text-secondary);
   line-height: 1.4;
   margin-top: 8px;
+}
+
+/* Ensure custom text colors override defaults */
+.aai-trust-item[style*="color"] .aai-trust-number {
+  color: inherit !important;
+}
+
+.aai-trust-item[style*="color"] .aai-trust-label {
+  color: inherit !important;
+}
+
+.aai-trust-item[style*="color"] .aai-trust-description {
+  color: inherit !important;
+  opacity: 0.8;
 }
 
 /* Background Image/Video Variants */

@@ -44,16 +44,24 @@
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'trust_stat' %}
-            <div class="aai-trust-item" {{ block.shopify_attributes }}>
+            {% assign item_styles = '' %}
+            {% if block.settings.stat_background_color != blank %}
+              {% assign item_styles = item_styles | append: 'background-color: ' | append: block.settings.stat_background_color | append: '; ' %}
+            {% endif %}
+            {% if block.settings.stat_text_color != blank %}
+              {% assign item_styles = item_styles | append: 'color: ' | append: block.settings.stat_text_color | append: '; ' %}
+            {% endif %}
+            
+            <div class="aai-trust-item" {{ block.shopify_attributes }}{% if item_styles != blank %} style="{{ item_styles }}"{% endif %}>
               {% if block.settings.stat_icon != blank %}
                 <div class="aai-trust-icon">
                   <img src="{{ block.settings.stat_icon | image_url: width: 60 }}" alt="{{ block.settings.stat_label }}" width="60" height="60">
                 </div>
               {% endif %}
-              <div class="aai-trust-number">{{ block.settings.stat_number }}</div>
-              <div class="aai-trust-label">{{ block.settings.stat_label }}</div>
+              <div class="aai-trust-number"{% if block.settings.stat_text_color != blank %} style="color: {{ block.settings.stat_text_color }};"{% endif %}>{{ block.settings.stat_number }}</div>
+              <div class="aai-trust-label"{% if block.settings.stat_text_color != blank %} style="color: {{ block.settings.stat_text_color }};"{% endif %}>{{ block.settings.stat_label }}</div>
               {% if block.settings.stat_description != blank %}
-                <div class="aai-trust-description">{{ block.settings.stat_description }}</div>
+                <div class="aai-trust-description"{% if block.settings.stat_text_color != blank %} style="color: {{ block.settings.stat_text_color }};"{% endif %}>{{ block.settings.stat_description }}</div>
               {% endif %}
             </div>
         {% endcase %}
@@ -205,6 +213,22 @@
           "id": "stat_description",
           "label": "Description (optional)",
           "info": "Additional text below the statistic"
+        },
+        {
+          "type": "header",
+          "content": "Color Settings"
+        },
+        {
+          "type": "color",
+          "id": "stat_background_color",
+          "label": "Background color (optional)",
+          "info": "Leave blank to use default styling"
+        },
+        {
+          "type": "color",
+          "id": "stat_text_color",
+          "label": "Text color (optional)",
+          "info": "Leave blank to use default text color"
         }
       ]
     }
