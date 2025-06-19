@@ -14,8 +14,17 @@
       "settings": {
         "hero_title": "Safety Knowledge Library",
         "hero_subtitle": "Your comprehensive resource center for safety documentation, best practices, incident reports, and technical guidance. Access thousands of curated documents from industry experts and regulatory bodies.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-left-image-right",
+        "show_image": true,
         "show_features": false,
-        "show_stats": false
+        "show_stats": false,
+        "show_credentials": false,
+        "primary_button_text": "",
+        "primary_button_url": "",
+        "secondary_button_text": "",
+        "secondary_button_url": "",
+        "button_size": "large"
       }
     },
     "safety_library_main": {
@@ -26,6 +35,8 @@
           "settings": {
             "document_title": "2025 Comprehensive Safety Manual",
             "document_description": "Updated safety manual incorporating latest ASTM F24 standards and industry best practices. Essential reading for all safety professionals.",
+            "document_file": "",
+            "preview_url": "",
             "document_pages": "156",
             "document_updated": "Jan 2025",
             "document_category": "Standards",
@@ -37,9 +48,12 @@
           "settings": {
             "document_title": "Emergency Response Procedures",
             "document_description": "Complete emergency response protocols for various incident types, including evacuation procedures and communication templates.",
+            "document_file": "",
+            "preview_url": "",
             "document_pages": "45",
             "document_updated": "Dec 2024",
-            "document_category": "Procedures"
+            "document_category": "Procedures",
+            "featured_badge": ""
           }
         },
         "featured_height_verification": {
@@ -47,9 +61,12 @@
           "settings": {
             "document_title": "Height Verification Best Practices",
             "document_description": "Comprehensive guide to height verification systems, procedures, and compliance requirements across different jurisdictions.",
+            "document_file": "",
+            "preview_url": "",
             "document_pages": "28",
             "document_updated": "Nov 2024",
-            "document_category": "Guidelines"
+            "document_category": "Guidelines",
+            "featured_badge": ""
           }
         },
         "category_standards": {
@@ -131,8 +148,8 @@
         "category_training"
       ],
       "settings": {
-        "section_title": "Safety Knowledge Library",
-        "section_description": "<p>Your comprehensive resource center for safety documentation, best practices, incident reports, and technical guidance. Access thousands of curated documents from industry experts and regulatory bodies.</p>",
+        "section_title": "",
+        "section_description": "",
         "show_search": true,
         "search_placeholder": "Search safety documents, guides, standards...",
         "show_filters": true,
