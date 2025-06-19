@@ -154,6 +154,32 @@
         mobileMenu.classList.toggle('active');
       });
     }
+    
+    // Override search form to redirect to courses collection
+    const searchForm = document.querySelector('#search-modal .predictive-search-form');
+    if (searchForm) {
+      searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get the search query
+        const searchInput = searchForm.querySelector('input[type="search"]');
+        const query = searchInput ? searchInput.value.trim() : '';
+        
+        // Only redirect if there's actually a search query
+        if (query) {
+          window.location.href = `/collections/courses?q=${encodeURIComponent(query)}`;
+        }
+        // If empty, do nothing - just prevent the default form submission
+      });
+      
+      // Also handle "See all" links if they exist
+      document.addEventListener('click', function(e) {
+        if (e.target.matches('#search-modal .predictive-search__see-all, #search-modal [href*="/search"]')) {
+          e.preventDefault();
+          window.location.href = '/collections/courses';
+        }
+      });
+    }
   });
 </script>
 

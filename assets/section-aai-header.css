@@ -327,4 +327,106 @@
   .desktop\:hidden {
     display: none !important;
   }
-}
+}  /* Search Modal Styling Override */
+  .aai-header .search-modal__content {
+    --modal-width: 480px;
+    --modal-max-width: 90vw;
+    --modal-top-margin: 2rem;
+    --icon-stroke-width: 1.5px;
+    
+    max-width: var(--modal-max-width);
+    width: var(--modal-width);
+    margin-block-start: var(--modal-top-margin);
+  }
+  
+  /* Make search results more compact */
+  .aai-header .predictive-search {
+    --padding-sm: 0.75rem;
+    --padding-md: 1rem;
+  }
+  
+  .aai-header .predictive-search__input {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  .aai-header .predictive-search-dropdown {
+    max-height: 60vh;
+  }
+  
+  /* Fix SVG icon rendering issues */
+  .aai-header .search-modal .icon,
+  .aai-header .search-modal .svg-wrapper svg,
+  .aai-header .search-modal svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: block;
+    fill: currentColor;
+    stroke: currentColor;
+    color: var(--charcoal-grey, #666);
+  }
+  
+  .aai-header .search-modal .icon-search,
+  .aai-header .search-modal .svg-wrapper svg[class*="search"] {
+    width: 1rem;
+    height: 1rem;
+    color: var(--charcoal-grey, #666);
+  }
+  
+  .aai-header .search-modal .icon-close,
+  .aai-header .search-modal .svg-wrapper svg[class*="close"],
+  .aai-header .search-modal .svg-wrapper svg[class*="reset"] {
+    width: 1rem;
+    height: 1rem;
+    color: var(--charcoal-grey, #666);
+  }
+  
+  /* Fix close/reset button styling */
+  .aai-header .search-modal [data-close-dialog],
+  .aai-header .search-modal .predictive-search__reset-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--charcoal-grey, #666);
+  }
+  
+  /* Fix search input and icon container */
+  .aai-header .predictive-search__icon,
+  .aai-header .predictive-search__search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .aai-header .predictive-search__icon svg,
+  .aai-header .predictive-search__search-button svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  /* Ensure input has proper padding for the icon */
+  .aai-header .search-input {
+    padding-left: 2.5rem !important;
+  }
+  
+  @media screen and (max-width: 749px) {
+    .aai-header .search-modal__content {
+      --modal-width: 95vw;
+      --modal-top-margin: 1rem;
+    }
+    
+    .aai-header .predictive-search__input {
+      font-size: 0.875rem;
+      padding: 0.625rem 0.875rem;
+    }
+  }
