@@ -342,7 +342,9 @@
     left: 50%;
     transform: translateX(-50%);
     border-radius: 8px;
+    border: 1px solid #e0e0e0 !important; /* Light border instead of thick black */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    background: white !important;
   }
   
   /* Make search results more compact */
@@ -512,4 +514,16 @@
       font-size: 0.875rem;
       padding: 0.625rem 0.875rem;
     }
+  }
+  
+  /* Remove default dialog borders */
+  .search-modal dialog,
+  .search-modal__content dialog {
+    border: none !important;
+  }
+  
+  /* Ensure the search modal dialog has clean styling */
+  .search-modal .dialog-modal {
+    border: 1px solid #e0e0e0 !important;
+    background: white !important;
   }
