@@ -331,12 +331,18 @@
   .aai-header .search-modal__content {
     --modal-width: 480px;
     --modal-max-width: 90vw;
-    --modal-top-margin: 2rem;
+    --modal-top-margin: 1rem;
     --icon-stroke-width: 1.5px;
     
     max-width: var(--modal-max-width);
     width: var(--modal-width);
     margin-block-start: var(--modal-top-margin);
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
   
   /* Make search results more compact */
@@ -354,69 +360,137 @@
     max-height: 60vh;
   }
   
-  /* Fix SVG icon rendering issues */
-  .aai-header .search-modal .icon,
-  .aai-header .search-modal .svg-wrapper svg,
-  .aai-header .search-modal svg {
-    width: 1.25rem;
-    height: 1.25rem;
-    display: block;
-    fill: currentColor;
-    stroke: currentColor;
-    color: var(--charcoal-grey, #666);
+  /* Header styling for proper button positioning */
+  .aai-header .predictive-search-form__header {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 1rem !important;
+    border-bottom: 1px solid #e5e5e5 !important;
   }
   
-  .aai-header .search-modal .icon-search,
-  .aai-header .search-modal .svg-wrapper svg[class*="search"] {
-    width: 1rem;
-    height: 1rem;
-    color: var(--charcoal-grey, #666);
+  .aai-header .predictive-search-form__header-inner {
+    flex: 1 !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
   }
   
-  .aai-header .search-modal .icon-close,
-  .aai-header .search-modal .svg-wrapper svg[class*="close"],
-  .aai-header .search-modal .svg-wrapper svg[class*="reset"] {
-    width: 1rem;
-    height: 1rem;
-    color: var(--charcoal-grey, #666);
+  /* Hide the left search icon */
+  .aai-header .predictive-search__icon {
+    display: none !important;
   }
   
-  /* Fix close/reset button styling */
-  .aai-header .search-modal [data-close-dialog],
-  .aai-header .search-modal .predictive-search__reset-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--charcoal-grey, #666);
-  }
-  
-  /* Fix search input and icon container */
-  .aai-header .predictive-search__icon,
-  .aai-header .predictive-search__search-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-  
-  .aai-header .predictive-search__icon svg,
-  .aai-header .predictive-search__search-button svg {
-    width: 1rem;
-    height: 1rem;
-  }
-  
-  /* Ensure input has proper padding for the icon */
+  /* Style the search input without left icon */
   .aai-header .search-input {
-    padding-left: 2.5rem !important;
+    flex: 1 !important;
+    padding: 0.75rem 1rem !important;
+    padding-right: 3rem !important; /* Space for clear button */
+    border: 1px solid #ddd !important;
+    border-radius: 6px !important;
+    font-size: 1rem !important;
+    height: 3rem !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+  }
+  
+  .aai-header .search-input:focus {
+    border-color: var(--authority-navy, #1e3a5f) !important;
+    box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.1) !important;
+  }
+  
+  /* Position and style the clear/reset button inside the input */
+  .aai-header .predictive-search__reset-button {
+    position: absolute !important;
+    right: 0.75rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 0.25rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10 !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    border-radius: 50% !important;
+  }
+  
+  .aai-header .predictive-search__reset-button:hover {
+    background: rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Style the reset button icon */
+  .aai-header .predictive-search__reset-button .svg-wrapper,
+  .aai-header .predictive-search__reset-button svg {
+    width: 1rem !important;
+    height: 1rem !important;
+    color: #666 !important;
+    fill: #666 !important;
+    stroke: #666 !important;
+    display: block !important;
+  }
+  
+  /* Style the default close button */
+  .aai-header .predictive-search__close-modal-button {
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 0.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: 0.5rem !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .aai-header .predictive-search__close-modal-button:hover {
+    background: rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Style the close button icon */
+  .aai-header .predictive-search__close-modal-button .svg-wrapper,
+  .aai-header .predictive-search__close-modal-button svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    color: #666 !important;
+    fill: #666 !important;
+    stroke: #666 !important;
+    display: block !important;
+  }
+  
+  /* Fix all SVG icon rendering issues */
+  .aai-header .search-modal .svg-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .aai-header .search-modal svg {
+    display: block !important;
+    fill: currentColor !important;
+    stroke: currentColor !important;
+  }
+  
+  /* Ensure "See all" button redirects to courses collection */
+  .aai-header .predictive-search__search-button {
+    background: var(--authority-navy, #1e3a5f) !important;
+    color: white !important;
+    border: none !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+  }
+  
+  .aai-header .predictive-search__search-button:hover {
+    background: var(--charcoal-grey, #333) !important;
   }
   
   @media screen and (max-width: 749px) {
