@@ -5,13 +5,17 @@
       "settings": {
         "hero_title": "Safety Knowledge Library",
         "hero_subtitle": "Your comprehensive resource center for safety documentation, best practices, incident reports, and technical guidance. Access thousands of curated documents from industry experts and regulatory bodies.",
-        "show_stats": false,
+        "hero_style": "hero-standard",
+        "layout_style": "text-left-image-right",
+        "show_image": true,
         "show_features": false,
-        "hero_text_color": "#ffffff",
-        "hero_background_color": "#1e3a5f",
-        "hero_button_text": "",
-        "hero_button_url": "",
-        "hero_button_style": "aai-btn aai-btn-primary"
+        "show_stats": false,
+        "show_credentials": false,
+        "primary_button_text": "",
+        "primary_button_url": "",
+        "secondary_button_text": "",
+        "secondary_button_url": "",
+        "button_size": "large"
       }
     },
     "safety_library_main": {
@@ -39,7 +43,8 @@
             "preview_url": "",
             "document_pages": "45",
             "document_updated": "Dec 2024",
-            "document_category": "Procedures"
+            "document_category": "Procedures",
+            "featured_badge": ""
           }
         },
         "featured_height_verification": {
@@ -51,7 +56,8 @@
             "preview_url": "",
             "document_pages": "28",
             "document_updated": "Nov 2024",
-            "document_category": "Guidelines"
+            "document_category": "Guidelines",
+            "featured_badge": ""
           }
         },
         "category_standards": {
