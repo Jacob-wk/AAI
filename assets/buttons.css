@@ -45,14 +45,16 @@
 }
 
 .aai-btn-secondary {
-  background: var(--color-secondary);
-  color: var(--clean-white);
+  background: var(--color-secondary, #ff6b35) !important;
+  color: var(--clean-white, #ffffff) !important;
   box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-secondary, #ff6b35) !important;
 }
 
 .aai-btn-secondary:hover {
-  background: #e55a2e;
-  color: var(--clean-white);
+  background: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -131,6 +133,219 @@
 .aai-btn-group .aai-btn {
   flex: 1;
 }
+
+/* ========================================
+   STANDARD SHOPIFY BUTTON CLASSES
+   ======================================== */
+
+/* Base button styles for Shopify theme */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-md, 6px);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium, 600);
+  font-size: 16px;
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--hover-transition-duration, 0.25s) var(--hover-transition-timing, ease-out);
+  position: relative;
+  overflow: hidden;
+  min-height: 48px;
+  white-space: nowrap;
+}
+
+.button:focus {
+  outline: var(--focus-outline-width, 2px) solid var(--color-accent);
+  outline-offset: var(--focus-outline-offset, 2px);
+  border-radius: var(--focus-outline-radius, 6px);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Primary button */
+.button-primary {
+  background: var(--color-primary, #1e3a5f);
+  color: var(--clean-white, #ffffff);
+  border-color: var(--color-primary, #1e3a5f);
+  box-shadow: var(--shadow-sm);
+}
+
+.button-primary:hover {
+  background: var(--charcoal-grey, #2c3e50);
+  border-color: var(--charcoal-grey, #2c3e50);
+  color: var(--clean-white, #ffffff);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Secondary button - FIXED STYLES */
+.button-secondary {
+  background: var(--color-secondary, #ff6b35);
+  color: var(--clean-white, #ffffff);
+  border-color: var(--color-secondary, #ff6b35);
+  box-shadow: var(--shadow-sm);
+}
+
+.button-secondary:hover {
+  background: #e55a2e;
+  color: var(--clean-white, #ffffff);
+  border-color: #e55a2e;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Outline button */
+.button-outline {
+  background: transparent;
+  color: var(--color-primary, #1e3a5f);
+  border-color: var(--color-primary, #1e3a5f);
+}
+
+.button-outline:hover {
+  background: var(--color-primary, #1e3a5f);
+  color: var(--clean-white, #ffffff);
+  border-color: var(--color-primary, #1e3a5f);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Ghost button */
+.button-ghost {
+  background: transparent;
+  color: var(--color-primary, #1e3a5f);
+  border-color: transparent;
+}
+
+.button-ghost:hover {
+  background: var(--light-grey, #f8f9fa);
+  color: var(--color-primary, #1e3a5f);
+  border-color: var(--color-primary, #1e3a5f);
+}
+
+/* Button sizes for standard Shopify classes */
+.button-small {
+  padding: 8px 16px;
+  font-size: 14px;
+  min-height: 36px;
+}
+
+.button-large {
+  padding: 16px 32px;
+  font-size: 18px;
+  min-height: 56px;
+}
+
+/* Button groups for standard Shopify classes */
+.button-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm, 8px);
+}
+
+.button-group .button {
+  flex: 1;
+}
+
+/* ========================================
+   END STANDARD SHOPIFY BUTTON CLASSES
+   ======================================== */
+
+/* ========================================
+   DEFENSIVE OVERRIDES FOR BUTTON-SECONDARY
+   ======================================== */
+
+/* Ensure button-secondary never has white background on hover */
+.button-secondary:hover,
+.button.button-secondary:hover,
+button.button-secondary:hover,
+a.button-secondary:hover,
+input.button-secondary:hover {
+  background-color: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
+}
+
+/* Additional specificity for button-secondary in different contexts */
+.product-form .button-secondary:hover,
+.cart-form .button-secondary:hover,
+.contact-form .button-secondary:hover,
+.newsletter-form .button-secondary:hover {
+  background-color: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
+}
+
+/* Handle button-secondary in specific sections */
+.section .button-secondary:hover,
+.header .button-secondary:hover,
+.footer .button-secondary:hover {
+  background-color: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
+}
+
+/* Override any white backgrounds on button-secondary */
+.button-secondary:hover {
+  background-color: #e55a2e !important;
+  background-image: none !important;
+  color: var(--clean-white, #ffffff) !important;
+}
+
+/* ========================================
+   END DEFENSIVE OVERRIDES
+   ======================================== */
+
+/* ========================================
+   COMPREHENSIVE AAI BUTTON SECONDARY FIX
+   ======================================== */
+
+/* Ensure all AAI button secondary variants have consistent styling */
+.aai-btn.aai-btn-secondary,
+.aai-btn.aai-btn-secondary.aai-btn-small,
+.aai-btn.aai-btn-secondary.aai-btn-medium,
+.aai-btn.aai-btn-secondary.aai-btn-large,
+.aai-btn.aai-btn-secondary.aai-btn-xl {
+  background: var(--color-secondary, #ff6b35) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: var(--color-secondary, #ff6b35) !important;
+}
+
+/* Hover states for all AAI button secondary variants */
+.aai-btn.aai-btn-secondary:hover,
+.aai-btn.aai-btn-secondary.aai-btn-small:hover,
+.aai-btn.aai-btn-secondary.aai-btn-medium:hover,
+.aai-btn.aai-btn-secondary.aai-btn-large:hover,
+.aai-btn.aai-btn-secondary.aai-btn-xl:hover {
+  background: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* High specificity override for any context containing AAI buttons */
+* .aai-btn.aai-btn-secondary:hover,
+section .aai-btn.aai-btn-secondary:hover,
+.aai-hero .aai-btn.aai-btn-secondary:hover,
+.color-scheme-2 .aai-btn.aai-btn-secondary:hover,
+[class*="color-scheme"] .aai-btn.aai-btn-secondary:hover {
+  background: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
+}
+
+/* ========================================
+   END COMPREHENSIVE AAI BUTTON SECONDARY FIX
+   ======================================== */
 
 /* Responsive button adjustments */
 @media screen and (max-width: 768px) {

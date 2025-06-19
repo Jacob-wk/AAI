@@ -64,13 +64,23 @@ a:hover {
 }
 
 .btn-secondary, .aai-btn--secondary {
-  background-color: var(--electric-blue);
-  color: white;
+  background-color: var(--color-secondary, #ff6b35);
+  color: var(--clean-white, #ffffff);
+  border: 2px solid var(--color-secondary, #ff6b35);
 }
 
 .btn-secondary:hover, .aai-btn--secondary:hover {
-  background-color: #2980b9;
+  background-color: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
   transform: translateY(-1px);
+}
+
+/* Additional button-secondary overrides to prevent white background */
+.button-secondary:hover {
+  background-color: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
 }
 
 /* Form elements */
