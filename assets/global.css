@@ -54,12 +54,15 @@ a:hover {
 }
 
 .btn-primary, .aai-btn--primary {
-  background-color: var(--safety-orange);
-  color: white;
+  background-color: var(--safety-orange, #ff6b35) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--safety-orange, #ff6b35) !important;
 }
 
 .btn-primary:hover, .aai-btn--primary:hover {
-  background-color: #e55a2b;
+  background-color: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
   transform: translateY(-1px);
 }
 
@@ -71,7 +74,7 @@ a:hover {
 
 .btn-secondary:hover, .aai-btn--secondary:hover {
   background-color: var(--clean-white, #ffffff) !important;
-  color: transparent !important;
+  color: var(--authority-navy, #1e3a5f) !important;
   border-color: var(--clean-white, #ffffff) !important;
   transform: translateY(-1px);
 }
@@ -79,7 +82,7 @@ a:hover {
 /* Additional button-secondary overrides to prevent white background */
 .button-secondary:hover {
   background-color: var(--clean-white, #ffffff) !important;
-  color: transparent !important;
+  color: var(--authority-navy, #1e3a5f) !important;
   border-color: var(--clean-white, #ffffff) !important;
 }
 

@@ -33,13 +33,16 @@
 
 /* Button variants */
 .aai-btn-primary {
-  background: var(--color-primary);
-  color: var(--clean-white);
+  background: var(--color-secondary, #ff6b35) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--color-secondary, #ff6b35) !important;
   box-shadow: var(--shadow-sm);
 }
 
 .aai-btn-primary:hover {
-  background: var(--charcoal-grey);
+  background: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -53,7 +56,7 @@
 
 .aai-btn-secondary:hover {
   background: var(--clean-white, #ffffff) !important;
-  color: transparent !important;
+  color: var(--authority-navy, #1e3a5f) !important;
   border-color: var(--clean-white, #ffffff) !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
@@ -326,7 +329,7 @@ input.button-secondary:hover {
 .aai-btn.aai-btn-secondary.aai-btn-large:hover,
 .aai-btn.aai-btn-secondary.aai-btn-xl:hover {
   background: var(--clean-white, #ffffff) !important;
-  color: transparent !important;
+  color: var(--authority-navy, #1e3a5f) !important;
   border-color: var(--clean-white, #ffffff) !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
@@ -339,12 +342,66 @@ section .aai-btn.aai-btn-secondary:hover,
 .color-scheme-2 .aai-btn.aai-btn-secondary:hover,
 [class*="color-scheme"] .aai-btn.aai-btn-secondary:hover {
   background: var(--clean-white, #ffffff) !important;
-  color: transparent !important;
+  color: var(--authority-navy, #1e3a5f) !important;
   border-color: var(--clean-white, #ffffff) !important;
 }
 
 /* ========================================
    END COMPREHENSIVE AAI BUTTON SECONDARY FIX
+   ======================================== */
+
+/* ========================================
+   COMPREHENSIVE AAI BUTTON PRIMARY FIX
+   ======================================== */
+
+/* Ensure all AAI button primary variants have consistent AAI orange styling */
+.aai-btn.aai-btn-primary,
+.aai-btn.aai-btn-primary.aai-btn-small,
+.aai-btn.aai-btn-primary.aai-btn-medium,
+.aai-btn.aai-btn-primary.aai-btn-large,
+.aai-btn.aai-btn-primary.aai-btn-xl {
+  background: var(--color-secondary, #ff6b35) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border: 2px solid var(--color-secondary, #ff6b35) !important;
+}
+
+/* Hover states for all AAI button primary variants */
+.aai-btn.aai-btn-primary:hover,
+.aai-btn.aai-btn-primary.aai-btn-small:hover,
+.aai-btn.aai-btn-primary.aai-btn-medium:hover,
+.aai-btn.aai-btn-primary.aai-btn-large:hover,
+.aai-btn.aai-btn-primary.aai-btn-xl:hover {
+  background: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* High specificity override for any context containing AAI primary buttons */
+* .aai-btn.aai-btn-primary,
+section .aai-btn.aai-btn-primary,
+.aai-hero .aai-btn.aai-btn-primary,
+.color-scheme-2 .aai-btn.aai-btn-primary,
+[class*="color-scheme"] .aai-btn.aai-btn-primary {
+  background: var(--color-secondary, #ff6b35) !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: var(--color-secondary, #ff6b35) !important;
+}
+
+/* High specificity hover override for any context containing AAI primary buttons */
+* .aai-btn.aai-btn-primary:hover,
+section .aai-btn.aai-btn-primary:hover,
+.aai-hero .aai-btn.aai-btn-primary:hover,
+.color-scheme-2 .aai-btn.aai-btn-primary:hover,
+[class*="color-scheme"] .aai-btn.aai-btn-primary:hover {
+  background: #e55a2e !important;
+  color: var(--clean-white, #ffffff) !important;
+  border-color: #e55a2e !important;
+}
+
+/* ========================================
+   END COMPREHENSIVE AAI BUTTON PRIMARY FIX
    ======================================== */
 
 /* Responsive button adjustments */

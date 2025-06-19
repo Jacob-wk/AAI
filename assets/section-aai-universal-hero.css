@@ -202,11 +202,14 @@
   transition: background-color 0.3s ease;
 }
 .aai-btn-primary {
-  background-color: var(--button-primary-background, #007bff); /* Use theme variables if available */
-  color: var(--button-primary-text, #ffffff);
+  background-color: var(--color-secondary, #ff6b35); /* Use AAI orange */
+  color: var(--clean-white, #ffffff);
+  border: none;
 }
 .aai-btn-primary:hover {
-  background-color: darken(var(--button-primary-background, #007bff), 10%);
+  background-color: #e55a2e; /* Darker orange on hover */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 .aai-btn-secondary {
   background-color: transparent;
@@ -215,7 +218,7 @@
 }
 .aai-btn-secondary:hover {
   background-color: var(--clean-white, #ffffff) !important;
-  color: transparent !important;
+  color: var(--authority-navy, #1e3a5f) !important;
   border-color: var(--clean-white, #ffffff) !important;
 }
 
@@ -345,7 +348,7 @@
 }
 .aai-hero.color-scheme-2 .aai-btn-secondary:hover {
   background-color: var(--clean-white, #ffffff) !important;
-  color: transparent !important;
+  color: var(--authority-navy, #1e3a5f) !important;
   border-color: var(--clean-white, #ffffff) !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
