@@ -33,28 +33,32 @@
           "type": "trust_stat",
           "settings": {
             "stat_number": "10,000+",
-            "stat_label": "FEC Professionals Trained"
+            "stat_label": "FEC Professionals Trained",
+            "stat_description": ""
           }
         },
         "trust_stat_2": {
           "type": "trust_stat",
           "settings": {
             "stat_number": "800+",
-            "stat_label": "FECs & Adventure Parks"
+            "stat_label": "FECs & Adventure Parks",
+            "stat_description": ""
           }
         },
         "trust_stat_3": {
           "type": "trust_stat",
           "settings": {
             "stat_number": "25+",
-            "stat_label": "Years Experience"
+            "stat_label": "Years Experience",
+            "stat_description": ""
           }
         },
         "trust_stat_4": {
           "type": "trust_stat",
           "settings": {
             "stat_number": "100%",
-            "stat_label": "Safety Focused"
+            "stat_label": "Safety Focused",
+            "stat_description": ""
           }
         }
       },
@@ -66,7 +70,14 @@
       ],
       "settings": {
         "show_header": false,
-        "show_overlay": false,
+        "header_title": "Trusted by Industry Leaders",
+        "header_subtitle": "Join thousands of professionals who trust AAI for their safety education needs",
+        "background_image": "shopify://shop_images/1377742.jpg",
+        "background_video": "",
+        "enable_parallax": true,
+        "show_overlay": true,
+        "overlay_color": "#606060",
+        "overlay_opacity": 80,
         "grid_style": "auto-fit",
         "section_padding_top": 64,
         "section_padding_bottom": 64
