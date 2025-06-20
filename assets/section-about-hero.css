@@ -68,50 +68,10 @@
 /* These can be removed or adjusted if specific overrides for about-hero are needed. */
 
 @media (max-width: 768px) { 
-  /* Fix mobile centering and padding issues */
-  .about-hero .aai-container {
-    padding-left: var(--spacing-sm, 1rem);  /* Use consistent spacing variable */
-    padding-right: var(--spacing-sm, 1rem); /* Use consistent spacing variable */
-    margin-left: auto;   /* Ensure container stays centered */
-    margin-right: auto;  /* Ensure container stays centered */
-  }
-  
-  .about-hero .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-  }
-  
-  .about-hero .hero-text {
-    width: 100%;
-    padding-left: 0;   /* Remove any extra left padding */
-    padding-right: 0;  /* Remove any extra right padding */
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
   .about-hero .hero-title { /* Specific font size adjustment for about page on mobile */
     font-size: 2.2rem; 
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
   }
-  
   .about-hero .hero-subtitle { /* Specific font size adjustment for about page on mobile */
     font-size: 1rem;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* Ensure image section is also properly centered */
-  .about-hero .hero-image {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1.5rem;
   }
 }
