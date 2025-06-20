@@ -32,7 +32,7 @@
         "trust_stat_1": {
           "type": "trust_stat",
           "settings": {
-            "stat_number": "10,000+",
+            "stat_number": "100+",
             "stat_label": "FEC Professionals Trained",
             "stat_description": "",
             "stat_background_color": "#f5f5f5",
@@ -42,7 +42,7 @@
         "trust_stat_2": {
           "type": "trust_stat",
           "settings": {
-            "stat_number": "800+",
+            "stat_number": "10+",
             "stat_label": "FECs & Adventure Parks",
             "stat_description": "",
             "stat_background_color": "#f5f5f5",
