@@ -68,12 +68,16 @@
 /* These can be removed or adjusted if specific overrides for about-hero are needed. */
 
 @media (max-width: 768px) { 
-  /* Fix mobile centering and reduce excessive padding */
+  /* Override container padding that's being applied by containers.css */
   .about-hero .aai-container {
-    padding-left: var(--spacing-xs, 0.5rem);  /* Minimal padding to use more screen width */
-    padding-right: var(--spacing-xs, 0.5rem); /* Minimal padding to use more screen width */
-    margin-left: auto;   /* Ensure container stays centered */
-    margin-right: auto;  /* Ensure container stays centered */
+    padding-left: var(--spacing-xs, 0.5rem) !important;  /* Override containers.css padding */
+    padding-right: var(--spacing-xs, 0.5rem) !important; /* Override containers.css padding */
+  }
+  
+  /* Ensure hero-text doesn't have additional padding from universal hero styles */
+  .about-hero .hero-text {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
   
   .about-hero .hero-title { /* Specific font size adjustment for about page on mobile */
