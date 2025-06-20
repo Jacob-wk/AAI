@@ -1,23 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "aai-universal-hero",
-      "settings": {
-        "hero_title": "Official Compliance Training for FEC Industry",
-        "hero_subtitle": "Mandatory safety certification programs for family entertainment centers. Ensure regulatory compliance with AAI's comprehensive training solutions.",
-        "hero_style": "hero-standard",
-        "layout_style": "text-left-image-right",
-        "color_scheme": "color-scheme-2",
-        "show_image": true,
-        "show_stats": true,
-        "show_features": true,
-        "show_credentials": true,
-        "primary_button_text": "Get Compliance Assessment",
-        "primary_button_url": "/pages/contact",
-        "secondary_button_text": "View Certification Programs",
-        "secondary_button_url": "/collections/courses",
-        "button_size": "large"
-      },
       "blocks": {
         "stat_1": {
           "type": "statistic",
@@ -79,25 +72,32 @@
       },
       "block_order": [
         "stat_1",
-        "stat_2", 
+        "stat_2",
         "stat_3",
         "feature_1",
         "feature_2",
         "feature_3",
         "credential_1",
         "credential_2"
-      ]
+      ],
+      "settings": {
+        "hero_title": "Official Compliance Training for FEC Industry",
+        "hero_subtitle": "Mandatory safety certification programs for family entertainment centers. Ensure regulatory compliance with AAI's comprehensive training solutions.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-left-image-right",
+        "show_image": true,
+        "show_features": true,
+        "show_stats": true,
+        "show_credentials": true,
+        "primary_button_text": "Get Compliance Assessment",
+        "primary_button_url": "/pages/contact",
+        "secondary_button_text": "View Certification Programs",
+        "secondary_button_url": "/collections/courses",
+        "button_size": "large"
+      }
     },
     "compliance_solutions": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Regulatory Compliance Solutions",
-        "section_subtitle": "Mandatory certification programs designed specifically for Family Entertainment Centers",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": 2,
-        "background_style": "section-standard",
-        "show_main_content": false
-      },
       "blocks": {
         "mandatory_programs": {
           "type": "feature_list",
@@ -133,24 +133,18 @@
         "official_docs",
         "industry_standards",
         "audit_prep"
-      ]
+      ],
+      "settings": {
+        "section_title": "Regulatory Compliance Solutions",
+        "section_subtitle": "Mandatory certification programs designed specifically for Family Entertainment Centers",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "2",
+        "background_style": "section-standard",
+        "show_main_content": false
+      }
     },
     "why_essential": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Why AAI Certification is Essential",
-        "section_subtitle": "AAI certification isn't just recommended—it's becoming the industry standard for FEC operations",
-        "layout_style": "text-left-image-right",
-        "background_style": "section-alt-1",
-        "show_main_content": true,
-        "content_title": "Regulatory Requirement & Industry Standard",
-        "content_body": "<p>Family Entertainment Centers face increasing regulatory scrutiny. AAI certification provides the comprehensive training and documentation needed to meet all requirements while protecting your business.</p>",
-        "show_image": true,
-        "main_button_text": "Get Started Today",
-        "main_button_url": "/pages/contact",
-        "main_button_style": "primary",
-        "main_button_size": "medium"
-      },
       "blocks": {
         "regulatory_req": {
           "type": "text_block",
@@ -186,17 +180,24 @@
         "legal_protection",
         "insurance_benefits",
         "industry_recognition"
-      ]
+      ],
+      "settings": {
+        "section_title": "Why AAI Certification is Essential",
+        "section_subtitle": "AAI certification isn't just recommended—it's becoming the industry standard for FEC operations",
+        "layout_style": "text-left-image-right",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_title": "Regulatory Requirement & Industry Standard",
+        "content_body": "<p>Family Entertainment Centers face increasing regulatory scrutiny. AAI certification provides the comprehensive training and documentation needed to meet all requirements while protecting your business.</p>",
+        "show_image": true,
+        "main_button_text": "Get Started Today",
+        "main_button_url": "/pages/contact",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
     },
     "enterprise_packages": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Enterprise Compliance Packages",
-        "section_subtitle": "Comprehensive solutions for multi-location FEC operations and corporate training programs",
-        "layout_style": "timeline",
-        "background_style": "section-standard",
-        "show_main_content": false
-      },
       "blocks": {
         "multi_location": {
           "type": "text_block",
@@ -232,17 +233,17 @@
         "corporate_training",
         "ongoing_compliance",
         "doc_management"
-      ]
+      ],
+      "settings": {
+        "section_title": "Enterprise Compliance Packages",
+        "section_subtitle": "Comprehensive solutions for multi-location FEC operations and corporate training programs",
+        "layout_style": "timeline",
+        "background_style": "section-standard",
+        "show_main_content": false
+      }
     },
     "implementation_process": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Compliance Implementation Process",
-        "section_subtitle": "Our proven 4-step process ensures seamless compliance implementation",
-        "layout_style": "timeline",
-        "background_style": "section-alt-1",
-        "show_main_content": false
-      },
       "blocks": {
         "step_1": {
           "type": "text_block",
@@ -278,18 +279,17 @@
         "step_2",
         "step_3",
         "step_4"
-      ]
+      ],
+      "settings": {
+        "section_title": "Compliance Implementation Process",
+        "section_subtitle": "Our proven 4-step process ensures seamless compliance implementation",
+        "layout_style": "timeline",
+        "background_style": "section-alt-1",
+        "show_main_content": false
+      }
     },
     "support_services": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Regulatory Support Services",
-        "section_subtitle": "Comprehensive support to ensure ongoing compliance and regulatory readiness",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": 2,
-        "background_style": "section-standard",
-        "show_main_content": false
-      },
       "blocks": {
         "compliance_docs": {
           "type": "feature_list",
@@ -325,14 +325,20 @@
         "regulatory_updates",
         "inspection_support",
         "standards_dev"
-      ]
+      ],
+      "settings": {
+        "section_title": "Regulatory Support Services",
+        "section_subtitle": "Comprehensive support to ensure ongoing compliance and regulatory readiness",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "2",
+        "background_style": "section-standard",
+        "show_main_content": false
+      }
     },
     "final_cta": {
       "type": "aai-universal-cta",
       "settings": {
         "title": "Get Compliant Today",
-        "subtitle": "Ensure Your FEC Meets Industry Standards",
-        "description": "Don't wait for regulatory issues. Start your compliance journey today with AAI's proven certification programs.",
         "button_1_text": "Schedule Compliance Assessment",
         "button_1_link": "/pages/contact",
         "button_1_style": "primary",
