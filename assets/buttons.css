@@ -380,9 +380,9 @@
 }
 
 .button-group .btn-outline {
-  background: var(--color-primary, #1e3a5f) !important;
+  background: var(--authority-navy, #1e3a5f) !important;
   color: var(--clean-white, #ffffff) !important;
-  border: 2px solid var(--color-primary, #1e3a5f) !important;
+  border: 2px solid var(--authority-navy, #1e3a5f) !important;
 }
 
 .button-group .btn-outline:hover {
