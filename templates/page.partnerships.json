@@ -193,8 +193,8 @@
       "settings": {
         "section_title": "Enterprise Compliance Packages",
         "section_subtitle": "Comprehensive solutions for multi-location FEC operations and corporate training programs",
-        "layout_style": "timeline",
-        "blocks_per_row": "1",
+        "layout_style": "text-only",
+        "blocks_per_row": "2",
         "background_style": "section-standard",
         "show_main_content": false,
         "content_title": "",
