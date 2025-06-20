@@ -32,22 +32,24 @@
 
 /* Styling for .hero-stats, .stat-item, .stat-number, .stat-label is inherited from universal hero */
 
-/* Hero Image Styling - Make image bigger and not square like universal hero */
+/* Hero Image Styling - Make image bigger like AAI hero visual */
 .about-hero .hero-image {
-  flex: 1;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  text-align: center;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  min-height: 500px; /* Even bigger than AAI hero */
   position: relative;
-  min-height: 400px; /* Ensure image area has substantial height */
+  flex: 1;
 }
 
 .about-hero .hero-main-image {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  width: 100%; /* Ensure image takes full container width */
-  object-fit: cover; /* Ensure image covers the container properly */
 }
 
 /* Credentials overlay styling inherited from universal hero */
