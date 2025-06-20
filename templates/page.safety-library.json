@@ -17,6 +17,7 @@
         "hero_style": "hero-standard",
         "layout_style": "text-left-image-right",
         "show_image": true,
+        "hero_image": "shopify://shop_images/IMG_1004.heic",
         "show_features": false,
         "show_stats": false,
         "show_credentials": false,
@@ -150,6 +151,7 @@
       "settings": {
         "section_title": "Safety Knowledge Library",
         "section_description": "<p>Your comprehensive resource center for safety documentation, best practices, incident reports, and technical guidance. Access thousands of curated documents from industry experts and regulatory bodies.</p>",
+        "show_section_header": false,
         "show_search": true,
         "search_placeholder": "Search safety documents, guides, standards...",
         "show_filters": true,
