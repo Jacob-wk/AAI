@@ -33,14 +33,14 @@
         "feature1": {
           "type": "text_block",
           "settings": {
-            "block_title": "Industry Expertise",
+            "block_title": "⚖️Industry Expertise",
             "block_content": "<p>Learn from professionals with decades of experience in safety management and regulatory compliance.</p>"
           }
         },
         "feature2": {
           "type": "text_block",
           "settings": {
-            "block_title": "Comprehensive Training",
+            "block_title": "💡Comprehensive Training",
             "block_content": "<p>Access a complete library of courses covering all aspects of amusement industry safety and operations.</p>"
           }
         },
