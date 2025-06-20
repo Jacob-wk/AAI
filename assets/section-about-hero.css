@@ -39,6 +39,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  min-height: 400px; /* Ensure image area has substantial height */
 }
 
 .about-hero .hero-main-image {
@@ -46,6 +47,7 @@
   height: auto;
   border-radius: 8px;
   width: 100%; /* Ensure image takes full container width */
+  object-fit: cover; /* Ensure image covers the container properly */
 }
 
 /* Credentials overlay styling inherited from universal hero */
