@@ -3,89 +3,353 @@
     "hero": {
       "type": "aai-universal-hero",
       "settings": {
-        "hero_title": "Industry Partnerships",
-        "hero_subtitle": "Collaborating with leading organizations to advance safety standards",
-        "background_style": "bg-light"
-      }
-    },
-    "intro": {
-      "type": "aai-universal-content",
+        "hero_title": "Official Compliance Training for FEC Industry",
+        "hero_subtitle": "Mandatory safety certification programs for family entertainment centers. Ensure regulatory compliance with AAI's comprehensive training solutions.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-left-image-right",
+        "color_scheme": "color-scheme-2",
+        "show_image": true,
+        "show_stats": true,
+        "show_features": true,
+        "show_credentials": true,
+        "primary_button_text": "Get Compliance Assessment",
+        "primary_button_url": "/pages/contact",
+        "secondary_button_text": "View Certification Programs",
+        "secondary_button_url": "/collections/courses",
+        "button_size": "large"
+      },
       "blocks": {
-        "intro_text": {
-          "type": "text_block",
+        "stat_1": {
+          "type": "statistic",
           "settings": {
-            "content": "<p>AAI works closely with industry leaders, manufacturers, operators, and regulatory bodies to ensure our training programs reflect the latest standards and best practices.</p>"
+            "stat_number": "500+",
+            "stat_label": "FECs Certified"
+          }
+        },
+        "stat_2": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "100%",
+            "stat_label": "Compliance Rate"
+          }
+        },
+        "stat_3": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "24/7",
+            "stat_label": "Regulatory Support"
+          }
+        },
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "🏛️",
+            "feature_title": "Regulatory Approved",
+            "feature_description": "Official compliance documentation"
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "⚖️",
+            "feature_title": "Industry Standards",
+            "feature_description": "FEC safety regulations alignment"
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "📋",
+            "feature_title": "Audit Ready",
+            "feature_description": "Inspection preparation included"
+          }
+        },
+        "credential_1": {
+          "type": "credential",
+          "settings": {
+            "credential_text": "State Regulatory Approved"
+          }
+        },
+        "credential_2": {
+          "type": "credential",
+          "settings": {
+            "credential_text": "FEC Industry Standard"
           }
         }
       },
       "block_order": [
-        "intro_text"
-      ],
-      "settings": {
-        "layout_style": "single-column",
-        "background_style": "bg-light"
-      }
+        "stat_1",
+        "stat_2", 
+        "stat_3",
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "credential_1",
+        "credential_2"
+      ]
     },
-    "strategic_partners": {
+    "compliance_solutions": {
       "type": "aai-universal-content",
-      "blocks": {
-        "industry_associations": {
-          "type": "text_block",
-          "settings": {
-            "title": "Industry Associations",
-            "content": "<ul><li>International Association of Amusement Parks and Attractions (IAAPA)</li><li>North American Amusement Ride Safety Officials (NAARSO)</li><li>World Waterpark Association (WWA)</li><li>Amusement Industry Manufacturers & Suppliers (AIMS)</li></ul>"
-          }
-        },
-        "standards_organizations": {
-          "type": "text_block",
-          "settings": {
-            "title": "Standards Organizations",
-            "content": "<ul><li>ASTM International F24 Committee</li><li>American National Standards Institute (ANSI)</li><li>International Organization for Standardization (ISO)</li><li>European Committee for Standardization (CEN)</li></ul>"
-          }
-        },
-        "technology_partners": {
-          "type": "text_block",
-          "settings": {
-            "title": "Technology Partners",
-            "content": "<ul><li>Intuto Learning Management System</li><li>Leading ride manufacturers</li><li>Safety equipment suppliers</li><li>Inspection technology providers</li></ul>"
-          }
-        }
-      },
-      "block_order": [
-        "industry_associations",
-        "standards_organizations",
-        "technology_partners"
-      ],
       "settings": {
+        "section_title": "Regulatory Compliance Solutions",
+        "section_subtitle": "Mandatory certification programs designed specifically for Family Entertainment Centers",
         "layout_style": "blocks-grid",
-        "blocks_per_row": 3,
-        "background_style": "bg-light"
-      }
-    },
-    "become_partner": {
-      "type": "aai-universal-content",
+        "blocks_per_row": 2,
+        "background_style": "section-standard",
+        "show_main_content": false
+      },
       "blocks": {
-        "partnership_cta": {
-          "type": "text_block",
+        "mandatory_programs": {
+          "type": "feature_list",
           "settings": {
-            "title": "Become a Partner",
-            "content": "<p>Join our network of industry leaders committed to advancing safety education and standards.</p><p><a href='/pages/contact'>Explore Partnership</a></p>"
+            "list_title": "Mandatory Certification Programs",
+            "list_items": "Staff Safety Certification|Equipment Operation Training|Emergency Response Protocols|Compliance Documentation|Regulatory Updates"
+          }
+        },
+        "official_docs": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Official Documentation",
+            "list_items": "AAI-issued Certificates|Regulatory Compliance Records|Audit-Ready Documentation|Legal Protection Evidence|Digital Badge System"
+          }
+        },
+        "industry_standards": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Industry Standards",
+            "list_items": "FEC Safety Standards|Industry Best Practices|Regulatory Alignment|Compliance Guidelines|State Requirements"
+          }
+        },
+        "audit_prep": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Audit Preparation",
+            "list_items": "Inspection Readiness|Compliance Audits|Documentation Review|Regulatory Support|Corrective Action Plans"
           }
         }
       },
       "block_order": [
-        "partnership_cta"
-      ],
+        "mandatory_programs",
+        "official_docs",
+        "industry_standards",
+        "audit_prep"
+      ]
+    },
+    "why_essential": {
+      "type": "aai-universal-content",
       "settings": {
-        "layout_style": "single-column",
-        "background_style": "bg-primary"
+        "section_title": "Why AAI Certification is Essential",
+        "section_subtitle": "AAI certification isn't just recommended—it's becoming the industry standard for FEC operations",
+        "layout_style": "text-left-image-right",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_title": "Regulatory Requirement & Industry Standard",
+        "content_body": "<p>Family Entertainment Centers face increasing regulatory scrutiny. AAI certification provides the comprehensive training and documentation needed to meet all requirements while protecting your business.</p>",
+        "show_image": true,
+        "main_button_text": "Get Started Today",
+        "main_button_url": "/pages/contact",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      },
+      "blocks": {
+        "regulatory_req": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Regulatory Requirement",
+            "block_content": "<p>Many states now require certified safety training for FEC operations. AAI certification meets these mandatory requirements.</p>"
+          }
+        },
+        "legal_protection": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Legal Protection",
+            "block_content": "<p>Demonstrate due diligence in safety training with official AAI documentation, providing crucial legal protection.</p>"
+          }
+        },
+        "insurance_benefits": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Insurance Benefits",
+            "block_content": "<p>Many insurance providers offer reduced premiums for businesses with certified staff and documented safety programs.</p>"
+          }
+        },
+        "industry_recognition": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Industry Recognition",
+            "block_content": "<p>AAI is recognized as the leading authority in FEC safety training, with certifications valued industry-wide.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "regulatory_req",
+        "legal_protection",
+        "insurance_benefits",
+        "industry_recognition"
+      ]
+    },
+    "enterprise_packages": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Enterprise Compliance Packages",
+        "section_subtitle": "Comprehensive solutions for multi-location FEC operations and corporate training programs",
+        "layout_style": "timeline",
+        "background_style": "section-standard",
+        "show_main_content": false
+      },
+      "blocks": {
+        "multi_location": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Multi-Location Compliance",
+            "block_content": "<p>Standardize safety training across all your FEC locations with bulk certification programs and centralized management.</p>"
+          }
+        },
+        "corporate_training": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Corporate Training Programs",
+            "list_items": "Organization-wide Safety Standards|Management Training Modules|Train-the-Trainer Programs|Customized Content Development|Progress Tracking Dashboard"
+          }
+        },
+        "ongoing_compliance": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Ongoing Compliance",
+            "block_content": "<p>Annual recertification programs and regulatory updates ensure your entire organization stays current with changing requirements.</p>"
+          }
+        },
+        "doc_management": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Documentation Management",
+            "list_items": "Centralized Compliance Records|Digital Certificate Management|Audit Trail Documentation|Regulatory Reporting|Compliance Dashboards"
+          }
+        }
+      },
+      "block_order": [
+        "multi_location",
+        "corporate_training",
+        "ongoing_compliance",
+        "doc_management"
+      ]
+    },
+    "implementation_process": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Compliance Implementation Process",
+        "section_subtitle": "Our proven 4-step process ensures seamless compliance implementation",
+        "layout_style": "timeline",
+        "background_style": "section-alt-1",
+        "show_main_content": false
+      },
+      "blocks": {
+        "step_1": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "1. Assessment",
+            "block_content": "<p>Comprehensive evaluation of your current safety protocols and regulatory compliance status.</p>"
+          }
+        },
+        "step_2": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "2. Training Deployment",
+            "block_content": "<p>Customized staff certification programs delivered on-site or online based on your needs.</p>"
+          }
+        },
+        "step_3": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "3. Documentation",
+            "block_content": "<p>Official compliance certificates and comprehensive documentation for regulatory requirements.</p>"
+          }
+        },
+        "step_4": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "4. Ongoing Support",
+            "block_content": "<p>Continuous regulatory updates, recertification programs, and compliance monitoring.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "support_services": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Regulatory Support Services",
+        "section_subtitle": "Comprehensive support to ensure ongoing compliance and regulatory readiness",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": 2,
+        "background_style": "section-standard",
+        "show_main_content": false
+      },
+      "blocks": {
+        "compliance_docs": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Official Compliance Documentation",
+            "list_items": "AAI Certificates|Regulatory Filing Support|Compliance Attestations|Official Transcripts|Digital Verification"
+          }
+        },
+        "regulatory_updates": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Regulatory Update Notifications",
+            "list_items": "Regulatory Changes Alerts|Industry Updates|Compliance Deadlines|New Requirements|Best Practice Updates"
+          }
+        },
+        "inspection_support": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Inspection Readiness Support",
+            "list_items": "Pre-inspection Audits|Documentation Review|Compliance Checklists|Corrective Action Plans|Inspector Relations"
+          }
+        },
+        "standards_dev": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Industry Standard Development",
+            "list_items": "Standards Committee Participation|Best Practice Development|Regulatory Input|Industry Advocacy|Expert Consultation"
+          }
+        }
+      },
+      "block_order": [
+        "compliance_docs",
+        "regulatory_updates",
+        "inspection_support",
+        "standards_dev"
+      ]
+    },
+    "final_cta": {
+      "type": "aai-universal-cta",
+      "settings": {
+        "title": "Get Compliant Today",
+        "subtitle": "Ensure Your FEC Meets Industry Standards",
+        "description": "Don't wait for regulatory issues. Start your compliance journey today with AAI's proven certification programs.",
+        "button_1_text": "Schedule Compliance Assessment",
+        "button_1_link": "/pages/contact",
+        "button_1_style": "primary",
+        "button_2_text": "View Certification Programs",
+        "button_2_link": "/collections/courses",
+        "button_2_style": "secondary",
+        "color_scheme": "color-scheme-2"
       }
     }
   },
   "order": [
     "hero",
-    "intro",
-    "strategic_partners",
-    "become_partner"
+    "compliance_solutions",
+    "why_essential",
+    "enterprise_packages",
+    "implementation_process",
+    "support_services",
+    "final_cta"
   ]
 }
