@@ -217,8 +217,48 @@
   display: block;
 }
 
+.aai-mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--light-grey);
+  background: var(--clean-white);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.aai-mobile-menu-header .aai-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--authority-navy);
+}
+
+.aai-mobile-menu-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--charcoal-grey);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.aai-mobile-menu-close:hover {
+  color: var(--authority-navy);
+}
+
+.aai-mobile-menu-close svg {
+  width: 24px;
+  height: 24px;
+}
+
 .aai-mobile-menu-content {
-  padding-top: 60px;
+  padding: 20px;
 }
 
 .aai-mobile-nav-links {

@@ -52,6 +52,7 @@
 
   .menu-drawer__navigation {
     padding: 0;
+    padding-top: 60px; /* Make room for close button */
 
     @media screen and (width >= 750px) {
       margin-top: var(--drawer-header-desktop-top);
@@ -93,6 +94,8 @@
     border-right: var(--style-border-drawer);
     box-shadow: var(--shadow-drawer);
     flex-direction: column;
+    /* Ensure proper positioning context for close button */
+    position: relative;
 
     @media screen and (width >= 750px) {
       width: 25rem;
@@ -364,12 +367,49 @@
     padding: var(--padding-xl);
     box-shadow: none;
     will-change: transform;
+    /* Enhanced styles for better visibility */
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    min-height: 48px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .menu-drawer__close-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    opacity: 0.7;
+  }
+
+  .menu-drawer__close-button:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 
   .menu-drawer__close-button .svg-wrapper,
   .menu-drawer__close-button svg {
     width: var(--icon-size-xs);
     height: var(--icon-size-xs);
+    /* Enhanced visibility */
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+  .menu-drawer__close-button svg path {
+    fill: currentColor;
+  }
+
+  /* Ensure close button is visible on mobile */
+  @media screen and (max-width: 749px) {
+    .menu-drawer__close-button {
+      display: flex !important;
+    }
   }
 
   .menu-drawer__back-button {

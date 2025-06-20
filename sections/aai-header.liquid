@@ -122,6 +122,14 @@
 
   <!-- Mobile Menu -->
   <div class="aai-mobile-menu desktop:hidden">
+    <div class="aai-mobile-menu-header">
+      <span class="aai-logo">{{ section.settings.site_name | default: 'AAI Institute' }}</span>
+      <button class="aai-mobile-menu-close" aria-label="Close Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
     <div class="aai-mobile-menu-content">
       {% if section.settings.menu != blank %}
         <ul class="aai-mobile-nav-links">
@@ -148,12 +156,35 @@
     // Mobile menu functionality
     const mobileMenuToggle = document.querySelector('.aai-mobile-menu-toggle');
     const mobileMenu = document.querySelector('.aai-mobile-menu');
+    const mobileMenuClose = document.querySelector('.aai-mobile-menu-close');
 
     if (mobileMenuToggle && mobileMenu) {
       mobileMenuToggle.addEventListener('click', function() {
         mobileMenu.classList.toggle('active');
       });
     }
+
+    if (mobileMenuClose && mobileMenu) {
+      mobileMenuClose.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+      });
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (mobileMenu && mobileMenu.classList.contains('active')) {
+        if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+          mobileMenu.classList.remove('active');
+        }
+      }
+    });
+
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+      }
+    });
     
     // Override search form to redirect to courses collection
     const searchForm = document.querySelector('#search-modal .predictive-search-form');
