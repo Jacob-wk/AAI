@@ -97,6 +97,61 @@
         "button_size": "large"
       }
     },
+    "aai_universal_content_ge8KT7": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "text_block_axmPd7": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Multi-Location Compliance",
+            "block_content": "<p>Standardize safety training across all your FEC locations with bulk certification programs and centralized management.</p>"
+          }
+        },
+        "text_block_XLEgMN": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Ongoing Compliance",
+            "block_content": "<p>Annual recertification programs and regulatory updates ensure your entire organization stays current with changing requirements.</p>"
+          }
+        },
+        "feature_list_tFkVed": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Corporate Training Programs",
+            "list_items": "Organization-wide Safety Standards|Management Training Modules|Train-the-Trainer Programs|Customized Content Development|Progress Tracking Dashboard"
+          }
+        },
+        "feature_list_48JHww": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Documentation Management",
+            "list_items": "Centralized Compliance Records|Digital Certificate Management|Audit Trail Documentation|Regulatory Reporting|Compliance Dashboards"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_axmPd7",
+        "text_block_XLEgMN",
+        "feature_list_tFkVed",
+        "feature_list_48JHww"
+      ],
+      "name": "AAI Universal Content",
+      "settings": {
+        "section_title": "Discover Our Expertise",
+        "section_subtitle": "Comprehensive solutions for multi-location FEC operations and corporate training programs",
+        "layout_style": "blocks-grid",
+        "blocks_per_row": "2",
+        "background_style": "",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "",
+        "show_image": true,
+        "main_button_text": "Explore Our Courses",
+        "main_button_url": "/collections/all",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
+    },
     "why_essential": {
       "type": "aai-universal-content",
       "blocks": {
@@ -146,172 +201,10 @@
         "content_body": "",
         "show_image": true,
         "content_image": "shopify://shop_images/DSC05566.jpg",
-        "main_button_text": "Get Started Today",
+        "main_button_text": "",
         "main_button_url": "/pages/contact",
         "main_button_style": "primary",
-        "main_button_size": "medium"
-      }
-    },
-    "enterprise_packages": {
-      "type": "aai-universal-content",
-      "blocks": {
-        "multi_location": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Multi-Location Compliance",
-            "block_content": "<p>Standardize safety training across all your FEC locations with bulk certification programs and centralized management.</p>"
-          }
-        },
-        "corporate_training": {
-          "type": "feature_list",
-          "settings": {
-            "list_title": "Corporate Training Programs",
-            "list_items": "Organization-wide Safety Standards|Management Training Modules|Train-the-Trainer Programs|Customized Content Development|Progress Tracking Dashboard"
-          }
-        },
-        "ongoing_compliance": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Ongoing Compliance",
-            "block_content": "<p>Annual recertification programs and regulatory updates ensure your entire organization stays current with changing requirements.</p>"
-          }
-        },
-        "doc_management": {
-          "type": "feature_list",
-          "settings": {
-            "list_title": "Documentation Management",
-            "list_items": "Centralized Compliance Records|Digital Certificate Management|Audit Trail Documentation|Regulatory Reporting|Compliance Dashboards"
-          }
-        }
-      },
-      "block_order": [
-        "multi_location",
-        "corporate_training",
-        "ongoing_compliance",
-        "doc_management"
-      ],
-      "settings": {
-        "section_title": "Enterprise Compliance Packages",
-        "section_subtitle": "Comprehensive solutions for multi-location FEC operations and corporate training programs",
-        "layout_style": "text-only",
-        "blocks_per_row": "2",
-        "background_style": "section-standard",
-        "show_main_content": false,
-        "content_title": "",
-        "content_body": "",
-        "show_image": false,
-        "main_button_text": "",
-        "main_button_url": "",
-        "main_button_style": "primary",
-        "main_button_size": "medium"
-      }
-    },
-    "implementation_process": {
-      "type": "aai-universal-content",
-      "blocks": {
-        "step_1": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "1. Assessment",
-            "block_content": "<p>Comprehensive evaluation of your current safety protocols and regulatory compliance status.</p>"
-          }
-        },
-        "step_2": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "2. Training Deployment",
-            "block_content": "<p>Customized staff certification programs delivered on-site or online based on your needs.</p>"
-          }
-        },
-        "step_3": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "3. Documentation",
-            "block_content": "<p>Official compliance certificates and comprehensive documentation for regulatory requirements.</p>"
-          }
-        },
-        "step_4": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "4. Ongoing Support",
-            "block_content": "<p>Continuous regulatory updates, recertification programs, and compliance monitoring.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "step_4"
-      ],
-      "settings": {
-        "section_title": "Compliance Implementation Process",
-        "section_subtitle": "Our proven 4-step process ensures seamless compliance implementation",
-        "layout_style": "timeline",
-        "blocks_per_row": "1",
-        "background_style": "section-alt-1",
-        "show_main_content": false,
-        "content_title": "",
-        "content_body": "",
-        "show_image": false,
-        "main_button_text": "",
-        "main_button_url": "",
-        "main_button_style": "primary",
-        "main_button_size": "medium"
-      }
-    },
-    "support_services": {
-      "type": "aai-universal-content",
-      "blocks": {
-        "compliance_docs": {
-          "type": "feature_list",
-          "settings": {
-            "list_title": "Official Compliance Documentation",
-            "list_items": "AAI Certificates|Regulatory Filing Support|Compliance Attestations|Official Transcripts|Digital Verification"
-          }
-        },
-        "regulatory_updates": {
-          "type": "feature_list",
-          "settings": {
-            "list_title": "Regulatory Update Notifications",
-            "list_items": "Regulatory Changes Alerts|Industry Updates|Compliance Deadlines|New Requirements|Best Practice Updates"
-          }
-        },
-        "inspection_support": {
-          "type": "feature_list",
-          "settings": {
-            "list_title": "Inspection Readiness Support",
-            "list_items": "Pre-inspection Audits|Documentation Review|Compliance Checklists|Corrective Action Plans|Inspector Relations"
-          }
-        },
-        "standards_dev": {
-          "type": "feature_list",
-          "settings": {
-            "list_title": "Industry Standard Development",
-            "list_items": "Standards Committee Participation|Best Practice Development|Regulatory Input|Industry Advocacy|Expert Consultation"
-          }
-        }
-      },
-      "block_order": [
-        "compliance_docs",
-        "regulatory_updates",
-        "inspection_support",
-        "standards_dev"
-      ],
-      "settings": {
-        "section_title": "Regulatory Support Services",
-        "section_subtitle": "Comprehensive support to ensure ongoing compliance and regulatory readiness",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "2",
-        "background_style": "section-standard",
-        "show_main_content": false,
-        "content_title": "",
-        "content_body": "",
-        "show_image": false,
-        "main_button_text": "",
-        "main_button_url": "",
-        "main_button_style": "primary",
-        "main_button_size": "medium"
+        "main_button_size": "large"
       }
     },
     "final_cta": {
@@ -331,10 +224,8 @@
   },
   "order": [
     "hero",
+    "aai_universal_content_ge8KT7",
     "why_essential",
-    "enterprise_packages",
-    "implementation_process",
-    "support_services",
     "final_cta"
   ]
 }
