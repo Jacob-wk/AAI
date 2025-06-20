@@ -30,53 +30,10 @@
   opacity: 0.9;
 }
 
-/* Styling for .hero-stats, .stat-item, .stat-number, .stat-label is inherited from universal hero */
-
-/* Hero Image Styling - Make image bigger like AAI hero visual */
-.about-hero .hero-image {
-  background: rgba(255,255,255,0.1);
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 500px; /* Even bigger than AAI hero */
-  position: relative;
-  flex: 1;
-}
-
-.about-hero .hero-main-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-/* Credentials overlay styling inherited from universal hero */
-.about-hero .credentials-overlay {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  background-color: rgba(0,0,0,0.5);
-  padding: 10px;
-  border-radius: 5px;
-  justify-content: center;
-  width: fit-content;
-  max-width: 90%;
-}
-
-.about-hero .credential-badge {
-  background-color: var(--color-accent-1);
-  color: var(--color-accent-1-contrast);
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  text-align: center;
-}
+/* Styling for .hero-stats, .stat-item, .stat-number, .stat-label, 
+   .hero-image, .hero-main-image, .credentials-overlay, .credential-badge
+   is now primarily inherited from section-aai-universal-hero.css. 
+   Add specific overrides below if unique styling for the about-hero section is required. */
 
 /* Responsive adjustments */
 /* Universal hero CSS has its own responsive adjustments. */
@@ -88,19 +45,5 @@
   }
   .about-hero .hero-subtitle { /* Specific font size adjustment for about page on mobile */
     font-size: 1rem;
-  }
-  
-  /* Image responsive adjustments */
-  .about-hero .hero-image {
-    margin-top: 30px; /* Add spacing when stacked on mobile */
-  }
-  
-  .about-hero .credentials-overlay {
-    position: static; /* Stack credentials below image on mobile */
-    transform: none;
-    left: auto;
-    margin-top: 15px;
-    width: 100%;
-    max-width: 100%;
   }
 }
