@@ -158,7 +158,7 @@
             "button_1_style": "primary",
             "button_2_text": "Corporate Training Solutions",
             "button_2_url": "/pages/corporate-training",
-            "button_2_style": "secondary",
+            "button_2_style": "outline",
             "button_size": "large"
           }
         }
