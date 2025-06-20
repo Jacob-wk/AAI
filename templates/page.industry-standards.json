@@ -17,6 +17,7 @@
         "hero_style": "hero-standard",
         "layout_style": "text-left-image-right",
         "show_image": true,
+        "hero_image": "shopify://shop_images/1-APEX-KAMLOOPS-FRAMEGRAB_1.1.1.jpg",
         "show_features": false,
         "show_stats": false,
         "show_credentials": false,
