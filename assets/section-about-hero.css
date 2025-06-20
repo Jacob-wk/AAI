@@ -57,34 +57,3 @@
   justify-content: center;
   border-radius: 8px;
 }
-
-/* Styling for .hero-stats, .stat-item, .stat-number, .stat-label, 
-   .credentials-overlay, .credential-badge
-   is now primarily inherited from section-aai-universal-hero.css. 
-   Add specific overrides below if unique styling for the about-hero section is required. */
-
-/* Responsive adjustments */
-/* Universal hero CSS has its own responsive adjustments. */
-/* These can be removed or adjusted if specific overrides for about-hero are needed. */
-
-@media (max-width: 768px) { 
-  /* Override container padding that's being applied by containers.css */
-  .about-hero .aai-container {
-    padding-left: var(--spacing-xs, 0.5rem) !important;  /* Override containers.css padding */
-    padding-right: var(--spacing-xs, 0.5rem) !important; /* Override containers.css padding */
-  }
-  
-  /* Ensure hero-text doesn't have additional padding from universal hero styles */
-  .about-hero .hero-text {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-  
-  .about-hero .hero-title { /* Specific font size adjustment for about page on mobile */
-    font-size: 2.2rem; 
-  }
-  
-  .about-hero .hero-subtitle { /* Specific font size adjustment for about page on mobile */
-    font-size: 1rem;
-  }
-}
