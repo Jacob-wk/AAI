@@ -42,7 +42,7 @@
         "trust_stat_2": {
           "type": "trust_stat",
           "settings": {
-            "stat_number": "10+",
+            "stat_number": "40+",
             "stat_label": "FECs & Adventure Parks",
             "stat_description": "",
             "stat_background_color": "#f5f5f5",
