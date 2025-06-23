@@ -72,7 +72,7 @@
       </div>
       
       {% if section.settings.show_image %}
-        <div class="hero-image">
+        <div class="hero-image"{% if section.settings.hide_image_mobile %} data-hide-mobile="true"{% endif %}>
           {% if section.settings.hero_image != blank %}
             <img src="{{ section.settings.hero_image | image_url: width: 600 }}" 
                  alt="{{ section.settings.hero_image.alt | default: section.settings.hero_title }}"
@@ -162,6 +162,13 @@
       "type": "image_picker",
       "id": "hero_image",
       "label": "Hero Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_image_mobile",
+      "label": "Hide Image on Mobile",
+      "default": false,
+      "info": "When enabled, the hero image will be hidden on mobile devices"
     },
     {
       "type": "header",
