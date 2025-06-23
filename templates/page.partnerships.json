@@ -48,18 +48,6 @@
             "feature_title": "Regulatory Approved",
             "feature_description": "Industry Compliance Framework"
           }
-        },
-        "credential_1": {
-          "type": "credential",
-          "settings": {
-            "credential_text": "State Regulatory Approved"
-          }
-        },
-        "credential_2": {
-          "type": "credential",
-          "settings": {
-            "credential_text": "FEC Industry Standard"
-          }
         }
       },
       "block_order": [
@@ -67,9 +55,7 @@
         "stat_2",
         "stat_3",
         "feature_2",
-        "feature_3",
-        "credential_1",
-        "credential_2"
+        "feature_3"
       ],
       "settings": {
         "hero_title": "Partner With AAI Today",
