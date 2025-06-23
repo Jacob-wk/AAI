@@ -451,8 +451,8 @@
 
   /* Better mobile handling for hero image */
   .hero-image {
-    order: -1; /* Move image above text on mobile by default */
-    margin-bottom: 20px;
+    /* Removed order: -1 to maintain natural flow */
+    margin-top: 20px; /* Add space above image when it flows after text */
   }
 
   .hero-main-image {
@@ -481,9 +481,9 @@
     white-space: nowrap;
   }
 
-  /* Hide image option for mobile */
+  /* Hide image option for mobile - moved inside media query */
   .hero-image[data-hide-mobile="true"] {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -531,6 +531,11 @@
   .credential-badge {
     font-size: 0.7rem;
     padding: 5px 10px;
+  }
+
+  /* Ensure hide image on mobile works on extra small screens too */
+  .hero-image[data-hide-mobile="true"] {
+    display: none !important;
   }
 }
 
