@@ -12,26 +12,24 @@
     "hero": {
       "type": "aai-universal-hero",
       "blocks": {
-        "feature1": {
-          "type": "feature",
+        "statistic_9MJami": {
+          "type": "statistic",
           "settings": {
-            "feature_icon": "📞",
-            "feature_title": "24/7 Support",
-            "feature_description": "Emergency course access assistance"
+            "stat_number": "📞 24/7 Support",
+            "stat_label": "Emergency course access assistance"
           }
         },
-        "feature2": {
-          "type": "feature",
+        "statistic_g8Nk9W": {
+          "type": "statistic",
           "settings": {
-            "feature_icon": "🎓",
-            "feature_title": "Expert Guidance",
-            "feature_description": "Professional development consultation"
+            "stat_number": "🎓 Expert Guidance",
+            "stat_label": "Professional development consultation"
           }
         }
       },
       "block_order": [
-        "feature1",
-        "feature2"
+        "statistic_9MJami",
+        "statistic_g8Nk9W"
       ],
       "settings": {
         "hero_title": "Contact AAI",
@@ -40,8 +38,8 @@
         "layout_style": "text-center",
         "show_image": false,
         "show_features": true,
-        "show_stats": false,
-        "show_credentials": false,
+        "show_stats": true,
+        "show_credentials": true,
         "primary_button_text": "Our Story",
         "primary_button_url": "shopify://pages/about",
         "secondary_button_text": "Call Us Now",
