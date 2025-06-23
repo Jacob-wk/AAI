@@ -415,24 +415,24 @@
   .hero-stats {
     justify-content: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px; /* Slightly smaller gap for mobile */
     margin: 1.5rem 0;
   }
 
   .stat-item {
-    min-width: 100px; /* Smaller width for mobile */
-    padding: 12px 8px;
-    flex: 1;
-    max-width: 140px; /* Prevent stats from getting too wide */
+    min-width: 90px; /* Smaller minimum width to fit more in a row */
+    padding: 10px 6px; /* Tighter padding */
+    flex: 1; /* Allow them to grow equally */
+    max-width: 120px; /* Smaller max width to fit better */
   }
   
   .stat-number {
-    font-size: 1.6rem; /* Slightly smaller for mobile */
+    font-size: 1.4rem; /* Smaller for mobile to fit better in row */
   }
   
   .stat-label {
-    font-size: 0.75rem;
-    line-height: 1.2;
+    font-size: 0.7rem; /* Smaller label */
+    line-height: 1.1;
   }
 
   .hero-cta {
@@ -504,14 +504,25 @@
   }
 
   .hero-stats {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 8px; /* Even tighter gap for very small screens */
+    margin: 1rem 0;
+    /* Keep as row layout, only go to column if really necessary */
   }
 
   .stat-item {
-    min-width: 200px; /* Full width on very small screens */
-    max-width: 200px;
+    min-width: 80px; /* Even smaller for very small screens but keep in row */
+    max-width: 100px;
+    padding: 8px 4px; /* Very tight padding */
+  }
+  
+  .stat-number {
+    font-size: 1.2rem; /* Smaller but still readable */
+  }
+  
+  .stat-label {
+    font-size: 0.65rem;
+    line-height: 1.1;
   }
 
   .hero-features {
@@ -536,6 +547,29 @@
   /* Ensure hide image on mobile works on extra small screens too */
   .hero-image[data-hide-mobile="true"] {
     display: none !important;
+  }
+}
+
+/* Ultra small screens (below 360px) - force column if needed */
+@media (max-width: 360px) {
+  .hero-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stat-item {
+    min-width: 120px;
+    max-width: 160px;
+    padding: 10px 8px;
+  }
+  
+  .stat-number {
+    font-size: 1.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
   }
 }
 
