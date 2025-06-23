@@ -33,28 +33,20 @@
             "stat_label": "Regulatory Support"
           }
         },
-        "feature_1": {
-          "type": "feature",
-          "settings": {
-            "feature_icon": "🏛️",
-            "feature_title": "Regulatory Approved",
-            "feature_description": "Official compliance documentation"
-          }
-        },
         "feature_2": {
           "type": "feature",
           "settings": {
             "feature_icon": "⚖️",
             "feature_title": "Industry Standards",
-            "feature_description": "FEC safety regulations alignment"
+            "feature_description": "FEC Regulations Alignment"
           }
         },
         "feature_3": {
           "type": "feature",
           "settings": {
             "feature_icon": "📋",
-            "feature_title": "Audit Ready",
-            "feature_description": "Inspection preparation included"
+            "feature_title": "Regulatory Approved",
+            "feature_description": "Industry Compliance Framework"
           }
         },
         "credential_1": {
@@ -74,7 +66,6 @@
         "stat_1",
         "stat_2",
         "stat_3",
-        "feature_1",
         "feature_2",
         "feature_3",
         "credential_1",
