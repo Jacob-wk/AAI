@@ -64,6 +64,7 @@
         "layout_style": "text-left-image-right",
         "show_image": true,
         "hero_image": "shopify://shop_images/Ninja_Crew_Portrait.jpg",
+        "hide_image_mobile": true,
         "show_features": true,
         "show_stats": true,
         "show_credentials": false,
