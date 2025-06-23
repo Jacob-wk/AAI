@@ -1,7 +1,0 @@
-Files to delete for webinar removal:
-/templates/page.webinars.json
-/sections/aai-webinars-list.liquid
-/sections/aai-webinars-cta.liquid
-/sections/aai-webinars-hero.liquid
-/assets/section-webinars-page.css
-/assets/webinars-page.css

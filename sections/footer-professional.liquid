@@ -49,7 +49,7 @@ COPILOT CONTEXT:
           {% endfor %}
           {% unless section.blocks contains 'resources_link' %}
             <li><a href="{{ section.settings.standards_url | default: '/pages/industry-standards' }}">Industry Standards</a></li>
-            <li><a href="{{ section.settings.library_url | default: '/pages/safety-library' }}">Safety Library</a></li>
+            <li><a href="{{ section.settings.partnerships_url | default: '/pages/partnerships' }}">Partnerships</a></li>
             <li><a href="{{ section.settings.webinars_url | default: '/pages/webinars' }}">Webinars</a></li>
             <li><a href="{{ section.settings.blog_url | default: '/blogs/news' }}">Blog</a></li>
           {% endunless %}
@@ -68,7 +68,6 @@ COPILOT CONTEXT:
             <li><a href="{{ section.settings.help_url | default: '/pages/help-center' }}">Help Center</a></li>
             <li><a href="{{ section.settings.contact_url | default: '/pages/contact' }}">Contact Us</a></li>
             <li><a href="{{ section.settings.corporate_url | default: '/pages/corporate-training' }}">Corporate Training</a></li>
-            <li><a href="{{ section.settings.partnerships_url | default: '/pages/partnerships' }}">Partnerships</a></li>
           {% endunless %}
         </ul>
       </div>

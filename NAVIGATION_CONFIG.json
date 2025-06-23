@@ -30,11 +30,6 @@
         "type": "header",
         "children": [
           {
-            "title": "Safety Library",
-            "url": "/pages/safety-library",
-            "type": "page"
-          },
-          {
             "title": "Industry Standards",
             "url": "/pages/industry-standards",
             "type": "page"
@@ -55,11 +50,6 @@
             "title": "Our Instructors",
             "url": "/pages/instructors",
             "type": "page"
-          },
-          {
-            "title": "Partnerships",
-            "url": "/pages/partnerships",
-            "type": "page"
           }
         ]
       },
@@ -76,6 +66,11 @@
           {
             "title": "Platform Demo",
             "url": "/pages/demo",
+            "type": "page"
+          },
+          {
+            "title": "Partnerships",
+            "url": "/pages/partnerships",
             "type": "page"
           },
           {
