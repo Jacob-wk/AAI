@@ -16,10 +16,13 @@
       "name": "AAI Header",
       "settings": {
         "show_credentials_bar": true,
-        "credentials_text": "Professional Safety Education Since 2025",
+        "credentials_text": "Trusted Industry Training Since 2013",
         "show_iaapa_badge": true,
+        "iaapa_badge_text": "Get Involved",
         "show_astm_badge": true,
+        "astm_badge_text": "Partner With Us",
         "show_naarso_badge": true,
+        "naarso_badge_text": "New Courses in Development",
         "menu": "main-menu",
         "show_search": true,
         "show_cart": true
