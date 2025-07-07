@@ -42,8 +42,10 @@
           {% endif %}
           <li><a href="{{ section.settings.courses_in_development_url | default: '/pages/courses-in-development' }}">Courses in Development</a></li>
         </ul>
-        
-        <h4 style="margin-top: 24px;">{{ section.settings.join_aai_title | default: "Join AAI" }}</h4>
+      </div>
+
+      <div class="aai-footer-column">
+        <h4>{{ section.settings.join_aai_title | default: "Join AAI" }}</h4>
         <ul class="aai-footer-links">
           {% if section.settings.footer_menu_join_aai != blank %}
             {% for link in linklists[section.settings.footer_menu_join_aai].links %}
