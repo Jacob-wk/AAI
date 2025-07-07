@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer",
@@ -8,16 +17,8 @@
         "footer_description": "Professional safety education for the amusement industry since 2025. Advance your career while keeping guests safe.",
         "phone": "(555) 123-4567",
         "email": "info@aai.edu",
-        "address": "123 Safety Blvd\nOrlando, FL 32819",
-        "show_nonprofit_statement": true,
-        "nonprofit_statement": "AAI is a 501(c)(3) nonprofit organization dedicated to advancing safety education in the amusement industry.",
         "menu_1_title": "Education",
-        "join_aai_title": "Join AAI",
-        "company_title": "Company",
         "footer_menu_1": "footer-education",
-        "courses_in_development_url": "/pages/courses-in-development",
-        "footer_menu_join_aai": "footer-join-aai",
-        "footer_menu_company": "footer-company",
         "show_iaapa_badge": true,
         "show_iso_badge": true,
         "show_ceu_badge": true,
