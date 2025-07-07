@@ -1,4 +1,5 @@
 /* About Hero Section Styles */
+/* Fix specificity issues by using more specific selectors */
 
 /* Color definition is now primarily handled by color-schemes.css and .aai-hero.color-scheme-2 */
 
@@ -11,10 +12,61 @@
   padding-right: 15px; /* Consistent internal padding */
 }
 
-/* .about-hero .hero-text { */
-  /* If additional left padding specifically for the text block is needed, uncomment below */
-  /* padding-left: 15px; */ /* This would be additive to container padding */
-/* } */
+/* More specific selectors to override about-page.css */
+.about-hero .hero-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.about-hero .stat-item {
+  text-align: center;
+  min-width: 120px;
+}
+
+.about-hero .stat-number {
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.5rem !important;
+  color: var(--safety-orange, #ff6b35) !important;
+  line-height: 1 !important;
+}
+
+.about-hero .stat-label {
+  font-size: 0.875rem !important;
+  opacity: 0.9 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: inherit !important;
+  line-height: 1.2 !important;
+}
+
+/* Credentials styling with more specificity */
+.about-hero .credentials-overlay {
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.about-hero .credential-badge {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--authority-navy, #1e3a5f);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+}
 
 .about-hero .hero-title { /* Specific overrides for about-hero if needed */
   font-size: 2.8rem; 
@@ -56,4 +108,23 @@
   align-items: center;
   justify-content: center;
   border-radius: 8px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .about-hero .hero-stats {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .about-hero .credentials-overlay {
+    position: static;
+    transform: none;
+    margin-top: 1rem;
+    justify-content: center;
+  }
+  
+  .about-hero .stat-number {
+    font-size: 2rem !important;
+  }
 }
