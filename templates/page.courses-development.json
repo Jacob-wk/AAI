@@ -8,15 +8,6 @@
     },
     "hero": {
       "type": "aai-universal-hero",
-      "settings": {
-        "hero_title": "Courses in Development",
-        "hero_subtitle": "New professional development courses coming soon to advance your safety career",
-        "hero_style": "professional",
-        "layout_style": "centered",
-        "color_scheme": "color-scheme-2",
-        "show_features": false,
-        "show_stats": true
-      },
       "blocks": {
         "stat1": {
           "type": "statistic",
@@ -40,35 +31,34 @@
           }
         }
       },
-      "block_order": ["stat1", "stat2", "stat3"]
+      "block_order": [
+        "stat1",
+        "stat2",
+        "stat3"
+      ],
+      "settings": {
+        "hero_title": "Courses in Development",
+        "hero_subtitle": "New professional development courses coming soon to advance your safety career",
+        "hero_style": "professional",
+        "layout_style": "centered",
+        "show_features": false,
+        "show_stats": true
+      }
     },
     "overview": {
       "type": "aai-universal-content",
       "settings": {
         "section_title": "Coming Soon: Advanced Safety Education",
-        "content_title": "Expanding Our Professional Course Library",
-        "content_body": "<p>We're developing new courses to meet the evolving needs of safety professionals in the entertainment and adventure industry. Each course is designed by industry experts to provide practical, applicable knowledge that you can immediately apply in your workplace.</p><p>Our development process ensures every course meets the highest standards of professional education while addressing real-world challenges faced by safety professionals today.</p>",
         "layout_style": "standard",
         "background_style": "",
-        "color_scheme": "color-scheme-1",
         "show_main_content": true,
+        "content_title": "Expanding Our Professional Course Library",
+        "content_body": "<p>We're developing new courses to meet the evolving needs of safety professionals in the entertainment and adventure industry. Each course is designed by industry experts to provide practical, applicable knowledge that you can immediately apply in your workplace.</p><p>Our development process ensures every course meets the highest standards of professional education while addressing real-world challenges faced by safety professionals today.</p>",
         "show_image": false
       }
     },
     "upcoming_courses": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Upcoming Professional Development Courses",
-        "section_subtitle": "Each course is carefully developed by industry experts and includes hands-on learning components",
-        "content_title": "",
-        "content_body": "",
-        "layout_style": "blocks",
-        "blocks_per_row": "2",
-        "background_style": "section-alt-1",
-        "color_scheme": "color-scheme-1",
-        "show_main_content": false,
-        "show_image": false
-      },
       "blocks": {
         "course1": {
           "type": "text_block",
@@ -113,20 +103,28 @@
           }
         }
       },
-      "block_order": ["course1", "course2", "course3", "course4", "course5", "course6"]
+      "block_order": [
+        "course1",
+        "course2",
+        "course3",
+        "course4",
+        "course5",
+        "course6"
+      ],
+      "settings": {
+        "section_title": "Upcoming Professional Development Courses",
+        "section_subtitle": "Each course is carefully developed by industry experts and includes hands-on learning components",
+        "layout_style": "blocks",
+        "blocks_per_row": "2",
+        "background_style": "section-alt-1",
+        "show_main_content": false,
+        "content_title": "",
+        "content_body": "",
+        "show_image": false
+      }
     },
     "development_process": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Our Course Development Process",
-        "content_title": "Quality Through Expert Collaboration",
-        "content_body": "<p>Every AAI course follows our proven development methodology, ensuring the highest quality professional education experience. We work with industry leaders, safety experts, and educational specialists to create courses that deliver real value to your career and organization.</p>",
-        "layout_style": "timeline",
-        "background_style": "",
-        "color_scheme": "color-scheme-1",
-        "show_main_content": true,
-        "show_image": false
-      },
       "blocks": {
         "process1": {
           "type": "text_block",
@@ -157,7 +155,21 @@
           }
         }
       },
-      "block_order": ["process1", "process2", "process3", "process4"]
+      "block_order": [
+        "process1",
+        "process2",
+        "process3",
+        "process4"
+      ],
+      "settings": {
+        "section_title": "Our Course Development Process",
+        "layout_style": "timeline",
+        "background_style": "",
+        "show_main_content": true,
+        "content_title": "Quality Through Expert Collaboration",
+        "content_body": "<p>Every AAI course follows our proven development methodology, ensuring the highest quality professional education experience. We work with industry leaders, safety experts, and educational specialists to create courses that deliver real value to your career and organization.</p>",
+        "show_image": false
+      }
     },
     "contact_cta": {
       "type": "aai-universal-cta",
@@ -174,5 +186,12 @@
       }
     }
   },
-  "order": ["main", "hero", "overview", "upcoming_courses", "development_process", "contact_cta"]
+  "order": [
+    "main",
+    "hero",
+    "overview",
+    "upcoming_courses",
+    "development_process",
+    "contact_cta"
+  ]
 }
