@@ -7,9 +7,10 @@
 
 .aai-footer-main {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 50px;
   margin-bottom: 40px;
+  align-items: start;
 }
 
 .aai-footer-about {
@@ -17,17 +18,17 @@
 }
 
 .aai-footer-logo {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .aai-footer-logo img {
-  width: var(--footer-logo-width, 150px); /* Use custom property with fallback */
-  max-width: var(--footer-logo-width, 150px); /* Override global img max-width */
-  max-height: 80px; /* Limit height for consistent appearance */
+  width: var(--footer-logo-width, 150px);
+  max-width: var(--footer-logo-width, 150px);
+  max-height: 80px;
   height: auto;
-  border-radius: 8px; /* Rounded corners */
-  display: inline-block; /* Override global block display */
-  object-fit: contain; /* Ensure logo maintains aspect ratio */
+  border-radius: 8px;
+  display: inline-block;
+  object-fit: contain;
 }
 
 .aai-footer-logo h3 {
@@ -37,37 +38,55 @@
 }
 
 .aai-footer-description {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.6;
-  margin-bottom: 24px;
+  margin-bottom: 0;
+  font-size: 0.95rem;
 }
 
 .aai-footer-contact {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  margin-top: 24px;
 }
 
 .aai-contact-item {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.aai-contact-item span:not(.aai-contact-icon) {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
 }
 
 .aai-contact-item a {
-  color: var(--clean-white);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .aai-contact-item a:hover {
   color: var(--safety-orange);
 }
 
+.aai-contact-icon {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 1px;
+}
+
 .aai-footer-column h4 {
   color: var(--clean-white);
   font-size: 1.1rem;
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 16px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
 }
 
 .aai-footer-links {
@@ -77,17 +96,29 @@
 }
 
 .aai-footer-links li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .aai-footer-links a {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   transition: color 0.3s ease;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .aai-footer-links a:hover {
   color: var(--safety-orange);
+}
+
+.aai-nonprofit-statement {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-size: 0.85rem !important;
+  line-height: 1.5 !important;
+  margin-top: 20px !important;
+  font-style: italic;
+  border-left: 3px solid rgba(255, 107, 53, 0.3);
+  padding-left: 12px;
 }
 
 .support-hours {
@@ -176,9 +207,35 @@
 }
 
 @media (max-width: 768px) {
+  .aai-footer {
+    padding: 40px 0 20px;
+  }
+  
   .aai-footer-main {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 40px;
+  }
+  
+  .aai-footer-about {
+    padding-right: 0;
+    text-align: center;
+  }
+  
+  .aai-footer-column {
+    text-align: left;
+  }
+  
+  .aai-footer-column h4 {
+    margin-bottom: 15px;
+  }
+  
+  .aai-footer-contact {
+    margin-top: 20px;
+  }
+  
+  .aai-nonprofit-statement {
+    margin-top: 16px !important;
+    text-align: left;
   }
   
   .aai-footer-bottom {
@@ -190,8 +247,14 @@
   .aai-footer-social {
     justify-content: center;
   }
+}
+
+@media (max-width: 1024px) {
+  .aai-footer-main {
+    gap: 35px;
+  }
   
-  .aai-footer-contact {
-    text-align: left;
+  .aai-footer-about {
+    padding-right: 10px;
   }
 }
