@@ -26,11 +26,91 @@
         
         {% for product in featured_collection.products limit: course_limit %}
           <div class="featured-course-item">
-            {% render 'course-card-professional', 
-                product: product, 
-                show_description: section.settings.show_descriptions,
-                show_price: section.settings.show_price,
-                card_style: section.settings.card_style %}
+            <div class="course-card professional-course" data-product-id="{{ product.id }}">
+              <div class="course-image">
+                {% if product.featured_media != blank %}
+                  <img 
+                    src="{{ product.featured_media | image_url: width: 400 }}" 
+                    alt="{{ product.featured_media.alt | default: product.title | escape }}"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                    class="course-thumbnail"
+                  >
+                {% elsif product.media.size > 0 %}
+                  <img 
+                    src="{{ product.media.first | image_url: width: 400 }}" 
+                    alt="{{ product.media.first.alt | default: product.title | escape }}"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                    class="course-thumbnail"
+                  >
+                {% else %}
+                  <div class="course-placeholder-image">
+                    <svg class="course-icon" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                    </svg>
+                  </div>
+                {% endif %}
+
+                {% assign course_level = product.metafields.course.level.value | default: 'Intermediate' %}
+                <div class="course-level-badge course-level-{{ course_level | downcase }}">
+                  {{ course_level }}
+                </div>
+              </div>
+
+              <div class="course-content">
+                <div class="course-header">
+                  <h3 class="course-title">
+                    <a href="{{ product.url }}">{{ product.title }}</a>
+                  </h3>
+                  
+                  {% assign ceu_credits = product.metafields.course.ceu_credits.value %}
+                  {% if ceu_credits %}
+                    <div class="course-ceu">
+                      <span class="ceu-label">CEU Credits:</span>
+                      <span class="ceu-value">{{ ceu_credits }}</span>
+                    </div>
+                  {% endif %}
+                </div>
+
+                <div class="course-meta">
+                  {% assign duration = product.metafields.course.duration.value %}
+                  {% if duration %}
+                    <div class="course-duration">
+                      <svg class="meta-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15,1H9V3H15M11,14H13V8H11M19.03,7.39L20.45,5.97C20,5.46 19.55,5 19.04,4.56L17.62,6C16.07,4.74 14.12,4 12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22C17,22 21,17.97 21,13C21,10.88 20.26,8.93 19.03,7.39Z"/>
+                      </svg>
+                      {{ duration }}
+                    </div>
+                  {% endif %}
+                </div>
+
+                {% if section.settings.show_descriptions and product.description != blank %}
+                  <div class="course-description">
+                    {{ product.description | truncate: 120 }}
+                  </div>
+                {% endif %}
+
+                <div class="course-footer">
+                  {% if section.settings.show_price %}
+                    <div class="course-pricing">
+                      {% if product.compare_at_price > product.price %}
+                        <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                      {% endif %}
+                      <span class="price-current">{{ product.price | money }}</span>
+                    </div>
+                  {% endif %}
+
+                  <div class="course-actions">
+                    <a href="{{ product.url }}" class="btn btn--primary btn--small">
+                      Learn More
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         {% endfor %}
         
@@ -41,11 +121,91 @@
             {% assign featured_product = all_products[block.settings.featured_product] %}
             {% if featured_product != blank %}
               <div class="featured-course-item" {{ block.shopify_attributes }}>
-                {% render 'course-card-professional', 
-                    product: featured_product, 
-                    show_description: section.settings.show_descriptions,
-                    show_price: section.settings.show_price,
-                    card_style: section.settings.card_style %}
+                <div class="course-card professional-course" data-product-id="{{ featured_product.id }}">
+                  <div class="course-image">
+                    {% if featured_product.featured_media != blank %}
+                      <img 
+                        src="{{ featured_product.featured_media | image_url: width: 400 }}" 
+                        alt="{{ featured_product.featured_media.alt | default: featured_product.title | escape }}"
+                        width="400"
+                        height="300"
+                        loading="lazy"
+                        class="course-thumbnail"
+                      >
+                    {% elsif featured_product.media.size > 0 %}
+                      <img 
+                        src="{{ featured_product.media.first | image_url: width: 400 }}" 
+                        alt="{{ featured_product.media.first.alt | default: featured_product.title | escape }}"
+                        width="400"
+                        height="300"
+                        loading="lazy"
+                        class="course-thumbnail"
+                      >
+                    {% else %}
+                      <div class="course-placeholder-image">
+                        <svg class="course-icon" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        </svg>
+                      </div>
+                    {% endif %}
+
+                    {% assign course_level = featured_product.metafields.course.level.value | default: 'Intermediate' %}
+                    <div class="course-level-badge course-level-{{ course_level | downcase }}">
+                      {{ course_level }}
+                    </div>
+                  </div>
+
+                  <div class="course-content">
+                    <div class="course-header">
+                      <h3 class="course-title">
+                        <a href="{{ featured_product.url }}">{{ featured_product.title }}</a>
+                      </h3>
+                      
+                      {% assign ceu_credits = featured_product.metafields.course.ceu_credits.value %}
+                      {% if ceu_credits %}
+                        <div class="course-ceu">
+                          <span class="ceu-label">CEU Credits:</span>
+                          <span class="ceu-value">{{ ceu_credits }}</span>
+                        </div>
+                      {% endif %}
+                    </div>
+
+                    <div class="course-meta">
+                      {% assign duration = featured_product.metafields.course.duration.value %}
+                      {% if duration %}
+                        <div class="course-duration">
+                          <svg class="meta-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15,1H9V3H15M11,14H13V8H11M19.03,7.39L20.45,5.97C20,5.46 19.55,5 19.04,4.56L17.62,6C16.07,4.74 14.12,4 12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22C17,22 21,17.97 21,13C21,10.88 20.26,8.93 19.03,7.39Z"/>
+                          </svg>
+                          {{ duration }}
+                        </div>
+                      {% endif %}
+                    </div>
+
+                    {% if section.settings.show_descriptions and featured_product.description != blank %}
+                      <div class="course-description">
+                        {{ featured_product.description | truncate: 120 }}
+                      </div>
+                    {% endif %}
+
+                    <div class="course-footer">
+                      {% if section.settings.show_price %}
+                        <div class="course-pricing">
+                          {% if featured_product.compare_at_price > featured_product.price %}
+                            <span class="price-compare">{{ featured_product.compare_at_price | money }}</span>
+                          {% endif %}
+                          <span class="price-current">{{ featured_product.price | money }}</span>
+                        </div>
+                      {% endif %}
+
+                      <div class="course-actions">
+                        <a href="{{ featured_product.url }}" class="btn btn--primary btn--small">
+                          Learn More
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             {% endif %}
           {% endif %}
@@ -172,18 +332,10 @@
       "id": "background_style",
       "label": "Background Style",
       "options": [
-        {
-          "value": "",
-          "label": "Default"
-        },
-        {
-          "value": "bg-light",
-          "label": "Light"
-        },
-        {
-          "value": "bg-dark",
-          "label": "Dark"
-        }
+        { "value": "", "label": "Default" },
+        { "value": "section-alt-1", "label": "Alternative Background 1" },
+        { "value": "section-alt-2", "label": "Alternative Background 2" },
+        { "value": "section-dark", "label": "Dark Background" }
       ],
       "default": ""
     },
@@ -192,18 +344,10 @@
       "id": "color_scheme",
       "label": "Color Scheme",
       "options": [
-        {
-          "value": "color-scheme-1",
-          "label": "Light"
-        },
-        {
-          "value": "color-scheme-2",
-          "label": "Navy (Professional)"
-        },
-        {
-          "value": "color-scheme-3",
-          "label": "Orange Accent"
-        }
+        { "value": "color-scheme-1", "label": "Scheme 1" },
+        { "value": "color-scheme-2", "label": "Scheme 2" },
+        { "value": "color-scheme-background-1", "label": "Background 1" },
+        { "value": "color-scheme-background-2", "label": "Background 2" }
       ],
       "default": "color-scheme-1"
     }
