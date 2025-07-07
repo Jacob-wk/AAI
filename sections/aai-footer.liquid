@@ -70,8 +70,11 @@
             <li><a href="/pages/help-center">Help Center</a></li>
           {% endif %}
         </ul>
-        
-        <div class="aai-footer-contact" style="margin-top: 24px;">
+      </div>
+
+      <div class="aai-footer-column">
+        <h4>{{ section.settings.contact_title | default: "Contact" }}</h4>
+        <div class="aai-footer-contact">
           {% if section.settings.address != blank %}
             <div class="aai-contact-item">
               <span class="aai-contact-icon">📍</span>
