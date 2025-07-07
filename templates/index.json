@@ -91,6 +91,62 @@
         "section_padding_bottom": 64
       }
     },
+    "aai_universal_content_f4efTN": {
+      "type": "aai-universal-content",
+      "name": "Industry Authority",
+      "settings": {
+        "section_title": "Industry Authority in FEC & Adventure Park Safety",
+        "section_subtitle": "Shaped by the Industry. Driven by Safety.",
+        "layout_style": "text-right-image-left",
+        "blocks_per_row": "2",
+        "background_style": "",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "<p><em><strong>Safety first, but adventure always. </strong></em></p><p>At the Amusement Adventure Institute (AAI), we lead the way in safety education for Family Entertainment Centers and adventure parks. Backed by <strong>over a decade of real-world training experience</strong>, we’re committed to delivering the most practical, up-to-date, and trusted knowledge in the industry.</p>",
+        "show_image": true,
+        "content_image": "shopify://shop_images/1377773.jpg",
+        "main_button_text": "Learn About AAI",
+        "main_button_url": "/pages/about",
+        "main_button_style": "primary",
+        "main_button_size": "large"
+      }
+    },
+    "aai_universal_content_QGrVx9": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "credential_grid_HzXgfy": {
+          "type": "credential_grid",
+          "settings": {
+            "grid_title": "Our Credentials",
+            "credential_1_title": "20+ Years Experience",
+            "credential_1_desc": "Pioneering safety training in the amusement sector.",
+            "credential_2_title": "100+ Professionals Trained",
+            "credential_2_desc": "Empowering individuals and organizations globally.",
+            "credential_3_title": "Global Standards Development",
+            "credential_3_desc": "Actively contributing to international safety committees."
+          }
+        }
+      },
+      "block_order": [
+        "credential_grid_HzXgfy"
+      ],
+      "name": "Credentials",
+      "settings": {
+        "section_title": "",
+        "section_subtitle": "",
+        "layout_style": "text-center",
+        "blocks_per_row": "1",
+        "background_style": "section-dark",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "",
+        "show_image": true,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "small"
+      }
+    },
     "featured_courses_homepage": {
       "type": "featured-courses",
       "blocks": {
@@ -135,62 +191,6 @@
         "color_scheme": "color-scheme-1"
       }
     },
-    "aai_universal_content_f4efTN": {
-      "type": "aai-universal-content",
-      "name": "Industry Authority",
-      "settings": {
-        "section_title": "Industry Authority in FEC & Adventure Park Safety",
-        "section_subtitle": "Shaped by the Industry. Driven by Safety.",
-        "layout_style": "text-right-image-left",
-        "blocks_per_row": "2",
-        "background_style": "",
-        "show_main_content": true,
-        "content_title": "",
-        "content_body": "<p><em><strong>Safety first, but adventure always. </strong></em></p><p>At the Amusement Adventure Institute (AAI), we lead the way in safety education for Family Entertainment Centers and adventure parks. Backed by <strong>over a decade of real-world training experience</strong>, we’re committed to delivering the most practical, up-to-date, and trusted knowledge in the industry.</p>",
-        "show_image": true,
-        "content_image": "shopify://shop_images/1377773.jpg",
-        "main_button_text": "Learn About AAI",
-        "main_button_url": "/pages/about",
-        "main_button_style": "primary",
-        "main_button_size": "large"
-      }
-    },
-    "aai_universal_content_QGrVx9": {
-      "type": "aai-universal-content",
-      "blocks": {
-        "credential_grid_HzXgfy": {
-          "type": "credential_grid",
-          "settings": {
-            "grid_title": "Our Credentials",
-            "credential_1_title": "20+ Years Experience",
-            "credential_1_desc": "Pioneering safety training in the amusement sector.",
-            "credential_2_title": "100+ Professionals Trained",
-            "credential_2_desc": "Empowering individuals and organizations globally.",
-            "credential_3_title": "Global Standards Development",
-            "credential_3_desc": "Actively contributing to international safety committees."
-          }
-        }
-      },
-      "block_order": [
-        "credential_grid_HzXgfy"
-      ],
-      "name": "Homepage Call to Action",
-      "settings": {
-        "section_title": "",
-        "section_subtitle": "",
-        "layout_style": "text-center",
-        "blocks_per_row": "1",
-        "background_style": "section-dark",
-        "show_main_content": true,
-        "content_title": "",
-        "content_body": "",
-        "show_image": true,
-        "main_button_text": "",
-        "main_button_url": "",
-        "main_button_style": "primary",
-        "main_button_size": "small"
-      }
-    },
     "aai_universal_content_DiPa6P": {
       "type": "aai-universal-content",
       "blocks": {
@@ -231,9 +231,9 @@
   "order": [
     "main",
     "trust_indicators",
-    "featured_courses_homepage",
     "aai_universal_content_f4efTN",
     "aai_universal_content_QGrVx9",
+    "featured_courses_homepage",
     "aai_universal_content_DiPa6P"
   ]
 }
