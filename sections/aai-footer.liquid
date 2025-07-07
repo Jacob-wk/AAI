@@ -129,8 +129,14 @@
       <div class="aai-footer-legal">
         <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
         <div class="aai-legal-links">
-          <a href="/pages/privacy-policy">Privacy Policy</a>
-          <a href="/pages/terms-of-service">Terms of Service</a>
+          {% if section.settings.footer_legal_menu != blank %}
+            {% for link in linklists[section.settings.footer_legal_menu].links %}
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            {% endfor %}
+          {% else %}
+            <a href="{{ shop.privacy_policy.url }}">Privacy Policy</a>
+            <a href="{{ shop.terms_of_service.url }}">Terms of Service</a>
+          {% endif %}
         </div>
       </div>
       <div class="aai-footer-social">
@@ -300,6 +306,16 @@
       "id": "ceu_badge_text",
       "label": "Badge 3 text",
       "default": "CEU Provider"
+    },
+    {
+      "type": "header",
+      "content": "Legal Links"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_legal_menu",
+      "label": "Legal Menu",
+      "info": "Select a menu for legal links (Privacy Policy, Terms of Service, etc.). If not set, default Shopify policy links will be used."
     },
     {
       "type": "header",
