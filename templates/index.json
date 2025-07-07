@@ -91,6 +91,25 @@
         "section_padding_bottom": 64
       }
     },
+    "featured_courses_homepage": {
+      "type": "featured-courses",
+      "settings": {
+        "section_title": "Featured Professional Courses",
+        "section_subtitle": "Start your professional development journey with our most popular safety certification courses",
+        "content_source": "collection",
+        "featured_collection": "courses",
+        "course_limit": 3,
+        "courses_per_row": 3,
+        "show_descriptions": true,
+        "show_price": true,
+        "card_style": "standard",
+        "show_view_all_button": true,
+        "view_all_link": "/collections/courses",
+        "view_all_text": "View All Courses",
+        "background_style": "bg-light",
+        "color_scheme": "color-scheme-1"
+      }
+    },
     "aai_universal_content_f4efTN": {
       "type": "aai-universal-content",
       "name": "Industry Authority",
@@ -187,6 +206,7 @@
   "order": [
     "main",
     "trust_indicators",
+    "featured_courses_homepage",
     "aai_universal_content_f4efTN",
     "aai_universal_content_QGrVx9",
     "aai_universal_content_DiPa6P"

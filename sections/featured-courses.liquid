@@ -1,0 +1,237 @@
+{% comment %}
+  Featured Courses Section - Flexible utility section for any page
+  Schema options: collection selector OR manual product selection blocks
+  Toggle for showing/hiding product descriptions
+  Grid layout matching existing course cards
+{% endcomment %}
+
+{{ 'aai-featured-courses.css' | asset_url | stylesheet_tag }}
+
+<section class="featured-courses-section page-section {{ section.settings.background_style }} {{ section.settings.color_scheme }}">
+  <div class="aai-container">
+    {% if section.settings.section_title != blank %}
+      <div class="section-header">
+        <h2 class="section-title">{{ section.settings.section_title }}</h2>
+        {% if section.settings.section_subtitle != blank %}
+          <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="featured-courses-grid" data-columns="{{ section.settings.courses_per_row | default: 3 }}">
+      {% if section.settings.content_source == 'collection' and section.settings.featured_collection != blank %}
+        {% comment %} Collection-based content {% endcomment %}
+        {% assign featured_collection = collections[section.settings.featured_collection] %}
+        {% assign course_limit = section.settings.course_limit | default: 6 %}
+        
+        {% for product in featured_collection.products limit: course_limit %}
+          <div class="featured-course-item">
+            {% render 'course-card-professional', 
+                product: product, 
+                show_description: section.settings.show_descriptions,
+                show_price: section.settings.show_price,
+                card_style: section.settings.card_style %}
+          </div>
+        {% endfor %}
+        
+      {% else %}
+        {% comment %} Manual product selection blocks {% endcomment %}
+        {% for block in section.blocks %}
+          {% if block.type == 'course_item' and block.settings.featured_product != blank %}
+            {% assign featured_product = all_products[block.settings.featured_product] %}
+            {% if featured_product != blank %}
+              <div class="featured-course-item" {{ block.shopify_attributes }}>
+                {% render 'course-card-professional', 
+                    product: featured_product, 
+                    show_description: section.settings.show_descriptions,
+                    show_price: section.settings.show_price,
+                    card_style: section.settings.card_style %}
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_view_all_button and section.settings.view_all_link != blank %}
+      <div class="section-footer">
+        <a href="{{ section.settings.view_all_link }}" class="btn btn--secondary">
+          {{ section.settings.view_all_text | default: 'View All Courses' }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Courses",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Featured Courses"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle"
+    },
+    {
+      "type": "select",
+      "id": "content_source",
+      "label": "Content Source",
+      "options": [
+        {
+          "value": "collection",
+          "label": "From Collection"
+        },
+        {
+          "value": "manual",
+          "label": "Manual Selection"
+        }
+      ],
+      "default": "collection"
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Featured Collection",
+      "info": "Select collection when using 'From Collection' source"
+    },
+    {
+      "type": "range",
+      "id": "course_limit",
+      "label": "Number of Courses (Collection Mode)",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "courses_per_row",
+      "label": "Courses Per Row",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "show_descriptions",
+      "label": "Show Course Descriptions",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show Course Prices",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "card_style",
+      "label": "Card Style",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "compact",
+          "label": "Compact"
+        },
+        {
+          "value": "detailed",
+          "label": "Detailed"
+        }
+      ],
+      "default": "standard"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all_button",
+      "label": "Show 'View All' Button",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "'View All' Button Link"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "'View All' Button Text",
+      "default": "View All Courses"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background Style",
+      "options": [
+        {
+          "value": "",
+          "label": "Default"
+        },
+        {
+          "value": "bg-light",
+          "label": "Light"
+        },
+        {
+          "value": "bg-dark",
+          "label": "Dark"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "options": [
+        {
+          "value": "color-scheme-1",
+          "label": "Light"
+        },
+        {
+          "value": "color-scheme-2",
+          "label": "Navy (Professional)"
+        },
+        {
+          "value": "color-scheme-3",
+          "label": "Orange Accent"
+        }
+      ],
+      "default": "color-scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "course_item",
+      "name": "Featured Course",
+      "settings": [
+        {
+          "type": "product",
+          "id": "featured_product",
+          "label": "Select Course"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Courses",
+      "settings": {
+        "section_title": "Featured Courses",
+        "content_source": "collection",
+        "courses_per_row": 3,
+        "show_descriptions": true,
+        "show_price": true
+      }
+    }
+  ]
+}
+{% endschema %}

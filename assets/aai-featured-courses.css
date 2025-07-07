@@ -1,0 +1,101 @@
+/* AAI Featured Courses Section Styles */
+/* Professional styling maintaining AAI brand guidelines */
+
+.featured-courses-section {
+  padding: 60px 0;
+}
+
+.featured-courses-section .section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.featured-courses-section .section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--authority-navy, #1e3a5f);
+  margin-bottom: 16px;
+}
+
+.featured-courses-section .section-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-color-secondary, #666);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Grid Layout */
+.featured-courses-grid {
+  display: grid;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.featured-courses-grid[data-columns="1"] {
+  grid-template-columns: 1fr;
+}
+
+.featured-courses-grid[data-columns="2"] {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.featured-courses-grid[data-columns="3"] {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.featured-courses-grid[data-columns="4"] {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.featured-course-item {
+  height: 100%;
+}
+
+/* Section Footer */
+.featured-courses-section .section-footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Dark/Navy Background Adjustments */
+.featured-courses-section.color-scheme-2,
+.featured-courses-section.bg-dark {
+  background: var(--color-scheme-2-background, linear-gradient(135deg, #1e3a5f 0%, #005a9f 100%));
+  color: white;
+}
+
+.featured-courses-section.color-scheme-2 .section-title,
+.featured-courses-section.bg-dark .section-title {
+  color: white;
+}
+
+.featured-courses-section.color-scheme-2 .section-subtitle,
+.featured-courses-section.bg-dark .section-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Light Background */
+.featured-courses-section.bg-light {
+  background-color: #f8f9fa;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .featured-courses-section {
+    padding: 40px 0;
+  }
+  
+  .featured-courses-section .section-title {
+    font-size: 2rem;
+  }
+  
+  .featured-courses-grid {
+    gap: 20px;
+  }
+  
+  .featured-courses-grid[data-columns="2"],
+  .featured-courses-grid[data-columns="3"],
+  .featured-courses-grid[data-columns="4"] {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aai-universal-hero",
+      "settings": {
+        "hero_title": "Join the AAI Professional Network",
+        "hero_subtitle": "Where Safety Meets Adventure - Advance your career with industry-leading certifications and continuous professional development",
+        "hero_style": "professional",
+        "layout_style": "centered",
+        "color_scheme": "color-scheme-2",
+        "show_features": true,
+        "show_stats": true
+      },
+      "blocks": {
+        "feature1": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "20+ Years of Industry Leadership",
+            "feature_description": "Proven expertise in safety education and compliance"
+          }
+        },
+        "feature2": {
+          "type": "feature", 
+          "settings": {
+            "feature_title": "Industry-Recognized Certifications",
+            "feature_description": "Credentials that advance your professional career"
+          }
+        },
+        "feature3": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Ongoing Professional Development",
+            "feature_description": "Continuous learning opportunities and networking"
+          }
+        },
+        "stat1": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "500+",
+            "stat_label": "Active Members"
+          }
+        },
+        "stat2": {
+          "type": "statistic", 
+          "settings": {
+            "stat_number": "25+",
+            "stat_label": "Professional Courses"
+          }
+        },
+        "stat3": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "100+",
+            "stat_label": "Corporate Partners"
+          }
+        }
+      },
+      "block_order": ["feature1", "feature2", "feature3", "stat1", "stat2", "stat3"]
+    },
+    "membership_overview": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Elevate Your Safety Professional Career",
+        "content_title": "Professional Network Excellence",
+        "content_body": "<p>The Amusement Adventure Institute membership connects safety professionals, operators, and industry leaders in a comprehensive network focused on excellence, continuous learning, and career advancement. Our members set the standard for safety in family entertainment and adventure operations worldwide.</p><p>With over two decades of industry leadership, AAI provides the knowledge, credentials, and professional network that drives career success in the dynamic entertainment and adventure industry.</p>",
+        "layout_style": "standard",
+        "background_style": "",
+        "color_scheme": "color-scheme-1"
+      }
+    },
+    "individual_membership": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Individual Professional Membership",
+        "content_title": "Designed for Career Growth",
+        "content_body": "<p>For safety professionals, operations managers, and industry specialists seeking career advancement and professional recognition.</p>",
+        "layout_style": "blocks",
+        "blocks_per_row": 2,
+        "background_style": "bg-light",
+        "color_scheme": "color-scheme-1"
+      },
+      "blocks": {
+        "benefit1": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Education & Certification",
+            "list_items": "Access to exclusive member-only courses and advanced certifications|Continuing Education Unit (CEU) credit tracking and documentation|Professional certification pathways with recognized credentials|Priority access to new course releases and beta programs"
+          }
+        },
+        "benefit2": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Professional Network & Support",
+            "list_items": "Industry networking opportunities and professional connections|Member directory access for industry networking|Monthly safety bulletins featuring latest industry developments|Discounted conference attendance and special events"
+          }
+        }
+      },
+      "block_order": ["benefit1", "benefit2"]
+    },
+    "corporate_membership": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Corporate Training Solutions",
+        "content_title": "Comprehensive Enterprise Solutions",
+        "content_body": "<p>For Family Entertainment Centers, adventure parks, and hospitality organizations committed to safety excellence.</p>",
+        "layout_style": "blocks",
+        "blocks_per_row": 2,
+        "background_style": "",
+        "color_scheme": "color-scheme-1"
+      },
+      "blocks": {
+        "corporate1": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Training & Development",
+            "list_items": "Team training packages with significant bulk pricing discounts|Custom course development tailored to specific operations|On-site training delivery and consultation services|Group certification tracking and progress monitoring"
+          }
+        },
+        "corporate2": {
+          "type": "feature_list",
+          "settings": {
+            "list_title": "Support & Management",
+            "list_items": "Corporate compliance reporting and documentation|Dedicated account management and priority support|Executive briefings on industry trends and regulations|Integration with existing learning management systems"
+          }
+        }
+      },
+      "block_order": ["corporate1", "corporate2"]
+    },
+    "professional_pathways": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Professional Development Pathways",
+        "content_title": "Structured Career Advancement",
+        "content_body": "<p>AAI offers clear professional development pathways designed to advance your career in safety management and operations leadership.</p>",
+        "layout_style": "timeline",
+        "background_style": "bg-light",
+        "color_scheme": "color-scheme-1"
+      },
+      "blocks": {
+        "pathway1": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Foundation Level",
+            "block_content": "<p>Essential safety principles and industry fundamentals. Perfect for new professionals entering the field.</p>"
+          }
+        },
+        "pathway2": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Professional Level", 
+            "block_content": "<p>Advanced safety management and operational excellence. For experienced professionals seeking leadership roles.</p>"
+          }
+        },
+        "pathway3": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Expert Level",
+            "block_content": "<p>Industry leadership and specialized expertise. For senior professionals and consultants.</p>"
+          }
+        }
+      },
+      "block_order": ["pathway1", "pathway2", "pathway3"]
+    },
+    "member_success": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Member Success Stories",
+        "content_title": "Real Results from Real Professionals",
+        "content_body": "<p>Our members consistently achieve career advancement and operational excellence through AAI's comprehensive professional development programs.</p>",
+        "layout_style": "blocks",
+        "blocks_per_row": 1,
+        "background_style": "",
+        "color_scheme": "color-scheme-2"
+      },
+      "blocks": {
+        "success1": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "\"AAI certification opened doors I didn't know existed\"",
+            "block_content": "<p><em>\"The comprehensive training and industry recognition from AAI helped me advance from operations manager to director of safety within 18 months. The networking opportunities alone were worth the membership.\"</em></p><p><strong>- Sarah Mitchell, Director of Safety, Adventure Parks Inc.</strong></p>"
+          }
+        }
+      },
+      "block_order": ["success1"]
+    },
+    "join_cta": {
+      "type": "aai-universal-cta",
+      "settings": {
+        "title": "Join AAI Today",
+        "text": "<p>Take the next step in your safety career with industry-leading education and professional networking.</p>",
+        "button_1_text": "Individual Membership",
+        "button_1_link": "/pages/contact",
+        "button_1_style": "primary",
+        "button_2_text": "Corporate Solutions",
+        "button_2_link": "/pages/corporate-training",
+        "button_2_style": "secondary",
+        "color_scheme": "color-scheme-2"
+      }
+    }
+  },
+  "order": ["hero", "membership_overview", "individual_membership", "corporate_membership", "professional_pathways", "member_success", "join_cta"]
+}
