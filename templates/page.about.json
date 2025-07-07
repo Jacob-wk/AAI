@@ -157,6 +157,88 @@
         "main_button_size": "medium"
       }
     },
+    "aai_instructors_grid_PLgDpi": {
+      "type": "aai-instructors-grid",
+      "blocks": {
+        "instructor_card_P96t4x": {
+          "type": "instructor_card",
+          "settings": {
+            "image_placeholder_icon": "",
+            "name": "Luke Shaheen",
+            "title": "Managing Partner & CEO",
+            "department": "APEX Group Of Companies",
+            "bio": "<p>Luke Shaheen is the Managing Partner and co‑founder of APEX Active Entertainment Group (AAE)—the umbrella brand behind APEX Adventure Plex trampoline parks and Crazy Ape Extreme Equipment manufacturing—founded in 2014 and headquartered in Regina, Saskatchewan. With almopst two decades of leadership in trampoline park operations, active-entertainment attractions, and high-performance recreational equipment, he has led the growth of multiple indoor FEC facilities and a globally focused equipment line. Luke is also actively engaged with international industry organizations such as IAAPA and IATP, contributing to evolving safety protocols and quality standards across the trampoline and amusement sectors.</p>",
+            "credentials": "",
+            "stat_1_number": "",
+            "stat_1_label": "",
+            "stat_2_number": "",
+            "stat_2_label": "",
+            "featured": false
+          }
+        },
+        "instructor_card_yHzqz7": {
+          "type": "instructor_card",
+          "settings": {
+            "image_placeholder_icon": "👨‍🏫",
+            "name": "Director 2",
+            "title": "Director subtitle",
+            "department": "Company Or Organization Name",
+            "bio": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit—sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+            "credentials": "",
+            "stat_1_number": "",
+            "stat_1_label": "",
+            "stat_2_number": "",
+            "stat_2_label": "",
+            "featured": false
+          }
+        },
+        "instructor_card_Yt7QGa": {
+          "type": "instructor_card",
+          "settings": {
+            "image_placeholder_icon": "👨‍🏫",
+            "name": "Director 3",
+            "title": "Director subtitle",
+            "department": "Company Or Organization Name",
+            "bio": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit—sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+            "credentials": "",
+            "stat_1_number": "",
+            "stat_1_label": "",
+            "stat_2_number": "",
+            "stat_2_label": "",
+            "featured": false
+          }
+        },
+        "instructor_card_GdMHDr": {
+          "type": "instructor_card",
+          "settings": {
+            "image_placeholder_icon": "👨‍🏫",
+            "name": "Director 4",
+            "title": "Director subtitle",
+            "department": "Company Or Organization Name",
+            "bio": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit—sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+            "credentials": "",
+            "stat_1_number": "",
+            "stat_1_label": "",
+            "stat_2_number": "",
+            "stat_2_label": "",
+            "featured": false
+          }
+        }
+      },
+      "block_order": [
+        "instructor_card_P96t4x",
+        "instructor_card_yHzqz7",
+        "instructor_card_Yt7QGa",
+        "instructor_card_GdMHDr"
+      ],
+      "name": "AAI Instructors Grid",
+      "settings": {
+        "section_title": "Our Directors:",
+        "section_subtitle": "",
+        "color_scheme": "color-scheme-background-1",
+        "section_padding": "large"
+      }
+    },
     "cta_section": {
       "type": "aai-universal-content",
       "settings": {
@@ -164,7 +246,7 @@
         "section_subtitle": "Join hundreds of safety professionals advancing their careers with AAI",
         "layout_style": "text-center",
         "blocks_per_row": "1",
-        "background_style": "",
+        "background_style": "section-alt-1",
         "show_main_content": true,
         "content_title": "",
         "content_body": "<p>Whether you're looking to advance your career, meet regulatory requirements, or enhance your organization's safety culture, AAI has the training programs you need.</p>",
@@ -182,6 +264,7 @@
     "aai_universal_content_FDKMCw",
     "story",
     "aai_universal_content_jzU93B",
+    "aai_instructors_grid_PLgDpi",
     "cta_section"
   ]
 }
