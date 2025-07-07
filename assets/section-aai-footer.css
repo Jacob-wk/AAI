@@ -7,7 +7,7 @@
 
 .aai-footer-main {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 40px;
   margin-bottom: 40px;
 }
@@ -96,6 +96,13 @@
   font-style: italic;
 }
 
+.aai-nonprofit-statement {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 16px;
+}
+
 .aai-footer-certifications {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -182,5 +189,9 @@
   
   .aai-footer-social {
     justify-content: center;
+  }
+  
+  .aai-footer-contact {
+    text-align: left;
   }
 }

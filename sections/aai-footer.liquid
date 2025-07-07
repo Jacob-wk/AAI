@@ -28,20 +28,6 @@
         <p class="aai-footer-description">
           {{ section.settings.footer_description | default: "Professional safety education for the amusement industry since 2025. Advance your career while keeping guests safe." }}
         </p>
-        <div class="aai-footer-contact">
-          {% if section.settings.phone != blank %}
-            <div class="aai-contact-item">
-              <span class="aai-contact-icon">📞</span>
-              <a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a>
-            </div>
-          {% endif %}
-          {% if section.settings.email != blank %}
-            <div class="aai-contact-item">
-              <span class="aai-contact-icon">✉️</span>
-              <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
-            </div>
-          {% endif %}
-        </div>
       </div>
 
       <div class="aai-footer-column">
@@ -56,52 +42,63 @@
             <li><a href="/pages/corporate-training">Corporate Training</a></li>
             <li><a href="/pages/instructors">Our Faculty</a></li>
           {% endif %}
+          <li><a href="{{ section.settings.courses_in_development_url | default: '/pages/courses-in-development' }}">Courses in Development</a></li>
+        </ul>
+        
+        <h4 style="margin-top: 24px;">{{ section.settings.join_aai_title | default: "Join AAI" }}</h4>
+        <ul class="aai-footer-links">
+          {% if section.settings.footer_menu_join_aai != blank %}
+            {% for link in linklists[section.settings.footer_menu_join_aai].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          {% else %}
+            <li><a href="/account/register">Become a Member</a></li>
+            <li><a href="/pages/instructor-application">Become an Instructor</a></li>
+            <li><a href="/pages/partnerships">Partner with Us</a></li>
+          {% endif %}
         </ul>
       </div>
 
       <div class="aai-footer-column">
-        <h4>{{ section.settings.menu_2_title | default: "Company" }}</h4>
+        <h4>{{ section.settings.company_title | default: "Company" }}</h4>
         <ul class="aai-footer-links">
-          {% if section.settings.footer_menu_2 != blank %}
-            {% for link in linklists[section.settings.footer_menu_2].links %}
+          {% if section.settings.footer_menu_company != blank %}
+            {% for link in linklists[section.settings.footer_menu_company].links %}
               <li><a href="{{ link.url }}">{{ link.title }}</a></li>
             {% endfor %}
           {% else %}
             <li><a href="/pages/about">About AAI</a></li>
             <li><a href="/pages/contact">Contact Us</a></li>
+            <li><a href="/pages/help-center">Help Center</a></li>
           {% endif %}
         </ul>
-      </div>
-
-      <div class="aai-footer-column">
-        <h4>{{ section.settings.menu_3_title | default: "Resources" }}</h4>
-        <ul class="aai-footer-links">
-          {% if section.settings.footer_menu_3 != blank %}
-            {% for link in linklists[section.settings.footer_menu_3].links %}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-            {% endfor %}
-          {% else %}
-            <li><a href="/pages/industry-standards">Industry Standards</a></li>
-            <li><a href="/pages/partnerships">Partnerships</a></li>
+        
+        <div class="aai-footer-contact" style="margin-top: 24px;">
+          {% if section.settings.address != blank %}
+            <div class="aai-contact-item">
+              <span class="aai-contact-icon">📍</span>
+              <span>{{ section.settings.address }}</span>
+            </div>
           {% endif %}
-        </ul>
-      </div>
-
-      <div class="aai-footer-column">
-        <h4>{{ section.settings.menu_4_title | default: "Support" }}</h4>
-        <ul class="aai-footer-links">
-          {% if section.settings.footer_menu_4 != blank %}
-            {% for link in linklists[section.settings.footer_menu_4].links %}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-            {% endfor %}
-          {% else %}
-            <li><a href="/account/login">Student Login</a></li>
-            <li><a href="/account/register">Create Account</a></li>
+          {% if section.settings.email != blank %}
+            <div class="aai-contact-item">
+              <span class="aai-contact-icon">✉️</span>
+              <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+            </div>
           {% endif %}
-          {% if section.settings.support_hours != blank %}
-            <li class="support-hours">{{ section.settings.support_hours }}</li>
+          {% if section.settings.phone != blank %}
+            <div class="aai-contact-item">
+              <span class="aai-contact-icon">📞</span>
+              <a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a>
+            </div>
           {% endif %}
-        </ul>
+        </div>
+        
+        {% if section.settings.show_nonprofit_statement %}
+          <p class="aai-nonprofit-statement" style="margin-top: 16px; color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">
+            {{ section.settings.nonprofit_statement | default: "AAI is a 501(c)(3) nonprofit organization dedicated to advancing safety education in the amusement industry." }}
+          </p>
+        {% endif %}
       </div>
     </div>
 
@@ -189,6 +186,24 @@
       "label": "Email Address"
     },
     {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "123 Safety Blvd, Orlando, FL 32819"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nonprofit_statement",
+      "label": "Show 501(c)(3) Statement",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "nonprofit_statement",
+      "label": "Nonprofit Statement",
+      "default": "AAI is a 501(c)(3) nonprofit organization dedicated to advancing safety education in the amusement industry."
+    },
+    {
       "type": "text",
       "id": "support_hours",
       "label": "Support Hours",
@@ -201,26 +216,20 @@
     {
       "type": "text",
       "id": "menu_1_title",
-      "label": "Menu 1 Title",
+      "label": "Education Menu Title",
       "default": "Education"
     },
     {
       "type": "text",
-      "id": "menu_2_title",
-      "label": "Menu 2 Title", 
+      "id": "join_aai_title",
+      "label": "Join AAI Menu Title",
+      "default": "Join AAI"
+    },
+    {
+      "type": "text",
+      "id": "company_title",
+      "label": "Company Menu Title", 
       "default": "Company"
-    },
-    {
-      "type": "text",
-      "id": "menu_3_title",
-      "label": "Menu 3 Title",
-      "default": "Resources"
-    },
-    {
-      "type": "text",
-      "id": "menu_4_title",
-      "label": "Menu 4 Title",
-      "default": "Support"
     },
     {
       "type": "header",
@@ -229,26 +238,26 @@
     {
       "type": "link_list",
       "id": "footer_menu_1",
-      "label": "Menu 1 Links (Education)",
-      "info": "Select a menu to display under the first footer column"
+      "label": "Education Menu Links",
+      "info": "Select a menu to display under the Education column"
+    },
+    {
+      "type": "url",
+      "id": "courses_in_development_url",
+      "label": "Courses in Development URL",
+      "default": "/pages/courses-in-development"
     },
     {
       "type": "link_list",
-      "id": "footer_menu_2", 
-      "label": "Menu 2 Links (Company)",
-      "info": "Select a menu to display under the second footer column"
+      "id": "footer_menu_join_aai",
+      "label": "Join AAI Menu Links",
+      "info": "Select a menu to display under the Join AAI section"
     },
     {
       "type": "link_list",
-      "id": "footer_menu_3",
-      "label": "Menu 3 Links (Resources)", 
-      "info": "Select a menu to display under the third footer column"
-    },
-    {
-      "type": "link_list",
-      "id": "footer_menu_4",
-      "label": "Menu 4 Links (Support)",
-      "info": "Select a menu to display under the fourth footer column"
+      "id": "footer_menu_company", 
+      "label": "Company Menu Links",
+      "info": "Select a menu to display under the Company column"
     },
     {
       "type": "header",
