@@ -13,7 +13,13 @@
     "main": {
       "type": "main-page",
       "disabled": true,
-      "settings": {}
+      "settings": {
+        "content_direction": "column",
+        "gap": 12,
+        "color_scheme": "",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     },
     "hero": {
       "type": "aai-universal-hero",
@@ -21,7 +27,7 @@
         "stat1": {
           "type": "statistic",
           "settings": {
-            "stat_number": "6",
+            "stat_number": "3",
             "stat_label": "New Courses"
           }
         },
@@ -31,105 +37,74 @@
             "stat_number": "2025",
             "stat_label": "Release Year"
           }
-        },
-        "stat3": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "Expert-Led",
-            "stat_label": "Content"
-          }
         }
       },
       "block_order": [
         "stat1",
-        "stat2",
-        "stat3"
+        "stat2"
       ],
       "settings": {
         "hero_title": "Courses in Development",
         "hero_subtitle": "New professional development courses coming soon to advance your safety career",
         "hero_style": "professional",
         "layout_style": "centered",
+        "show_image": true,
+        "hero_image": "shopify://shop_images/1-APEX-KAMLOOPS-FRAMEGRAB_1.17.1.jpg",
+        "hide_image_mobile": false,
         "show_features": false,
-        "show_stats": true
+        "show_stats": true,
+        "show_credentials": false,
+        "primary_button_text": "",
+        "primary_button_url": "",
+        "secondary_button_text": "",
+        "secondary_button_url": "",
+        "button_size": "large"
       }
     },
     "overview": {
       "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Coming Soon: Advanced Safety Education",
-        "layout_style": "standard",
-        "background_style": "",
-        "show_main_content": true,
-        "content_title": "Expanding Our Professional Course Library",
-        "content_body": "<p>We're developing new courses to meet the evolving needs of safety professionals in the entertainment and adventure industry. Each course is designed by industry experts to provide practical, applicable knowledge that you can immediately apply in your workplace.</p><p>Our development process ensures every course meets the highest standards of professional education while addressing real-world challenges faced by safety professionals today.</p>",
-        "show_image": false
-      }
-    },
-    "upcoming_courses": {
-      "type": "aai-universal-content",
       "blocks": {
-        "course1": {
+        "text_block_Pf4XNr": {
           "type": "text_block",
           "settings": {
-            "block_title": "Advanced Risk Assessment for Adventure Operations",
-            "block_content": "<p><strong>Target Release: Q3 2025</strong></p><p>Master comprehensive risk analysis methodologies specifically designed for adventure tourism and family entertainment facilities. This course teaches systematic approaches to identifying, assessing, and mitigating operational risks while maintaining the excitement that guests expect.</p><p><strong>Course Details:</strong><br>Duration: 4 hours<br>CEU Credits: 3.0<br>Format: Interactive online with case studies</p>"
+            "block_title": "Coming Soon: Course 1",
+            "block_content": "<p>Description</p>"
           }
         },
-        "course2": {
+        "text_block_J8xjCj": {
           "type": "text_block",
           "settings": {
-            "block_title": "Emergency Response Leadership",
-            "block_content": "<p><strong>Target Release: Q4 2025</strong></p><p>Develop advanced leadership skills for managing emergency situations in entertainment and adventure facilities. Learn crisis communication strategies, team coordination techniques, and post-incident management procedures that protect both guests and your organization.</p><p><strong>Course Details:</strong><br>Duration: 6 hours<br>CEU Credits: 4.0<br>Format: Blended learning with simulation exercises</p>"
+            "block_title": "Coming Soon: Course 2",
+            "block_content": "<p>Description</p>"
           }
         },
-        "course3": {
+        "text_block_iRbx9w": {
           "type": "text_block",
           "settings": {
-            "block_title": "Digital Safety Management Systems",
-            "block_content": "<p><strong>Target Release: Q3 2025</strong></p><p>Navigate the digital transformation of safety management with comprehensive training on technology integration, data management, and digital workflow optimization. Learn to leverage modern tools for enhanced safety monitoring and compliance tracking.</p><p><strong>Course Details:</strong><br>Duration: 3 hours<br>CEU Credits: 2.5<br>Format: Online with software demonstrations</p>"
-          }
-        },
-        "course4": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Seasonal Operations Safety Management",
-            "block_content": "<p><strong>Target Release: Q2 2025</strong></p><p>Master safety protocols for seasonal entertainment facilities, addressing unique challenges of temporary installations, weather considerations, variable staffing, and peak-season operations. Essential for facilities with seasonal operations or outdoor attractions.</p><p><strong>Course Details:</strong><br>Duration: 5 hours<br>CEU Credits: 3.5<br>Format: Interactive online with weather scenario planning</p>"
-          }
-        },
-        "course5": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "International Safety Standards Compliance",
-            "block_content": "<p><strong>Target Release: Q2 2025</strong></p><p>Master international safety standards and regulations for adventure tourism and entertainment facilities operating in multiple jurisdictions or serving international guests. Learn to navigate complex compliance requirements across different regulatory frameworks.</p><p><strong>Course Details:</strong><br>Duration: 4 hours<br>CEU Credits: 3.0<br>Format: Online with regulatory framework comparisons</p>"
-          }
-        },
-        "course6": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Advanced Incident Investigation Techniques",
-            "block_content": "<p><strong>Target Release: Q4 2025</strong></p><p>Develop expert-level skills in incident investigation, root cause analysis, and corrective action implementation. Learn advanced investigative techniques, evidence collection methods, and how to create actionable improvement plans that prevent future incidents.</p><p><strong>Course Details:</strong><br>Duration: 5 hours<br>CEU Credits: 4.0<br>Format: Interactive case-based learning</p>"
+            "block_title": "Coming Soon: Course 3",
+            "block_content": "<p>Description</p>"
           }
         }
       },
       "block_order": [
-        "course1",
-        "course2",
-        "course3",
-        "course4",
-        "course5",
-        "course6"
+        "text_block_Pf4XNr",
+        "text_block_J8xjCj",
+        "text_block_iRbx9w"
       ],
       "settings": {
-        "section_title": "Upcoming Professional Development Courses",
-        "section_subtitle": "Each course is carefully developed by industry experts and includes hands-on learning components",
-        "layout_style": "blocks",
-        "blocks_per_row": "2",
-        "background_style": "section-alt-1",
-        "show_main_content": false,
+        "section_title": "Expanding Our Professional Course Library",
+        "section_subtitle": "",
+        "layout_style": "standard",
+        "blocks_per_row": "3",
+        "background_style": "",
+        "show_main_content": true,
         "content_title": "",
-        "content_body": "",
-        "show_image": false
+        "content_body": "<p>We're developing new courses to meet the evolving needs of safety professionals in the entertainment and adventure industry. Each course is designed by industry experts to provide practical, applicable knowledge that you can immediately apply in your workplace.</p><p>Our development process ensures every course meets the highest standards of professional education while addressing real-world challenges faced by safety professionals today.</p>",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
       }
     },
     "development_process": {
@@ -171,13 +146,19 @@
         "process4"
       ],
       "settings": {
-        "section_title": "Our Course Development Process",
+        "section_title": "",
+        "section_subtitle": "",
         "layout_style": "timeline",
-        "background_style": "",
+        "blocks_per_row": "1",
+        "background_style": "section-alt-1",
         "show_main_content": true,
-        "content_title": "Quality Through Expert Collaboration",
+        "content_title": "Our Course Development Process",
         "content_body": "<p>Every AAI course follows our proven development methodology, ensuring the highest quality professional education experience. We work with industry leaders, safety experts, and educational specialists to create courses that deliver real value to your career and organization.</p>",
-        "show_image": false
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
       }
     },
     "contact_cta": {
@@ -199,9 +180,7 @@
     "main",
     "hero",
     "overview",
-    "upcoming_courses",
     "development_process",
     "contact_cta"
   ]
 }
-
