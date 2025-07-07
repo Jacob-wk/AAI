@@ -21,8 +21,8 @@
         "iaapa_badge_text": "Active Industry Involvement",
         "show_astm_badge": true,
         "astm_badge_text": "Partnership Opportunities",
-        "show_naarso_badge": true,
-        "naarso_badge_text": "Courses in Development",
+        "show_naarso_badge": false,
+        "naarso_badge_text": "",
         "menu": "main-menu",
         "show_search": true,
         "show_cart": true
