@@ -91,16 +91,6 @@
         "type": "collection"
       },
       {
-        "title": "Corporate Training",
-        "url": "/pages/corporate-training",
-        "type": "page"
-      },
-      {
-        "title": "Our Faculty",
-        "url": "/pages/instructors",
-        "type": "page"
-      },
-      {
         "title": "Courses in Development",
         "url": "/pages/courses-in-development",
         "type": "page"
