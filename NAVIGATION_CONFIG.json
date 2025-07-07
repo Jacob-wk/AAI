@@ -129,11 +129,6 @@
         "title": "Contact Us",
         "url": "/pages/contact",
         "type": "page"
-      },
-      {
-        "title": "Help Center",
-        "url": "/pages/help-center",
-        "type": "page"
       }
     ]
   },
