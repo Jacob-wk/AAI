@@ -22,9 +22,9 @@
         "stat_2_label": "Courses Available",
         "stat_3_number": "6+",
         "stat_3_label": "Industry Partners",
-        "show_credentials": true,
-        "credential_1": "IAAPA Certified",
-        "credential_2": "ASTM F24 Compliant"
+        "show_credentials": false,
+        "credential_1": "",
+        "credential_2": ""
       }
     },
     "mission": {
