@@ -123,15 +123,15 @@
         "section_subtitle": "Start your professional development journey with our most popular safety certification courses",
         "content_source": "collection",
         "featured_collection": "courses",
-        "course_limit": 6,
+        "course_limit": 3,
         "courses_per_row": 3,
         "show_descriptions": true,
-        "show_price": true,
+        "show_price": false,
         "card_style": "standard",
         "show_view_all_button": false,
         "view_all_link": "/collections/courses",
         "view_all_text": "View All Courses",
-        "background_style": "",
+        "background_style": "section-alt-2",
         "color_scheme": "color-scheme-1"
       }
     },
