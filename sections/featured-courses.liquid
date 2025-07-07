@@ -89,7 +89,14 @@
 
                 {% if section.settings.show_descriptions and product.description != blank %}
                   <div class="course-description">
-                    {{ product.description | truncate: 120 }}
+                    {% assign description_length = product.description | strip_html | size %}
+                    {% if description_length > 120 %}
+                      <div class="description-preview">{{ product.description | strip_html | truncate: 120 }}</div>
+                      <div class="description-full" style="display: none;">{{ product.description }}</div>
+                      <button type="button" class="read-more-btn" onclick="toggleDescription(this)">Read More</button>
+                    {% else %}
+                      <div class="description-full">{{ product.description }}</div>
+                    {% endif %}
                   </div>
                 {% endif %}
 
@@ -104,7 +111,7 @@
                   {% endif %}
 
                   <div class="course-actions">
-                    <a href="{{ product.url }}" class="btn btn--primary btn--small">
+                    <a href="{{ product.url }}" class="course-learn-more-btn">
                       Learn More
                     </a>
                   </div>
@@ -184,7 +191,14 @@
 
                     {% if section.settings.show_descriptions and featured_product.description != blank %}
                       <div class="course-description">
-                        {{ featured_product.description | truncate: 120 }}
+                        {% assign description_length = featured_product.description | strip_html | size %}
+                        {% if description_length > 120 %}
+                          <div class="description-preview">{{ featured_product.description | strip_html | truncate: 120 }}</div>
+                          <div class="description-full" style="display: none;">{{ featured_product.description }}</div>
+                          <button type="button" class="read-more-btn" onclick="toggleDescription(this)">Read More</button>
+                        {% else %}
+                          <div class="description-full">{{ featured_product.description }}</div>
+                        {% endif %}
                       </div>
                     {% endif %}
 
@@ -199,7 +213,7 @@
                       {% endif %}
 
                       <div class="course-actions">
-                        <a href="{{ featured_product.url }}" class="btn btn--primary btn--small">
+                        <a href="{{ featured_product.url }}" class="course-learn-more-btn">
                           Learn More
                         </a>
                       </div>
@@ -222,6 +236,26 @@
     {% endif %}
   </div>
 </section>
+
+<script>
+function toggleDescription(button) {
+  const courseCard = button.closest('.course-card');
+  const preview = courseCard.querySelector('.description-preview');
+  const full = courseCard.querySelector('.description-full');
+  
+  if (preview.style.display === 'none') {
+    // Show preview, hide full
+    preview.style.display = 'block';
+    full.style.display = 'none';
+    button.textContent = 'Read More';
+  } else {
+    // Show full, hide preview
+    preview.style.display = 'none';
+    full.style.display = 'block';
+    button.textContent = 'Read Less';
+  }
+}
+</script>
 
 {% schema %}
 {
@@ -289,26 +323,6 @@
       "id": "show_price",
       "label": "Show Course Prices",
       "default": true
-    },
-    {
-      "type": "select",
-      "id": "card_style",
-      "label": "Card Style",
-      "options": [
-        {
-          "value": "standard",
-          "label": "Standard"
-        },
-        {
-          "value": "compact",
-          "label": "Compact"
-        },
-        {
-          "value": "detailed",
-          "label": "Detailed"
-        }
-      ],
-      "default": "standard"
     },
     {
       "type": "checkbox",

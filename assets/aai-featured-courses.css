@@ -215,10 +215,213 @@
   font-size: 0.9rem;
 }
 
-/* Section Footer */
+/* Featured Courses Section Footer */
 .featured-courses-section .section-footer {
   text-align: center;
   margin-top: 40px;
+}
+
+/* Course Card Styling within Featured Courses */
+.featured-courses-section .course-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-courses-section .course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.featured-courses-section .course-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.featured-courses-section .course-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.featured-courses-section .course-card:hover .course-thumbnail {
+  transform: scale(1.05);
+}
+
+.featured-courses-section .course-placeholder-image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1e3a5f 0%, #005a9f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-courses-section .course-icon {
+  width: 60px;
+  height: 60px;
+  color: white;
+  opacity: 0.8;
+}
+
+.featured-courses-section .course-level-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.featured-courses-section .course-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-courses-section .course-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.featured-courses-section .course-title a {
+  color: var(--authority-navy, #1e3a5f);
+  text-decoration: none;
+}
+
+.featured-courses-section .course-title a:hover {
+  color: var(--electric-blue, #3498db);
+}
+
+.featured-courses-section .course-ceu {
+  margin-bottom: 12px;
+  font-size: 0.875rem;
+}
+
+.featured-courses-section .ceu-label {
+  color: #6b7280;
+}
+
+.featured-courses-section .ceu-value {
+  font-weight: 600;
+  color: var(--safety-orange, #ff6b35);
+}
+
+.featured-courses-section .course-meta {
+  margin-bottom: 16px;
+}
+
+.featured-courses-section .course-duration {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.featured-courses-section .meta-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Course Description with Read More */
+.featured-courses-section .course-description {
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.featured-courses-section .description-preview,
+.featured-courses-section .description-full {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin-bottom: 8px;
+}
+
+.featured-courses-section .read-more-btn {
+  background: none;
+  border: none;
+  color: var(--electric-blue, #3498db);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.featured-courses-section .read-more-btn:hover {
+  color: var(--authority-navy, #1e3a5f);
+}
+
+/* Course Footer */
+.featured-courses-section .course-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.featured-courses-section .course-pricing {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.featured-courses-section .price-compare {
+  text-decoration: line-through;
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.featured-courses-section .price-current {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--authority-navy, #1e3a5f);
+}
+
+/* Subtle Learn More Button */
+.featured-courses-section .course-learn-more-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: transparent;
+  border: 2px solid var(--electric-blue, #3498db);
+  border-radius: 6px;
+  color: var(--electric-blue, #3498db);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-courses-section .course-learn-more-btn:hover {
+  background: var(--electric-blue, #3498db);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.featured-courses-section .course-learn-more-btn:active {
+  transform: translateY(0);
 }
 
 /* Color Scheme Variations */

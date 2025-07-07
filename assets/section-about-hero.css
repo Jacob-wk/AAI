@@ -45,27 +45,32 @@
 
 /* Credentials styling with more specificity */
 .about-hero .credentials-overlay {
-  position: absolute;
-  bottom: -1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  position: absolute !important;
+  bottom: -1rem !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1rem !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  white-space: nowrap !important;
 }
 
 .about-hero .credential-badge {
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--authority-navy, #1e3a5f);
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: var(--authority-navy, #1e3a5f) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 2rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
 }
 
 .about-hero .hero-title { /* Specific overrides for about-hero if needed */
