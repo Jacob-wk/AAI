@@ -63,7 +63,7 @@
         "content_title": "",
         "content_body": "",
         "layout_style": "blocks",
-        "blocks_per_row": 2,
+        "blocks_per_row": "2",
         "background_style": "section-alt-1",
         "color_scheme": "color-scheme-1",
         "show_main_content": false,

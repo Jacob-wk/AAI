@@ -30,7 +30,7 @@ AAI Professional Footer - Updated to 3-column layout
           {% endfor %}
           {% unless section.blocks contains 'education_link' %}
             <li><a href="{{ section.settings.courses_url | default: '/collections/courses' }}">All Courses</a></li>
-            <li><a href="{{ section.settings.courses_in_development_url | default: '/pages/courses-in-development' }}">Courses in Development</a></li>
+            <li><a href="{{ section.settings.courses_in_development_url | default: '/pages/courses-development' }}">Courses in Development</a></li>
           {% endunless %}
         </ul>
 
@@ -165,7 +165,7 @@ AAI Professional Footer - Updated to 3-column layout
       "type": "url",
       "id": "courses_in_development_url",
       "label": "Courses in Development URL",
-      "default": "/pages/courses-in-development"
+      "default": "/pages/courses-development"
     },
     {
       "type": "header",
