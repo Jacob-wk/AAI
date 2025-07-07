@@ -1,19 +1,14 @@
 {% comment %}
   Template: page.courses-development.liquid
-  Simple Courses in Development Info Page
-  Basic upcoming courses information with editable cards
+  Shopify 2.0 template for Courses in Development page
+  Uses sections defined in the page.courses-development.json template
 {% endcomment %}
 
+{{ 'courses-development-page.css' | asset_url | stylesheet_tag }}
 {{ content_for_header }}
 
-{% comment %} Hero Section - "Coming Soon" {% endcomment %}
-{% section 'aai-universal-hero' %}
-
-{% comment %} Courses Overview {% endcomment %}
-{% section 'aai-universal-content' %}
-
-{% comment %} Simple Courses Cards {% endcomment %}
-{% section 'aai-universal-content' %}
-
-{% comment %} Contact CTA {% endcomment %}
-{% section 'aai-universal-cta' %}
+<main class="page-courses-development" role="main">
+  {%- for section in page.sections -%}
+    {%- render section -%}
+  {%- endfor -%}
+</main>

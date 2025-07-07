@@ -1,0 +1,170 @@
+/* Courses in Development Page Specific Styles */
+
+.page-courses-development-wrapper {
+  min-height: 100vh;
+}
+
+.page-courses-development {
+  width: 100%;
+}
+
+/* Course Cards Enhancement */
+.page-courses-development .aai-content[data-layout="blocks"] .content-grid {
+  gap: 2rem;
+}
+
+.page-courses-development .text-block {
+  background: var(--gradient-base-background-1);
+  border: 1px solid rgb(var(--color-border));
+  border-radius: 8px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-courses-development .text-block:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: rgb(var(--color-foreground) / 0.3);
+}
+
+.page-courses-development .text-block h3 {
+  color: rgb(var(--color-foreground));
+  font-size: 1.4rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.page-courses-development .text-block .block-content {
+  flex-grow: 1;
+  color: rgb(var(--color-foreground) / 0.85);
+  line-height: 1.6;
+}
+
+.page-courses-development .text-block .block-content p {
+  margin-bottom: 1rem;
+}
+
+.page-courses-development .text-block .block-content p:last-child {
+  margin-bottom: 0;
+}
+
+.page-courses-development .text-block .block-content strong {
+  color: rgb(var(--color-foreground));
+  font-weight: 600;
+}
+
+/* Release Date Styling */
+.page-courses-development .text-block .block-content p:first-child strong {
+  color: rgb(var(--color-accent));
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Timeline Layout Enhancement */
+.page-courses-development .aai-content[data-layout="timeline"] .content-grid {
+  position: relative;
+}
+
+.page-courses-development .aai-content[data-layout="timeline"] .text-block {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 3rem;
+}
+
+.page-courses-development .aai-content[data-layout="timeline"] .text-block::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  background: rgb(var(--color-accent));
+  border-radius: 50%;
+  border: 3px solid rgb(var(--color-background));
+  box-shadow: 0 0 0 2px rgb(var(--color-accent));
+}
+
+.page-courses-development .aai-content[data-layout="timeline"] .text-block::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1.5rem;
+  width: 2px;
+  height: calc(100% + 1rem);
+  background: rgb(var(--color-border));
+}
+
+.page-courses-development .aai-content[data-layout="timeline"] .text-block:last-child::after {
+  display: none;
+}
+
+/* Statistics Enhancement */
+.page-courses-development .hero-stats {
+  margin-top: 2rem;
+}
+
+.page-courses-development .stat-item {
+  text-align: center;
+  padding: 1rem;
+}
+
+.page-courses-development .stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgb(var(--color-accent));
+  display: block;
+  line-height: 1;
+}
+
+.page-courses-development .stat-label {
+  font-size: 0.9rem;
+  color: rgb(var(--color-foreground) / 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 749px) {
+  .page-courses-development .aai-content[data-layout="blocks"] .content-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .page-courses-development .text-block {
+    padding: 1.5rem;
+  }
+  
+  .page-courses-development .text-block h3 {
+    font-size: 1.25rem;
+  }
+  
+  .page-courses-development .aai-content[data-layout="timeline"] .text-block {
+    padding-left: 2rem;
+  }
+}
+
+/* Accessibility and Focus States */
+.page-courses-development .text-block:focus-within {
+  outline: 2px solid rgb(var(--color-accent));
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .page-courses-development .text-block {
+    break-inside: avoid;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+  
+  .page-courses-development .text-block:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
