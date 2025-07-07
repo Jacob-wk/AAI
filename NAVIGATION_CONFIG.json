@@ -82,8 +82,73 @@
       }
     ]
   },
-  "footer-menu": {
-    "name": "Footer Menu",
+  "footer-education": {
+    "name": "Footer - Education",
+    "links": [
+      {
+        "title": "All Courses",
+        "url": "/collections/courses",
+        "type": "collection"
+      },
+      {
+        "title": "Corporate Training",
+        "url": "/pages/corporate-training",
+        "type": "page"
+      },
+      {
+        "title": "Our Faculty",
+        "url": "/pages/instructors",
+        "type": "page"
+      },
+      {
+        "title": "Courses in Development",
+        "url": "/pages/courses-in-development",
+        "type": "page"
+      }
+    ]
+  },
+  "footer-join-aai": {
+    "name": "Footer - Join AAI",
+    "links": [
+      {
+        "title": "Become a Member",
+        "url": "/account/register",
+        "type": "page"
+      },
+      {
+        "title": "Become an Instructor",
+        "url": "/pages/instructor-application",
+        "type": "page"
+      },
+      {
+        "title": "Partner with Us",
+        "url": "/pages/partnerships",
+        "type": "page"
+      }
+    ]
+  },
+  "footer-company": {
+    "name": "Footer - Company",
+    "links": [
+      {
+        "title": "About AAI",
+        "url": "/pages/about",
+        "type": "page"
+      },
+      {
+        "title": "Contact Us",
+        "url": "/pages/contact",
+        "type": "page"
+      },
+      {
+        "title": "Help Center",
+        "url": "/pages/help-center",
+        "type": "page"
+      }
+    ]
+  },
+  "footer-legal": {
+    "name": "Footer - Legal",
     "links": [
       {
         "title": "Privacy Policy",
@@ -93,16 +158,6 @@
       {
         "title": "Terms of Service",
         "url": "/pages/terms-of-service",
-        "type": "page"
-      },
-      {
-        "title": "Help Center",
-        "url": "/pages/help-center",
-        "type": "page"
-      },
-      {
-        "title": "Contact Us",
-        "url": "/pages/contact",
         "type": "page"
       }
     ]

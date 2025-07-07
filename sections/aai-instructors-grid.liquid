@@ -4,6 +4,7 @@
 {% endcomment %}
 
 {{ 'section-aai-instructors-grid.css' | asset_url | stylesheet_tag }}
+{{ 'instructors-page.css' | asset_url | stylesheet_tag }}
 
 <div class="aai-instructors-grid-section{% if section.settings.color_scheme %} {{ section.settings.color_scheme }}{% endif %}{% if section.settings.section_padding %} section-padding-{{ section.settings.section_padding }}{% endif %}">
   <div class="page-width">

@@ -35,17 +35,17 @@
 }
 
 .aai-instructors-grid-section .section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--color-foreground);
+  font-size: 1.875rem; /* var(--text-3xl) equivalent */
+  font-weight: 600; /* var(--font-semibold) */
+  color: var(--authority-navy);
   margin-bottom: 1rem;
   line-height: 1.2;
 }
 
 .aai-instructors-grid-section .section-subtitle {
-  font-size: 1.2rem;
-  color: var(--color-foreground-secondary);
-  max-width: 60rem;
+  font-size: 1.125rem; /* var(--text-lg) equivalent */
+  color: var(--medium-grey);
+  max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
 }
