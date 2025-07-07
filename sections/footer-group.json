@@ -37,6 +37,7 @@
         "iso_badge_text": "ISO 9001 Certified",
         "show_ceu_badge": false,
         "ceu_badge_text": "CEU Provider",
+        "footer_legal_menu": "footer",
         "social_linkedin": "",
         "social_twitter": "",
         "social_youtube": ""
