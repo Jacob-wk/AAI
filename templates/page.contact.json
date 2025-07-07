@@ -37,6 +37,7 @@
         "hero_style": "hero-standard",
         "layout_style": "text-center",
         "show_image": false,
+        "hide_image_mobile": false,
         "show_features": true,
         "show_stats": true,
         "show_credentials": true,
@@ -143,7 +144,7 @@
           "type": "text_block",
           "settings": {
             "block_title": "⚖️ Legal & Compliance",
-            "block_content": "<p>Legal inquiries, compliance questions, certification validation, and regulatory matters.</p><p><strong>Legal Department</strong><br>📧 <a href=\"mailto:legal@aai-institute.com\">legal@aai-institute.com</a><br>📞 <a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1 ext. 104</a></p>"
+            "block_content": "<p>Legal inquiries, compliance questions, certification validation, and regulatory matters.</p><p><strong>Legal Department</strong><br/>📧 <a href=\"mailto:legal@aai-institute.com\">legal@aai-institute.com</a><br/>📞 <a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1 ext. 104</a></p>"
           }
         }
       },
@@ -167,59 +168,12 @@
         "main_button_style": "primary",
         "main_button_size": "medium"
       }
-    },
-    "additional_support": {
-      "type": "aai-universal-content",
-      "blocks": {
-        "faq": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Frequently Asked Questions",
-            "block_content": "<p>Find answers to common questions about our training programs, certification requirements, and platform features.</p><p><a href=\"/pages/industry-standards\" title=\"Industry Standards\">View Industry Standards</a></p>"
-          }
-        },
-        "demo": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Platform Demo",
-            "block_content": "<p>Experience our interactive learning platform through our Safety Library showcasing our training resources and assessment tools.</p><p><a href=\"/pages/safety-library\">Browse Safety Library</a></p>"
-          }
-        },
-        "schedule": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Schedule Consultation",
-            "block_content": "<p>Book a personalized consultation with our training experts to discuss your specific needs and develop a custom solution.</p><p><a href=\"#contact-form-section\">Request Consultation</a></p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq",
-        "demo",
-        "schedule"
-      ],
-      "settings": {
-        "section_title": "Additional Resources",
-        "section_subtitle": "Find answers and get support quickly through our other channels.",
-        "layout_style": "blocks-grid",
-        "blocks_per_row": "3",
-        "background_style": "section-alt-1",
-        "show_main_content": true,
-        "content_title": "",
-        "content_body": "",
-        "show_image": false,
-        "main_button_text": "",
-        "main_button_url": "",
-        "main_button_style": "primary",
-        "main_button_size": "medium"
-      }
     }
   },
   "order": [
     "hero",
     "contact_info",
     "contact_form_section",
-    "detailed_inquiries",
-    "additional_support"
+    "detailed_inquiries"
   ]
 }
