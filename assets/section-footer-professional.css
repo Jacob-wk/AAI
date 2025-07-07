@@ -8,7 +8,7 @@
 
 .aai-footer-content {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 40px;
   margin-bottom: 40px;
 }
@@ -90,6 +90,33 @@
 
 .aai-accreditation-badge:hover {
   background: rgba(255,255,255,0.15);
+}
+
+.aai-footer-contact {
+  margin-top: 24px;
+}
+
+.aai-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.aai-contact-item a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+}
+
+.aai-contact-item a:hover {
+  color: white;
+}
+
+.aai-nonprofit-statement {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 16px;
 }
 
 /* Mobile responsiveness */

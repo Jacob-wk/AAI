@@ -1,10 +1,8 @@
 {% comment %}
-COPILOT CONTEXT:
-- Professional footer exactly matching aai-lms-mockup.html design
-- AAI brand messaging with industry credibility and accreditations
-- Professional development focus with industry authority aesthetic
-- Color scheme: Authority Navy (#1e3a5f), Safety Orange (#ff6b35), Electric Blue (#3498db)
-- Configurable through section settings for Shopify admin
+AAI Professional Footer - Updated to 3-column layout
+- Left: AAI brand info + description
+- Middle: Education links + Join AAI section  
+- Right: Company links + contact info + 501(c)(3) statement
 {% endcomment %}
 
 <footer class="aai-footer">
@@ -23,53 +21,77 @@ COPILOT CONTEXT:
       </div>
       
       <div class="aai-footer-section">
-        <h4>{{ section.settings.programs_title | default: 'Programs' }}</h4>
+        <h4>{{ section.settings.education_title | default: 'Education' }}</h4>
         <ul>
           {% for block in section.blocks %}
-            {% if block.type == 'programs_link' %}
+            {% if block.type == 'education_link' %}
               <li><a href="{{ block.settings.url }}">{{ block.settings.text }}</a></li>
             {% endif %}
           {% endfor %}
-          {% unless section.blocks contains 'programs_link' %}
-            <li><a href="{{ section.settings.safety_cert_url | default: '/collections/safety-certifications' }}">Safety Certifications</a></li>
-            <li><a href="{{ section.settings.operations_url | default: '/collections/operations-training' }}">Operations Training</a></li>
-            <li><a href="{{ section.settings.compliance_url | default: '/collections/compliance-courses' }}">Compliance Courses</a></li>
-            <li><a href="{{ section.settings.custom_training_url | default: '/pages/custom-training' }}">Custom Training</a></li>
+          {% unless section.blocks contains 'education_link' %}
+            <li><a href="{{ section.settings.courses_url | default: '/collections/courses' }}">All Courses</a></li>
+            <li><a href="{{ section.settings.courses_in_development_url | default: '/pages/courses-in-development' }}">Courses in Development</a></li>
+          {% endunless %}
+        </ul>
+
+        <h4 style="margin-top: 24px;">{{ section.settings.join_aai_title | default: 'Join AAI' }}</h4>
+        <ul>
+          {% for block in section.blocks %}
+            {% if block.type == 'join_aai_link' %}
+              <li><a href="{{ block.settings.url }}">{{ block.settings.text }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% unless section.blocks contains 'join_aai_link' %}
+            <li><a href="{{ section.settings.member_url | default: '/account/register' }}">Become a Member</a></li>
+            <li><a href="{{ section.settings.instructor_url | default: '/pages/instructor-application' }}">Become an Instructor</a></li>
+            <li><a href="{{ section.settings.partner_url | default: '/pages/partnerships' }}">Partner with Us</a></li>
           {% endunless %}
         </ul>
       </div>
       
       <div class="aai-footer-section">
-        <h4>{{ section.settings.resources_title | default: 'Resources' }}</h4>
+        <h4>{{ section.settings.company_title | default: 'Company' }}</h4>
         <ul>
           {% for block in section.blocks %}
-            {% if block.type == 'resources_link' %}
+            {% if block.type == 'company_link' %}
               <li><a href="{{ block.settings.url }}">{{ block.settings.text }}</a></li>
             {% endif %}
           {% endfor %}
-          {% unless section.blocks contains 'resources_link' %}
-            <li><a href="{{ section.settings.standards_url | default: '/pages/industry-standards' }}">Industry Standards</a></li>
-            <li><a href="{{ section.settings.partnerships_url | default: '/pages/partnerships' }}">Partnerships</a></li>
-            <li><a href="{{ section.settings.webinars_url | default: '/pages/webinars' }}">Webinars</a></li>
-            <li><a href="{{ section.settings.blog_url | default: '/blogs/news' }}">Blog</a></li>
-          {% endunless %}
-        </ul>
-      </div>
-      
-      <div class="aai-footer-section">
-        <h4>{{ section.settings.support_title | default: 'Support' }}</h4>
-        <ul>
-          {% for block in section.blocks %}
-            {% if block.type == 'support_link' %}
-              <li><a href="{{ block.settings.url }}">{{ block.settings.text }}</a></li>
-            {% endif %}
-          {% endfor %}
-          {% unless section.blocks contains 'support_link' %}
-            <li><a href="{{ section.settings.help_url | default: '/pages/help-center' }}">Help Center</a></li>
+          {% unless section.blocks contains 'company_link' %}
+            <li><a href="{{ section.settings.about_url | default: '/pages/about' }}">About AAI</a></li>
             <li><a href="{{ section.settings.contact_url | default: '/pages/contact' }}">Contact Us</a></li>
-            <li><a href="{{ section.settings.corporate_url | default: '/pages/corporate-training' }}">Corporate Training</a></li>
+            <li><a href="{{ section.settings.help_url | default: '/pages/help-center' }}">Help Center</a></li>
           {% endunless %}
         </ul>
+
+        {% if section.settings.address != blank or section.settings.email != blank or section.settings.phone != blank %}
+          <div class="aai-footer-contact" style="margin-top: 24px;">
+            {% if section.settings.address != blank %}
+              <div class="aai-contact-item">
+                <span class="aai-contact-icon">📍</span>
+                <span>{{ section.settings.address }}</span>
+              </div>
+            {% endif %}
+            {% if section.settings.email != blank %}
+              <div class="aai-contact-item">
+                <span class="aai-contact-icon">✉️</span>
+                <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+              </div>
+            {% endif %}
+            {% if section.settings.phone != blank %}
+              <div class="aai-contact-item">
+                <span class="aai-contact-icon">📞</span>
+                <a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.show_nonprofit_statement %}
+          <p class="aai-nonprofit-statement" style="margin-top: 16px; color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; line-height: 1.5;">
+            {{ section.settings.nonprofit_statement | default: "AAI is a 501(c)(3) nonprofit organization dedicated to advancing safety education in the amusement industry." }}
+          </p>
+        {% endif %}
       </div>
     </div>
     
@@ -125,87 +147,69 @@ COPILOT CONTEXT:
     },
     {
       "type": "header",
-      "content": "Programs Section"
+      "content": "Education Section"
     },
     {
       "type": "text",
-      "id": "programs_title",
-      "label": "Programs Title",
-      "default": "Programs"
+      "id": "education_title",
+      "label": "Education Title",
+      "default": "Education"
     },
     {
       "type": "url",
-      "id": "safety_cert_url",
-      "label": "Safety Certifications URL",
-      "default": "/collections/safety-certifications"
+      "id": "courses_url",
+      "label": "All Courses URL",
+      "default": "/collections/courses"
     },
     {
       "type": "url",
-      "id": "operations_url",
-      "label": "Operations Training URL",
-      "default": "/collections/operations-training"
-    },
-    {
-      "type": "url",
-      "id": "compliance_url",
-      "label": "Compliance Courses URL",
-      "default": "/collections/compliance-courses"
-    },
-    {
-      "type": "url",
-      "id": "custom_training_url",
-      "label": "Custom Training URL",
-      "default": "/pages/custom-training"
+      "id": "courses_in_development_url",
+      "label": "Courses in Development URL",
+      "default": "/pages/courses-in-development"
     },
     {
       "type": "header",
-      "content": "Resources Section"
+      "content": "Join AAI Section"
     },
     {
       "type": "text",
-      "id": "resources_title",
-      "label": "Resources Title",
-      "default": "Resources"
+      "id": "join_aai_title",
+      "label": "Join AAI Title",
+      "default": "Join AAI"
     },
     {
       "type": "url",
-      "id": "standards_url",
-      "label": "Industry Standards URL",
-      "default": "/pages/industry-standards"
+      "id": "member_url",
+      "label": "Become a Member URL",
+      "default": "/account/register"
     },
     {
       "type": "url",
-      "id": "library_url",
-      "label": "Safety Library URL",
-      "default": "/pages/safety-library"
+      "id": "instructor_url",
+      "label": "Become an Instructor URL",
+      "default": "/pages/instructor-application"
     },
     {
       "type": "url",
-      "id": "webinars_url",
-      "label": "Webinars URL",
-      "default": "/pages/webinars"
-    },
-    {
-      "type": "url",
-      "id": "blog_url",
-      "label": "Blog URL",
-      "default": "/blogs/news"
+      "id": "partner_url",
+      "label": "Partner with Us URL",
+      "default": "/pages/partnerships"
     },
     {
       "type": "header",
-      "content": "Support Section"
+      "content": "Company Section"
     },
     {
       "type": "text",
-      "id": "support_title",
-      "label": "Support Title",
-      "default": "Support"
+      "id": "company_title",
+      "label": "Company Title",
+      "default": "Company"
     },
     {
       "type": "url",
-      "id": "help_url",
-      "label": "Help Center URL",
-      "default": "/pages/help-center"
+      "id": "about_url",
+      "label": "About AAI URL",
+      "default": "/pages/about"
     },
     {
       "type": "url",
@@ -215,15 +219,45 @@ COPILOT CONTEXT:
     },
     {
       "type": "url",
-      "id": "corporate_url",
-      "label": "Corporate Training URL",
-      "default": "/pages/corporate-training"
+      "id": "help_url",
+      "label": "Help Center URL",
+      "default": "/pages/help-center"
     },
     {
-      "type": "url",
-      "id": "partnerships_url",
-      "label": "Partnerships URL",
-      "default": "/pages/partnerships"
+      "type": "header",
+      "content": "Contact Information"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "123 Safety Blvd\nOrlando, FL 32819"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email Address"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone Number"
+    },
+    {
+      "type": "header",
+      "content": "Nonprofit Statement"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nonprofit_statement",
+      "label": "Show 501(c)(3) Statement",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "nonprofit_statement",
+      "label": "Nonprofit Statement",
+      "default": "AAI is a 501(c)(3) nonprofit organization dedicated to advancing safety education in the amusement industry."
     },
     {
       "type": "header",
@@ -250,8 +284,8 @@ COPILOT CONTEXT:
   ],
   "blocks": [
     {
-      "type": "programs_link",
-      "name": "Programs Link",
+      "type": "education_link",
+      "name": "Education Link",
       "settings": [
         {
           "type": "text",
@@ -266,8 +300,8 @@ COPILOT CONTEXT:
       ]
     },
     {
-      "type": "resources_link",
-      "name": "Resources Link",
+      "type": "join_aai_link",
+      "name": "Join AAI Link",
       "settings": [
         {
           "type": "text",
@@ -282,8 +316,8 @@ COPILOT CONTEXT:
       ]
     },
     {
-      "type": "support_link",
-      "name": "Support Link",
+      "type": "company_link",
+      "name": "Company Link",
       "settings": [
         {
           "type": "text",

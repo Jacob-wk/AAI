@@ -39,8 +39,6 @@
             {% endfor %}
           {% else %}
             <li><a href="/collections/courses">All Courses</a></li>
-            <li><a href="/pages/corporate-training">Corporate Training</a></li>
-            <li><a href="/pages/instructors">Our Faculty</a></li>
           {% endif %}
           <li><a href="{{ section.settings.courses_in_development_url | default: '/pages/courses-in-development' }}">Courses in Development</a></li>
         </ul>
