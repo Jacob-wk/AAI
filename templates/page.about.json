@@ -33,22 +33,22 @@
         "feature1": {
           "type": "text_block",
           "settings": {
-            "block_title": "⚖️Industry Expertise",
-            "block_content": "<p>Learn from professionals with decades of experience in safety management and regulatory compliance.</p>"
+            "block_title": "🧠Industry-Born Expertise",
+            "block_content": "<p>Founded by park owners, manufacturers, and safety professionals, AAI creates practical, proven training designed for real-world operations in trampoline and adventure parks.</p>"
           }
         },
         "feature2": {
           "type": "text_block",
           "settings": {
-            "block_title": "💡Comprehensive Training",
-            "block_content": "<p>Access a complete library of courses covering all aspects of amusement industry safety and operations.</p>"
+            "block_title": "🎓Standards-Based Training",
+            "block_content": "<p>Our programs are built around key safety standards like <strong>ASTM F2970</strong> and <strong>ASTM F1918</strong>, giving operators the tools to stay compliant and confident.</p>"
           }
         },
         "feature3": {
           "type": "text_block",
           "settings": {
-            "block_title": "🌟 Industry Leadership",
-            "block_content": "<p>We collaborate with industry leaders to develop cutting-edge safety protocols and best practices that shape the future of amusement operations.</p>"
+            "block_title": "🤝 Non-Profit, Industry-Driven",
+            "block_content": "<p>AAI is a mission-based non-profit collaborating with operators, insurers, and regulators to support safer, stronger <strong>FECs</strong> across North America.</p>"
           }
         }
       },
