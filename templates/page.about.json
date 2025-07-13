@@ -122,6 +122,7 @@
         "feature4",
         "founder_quote"
       ],
+      "disabled": true,
       "settings": {
         "section_title": "Our Timeline",
         "section_subtitle": "Our history, at a glance:",
@@ -140,6 +141,7 @@
     },
     "aai_universal_content_jzU93B": {
       "type": "aai-universal-content",
+      "disabled": true,
       "settings": {
         "section_title": "Our Mission:",
         "section_subtitle": "Setting the industry standard for safety education and regulatory compliance across all family entertainment centers",
@@ -164,10 +166,11 @@
           "type": "instructor_card",
           "settings": {
             "image_placeholder_icon": "",
+            "image": "shopify://shop_images/Luke_Headshot_Compressed.png",
             "name": "Luke Shaheen",
             "title": "Managing Partner & CEO",
             "department": "APEX Group Of Companies",
-            "bio": "<p>Luke Shaheen is the Managing Partner and co‑founder of APEX Active Entertainment Group (AAE)—the umbrella brand behind APEX Adventure Plex trampoline parks and Crazy Ape Extreme Equipment manufacturing. With almost two decades of leadership in trampoline park operations, active-entertainment attractions, and high-performance recreational equipment, he has led the growth of multiple indoor FEC facilities and a globally focused equipment line. Luke is also actively engaged with international industry organizations such as IAAPA and IATP, contributing to evolving safety protocols and quality standards across the trampoline and amusement sectors.</p>",
+            "bio": "<p><strong>Luke Shaheen</strong> has been actively involved in the trampoline park and amusement industry since 2012, focusing on advancing safety standards and operator education. Over the past decade, he has been deeply engaged in the ongoing development of <strong>ASTM F2970</strong>, contributing expertise to support evolving industry safety protocols.</p><p>He served four years on the Board of Directors for the International Association of Trampoline Parks (IATP) and chaired the IATP Education Committee, leading efforts to enhance training and compliance for trampoline parks.</p><p>Luke is Managing Partner and co-founder of APEX Active Entertainment Group, which includes APEX Adventure Plex locations and Crazy Ape Extreme Equipment manufacturing. He guides the growth of family entertainment centers and recreational equipment with a strong commitment to quality and safety.</p><p>As an active member of international organizations including IATP and IAAPA, Luke continues to support the advancement of standards and best practices in the trampoline and amusement sectors worldwide.</p>",
             "credentials": "",
             "stat_1_number": "",
             "stat_1_label": "",
@@ -234,9 +237,9 @@
       "name": "AAI Instructors Grid",
       "settings": {
         "section_title": "Our Directors:",
-        "section_subtitle": "",
-        "color_scheme": "color-scheme-background-1",
-        "section_padding": "large"
+        "section_subtitle": "Our Board of Directors represents a carefully balanced cross-section of the amusement and adventure park community. Comprised of operators, manufacturers, regulators, insurers, and safety professionals, the board ensures diverse perspectives guide AAI’s strategic direction—reflecting the needs of all stakeholders committed to advancing safety and professionalism across the industry.",
+        "color_scheme": "color-scheme-2",
+        "section_padding": "medium"
       }
     },
     "cta_section": {
