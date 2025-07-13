@@ -236,7 +236,7 @@
       ],
       "name": "AAI Instructors Grid",
       "settings": {
-        "section_title": "Our Directors:",
+        "section_title": "Board of Directors",
         "section_subtitle": "Our Board of Directors represents a carefully balanced cross-section of the amusement and adventure park community. Comprised of operators, manufacturers, regulators, insurers, and safety professionals, the board ensures diverse perspectives guide AAI’s strategic direction—reflecting the needs of all stakeholders committed to advancing safety and professionalism across the industry.",
         "color_scheme": "color-scheme-2",
         "section_padding": "medium"
@@ -245,14 +245,14 @@
     "cta_section": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Ready to Get Started?",
-        "section_subtitle": "Join hundreds of safety professionals advancing their careers with AAI",
+        "section_title": "Get Involved",
+        "section_subtitle": "",
         "layout_style": "text-center",
         "blocks_per_row": "1",
         "background_style": "section-alt-1",
         "show_main_content": true,
         "content_title": "",
-        "content_body": "<p>Whether you're looking to advance your career, meet regulatory requirements, or enhance your organization's safety culture, AAI has the training programs you need.</p>",
+        "content_body": "<p>Are you passionate about advancing safety and education in the amusement industry? We’re always looking for dedicated professionals to join our development teams and help shape the future of training.</p><p>If you’re interested in contributing to our programs, please contact our program leads directly:</p><ul><li><br/>Soft Contained Play Essentials, reach out to <strong>Brad Collins</strong><br/></li><li><br/>Trampoline Court Essentials, contact <strong>Angel de Guzman</strong><br/></li></ul><p>Join us in making a real difference—together, we can raise the standard for safety and professionalism across the industry.</p>",
         "show_image": false,
         "main_button_text": "Browse All Courses",
         "main_button_url": "/collections/courses",
