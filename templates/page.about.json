@@ -9,6 +9,25 @@
  */
 {
   "sections": {
+    "aai_universal_content_FDKMCw": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Our Story:",
+        "section_subtitle": "About AAI – Amusement Adventure Institute",
+        "layout_style": "text-left-image-right",
+        "blocks_per_row": "2",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_title": "Who We Are:",
+        "content_body": "<p>Founded in 2020, the <strong>Amusement Adventure Institute (AAI)</strong> is a non-profit safety education platform serving the <strong>trampoline park</strong> and <strong>family entertainment center (FEC)</strong> industries.</p><p>But our story started much earlier—back in <strong>2013</strong>, when the U.S. Consumer Product Safety Commission (CPSC) signaled possible shutdowns of commercial trampoline parks. In response, industry leaders came together to create the first version of <strong>ASTM F2970</strong> and launch the original <strong>Service Tech Level 1 training</strong>, now known as <strong>TCI-1</strong>. That collaboration laid the foundation for AAI’s mission today.</p><p>We now develop expert-led courses, certifications, and operational tools to support <strong>operators, staff, and manufacturers</strong>, all aligned with evolving safety standards like <strong>ASTM F2970</strong> and <strong>ASTM F1918</strong>. Our goal: to elevate professionalism, reduce risk, and help operators thrive in a complex, fast-moving industry.</p>",
+        "show_image": true,
+        "content_image": "shopify://shop_images/Staff_Training2.jpg",
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
+    },
     "hero": {
       "type": "about-hero",
       "settings": {
@@ -67,25 +86,6 @@
         "content_title": "",
         "content_body": "",
         "show_image": false,
-        "main_button_text": "",
-        "main_button_url": "",
-        "main_button_style": "primary",
-        "main_button_size": "medium"
-      }
-    },
-    "aai_universal_content_FDKMCw": {
-      "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Our Story:",
-        "section_subtitle": "About AAI – Amusement Adventure Institute",
-        "layout_style": "text-left-image-right",
-        "blocks_per_row": "2",
-        "background_style": "section-alt-1",
-        "show_main_content": true,
-        "content_title": "Who We Are:",
-        "content_body": "<p>Founded in 2020, the <strong>Amusement Adventure Institute (AAI)</strong> is a non-profit safety education platform serving the <strong>trampoline park</strong> and <strong>family entertainment center (FEC)</strong> industries.</p><p>But our story started much earlier—back in <strong>2013</strong>, when the U.S. Consumer Product Safety Commission (CPSC) signaled possible shutdowns of commercial trampoline parks. In response, industry leaders came together to create the first version of <strong>ASTM F2970</strong> and launch the original <strong>Service Tech Level 1 training</strong>, now known as <strong>TCI-1</strong>. That collaboration laid the foundation for AAI’s mission today.</p><p>We now develop expert-led courses, certifications, and operational tools to support <strong>operators, staff, and manufacturers</strong>, all aligned with evolving safety standards like <strong>ASTM F2970</strong> and <strong>ASTM F1918</strong>. Our goal: to elevate professionalism, reduce risk, and help operators thrive in a complex, fast-moving industry.</p>",
-        "show_image": true,
-        "content_image": "shopify://shop_images/Staff_Training2.jpg",
         "main_button_text": "",
         "main_button_url": "",
         "main_button_style": "primary",
@@ -259,9 +259,9 @@
     }
   },
   "order": [
+    "aai_universal_content_FDKMCw",
     "hero",
     "mission",
-    "aai_universal_content_FDKMCw",
     "story",
     "aai_universal_content_jzU93B",
     "aai_instructors_grid_PLgDpi",
