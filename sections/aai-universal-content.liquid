@@ -37,9 +37,31 @@
                     {% when 'content_block','text_block' %}
                       {%- assign block_title = block.settings.block_title | default: block.settings.title | default: '' -%}
                       {%- assign block_content = block.settings.block_content | default: block.settings.content | default: '' -%}
+                      {%- comment -%} Determine image width mapping (reuse same mapping as content blocks) {%- endcomment -%}
+                      {% if block.settings.image_size == 'small' %}
+                        {% assign __img_width = 300 %}
+                      {% elsif block.settings.image_size == 'medium' %}
+                        {% assign __img_width = 500 %}
+                      {% elsif block.settings.image_size == 'large' %}
+                        {% assign __img_width = 800 %}
+                      {% elsif block.settings.image_size == 'full-width' %}
+                        {% assign __img_width = 1600 %}
+                      {% else %}
+                        {% assign __img_width = 800 %}
+                      {% endif %}
                       <div class="timeline-item" {{ block.shopify_attributes }}>
                         <div class="timeline-marker"></div>
-                        <div class="timeline-content">
+                        <div class="timeline-content {% if placement == 'text-only' %}text-block{% endif %}">
+                          {%- assign placement = block.settings.image_placement | default: 'text-only' -%}
+                          {%- comment -%} If media exists for a content_block, render it above the text in timeline items for visual consistency {%- endcomment -%}
+                          {% if placement != 'text-only' and (block.settings.image != blank or block.settings.video != blank or block.settings.media_type == 'video') %}
+                            <div class="timeline-media">
+                              {% render 'aai-media-block', block: block, img_width: __img_width, placement: placement %}
+                              {% if block.settings.image_caption != blank %}
+                                <div class="timeline-media-caption">{{ block.settings.image_caption }}</div>
+                              {% endif %}
+                            </div>
+                          {% endif %}
                           {% if block_title != blank %}
                             <h4 class="timeline-title">{{ block_title }}</h4>
                           {% endif %}
@@ -95,7 +117,7 @@
                             <div class="content-block__background" style="background-image: url('{{ block.settings.image | image_url: width: __img_width }}'); border-radius: {{ block.settings.border_radius | default: 8 }}px;">
                               <div class="content-block__overlay" style="background: rgba(30,58,95, {{ __overlay_opacity | divided_by: 100.0 }});"></div>
                               <div class="content-block__inner">
-                                <div class="content-block__text">
+                                <div class="content-block__text {% if placement == 'text-only' %}text-block{% endif %}">
                                   {% if block_title != blank %}
                                     <h4>{{ block_title }}</h4>
                                   {% endif %}
@@ -111,7 +133,7 @@
                                 {% if block.settings.image != blank or block.settings.video != blank or block.settings.media_type == 'video' %}
                                   {% render 'aai-media-block', block: block, img_width: __img_width, placement: placement %}
                                 {% endif %}
-                                <div class="content-block__text">
+                                <div class="content-block__text {% if placement == 'text-only' %}text-block{% endif %}">
                                   {% if block_title != blank %}
                                     <h4>{{ block_title }}</h4>
                                   {% endif %}
@@ -120,7 +142,7 @@
                                   {% endif %}
                                 </div>
                               {% elsif placement == 'image-below-text' %}
-                                <div class="content-block__text">
+                                <div class="content-block__text {% if placement == 'text-only' %}text-block{% endif %}">
                                   {% if block_title != blank %}
                                     <h4>{{ block_title }}</h4>
                                   {% endif %}
@@ -135,7 +157,7 @@
                                 {% if block.settings.image != blank or block.settings.video != blank or block.settings.media_type == 'video' %}
                                   {% render 'aai-media-block', block: block, img_width: __img_width, placement: placement %}
                                 {% endif %}
-                                <div class="content-block__text">
+                                <div class="content-block__text {% if placement == 'text-only' %}text-block{% endif %}">
                                   {% if block_title != blank %}
                                     <h4>{{ block_title }}</h4>
                                   {% endif %}
@@ -144,7 +166,7 @@
                                   {% endif %}
                                 </div>
                               {% else %}
-                                <div class="content-block__text">
+                                <div class="content-block__text {% if placement == 'text-only' %}text-block{% endif %}">
                                   {% if block_title != blank %}
                                     <h4>{{ block_title }}</h4>
                                   {% endif %}
