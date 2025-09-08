@@ -64,6 +64,7 @@
     "overview": {
       "type": "aai-universal-content",
       "blocks": {
+<<<<<<< HEAD
         "content_block_WzemQY": {
           "type": "content_block",
           "settings": {
@@ -125,6 +126,27 @@
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
+=======
+        "text_block_Pf4XNr": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Coming Soon: Course 1",
+            "block_content": "<p>Description</p>"
+          }
+        },
+        "text_block_J8xjCj": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Coming Soon: Course 2",
+            "block_content": "<p>Description</p>"
+          }
+        },
+        "text_block_iRbx9w": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Coming Soon: Course 3",
+            "block_content": "<p>Description</p>"
+>>>>>>> bac3ab4 (chore(content): restore courses-development template content from a2b5dfb (restore timeline text))
           }
         }
       },
@@ -153,35 +175,36 @@
       "type": "aai-universal-content",
       "blocks": {
         "process1": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "block_title": "Industry Research & Needs Assessment",
-            "block_content": "<p>We begin by researching current industry trends, regulatory changes, and consulting with leading safety professionals to identify critical knowledge gaps and emerging training needs.</p>",
-            "image_placement": "text-only"
+            "block_content": "<p>We begin by researching current industry trends, regulatory changes, and consulting with leading safety professionals to identify critical knowledge gaps and emerging training needs.</p>"
           }
         },
         "process2": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "block_title": "Expert Content Development",
-            "block_content": "<p>Our curriculum development team, composed of industry veterans and educational specialists, creates comprehensive content that balances theoretical knowledge with practical application.</p>",
-            "image_placement": "text-only"
+            "block_content": "<p>Our curriculum development team, composed of industry veterans and educational specialists, creates comprehensive content that balances theoretical knowledge with practical application.</p>"
           }
         },
         "process3": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "block_title": "Peer Review & Validation",
-            "block_content": "<p>All course content undergoes rigorous peer review by multiple industry experts and safety professionals to ensure accuracy, relevance, and practical applicability.</p>",
-            "image_placement": "text-only"
+            "block_content": "<p>All course content undergoes rigorous peer review by multiple industry experts and safety professionals to ensure accuracy, relevance, and practical applicability.</p>"
           }
         },
         "process4": {
-          "type": "content_block",
+          "type": "text_block",
           "settings": {
             "block_title": "Beta Testing & Launch",
+<<<<<<< HEAD
             "block_content": "<p>Selected courses undergo beta testing with AAI members, allowing us to refine content based on real-world feedback before full launch and ongoing updates.</p>",
             "image_placement": "text-only"
+=======
+            "block_content": "<p>Selected courses undergo beta testing with AAI members, allowing us to refine content based on real-world feedback before full launch and ongoing updates.</p>"
+>>>>>>> bac3ab4 (chore(content): restore courses-development template content from a2b5dfb (restore timeline text))
           }
         }
       },
