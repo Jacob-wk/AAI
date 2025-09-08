@@ -11,126 +11,8 @@
   "wrapper": "div.page-courses-development-wrapper",
   "sections": {
     "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {
-        "content_direction": "column",
-        "gap": 12,
-        "color_scheme": "",
         "padding-block-start": 0,
-        "padding-block-end": 0
-      }
     },
-    "hero": {
-      "type": "aai-universal-hero",
-      "blocks": {
-        "stat1": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "3",
-            "stat_label": "New Courses"
-          }
-        },
-        "stat2": {
-          "type": "statistic",
-          "settings": {
-            "stat_number": "2025",
-            "stat_label": "Release Year"
-          }
-        }
-      },
-      "block_order": [
-        "stat1",
-        "stat2"
-      ],
-      "settings": {
-        "hero_title": "Courses in Development",
-        "hero_subtitle": "New professional development courses coming soon to advance your safety career",
-        "hero_style": "professional",
-        "layout_style": "centered",
-        "show_image": true,
-        "hero_image": "shopify://shop_images/1-APEX-KAMLOOPS-FRAMEGRAB_1.1.1.jpg",
-        "hide_image_mobile": false,
-        "show_features": false,
-        "show_stats": true,
-        "show_credentials": false,
-        "primary_button_text": "",
-        "primary_button_url": "",
-        "secondary_button_text": "",
-        "secondary_button_url": "",
-        "button_size": "large"
-      }
-    },
-    "overview": {
-      "type": "aai-universal-content",
-      "blocks": {
-<<<<<<< HEAD
-        "content_block_WzemQY": {
-          "type": "content_block",
-          "settings": {
-            "block_title": "Course one",
-            "block_content": "<p>Course 1 Description</p>",
-            "image_placement": "image-above-text",
-            "image": "shopify://shop_images/AAI_Square.png",
-            "image_alt": "",
-            "image_caption": "",
-            "image_link": "",
-            "image_aspect": "original",
-            "image_size": "medium",
-            "overlay_opacity": 90,
-            "border_radius": 8,
-            "add_shadow": true,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          }
-        },
-        "content_block_8Gzz9E": {
-          "type": "content_block",
-          "settings": {
-            "block_title": "Course one",
-            "block_content": "<p>Course 2 Description</p>",
-            "image_placement": "image-above-text",
-            "image": "shopify://shop_images/AAI_Square.png",
-            "image_alt": "",
-            "image_caption": "",
-            "image_link": "",
-            "image_aspect": "original",
-            "image_size": "medium",
-            "overlay_opacity": 90,
-            "border_radius": 8,
-            "add_shadow": true,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          }
-        },
-        "content_block_xE3QcA": {
-          "type": "content_block",
-          "settings": {
-            "block_title": "Course one",
-            "block_content": "<p>Course 3 Description</p>",
-            "image_placement": "image-above-text",
-            "image": "shopify://shop_images/AAI_Square.png",
-            "image_alt": "",
-            "image_caption": "",
-            "image_link": "",
-            "image_aspect": "original",
-            "image_size": "medium",
-            "overlay_opacity": 90,
-            "border_radius": 8,
-            "add_shadow": true,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-=======
-        "text_block_Pf4XNr": {
-          "type": "content_block",
-          "settings": {
-            "block_title": "Coming Soon: Course 1",
             "block_content": "<p>Description</p>",
             "image_placement": "text-only"
           }
@@ -147,20 +29,15 @@
           "type": "content_block",
           "settings": {
             "block_title": "Coming Soon: Course 3",
-<<<<<<< HEAD
-            "block_content": "<p>Description</p>"
->>>>>>> bac3ab4 (chore(content): restore courses-development template content from a2b5dfb (restore timeline text))
-=======
             "block_content": "<p>Description</p>",
             "image_placement": "text-only"
->>>>>>> 3b436b4 (chore(content): migrate text_block presets to content_block (image_placement: text-only))
           }
         }
       },
       "block_order": [
-        "content_block_WzemQY",
-        "content_block_8Gzz9E",
-        "content_block_xE3QcA"
+        "text_block_Pf4XNr",
+        "text_block_J8xjCj",
+        "text_block_iRbx9w"
       ],
       "settings": {
         "section_title": "Expanding Our Professional Course Library",
@@ -209,17 +86,63 @@
           "type": "content_block",
           "settings": {
             "block_title": "Beta Testing & Launch",
-<<<<<<< HEAD
-<<<<<<< HEAD
             "block_content": "<p>Selected courses undergo beta testing with AAI members, allowing us to refine content based on real-world feedback before full launch and ongoing updates.</p>",
             "image_placement": "text-only"
-=======
-            "block_content": "<p>Selected courses undergo beta testing with AAI members, allowing us to refine content based on real-world feedback before full launch and ongoing updates.</p>"
->>>>>>> bac3ab4 (chore(content): restore courses-development template content from a2b5dfb (restore timeline text))
-=======
+          }
+        }
+      },
+      "block_order": [
+        "process1",
+        "process2",
+        "process3",
+        "process4"
+      ],
+      "settings": {
+        "section_title": "",
+        "section_subtitle": "",
+        "layout_style": "timeline",
+        "blocks_per_row": "1",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_title": "Our Course Development Process",
+        "content_body": "<p>Every AAI course follows our proven development methodology, ensuring the highest quality professional education experience. We work with industry leaders, safety experts, and educational specialists to create courses that deliver real value to your career and organization.</p>",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
+    },
+        "process1": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "Industry Research & Needs Assessment",
+            "block_content": "<p>We begin by researching current industry trends, regulatory changes, and consulting with leading safety professionals to identify critical knowledge gaps and emerging training needs.</p>",
+            "image_placement": "text-only"
+          }
+        },
+        "process2": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "Expert Content Development",
+            "block_content": "<p>Our curriculum development team, composed of industry veterans and educational specialists, creates comprehensive content that balances theoretical knowledge with practical application.</p>",
+            "image_placement": "text-only"
+          }
+        },
+        "process3": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "Peer Review & Validation",
+            "block_content": "<p>All course content undergoes rigorous peer review by multiple industry experts and safety professionals to ensure accuracy, relevance, and practical applicability.</p>",
+            "image_placement": "text-only"
+          }
+        },
+        "process4": {
+          "type": "content_block",
+          "settings": {
+            "block_title": "Beta Testing & Launch",
             "block_content": "<p>Selected courses undergo beta testing with AAI members, allowing us to refine content based on real-world feedback before full launch and ongoing updates.</p>",
             "image_placement": "text-only"
->>>>>>> 3b436b4 (chore(content): migrate text_block presets to content_block (image_placement: text-only))
           }
         }
       },
