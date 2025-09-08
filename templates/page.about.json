@@ -9,11 +9,29 @@
  */
 {
   "sections": {
+    "hero": {
+      "type": "about-hero",
+      "settings": {
+        "hero_title": "Our Story",
+        "hero_subtitle": "Meet the Amusement Adventure Institute (AAI).",
+        "hero_image": "shopify://shop_images/2920420.jpg",
+        "show_stats": true,
+        "stat_1_number": "2025",
+        "stat_1_label": "Established",
+        "stat_2_number": "3",
+        "stat_2_label": "Courses & Growing",
+        "stat_3_number": "6+",
+        "stat_3_label": "Industry Partners",
+        "show_credentials": true,
+        "credential_1": "Trampoline Parks",
+        "credential_2": "Soft Contained Play"
+      }
+    },
     "aai_universal_content_FDKMCw": {
       "type": "aai-universal-content",
       "settings": {
-        "section_title": "Our Story:",
-        "section_subtitle": "About AAI – Amusement Adventure Institute",
+        "section_title": "",
+        "section_subtitle": "",
         "layout_style": "text-left-image-right",
         "blocks_per_row": "2",
         "background_style": "section-alt-1",
@@ -26,24 +44,6 @@
         "main_button_url": "",
         "main_button_style": "primary",
         "main_button_size": "medium"
-      }
-    },
-    "hero": {
-      "type": "about-hero",
-      "settings": {
-        "hero_title": "Consistency in an Unscripted Environment",
-        "hero_subtitle": "Unlike rides on a fixed track, our industry operates in dynamic, guest-driven spaces where movement is unpredictable and every moment is unique. AAI delivers structured, standards-based training to help operators bring safety, consistency, and confidence to even the most active environments—without slowing down the fun.",
-        "hero_image": "shopify://shop_images/2920420.jpg",
-        "show_stats": false,
-        "stat_1_number": "100+",
-        "stat_1_label": "Professionals Certified",
-        "stat_2_number": "4+",
-        "stat_2_label": "Courses & Growing",
-        "stat_3_number": "6+",
-        "stat_3_label": "Industry Partners",
-        "show_credentials": true,
-        "credential_1": "Trampoline Parks",
-        "credential_2": "Soft Contained Play"
       }
     },
     "mission": {
@@ -77,14 +77,14 @@
         "feature3"
       ],
       "settings": {
-        "section_title": "",
+        "section_title": "Consistency in an Unscripted Environment",
         "section_subtitle": "",
         "layout_style": "text-only",
         "blocks_per_row": "3",
-        "background_style": "",
+        "background_style": "section-dark",
         "show_main_content": true,
         "content_title": "",
-        "content_body": "",
+        "content_body": "<p>Unlike rides on a fixed track, our industry operates in dynamic, guest-driven spaces where movement is unpredictable and every moment is unique. AAI delivers structured, standards-based training to help operators bring safety, consistency, and confidence to even the most active environments—without slowing down the fun.</p>",
         "show_image": false,
         "main_button_text": "",
         "main_button_url": "",
@@ -176,7 +176,7 @@
             "stat_1_label": "",
             "stat_2_number": "",
             "stat_2_label": "",
-            "featured": false
+            "featured": true
           }
         },
         "instructor_card_yHzqz7": {
@@ -210,49 +210,52 @@
             "stat_2_label": "",
             "featured": false
           }
-        },
-        "instructor_card_GdMHDr": {
-          "type": "instructor_card",
-          "settings": {
-            "image_placeholder_icon": "👨‍🏫",
-            "name": "Vacant",
-            "title": "",
-            "department": "Company Or Organization Name",
-            "bio": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit—sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
-            "credentials": "",
-            "stat_1_number": "",
-            "stat_1_label": "",
-            "stat_2_number": "",
-            "stat_2_label": "",
-            "featured": false
-          }
         }
       },
       "block_order": [
         "instructor_card_P96t4x",
         "instructor_card_yHzqz7",
-        "instructor_card_Yt7QGa",
-        "instructor_card_GdMHDr"
+        "instructor_card_Yt7QGa"
       ],
       "name": "AAI Instructors Grid",
       "settings": {
         "section_title": "Board of Directors",
         "section_subtitle": "Our Board of Directors represents a carefully balanced cross-section of the amusement and adventure park community. Comprised of operators, manufacturers, regulators, insurers, and safety professionals, the board ensures diverse perspectives guide AAI’s strategic direction—reflecting the needs of all stakeholders committed to advancing safety and professionalism across the industry.",
-        "color_scheme": "color-scheme-2",
+        "color_scheme": "color-scheme-1",
         "section_padding": "medium"
       }
     },
     "cta_section": {
       "type": "aai-universal-content",
+      "blocks": {
+        "text_block_T7qTNj": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Soft Contained Play Essentials",
+            "block_content": "<p><em>Reach out to </em><em><strong>Brad Collins</strong></em></p>"
+          }
+        },
+        "text_block_aMPtdV": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Trampoline Court Essentials",
+            "block_content": "<p><em>Rontact </em><em><strong>Angel de Guzman</strong></em></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_T7qTNj",
+        "text_block_aMPtdV"
+      ],
       "settings": {
         "section_title": "Get Involved",
         "section_subtitle": "",
         "layout_style": "text-center",
-        "blocks_per_row": "1",
+        "blocks_per_row": "2",
         "background_style": "section-alt-1",
         "show_main_content": true,
         "content_title": "",
-        "content_body": "<p>Are you passionate about advancing safety and education in the amusement industry? We’re always looking for dedicated professionals to join our development teams and help shape the future of training.</p><p>If you’re interested in contributing to our programs, please contact our program leads directly:</p><ul><li><br/>Soft Contained Play Essentials, reach out to <strong>Brad Collins</strong><br/></li><li><br/>Trampoline Court Essentials, contact <strong>Angel de Guzman</strong><br/></li></ul><p>Join us in making a real difference—together, we can raise the standard for safety and professionalism across the industry.</p>",
+        "content_body": "<p>Are you passionate about advancing safety and education in the amusement industry? We’re always looking for dedicated professionals to join our development teams and help shape the future of training.</p><p>If you’re interested in contributing to our programs, please contact our program leads directly:</p>",
         "show_image": false,
         "main_button_text": "Browse All Courses",
         "main_button_url": "/collections/courses",
@@ -262,8 +265,8 @@
     }
   },
   "order": [
-    "aai_universal_content_FDKMCw",
     "hero",
+    "aai_universal_content_FDKMCw",
     "mission",
     "story",
     "aai_universal_content_jzU93B",
