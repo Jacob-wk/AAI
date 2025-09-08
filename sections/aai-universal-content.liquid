@@ -49,10 +49,10 @@
                       {% else %}
                         {% assign __img_width = 800 %}
                       {% endif %}
+                      {%- assign placement = block.settings.image_placement | default: 'text-only' -%}
                       <div class="timeline-item" {{ block.shopify_attributes }}>
                         <div class="timeline-marker"></div>
                         <div class="timeline-content {% if placement == 'text-only' %}text-block{% endif %}">
-                          {%- assign placement = block.settings.image_placement | default: 'text-only' -%}
                           {%- comment -%} If media exists for a content_block, render it above the text in timeline items for visual consistency {%- endcomment -%}
                           {% if placement != 'text-only' and (block.settings.image != blank or block.settings.video != blank or block.settings.media_type == 'video') %}
                             <div class="timeline-media">
@@ -97,8 +97,8 @@
                       {% when 'content_block','text_block' %}
                         {%- assign block_title = block.settings.block_title | default: block.settings.title | default: '' -%}
                         {%- assign block_content = block.settings.block_content | default: block.settings.content | default: '' -%}
+                        {%- assign placement = block.settings.image_placement | default: 'text-only' -%}
                         <div class="content-block {% if placement == 'text-only' %}text-block{% endif %}" data-layout="{{ block.settings.image_placement }}" {{ block.shopify_attributes }}>
-                          {%- assign placement = block.settings.image_placement | default: 'text-only' -%}
                           {%- comment -%} map image_size to numeric width for Shopify image_url {%- endcomment -%}
                           {% if block.settings.image_size == 'small' %}
                             {% assign __img_width = 300 %}
