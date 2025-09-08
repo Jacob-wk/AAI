@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "aai_universal_content_FDKMCw": {
@@ -39,37 +48,6 @@
     },
     "mission": {
       "type": "aai-universal-content",
-      "blocks": {
-          "feature1": {
-          "type": "content_block",
-          "settings": {
-            "block_title": "🧠Industry-Born Expertise",
-            "block_content": "<p>Founded by park owners, manufacturers, and safety professionals, AAI creates practical, proven training designed for real-world operations in trampoline and adventure parks.</p>",
-            "image_placement": "text-only"
-          }
-        },
-        "feature2": {
-          "type": "content_block",
-          "settings": {
-            "block_title": "🎓Standards-Based Training",
-            "block_content": "<p>Our programs are built around key safety standards like <strong>ASTM F2970</strong> and <strong>ASTM F1918</strong>, giving operators the tools to stay compliant and confident.</p>",
-            "image_placement": "text-only"
-          }
-        },
-        "feature3": {
-          "type": "content_block",
-          "settings": {
-            "block_title": "🤝 Non-Profit, Industry-Driven",
-            "block_content": "<p>AAI is a mission-based non-profit collaborating with operators, insurers, and regulators to support safer, stronger <strong>FECs</strong> across North America.</p>",
-            "image_placement": "text-only"
-          }
-        }
-      },
-      "block_order": [
-        "feature1",
-        "feature2",
-        "feature3"
-      ],
       "settings": {
         "section_title": "",
         "section_subtitle": "",
@@ -88,37 +66,6 @@
     },
     "story": {
       "type": "aai-universal-content",
-      "blocks": {
-        "milestone_1": {
-          "type": "content_block",
-          "settings": {
-            "block_title": "2025 - Foundation",
-            "block_content": "<p>AAI was established by industry veterans with over 50 years of combined experience in amusement park operations, safety management, and education.</p>",
-            "image_placement": "text-only"
-          }
-        },
-        "feature4": {
-          "type": "content_block",
-          "settings": {
-            "block_title": "Today - Industry Recognition",
-            "block_content": "<p>Our programs are recognized by IAAPA, comply with ASTM F24 standards, and are trusted by leading amusement operators worldwide.</p>",
-            "image_placement": "text-only"
-          }
-        },
-        "founder_quote": {
-          "type": "content_block",
-          "settings": {
-            "block_title": "Hear From Our Founders",
-            "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>",
-            "image_placement": "text-only"
-          }
-        }
-      },
-      "block_order": [
-        "milestone_1",
-        "feature4",
-        "founder_quote"
-      ],
       "disabled": true,
       "settings": {
         "section_title": "Our Timeline",
@@ -167,7 +114,7 @@
             "name": "Luke Shaheen",
             "title": "Co-Chair",
             "department": "APEX Group Of Companies",
-            "bio": "<p><strong>Luke Shaheen</strong> has been actively involved in the trampoline park and amusement industry since 2012, focusing on advancing safety standards and operator education. Over the past decade, he has been deeply engaged in the ongoing development of <strong>ASTM F2970</strong>, contributing expertise to support evolving industry safety protocols.</p><p>He served four years on the Board of Directors for the International Association of Trampoline Parks (IATP) and chaired the IATP Education Committee, leading efforts to enhance training and compliance for trampoline parks.</p><p>Luke is Managing Partner and co-founder of APEX Active Entertainment Group, which includes APEX Adventure Plex locations and Crazy Ape Extreme Equipment manufacturing. He guides the growth of family entertainment centers and recreational equipment with a strong commitment to quality and safety.</p><p>As an active member of international organizations including IATP and IAAPA, Luke continues to support the advancement of standards and best practices in the trampoline and amusement sectors worldwide.</p>",
+            "bio": "<p><strong>Luke Shaheen</strong> has worked in the trampoline park and amusement industry since 2012, with a strong focus on safety standards and operator education. He contributed to the development of ASTM F2970 and served on the IATP Board of Directors and as Chair of its Education Committee. As Managing Partner and co-founder of APEX Active Entertainment Group—home to APEX Adventure Plex and Crazy Ape Extreme Equipment—Luke leads growth in family entertainment and equipment manufacturing. He remains active in IATP and IAAPA, promoting global safety and operational best practices.<br/><br/></p>",
             "credentials": "",
             "stat_1_number": "",
             "stat_1_label": "",
@@ -267,5 +214,4 @@
     "aai_instructors_grid_PLgDpi",
     "cta_section"
   ]
-
 }
