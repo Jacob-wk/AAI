@@ -234,14 +234,14 @@
           "type": "text_block",
           "settings": {
             "block_title": "Soft Contained Play Essentials",
-            "block_content": "<p><em>Reach out to </em><em><strong>Brad Collins</strong></em></p>"
+            "block_content": "<p><strong>Reach out to: Brad Collins</strong></p>"
           }
         },
         "text_block_aMPtdV": {
           "type": "text_block",
           "settings": {
             "block_title": "Trampoline Court Essentials",
-            "block_content": "<p><em>Rontact </em><em><strong>Angel de Guzman</strong></em></p>"
+            "block_content": "<p><strong>Contact: Angel de Guzman</strong></p>"
           }
         }
       },
