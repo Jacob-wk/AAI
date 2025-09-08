@@ -21,24 +21,27 @@
       },
       "blocks": {
         "tip_1": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Course Search",
-            "content": "<p>Search for specific courses by topic, certification level, or instructor name to find the perfect training program.</p>"
+            "block_title": "Course Search",
+            "block_content": "<p>Search for specific courses by topic, certification level, or instructor name to find the perfect training program.</p>",
+            "image_placement": "text-only"
           }
         },
         "tip_2": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Resource Lookup",
-            "content": "<p>Find safety documents, standards, and guidelines using keywords or document types.</p>"
+            "block_title": "Resource Lookup",
+            "block_content": "<p>Find safety documents, standards, and guidelines using keywords or document types.</p>",
+            "image_placement": "text-only"
           }
         },
         "tip_3": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Quick Access",
-            "content": "<p>Use our popular categories below to quickly navigate to commonly requested content.</p>"
+            "block_title": "Quick Access",
+            "block_content": "<p>Use our popular categories below to quickly navigate to commonly requested content.</p>",
+            "image_placement": "text-only"
           }
         }
       },
@@ -52,10 +55,11 @@
       },
       "blocks": {
         "popular_block": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Frequently Searched Topics",
-            "content": "<ul><li><a href='/collections/certifications'>Safety Certifications</a></li><li><a href='/collections/courses'>Professional Courses</a></li><li><a href='/pages/industry-standards'>Industry Standards</a></li><li><a href='/pages/safety-library'>Safety Library</a></li><li><a href='/pages/corporate-training'>Corporate Training</a></li><li><a href='/pages/webinars'>Safety Webinars</a></li></ul>"
+            "block_title": "Frequently Searched Topics",
+            "block_content": "<ul><li><a href='/collections/certifications'>Safety Certifications</a></li><li><a href='/collections/courses'>Professional Courses</a></li><li><a href='/pages/industry-standards'>Industry Standards</a></li><li><a href='/pages/safety-library'>Safety Library</a></li><li><a href='/pages/corporate-training'>Corporate Training</a></li><li><a href='/pages/webinars'>Safety Webinars</a></li></ul>",
+            "image_placement": "text-only"
           }
         }
       },

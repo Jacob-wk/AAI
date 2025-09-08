@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "aai_universal_content_FDKMCw": {
@@ -49,25 +40,28 @@
     "mission": {
       "type": "aai-universal-content",
       "blocks": {
-        "feature1": {
-          "type": "text_block",
+          "feature1": {
+          "type": "content_block",
           "settings": {
             "block_title": "🧠Industry-Born Expertise",
-            "block_content": "<p>Founded by park owners, manufacturers, and safety professionals, AAI creates practical, proven training designed for real-world operations in trampoline and adventure parks.</p>"
+            "block_content": "<p>Founded by park owners, manufacturers, and safety professionals, AAI creates practical, proven training designed for real-world operations in trampoline and adventure parks.</p>",
+            "image_placement": "text-only"
           }
         },
         "feature2": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "🎓Standards-Based Training",
-            "block_content": "<p>Our programs are built around key safety standards like <strong>ASTM F2970</strong> and <strong>ASTM F1918</strong>, giving operators the tools to stay compliant and confident.</p>"
+            "block_content": "<p>Our programs are built around key safety standards like <strong>ASTM F2970</strong> and <strong>ASTM F1918</strong>, giving operators the tools to stay compliant and confident.</p>",
+            "image_placement": "text-only"
           }
         },
         "feature3": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "🤝 Non-Profit, Industry-Driven",
-            "block_content": "<p>AAI is a mission-based non-profit collaborating with operators, insurers, and regulators to support safer, stronger <strong>FECs</strong> across North America.</p>"
+            "block_content": "<p>AAI is a mission-based non-profit collaborating with operators, insurers, and regulators to support safer, stronger <strong>FECs</strong> across North America.</p>",
+            "image_placement": "text-only"
           }
         }
       },
@@ -96,24 +90,27 @@
       "type": "aai-universal-content",
       "blocks": {
         "milestone_1": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "2025 - Foundation",
-            "block_content": "<p>AAI was established by industry veterans with over 50 years of combined experience in amusement park operations, safety management, and education.</p>"
+            "block_content": "<p>AAI was established by industry veterans with over 50 years of combined experience in amusement park operations, safety management, and education.</p>",
+            "image_placement": "text-only"
           }
         },
         "feature4": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Today - Industry Recognition",
-            "block_content": "<p>Our programs are recognized by IAAPA, comply with ASTM F24 standards, and are trusted by leading amusement operators worldwide.</p>"
+            "block_content": "<p>Our programs are recognized by IAAPA, comply with ASTM F24 standards, and are trusted by leading amusement operators worldwide.</p>",
+            "image_placement": "text-only"
           }
         },
         "founder_quote": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Hear From Our Founders",
-            "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>"
+            "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>",
+            "image_placement": "text-only"
           }
         }
       },
@@ -270,4 +267,5 @@
     "aai_instructors_grid_PLgDpi",
     "cta_section"
   ]
+
 }

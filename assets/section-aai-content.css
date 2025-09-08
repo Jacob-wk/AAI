@@ -253,6 +253,102 @@
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
+/* New content block styles */
+.content-block {
+  width: 100%;
+}
+
+.content-block__wrap {
+  display: grid;
+  gap: 20px;
+}
+
+.content-block--image-left-text-right .content-block__wrap,
+.content-block--image-right-text-left .content-block__wrap {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .content-block--image-left-text-right .content-block__wrap,
+  .content-block--image-right-text-left .content-block__wrap {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .content-block--image-right-text-left .content-block__media { order: 2; }
+}
+
+.content-block__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content-block__text h4 {
+  font-size: 1.25rem;
+  color: #1e3a5f;
+  margin-bottom: 12px;
+}
+
+.content-block__caption {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-top: 8px;
+}
+
+.content-block__background {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
+  color: white;
+  overflow: hidden;
+}
+
+.content-block__background .content-block__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30,58,95,0.45); /* Authority Navy overlay for contrast */
+}
+
+.content-block__background .content-block__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+/* Media block */
+.media-block {
+  display: block;
+}
+
+.media-block__figure {
+  margin: 0;
+}
+
+.media-block__figure img,
+.media-block__figure video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.media-block__caption {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-top: 8px;
+}
+
+/* Shadows and radius utilities */
+.has-shadow { box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+.no-shadow { box-shadow: none; }
+
+/* Ensure focus styles for clickable media */
+.content-block a:focus, .media-block a:focus {
+  outline: 3px solid rgba(52,152,219,0.35);
+  outline-offset: 2px;
+}
+
 /* CTA Buttons */
 .content-cta {
   margin-top: 32px;
@@ -708,3 +804,23 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* Snippet media utilities */
+.aai-media-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+.aai-media-video {
+  width: 100%;
+  height: auto;
+  max-height: 720px;
+  display: block;
+  border-radius: 8px;
+}
+.aai-media-image:focus, .aai-media-video:focus {
+  outline: 3px solid rgba(52,152,219,0.35);
+  outline-offset: 2px;
+}
+

@@ -124,11 +124,12 @@
     "aai_universal_content_V7XKxU": {
       "type": "aai-universal-content",
       "blocks": {
-        "text_block_jhnLaM": {
-          "type": "text_block",
+          "text_block_jhnLaM": {
+          "type": "content_block",
           "settings": {
             "block_title": "Our Mission",
-            "block_content": "<p>To be the global leader in Family Entertainment Center and adventure park safety education, fostering a culture of safety and continuous improvement through innovative training and expert resources.</p>"
+            "block_content": "<p>To be the global leader in Family Entertainment Center and adventure park safety education, fostering a culture of safety and continuous improvement through innovative training and expert resources.</p>",
+            "image_placement": "text-only"
           }
         }
       },

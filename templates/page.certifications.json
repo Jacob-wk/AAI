@@ -47,10 +47,11 @@
       },
       "blocks": {
         "main_content": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Why Choose AAI Certification?",
-            "content": "<p>Our certification programs combine rigorous academic standards with practical, hands-on experience. Each program is designed by industry experts and regularly updated to reflect current best practices and regulatory requirements.</p>"
+            "block_title": "Why Choose AAI Certification?",
+            "block_content": "<p>Our certification programs combine rigorous academic standards with practical, hands-on experience. Each program is designed by industry experts and regularly updated to reflect current best practices and regulatory requirements.</p>",
+            "image_placement": "text-only"
           }
         },
         "benefit1": {
@@ -77,31 +78,35 @@
       },
       "blocks": {
         "header": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Certification Programs",
-            "content": "<p>Choose from our comprehensive range of specialized certification tracks</p>"
+            "block_title": "Certification Programs",
+            "block_content": "<p>Choose from our comprehensive range of specialized certification tracks</p>",
+            "image_placement": "text-only"
           }
         },
         "cert1": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Certified Ride Inspector (CRI)",
-            "content": "<p><strong>Duration:</strong> 120 hours | <strong>Format:</strong> Online + Practical</p><p>Comprehensive training in ride inspection procedures, safety systems, and regulatory compliance. Covers mechanical, electrical, and structural inspection techniques.</p><p><strong>Prerequisites:</strong> High school diploma, basic mechanical knowledge</p><p><strong>Certification Validity:</strong> 3 years with continuing education requirements</p><p><strong>Investment:</strong> $2,495</p>"
+            "block_title": "Certified Ride Inspector (CRI)",
+            "block_content": "<p><strong>Duration:</strong> 120 hours | <strong>Format:</strong> Online + Practical</p><p>Comprehensive training in ride inspection procedures, safety systems, and regulatory compliance. Covers mechanical, electrical, and structural inspection techniques.</p><p><strong>Prerequisites:</strong> High school diploma, basic mechanical knowledge</p><p><strong>Certification Validity:</strong> 3 years with continuing education requirements</p><p><strong>Investment:</strong> $2,495</p>",
+            "image_placement": "text-only"
           }
         },
         "cert2": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Safety Management Professional (SMP)",
-            "content": "<p><strong>Duration:</strong> 80 hours | <strong>Format:</strong> Online + Case Studies</p><p>Advanced program covering safety management systems, risk assessment, incident investigation, and regulatory compliance strategies.</p><p><strong>Prerequisites:</strong> 2+ years industry experience or relevant degree</p><p><strong>Certification Validity:</strong> 3 years with annual updates</p><p><strong>Investment:</strong> $1,895</p>"
+            "block_title": "Safety Management Professional (SMP)",
+            "block_content": "<p><strong>Duration:</strong> 80 hours | <strong>Format:</strong> Online + Case Studies</p><p>Advanced program covering safety management systems, risk assessment, incident investigation, and regulatory compliance strategies.</p><p><strong>Prerequisites:</strong> 2+ years industry experience or relevant degree</p><p><strong>Certification Validity:</strong> 3 years with annual updates</p><p><strong>Investment:</strong> $1,895</p>",
+            "image_placement": "text-only"
           }
         },
         "cert3": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Maintenance Excellence Certificate (MEC)",
-            "content": "<p><strong>Duration:</strong> 100 hours | <strong>Format:</strong> Blended Learning</p><p>Specialized maintenance certification focusing on preventive and predictive maintenance strategies for optimal facility operations.</p><p><strong>Prerequisites:</strong> Maintenance experience or technical background</p><p><strong>Certification Validity:</strong> 5 years with professional development units</p><p><strong>Investment:</strong> $2,195</p>"
+            "block_title": "Maintenance Excellence Certificate (MEC)",
+            "block_content": "<p><strong>Duration:</strong> 100 hours | <strong>Format:</strong> Blended Learning</p><p>Specialized maintenance certification focusing on preventive and predictive maintenance strategies for optimal facility operations.</p><p><strong>Prerequisites:</strong> Maintenance experience or technical background</p><p><strong>Certification Validity:</strong> 5 years with professional development units</p><p><strong>Investment:</strong> $2,195</p>",
+            "image_placement": "text-only"
           }
         }
       },
@@ -116,38 +121,43 @@
       },
       "blocks": {
         "header": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Certification Process",
-            "content": "<p>Simple steps to advance your professional credentials</p>"
+            "block_title": "Certification Process",
+            "block_content": "<p>Simple steps to advance your professional credentials</p>",
+            "image_placement": "text-only"
           }
         },
         "step1": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "1. Choose Your Program",
-            "content": "<p>Select the certification that aligns with your career goals and current experience level. Our advisors are available to help you make the right choice.</p>"
+            "block_title": "1. Choose Your Program",
+            "block_content": "<p>Select the certification that aligns with your career goals and current experience level. Our advisors are available to help you make the right choice.</p>",
+            "image_placement": "text-only"
           }
         },
         "step2": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "2. Complete Training",
-            "content": "<p>Engage with expert-led content through our interactive online platform, supplemented by hands-on practical sessions when required.</p>"
+            "block_title": "2. Complete Training",
+            "block_content": "<p>Engage with expert-led content through our interactive online platform, supplemented by hands-on practical sessions when required.</p>",
+            "image_placement": "text-only"
           }
         },
         "step3": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "3. Pass Assessment",
-            "content": "<p>Demonstrate your knowledge through comprehensive examinations and practical evaluations designed to test real-world application.</p>"
+            "block_title": "3. Pass Assessment",
+            "block_content": "<p>Demonstrate your knowledge through comprehensive examinations and practical evaluations designed to test real-world application.</p>",
+            "image_placement": "text-only"
           }
         },
         "step4": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "4. Receive Certification",
-            "content": "<p>Upon successful completion, receive your official certification and join our network of certified safety professionals.</p>"
+            "block_title": "4. Receive Certification",
+            "block_content": "<p>Upon successful completion, receive your official certification and join our network of certified safety professionals.</p>",
+            "image_placement": "text-only"
           }
         }
       },
@@ -161,10 +171,11 @@
       },
       "blocks": {
         "cta_content": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Ready to Advance Your Career?",
-            "content": "<p>Join thousands of professionals who have elevated their expertise with AAI certification. Take the next step in your professional development with industry-recognized certification that opens doors to new opportunities.</p><div class='button-group'><a href='/collections/courses' class='aai-btn aai-btn-primary'>Explore Certifications</a><a href='/pages/contact' class='aai-btn aai-btn-secondary'>Contact Advisor</a></div>"
+            "block_title": "Ready to Advance Your Career?",
+            "block_content": "<p>Join thousands of professionals who have elevated their expertise with AAI certification. Take the next step in your professional development with industry-recognized certification that opens doors to new opportunities.</p><div class='button-group'><a href='/collections/courses' class='aai-btn aai-btn-primary'>Explore Certifications</a><a href='/pages/contact' class='aai-btn aai-btn-secondary'>Contact Advisor</a></div>",
+            "image_placement": "text-only"
           }
         }
       },

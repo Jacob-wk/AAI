@@ -138,25 +138,28 @@
       },
       "blocks": {
         "pathway1": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Foundation Level",
-            "block_content": "<p>Essential safety principles and industry fundamentals. Perfect for new professionals entering the field.</p>"
+            "block_content": "<p>Essential safety principles and industry fundamentals. Perfect for new professionals entering the field.</p>",
+            "image_placement": "text-only"
           }
         },
         "pathway2": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Professional Level", 
-            "block_content": "<p>Advanced safety management and operational excellence. For experienced professionals seeking leadership roles.</p>"
-          }
+            "type": "content_block",
+            "settings": {
+              "block_title": "Professional Level", 
+              "block_content": "<p>Advanced safety management and operational excellence. For experienced professionals seeking leadership roles.</p>",
+              "image_placement": "text-only"
+            }
         },
         "pathway3": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Expert Level",
-            "block_content": "<p>Industry leadership and specialized expertise. For senior professionals and consultants.</p>"
-          }
+            "type": "content_block",
+            "settings": {
+              "block_title": "Expert Level",
+              "block_content": "<p>Industry leadership and specialized expertise. For senior professionals and consultants.</p>",
+              "image_placement": "text-only"
+            }
         }
       },
       "block_order": ["pathway1", "pathway2", "pathway3"]
@@ -174,10 +177,11 @@
       },
       "blocks": {
         "success1": {
-          "type": "text_block",
+            "type": "content_block",
           "settings": {
             "block_title": "\"AAI certification opened doors I didn't know existed\"",
-            "block_content": "<p><em>\"The comprehensive training and industry recognition from AAI helped me advance from operations manager to director of safety within 18 months. The networking opportunities alone were worth the membership.\"</em></p><p><strong>- Sarah Mitchell, Director of Safety, Adventure Parks Inc.</strong></p>"
+            "block_content": "<p><em>\"The comprehensive training and industry recognition from AAI helped me advance from operations manager to director of safety within 18 months. The networking opportunities alone were worth the membership.\"</em></p><p><strong>- Sarah Mitchell, Director of Safety, Adventure Parks Inc.</strong></p>",
+            "image_placement": "text-only"
           }
         }
       },

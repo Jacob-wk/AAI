@@ -1,0 +1,75 @@
+{%- comment -%}
+Snippet: aai-media-block
+Purpose: centralized media rendering for images and video with responsive srcset, poster support, captions, and accessibility attributes.
+Parameters: block (block object), img_width (number), placement (string)
+{%- endcomment -%}
+
+{%- assign image = block.settings.image -%}
+{%- assign video = block.settings.video -%}
+{%- assign img_alt = block.settings.image_alt | default: block.settings.block_title | default: '' -%}
+{%- assign border_radius = block.settings.border_radius | default: 8 -%}
+{%- assign add_shadow = block.settings.add_shadow -%}
+
+{%- comment -%} Build srcset for common widths (320,500,800,1200,1600) if image is present {%- endcomment -%}
+{%- if image != blank -%}
+  {%- assign widths = "320,500,800,1200,1600" | split: ',' -%}
+  {%- assign srcset_items = '' -%}
+  {%- for w in widths -%}
+    {%- assign url = image | image_url: width: w | replace: '"', '\\"' -%}
+    {%- assign srcset_items = srcset_items | append: url | append: ' ' | append: w | append: 'w' -%}
+    {%- unless forloop.last -%}
+      {%- assign srcset_items = srcset_items | append: ', ' -%}
+    {%- endunless -%}
+  {%- endfor -%}
+  {%- comment -%} sizes: prefer 50vw when image sits left/right on wide screens {%- endcomment -%}
+  {%- if placement contains 'left' or placement contains 'right' -%}
+    {%- assign sizes_attr = '(min-width: 768px) 50vw, 100vw' -%}
+  {%- else -%}
+    {%- assign sizes_attr = '100vw' -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- comment -%} Render image or video depending on settings {%- endcomment -%}
+{%- if video != blank or block.settings.media_type == 'video' -%}
+  <div class="content-block__media">
+    {%- comment -%} prefer explicit video_poster if provided, otherwise fall back to image {%- endcomment -%}
+    {%- assign poster = block.settings.video_poster | default: '' -%}
+    {%- if poster == '' and image != blank -%}
+      {%- assign poster = image | image_url: width: img_width -%}
+    {%- endif -%}
+    <video class="aai-media-video" controls playsinline {% if block.settings.video_loop %}loop{% endif %} {% if block.settings.video_autoplay %}autoplay muted playsinline{% endif %} {% if poster != '' %}poster="{{ poster }}"{% endif %} aria-label="{{ block.settings.block_title | escape }}">
+      {%- if video != blank -%}
+        {%- comment -%} video may be a file object or URL; try file_url filter {%- endcomment -%}
+        <source src="{{ video | file_url }}" type="video/mp4">
+      {%- endif -%}
+      {{ 'Your browser does not support the video element.' }}
+      {%- if block.settings.video_captions != blank -%}
+        <track kind="captions" src="{{ block.settings.video_captions }}" srclang="en" label="English captions">
+      {%- endif -%}
+    </video>
+    {%- if block.settings.image_caption != blank -%}
+      <div class="content-block__caption">{{ block.settings.image_caption }}</div>
+    {%- endif -%}
+  </div>
+
+{%- elsif image != blank -%}
+  <div class="content-block__media">
+    {% if block.settings.image_link != blank %}<a href="{{ block.settings.image_link }}" rel="noopener">{% endif %}
+      <img
+        src="{{ image | image_url: width: img_width }}"
+        srcset="{{ srcset_items }}"
+        sizes="{{ sizes_attr }}"
+        alt="{{ img_alt }}"
+        loading="lazy"
+        decoding="async"
+        style="border-radius: {{ border_radius }}px;"
+        class="{% if add_shadow %}has-shadow{% else %}no-shadow{% endif %} aai-media-image">
+    {% if block.settings.image_link != blank %}</a>{% endif %}
+    {%- if block.settings.image_caption != blank -%}
+      <div class="content-block__caption">{{ block.settings.image_caption }}</div>
+    {%- endif -%}
+  </div>
+
+{%- else -%}
+  {%- comment -%} no media to render {%- endcomment -%}
+{%- endif -%}

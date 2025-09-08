@@ -34,15 +34,17 @@
               <div class="content-timeline">
                 {% for block in section.blocks %}
                   {% case block.type %}
-                    {% when 'text_block' %}
+                    {% when 'content_block','text_block' %}
+                      {%- assign block_title = block.settings.block_title | default: block.settings.title | default: '' -%}
+                      {%- assign block_content = block.settings.block_content | default: block.settings.content | default: '' -%}
                       <div class="timeline-item" {{ block.shopify_attributes }}>
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
-                          {% if block.settings.block_title != blank %}
-                            <h4 class="timeline-title">{{ block.settings.block_title }}</h4>
+                          {% if block_title != blank %}
+                            <h4 class="timeline-title">{{ block_title }}</h4>
                           {% endif %}
-                          {% if block.settings.block_content != blank %}
-                            <div class="timeline-description">{{ block.settings.block_content }}</div>
+                          {% if block_content != blank %}
+                            <div class="timeline-description">{{ block_content }}</div>
                           {% endif %}
                         </div>
                       </div>
@@ -70,15 +72,91 @@
               <div class="content-blocks" data-columns="{{ section.settings.blocks_per_row | default: 1 }}">
                 {% for block in section.blocks %}
                   {% case block.type %}
-                    {% when 'text_block' %}
-                      <div class="text-block" {{ block.shopify_attributes }}>
-                        {% if block.settings.block_title != blank %}
-                          <h4>{{ block.settings.block_title }}</h4>
-                        {% endif %}
-                        {% if block.settings.block_content != blank %}
-                          <div class="block-content">{{ block.settings.block_content }}</div>
-                        {% endif %}
-                      </div>
+                      {% when 'content_block','text_block' %}
+                        {%- assign block_title = block.settings.block_title | default: block.settings.title | default: '' -%}
+                        {%- assign block_content = block.settings.block_content | default: block.settings.content | default: '' -%}
+                        <div class="content-block" data-layout="{{ block.settings.image_placement }}" {{ block.shopify_attributes }}>
+                          {%- assign placement = block.settings.image_placement | default: 'text-only' -%}
+                          {%- comment -%} map image_size to numeric width for Shopify image_url {%- endcomment -%}
+                          {% if block.settings.image_size == 'small' %}
+                            {% assign __img_width = 300 %}
+                          {% elsif block.settings.image_size == 'medium' %}
+                            {% assign __img_width = 500 %}
+                          {% elsif block.settings.image_size == 'large' %}
+                            {% assign __img_width = 800 %}
+                          {% elsif block.settings.image_size == 'full-width' %}
+                            {% assign __img_width = 1600 %}
+                          {% else %}
+                            {% assign __img_width = 800 %}
+                          {% endif %}
+                          {%- comment -%} Image above / below / left / right / background / text-only handling {%- endcomment -%}
+                          {% if placement == 'image-background' and block.settings.image != blank %}
+                            {% assign __overlay_opacity = block.settings.overlay_opacity | default: 45 %}
+                            <div class="content-block__background" style="background-image: url('{{ block.settings.image | image_url: width: __img_width }}'); border-radius: {{ block.settings.border_radius | default: 8 }}px;">
+                              <div class="content-block__overlay" style="background: rgba(30,58,95, {{ __overlay_opacity | divided_by: 100.0 }});"></div>
+                              <div class="content-block__inner">
+                                <div class="content-block__text">
+                                  {% if block_title != blank %}
+                                    <h4>{{ block_title }}</h4>
+                                  {% endif %}
+                                  {% if block_content != blank %}
+                                    <div class="block-content">{{ block_content }}</div>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            </div>
+                          {% else %}
+                            <div class="content-block__wrap content-block--{{ placement }}">
+                              {% if placement == 'image-above-text' %}
+                                {% if block.settings.image != blank or block.settings.video != blank or block.settings.media_type == 'video' %}
+                                  {% render 'aai-media-block', block: block, img_width: __img_width, placement: placement %}
+                                {% endif %}
+                                <div class="content-block__text">
+                                  {% if block_title != blank %}
+                                    <h4>{{ block_title }}</h4>
+                                  {% endif %}
+                                  {% if block_content != blank %}
+                                    <div class="block-content">{{ block_content }}</div>
+                                  {% endif %}
+                                </div>
+                              {% elsif placement == 'image-below-text' %}
+                                <div class="content-block__text">
+                                  {% if block_title != blank %}
+                                    <h4>{{ block_title }}</h4>
+                                  {% endif %}
+                                  {% if block_content != blank %}
+                                    <div class="block-content">{{ block_content }}</div>
+                                  {% endif %}
+                                </div>
+                                {% if block.settings.image != blank or block.settings.video != blank or block.settings.media_type == 'video' %}
+                                  {% render 'aai-media-block', block: block, img_width: __img_width, placement: placement %}
+                                {% endif %}
+                              {% elsif placement == 'image-left-text-right' or placement == 'image-right-text-left' %}
+                                {% if block.settings.image != blank or block.settings.video != blank or block.settings.media_type == 'video' %}
+                                  {% render 'aai-media-block', block: block, img_width: __img_width, placement: placement %}
+                                {% endif %}
+                                <div class="content-block__text">
+                                  {% if block_title != blank %}
+                                    <h4>{{ block_title }}</h4>
+                                  {% endif %}
+                                  {% if block_content != blank %}
+                                    <div class="block-content">{{ block_content }}</div>
+                                  {% endif %}
+                                </div>
+                              {% else %}
+                                <div class="content-block__text">
+                                  {% if block.settings.block_title != blank %}
+                                    <h4>{{ block.settings.block_title }}</h4>
+                                  {% endif %}
+                                  {% if block.settings.block_content != blank %}
+                                    <div class="block-content">{{ block.settings.block_content }}</div>
+                                  {% endif %}
+                                </div>
+                              {% endif %}
+                            </div>
+                          {% endif %}
+                        </div>
+
                       
                     {% when 'feature_list' %}
                     <div class="feature-list" {{ block.shopify_attributes }}>
@@ -312,19 +390,51 @@
   ],
   "blocks": [
     {
-      "type": "text_block",
-      "name": "Text Block",
+      "type": "content_block",
+      "name": "Content Block",
       "settings": [
-        {
-          "type": "text",
-          "id": "block_title",
-          "label": "Block Title"
-        },
-        {
-          "type": "richtext",
-          "id": "block_content",
-          "label": "Block Content"
-        }
+        { "type": "text", "id": "block_title", "label": "Block Title" },
+        { "type": "richtext", "id": "block_content", "label": "Block Content" },
+        { "type": "select", "id": "image_placement", "label": "Image Placement", "options": [ { "value": "text-only", "label": "Text Only" }, { "value": "image-above-text", "label": "Image Above Text" }, { "value": "image-below-text", "label": "Image Below Text" }, { "value": "image-left-text-right", "label": "Image Left, Text Right" }, { "value": "image-right-text-left", "label": "Image Right, Text Left" }, { "value": "image-background", "label": "Image Background" } ], "default": "text-only" },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Shown when placement is not text-only" },
+        { "type": "text", "id": "image_alt", "label": "Image alt text", "info": "Accessibility alt text" },
+        { "type": "text", "id": "image_caption", "label": "Image caption", "info": "Optional caption" },
+        { "type": "url", "id": "image_link", "label": "Image link", "info": "Optional link for the image" },
+        { "type": "select", "id": "image_aspect", "label": "Aspect Ratio", "options": [ { "value": "original", "label": "Original" }, { "value": "16-9", "label": "16:9" }, { "value": "4-3", "label": "4:3" }, { "value": "square", "label": "Square" } ], "default": "original" },
+        { "type": "select", "id": "image_size", "label": "Image size", "options": [ { "value": "small", "label": "Small (300px)" }, { "value": "medium", "label": "Medium (500px)" }, { "value": "large", "label": "Large (800px)" }, { "value": "full-width", "label": "Full width" } ], "default": "medium" },
+  { "type": "range", "id": "overlay_opacity", "label": "Background overlay opacity (%)", "min": 0, "max": 90, "step": 5, "default": 45, "info": "Only applies when Image Placement is Image Background" },
+        { "type": "range", "id": "border_radius", "label": "Border radius (px)", "min": 0, "max": 20, "step": 1, "unit": "px", "default": 8 },
+        { "type": "checkbox", "id": "add_shadow", "label": "Add subtle shadow", "default": true },
+        { "type": "header", "content": "Padding" },
+        { "type": "range", "id": "padding-block-start", "label": "Top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+        { "type": "range", "id": "padding-block-end", "label": "Bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+        { "type": "range", "id": "padding-inline-start", "label": "Left", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+        { "type": "range", "id": "padding-inline-end", "label": "Right", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
+      ]
+    },
+  /* legacy text_block entries intentionally removed to simplify editor choices */
+    {
+      "type": "media_block",
+      "name": "Media Block",
+      "settings": [
+        { "type": "select", "id": "media_type", "label": "Media type", "options": [ { "value": "image", "label": "Image" }, { "value": "video", "label": "Video" } ], "default": "image" },
+        { "type": "image_picker", "id": "image", "label": "Image", "visible_if": "{{ block.settings.media_type == 'image' }}" },
+        { "type": "text", "id": "image_alt", "label": "Image alt text", "visible_if": "{{ block.settings.media_type == 'image' }}" },
+        { "type": "text", "id": "image_caption", "label": "Caption", "visible_if": "{{ block.settings.media_type == 'image' }}" },
+        { "type": "url", "id": "media_link", "label": "Link URL" },
+        { "type": "video", "id": "video", "label": "Video", "visible_if": "{{ block.settings.media_type == 'video' }}" },
+        { "type": "image_picker", "id": "video_poster", "label": "Video poster image", "visible_if": "{{ block.settings.media_type == 'video' }}", "info": "Optional poster image shown before video plays" },
+        { "type": "checkbox", "id": "video_autoplay", "label": "Autoplay", "default": false, "visible_if": "{{ block.settings.media_type == 'video' }}" },
+        { "type": "checkbox", "id": "video_loop", "label": "Loop", "default": true, "visible_if": "{{ block.settings.media_type == 'video' }}" },
+        { "type": "select", "id": "aspect_ratio", "label": "Aspect ratio", "options": [ { "value": "original", "label": "Original" }, { "value": "16-9", "label": "16:9" }, { "value": "4-3", "label": "4:3" }, { "value": "square", "label": "Square" } ], "default": "original" },
+  { "type": "range", "id": "overlay_opacity", "label": "Background overlay opacity (%)", "min": 0, "max": 90, "step": 5, "default": 45, "info": "Only applies when using image as background in other contexts" },
+        { "type": "range", "id": "border_radius", "label": "Border radius (px)", "min": 0, "max": 20, "step": 1, "unit": "px", "default": 8 },
+        { "type": "checkbox", "id": "add_shadow", "label": "Add subtle shadow", "default": true },
+        { "type": "header", "content": "Padding" },
+        { "type": "range", "id": "padding-block-start", "label": "Top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+        { "type": "range", "id": "padding-block-end", "label": "Bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+        { "type": "range", "id": "padding-inline-start", "label": "Left", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+        { "type": "range", "id": "padding-inline-end", "label": "Right", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
       ]
     },
     {
@@ -480,10 +590,11 @@
       },
       "blocks": [
         {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Our Mission",
-            "block_content": "<p>To be the global leader in Family Entertainment Center and adventure park safety education, fostering a culture of safety and continuous improvement through innovative training and expert resources.</p>"
+            "block_content": "<p>To be the global leader in Family Entertainment Center and adventure park safety education, fostering a culture of safety and continuous improvement through innovative training and expert resources.</p>",
+            "image_placement": "text-only"
           }
         },
         {

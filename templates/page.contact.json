@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
@@ -52,24 +43,27 @@
       "type": "aai-universal-content",
       "blocks": {
         "phone_info": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Phone Support",
-            "block_content": "<p><strong>General Inquiries & Support:</strong><br><a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1</a></p><p><strong>Hours:</strong><br>Monday - Friday: 8:00 AM - 8:00 PM EST<br>Saturday: 9:00 AM - 5:00 PM EST</p><p><strong>Emergency Course Access:</strong><br>Available 24/7 for technical issues preventing course access.</p>"
+            "block_content": "<p><strong>General Inquiries & Support:</strong><br><a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1</a></p><p><strong>Hours:</strong><br>Monday - Friday: 8:00 AM - 8:00 PM EST<br>Saturday: 9:00 AM - 5:00 PM EST</p><p><strong>Emergency Course Access:</strong><br>Available 24/7 for technical issues preventing course access.</p>",
+            "image_placement": "text-only"
           }
         },
         "email_info": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Email Contact",
-            "block_content": "<p><strong>General & Course Inquiries:</strong><br><a href=\"mailto:info@aai-institute.com\">info@aai-institute.com</a></p><p><strong>Corporate Training:</strong><br><a href=\"mailto:corporate@aai-institute.com\">corporate@aai-institute.com</a></p><p><strong>Technical Support:</strong><br><a href=\"mailto:support@aai-institute.com\">support@aai-institute.com</a></p><p><em>Response within 24 hours.</em></p>"
+            "block_content": "<p><strong>General & Course Inquiries:</strong><br><a href=\"mailto:info@aai-institute.com\">info@aai-institute.com</a></p><p><strong>Corporate Training:</strong><br><a href=\"mailto:corporate@aai-institute.com\">corporate@aai-institute.com</a></p><p><strong>Technical Support:</strong><br><a href=\"mailto:support@aai-institute.com\">support@aai-institute.com</a></p><p><em>Response within 24 hours.</em></p>",
+            "image_placement": "text-only"
           }
         },
         "address_info": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "AAI Institute Headquarters",
-            "block_content": "<p><strong>Amusement Adventure Institute</strong><br>585 Henderson Dr<br>Regina, SK S4N 5X1<br>Canada</p><p><a href=\"https://maps.google.com/?q=585+Henderson+Dr,Regina,SK+S4N+5X1\" target=\"_blank\">View on Google Maps</a></p>"
+            "block_content": "<p><strong>Amusement Adventure Institute</strong><br>585 Henderson Dr<br>Regina, SK S4N 5X1<br>Canada</p><p><a href=\"https://maps.google.com/?q=585+Henderson+Dr,Regina,SK+S4N+5X1\" target=\"_blank\">View on Google Maps</a></p>",
+            "image_placement": "text-only"
           }
         }
       },
@@ -127,24 +121,27 @@
       "type": "aai-universal-content",
       "blocks": {
         "partnerships": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "🤝 Partnership Opportunities",
-            "block_content": "<p>Interested in partnering with AAI for curriculum development, guest instruction, or industry collaboration?</p><p><strong>Partnership Team</strong><br>📧 <a href=\"mailto:partnerships@aai-institute.com\">partnerships@aai-institute.com</a><br>📞 <a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1 ext. 102</a></p>"
+            "block_content": "<p>Interested in partnering with AAI for curriculum development, guest instruction, or industry collaboration?</p><p><strong>Partnership Team</strong><br>📧 <a href=\"mailto:partnerships@aai-institute.com\">partnerships@aai-institute.com</a><br>📞 <a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1 ext. 102</a></p>",
+            "image_placement": "text-only"
           }
         },
         "media": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "💼 Media & Press",
-            "block_content": "<p>Media inquiries, press releases, speaking engagements, and industry event participation.</p><p><strong>Media Relations</strong><br>📧 <a href=\"mailto:media@aai-institute.com\">media@aai-institute.com</a><br>📞 <a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1 ext. 103</a></p>"
+            "block_content": "<p>Media inquiries, press releases, speaking engagements, and industry event participation.</p><p><strong>Media Relations</strong><br>📧 <a href=\"mailto:media@aai-institute.com\">media@aai-institute.com</a><br>📞 <a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1 ext. 103</a></p>",
+            "image_placement": "text-only"
           }
         },
         "legal": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "⚖️ Legal & Compliance",
-            "block_content": "<p>Legal inquiries, compliance questions, certification validation, and regulatory matters.</p><p><strong>Legal Department</strong><br/>📧 <a href=\"mailto:legal@aai-institute.com\">legal@aai-institute.com</a><br/>📞 <a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1 ext. 104</a></p>"
+            "block_content": "<p>Legal inquiries, compliance questions, certification validation, and regulatory matters.</p><p><strong>Legal Department</strong><br/>📧 <a href=\"mailto:legal@aai-institute.com\">legal@aai-institute.com</a><br/>📞 <a href=\"tel:1-800-SAFETY-1\">1-800-SAFETY-1 ext. 104</a></p>",
+            "image_placement": "text-only"
           }
         }
       },

@@ -79,12 +79,44 @@
         "text_alignment"
       ]
     },
+    "content_block": {
+      "name": "Content Block",
+      "settings": [
+        "block_title",
+        "block_content",
+        "image_placement",
+        "image",
+        "image_alt",
+        "image_caption",
+        "image_link",
+        "image_aspect",
+        "image_size",
+        "border_radius",
+        "add_shadow"
+      ]
+    },
     "image_block": {
       "name": "Image Block", 
       "settings": [
         "image",
         "alt_text",
         "caption"
+      ]
+    },
+    "media_block": {
+      "name": "Media Block",
+      "settings": [
+        "media_type",
+        "image",
+        "image_alt",
+        "image_caption",
+        "media_link",
+        "video",
+        "video_autoplay",
+        "video_loop",
+        "aspect_ratio",
+        "border_radius",
+        "add_shadow"
       ]
     },
     "course_block": {

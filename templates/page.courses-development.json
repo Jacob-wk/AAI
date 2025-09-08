@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "wrapper": "div.page-courses-development-wrapper",
   "sections": {
@@ -65,24 +56,27 @@
       "type": "aai-universal-content",
       "blocks": {
         "text_block_Pf4XNr": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Coming Soon: Course 1",
-            "block_content": "<p>Description</p>"
+            "block_content": "<p>Description</p>",
+            "image_placement": "text-only"
           }
         },
         "text_block_J8xjCj": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Coming Soon: Course 2",
-            "block_content": "<p>Description</p>"
+            "block_content": "<p>Description</p>",
+            "image_placement": "text-only"
           }
         },
         "text_block_iRbx9w": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Coming Soon: Course 3",
-            "block_content": "<p>Description</p>"
+            "block_content": "<p>Description</p>",
+            "image_placement": "text-only"
           }
         }
       },
@@ -111,31 +105,35 @@
       "type": "aai-universal-content",
       "blocks": {
         "process1": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Industry Research & Needs Assessment",
-            "block_content": "<p>We begin by researching current industry trends, regulatory changes, and consulting with leading safety professionals to identify critical knowledge gaps and emerging training needs.</p>"
+            "block_content": "<p>We begin by researching current industry trends, regulatory changes, and consulting with leading safety professionals to identify critical knowledge gaps and emerging training needs.</p>",
+            "image_placement": "text-only"
           }
         },
         "process2": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Expert Content Development",
-            "block_content": "<p>Our curriculum development team, composed of industry veterans and educational specialists, creates comprehensive content that balances theoretical knowledge with practical application.</p>"
+            "block_content": "<p>Our curriculum development team, composed of industry veterans and educational specialists, creates comprehensive content that balances theoretical knowledge with practical application.</p>",
+            "image_placement": "text-only"
           }
         },
         "process3": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Peer Review & Validation",
-            "block_content": "<p>All course content undergoes rigorous peer review by multiple industry experts and safety professionals to ensure accuracy, relevance, and practical applicability.</p>"
+            "block_content": "<p>All course content undergoes rigorous peer review by multiple industry experts and safety professionals to ensure accuracy, relevance, and practical applicability.</p>",
+            "image_placement": "text-only"
           }
         },
         "process4": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Beta Testing & Launch",
-            "block_content": "<p>Selected courses undergo beta testing with AAI members, allowing us to refine content based on real-world feedback before full launch and ongoing updates.</p>"
+            "block_content": "<p>Selected courses undergo beta testing with AAI members, allowing us to refine content based on real-world feedback before full launch and ongoing updates.</p>",
+            "image_placement": "text-only"
           }
         }
       },

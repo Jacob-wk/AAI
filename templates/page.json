@@ -13,31 +13,35 @@
       "type": "aai-universal-content",
       "blocks": {
         "feature1": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Industry Expertise",
-            "block_content": "<p>Learn from professionals with decades of experience in safety management and regulatory compliance.</p>"
+            "block_content": "<p>Learn from professionals with decades of experience in safety management and regulatory compliance.</p>",
+            "image_placement": "text-only"
           }
         },
         "feature2": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Comprehensive Training",
-            "block_content": "<p>Access a complete library of courses covering all aspects of amusement industry safety and operations.</p>"
+            "block_content": "<p>Access a complete library of courses covering all aspects of amusement industry safety and operations.</p>",
+            "image_placement": "text-only"
           }
         },
         "feature3": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Professional Certification",
-            "block_content": "<p>Earn industry-recognized credentials that advance your career and demonstrate your expertise.</p>"
+            "block_content": "<p>Earn industry-recognized credentials that advance your career and demonstrate your expertise.</p>",
+            "image_placement": "text-only"
           }
         },
         "feature4": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Flexible Learning",
-            "block_content": "<p>Study at your own pace with mobile-optimized content accessible anywhere, anytime.</p>"
+            "block_content": "<p>Study at your own pace with mobile-optimized content accessible anywhere, anytime.</p>",
+            "image_placement": "text-only"
           }
         }
       },

@@ -79,17 +79,19 @@
       "type": "aai-universal-content",
       "blocks": {
         "text_block_axmPd7": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Multi-Location Compliance",
-            "block_content": "<p>Standardize safety training across all your FEC locations with bulk certification programs and centralized management.</p>"
+            "block_content": "<p>Standardize safety training across all your FEC locations with bulk certification programs and centralized management.</p>",
+            "image_placement": "text-only"
           }
         },
         "text_block_XLEgMN": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Ongoing Compliance",
-            "block_content": "<p>Annual recertification programs and regulatory updates ensure your entire organization stays current with changing requirements.</p>"
+            "block_content": "<p>Annual recertification programs and regulatory updates ensure your entire organization stays current with changing requirements.</p>",
+            "image_placement": "text-only"
           }
         },
         "feature_list_tFkVed": {
@@ -134,31 +136,35 @@
       "type": "aai-universal-content",
       "blocks": {
         "regulatory_req": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Regulatory Requirement",
-            "block_content": "<p>Many states now require certified safety training for FEC operations. AAI certification meets these mandatory requirements.</p>"
+            "block_content": "<p>Many states now require certified safety training for FEC operations. AAI certification meets these mandatory requirements.</p>",
+            "image_placement": "text-only"
           }
         },
         "legal_protection": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Legal Protection",
-            "block_content": "<p>Demonstrate due diligence in safety training with official AAI documentation, providing crucial legal protection.</p>"
+            "block_content": "<p>Demonstrate due diligence in safety training with official AAI documentation, providing crucial legal protection.</p>",
+            "image_placement": "text-only"
           }
         },
         "insurance_benefits": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Insurance Benefits",
-            "block_content": "<p>Many insurance providers offer reduced premiums for businesses with certified staff and documented safety programs.</p>"
+            "block_content": "<p>Many insurance providers offer reduced premiums for businesses with certified staff and documented safety programs.</p>",
+            "image_placement": "text-only"
           }
         },
         "industry_recognition": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Industry Recognition",
-            "block_content": "<p>AAI is recognized as the leading authority in FEC safety training, with certifications valued industry-wide.</p>"
+            "block_content": "<p>AAI is recognized as the leading authority in FEC safety training, with certifications valued industry-wide.</p>",
+            "image_placement": "text-only"
           }
         }
       },
