@@ -32,24 +32,27 @@
       "type": "aai-universal-content",
       "blocks": {
         "astm_standards": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "ASTM Standards",
-            "block_content": "<ul><li>F24.10.03 - Inspection of Amusement Rides</li><li>F24.10.01 - Quality Assurance</li><li>F24.61.02 - Patron Safety Systems</li><li>F24.10.04 - Maintenance and Operation</li></ul>"
+            "block_content": "<ul><li>F24.10.03 - Inspection of Amusement Rides</li><li>F24.10.01 - Quality Assurance</li><li>F24.61.02 - Patron Safety Systems</li><li>F24.10.04 - Maintenance and Operation</li></ul>",
+            "image_placement": "text-only"
           }
         },
         "international_standards": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "International Standards",
-            "block_content": "<ul><li>EN 13814 - European Safety Standards</li><li>CSA Z267 - Canadian Standards</li><li>AS 3533 - Australian Standards</li><li>JIS A 8701 - Japanese Safety Standards</li></ul>"
+            "block_content": "<ul><li>EN 13814 - European Safety Standards</li><li>CSA Z267 - Canadian Standards</li><li>AS 3533 - Australian Standards</li><li>JIS A 8701 - Japanese Safety Standards</li></ul>",
+            "image_placement": "text-only"
           }
         },
         "regulatory_bodies": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
             "block_title": "Regulatory Bodies",
-            "block_content": "<ul><li>CPSC - Consumer Product Safety Commission</li><li>OSHA - Occupational Safety Standards</li><li>State Regulatory Authorities</li><li>Local Jurisdiction Requirements</li></ul>"
+            "block_content": "<ul><li>CPSC - Consumer Product Safety Commission</li><li>OSHA - Occupational Safety Standards</li><li>State Regulatory Authorities</li><li>Local Jurisdiction Requirements</li></ul>",
+            "image_placement": "text-only"
           }
         }
       },

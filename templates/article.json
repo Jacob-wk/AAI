@@ -27,17 +27,19 @@
       },
       "blocks": {
         "courses_block": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Professional Courses",
-            "content": "<p>Explore our comprehensive safety education courses designed by industry experts.</p><p><a href='/collections/courses' class='btn btn-primary'>View Courses</a></p>"
+            "block_title": "Professional Courses",
+            "block_content": "<p>Explore our comprehensive safety education courses designed by industry experts.</p><p><a href='/collections/courses' class='btn btn-primary'>View Courses</a></p>",
+            "image_placement": "text-only"
           }
         },
         "library_block": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Safety Library",
-            "content": "<p>Access our extensive collection of safety documents, standards, and resources.</p><p><a href='/pages/safety-library' class='btn btn-secondary'>Browse Library</a></p>"
+            "block_title": "Safety Library",
+            "block_content": "<p>Access our extensive collection of safety documents, standards, and resources.</p><p><a href='/pages/safety-library' class='btn btn-secondary'>Browse Library</a></p>",
+            "image_placement": "text-only"
           }
         }
       },
@@ -51,10 +53,11 @@
       },
       "blocks": {
         "newsletter_block": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Subscribe to Safety Updates",
-            "content": "<p>Get the latest industry news, safety alerts, and educational content delivered to your inbox.</p><p>Join thousands of safety professionals who trust AAI for critical industry updates and expert insights.</p>"
+            "block_title": "Subscribe to Safety Updates",
+            "block_content": "<p>Get the latest industry news, safety alerts, and educational content delivered to your inbox.</p><p>Join thousands of safety professionals who trust AAI for critical industry updates and expert insights.</p>",
+            "image_placement": "text-only"
           }
         }
       },

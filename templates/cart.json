@@ -21,24 +21,27 @@
       },
       "blocks": {
         "support_block": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Expert Assistance",
-            "content": "<p>Our training specialists are available to help you select the right courses for your professional development goals.</p>"
+            "block_title": "Expert Assistance",
+            "block_content": "<p>Our training specialists are available to help you select the right courses for your professional development goals.</p>",
+            "image_placement": "text-only"
           }
         },
         "certification_block": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Certification Path",
-            "content": "<p>All courses contribute to professional certification and continuing education requirements in the amusement industry.</p>"
+            "block_title": "Certification Path",
+            "block_content": "<p>All courses contribute to professional certification and continuing education requirements in the amusement industry.</p>",
+            "image_placement": "text-only"
           }
         },
         "group_block": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Group Training",
-            "content": "<p>Looking to train multiple employees? Contact us for group discounts and corporate training solutions.</p>"
+            "block_title": "Group Training",
+            "block_content": "<p>Looking to train multiple employees? Contact us for group discounts and corporate training solutions.</p>",
+            "image_placement": "text-only"
           }
         }
       },
@@ -52,10 +55,11 @@
       },
       "blocks": {
         "contact_block": {
-          "type": "text_block",
+          "type": "content_block",
           "settings": {
-            "title": "Contact Our Training Team",
-            "content": "<p>Have questions about course selection or need assistance with your order? Our training specialists are here to help.</p><p><a href='/pages/contact' class='btn btn-primary'>Contact Us</a> <a href='tel:+1234567890' class='btn btn-secondary'>Call Now</a></p>"
+            "block_title": "Contact Our Training Team",
+            "block_content": "<p>Have questions about course selection or need assistance with your order? Our training specialists are here to help.</p><p><a href='/pages/contact' class='btn btn-primary'>Contact Us</a> <a href='tel:+1234567890' class='btn btn-secondary'>Call Now</a></p>",
+            "image_placement": "text-only"
           }
         }
       },
