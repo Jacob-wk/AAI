@@ -145,11 +145,11 @@
                                 </div>
                               {% else %}
                                 <div class="content-block__text">
-                                  {% if block.settings.block_title != blank %}
-                                    <h4>{{ block.settings.block_title }}</h4>
+                                  {% if block_title != blank %}
+                                    <h4>{{ block_title }}</h4>
                                   {% endif %}
-                                  {% if block.settings.block_content != blank %}
-                                    <div class="block-content">{{ block.settings.block_content }}</div>
+                                  {% if block_content != blank %}
+                                    <div class="block-content">{{ block_content }}</div>
                                   {% endif %}
                                 </div>
                               {% endif %}
