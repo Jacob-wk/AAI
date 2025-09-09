@@ -67,6 +67,9 @@
         "text_block_Pf4XNr": {
           "type": "text_block",
           "settings": {
+            "block_image": "shopify://shop_images/2920420.jpg",
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "Coming Soon: Course 1",
             "block_content": "<p>Description</p>"
           }
@@ -74,6 +77,9 @@
         "text_block_J8xjCj": {
           "type": "text_block",
           "settings": {
+            "block_image": "shopify://shop_images/1-APEX-KAMLOOPS-FRAMEGRAB_1.17.1.jpg",
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "Coming Soon: Course 2",
             "block_content": "<p>Description</p>"
           }
@@ -81,6 +87,9 @@
         "text_block_iRbx9w": {
           "type": "text_block",
           "settings": {
+            "block_image": "shopify://shop_images/1-APEX-KAMLOOPS-FRAMEGRAB_1.1.1.jpg",
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "Coming Soon: Course 3",
             "block_content": "<p>Description</p>"
           }
@@ -113,6 +122,8 @@
         "process1": {
           "type": "text_block",
           "settings": {
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "Industry Research & Needs Assessment",
             "block_content": "<p>We begin by researching current industry trends, regulatory changes, and consulting with leading safety professionals to identify critical knowledge gaps and emerging training needs.</p>"
           }
@@ -120,6 +131,8 @@
         "process2": {
           "type": "text_block",
           "settings": {
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "Expert Content Development",
             "block_content": "<p>Our curriculum development team, composed of industry veterans and educational specialists, creates comprehensive content that balances theoretical knowledge with practical application.</p>"
           }
@@ -127,6 +140,8 @@
         "process3": {
           "type": "text_block",
           "settings": {
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "Peer Review & Validation",
             "block_content": "<p>All course content undergoes rigorous peer review by multiple industry experts and safety professionals to ensure accuracy, relevance, and practical applicability.</p>"
           }
@@ -134,6 +149,8 @@
         "process4": {
           "type": "text_block",
           "settings": {
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "Beta Testing & Launch",
             "block_content": "<p>Selected courses undergo beta testing with AAI members, allowing us to refine content based on real-world feedback before full launch and ongoing updates.</p>"
           }

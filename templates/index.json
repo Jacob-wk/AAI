@@ -154,35 +154,21 @@
           "settings": {
             "featured_product": "trampoline-court-inspector-level-1"
           }
-        },
-        "course_item_yKDhXV": {
-          "type": "course_item",
-          "settings": {
-            "featured_product": "emergency-response-protocols"
-          }
-        },
-        "course_item_NmGwRD": {
-          "type": "course_item",
-          "settings": {
-            "featured_product": "legal-compliance-family-entertainment"
-          }
         }
       },
       "block_order": [
-        "course_item_K4KGdj",
-        "course_item_yKDhXV",
-        "course_item_NmGwRD"
+        "course_item_K4KGdj"
       ],
       "settings": {
         "section_title": "Featured Professional Courses",
         "section_subtitle": "Start your professional development journey with our most popular safety certification courses",
         "content_source": "collection",
         "featured_collection": "courses",
-        "course_limit": 3,
+        "course_limit": 1,
         "courses_per_row": 3,
         "show_descriptions": true,
-        "show_price": false,
-        "show_view_all_button": false,
+        "show_price": true,
+        "show_view_all_button": true,
         "view_all_link": "/collections/courses",
         "view_all_text": "View All Courses",
         "background_style": "section-alt-2",
