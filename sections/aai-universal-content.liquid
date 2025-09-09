@@ -206,6 +206,11 @@
                loading="lazy">
         </div>
       {% endif %}
+      {% if section.settings.show_video and section.settings.content_video != blank %}
+        <div class="content-video">
+          {{ section.settings.content_video | video_tag: controls: true, muted: true, loop: true }}
+        </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -306,6 +311,22 @@
       "type": "image_picker",
       "id": "content_image",
       "label": "Content Image"
+    },
+    {
+      "type": "header",
+      "content": "Video Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_video",
+      "label": "Show Content Video",
+      "default": false
+    },
+    {
+      "type": "video_url",
+      "id": "content_video",
+      "label": "Content Video",
+      "accept": ["youtube", "vimeo"]
     },
     {
       "type": "header",
