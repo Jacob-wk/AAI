@@ -133,3 +133,61 @@
     font-size: 2rem !important;
   }
 }
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Adjust as needed */
+}
+
+/* Layout: Text Left, Image Right (Default) */
+.hero-content[data-layout="text-left-image-right"] {
+  flex-direction: row;
+}
+.hero-content[data-layout="text-left-image-right"] .hero-text {
+  flex: 1;
+  padding-right: 20px; /* Space between text and image */
+}
+.hero-content[data-layout="text-left-image-right"] .hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* For credential overlay positioning */
+}
+
+/* Layout: Text Right, Image Left */
+.hero-content[data-layout="text-right-image-left"] {
+  flex-direction: row-reverse;
+}
+.hero-content[data-layout="text-right-image-left"] .hero-text {
+  flex: 1;
+  padding-left: 20px; /* Space between text and image */
+}
+.hero-content[data-layout="text-right-image-left"] .hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* For credential overlay positioning */
+}
+
+/* Layout: Text Centered */
+.hero-content[data-layout="text-center"] .hero-text {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px; /* Adjust as needed */
+}
+.hero-content[data-layout="text-center"] .hero-image {
+  display: none; /* Or handle differently if image should be shown */
+}
+
+/* Layout: Text Only */
+.hero-content[data-layout="text-only"] .hero-text {
+  margin: 0 auto;
+  max-width: 900px; /* Adjust as needed */
+  text-align: center; /* Or left, depending on design */
+}
+.hero-content[data-layout="text-only"] .hero-image {
+  display: none;
+}
