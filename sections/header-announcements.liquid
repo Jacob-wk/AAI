@@ -98,7 +98,7 @@
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <aside
   class="announcement-bar spacing-style section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
-  style="{% render 'spacing-padding', settings: section.settings %}; --border-bottom-width: {{ section.settings.divider_width }}px;"
+  style="padding-top: {{ section.settings.padding-block-start }}px; padding-bottom: {{ section.settings.padding-block-end }}px; --border-bottom-width: {{ section.settings.divider_width }}px;"
 >
   {% liquid
     assign autoplay = false
