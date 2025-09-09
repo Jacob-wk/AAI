@@ -53,27 +53,33 @@
           "type": "text_block",
           "settings": {
             "block_video": "",
-            "text_alignment": "left",
             "block_title": "🧠Industry-Born Expertise",
-            "block_content": "<p>Founded by park owners, manufacturers, and safety professionals, AAI creates practical, proven training designed for real-world operations in trampoline and adventure parks.</p>"
+            "block_content": "<p>Founded by park owners, manufacturers, and safety professionals, AAI creates practical, proven training designed for real-world operations in trampoline and adventure parks.</p>",
+            "button_text": "",
+            "button_url": "",
+            "button_style": "primary"
           }
         },
         "feature2": {
           "type": "text_block",
           "settings": {
             "block_video": "",
-            "text_alignment": "left",
             "block_title": "🎓Standards-Based Training",
-            "block_content": "<p>Our programs are built around key safety standards like <strong>ASTM F2970</strong> and <strong>ASTM F1918</strong>, giving operators the tools to stay compliant and confident.</p>"
+            "block_content": "<p>Our programs are built around key safety standards like <strong>ASTM F2970</strong> and <strong>ASTM F1918</strong>, giving operators the tools to stay compliant and confident.</p>",
+            "button_text": "",
+            "button_url": "",
+            "button_style": "primary"
           }
         },
         "feature3": {
           "type": "text_block",
           "settings": {
             "block_video": "",
-            "text_alignment": "left",
             "block_title": "🤝 Non-Profit, Industry-Driven",
-            "block_content": "<p>AAI is a mission-based non-profit collaborating with operators, insurers, and regulators to support safer, stronger <strong>FECs</strong> across North America.</p>"
+            "block_content": "<p>AAI is a mission-based non-profit collaborating with operators, insurers, and regulators to support safer, stronger <strong>FECs</strong> across North America.</p>",
+            "button_text": "",
+            "button_url": "",
+            "button_style": "primary"
           }
         }
       },
@@ -174,27 +180,33 @@
           "type": "text_block",
           "settings": {
             "block_video": "",
-            "text_alignment": "left",
             "block_title": "2025 - Foundation",
-            "block_content": "<p>AAI was established by industry veterans with over 50 years of combined experience in amusement park operations, safety management, and education.</p>"
+            "block_content": "<p>AAI was established by industry veterans with over 50 years of combined experience in amusement park operations, safety management, and education.</p>",
+            "button_text": "",
+            "button_url": "",
+            "button_style": "primary"
           }
         },
         "feature4": {
           "type": "text_block",
           "settings": {
             "block_video": "",
-            "text_alignment": "left",
             "block_title": "Today - Industry Recognition",
-            "block_content": "<p>Our programs are recognized by IAAPA, comply with ASTM F24 standards, and are trusted by leading amusement operators worldwide.</p>"
+            "block_content": "<p>Our programs are recognized by IAAPA, comply with ASTM F24 standards, and are trusted by leading amusement operators worldwide.</p>",
+            "button_text": "",
+            "button_url": "",
+            "button_style": "primary"
           }
         },
         "founder_quote": {
           "type": "text_block",
           "settings": {
             "block_video": "",
-            "text_alignment": "left",
             "block_title": "Hear From Our Founders",
-            "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>"
+            "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>",
+            "button_text": "",
+            "button_url": "",
+            "button_style": "primary"
           }
         }
       },
@@ -245,18 +257,22 @@
           "type": "text_block",
           "settings": {
             "block_video": "",
-            "text_alignment": "left",
             "block_title": "Soft Contained Play Essentials",
-            "block_content": "<p><strong>Reach out to: Brad Collins</strong></p>"
+            "block_content": "<p><strong>Brad Collins</strong></p>",
+            "button_text": "Contact",
+            "button_url": "",
+            "button_style": "primary"
           }
         },
         "text_block_aMPtdV": {
           "type": "text_block",
           "settings": {
             "block_video": "",
-            "text_alignment": "left",
             "block_title": "Trampoline Court Essentials",
-            "block_content": "<p><strong>Contact: Angel de Guzman</strong></p>"
+            "block_content": "<p><strong>Angel de Guzman</strong></p>",
+            "button_text": "Contact",
+            "button_url": "",
+            "button_style": "primary"
           }
         }
       },
@@ -274,8 +290,8 @@
         "content_title": "",
         "content_body": "<p>Are you passionate about advancing safety and education in the amusement industry? We’re always looking for dedicated professionals to join our development teams and help shape the future of training.</p><p>If you’re interested in contributing to our programs, please contact our program leads directly:</p>",
         "show_image": false,
-        "main_button_text": "Browse All Courses",
-        "main_button_url": "/collections/courses",
+        "main_button_text": "",
+        "main_button_url": "",
         "main_button_style": "primary",
         "main_button_size": "large"
       }
