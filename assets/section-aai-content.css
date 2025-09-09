@@ -737,15 +737,24 @@
   max-width: 100%; /* Ensure it doesn't overflow */
 }
 
-/* Force alignment for text blocks based on inline style */
-.text-block[style*="text-align: center"] {
+/* Universal text alignment classes */
+.text-align-left {
+  text-align: left;
+}
+.text-align-center {
   text-align: center;
 }
-
-.text-block[style*="text-align: right"] {
+.text-align-right {
   text-align: right;
 }
 
-.text-block[style*="text-align: left"] {
-  text-align: left;
+/* Button width classes */
+.btn-width-full {
+  width: 100%;
+  text-align: center;
+}
+
+.btn-width-auto {
+  width: auto;
+  display: inline-block;
 }
