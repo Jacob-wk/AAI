@@ -9,22 +9,47 @@
  */
 {
   "sections": {
-    "hero": {
-      "type": "about-hero",
+    "aai_universal_hero_Ya7DAW": {
+      "type": "aai-universal-hero",
+      "blocks": {
+        "feature_3ricNL": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "🎓",
+            "feature_title": "Trampoline Parks",
+            "feature_description": ""
+          }
+        },
+        "feature_Ag88Ai": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "📜",
+            "feature_title": "Soft Contained Play",
+            "feature_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_3ricNL",
+        "feature_Ag88Ai"
+      ],
+      "name": "AAI Universal Hero",
       "settings": {
-        "hero_title": "Our Story",
-        "hero_subtitle": "Meet the Amusement Adventure Institute (AAI).",
-        "hero_image": "shopify://shop_images/2920420.jpg",
+        "hero_title": "Learn About AAI.",
+        "hero_subtitle": "Professional safety education for the amusement industry. Advance your career while keeping guests safe with industry-leading certification programs.",
+        "hero_style": "hero-standard",
+        "layout_style": "text-left-image-right",
+        "show_image": true,
+        "hero_image": "shopify://shop_images/Staff_Training2_ae1ad08c-ce1b-4fa8-83ae-1bdb2e6a60e2.jpg",
+        "hide_image_mobile": false,
+        "show_features": true,
         "show_stats": true,
-        "stat_1_number": "2025",
-        "stat_1_label": "Established",
-        "stat_2_number": "3",
-        "stat_2_label": "Courses & Growing",
-        "stat_3_number": "6+",
-        "stat_3_label": "Industry Partners",
-        "show_credentials": true,
-        "credential_1": "Trampoline Parks",
-        "credential_2": "Soft Contained Play"
+        "show_credentials": false,
+        "primary_button_text": "Explore Courses",
+        "primary_button_url": "/collections/courses",
+        "secondary_button_text": "Try Free Demo",
+        "secondary_button_url": "/pages/safety-library",
+        "button_size": "large"
       }
     },
     "aai_universal_content_FDKMCw": {
@@ -40,6 +65,8 @@
         "content_body": "<p>Founded in 2020, the <strong>Amusement Adventure Institute (AAI)</strong> is a non-profit safety education platform serving the <strong>trampoline park</strong> and <strong>family entertainment center (FEC)</strong> industries.</p><p>But our story started much earlier—back in <strong>2013</strong>, when the U.S. Consumer Product Safety Commission (CPSC) signaled possible shutdowns of commercial trampoline parks. In response, industry leaders came together to create the first version of <strong>ASTM F2970</strong> and launch the original <strong>Service Tech Level 1 training</strong>, now known as <strong>TCI-1</strong>. That collaboration laid the foundation for AAI’s mission today.</p><p>We now develop expert-led courses, certifications, and operational tools to support <strong>operators, staff, and manufacturers</strong>, all aligned with evolving safety standards like <strong>ASTM F2970</strong> and <strong>ASTM F1918</strong>. Our goal: to elevate professionalism, reduce risk, and help operators thrive in a complex, fast-moving industry.</p>",
         "show_image": true,
         "content_image": "shopify://shop_images/Staff_Training2.jpg",
+        "show_video": false,
+        "content_video": "",
         "main_button_text": "",
         "main_button_url": "",
         "main_button_style": "primary",
@@ -104,6 +131,8 @@
         "content_title": "",
         "content_body": "<p>Unlike rides on a fixed track, our industry operates in dynamic, guest-driven spaces where movement is unpredictable and every moment is unique. AAI delivers structured, standards-based training to help operators bring safety, consistency, and confidence to even the most active environments—without slowing down the fun.</p>",
         "show_image": false,
+        "show_video": false,
+        "content_video": "",
         "main_button_text": "",
         "main_button_url": "",
         "main_button_style": "primary",
@@ -237,6 +266,8 @@
         "content_title": "",
         "content_body": "",
         "show_image": false,
+        "show_video": false,
+        "content_video": "",
         "main_button_text": "",
         "main_button_url": "",
         "main_button_style": "primary",
@@ -256,6 +287,8 @@
         "content_body": "<p>The Amusement Adventure Institute exists to establish and maintain the highest safety standards in the family entertainment center industry. As the recognized regulatory authority, we develop comprehensive training programs that protect guests, employees, and business operators while fostering an environment where families can create lasting memories with complete confidence.</p><p>Our mission extends beyond simple compliance. We work to elevate the entire FEC industry through rigorous safety education, evidence-based operational standards, and continuous innovation in risk management practices. Every certification we issue, every standard we establish, and every training program we develop serves to strengthen the foundation of trust that families place in our industry.</p><p>We believe that exceptional safety performance and profitable operations are not competing priorities—they are complementary strengths that define industry leaders. Through our regulatory framework and educational programs, we empower FEC operators to achieve both operational excellence and unwavering safety standards, ensuring the long-term sustainability and growth of the family entertainment industry.</p><p>Our commitment to this mission drives everything we do: from developing cutting-edge training curricula to establishing industry-wide safety protocols that protect millions of families who visit FECs across the nation. We are not just setting standards—we are building the future of safe, successful family entertainment.</p>",
         "show_image": true,
         "content_image": "shopify://shop_images/DSC05566.jpg",
+        "show_video": false,
+        "content_video": "",
         "main_button_text": "",
         "main_button_url": "",
         "main_button_style": "primary",
@@ -306,6 +339,8 @@
         "content_title": "",
         "content_body": "<p>Are you passionate about advancing safety and education in the amusement industry? We’re always looking for dedicated professionals to join our development teams and help shape the future of training.</p><p>If you’re interested in contributing to our programs, please contact our program leads directly:</p>",
         "show_image": false,
+        "show_video": false,
+        "content_video": "",
         "main_button_text": "",
         "main_button_url": "",
         "main_button_style": "primary",
@@ -314,7 +349,7 @@
     }
   },
   "order": [
-    "hero",
+    "aai_universal_hero_Ya7DAW",
     "aai_universal_content_FDKMCw",
     "mission",
     "aai_instructors_grid_PLgDpi",
