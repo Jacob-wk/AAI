@@ -10,7 +10,7 @@
 {
   "sections": {
     "hero": {
-      "type": "about-hero",
+      "type": "aai-universal-hero",
       "settings": {
         "hero_title": "Our Story",
         "hero_subtitle": "Meet the Amusement Adventure Institute (AAI).",
