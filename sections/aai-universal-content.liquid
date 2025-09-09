@@ -37,7 +37,7 @@
                     {% when 'text_block' %}
                       <div class="timeline-item" {{ block.shopify_attributes }}>
                         <div class="timeline-marker"></div>
-                        <div class="timeline-content" style="text-align: {{ block.settings.text_alignment }};">
+                        <div class="timeline-content">
                            {% if block.settings.block_image != blank %}
                             <div class="block-image">
                               <img src="{{ block.settings.block_image | image_url: width: 400 }}" alt="{{ block.settings.block_image.alt | default: block.settings.block_title }}" loading="lazy">
@@ -53,6 +53,11 @@
                           {% endif %}
                           {% if block.settings.block_content != blank %}
                             <div class="timeline-description">{{ block.settings.block_content }}</div>
+                          {% endif %}
+                          {% if block.settings.button_text != blank %}
+                            <a href="{{ block.settings.button_url }}" class="aai-btn aai-btn-{{ block.settings.button_style }}">
+                              {{ block.settings.button_text }}
+                            </a>
                           {% endif %}
                         </div>
                       </div>
@@ -81,7 +86,7 @@
                 {% for block in section.blocks %}
                   {% case block.type %}
                     {% when 'text_block' %}
-                      <div class="text-block" {{ block.shopify_attributes }} style="text-align: {{ block.settings.text_alignment }};">
+                      <div class="text-block" {{ block.shopify_attributes }}>
                         {% if block.settings.block_image != blank %}
                           <div class="block-image">
                             <img src="{{ block.settings.block_image | image_url: width: 400 }}" alt="{{ block.settings.block_image.alt | default: block.settings.block_title }}" loading="lazy">
@@ -97,6 +102,11 @@
                         {% endif %}
                         {% if block.settings.block_content != blank %}
                           <div class="block-content">{{ block.settings.block_content }}</div>
+                        {% endif %}
+                        {% if block.settings.button_text != blank %}
+                          <a href="{{ block.settings.button_url }}" class="aai-btn aai-btn-{{ block.settings.button_style }}">
+                            {{ block.settings.button_text }}
+                          </a>
                         {% endif %}
                       </div>
                       
@@ -355,17 +365,6 @@
           "type": "richtext",
           "id": "block_content",
           "label": "Block Content"
-        },
-        {
-          "type": "select",
-          "id": "text_alignment",
-          "label": "Text Alignment",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" }
-          ],
-          "default": "left"
         },
 		{
           "type": "header",
