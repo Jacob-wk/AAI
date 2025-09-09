@@ -1,137 +1,14 @@
-/* About Hero Section Styles */
-/* Fix specificity issues by using more specific selectors */
+/* CSS for AAI Universal Hero Section */
 
-/* Color definition is now primarily handled by color-schemes.css and .aai-hero.color-scheme-2 */
-
-/* Ensure the container within about-hero has consistent padding and is centered */
-.about-hero .aai-container {
-  max-width: 1200px; /* Standard max-width */
-  margin-left: auto;   /* Center the container */
-  margin-right: auto;  /* Center the container */
-  padding-left: 15px;  /* Consistent internal padding */
-  padding-right: 15px; /* Consistent internal padding */
-}
-
-/* More specific selectors to override about-page.css */
-.about-hero .hero-stats {
-  display: flex;
-  gap: 2rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.about-hero .stat-item {
-  text-align: center;
-  min-width: 120px;
-}
-
-.about-hero .stat-number {
-  font-size: 2.5rem !important;
-  font-weight: 700 !important;
-  margin-bottom: 0.5rem !important;
-  color: var(--safety-orange, #ff6b35) !important;
-  line-height: 1 !important;
-}
-
-.about-hero .stat-label {
-  font-size: 0.875rem !important;
-  opacity: 0.9 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  color: inherit !important;
-  line-height: 1.2 !important;
-}
-
-/* Credentials styling with more specificity */
-.about-hero .credentials-overlay {
-  position: absolute !important;
-  bottom: -1rem !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 1rem !important;
-  flex-wrap: nowrap !important;
-  justify-content: center !important;
-  align-items: center !important;
-  white-space: nowrap !important;
-}
-
-.about-hero .credential-badge {
-  background: rgba(255, 255, 255, 0.95) !important;
-  color: var(--authority-navy, #1e3a5f) !important;
-  padding: 0.5rem 1rem !important;
-  border-radius: 2rem !important;
-  font-size: 0.875rem !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-  backdrop-filter: blur(10px) !important;
-  display: inline-block !important;
-  flex-shrink: 0 !important;
-}
-
-.about-hero .hero-title { /* Specific overrides for about-hero if needed */
-  font-size: 2.8rem; 
-  font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.about-hero .hero-subtitle { /* Specific overrides for about-hero if needed */
-  font-size: 1.1rem; 
-  line-height: 1.7;
-  margin-bottom: 1.5rem; /* Adjusted from 20px in universal to match original about */
-  opacity: 0.9;
-}
-
-/* Hero Image Styling - Simple approach to make image bigger */
-.about-hero .hero-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.aai-hero {
+  padding: 60px 0; /* Adjust as needed */
   position: relative;
 }
 
-.about-hero .hero-main-image {
-  max-width: 100%;
-  max-height: 100%;
-  height: auto;
-  width: auto;
-  border-radius: 8px;
-  object-fit: contain; /* Ensure full image is visible without cropping */
-}
-
-.about-hero .hero-placeholder {
-  width: 100%;
-  height: 100%;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-}
-
-/* Responsive adjustments */
-@media screen and (max-width: 768px) {
-  .about-hero .hero-stats {
-    justify-content: center;
-    gap: 1.5rem;
-  }
-  
-  .about-hero .credentials-overlay {
-    position: static;
-    transform: none;
-    margin-top: 1rem;
-    justify-content: center;
-  }
-  
-  .about-hero .stat-number {
-    font-size: 2rem !important;
-  }
+.aai-container {
+  max-width: 1200px; /* Or your theme's standard container width */
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 .hero-content {
@@ -190,4 +67,508 @@
 }
 .hero-content[data-layout="text-only"] .hero-image {
   display: none;
+}
+
+
+.hero-text .hero-title {
+  font-size: 2.5rem; /* Adjust as needed */
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.hero-text .hero-subtitle {
+  font-size: 1.1rem; /* Adjust as needed */
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Features */
+.hero-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.hero-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(255,255,255,0.1); /* Example background */
+  padding: 10px;
+  border-radius: 5px;
+}
+.feature-icon {
+  font-size: 1.5rem;
+}
+.feature-text strong {
+  display: block;
+  margin-bottom: 3px;
+}
+
+/* Statistics */
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+  justify-content: flex-start; /* Changed from center to flex-start */
+}
+
+.stat-item {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 0.75rem;
+  padding: 1.5rem 1rem;
+  min-width: 140px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #ff6b35;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* Color scheme adjustments for stats */
+.color-scheme-1 .stat-item {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.color-scheme-1 .stat-item:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.color-scheme-1 .stat-label {
+  color: var(--color-foreground-secondary);
+}
+
+/* Color scheme 2 adjustments for stats */
+.color-scheme-2 .stat-item {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.color-scheme-2 .stat-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.color-scheme-2 .stat-number {
+  color: #ff6b35;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-scheme-2 .stat-label {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* CTA Buttons */
+.hero-cta {
+  display: flex;
+  gap: 15px; /* Space between buttons */
+  margin-top: 20px; /* Space above buttons, ensure this is enough */
+}
+
+.hero-content[data-layout="text-center"] .hero-cta {
+  justify-content: center; /* Center buttons if text is centered */
+}
+
+.aai-btn {
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.aai-btn-primary {
+  background-color: var(--color-secondary, #ff6b35); /* Use AAI orange */
+  color: var(--clean-white, #ffffff);
+  border: none;
+}
+.aai-btn-primary:hover {
+  background-color: #e55a2e; /* Darker orange on hover */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.aai-btn-secondary {
+  background-color: transparent;
+  color: var(--clean-white, #ffffff);
+  border: 2px solid var(--clean-white, #ffffff);
+}
+.aai-btn-secondary:hover {
+  background-color: var(--clean-white, #ffffff) !important;
+  color: var(--authority-navy, #1e3a5f) !important;
+  border-color: var(--clean-white, #ffffff) !important;
+}
+
+/* Button Sizes */
+.aai-btn-small { padding: 8px 15px; font-size: 0.9rem; }
+.aai-btn-medium { padding: 10px 20px; font-size: 1rem; }
+.aai-btn-large { padding: 12px 25px; font-size: 1.1rem; }
+
+
+/* Hero Image */
+.hero-image {
+  position: relative; /* For credentials overlay */
+}
+.hero-main-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Optional: if you want rounded corners */
+}
+
+/* Credentials Overlay */
+.credentials-overlay {
+  position: absolute;
+  bottom: 20px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+  padding: 10px;
+  border-radius: 5px;
+  justify-content: center; /* Center badges if they wrap */
+  width: fit-content; /* Adjust width to content */
+  max-width: 90%; /* Ensure it doesn't overflow too much */
+}
+
+.credential-badge {
+  background-color: var(--color-accent-1); /* Example: use accent color */
+  color: var(--color-accent-1-contrast); /* Text color for accent */
+  padding: 8px 15px;
+  border-radius: 20px; /* Pill shape */
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+/* Specific styles for hero-standard, hero-centered etc. if needed */
+.aai-hero.hero-standard {
+  /* Standard hero layout - default styles applied */
+  position: relative;
+}
+
+.aai-hero.hero-centered .hero-content {
+  /* Centered specific styles */
+  flex-direction: column;
+  text-align: center;
+}
+.aai-hero.hero-centered .hero-image {
+  margin-top: 30px;
+}
+
+.aai-hero.hero-split .hero-content {
+  /* Split layout - text and image side by side */
+  align-items: center;
+}
+
+.aai-hero.hero-overlay {
+  /* Overlay specific styles - might involve pseudo-elements for background */
+  color: #ffffff; /* Ensure text is readable on overlay */
+}
+.aai-hero.hero-overlay .hero-title,
+.aai-hero.hero-overlay .hero-subtitle {
+  color: #ffffff; /* Ensure text is readable on overlay */
+}
+
+/* Ensure color scheme variables are applied if this section can change colors */
+.aai-hero.color-scheme-1 {
+  /* Light color scheme styles */
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+.aai-hero.color-scheme-2 {
+  background: linear-gradient(135deg, #1e3a5f 0%, #005a9f 50%, #0ea5e9 100%);
+  color: #ffffff;
+}
+.aai-hero.color-scheme-2 .hero-title,
+.aai-hero.color-scheme-2 .hero-subtitle {
+  color: #ffffff !important;
+}
+
+.aai-hero.color-scheme-2 .stat-item {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.aai-hero.color-scheme-2 .stat-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.aai-hero.color-scheme-2 .stat-number {
+  color: #ff6b35;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.aai-hero.color-scheme-2 .stat-label {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.aai-hero.color-scheme-2 .aai-btn-primary {
+  background-color: var(--color-secondary); /* AAI orange color */
+  color: var(--clean-white);
+  border: none;
+}
+.aai-hero.color-scheme-2 .aai-btn-primary:hover {
+  background-color: #e55a2e; /* Darker orange on hover */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.aai-hero.color-scheme-2 .aai-btn-secondary {
+  background-color: transparent;
+  color: var(--clean-white);
+  border: 2px solid var(--clean-white);
+}
+.aai-hero.color-scheme-2 .aai-btn-secondary:hover {
+  background-color: var(--clean-white, #ffffff) !important;
+  color: var(--authority-navy, #1e3a5f) !important;
+  border-color: var(--clean-white, #ffffff) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Option to hide image on mobile via Shopify customizer */
+.hero-image.hide-on-mobile {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .aai-hero {
+    padding: 40px 0; /* Reduce padding on mobile */
+  }
+
+  .aai-container {
+    padding: 0 20px; /* Increase side padding for better mobile margins */
+  }
+
+  .hero-content,
+  .hero-content[data-layout="text-left-image-right"],
+  .hero-content[data-layout="text-right-image-left"] {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px; /* Reduce gap on mobile */
+  }
+
+  .hero-content[data-layout="text-left-image-right"] .hero-text,
+  .hero-content[data-layout="text-right-image-left"] .hero-text {
+    padding-right: 0;
+    padding-left: 0;
+    margin-bottom: 20px; /* Reduce margin on mobile */
+  }
+
+  .hero-text .hero-title {
+    font-size: 2rem; /* Slightly smaller title on mobile */
+    margin-bottom: 12px;
+  }
+
+  .hero-text .hero-subtitle {
+    font-size: 0.95rem; /* Smaller subtitle for better mobile viewport fit */
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  /* Center-align hero features on mobile */
+  .hero-features {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .hero-feature {
+    justify-content: center;
+    max-width: 280px; /* Limit width for better readability */
+    text-align: center;
+    padding: 12px 16px;
+  }
+  
+  /* Center-align stats on mobile */
+  .hero-stats {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px; /* Slightly smaller gap for mobile */
+    margin: 1.5rem 0;
+  }
+
+  .stat-item {
+    min-width: 90px; /* Smaller minimum width to fit more in a row */
+    padding: 10px 6px; /* Tighter padding */
+    flex: 1; /* Allow them to grow equally */
+    max-width: 120px; /* Smaller max width to fit better */
+  }
+  
+  .stat-number {
+    font-size: 1.4rem; /* Smaller for mobile to fit better in row */
+  }
+  
+  .stat-label {
+    font-size: 0.7rem; /* Smaller label */
+    line-height: 1.1;
+  }
+
+  .hero-cta {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .hero-cta .aai-btn {
+    width: 100%;
+    max-width: 280px; /* Consistent max width */
+    text-align: center;
+  }
+
+  /* Better mobile handling for hero image */
+  .hero-image {
+    /* Removed order: -1 to maintain natural flow */
+    margin-top: 20px; /* Add space above image when it flows after text */
+  }
+
+  .hero-main-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  /* Improved credentials overlay for mobile */
+  .credentials-overlay {
+    position: static;
+    transform: none;
+    left: auto;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .credential-badge {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    white-space: nowrap;
+  }
+
+  /* Hide image option for mobile - moved inside media query */
+  .hero-image[data-hide-mobile="true"] {
+    display: none !important;
+  }
+}
+
+/* Extra small screens (320px and below) */
+@media (max-width: 480px) {
+  .aai-container {
+    padding: 0 15px; /* Tighter padding for very small screens */
+  }
+
+  .hero-text .hero-title {
+    font-size: 1.75rem; /* Even smaller title for very small screens */
+    line-height: 1.3;
+  }
+
+  .hero-text .hero-subtitle {
+    font-size: 0.9rem; /* Smaller subtitle for very small screens */
+    line-height: 1.4;
+  }
+
+  .hero-stats {
+    justify-content: center;
+    gap: 8px; /* Even tighter gap for very small screens */
+    margin: 1rem 0;
+    /* Keep as row layout, only go to column if really necessary */
+  }
+
+  .stat-item {
+    min-width: 80px; /* Even smaller for very small screens but keep in row */
+    max-width: 100px;
+    padding: 8px 4px; /* Very tight padding */
+  }
+  
+  .stat-number {
+    font-size: 1.2rem; /* Smaller but still readable */
+  }
+  
+  .stat-label {
+    font-size: 0.65rem;
+    line-height: 1.1;
+  }
+
+  .hero-features {
+    gap: 10px;
+  }
+
+  .hero-feature {
+    max-width: 250px;
+    padding: 10px 14px;
+  }
+
+  .credentials-overlay {
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .credential-badge {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  /* Ensure hide image on mobile works on extra small screens too */
+  .hero-image[data-hide-mobile="true"] {
+    display: none !important;
+  }
+}
+
+/* Ultra small screens (below 360px) - force column if needed */
+@media (max-width: 360px) {
+  .hero-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stat-item {
+    min-width: 120px;
+    max-width: 160px;
+    padding: 10px 8px;
+  }
+  
+  .stat-number {
+    font-size: 1.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
+  }
 }
