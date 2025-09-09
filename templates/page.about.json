@@ -45,10 +45,10 @@
         "show_features": true,
         "show_stats": true,
         "show_credentials": false,
-        "primary_button_text": "Explore Courses",
-        "primary_button_url": "/collections/courses",
-        "secondary_button_text": "Try Free Demo",
-        "secondary_button_url": "/pages/safety-library",
+        "primary_button_text": "",
+        "primary_button_url": "",
+        "secondary_button_text": "",
+        "secondary_button_url": "",
         "button_size": "large"
       }
     },
