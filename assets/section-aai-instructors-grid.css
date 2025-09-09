@@ -58,18 +58,9 @@
   margin-top: 3rem;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .instructors-grid-layout {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
-}
-
-@media (min-width: 1200px) {
-  .instructors-grid-layout {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: 1fr;
   }
 }
 
