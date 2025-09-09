@@ -1,4 +1,3 @@
-
 {
   "categories": {
     "banners": "Banners",
@@ -581,6 +580,9 @@
     "youtube": "YouTube"
   },
   "settings": {
+    "text": {
+      "label": "Text"
+    },
     "accordion": "Accordion",
     "account": "Account",
     "alignment": "Alignment",
@@ -743,7 +745,9 @@
     "limit_media_to_screen_height": "Constrain to screen height",
     "limit_product_details_width": "Limit product details width",
     "line_height": "Line height",
-    "link": "Link",
+    "link": {
+      "label": "Link"
+    },
     "link_preset": "Link preset",
     "links": "Links",
     "logo": "Logo",
@@ -862,7 +866,6 @@
     "success_color": "Success",
     "swatches": "Swatches",
     "tertiary_font": "Tertiary font",
-    "text": "Text",
     "text_case": "Case",
     "text_hierarchy": "Text hierarchy",
     "text_label_case": "Text label case",
