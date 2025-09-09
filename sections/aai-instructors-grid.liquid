@@ -17,7 +17,7 @@
       {% endif %}
     </div>
 
-    <div class="instructors-grid-layout">
+    <div class="instructors-grid-layout" style="--grid-columns: {{ section.settings.blocks_per_row }};">
       {% for block in section.blocks %}
         <div class="instructor-card-wrapper" {{ block.shopify_attributes }}>
           {% case block.type %}
@@ -97,6 +97,15 @@
         { "value": "extra-large", "label": "Extra Large" }
       ],
       "default": "large"
+    },
+    {
+      "type": "range",
+      "id": "blocks_per_row",
+      "label": "Blocks per row",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
     }
   ],
   "blocks": [
