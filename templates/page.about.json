@@ -92,71 +92,6 @@
         "main_button_size": "medium"
       }
     },
-    "story": {
-      "type": "aai-universal-content",
-      "blocks": {
-        "milestone_1": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "2025 - Foundation",
-            "block_content": "<p>AAI was established by industry veterans with over 50 years of combined experience in amusement park operations, safety management, and education.</p>"
-          }
-        },
-        "feature4": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Today - Industry Recognition",
-            "block_content": "<p>Our programs are recognized by IAAPA, comply with ASTM F24 standards, and are trusted by leading amusement operators worldwide.</p>"
-          }
-        },
-        "founder_quote": {
-          "type": "text_block",
-          "settings": {
-            "block_title": "Hear From Our Founders",
-            "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>"
-          }
-        }
-      },
-      "block_order": [
-        "milestone_1",
-        "feature4",
-        "founder_quote"
-      ],
-      "settings": {
-        "section_title": "Our Timeline",
-        "section_subtitle": "Our history, at a glance:",
-        "layout_style": "timeline",
-        "blocks_per_row": "1",
-        "background_style": "section-alt-2",
-        "show_main_content": true,
-        "content_title": "",
-        "content_body": "",
-        "show_image": false,
-        "main_button_text": "",
-        "main_button_url": "",
-        "main_button_style": "primary",
-        "main_button_size": "medium"
-      }
-    },
-    "aai_universal_content_jzU93B": {
-      "type": "aai-universal-content",
-      "settings": {
-        "section_title": "Our Mission:",
-        "section_subtitle": "Setting the industry standard for safety education and regulatory compliance across all family entertainment centers",
-        "layout_style": "text-right-image-left",
-        "blocks_per_row": "2",
-        "background_style": "section-alt-1",
-        "show_main_content": true,
-        "content_title": "Our Commitment to Industry Safety Leadership",
-        "content_body": "<p>The Amusement Adventure Institute exists to establish and maintain the highest safety standards in the family entertainment center industry. As the recognized regulatory authority, we develop comprehensive training programs that protect guests, employees, and business operators while fostering an environment where families can create lasting memories with complete confidence.</p><p>Our mission extends beyond simple compliance. We work to elevate the entire FEC industry through rigorous safety education, evidence-based operational standards, and continuous innovation in risk management practices. Every certification we issue, every standard we establish, and every training program we develop serves to strengthen the foundation of trust that families place in our industry.</p><p>We believe that exceptional safety performance and profitable operations are not competing priorities—they are complementary strengths that define industry leaders. Through our regulatory framework and educational programs, we empower FEC operators to achieve both operational excellence and unwavering safety standards, ensuring the long-term sustainability and growth of the family entertainment industry.</p><p>Our commitment to this mission drives everything we do: from developing cutting-edge training curricula to establishing industry-wide safety protocols that protect millions of families who visit FECs across the nation. We are not just setting standards—we are building the future of safe, successful family entertainment.</p>",
-        "show_image": true,
-        "content_image": "shopify://shop_images/DSC05566.jpg",
-        "main_button_text": "",
-        "main_button_url": "",
-        "main_button_style": "primary",
-        "main_button_size": "medium"
-      }
-    },
     "aai_instructors_grid_PLgDpi": {
       "type": "aai-instructors-grid",
       "blocks": {
@@ -222,7 +157,73 @@
         "section_title": "Board of Directors",
         "section_subtitle": "Our Board of Directors represents a carefully balanced cross-section of the amusement and adventure park community. Comprised of operators, manufacturers, regulators, insurers, and safety professionals, the board ensures diverse perspectives guide AAI’s strategic direction—reflecting the needs of all stakeholders committed to advancing safety and professionalism across the industry.",
         "color_scheme": "color-scheme-1",
-        "section_padding": "small"
+        "section_padding": "small",
+        "blocks_per_row": 3
+      }
+    },
+    "story": {
+      "type": "aai-universal-content",
+      "blocks": {
+        "milestone_1": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "2025 - Foundation",
+            "block_content": "<p>AAI was established by industry veterans with over 50 years of combined experience in amusement park operations, safety management, and education.</p>"
+          }
+        },
+        "feature4": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Today - Industry Recognition",
+            "block_content": "<p>Our programs are recognized by IAAPA, comply with ASTM F24 standards, and are trusted by leading amusement operators worldwide.</p>"
+          }
+        },
+        "founder_quote": {
+          "type": "text_block",
+          "settings": {
+            "block_title": "Hear From Our Founders",
+            "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>"
+          }
+        }
+      },
+      "block_order": [
+        "milestone_1",
+        "feature4",
+        "founder_quote"
+      ],
+      "settings": {
+        "section_title": "Our Timeline",
+        "section_subtitle": "Our history, at a glance:",
+        "layout_style": "timeline",
+        "blocks_per_row": "1",
+        "background_style": "section-alt-2",
+        "show_main_content": true,
+        "content_title": "",
+        "content_body": "",
+        "show_image": false,
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
+      }
+    },
+    "aai_universal_content_jzU93B": {
+      "type": "aai-universal-content",
+      "settings": {
+        "section_title": "Our Mission:",
+        "section_subtitle": "Setting the industry standard for safety education and regulatory compliance across all family entertainment centers",
+        "layout_style": "text-right-image-left",
+        "blocks_per_row": "2",
+        "background_style": "section-alt-1",
+        "show_main_content": true,
+        "content_title": "Our Commitment to Industry Safety Leadership",
+        "content_body": "<p>The Amusement Adventure Institute exists to establish and maintain the highest safety standards in the family entertainment center industry. As the recognized regulatory authority, we develop comprehensive training programs that protect guests, employees, and business operators while fostering an environment where families can create lasting memories with complete confidence.</p><p>Our mission extends beyond simple compliance. We work to elevate the entire FEC industry through rigorous safety education, evidence-based operational standards, and continuous innovation in risk management practices. Every certification we issue, every standard we establish, and every training program we develop serves to strengthen the foundation of trust that families place in our industry.</p><p>We believe that exceptional safety performance and profitable operations are not competing priorities—they are complementary strengths that define industry leaders. Through our regulatory framework and educational programs, we empower FEC operators to achieve both operational excellence and unwavering safety standards, ensuring the long-term sustainability and growth of the family entertainment industry.</p><p>Our commitment to this mission drives everything we do: from developing cutting-edge training curricula to establishing industry-wide safety protocols that protect millions of families who visit FECs across the nation. We are not just setting standards—we are building the future of safe, successful family entertainment.</p>",
+        "show_image": true,
+        "content_image": "shopify://shop_images/DSC05566.jpg",
+        "main_button_text": "",
+        "main_button_url": "",
+        "main_button_style": "primary",
+        "main_button_size": "medium"
       }
     },
     "cta_section": {
@@ -252,7 +253,7 @@
         "section_subtitle": "",
         "layout_style": "text-center",
         "blocks_per_row": "2",
-        "background_style": "section-alt-1",
+        "background_style": "",
         "show_main_content": true,
         "content_title": "",
         "content_body": "<p>Are you passionate about advancing safety and education in the amusement industry? We’re always looking for dedicated professionals to join our development teams and help shape the future of training.</p><p>If you’re interested in contributing to our programs, please contact our program leads directly:</p>",
