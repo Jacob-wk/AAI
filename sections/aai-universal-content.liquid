@@ -347,6 +347,16 @@
           "accept": ["youtube", "vimeo"]
         },
         {
+          "type": "text",
+          "id": "block_title",
+          "label": "Block Title"
+        },
+        {
+          "type": "richtext",
+          "id": "block_content",
+          "label": "Block Content"
+        },
+        {
           "type": "select",
           "id": "text_alignment",
           "label": "Text Alignment",
@@ -357,15 +367,30 @@
           ],
           "default": "left"
         },
-        {
+		{
+          "type": "header",
+          "content": "Button"
+        },
+		{
           "type": "text",
-          "id": "block_title",
-          "label": "Block Title"
+          "id": "button_text",
+          "label": "Button Text"
         },
         {
-          "type": "richtext",
-          "id": "block_content",
-          "label": "Block Content"
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button Style",
+          "options": [
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" },
+            { "value": "outline", "label": "Outline" }
+          ],
+          "default": "primary"
         }
       ]
     },
