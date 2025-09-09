@@ -122,7 +122,6 @@
         "feature4",
         "founder_quote"
       ],
-      "disabled": true,
       "settings": {
         "section_title": "Our Timeline",
         "section_subtitle": "Our history, at a glance:",
@@ -141,7 +140,6 @@
     },
     "aai_universal_content_jzU93B": {
       "type": "aai-universal-content",
-      "disabled": true,
       "settings": {
         "section_title": "Our Mission:",
         "section_subtitle": "Setting the industry standard for safety education and regulatory compliance across all family entertainment centers",
@@ -224,7 +222,7 @@
         "section_title": "Board of Directors",
         "section_subtitle": "Our Board of Directors represents a carefully balanced cross-section of the amusement and adventure park community. Comprised of operators, manufacturers, regulators, insurers, and safety professionals, the board ensures diverse perspectives guide AAI’s strategic direction—reflecting the needs of all stakeholders committed to advancing safety and professionalism across the industry.",
         "color_scheme": "color-scheme-1",
-        "section_padding": "medium"
+        "section_padding": "small"
       }
     },
     "cta_section": {
@@ -270,9 +268,9 @@
     "hero",
     "aai_universal_content_FDKMCw",
     "mission",
+    "aai_instructors_grid_PLgDpi",
     "story",
     "aai_universal_content_jzU93B",
-    "aai_instructors_grid_PLgDpi",
     "cta_section"
   ]
 }
