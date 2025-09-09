@@ -37,7 +37,17 @@
                     {% when 'text_block' %}
                       <div class="timeline-item" {{ block.shopify_attributes }}>
                         <div class="timeline-marker"></div>
-                        <div class="timeline-content">
+                        <div class="timeline-content" style="text-align: {{ block.settings.text_alignment }};">
+                           {% if block.settings.block_image != blank %}
+                            <div class="block-image">
+                              <img src="{{ block.settings.block_image | image_url: width: 400 }}" alt="{{ block.settings.block_image.alt | default: block.settings.block_title }}" loading="lazy">
+                            </div>
+                          {% endif %}
+                          {% if block.settings.block_video != blank %}
+                            <div class="block-video">
+                              {{ block.settings.block_video | video_tag: controls: true, muted: true, loop: true }}
+                            </div>
+                          {% endif %}
                           {% if block.settings.block_title != blank %}
                             <h4 class="timeline-title">{{ block.settings.block_title }}</h4>
                           {% endif %}
@@ -71,7 +81,17 @@
                 {% for block in section.blocks %}
                   {% case block.type %}
                     {% when 'text_block' %}
-                      <div class="text-block" {{ block.shopify_attributes }}>
+                      <div class="text-block" {{ block.shopify_attributes }} style="text-align: {{ block.settings.text_alignment }};">
+                        {% if block.settings.block_image != blank %}
+                          <div class="block-image">
+                            <img src="{{ block.settings.block_image | image_url: width: 400 }}" alt="{{ block.settings.block_image.alt | default: block.settings.block_title }}" loading="lazy">
+                          </div>
+                        {% endif %}
+                        {% if block.settings.block_video != blank %}
+                          <div class="block-video">
+                            {{ block.settings.block_video | video_tag: controls: true, muted: true, loop: true }}
+                          </div>
+                        {% endif %}
                         {% if block.settings.block_title != blank %}
                           <h4>{{ block.settings.block_title }}</h4>
                         {% endif %}
@@ -315,6 +335,28 @@
       "type": "text_block",
       "name": "Text Block",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "block_image",
+          "label": "Block Image"
+        },
+        {
+          "type": "video_url",
+          "id": "block_video",
+          "label": "Block Video",
+          "accept": ["youtube", "vimeo"]
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
         {
           "type": "text",
           "id": "block_title",

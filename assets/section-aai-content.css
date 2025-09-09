@@ -708,3 +708,21 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.block-image,
+.block-video {
+  margin-bottom: 1.5rem;
+}
+
+.block-video video {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-medium);
+}
+
+.timeline-item .block-image img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+}
