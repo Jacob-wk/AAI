@@ -736,3 +736,16 @@
   width: auto; /* Allow the block to size to its content */
   max-width: 100%; /* Ensure it doesn't overflow */
 }
+
+/* Force alignment for text blocks based on inline style */
+.text-block[style*="text-align: center"] {
+  text-align: center;
+}
+
+.text-block[style*="text-align: right"] {
+  text-align: right;
+}
+
+.text-block[style*="text-align: left"] {
+  text-align: left;
+}
