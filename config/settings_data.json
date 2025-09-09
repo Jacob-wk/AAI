@@ -196,8 +196,8 @@
       "scheme-4": {
         "settings": {
           "background": "#ff6b35",
-          "foreground_heading": "#000000",
-          "foreground": "#000000",
+          "foreground_heading": "#ffffff",
+          "foreground": "#ffffff",
           "primary": "#000f9f",
           "primary_hover": "#000000",
           "border": "#e6e6e6",
