@@ -82,7 +82,7 @@
         "header_subtitle": "Join thousands of professionals who trust AAI for their safety education needs",
         "background_video": "",
         "enable_parallax": false,
-        "show_overlay": true,
+        "show_overlay": false,
         "overlay_color": "#f9f9f9",
         "overlay_opacity": 100,
         "grid_style": "auto-fit",
