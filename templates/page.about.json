@@ -55,6 +55,7 @@
             "block_video": "",
             "block_title": "🧠Industry-Born Expertise",
             "block_content": "<p>Founded by park owners, manufacturers, and safety professionals, AAI creates practical, proven training designed for real-world operations in trampoline and adventure parks.</p>",
+            "text_alignment": "left",
             "button_text": "",
             "button_url": "",
             "button_style": "primary"
@@ -66,6 +67,7 @@
             "block_video": "",
             "block_title": "🎓Standards-Based Training",
             "block_content": "<p>Our programs are built around key safety standards like <strong>ASTM F2970</strong> and <strong>ASTM F1918</strong>, giving operators the tools to stay compliant and confident.</p>",
+            "text_alignment": "left",
             "button_text": "",
             "button_url": "",
             "button_style": "primary"
@@ -77,6 +79,7 @@
             "block_video": "",
             "block_title": "🤝 Non-Profit, Industry-Driven",
             "block_content": "<p>AAI is a mission-based non-profit collaborating with operators, insurers, and regulators to support safer, stronger <strong>FECs</strong> across North America.</p>",
+            "text_alignment": "left",
             "button_text": "",
             "button_url": "",
             "button_style": "primary"
@@ -182,6 +185,7 @@
             "block_video": "",
             "block_title": "2025 - Foundation",
             "block_content": "<p>AAI was established by industry veterans with over 50 years of combined experience in amusement park operations, safety management, and education.</p>",
+            "text_alignment": "left",
             "button_text": "",
             "button_url": "",
             "button_style": "primary"
@@ -193,6 +197,7 @@
             "block_video": "",
             "block_title": "Today - Industry Recognition",
             "block_content": "<p>Our programs are recognized by IAAPA, comply with ASTM F24 standards, and are trusted by leading amusement operators worldwide.</p>",
+            "text_alignment": "left",
             "button_text": "",
             "button_url": "",
             "button_style": "primary"
@@ -204,6 +209,7 @@
             "block_video": "",
             "block_title": "Hear From Our Founders",
             "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>",
+            "text_alignment": "left",
             "button_text": "",
             "button_url": "",
             "button_style": "primary"
@@ -259,6 +265,7 @@
             "block_video": "",
             "block_title": "Soft Contained Play Essentials",
             "block_content": "<p><strong>Brad Collins</strong></p>",
+            "text_alignment": "center",
             "button_text": "Contact",
             "button_url": "",
             "button_style": "primary"
@@ -270,6 +277,7 @@
             "block_video": "",
             "block_title": "Trampoline Court Essentials",
             "block_content": "<p><strong>Angel de Guzman</strong></p>",
+            "text_alignment": "left",
             "button_text": "Contact",
             "button_url": "",
             "button_style": "primary"
