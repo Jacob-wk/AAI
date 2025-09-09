@@ -52,6 +52,8 @@
         "feature1": {
           "type": "text_block",
           "settings": {
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "🧠Industry-Born Expertise",
             "block_content": "<p>Founded by park owners, manufacturers, and safety professionals, AAI creates practical, proven training designed for real-world operations in trampoline and adventure parks.</p>"
           }
@@ -59,6 +61,8 @@
         "feature2": {
           "type": "text_block",
           "settings": {
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "🎓Standards-Based Training",
             "block_content": "<p>Our programs are built around key safety standards like <strong>ASTM F2970</strong> and <strong>ASTM F1918</strong>, giving operators the tools to stay compliant and confident.</p>"
           }
@@ -66,6 +70,8 @@
         "feature3": {
           "type": "text_block",
           "settings": {
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "🤝 Non-Profit, Industry-Driven",
             "block_content": "<p>AAI is a mission-based non-profit collaborating with operators, insurers, and regulators to support safer, stronger <strong>FECs</strong> across North America.</p>"
           }
@@ -103,7 +109,7 @@
             "name": "Luke Shaheen",
             "title": "Co-Chair",
             "department": "APEX Group Of Companies",
-            "bio": "<p><strong>Luke Shaheen</strong> has been actively involved in the trampoline park and amusement industry since 2012, focusing on advancing safety standards and operator education. Over the past decade, he has been deeply engaged in the ongoing development of <strong>ASTM F2970</strong>, contributing expertise to support evolving industry safety protocols.</p><p>He served four years on the Board of Directors for the International Association of Trampoline Parks (IATP) and chaired the IATP Education Committee, leading efforts to enhance training and compliance for trampoline parks.</p><p>Luke is Managing Partner and co-founder of APEX Active Entertainment Group, which includes APEX Adventure Plex locations and Crazy Ape Extreme Equipment manufacturing. He guides the growth of family entertainment centers and recreational equipment with a strong commitment to quality and safety.</p><p>As an active member of international organizations including IATP and IAAPA, Luke continues to support the advancement of standards and best practices in the trampoline and amusement sectors worldwide.</p>",
+            "bio": "<p><strong>Luke Shaheen</strong> has been actively involved in the trampoline park and amusement industry since 2012, focusing on advancing safety standards and operator education. Over the past decade, he has been deeply engaged in the ongoing development of <strong>ASTM F2970</strong>, contributing expertise to support evolving industry safety protocols.</p><p>He served four years on the Board of Directors for the<strong> International Association of Trampoline Parks (IATP) </strong>and chaired the<strong> IATP Education Committee,</strong> leading efforts to enhance training and compliance for trampoline parks.</p><p>Luke is Managing Partner and co-founder of <strong>APEX Active Entertainment </strong>Group, which includes <strong>APEX Adventure Plex </strong>adventure parks and <strong>Crazy Ape Extreme Equipment </strong>manufacturing. He guides the growth of family entertainment centers and recreational equipment with a strong commitment to quality and safety.</p><p>As an active member of international organizations including<strong> IATP and IAAPA,</strong> Luke continues to support the advancement of standards and best practices in the trampoline and amusement sectors worldwide.</p>",
             "credentials": "",
             "stat_1_number": "",
             "stat_1_label": "",
@@ -120,7 +126,7 @@
             "name": "Angel de Guzman",
             "title": "Co-Chair",
             "department": "Airtopia Adventure Parks",
-            "bio": "<p><strong>Angel de Guzman</strong> brings over a decade of specialized expertise to her role as Chief Locations Officer at <strong>Airtopia Adventure Parks</strong>. Her career began in 2014, when she quickly identified opportunities to improve safety and operational standards in the indoor entertainment sector. As the founder of AJ Playgrounds, she gained a reputation for excellence in installation, maintenance, and consultation with manufacturers worldwide—leading to the successful design and buildout of over 100 parks across the country.</p><p>A pioneer in the inspection movement, Angel has been instrumental in transitioning safety expertise from outdoor playgrounds to indoor adventure facilities. She has championed the development of specialized standards tailored to family entertainment centers, ensuring both safety and operational excellence. Angel holds AIMS Level 1 and AAI TCI Level 1 and 2 inspection certifications, and serves on several ASTM committees focused on trampoline and adventure parks. Since joining Airtopia in late 2023, she has applied her deep knowledge of location development and operational efficiency to help drive the company’s continued growth and elevate the guest experience.</p>",
+            "bio": "<p><strong>Angel de Guzman</strong> brings over a decade of specialized expertise to her role as Chief Locations Officer at <strong>Airtopia Adventure Parks</strong>. Her career began in 2014, when she quickly identified opportunities to improve safety and operational standards in the indoor entertainment sector. As the founder of <strong>AJ Playgrounds</strong>, she gained a reputation for excellence in installation, maintenance, and consultation with manufacturers worldwide—<strong>leading to the successful design and buildout of over 100 parks across the country.</strong></p><p>A pioneer in the inspection movement, Angel has been instrumental in transitioning safety expertise from outdoor playgrounds to indoor adventure facilities. She has championed the development of specialized standards tailored to family entertainment centers, ensuring both safety and operational excellence. Angel holds <strong>AIMS Level 1 and AAI TCI Level 1 and 2 inspection certifications</strong>, and serves on several ASTM committees focused on trampoline and adventure parks. Since joining Airtopia in late 2023, she has applied her deep knowledge of location development and operational efficiency to help drive the company’s continued growth and elevate the guest experience.</p>",
             "credentials": "",
             "stat_1_number": "",
             "stat_1_label": "",
@@ -137,7 +143,7 @@
             "name": "Erin Davis",
             "title": "Treasurer",
             "department": "Big Air Franchising",
-            "bio": "<p>Erin Reynolds Davis brings extensive experience in the recreation and entertainment industry to her role as VP of Operations at Big Air Franchising. She began her career as a lifeguard at the original Wild Rivers in Irvine, where she developed a strong foundation in operations and customer service. In 2013, Erin became a founding leader of Big Air Trampoline Parks, helping to launch the brand’s corporate flagship in Orange County and supporting its expansion into a growing national franchise.</p><p>Throughout her tenure, Erin has led the creation of industry-leading safety protocols and developed a system-wide compliance training program, elevating operational standards across all Big Air locations. Her cross-functional leadership and deep operational knowledge have been instrumental in shaping the brand’s reputation for excellence.</p><p>Erin holds an MBA from the University of Massachusetts Lowell and currently serves as Secretary of the Amusement and Adventure Institute (AAI), as well as a member of the IAAPA FEC Committee. Her commitment to innovation, safety, and leadership continues to influence the broader adventure park industry.</p>",
+            "bio": "<p><strong>Erin Reynolds Davis</strong> brings extensive experience in the recreation and entertainment industry to her role as <strong>VP of Operations at Big Air Franchising.</strong> She began her career as a lifeguard at the original Wild Rivers in Irvine, where she developed a strong foundation in operations and customer service. In 2013, Erin became a<strong> founding leader of Big Air Trampoline Parks,</strong> helping to launch the brand’s corporate flagship in Orange County and supporting its expansion into a growing national franchise.</p><p>Throughout her tenure, Erin has led the creation of industry-leading safety protocols and developed a system-wide compliance training program, elevating operational standards across all Big Air locations. Her cross-functional leadership and deep operational knowledge have been instrumental in shaping the brand’s reputation for excellence.</p><p>Erin holds an <strong>MBA from the University of Massachusetts Lowell</strong> and currently serves as <strong>Secretary of the Amusement and Adventure Institute (AAI),</strong> as well as a member of the <strong>IAAPA FEC Committee</strong>. Her commitment to innovation, safety, and leadership continues to influence the broader adventure park industry.</p>",
             "credentials": "",
             "stat_1_number": "",
             "stat_1_label": "",
@@ -167,6 +173,8 @@
         "milestone_1": {
           "type": "text_block",
           "settings": {
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "2025 - Foundation",
             "block_content": "<p>AAI was established by industry veterans with over 50 years of combined experience in amusement park operations, safety management, and education.</p>"
           }
@@ -174,6 +182,8 @@
         "feature4": {
           "type": "text_block",
           "settings": {
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "Today - Industry Recognition",
             "block_content": "<p>Our programs are recognized by IAAPA, comply with ASTM F24 standards, and are trusted by leading amusement operators worldwide.</p>"
           }
@@ -181,6 +191,8 @@
         "founder_quote": {
           "type": "text_block",
           "settings": {
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "Hear From Our Founders",
             "block_content": "<p>Safety isn't just a priority—it's the foundation that allows adventure to flourish. Every thrill, every smile, every unforgettable moment depends on the unwavering commitment to safety excellence.</p><p>— AAI Founding Team</p>"
           }
@@ -232,6 +244,8 @@
         "text_block_T7qTNj": {
           "type": "text_block",
           "settings": {
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "Soft Contained Play Essentials",
             "block_content": "<p><strong>Reach out to: Brad Collins</strong></p>"
           }
@@ -239,6 +253,8 @@
         "text_block_aMPtdV": {
           "type": "text_block",
           "settings": {
+            "block_video": "",
+            "text_alignment": "left",
             "block_title": "Trampoline Court Essentials",
             "block_content": "<p><strong>Contact: Angel de Guzman</strong></p>"
           }
