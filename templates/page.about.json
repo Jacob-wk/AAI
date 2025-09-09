@@ -58,7 +58,8 @@
             "text_alignment": "left",
             "button_text": "",
             "button_url": "",
-            "button_style": "primary"
+            "button_style": "primary",
+            "button_width": "auto"
           }
         },
         "feature2": {
@@ -70,7 +71,8 @@
             "text_alignment": "left",
             "button_text": "",
             "button_url": "",
-            "button_style": "primary"
+            "button_style": "primary",
+            "button_width": "auto"
           }
         },
         "feature3": {
@@ -82,7 +84,8 @@
             "text_alignment": "left",
             "button_text": "",
             "button_url": "",
-            "button_style": "primary"
+            "button_style": "primary",
+            "button_width": "auto"
           }
         }
       },
@@ -188,7 +191,8 @@
             "text_alignment": "left",
             "button_text": "",
             "button_url": "",
-            "button_style": "primary"
+            "button_style": "primary",
+            "button_width": "auto"
           }
         },
         "feature4": {
@@ -200,7 +204,8 @@
             "text_alignment": "left",
             "button_text": "",
             "button_url": "",
-            "button_style": "primary"
+            "button_style": "primary",
+            "button_width": "auto"
           }
         },
         "founder_quote": {
@@ -212,7 +217,8 @@
             "text_alignment": "left",
             "button_text": "",
             "button_url": "",
-            "button_style": "primary"
+            "button_style": "primary",
+            "button_width": "auto"
           }
         }
       },
@@ -268,7 +274,8 @@
             "text_alignment": "center",
             "button_text": "Contact",
             "button_url": "",
-            "button_style": "primary"
+            "button_style": "primary",
+            "button_width": "full"
           }
         },
         "text_block_aMPtdV": {
@@ -280,7 +287,8 @@
             "text_alignment": "left",
             "button_text": "Contact",
             "button_url": "",
-            "button_style": "primary"
+            "button_style": "primary",
+            "button_width": "full"
           }
         }
       },
