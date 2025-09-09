@@ -726,3 +726,7 @@
   width: 100px;
   height: 100px;
 }
+
+.block-button-wrapper {
+  margin-top: 1.5rem;
+}

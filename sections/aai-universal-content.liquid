@@ -55,9 +55,11 @@
                             <div class="timeline-description">{{ block.settings.block_content }}</div>
                           {% endif %}
                           {% if block.settings.button_text != blank %}
-                            <a href="{{ block.settings.button_url }}" class="aai-btn aai-btn-{{ block.settings.button_style }}">
-                              {{ block.settings.button_text }}
-                            </a>
+                            <div class="block-button-wrapper">
+                              <a href="{{ block.settings.button_url }}" class="aai-btn aai-btn-{{ block.settings.button_style }}">
+                                {{ block.settings.button_text }}
+                              </a>
+                            </div>
                           {% endif %}
                         </div>
                       </div>
@@ -104,9 +106,11 @@
                           <div class="block-content">{{ block.settings.block_content }}</div>
                         {% endif %}
                         {% if block.settings.button_text != blank %}
-                          <a href="{{ block.settings.button_url }}" class="aai-btn aai-btn-{{ block.settings.button_style }}">
-                            {{ block.settings.button_text }}
-                          </a>
+                          <div class="block-button-wrapper">
+                            <a href="{{ block.settings.button_url }}" class="aai-btn aai-btn-{{ block.settings.button_style }}">
+                              {{ block.settings.button_text }}
+                            </a>
+                          </div>
                         {% endif %}
                       </div>
                       
