@@ -5,88 +5,6 @@
   min-height: 100vh;
 }
 
-.about-hero {
-  background: linear-gradient(135deg, #1e3a5f 0%, #005a9f 50%, #0ea5e9 100%);
-  color: white;
-  padding: 3rem;
-}
-
-.hero-content {
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 3rem;
-  align-items: center;
-}
-
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-}
-
-.hero-subtitle {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-  line-height: 1.6;
-}
-
-.hero-stats {
-  display: flex;
-  gap: 2rem;
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: #ff6b35;
-}
-
-.stat-label {
-  font-size: 0.875rem;
-  opacity: 0.8;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.hero-image {
-  position: relative;
-  text-align: center;
-}
-
-.hero-logo {
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-}
-
-.credentials-overlay {
-  position: absolute;
-  bottom: -1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 1rem;
-}
-
-.credential-badge {
-  background: rgba(255, 255, 255, 0.95);
-  color: #1e3a5f;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
 .about-content {
   padding: 4rem 0;
 }
@@ -447,19 +365,6 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .hero-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .hero-stats {
-    justify-content: center;
-  }
-  
   .story-content {
     grid-template-columns: 1fr;
     gap: 2rem;
